@@ -1,0 +1,107 @@
+@import "util.scss";
+.module {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: $primary-color;
+}
+
+.module .container {
+  position: absolute;
+  @include align-vertical(500px);
+  @include align-horizontal(374px);
+}
+
+.module .form {
+  width: 314px;
+  padding: 17px 32px;
+  background-color: #fff;
+  @include box-shadow(2px, 2px, 15px, rgba(0, 0, 0, 0.2));
+  @include border-radius(7px);
+}
+
+.module .title {
+  margin-bottom: 14px;
+  color: $primary-color;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.module .error {
+  width: 100%;
+  margin-top: 5px;
+  background-color: #ffeeee;
+  color: #a05050;
+  font-size: 14px;
+  padding: 12px;
+  font-weight: bold;
+  @include box-sizing(border-box);
+}
+
+.module .error .errorText {
+  padding: 12px;
+}
+
+.module .send,
+.module .outlook,
+.module .gmail {
+  padding: 11px 0px;
+}
+
+.module .send {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.module .or {}
+
+.module .orLine {
+  position: relative;
+  margin-top: 30px;
+  border-top: 1px solid #d0d0d0;
+}
+
+.module .orText {
+  position: relative;
+  width: 30px;
+  margin-top: -21px;
+  padding: 12px;
+  background-color: #fff;
+  color: #aaa;
+  text-align: center;
+  @include align-horizontal(54px);
+}
+
+.module .outlook {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  background-color: #0070c0;
+  color: #fff;
+}
+
+.module .outlook:hover {
+  background-color: #0060b0;
+}
+
+.module .gmail {
+  margin-top: 5px;
+  margin-bottom: 14px;
+  background-color: #e06050;
+  color: #fff;
+}
+
+.module .gmail:hover {
+  background-color: #d55050;
+}
+
+.module .signup {
+  margin-top: 18px;
+  color: #fff;
+  text-align: center;
+}
+
+.module .invite {
+  margin-left: 7px;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}

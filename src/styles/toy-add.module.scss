@@ -1,0 +1,145 @@
+@import "util.scss";
+.module {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 100px;
+  overflow: auto;
+  background-color: #fff;
+  @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.14));
+  @include border-radius(5px);
+  @include box-sizing(border-box);
+}
+
+.module .header {
+  padding: 12px 15px;
+  background-color: $primary-color;
+  color: white;
+  font-size: 16px;
+  @include box-sizing(border-box);
+}
+
+.module .header .close {
+  color: #fff;
+  float: right;
+  margin-top: -14px;
+  margin-right: -12px;
+  @include inline-vertical();
+}
+
+.module .header .close svg {
+  width: 21px;
+  height: 21px;
+}
+
+.module .name {
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #888;
+  font-size: 15px;
+  @include box-sizing(border-box);
+}
+
+.module .nameContainer {
+  @include inline-vertical();
+}
+
+.module .nameContainer .nameText {
+  min-width: 300px;
+  border: 0;
+  font-size: 16px;
+  @include box-sizing(border-box);
+}
+
+.module .to {
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #888;
+  font-size: 16px;
+  @include box-sizing(border-box);
+}
+
+.module .toLegend {
+  @include inline-vertical();
+  margin-right: 10px;
+}
+
+.module .toContainer {
+  @include inline-vertical();
+}
+
+.module .toContainer .toText {
+  min-width: 280px;
+  border: 0;
+  font-size: 16px;
+  @include box-sizing(border-box);
+}
+
+.module .dueDate {
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #888;
+  font-size: 16px;
+  @include box-sizing(border-box);
+}
+
+.module .dueDateLegend {
+  @include inline-vertical();
+  margin-right: 10px;
+}
+
+.module .dueDateDate {
+  border: 0;
+  color: #555;
+  font-size: 17px;
+  @include inline-vertical();
+}
+
+.module .toyContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 18px 15px;
+  border: 0;
+  font-size: 16px;
+  @include box-sizing(border-box);
+}
+
+.module .option {
+  position: absolute;
+  bottom: 12px;
+  color: $secondary-color;
+  @include inline-vertical();
+}
+
+.module .option svg {
+  width: 27px;
+  height: 27px;
+}
+
+.module .calendar {
+  left: 10px;
+}
+
+.module .assigned {
+  left: 56px;
+}
+
+.module .saveToy {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  min-height: 0;
+  padding: 8px 12px 5px 12px;
+  background: $action-color;
+  color: white;
+  font-size: 15.5px;
+  text-transform: none;
+  @include border-radius(20px);
+}
+
+.module .saveToy:hover {
+  background-color: #da2276;
+}

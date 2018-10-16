@@ -1,0 +1,55 @@
+$dark-color: #029ad0;
+$primary-color: #00a7dF;
+$primary-light: #e6f5fc;
+$secondary-color: #999;
+$accent-color: #ffc000;
+$action-color: #f03296;
+$completed-color: #92D050;
+$delayed-color: #ffb070;
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin align-horizontal($width) {
+  left: 50%;
+  margin-left: -$width/2;
+}
+
+@mixin align-vertical($width) {
+  top: 50%;
+  margin-top: -$width/2;
+}
+
+@mixin box-shadow($top, $left, $blur, $color) {
+  -webkit-box-shadow: $left $top $blur $color;
+  -moz-box-shadow: $left $top $blur $color;
+  box-shadow: $left $top $blur $color;
+}
+
+@mixin box-sizing($attr) {
+  -webkit-box-sizing: $attr;
+  -moz-box-sizing: $attr;
+  box-sizing: $attr;
+}
+
+@mixin inline-vertical() {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin single-line() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 1em;
+}
+
+@mixin card-design() {
+  background-color: #fff;
+  border: 1px solid #e7e7e7;
+  @include border-radius(7px);
+  @include box-sizing(border-box);
+}

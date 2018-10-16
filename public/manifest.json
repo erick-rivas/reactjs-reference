@@ -1,0 +1,7 @@
+{
+  "short_name": "Reactjs Template",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

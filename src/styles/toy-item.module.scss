@@ -1,0 +1,62 @@
+@import "util.scss";
+$assigned-size: 38px;
+.module {
+  display: block !important;
+  padding: 11px 17px !important;
+  border-bottom: 1px solid #f2f2f2 !important;
+  @include box-sizing(border-box);
+}
+
+.module:hover {
+  background-color: #f9f9f9 !important;
+}
+
+.module .tick {
+  margin-top: -5px;
+  margin-left: -5px;
+  color: $completed-color;
+  @include inline-vertical();
+}
+
+.module .content {
+  width: 100%;
+  margin-top: -33.5px;
+  padding-right: 100px;
+  padding-left: 61px;
+  @include box-sizing(border-box);
+}
+
+.module .title {
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 16.5px;
+  @include single-line();
+}
+
+.module .options {
+  margin-top: -36px;
+  float: right;
+  @include inline-vertical();
+}
+
+.module .date {
+  margin-right: 15px;
+  color: #adadad;
+  font-size: 15.5px;
+  @include inline-vertical();
+}
+
+.module .assigned {
+  width: 36px;
+  height: 36px;
+  margin-right: 5px;
+  @include inline-vertical();
+}
+
+.module .next {
+  width: 28px;
+  height: 36px;
+  margin-left: 4px;
+  color: #ddd;
+  @include inline-vertical();
+}

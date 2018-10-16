@@ -1,0 +1,28 @@
+@import "util.scss";
+$container-width:500px;
+$container-height:550px;
+$header-height: 65px;
+.module {
+}
+
+.module .container {
+  position: relative;
+  width: $container-width;
+  height: $container-height;
+  padding: 4px 14px 0px 12px;
+  @include align-horizontal($container-width);
+  @include align-vertical($container-height);
+  @include card-design();
+}
+
+.module .close {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: -37px;
+  margin-left: $container-width - 30px;
+}
+
+.module .close svg {
+  width: 21px;
+  height: 21px;
+}
