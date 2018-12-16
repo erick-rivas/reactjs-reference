@@ -12,7 +12,7 @@ class Pets extends Executor
   }
 
   fetchPets = invalidate =>
-    this.fetchDataSet(invalidate);
+    this.fetchDataSet("", invalidate);
 
   savePet = (name) =>
   {

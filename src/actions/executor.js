@@ -18,7 +18,7 @@ class Executor
    === REQUESTS ===
    */
 
-  fetchDataSet = (invalidate) =>
+  fetchDataSet = (query, invalidate) =>
   {
     const requestDataSet = query =>
     {
@@ -37,7 +37,7 @@ class Executor
       const didFetch = state.didFetch;
       const dataSet = state.dataSet;
       if (!didFetch || invalidate)
-        disp(requestDataSet());
+        disp(requestDataSet(query));
       else disp(this.onReceiveDataSet(dataSet));
     }
   }
