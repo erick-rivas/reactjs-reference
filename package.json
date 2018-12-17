@@ -37,6 +37,9 @@
     "build": "npm-run-all build-css build-js",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
