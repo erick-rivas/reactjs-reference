@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import * as Const from 'actions/const';
+import * as Const from 'actions/helpers/const';
 
 class Executor
 {

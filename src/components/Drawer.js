@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Nav from 'containers/_drawer/_Nav';
+import Nav from 'containers/drawer/Nav';
 
 import styles from 'styles/css/drawer.module.css';
 

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import ToyActions from 'actions/_toys'
+import ToyActions from 'actions/toys'
 
-import Details from 'components/_toy/_Details'
+import Details from 'components/toy/Details'
 
 
 const toys = new ToyActions();

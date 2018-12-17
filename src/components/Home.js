@@ -5,9 +5,9 @@ import { Redirect } from 'react-router-dom'
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import Appbar from 'components/_Appbar';
-import Drawer from 'components/_Drawer';
-import Toys from 'components/_Toys';
+import Appbar from 'components/Appbar';
+import Drawer from 'components/Drawer';
+import Toys from 'components/Toys';
 
 import styles from 'styles/css/home.module.css';
 

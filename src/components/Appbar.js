@@ -5,8 +5,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import InfoIcon from '@material-ui/icons/Info'
 import NotificationIcon from '@material-ui/icons/Notifications'
 
-import Search from 'components/_appbar/_Search';
-import Profile from 'components/_appbar/_Profile';
+import Search from 'components/appbar/Search';
+import Profile from 'components/appbar/Profile';
 
 import styles from 'styles/css/appbar.module.css';
 

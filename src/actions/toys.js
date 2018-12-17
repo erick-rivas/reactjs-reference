@@ -1,4 +1,4 @@
-import Executor from 'actions/executor'
+import Executor from 'actions/helpers/executor'
 
 class Toys extends Executor
 {

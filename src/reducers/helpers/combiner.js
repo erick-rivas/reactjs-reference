@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import Pets from 'reducers/_pets'
-import Toys from 'reducers/_toys'
+import Pets from 'reducers/pets'
+import Toys from 'reducers/toys'
 
 export default combineReducers({
   pets: new Pets().reducer,

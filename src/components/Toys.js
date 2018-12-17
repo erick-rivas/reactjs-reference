@@ -2,9 +2,9 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
-import Nav from 'components/_toy/_Nav';
-import Add from 'containers/_toy/_Add';
-import List from 'containers/_ToyList'
+import Nav from 'components/toy/Nav';
+import Add from 'containers/toy/Add';
+import List from 'containers/ToyList'
 
 import styles from 'styles/css/toys.module.css';
 

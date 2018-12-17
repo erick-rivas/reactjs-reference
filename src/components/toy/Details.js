@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Button from '@material-ui/core/Button';
 
-import Header from 'components/_toy/_details/_Header'
+import Header from 'components/toy/details/Header'
 
 import { getDateFormat } from 'components/util/Format';
 

@@ -1,8 +1,8 @@
-//Server URLS
+//Server URLs
 export const API_URL = 'http://localhost:4004/v1';
 export const APP_URL = 'http://localhost:3000';
 
-//Reducers conts
+//Reducers const
 export const REC_DATASET = 'REC_DATASET';
 export const REC_DATA = 'REC_DATA';
 export const SAVE_DATA = 'SAVE_DATA';

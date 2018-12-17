@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import PetActions from 'actions/_pets'
+import PetActions from 'actions/pets'
 
-import Nav from 'components/_drawer/_Nav'
+import Nav from 'components/drawer/Nav'
 
 const pets = new PetActions();
 

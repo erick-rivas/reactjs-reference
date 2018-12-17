@@ -1,25 +1,26 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import ToyActions from 'actions/_toys'
+import ToyActions from 'actions/toys'
 
-import ToyList from 'components/_ToyList'
+import Add from 'components/toy/Add'
 
 
 const toys = new ToyActions();
 
 const stateToProps = state => ({
   pets: state.pets.dataSet,
-  toys: state.toys.dataSet,
-  didSet: state.toys.didSet
+  didSave: state.toys.didSave,
 });
 
 const dispToProps = disp => ({
-  fetchToys: () =>
-    disp(toys.fetchToys()),
+  saveToy: (name, petId) =>
+    disp(toys.saveToy(name, petId)),
+  ackSave: () =>
+    disp(toys.ackSave())
 });
 
 export default withRouter(connect(
   stateToProps,
   dispToProps
-)(ToyList));
+)(Add));

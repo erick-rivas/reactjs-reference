@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-import Item from 'components/_toy/_Item';
-import Details from 'containers/_toy/_Details';
+import Item from 'components/toy/Item';
+import Details from 'containers/toy/Details';
 import Modal from 'components/util/Modal';
 
 import styles from 'styles/css/toy-list.module.css';

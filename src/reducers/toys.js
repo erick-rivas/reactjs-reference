@@ -1,7 +1,7 @@
-import Actions from 'actions/_pets'
-import Executor from 'reducers/executor'
+import Actions from 'actions/toys'
+import Executor from 'reducers/helpers/executor'
 
-class Pets extends Executor
+class Toys extends Executor
 {
   constructor()
   {
@@ -14,4 +14,4 @@ class Pets extends Executor
   }
 }
 
-export default Pets;
+export default Toys;
