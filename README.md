@@ -4,10 +4,31 @@ This repository holds the source code of a **template** for the development of a
 
 ## Before start ##
 
-### Demo ###
+### Cascade explanation ###
 
-This template uses a Pet CRUD example to explain the API flux. 
-> Each example file has an underscore prefix, *e.g. _Pet.js*.
+Each module of the architecture contains a **guidelines&#46;md** file with specific explanation about the details of each module. *e.g. /actions, /containers*.
+
+## Architecture design
+
+The reference uses a architecure based on [Flux architecture](https://facebook.github.io/flux/docs/in-depth-overview.html) and a Generic Model View Controller pattern.
+
+### Overview 
+
+![alt architecture](./public/dev/architecture.jpg)
+
+
+### Description
+
+The architecture uses the following structure:
+
+  - /actions: Handle data operations such as CRUD actions
+    > This component is the responsible of manage connection to REST APIs, websockets, etc.
+  - /components: Handle DOM rendering and event definition.
+  - /containers: Handle the connection between components and actions.
+    > All the container must have a component, but the components don’t necessarily require a container.
+  - /reducers: Represents the link between actions and containers through updates of states.
+  - /styles: Handle DOM styling (e.g. colors, dimensions, etc.).
+
 
 ### To start coding and build:
 
@@ -23,11 +44,11 @@ This template uses a Pet CRUD example to explain the API flux.
  $ npm start
  ```
 
-  ### Examples *Pets CRUD*
+  ### Examples
 
   * Example requests. 
  ```bash
- GET http://localhost:3000/login
+ GET http://localhost:3003
  ```
 
 
