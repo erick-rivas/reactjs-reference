@@ -17,6 +17,7 @@ import 'styles/css/index.css'
 const store = Store();
 const theme = Theme();
 
+
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider theme={theme}>

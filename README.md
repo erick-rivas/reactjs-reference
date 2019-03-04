@@ -1,6 +1,6 @@
 # React.js Web
 
-This repository holds the source code of a **template** for the development of a **React.js web** written mainly in javascript.
+This repository holds the source code of a **reference** for the development of a **React.js web** written mainly in javascript.
 
 ## Before start ##
 
@@ -24,16 +24,16 @@ The architecture uses the following structure:
   - /actions: Handle data operations such as CRUD actions
     > This component is the responsible of manage connection to REST APIs, websockets, etc.
   - /components: Handle DOM rendering and event definition.
-  - /containers: Handle the connection between components and actions.
-    > All the container must have a component, but the components don’t necessarily require a container.
-  - /reducers: Represents the link between actions and containers through updates of states.
+  - /containers: Handle the connection between actions and components (data & views).
+    > All containers must have a component, but components don’t necessarily require a container.
+  - /reducers: Represents the link between actions and containers through updates of states (data & states).
   - /styles: Handle DOM styling (e.g. colors, dimensions, etc.).
 
 
 ### To start coding and build:
 
  * Clone this repository.
- * Run the backend server (Go to [repository](https://github.com/erick-rivas/nodejs-api-template)).
+ * Run the backend server (Go to [repository](https://github.com/erick-rivas/nodejs-api-reference)).
 
  * Install dependencies.
  ```bash
