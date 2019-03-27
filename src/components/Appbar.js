@@ -1,19 +1,16 @@
-import React from 'react'
+import * as React from 'react'
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import InfoIcon from '@material-ui/icons/Info'
 import NotificationIcon from '@material-ui/icons/Notifications'
 
-import Search from 'components/appbar/Search';
-import Profile from 'components/appbar/Profile';
-
-import styles from 'styles/css/appbar.module.css';
+import * as styles from 'styles/css/appbar.module.css';
 
 
 class Appbar extends React.Component
 {
-  render() 
+  render()
   {
     return (
       <div className={styles.module}>
@@ -22,21 +19,14 @@ class Appbar extends React.Component
           <MenuIcon />
         </IconButton>
 
-        <div className={styles.search}>
-          <Search />
-        </div>
-
         <div className={styles.options}>
 
-          <IconButton className={styles.option + ' ' + styles.info}>
+          <IconButton className={styles.option}>
             <InfoIcon />
           </IconButton>
-          <IconButton className={styles.option + ' ' + styles.notif}>
+          <IconButton className={styles.option}>
             <NotificationIcon />
           </IconButton>
-          <div className={styles.profile}>
-            <Profile />
-          </div>
 
         </div>
 

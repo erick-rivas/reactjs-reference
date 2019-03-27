@@ -1,39 +1,34 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import * as React from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
-import styles from 'styles/css/login.module.css';
+import * as styles from 'styles/css/login.module.css';
 
 
 class Login extends React.Component
 {
-  handleLogin = e =>
+  constructor(props)
   {
-    e.preventDefault();
+    super(props);
+    this.state = {};
   }
 
   render() 
   {
-    const { isLogged = false, error } = this.props;
-
-    const redirect =
-      isLogged ? <Redirect to='/' /> : null;
+    const { error } = this.state;
+    const { onLogin } = this.state;
 
     const errorMessage =
       error ?
-        <div className={styles.error + ' animated fadeIn'}>
+        <div className={"error" + ' animated fadeIn'}>
           <div> {error}</div>
         </div> : null;
 
     return (
       <div className={styles.module}>
-        {redirect}
         <div className={styles.container + ' animated zoomIn'}>
           <div className={styles.form}>
-            <form onSubmit={this.handleLogin}>
+            <form onSubmit={onLogin}>
 
               <h1 className={styles.title}>Login</h1>
 
@@ -61,12 +56,12 @@ class Login extends React.Component
                 type='submit'
                 fullWidth>
                 Send
-              </Button>
+          </Button>
               <br />
               {errorMessage}
             </form>
 
-            <div className={styles.or}>
+            <div>
               <div className={styles.orLine} />
               <div className={styles.orText}> o </div>
             </div>
@@ -76,24 +71,24 @@ class Login extends React.Component
               variant='raised'
               fullWidth>
               Login with Outlook
-            </Button>
+        </Button>
             <br />
             <Button
               className={styles.gmail}
               variant='raised'
               fullWidth>
               Login with Gmail
-            </Button>
+        </Button>
 
           </div>
 
           <div className={styles.signup}>
             Don't have an account
-              <Button
+          <Button
               className={styles.invite}
               variant='outlined'>
               Register
-            </Button>
+        </Button>
           </div>
 
         </div>
@@ -101,12 +96,5 @@ class Login extends React.Component
     );
   }
 }
-
-Login.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  login: PropTypes.func.isRequired
-}
-
 
 export default Login;

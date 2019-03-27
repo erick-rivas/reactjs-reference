@@ -1,11 +1,19 @@
-import React from 'react'
+import * as React from 'react'
+import { NavLink } from 'react-router-dom'
 
-import Nav from 'containers/drawer/Nav';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import styles from 'styles/css/drawer.module.css';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import HeadlinesIcon from '@material-ui/icons/ViewHeadline';
+import PepleIcon from '@material-ui/icons/People';
+import NotificationIcon from '@material-ui/icons/Notifications';
+
+import * as styles from 'styles/css/drawer.module.css';
 
 
-class Drawer extends React.Component
+class Home extends React.Component
 {
   render()
   {
@@ -14,14 +22,61 @@ class Drawer extends React.Component
 
         <div className={styles.header}>
           <div className={styles.headerTitle}>
-            Hana<span> Panel</span>
+            LaLiga<span> mx</span>
           </div>
         </div>
 
-        <Nav />
-      </nav>
+        <NavLink
+          to='/results'
+          className={styles.navItem}
+          activeClassName={styles.active}>
+          <ListItem button>
+            <ListItemIcon>
+              <HeadlinesIcon />
+            </ListItemIcon>
+            <ListItemText primary='Results' />
+          </ListItem>
+        </NavLink>
+
+        <NavLink
+          to='/teams'
+          className={styles.navItem}
+          activeClassName={styles.active}>
+          <ListItem button>
+            <ListItemIcon>
+              <PepleIcon />
+            </ListItemIcon>
+            <ListItemText primary='Teams' />
+          </ListItem>
+        </NavLink>
+
+        <NavLink
+          to='/standings'
+          className={styles.navItem}
+          activeClassName={styles.active}>
+          <ListItem button>
+            <ListItemIcon>
+              <AssessmentIcon />
+            </ListItemIcon>
+            <ListItemText primary='Standings' />
+          </ListItem>
+        </NavLink>
+
+        <NavLink
+          to='/news'
+          className={styles.navItem}
+          activeClassName={styles.active}>
+          <ListItem button>
+            <ListItemIcon>
+              <NotificationIcon />
+            </ListItemIcon>
+            <ListItemText primary='News' />
+          </ListItem>
+        </NavLink>
+
+      </nav >
     );
   }
 }
 
-export default Drawer;
+export default Home;

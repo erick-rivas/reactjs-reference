@@ -1,0 +1,52 @@
+@import "util.scss";
+.module {
+  display: block;
+  padding: 18px 18px 27px 18px;
+  border-bottom: 1px solid #f2f2f2;
+  @include box-sizing(border-box);
+}
+
+.module:hover {
+  background-color: #f9f9f9;
+}
+
+.module .image {
+  width: 56px;
+  height: 56px;
+  background-size: cover;
+  @include inline-vertical();
+}
+
+.module .content {
+  width: 100%;
+  margin-top: -52px;
+  padding-right: 100px;
+  padding-left: 78px;
+  @include box-sizing(border-box);
+}
+
+.module .title {
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 16.5px;
+  @include single-line();
+}
+
+.module .description {
+  color: #a7a7a7;
+  font-size: 16px;
+  @include single-line();
+}
+
+.module .options {
+  margin-top: -45px;
+  float: right;
+  @include inline-vertical();
+}
+
+.module .next {
+  width: 28px;
+  height: 28px;
+  color: #ddd;
+  @include inline-vertical();
+}

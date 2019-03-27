@@ -1,0 +1,11 @@
+@import "util.scss";
+
+.module {
+  width: 100%;
+  height: 100%;
+  @include box-sizing(border-box);
+}
+
+.module .container {
+  border: none;
+}

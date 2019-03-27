@@ -1,4 +1,5 @@
 @import "util.scss";
+
 .module {
   position: fixed;
   width: 100%;
@@ -51,9 +52,8 @@
 .module .send {
   margin-top: 20px;
   margin-bottom: 5px;
+  background-color: $primary-color;
 }
-
-.module .or {}
 
 .module .orLine {
   position: relative;
