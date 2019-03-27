@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
 import Nav from 'components/results/Nav';
-import Players from 'containers/Players'
+import Players from 'components/Players'
 
 import * as styles from 'styles/css/results.module.css';
 

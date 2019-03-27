@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import Appbar from 'components/Appbar';
 import Drawer from 'components/Drawer';
-import Teams from 'containers/Teams';
+import Teams from 'components/Teams';
 
 
 import Results from 'components/Results';
