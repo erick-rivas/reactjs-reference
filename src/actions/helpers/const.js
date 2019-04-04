@@ -1,14 +1,14 @@
 //Server URLs
-export const API_URL = 'http://127.0.0.1:4004/v1';
+
+export const API_URL = 'http://127.0.0.1:8000/api';
 export const APP_URL = 'http://localhost:3000';
 
 //Reducers const
-export const REC_DATASET = 'REC_DATASET';
-export const REC_DATA = 'REC_DATA';
-export const SAVE_DATA = 'SAVE_DATA';
-export const SET_DATA = 'SET_DATA';
-export const DEL_DATA = 'DEL_DATA';
-export const ACK_SAVE = 'ACK_SAVE';
-export const ACK_SET = 'ACK_SET';
-export const ACK_DEL = 'ACK_DEL';
-export const RES_DATA = 'RES_DATA';
+
+export const GET_LIST = 'GET_LIST';
+export const GET_DETAILS = 'GET_DETAILS';
+export const SAVE = 'SAVE';
+export const SET = 'SET';
+export const DELETE = 'DELETE';
+export const RESTART = 'RESTART';
+

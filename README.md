@@ -4,10 +4,6 @@ This repository holds the source code of a **reference** for the development of 
 
 ## Before start ##
 
-### Cascade explanation ###
-
-Each module of the architecture contains a **guidelines&#46;md** file with specific explanation about the details of each module. *e.g. /actions, /containers*.
-
 ## Architecture design
 
 The reference uses a architecure based on [Flux architecture](https://facebook.github.io/flux/docs/in-depth-overview.html) and a Generic Model View Controller pattern.
@@ -15,7 +11,6 @@ The reference uses a architecure based on [Flux architecture](https://facebook.g
 ### Overview 
 
 ![alt architecture](./public/dev/architecture.jpg)
-
 
 ### Description
 
@@ -33,8 +28,6 @@ The architecture uses the following structure:
 ### To start coding and build:
 
  * Clone this repository.
- * Run the backend server (Go to [repository](https://github.com/erick-rivas/nodejs-api-reference)).
-
  * Install dependencies.
  ```bash
  $ npm install
@@ -48,7 +41,7 @@ The architecture uses the following structure:
 
   * Example requests. 
  ```bash
- GET http://localhost:3003
+ GET http://localhost:3000
  ```
 
 

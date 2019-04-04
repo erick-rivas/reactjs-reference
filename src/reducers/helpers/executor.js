@@ -3,12 +3,7 @@ import * as Const from 'actions/helpers/const';
 class Executor
 {
   initialState = {
-    dataSet: [],
-    data: {},
-    didFetch: false,
-    didSave: null,
-    didDelete: null,
-    didSet: null
+    dataset: []
   };
   ref;
 
@@ -25,89 +20,60 @@ class Executor
   {
     const type = action.type;
 
-    // Receive dataset
+    // GetList
 
-    if (type === `${this.ref.id}_${Const.REC_DATASET}`)
+    if (type === `${this.ref.id}_${Const.GET_LIST}`)
       return Object.assign({}, state, {
-        dataSet: action.dataSet,
-        didFetch: true
+        dataset: action.dataset
       });
 
-    // Receive data
+    // GetDetails, Save & Set
 
-    if (type === `${this.ref.id}_${Const.REC_DATA}`) {
-      let isFetch = false;
-      let dataSet = [];
-      for (let data of state.dataSet)
-        if (data.id === action.data.id) {
-          isFetch = true;
-          dataSet.push(action.data);
-        } else dataSet.push(data);
-      if (!isFetch && !this.isEmpty(action.data))
-        dataSet.push(action.data);
+    if (type === `${this.ref.id}_${Const.GET_DETAILS}` ||
+      type === `${this.ref.id}_${Const.SAVE}` ||
+      type === `${this.ref.id}_${Const.SET}`) {
+      let dataset = this.assignData(action.data, state.dataset);
       return Object.assign({}, state, {
-        data: action.data,
-        dataSet: dataSet
+        dataset: dataset
       });
     }
-
-    // Save data
-
-    if (type === `${this.ref.id}_${Const.SAVE_DATA}`)
-      return Object.assign({}, state, {
-        didSave: action.id
-      });
-
-    // Set data
-
-    if (type === `${this.ref.id}_${Const.SET_DATA}`)
-      return Object.assign({}, state, {
-        didSet: action.id
-      });
 
     // Delete data
 
-    if (type === `${this.ref.id}_${Const.DEL_DATA}`) {
-      let dataSet = [];
-      for (let data of state.dataSet)
+    if (type === `${this.ref.id}_${Const.DELETE}`) {
+      let dataset = [];
+      for (let data of state.dataset)
         if (data.id !== action.id)
-          dataSet.push(data);
+          dataset.push(data);
       return Object.assign({}, state, {
-        dataSet: dataSet,
-        didDelete: action.id
+        dataset: dataset
       });
     }
 
-    // Ack save
-
-    if (type === `${this.ref.id}_${Const.ACK_SAVE}`)
-      return Object.assign({}, state, {
-        didSave: null
-      });
-
-    // Ack set
-
-    if (type === `${this.ref.id}_${Const.ACK_SET}`)
-      return Object.assign({}, state, {
-        didSet: null
-      });
-
-    // Ack delete
-
-    if (type === `${this.ref.id}_${Const.ACK_DEL}`)
-      return Object.assign({}, state, {
-        didDelete: null
-      });
-
     // Restart data
 
-    if (type === `${this.ref.id}_${Const.RES_DATA}`)
+    if (type === `${this.ref.id}_${Const.RESTART}`)
       return this.initialState;
 
     return state;
   }
 
   isEmpty = (obj) => Object.keys(obj).length === 0;
+
+  assignData(data, original)
+  {
+    if (this.isEmpty(data))
+      return original;
+    let isFetch = false;
+    let dataset = [];
+    for (let item of original)
+      if (item.id === data.id) {
+        isFetch = true;
+        dataset.push(data);
+      } else dataset.push(item);
+    if (!isFetch) dataset.push(data);
+    return dataset;
+  }
 
 }
 export default Executor;

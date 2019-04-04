@@ -11,8 +11,8 @@ class Players extends Executor
     )
   }
 
-  fetchPlayers = invalidate =>
-    this.fetchDataSet("", invalidate);
+  getPlayers = () =>
+    this.getList("");
 }
 
 export default Players;

@@ -18,168 +18,147 @@ class Executor
    === REQUESTS ===
    */
 
-  fetchDataSet = (query, invalidate) =>
+  getList = (query, callback, invalidate = true) =>
   {
-    const requestDataSet = query =>
+    const fetchList = query =>
     {
-      return disp =>
-      {
-        return fetch(
-          `${Const.API_URL}/${this.path}?${query}`)
-          .then(response => response.json())
-          .then(json => disp(this.onReceiveDataSet(json)))
-      }
+      return this.request(
+        `${this.path}?${query}`,
+        this.onGetList,
+        callback);
     };
 
     return (disp, getState) =>
     {
       const state = this.state(getState());
-      const didFetch = state.didFetch;
-      const dataSet = state.dataSet;
-      if (!didFetch || invalidate)
-        disp(requestDataSet(query));
-      else disp(this.onReceiveDataSet(dataSet));
+      const data = state.data;
+      if (invalidate)
+        disp(fetchList(query));
+      else {
+        disp(this.onGetList(data));
+        if (callback) callback(data);
+      }
     }
   }
 
-  fetchData = (id, invalidate) =>
+  getDetails = (id, callback, invalidate = true) =>
   {
-    const requestData = id =>
+    const fetchData = id =>
     {
-      return disp =>
-      {
-        return fetch(
-          `${Const.API_URL}/${this.path}/${id}`)
-          .then(response => response.json())
-          .then(json => disp(this.onReceiveData(json)))
-      }
+      return this.request(
+        `${this.path}/${id}`,
+        this.onGetDetails,
+        callback);
     }
 
     return (disp, getState) =>
     {
       const state = this.state(getState());
-      const dataSet = state.dataSet;
-      const data = this.getDataDetails(id, dataSet);
-      if (!data || invalidate)
-        disp(requestData(id));
-      else disp(this.onReceiveData(data));
+      const data = state.data;
+      if (invalidate)
+        disp(fetchData(id));
+      else {
+        const details = this.getDataDetails(id, data);
+        disp(this.onGetDetails(details));
+        if (callback) callback(data);
+      }
     }
   }
 
-  sendRequest = (query, onRequest) =>
+  saveData = (body, callback) =>
   {
-    return disp =>
-    {
-      return fetch(
-        `${Const.API_URL}/${this.path}?${query}`)
-        .then(response => response.json())
-        .then(json => onRequest(disp))
-    }
+    return this.request(
+      `${this.path}`,
+      this.onSaveData,
+      callback,
+      "post",
+      body);
   }
 
-  saveData = body =>
+  setData = (id, body, callback) =>
+  {
+    return this.request(
+      `${this.path}/${id}`,
+      this.onSetData,
+      callback,
+      "put",
+      body);
+  }
+
+  deleteData = (id, callback) =>
+  {
+    return this.request(
+      `${this.path}/${id}`,
+      this.onDeleteData,
+      callback,
+      "delete");
+  }
+
+  request = (path, toDisp, callback, method = "get", body = {}) =>
   {
     return disp =>
     {
-      return fetch(
-        `${Const.API_URL}/${this.path}`,
+      let args = {
+        method: method,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token <token>'
+        }
+      };
+
+      if (method !== "get")
+        args["body"] = JSON.stringify(body);
+
+      return fetch(`${Const.API_URL}/${path}`, args)
+        .then(response =>
         {
-          method: 'post',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(body)
+          if (!response.ok) { throw response }
+          return response.json()
         })
-        .then(response => response.json())
         .then(json => 
         {
-          disp(this.onReceiveData(json));
-          disp(this.onSaveData(json.id));
+          console.log(json);
+          disp(toDisp(json));
+          if (callback) callback(json);
         })
     }
-  }
-
-  setData = (id, body) =>
-  {
-    return disp =>
-    {
-      return fetch(
-        `${Const.API_URL}/${this.path}/${id}`, {
-          method: 'put',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(body)
-        })
-        .then(response => response.json())
-        .then(json =>
-        {
-          disp(this.onReceiveData(json));
-          disp(this.onSetData(json.id));
-        })
-    }
-  }
-
-  deleteData = id =>
-  {
-    return disp =>
-    {
-      return fetch(
-        `${Const.API_URL}/${this.path}/${id}`, {
-          method: 'delete'
-        })
-        .then(() => disp(this.onDeleteData(id)))
-    };
   }
 
   /**
-   === ACTIONS ===
+   === SYNC ACTIONS ===
    */
-
-  ackSave = () => ({
-    type: `${this.id}_${Const.ACK_SAVE}`
-  });
-
-  ackSet = () => ({
-    type: `${this.id}_${Const.ACK_SET}`
-  });
-
-  ackDelete = () => ({
-    type: `${this.id}_${Const.ACK_DEL}`
-  });
 
   restartData = () => ({
-    type: `${this.id}_${Const.RES_DATA}`
+    type: `${this.id}_${Const.RESTART}`
   });
 
   /**
-   === EVENTS ===
+   === EVENTS (TO REDUCERS) ===
    */
 
-  onReceiveDataSet = dataSet => ({
-    type: `${this.id}_${Const.REC_DATASET}`,
-    dataSet: dataSet
+  onGetList = dataset => ({
+    type: `${this.id}_${Const.GET_LIST}`,
+    dataset: dataset
   });
 
-  onReceiveData = data => ({
-    type: `${this.id}_${Const.REC_DATA}`,
+  onGetDetails = data => ({
+    type: `${this.id}_${Const.GET_DETAILS}`,
     data: data
   });
 
-  onSaveData = id => ({
-    type: `${this.id}_${Const.SAVE_DATA}`,
-    id: id
+  onSaveData = data => ({
+    type: `${this.id}_${Const.SAVE}`,
+    data: data
   });
 
-  onSetData = id => ({
-    type: `${this.id}_${Const.SET_DATA}`,
-    id: id
+  onSetData = data => ({
+    type: `${this.id}_${Const.SET}`,
+    data: data
   });
 
   onDeleteData = id => ({
-    type: `${this.id}_${Const.DEL_DATA}`,
+    type: `${this.id}_${Const.DELETE}`,
     id: id
   });
 
@@ -188,9 +167,9 @@ class Executor
   === UTIL ===
   */
 
-  getDataDetails = (id, dataSet) =>
+  getDataDetails = (id, dataset) =>
   {
-    for (let data of dataSet)
+    for (let data of dataset)
       if (data.id === id) return data;
     return null;
   };

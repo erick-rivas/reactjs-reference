@@ -11,8 +11,8 @@ class Teams extends Executor
     )
   }
 
-  fetchTeams = invalidate =>
-    this.fetchDataSet("", invalidate);
+  getTeams = () =>
+    this.getList("");
 }
 
 export default Teams;

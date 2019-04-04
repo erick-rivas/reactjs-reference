@@ -9,20 +9,20 @@ class Container extends Teams
 {
   componentDidMount()
   {
-    const { fetchTeams } = this.props;
-    fetchTeams();
+    const { getTeams } = this.props;
+    getTeams();
   }
 }
 
 const teams = new TeamActions();
 
 const stateToProps = state => ({
-  teams: state.teams.dataSet,
+  teams: state.teams.dataset,
 });
 
 const dispToProps = disp => ({
-  fetchTeams: () =>
-    disp(teams.fetchTeams()),
+  getTeams: () =>
+    disp(teams.getTeams())
 });
 
 export default withRouter(connect(
