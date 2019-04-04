@@ -103,7 +103,7 @@ class Executor
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Token <token>'
+          'Authorization': `Token ${sessionStorage.getItem('token')}`
         }
       };
 
@@ -113,13 +113,15 @@ class Executor
       return fetch(`${Const.API_URL}/${path}`, args)
         .then(response =>
         {
-          if (!response.ok) { throw response }
-          return response.json()
+          if (!response.ok) {
+            callback("error");
+            throw response;
+          }
+          return response.json();
         })
         .then(json => 
         {
-          console.log(json);
-          disp(toDisp(json));
+          if (toDisp) disp(toDisp(json));
           if (callback) callback(json);
         })
     }

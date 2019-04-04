@@ -7,20 +7,15 @@ import * as styles from 'styles/css/login.module.css';
 
 class Login extends React.Component
 {
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
-
   render() 
   {
+    if (!this.state) this.state = {};
     const { error } = this.state;
     const { onLogin } = this.state;
 
     const errorMessage =
       error ?
-        <div className={"error" + ' animated fadeIn'}>
+        <div className={styles.error + ' animated fadeIn'}>
           <div> {error}</div>
         </div> : null;
 
