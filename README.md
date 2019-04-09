@@ -44,4 +44,22 @@ The architecture uses the following structure:
  GET http://localhost:3000
  ```
 
+### To deploy to server (aws):
 
+* Install eb and configure credentials, See ([install](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html) & [credentials](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html))
+
+* Init eb project
+```bash
+$ eb init
+ ```
+ > This command will create a .elasticbeanstalk/config.yml file which can be modified to set env, zone, platform, etc.
+
+ * Check the .ebextensions/nodecommand.config file to configure deployment commands.
+
+ * Modify npm start command of package.json to "node ./bin/www"
+
+ * Deploy to aws
+```bash
+$ eb deploy
+ ```
+ > Before deploy COMMIT the last changes because eb only consider the last changes.
