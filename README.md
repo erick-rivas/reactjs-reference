@@ -53,13 +53,12 @@ The architecture uses the following structure:
 $ eb init
  ```
  > This command will create a .elasticbeanstalk/config.yml file which can be modified to set env, zone, platform, etc.
-
- * Check the .ebextensions/nodecommand.config file to configure deployment commands.
-
- * Modify npm start command of package.json to "node ./bin/www"
-
+* Create a eb environment
+```bash
+$ eb create
+ ```
  * Deploy to aws
 ```bash
-$ eb deploy
+$ eb deploy <env_name>
  ```
- > Before deploy COMMIT the last changes because eb only consider the last changes.
+ > NOTE: Before execute deploy, COMMIT the last changes because eb only consider the last changes.
