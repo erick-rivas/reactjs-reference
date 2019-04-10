@@ -61,4 +61,3 @@ $ eb create
 ```bash
 $ eb deploy <env_name>
  ```
- > NOTE: Before execute deploy, COMMIT the last changes because eb only consider the last changes.
