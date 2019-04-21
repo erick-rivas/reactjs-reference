@@ -46,18 +46,22 @@ The architecture uses the following structure:
 
 ### To deploy to server (aws):
 
+* Open aws elastic beanstalk console and create an environment 
+> Important: Configure apache as proxy server
+
+* Configure DNS settings in domain provider, e.g *godaddy*
+
 * Install eb and configure credentials, See ([install](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html) & [credentials](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html))
+
+* Set .env variable IS_DEBUG to false
 
 * Init eb project
 ```bash
 $ eb init
  ```
- > This command will create a .elasticbeanstalk/config.yml file which can be modified to set env, zone, platform, etc.
-* Create a eb environment
-```bash
-$ eb create
- ```
+* Set domain attributes and email in .ebextensions/nodecommands.config to enable ssl
+
  * Deploy to aws
 ```bash
-$ eb deploy <env_name>
+$ eb deploy
  ```
