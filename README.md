@@ -44,22 +44,52 @@ The architecture uses the following structure:
  GET http://localhost:3000
  ```
 
-### To deploy to server (aws):
+## Deploy to aws eb
+
+### Configure aws/dns console
 
 * Open aws elastic beanstalk console and create an environment 
-> Important: Configure apache as proxy server
+> Important: Configure apache as proxy server and enable 443 port in security groups
 
 * Configure DNS settings in domain provider, e.g *godaddy*
 
-* Install eb and configure credentials, See ([install](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html) & [credentials](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html))
+### Configure server
 
-* Set .env variable IS_DEBUG to false
+* Install eb and configure credentials, See ([install](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html) & [credentials](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html))
 
 * Init eb project
 ```bash
 $ eb init
  ```
-* Set domain attributes and email in .ebextensions/nodecommands.config to enable ssl
+
+* Enable ssh
+```bash
+$ eb ssh --setup
+ ```
+
+* Execute ssh and setup apache settings
+```bash
+$ sudo vim /etc/httpd/conf.d/temp.conf
+# Listen 80
+# <VirtualHost *:80 *:443>
+# 	ServerName <HTTPS_DOMAIN>
+# 	DocumentRoot /var/www/html
+# </VirtualHost>
+```
+
+* Install and configure certbot
+```bash
+$ sudo wget https://dl.eff.org/certbot-auto
+$ sudo chmod a+x ./certbot-auto
+$ sudo ./certbot-auto certonly --debug --webroot
+# root: /var/www/html
+$ sudo ./certbot-auto certonly --debug
+```
+* Set HTTPS_DOMAIN in .ebextensions/nodecommands.config
+
+### Deploy
+
+* Set .env variable IS_DEBUG to false
 
  * Deploy to aws
 ```bash
