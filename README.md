@@ -77,6 +77,14 @@ $ sudo vim /etc/httpd/conf.d/temp.conf
 # </VirtualHost>
 ```
 
+* Install tricky dependencies
+```bash
+$ sudo sh
+PATH=/opt/elasticbeanstalk/node-install/node-v<node_version>-linux-x64/bin:"$PATH"
+npm install -g --unsafe-perm <dependencies>
+ ```
+ > Note: Default node version 10.15.3
+
 * Install and configure certbot
 ```bash
 $ sudo wget https://dl.eff.org/certbot-auto
