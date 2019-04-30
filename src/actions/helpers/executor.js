@@ -23,7 +23,7 @@ class Executor
     const fetchList = query =>
     {
       return this.request(
-        `${this.path}?${query}`,
+        `${this.path}/?${query}`,
         this.onGetList,
         callback);
     };
@@ -46,7 +46,7 @@ class Executor
     const fetchData = id =>
     {
       return this.request(
-        `${this.path}/${id}`,
+        `${this.path}/${id}/`,
         this.onGetDetails,
         callback);
     }
@@ -71,30 +71,30 @@ class Executor
       `${this.path}`,
       this.onSaveData,
       callback,
-      "post",
+      "POST",
       body);
   }
 
   setData = (id, body, callback) =>
   {
     return this.request(
-      `${this.path}/${id}`,
+      `${this.path}/${id}/`,
       this.onSetData,
       callback,
-      "put",
+      "PATCH",
       body);
   }
 
   deleteData = (id, callback) =>
   {
     return this.request(
-      `${this.path}/${id}`,
+      `${this.path}/${id}/`,
       this.onDeleteData,
       callback,
-      "delete");
+      "DELETE");
   }
 
-  request = (path, toDisp, callback, method = "get", body = {}) =>
+  request = (path, toDisp, callback, method = "GET", body = {}) =>
   {
     return disp =>
     {
@@ -107,14 +107,14 @@ class Executor
         }
       };
 
-      if (method !== "get")
+      if (method !== "GET")
         args["body"] = JSON.stringify(body);
 
       return fetch(`${Const.API_URL}/${path}`, args)
         .then(response =>
         {
           if (!response.ok) {
-            callback("error");
+            if (callback) callback("error");
             throw response;
           }
           return response.json();

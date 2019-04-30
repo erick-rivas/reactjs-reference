@@ -38,8 +38,8 @@ const auth = new AuthActions();
 const stateToProps = state => ({});
 
 const dispToProps = disp => ({
-  login: (user, password, callback) =>
-    disp(auth.login(user, password, callback))
+  login: (email, password, callback) =>
+    disp(auth.login(email, password, callback))
 });
 
 export default withRouter(connect(

@@ -1,13 +1,14 @@
-# dependencies
+# Exclude source-code & include build
+src/
+public/
+
+# Dependencies
 node_modules/
 
-# testing
+# Testing
 coverage/
 
-# production
-build/
-
-# misc
+# Misc
 .DS_Store
 .env.local
 .env.development.local

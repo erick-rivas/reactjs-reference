@@ -1,4 +1,5 @@
 {
   "editor.tabSize": 2,
   "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+  "workbench.tree.indent": 12,
 }
