@@ -1,0 +1,5 @@
+src/actions/*.js
+src/components/*
+src/containers/*
+src/reducers/*.js
+src/styles/*
