@@ -1,5 +1,10 @@
+.git*
 src/actions/*.js
 src/components/*
 src/containers/*
 src/reducers/*.js
-src/styles/*
+src/styles/*.scss
+src/styles/css/*
+!*helpers
+!.gitignore
+!src/styles/util.scss

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import Auth from 'reducers/auth'
+import Auth from 'reducers/helpers/auth'
 import Players from 'reducers/players'
 import Teams from 'reducers/teams'
 

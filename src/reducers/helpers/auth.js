@@ -1,4 +1,4 @@
-import Actions from 'actions/auth'
+import Actions from 'actions/helpers/auth'
 import Executor from 'reducers/helpers/executor'
 
 class Canvas extends Executor
