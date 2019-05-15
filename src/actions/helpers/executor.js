@@ -68,7 +68,7 @@ class Executor
   saveData = (body, callback) =>
   {
     return this.request(
-      `${this.path}`,
+      `${this.path}/`,
       this.onSaveData,
       callback,
       "POST",
@@ -76,6 +76,16 @@ class Executor
   }
 
   setData = (id, body, callback) =>
+  {
+    return this.request(
+      `${this.path}/${id}/`,
+      this.onSaveData,
+      callback,
+      "PUT",
+      body);
+  }
+
+  updateData = (id, body, callback) =>
   {
     return this.request(
       `${this.path}/${id}/`,
