@@ -7,6 +7,18 @@ const getDeadlineFormat = (date) =>
   return Math.ceil(period / day) - 1 + " días";
 }
 
+const getDateInput = data =>{
+  if (!data) return '';
+  let date = new Date(data);
+  let res = `${date.getFullYear()}-${f(date.getMonth())}-${f(date.getDate())}T${f(date.getHours())}:${f(date.getMinutes())}:${f(date.getSeconds())}`
+
+  function f(num){
+    return ("0" + num).slice(-2);
+   }
+  return res;
+}
+
+
 const getDateFormat = (date) =>
 {
   if (!date) return '';
