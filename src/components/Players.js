@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import Item from 'components/players/Item';
 
-import * as styles from 'styles/css/players.module.css';
+import * as styles from 'util/css/Players.module.css';
 
 
 class Players extends React.Component

@@ -3,8 +3,6 @@ src/actions/*.js
 src/components/*
 src/containers/*
 src/reducers/*.js
-src/styles/*.scss
-src/styles/css/*
+src/util/css/*
 !*helpers
 !.gitignore
-!src/styles/util.scss

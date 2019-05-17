@@ -8,7 +8,7 @@ import Teams from 'containers/Teams';
 
 
 import Results from 'components/Results';
-import * as styles from 'styles/css/home.module.css';
+import * as styles from 'util/css/Home.module.css';
 
 
 class Home extends React.Component

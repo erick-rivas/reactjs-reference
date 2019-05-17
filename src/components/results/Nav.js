@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 
-import * as styles from 'styles/css/resultNav.module.css';
+import * as styles from 'util/css/results/Nav.module.css';
 
 
 class Nav extends React.Component

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import Nav from 'components/results/Nav';
 import Players from 'components/Players'
 
-import * as styles from 'styles/css/results.module.css';
+import * as styles from 'util/css/Results.module.css';
 
 
 class Results extends React.Component

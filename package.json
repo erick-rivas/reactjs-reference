@@ -37,10 +37,10 @@
     "react-scripts-cssmodules": "1.1.50"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/styles -o src/styles/css",
+    "build-css": "node-sass-chokidar src/components -o src/util/css",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "watch-css": "npm run build-css && node-sass-chokidar src/styles -o src/styles/css --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/components -o src/util/css --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "deploy": "node ./bin/www",

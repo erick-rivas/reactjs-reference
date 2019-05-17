@@ -3,7 +3,7 @@ import * as React from 'react'
 import ListItem from '@material-ui/core/ListItem';
 import NavIcon from '@material-ui/icons/NavigateNext';
 
-import * as styles from 'styles/css/playerItem.module.css';
+import * as styles from 'util/css/teams/Item.module.css';
 
 
 class Item extends React.Component

@@ -5,7 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import InfoIcon from '@material-ui/icons/Info'
 import NotificationIcon from '@material-ui/icons/Notifications'
 
-import * as styles from 'styles/css/appbar.module.css';
+import * as styles from 'util/css/Appbar.module.css';
 
 
 class Appbar extends React.Component

@@ -6,10 +6,10 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Theme } from 'util/Theme';
 
 import App from 'components/App';
-import Worker from 'util/Worker';
-import Store from 'util/Store';
+import Worker from 'util/bin/Worker';
+import Store from 'util/bin/Store';
 
-import 'styles/css/index.css';
+import 'index.css';
 
 const store = Store();
 const theme = Theme();

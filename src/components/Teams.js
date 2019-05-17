@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import Item from 'components/teams/Item';
 
-import * as styles from 'styles/css/teams.module.css';
+import * as styles from 'util/css/Teams.module.css';
 
 
 class Teams extends React.Component

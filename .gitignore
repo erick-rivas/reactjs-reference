@@ -1,11 +1,11 @@
+# General
+/build
+
 # Dependencies
 /node_modules
 
 # Testing
 /coverage
-
-# Production
-/build
 
 # Misc
 .DS_Store

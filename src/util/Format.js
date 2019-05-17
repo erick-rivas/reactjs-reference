@@ -26,4 +26,4 @@ const getDateFormat = (date) =>
   return `${new Date(date).getDate()} ${monthNames[new Date(date).getMonth()]}`;
 }
 
-export { getDeadlineFormat, getDateFormat }
+export { getDeadlineFormat, getDateInput, getDateFormat }

@@ -10,7 +10,7 @@ import HeadlinesIcon from '@material-ui/icons/ViewHeadline';
 import PepleIcon from '@material-ui/icons/People';
 import NotificationIcon from '@material-ui/icons/Notifications';
 
-import * as styles from 'styles/css/drawer.module.css';
+import * as styles from 'util/css/Drawer.module.css';
 
 
 class Home extends React.Component
