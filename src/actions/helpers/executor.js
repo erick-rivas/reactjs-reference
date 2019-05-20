@@ -127,13 +127,19 @@ class Executor
             if (callback) callback("error");
             throw response;
           }
-          return response.json();
+          if (response.status === 204) //No content
+            return {};
+          return response.json()
         })
         .then(json => 
         {
           if (toDisp) disp(toDisp(json));
           if (callback) callback(json);
         })
+        .catch(error =>
+        {
+          if (callback) callback("error");
+        });
     }
   }
 
