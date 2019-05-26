@@ -20,11 +20,17 @@ class Files
       },
       success: json =>
       {
-        callback(json.url);
+        callback({
+          body: json.url,
+          ok: true
+        });
       },
-      error: () =>
+      error: error =>
       {
-        callback("error")
+        callback({
+          body: error,
+          ok: false
+        })
       }
     });
   }

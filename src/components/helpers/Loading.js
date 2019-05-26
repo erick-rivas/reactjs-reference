@@ -1,4 +1,6 @@
 import * as React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import * as styles from 'util/css/helpers/Loading.module.css';
 
 
@@ -8,7 +10,7 @@ class Loading extends React.Component
   {
     return (
       <div className={styles.module}>
-        
+        <CircularProgress className={styles.loading}/>
       </div>
     );
   }

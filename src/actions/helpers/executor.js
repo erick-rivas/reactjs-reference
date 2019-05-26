@@ -119,12 +119,20 @@ class Executor
             json = JSON.parse(text);
           } catch (e) { }
           if (toDisp) disp(toDisp(json));
-          if (callback) callback(json);
+          if (callback)
+            callback({
+              body: json,
+              ok: true
+            });
         })
         .catch(error =>
         {
-          if (callback) callback("error");
-        });
+          if (callback)
+            callback({
+              body: error,
+              ok: false
+            });
+        })
     }
   }
 

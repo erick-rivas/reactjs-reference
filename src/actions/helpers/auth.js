@@ -11,32 +11,12 @@ class Auth extends Executor
     )
   }
 
-  getAuth = () =>
-  {
-    return disp =>
-    {
-      const token = sessionStorage.getItem('token');
-      disp(this.onGetAuth(token != null));
-    }
-  }
-
   login = (email, password, callback) =>
   {
     const onLogin = res =>
     {
-      if (res === "error")
-        return callback(false);
       sessionStorage.setItem('token', res.key);
-      sessionStorage.setItem('id', res.user);
-      callback(true);
-    }
-
-    const onState = res =>
-    {
-      return disp =>
-      {
-        disp(this.onGetAuth(res !== "error"));
-      }
+      callback(res);
     }
 
     const body = {
@@ -45,28 +25,30 @@ class Auth extends Executor
     }
 
     return this.request(
-      `auth/login/`, onState, onLogin, 'POST', body);
+      `auth/login/`, this.onLogin, onLogin, 'POST', body);
   }
 
   logout = callback => 
   {
     const onLogout = res =>
     {
-      if (res === "error")
-        return callback();
       sessionStorage.removeItem('token');
-      sessionStorage.removeItem('id');
       callback();
     }
-    
+
     return this.request(
-      `auth/logout/`, null, onLogout, 'POST', {});
+      `auth/logout/`, this.onLogout, onLogout, 'POST', {});
   }
 
-  onGetAuth = data => ({
-    type: `AUTH_LOGGED`,
-    logged: data
+  onLogin = data => ({
+    type: `${this.id}_LOGIN`,
+    data: data
   });
+
+  onLogout = () => ({
+    type: `${this.id}_LOGOUT`
+  });
+
 }
 
 export default Auth;

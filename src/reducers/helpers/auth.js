@@ -11,12 +11,16 @@ class Canvas extends Executor
   reducer = (state, action) =>
   {
     const type = action.type;
-    if (type === `AUTH_LOGGED`) {
-      console.log(action);
+
+    if (type === `${this.ref.id}_LOGIN`)
       return Object.assign({}, state, {
-        logged: action.logged
+        user: action.data.user
       });
-    }
+
+    if (type === `${this.ref.id}_LOGOUT`)
+      return Object.assign({}, state, {
+        user: null
+      });
 
     return this.baseReducer(state, action);
   }
