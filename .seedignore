@@ -4,5 +4,6 @@ src/components/*
 src/containers/*
 src/reducers/*.js
 src/util/css/*
+node_modules
 !*helpers
 !.gitignore

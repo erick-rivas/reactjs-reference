@@ -79,19 +79,9 @@ class Executor
   {
     return this.request(
       `${this.path}/${id}/`,
-      this.onSaveData,
-      callback,
-      "PUT",
-      body);
-  }
-
-  updateData = (id, body, callback) =>
-  {
-    return this.request(
-      `${this.path}/${id}/`,
       this.onSetData,
       callback,
-      "PATCH",
+      "PUT",
       body);
   }
 
@@ -121,18 +111,13 @@ class Executor
         args["body"] = JSON.stringify(body);
 
       return fetch(`${Const.API_URL}/${path}`, args)
-        .then(response =>
+        .then(response => response.text())
+        .then(text => 
         {
-          if (!response.ok) {
-            if (callback) callback("error");
-            throw response;
-          }
-          if (response.status === 204) //No content
-            return {};
-          return response.json()
-        })
-        .then(json => 
-        {
+          let json = {}
+          try {
+            json = JSON.parse(text);
+          } catch (e) { }
           if (toDisp) disp(toDisp(json));
           if (callback) callback(json);
         })
@@ -175,9 +160,9 @@ class Executor
     data: data
   });
 
-  onDeleteData = id => ({
+  onDeleteData = data => ({
     type: `${this.id}_${Const.DELETE}`,
-    id: id
+    id: data.id
   });
 
 

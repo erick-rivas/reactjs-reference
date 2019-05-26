@@ -1,6 +1,7 @@
 //Server URLs
 
 export const API_URL = 'http://127.0.0.1:8000/api';
+export const SRC_URL = 'http://127.0.0.1:4004/1'
 export const APP_URL = 'http://localhost:3000';
 
 //Reducers const
