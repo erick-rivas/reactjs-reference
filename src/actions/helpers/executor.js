@@ -111,7 +111,11 @@ class Executor
         args["body"] = JSON.stringify(body);
 
       return fetch(`${Const.API_URL}/${path}`, args)
-        .then(response => response.text())
+        .then(response =>
+        {
+          if (!response.ok) throw response;
+          return response.text()
+        })
         .then(text => 
         {
           let json = {}
