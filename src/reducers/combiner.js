@@ -1,11 +1,22 @@
-import { combineReducers } from 'redux'
+/*
+__Seed builder__v1.0
+  States:
+    - users
+    - teams
+    - players
+    - matches
+    - scores
+*/
+
+import _Combiner from '__seed__/reducers/helpers/combiner'
 
 import Auth from 'reducers/helpers/auth'
-import Players from 'reducers/players'
-import Teams from 'reducers/teams'
 
-export default combineReducers({
-  auth: new Auth().reducer,
-  players: new Players().reducer,
-  teams: new Teams().reducer
-});
+class Combiner extends _Combiner
+{
+  additionalReducers = {
+      auth: new Auth().reducer
+  }
+}
+
+export default new Combiner().combine();

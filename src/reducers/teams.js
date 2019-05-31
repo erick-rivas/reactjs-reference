@@ -1,13 +1,11 @@
-import Actions from 'actions/teams'
-import Executor from 'reducers/helpers/executor'
+/*
+__Seed builder__v1.0
+*/
 
-class Teams extends Executor
+import _Teams from '__seed__/reducers/teams'
+
+class Teams extends _Teams
 {
-  constructor()
-  {
-    super(new Actions());
-  }
-
   reducer = (state, action) =>
   {
     return this.baseReducer(state, action);

@@ -1,3 +1,4 @@
+src/__seed__
 .git*
 src/actions/*.js
 src/components/*

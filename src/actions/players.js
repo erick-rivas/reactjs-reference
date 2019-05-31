@@ -1,18 +1,17 @@
-import Executor from 'actions/helpers/executor'
+/*
+__Seed builder__v1.0
+  Methods:
+    - getPlayerList(filters)
+    - getPlayerDetails(playerId)
+    - savePlayer(player, callback)
+    - setPlayer(playerId, player, callback)
+    - deletePlayer(playerId, callback)
+*/
 
-class Players extends Executor
+import _Players from '__seed__/actions/players'
+
+class Players extends _Players
 {
-  constructor()
-  {
-    super(
-      `PLAYER`,
-      `players`,
-      state => state.players
-    )
-  }
-
-  getPlayers = () =>
-    this.getList("");
 }
 
 export default Players;

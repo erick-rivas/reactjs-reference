@@ -1,35 +1,33 @@
-import * as React from 'react'
+/*
+__Seed builder__v1.0
+*/
 
-import ListItem from '@material-ui/core/ListItem';
-import NavIcon from '@material-ui/icons/NavigateNext';
+import * as React from 'react';
 
-import * as styles from 'util/css/teams/Item.module.css';
+import Loading from 'components/helpers/Loading';
 
+import styles from 'util/css/teams/Item.module.css'
 
-class Item extends React.Component
+class TeamItem extends React.Component
 {
-  render() 
+  render()
   {
     const { team = {} } = this.props;
-    return (
-      <ListItem
-        className={styles.module}
-        key={team.id}
-        button>
-        <div
-          className={styles.image}
-          style={{ backgroundImage: `url("${team.logo_url}")` }} />
-        <div className={styles.content}>
-          <div className={styles.title}>{team.name}</div>
-          <div className={styles.description}>{`${team.players.length.toString()} players`}</div>
-        </div>
-        <div className={styles.options}>
-          <NavIcon className={styles.next} />
-        </div>
-      </ListItem>
 
+    if (team.id == null) return <Loading />
+    return (
+      <div className={styles.module}>
+
+        {/* Suggested divs */}
+        <div className={styles.name}>{'name:' + team.name}</div>
+        <div className={styles.logoUrl}>{'logo_url:' + team.logo_url}</div>
+        <div className={styles.description}>{'description:' + team.description}</div>
+        <div className={styles.marketValue}>{'market_value:' + team.market_value}</div>
+        <div className={styles.players}>{'players:' + team.players.reduce((lv, v) => lv + v.id + ",", "")}</div>
+
+      </div>
     );
   }
 }
 
-export default Item;
+export default TeamItem;

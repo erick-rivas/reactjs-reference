@@ -1,13 +1,11 @@
-import Actions from 'actions/players'
-import Executor from 'reducers/helpers/executor'
+/*
+__Seed builder__v1.0
+*/
 
-class Players extends Executor
+import _Players from '__seed__/reducers/players'
+
+class Players extends _Players
 {
-  constructor()
-  {
-    super(new Actions());
-  }
-
   reducer = (state, action) =>
   {
     return this.baseReducer(state, action);

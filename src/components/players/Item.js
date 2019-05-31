@@ -1,37 +1,32 @@
-import * as React from 'react'
+/*
+__Seed builder__v1.0
+*/
 
-import ListItem from '@material-ui/core/ListItem';
-import NavIcon from '@material-ui/icons/NavigateNext';
+import * as React from 'react';
 
-import * as styles from 'util/css/players/Item.module.css';
+import Loading from 'components/helpers/Loading';
 
+import styles from 'util/css/players/Item.module.css'
 
-class Item extends React.Component
+class PlayerItem extends React.Component
 {
-  render() 
+  render()
   {
     const { player = {} } = this.props;
-    const { team = {} } = this.props;
 
+    if (player.id == null) return <Loading />
     return (
-      <ListItem
-        className={styles.module}
-        key={player.id}
-        button>
-        <div
-          className={styles.image}
-          style={{ backgroundImage: `url("${player.photo_url}")` }} />
-        <div className={styles.content}>
-          <div className={styles.title}>{player.name}</div>
-          <div className={styles.description}>{team.name}</div>
-        </div>
-        <div className={styles.options}>
-          <NavIcon className={styles.next} />
-        </div>
-      </ListItem>
+      <div className={styles.module}>
 
+        {/* Suggested divs */}
+        <div className={styles.name}>{'name:' + player.name}</div>
+        <div className={styles.photoUrl}>{'photo_url:' + player.photo_url}</div>
+        <div className={styles.isActive}>{'is_active:' + player.is_active}</div>
+        <div className={styles.team}>{'team:' + player.team.id}</div>
+
+      </div>
     );
   }
 }
 
-export default Item;
+export default PlayerItem;
