@@ -14,7 +14,7 @@ class Modal extends React.Component
       child =>
       {
         return React.cloneElement(child, {
-          onClose: this.props.onClose,
+          onClose: this.onClose,
           match: this.props.match
         });
       });
@@ -37,14 +37,14 @@ class Modal extends React.Component
         className={classes.module}
         open={true}
         transitionDuration={0}
-        onClose={this.props.onClose}>
+        onClose={this.onClose}>
 
         <div className={classes.container + ' animated ' + animation} style={containerStyle}>
 
           <IconButton
             className={classes.close}
             style={closeStyle}
-            onClick={this.props.onClose}>
+            onClick={this.onClose}>
             <CloseIcon />
           </IconButton>
 
@@ -56,9 +56,19 @@ class Modal extends React.Component
     );
   }
 
-  state = {
-    open: false
-  };
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      open: false
+    }
+    this.onClose = this.onClose.bind(this);
+  }
+
+  onClose()
+  {
+    this.props.onClose(this.props.match);
+  }
 }
 
 export default Modal;
