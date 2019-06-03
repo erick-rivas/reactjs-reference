@@ -16,6 +16,7 @@ class Auth extends Executor
     const onLogin = res =>
     {
       sessionStorage.setItem('token', res.key);
+      sessionStorage.setItem('id', res.user);
       callback(res);
     }
 
@@ -33,7 +34,8 @@ class Auth extends Executor
     const onLogout = res =>
     {
       sessionStorage.removeItem('token');
-      callback();
+      sessionStorage.removeItem('id');
+      callback(res);
     }
 
     return this.request(
