@@ -1,4 +1,5 @@
-import React from 'react'
+import * as React from 'react';
+import cx from 'classnames';
 
 import ModalContainer from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
@@ -39,7 +40,7 @@ class Modal extends React.Component
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={classes.container + ' animated ' + animation} style={containerStyle}>
+        <div className={cx(classes.container,'animated',animation)} style={containerStyle}>
 
           <IconButton
             className={classes.close}

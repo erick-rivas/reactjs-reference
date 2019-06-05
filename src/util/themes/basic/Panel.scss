@@ -1,0 +1,28 @@
+@import 'src/util/Util';
+
+@mixin theme {
+  .list {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    padding: 14px;
+    @include box-sizing(border-box);
+    border-right: 1px solid #e7e7e7;
+  }
+
+  .details {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    padding: 12px;
+    background: #f0f0f0;
+    @include box-sizing(border-box);
+  }
+
+  .details .container {
+    padding: 10px;
+    @include card-design();
+    @include box-sizing(border-box);
+  }
+}

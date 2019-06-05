@@ -1,0 +1,25 @@
+@import 'src/util/Util';
+
+@mixin theme {
+
+  .options {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .list {
+    padding-top: 4px;
+  }
+
+  .item {
+    padding: 12px 4px;
+    background: #fff; 
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+  }
+
+  .item:hover{
+    background: #f4f4f4; 
+  }
+
+}
