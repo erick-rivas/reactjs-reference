@@ -3,7 +3,7 @@
 @mixin theme {
 
   .options {
-    padding-bottom: 10px;
+    padding: 10px;
     border-bottom: 1px solid #e0e0e0;
   }
 
@@ -12,14 +12,17 @@
   }
 
   .item {
-    padding: 12px 4px;
+    display: block;
+    padding: 12px 14px;
     background: #fff; 
     border-bottom: 1px solid #eaeaea;
     cursor: pointer;
   }
 
-  .item:hover{
-    background: #f4f4f4; 
+  .item:hover,
+  .item.active {
+    background: #f7f7f7; 
+    text-decoration: none;
   }
 
 }

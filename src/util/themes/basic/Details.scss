@@ -3,12 +3,12 @@
 @mixin theme {
 
   .options {
-    padding-bottom: 10px;
+    padding: 10px;
     border-bottom: 1px solid #e0e0e0;
   }
 
-  .list {
-    padding-top: 4px;
+  .details {
+    padding: 10px;
   }
 
   .lbl {
@@ -23,5 +23,4 @@
     color: #444;
     font-size: 15px;
   }
-
 }

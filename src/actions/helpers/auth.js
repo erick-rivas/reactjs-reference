@@ -15,8 +15,8 @@ class Auth extends Executor
   {
     const onLogin = res =>
     {
-      sessionStorage.setItem('token', res.key);
-      sessionStorage.setItem('id', res.user);
+      sessionStorage.setItem('token', res.body.key);
+      sessionStorage.setItem('id', res.body.user);
       callback(res);
     }
 

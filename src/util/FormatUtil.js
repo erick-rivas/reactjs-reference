@@ -18,7 +18,6 @@ const getDateInput = data =>{
   return res;
 }
 
-
 const getDateFormat = (date) =>
 {
   if (!date) return '';

@@ -18,51 +18,20 @@ class Executor
    === REQUESTS ===
    */
 
-  getList = (query, callback, invalidate = true) =>
+  getList = (query, callback) =>
   {
-    const fetchList = query =>
-    {
-      return this.request(
-        `${this.path}/?${query}`,
-        this.onGetList,
-        callback);
-    };
-
-    return (disp, getState) =>
-    {
-      const state = this.state(getState());
-      const data = state.data;
-      if (invalidate)
-        disp(fetchList(query));
-      else {
-        disp(this.onGetList(data));
-        if (callback) callback(data);
-      }
-    }
+    return this.request(
+      `${this.path}/?${query}`,
+      this.onGetList,
+      callback);
   }
 
-  getDetails = (id, callback, invalidate = true) =>
+  getDetails = (id, callback) =>
   {
-    const fetchData = id =>
-    {
-      return this.request(
-        `${this.path}/${id}/`,
-        this.onGetDetails,
-        callback);
-    }
-
-    return (disp, getState) =>
-    {
-      const state = this.state(getState());
-      const data = state.data;
-      if (invalidate)
-        disp(fetchData(id));
-      else {
-        const details = this.getDataDetails(id, data);
-        disp(this.onGetDetails(details));
-        if (callback) callback(data);
-      }
-    }
+    return this.request(
+      `${this.path}/${id}/`,
+      this.onGetDetails,
+      callback);
   }
 
   saveData = (body, callback) =>

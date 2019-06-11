@@ -1,27 +1,31 @@
 @import 'src/util/Util';
 
 @mixin theme {
-  .list {
-    position: absolute;
-    width: 50%;
+
+  .container {
+    width: 100%;
     height: 100%;
-    padding: 14px;
-    @include box-sizing(border-box);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .list {
+    flex: 0 0 40%;
+    max-width: 40%;
+    background: #fff;
     border-right: 1px solid #e7e7e7;
+    @include box-sizing(border-box);
   }
 
   .details {
-    position: absolute;
-    left: 50%;
-    width: 50%;
-    height: 100%;
+    flex: 0 0 60%;
+    max-width: 60%;
     padding: 12px;
-    background: #f0f0f0;
     @include box-sizing(border-box);
   }
 
-  .details .container {
-    padding: 10px;
+  .details .details_container {
+    width: 100%;
     @include card-design();
     @include box-sizing(border-box);
   }
