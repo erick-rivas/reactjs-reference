@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _TeamForm from '__seed__/containers/teams/Form';
+import _TeamForm from '_seed/containers/teams/Form';
 
 class TeamForm extends _TeamForm
 {
@@ -10,7 +10,7 @@ class TeamForm extends _TeamForm
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new TeamForm().getRouter()

@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _TeamList from '__seed__/containers/teams/List';
+import _TeamList from '_seed/containers/teams/List';
 
 class TeamList extends _TeamList
 {
@@ -10,7 +10,7 @@ class TeamList extends _TeamList
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new TeamList().getRouter()

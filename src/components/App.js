@@ -1,11 +1,11 @@
-/*
-__Seed builder__v1.0
-*/
-
 import * as React from 'react';
+import cx from 'classnames';
 
-import Demo from 'components/Demo'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Login from 'containers/auth/Login';
+import Logout from 'containers/auth/Logout';
+import Home from 'containers/Home';
+
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 class App extends React.Component
 {
@@ -14,7 +14,10 @@ class App extends React.Component
     return (
       <Router>
         <Switch>
-          <Route path='/demo' component={Demo} />
+          <Route path='/login' component={Login} />
+          <Route path='/logout' component={Logout} />
+          <Route path='/app' component={Home} />
+          <Redirect to='/app' />
         </Switch>
       </Router>
     );

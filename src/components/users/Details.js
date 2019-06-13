@@ -1,6 +1,7 @@
 /*
 __Seed builder__v1.0
-Fields:
+  
+  Fields:
     - id
     - username
     - first_name
@@ -11,10 +12,16 @@ Fields:
 */
 
 import * as React from 'react';
+import cx from 'classnames';
 
-import _UserDetails from '__seed__/components/users/Details';
-import * as Util from 'containers/helpers/Util'
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
+import _UserDetails from '_seed/components/users/Details';
+import Options from 'components/users/details/Options';
+import TeamView from 'components/teams/View';
 import Loading from 'components/helpers/Loading';
+import * as DataUtil from 'util/DataUtil.js';
 
 import styles from 'util/css/users/Details.module.css';
 
@@ -24,23 +31,46 @@ class UserDetails extends _UserDetails
   {
     const { users = [] } = this.props;
     const userId = this.getUserId();
-    const user = Util.getItem(users, userId);
+    const user = DataUtil.getItem(users, userId);
+    if (user.id == null) return <Loading />;
 
-    if (user.id == null) return <Loading />
+    const { showOptions = true } = this.props;
+    const { path, url } = this.props.match;
+
+    const options = showOptions ? 
+    <div className={styles.options}>
+      <Options match={this.props.match} 
+        onBackClick={this.onBackClick}/>
+    </div>: null;
+
     return (
-      <div className={styles.module}>
-
+    <div className={styles.module}>
+      { options }
+      <div className={styles.details}>
         {/* Suggested divs */}
-        <div className={styles.teams}>{'teams:' + user.teams.reduce((lv, v) => lv + v.id + ",", "")}</div>
-
+        <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label><br/>
+        <Route path={`${path}`}
+          component={ props => <TeamView showListOptions={false} {...props}/> } />
+        <br/>
+        
       </div>
+    </div>
     );
   }
 
-  getUserId()
+  constructor(props)
   {
-    //Suggested id
-    return this.props.userId;
+    super(props);
+  }
+
+  /* Events */
+
+  onBackClick() 
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 }
 

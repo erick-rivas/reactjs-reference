@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _TeamDetails from '__seed__/containers/teams/Details';
+import _TeamDetails from '_seed/containers/teams/Details';
 
 class TeamDetails extends _TeamDetails
 {
@@ -10,7 +10,7 @@ class TeamDetails extends _TeamDetails
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new TeamDetails().getRouter()

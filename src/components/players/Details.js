@@ -1,6 +1,7 @@
 /*
 __Seed builder__v1.0
-Fields:
+  
+  Fields:
     - id
     - name
     - photo_url
@@ -9,10 +10,16 @@ Fields:
 */
 
 import * as React from 'react';
+import cx from 'classnames';
 
-import _PlayerDetails from '__seed__/components/players/Details';
-import * as Util from 'containers/helpers/Util'
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
+import _PlayerDetails from '_seed/components/players/Details';
+import Options from 'components/players/details/Options';
+import TeamView from 'components/teams/View';
 import Loading from 'components/helpers/Loading';
+import * as DataUtil from 'util/DataUtil.js';
 
 import styles from 'util/css/players/Details.module.css';
 
@@ -22,26 +29,54 @@ class PlayerDetails extends _PlayerDetails
   {
     const { players = [] } = this.props;
     const playerId = this.getPlayerId();
-    const player = Util.getItem(players, playerId);
+    const player = DataUtil.getItem(players, playerId);
+    if (player.id == null) return <Loading />;
 
-    if (player.id == null) return <Loading />
+    const { showOptions = true } = this.props;
+    const { path, url } = this.props.match;
+
+    const options = showOptions ? 
+    <div className={styles.options}>
+      <Options match={this.props.match} 
+        onBackClick={this.onBackClick}/>
+    </div>: null;
+
     return (
-      <div className={styles.module}>
-
+    <div className={styles.module}>
+      { options }
+      <div className={styles.details}>
         {/* Suggested divs */}
-        <div className={styles.name}>{'name:' + player.name}</div>
-        <div className={styles.photoUrl}>{'photo_url:' + player.photo_url}</div>
-        <div className={styles.isActive}>{'is_active:' + player.is_active}</div>
-        <div className={styles.team}>{'team:' + player.team.id}</div>
-
+        <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
+        <label className={cx(styles.txt, styles.nameTxt)}>{player.name.toString()}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.photoUrlLbl)}>Photo url</label><br/>
+        <label className={cx(styles.txt, styles.photoUrlTxt)}>{player.photo_url.toString()}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label><br/>
+        <label className={cx(styles.txt, styles.isActiveTxt)}>{player.is_active.toString()}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.teamLbl)}>Team</label><br/>
+        <label className={cx(styles.txt, styles.teamTxt)}>{player.team_id}</label>
+        <br/>
+        
       </div>
+    </div>
     );
   }
 
-  getPlayerId()
+  constructor(props)
   {
-    //Suggested id
-    return this.props.playerId;
+    super(props);
+  }
+
+  /* Events */
+
+  onBackClick() 
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 }
 

@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _MatchDetails from '__seed__/containers/matches/Details';
+import _MatchDetails from '_seed/containers/matches/Details';
 
 class MatchDetails extends _MatchDetails
 {
@@ -10,7 +10,7 @@ class MatchDetails extends _MatchDetails
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new MatchDetails().getRouter()

@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _UserForm from '__seed__/containers/users/Form';
+import _UserForm from '_seed/containers/users/Form';
 
 class UserForm extends _UserForm
 {
@@ -10,7 +10,7 @@ class UserForm extends _UserForm
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new UserForm().getRouter()

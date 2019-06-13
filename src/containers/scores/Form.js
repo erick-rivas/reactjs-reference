@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _ScoreForm from '__seed__/containers/scores/Form';
+import _ScoreForm from '_seed/containers/scores/Form';
 
 class ScoreForm extends _ScoreForm
 {
@@ -10,7 +10,7 @@ class ScoreForm extends _ScoreForm
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new ScoreForm().getRouter()

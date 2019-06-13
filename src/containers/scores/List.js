@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _ScoreList from '__seed__/containers/scores/List';
+import _ScoreList from '_seed/containers/scores/List';
 
 class ScoreList extends _ScoreList
 {
@@ -10,7 +10,7 @@ class ScoreList extends _ScoreList
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new ScoreList().getRouter()

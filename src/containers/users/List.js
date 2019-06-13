@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _UserList from '__seed__/containers/users/List';
+import _UserList from '_seed/containers/users/List';
 
 class UserList extends _UserList
 {
@@ -10,7 +10,7 @@ class UserList extends _UserList
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new UserList().getRouter()

@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _UserDetails from '__seed__/containers/users/Details';
+import _UserDetails from '_seed/containers/users/Details';
 
 class UserDetails extends _UserDetails
 {
@@ -10,7 +10,7 @@ class UserDetails extends _UserDetails
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new UserDetails().getRouter()

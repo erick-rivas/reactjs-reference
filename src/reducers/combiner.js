@@ -1,5 +1,11 @@
 /*
 __Seed builder__v1.0
+  
+  Guidelines:
+    - Modify states via models.json
+    - Only add temporary states if required
+      - Example: For operation purposes
+ 
   States:
     - users
     - teams
@@ -8,15 +14,16 @@ __Seed builder__v1.0
     - scores
 */
 
-import _Combiner from '__seed__/reducers/helpers/combiner'
+import _Combiner from '_seed/reducers/helpers/combiner';
 
-import Auth from 'reducers/helpers/auth'
+import Auth from 'reducers/helpers/auth';
 
 class Combiner extends _Combiner
 {
   additionalReducers = {
       auth: new Auth().reducer
-  }
+  };
 }
 
 export default new Combiner().combine();
+

@@ -1,6 +1,7 @@
 /*
 __Seed builder__v1.0
-Fields:
+  
+  Fields:
     - id
     - date
     - type
@@ -10,10 +11,17 @@ Fields:
 */
 
 import * as React from 'react';
+import cx from 'classnames';
 
-import _MatchDetails from '__seed__/components/matches/Details';
-import * as Util from 'containers/helpers/Util'
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
+import _MatchDetails from '_seed/components/matches/Details';
+import Options from 'components/matches/details/Options';
+import TeamView from 'components/teams/View';
+import ScoreView from 'components/scores/View';
 import Loading from 'components/helpers/Loading';
+import * as DataUtil from 'util/DataUtil.js';
 
 import styles from 'util/css/matches/Details.module.css';
 
@@ -23,27 +31,58 @@ class MatchDetails extends _MatchDetails
   {
     const { matches = [] } = this.props;
     const matchId = this.getMatchId();
-    const match = Util.getItem(matches, matchId);
+    const match = DataUtil.getItem(matches, matchId);
+    if (match.id == null) return <Loading />;
 
-    if (match.id == null) return <Loading />
+    const { showOptions = true } = this.props;
+    const { path, url } = this.props.match;
+
+    const options = showOptions ? 
+    <div className={styles.options}>
+      <Options match={this.props.match} 
+        onBackClick={this.onBackClick}/>
+    </div>: null;
+
     return (
-      <div className={styles.module}>
-
+    <div className={styles.module}>
+      { options }
+      <div className={styles.details}>
         {/* Suggested divs */}
-        <div className={styles.date}>{'date:' + match.date}</div>
-        <div className={styles.type}>{'type:' + match.type}</div>
-        <div className={styles.local}>{'local:' + match.local.id}</div>
-        <div className={styles.visitor}>{'visitor:' + match.visitor.id}</div>
-        <div className={styles.scores}>{'scores:' + match.scores.reduce((lv, v) => lv + v.id + ",", "")}</div>
-
+        <label className={cx(styles.lbl, styles.dateLbl)}>Date</label><br/>
+        <label className={cx(styles.txt, styles.dateTxt)}>{match.date.toString()}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.typeLbl)}>Type</label><br/>
+        <label className={cx(styles.txt, styles.typeTxt)}>{match.type.toString()}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.localLbl)}>Local</label><br/>
+        <label className={cx(styles.txt, styles.localTxt)}>{match.local_id}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label><br/>
+        <label className={cx(styles.txt, styles.visitorTxt)}>{match.visitor_id}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.scoresLbl)}>Scores</label><br/>
+        <Route path={`${path}`}
+          component={ props => <ScoreView showListOptions={false} {...props}/> } />
+        <br/>
+        
       </div>
+    </div>
     );
   }
 
-  getMatchId()
+  constructor(props)
   {
-    //Suggested id
-    return this.props.matchId;
+    super(props);
+  }
+
+  /* Events */
+
+  onBackClick() 
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 }
 

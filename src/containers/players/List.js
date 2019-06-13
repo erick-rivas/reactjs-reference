@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _PlayerList from '__seed__/containers/players/List';
+import _PlayerList from '_seed/containers/players/List';
 
 class PlayerList extends _PlayerList
 {
@@ -10,7 +10,7 @@ class PlayerList extends _PlayerList
   });
 
   disps = disp => ({
-  })
+  });
 }
 
 export default new PlayerList().getRouter()
