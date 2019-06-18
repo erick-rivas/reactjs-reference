@@ -1,6 +1,6 @@
-import Executor from 'actions/helpers/executor'
+import Action from 'actions/helpers/action'
 
-class Auth extends Executor
+class Auth extends Action
 {
   constructor()
   {

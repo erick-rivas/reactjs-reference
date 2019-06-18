@@ -1,7 +1,7 @@
 import Actions from 'actions/helpers/auth'
-import Executor from 'reducers/helpers/executor'
+import Reducer from 'reducers/helpers/reducer'
 
-class Canvas extends Executor
+class Auth extends Reducer
 {
   constructor()
   {
@@ -26,4 +26,4 @@ class Canvas extends Executor
   }
 }
 
-export default Canvas;
+export default Auth;

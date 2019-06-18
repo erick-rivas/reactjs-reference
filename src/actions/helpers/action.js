@@ -1,7 +1,7 @@
 import fetch from 'cross-fetch';
 import * as Const from 'actions/helpers/const';
 
-class Executor
+class Action
 {
   id;
   path;
@@ -160,4 +160,4 @@ class Executor
 
 }
 
-export default Executor;
+export default Action;

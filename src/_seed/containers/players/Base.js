@@ -1,6 +1,6 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
 import PlayerActions from 'actions/players';
@@ -27,8 +27,8 @@ class _PlayerBase
       disp(this.players.savePlayer(player, callback)),
     setPlayer: (playerId, player, callback) =>
       disp(this.players.setPlayer(playerId, player, callback)),
-    deletePlayer: playerId =>
-      disp(this.players.deletePlayer(playerId)),
+    deletePlayer: (playerId, callback) =>
+      disp(this.players.deletePlayer(playerId, callback)),
   })
 
   _states = state => ({});

@@ -1,12 +1,12 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
 import Actions from 'actions/teams';
-import Executor from 'reducers/helpers/executor';
+import Reducer from 'reducers/helpers/reducer';
 
-class _Teams extends Executor
+class _Teams extends Reducer
 {
   constructor()
   {

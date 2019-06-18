@@ -1,6 +1,6 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
 import ScoreActions from 'actions/scores';
@@ -32,8 +32,8 @@ class _ScoreBase
       disp(this.scores.saveScore(score, callback)),
     setScore: (scoreId, score, callback) =>
       disp(this.scores.setScore(scoreId, score, callback)),
-    deleteScore: scoreId =>
-      disp(this.scores.deleteScore(scoreId)),
+    deleteScore: (scoreId, callback) =>
+      disp(this.scores.deleteScore(scoreId, callback)),
   })
 
   _states = state => ({});

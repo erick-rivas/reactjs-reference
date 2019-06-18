@@ -1,6 +1,6 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
 import TeamActions from 'actions/teams';
@@ -27,8 +27,8 @@ class _TeamBase
       disp(this.teams.saveTeam(team, callback)),
     setTeam: (teamId, team, callback) =>
       disp(this.teams.setTeam(teamId, team, callback)),
-    deleteTeam: teamId =>
-      disp(this.teams.deleteTeam(teamId)),
+    deleteTeam: (teamId, callback) =>
+      disp(this.teams.deleteTeam(teamId, callback)),
   })
 
   _states = state => ({});

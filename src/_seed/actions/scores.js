@@ -1,11 +1,11 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
-import Executor from 'actions/helpers/executor';
+import Action from 'actions/helpers/action';
 
-class _Scores extends Executor
+class _Scores extends Action
 {
   constructor()
   {

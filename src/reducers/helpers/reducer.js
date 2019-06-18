@@ -1,6 +1,6 @@
 import * as Const from 'actions/helpers/const';
 
-class Executor
+class Reducer
 {
   initialState = {
     dataset: []
@@ -99,4 +99,4 @@ class Executor
     }
   }
 }
-export default Executor;
+export default Reducer;

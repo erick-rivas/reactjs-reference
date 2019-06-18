@@ -2,7 +2,7 @@
 __Seed builder__v1.0
   
   Guidelines:
-    - Modify states via models.json
+    - Modify states via SeedManifest.yaml
     - Only add temporary states if required
       - Example: For operation purposes
  

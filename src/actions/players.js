@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 
   Guidelines:
-    - Modify methods via models.json
+    - Modify methods via SeedManifest.yaml
     - Only override existing methods if required
 
   Methods:

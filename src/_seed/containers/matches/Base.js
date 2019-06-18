@@ -1,6 +1,6 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
 import MatchActions from 'actions/matches';
@@ -32,8 +32,8 @@ class _MatchBase
       disp(this.matches.saveMatch(match, callback)),
     setMatch: (matchId, match, callback) =>
       disp(this.matches.setMatch(matchId, match, callback)),
-    deleteMatch: matchId =>
-      disp(this.matches.deleteMatch(matchId)),
+    deleteMatch: (matchId, callback) =>
+      disp(this.matches.deleteMatch(matchId, callback)),
   })
 
   _states = state => ({});

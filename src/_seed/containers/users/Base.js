@@ -1,6 +1,6 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
 import UserActions from 'actions/users';
@@ -27,8 +27,8 @@ class _UserBase
       disp(this.users.saveUser(user, callback)),
     setUser: (userId, user, callback) =>
       disp(this.users.setUser(userId, user, callback)),
-    deleteUser: userId =>
-      disp(this.users.deleteUser(userId)),
+    deleteUser: (userId, callback) =>
+      disp(this.users.deleteUser(userId, callback)),
   })
 
   _states = state => ({});

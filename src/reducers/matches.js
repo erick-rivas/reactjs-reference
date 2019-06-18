@@ -2,7 +2,7 @@
 __Seed builder__v1.0
   
   Guidelines:
-    - Modify reducers via models.json
+    - Modify reducers via SeedManifest.yaml
     - Only add temporary action if required
 
   Actions:

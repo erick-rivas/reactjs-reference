@@ -1,241 +1,217 @@
----
-  name: "reference"
-  platform: "django"
-  models: 
-    - 
-      name: "user"
-      attrs: 
-        - 
-          name: "teams"
-          type: "team[]"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "0..*"
-            has: "0..*"
-          read: true
-          write: false
-          depth: 1
-      meta: {}
-      read: true
-      write: true
-      depth: 1
-      views: []
-    - 
-      name: "team"
-      attrs: 
-        - 
-          name: "name"
-          type: "string"
-          meta: 
-            length: "256"
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "logo_url"
-          type: "string"
-          meta: 
-            length: "512"
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "description"
-          type: "text"
-          meta: {}
-          is_fk: false
-          card: {}
-          default: "No description available"
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "market_value"
-          type: "float"
-          meta: {}
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "players"
-          type: "player[]"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "0..*"
-            has: "1"
-          read: true
-          write: false
-          depth: 1
-      meta: {}
-      read: true
-      write: true
-      depth: 1
-      views: 
-        - "list"
-        - "form"
-    - 
-      name: "player"
-      attrs: 
-        - 
-          name: "name"
-          type: "string"
-          meta: 
-            length: "256"
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "photo_url"
-          type: "string"
-          meta: 
-            length: "512"
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "is_active"
-          type: "boolean"
-          meta: {}
-          is_fk: false
-          card: {}
-          default: "true"
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "team"
-          type: "team"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "1"
-            has: "0..*"
-          read: true
-          write: true
-          depth: 1
-      meta: {}
-      read: true
-      write: true
-      depth: 1
-      views: 
-        - "list"
-        - "details"
-        - "form"
-    - 
-      name: "match"
-      attrs: 
-        - 
-          name: "date"
-          type: "date"
-          meta: {}
-          is_fk: false
-          card: {}
-          default: "now"
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "type"
-          type: "enum"
-          meta: 
-            options: 
-              - "Friendship"
-              - "League"
-              - "Cup"
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "local"
-          type: "team"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "1"
-            has: "0..*"
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "visitor"
-          type: "team"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "1"
-            has: "0..*"
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "scores"
-          type: "score[]"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "0..*"
-            has: "1"
-          read: true
-          write: false
-          depth: 1
-      meta: {}
-      read: true
-      write: true
-      depth: 1
-      views: 
-        - "list"
-        - "details"
-    - 
-      name: "score"
-      attrs: 
-        - 
-          name: "min"
-          type: "int"
-          meta: {}
-          is_fk: false
-          card: {}
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "player"
-          type: "player"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "1"
-            has: "0..*"
-          read: true
-          write: true
-          depth: 1
-        - 
-          name: "match"
-          type: "match"
-          meta: {}
-          is_fk: true
-          card: 
-            ref: "1"
-            has: "0..*"
-          read: true
-          write: true
-          depth: 1
-      meta: {}
-      read: true
-      write: true
-      depth: 1
-      views: 
-        - "form"
+models:
+- attrs:
+  - card:
+      has: 0..*
+      ref: 0..*
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: teams
+    read: true
+    type: team[]
+    write: false
+  depth: 1
+  meta: {}
+  name: user
+  read: true
+  views: []
+  write: true
+- attrs:
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta:
+      length: '256'
+    name: name
+    read: true
+    type: string
+    write: true
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta:
+      length: '512'
+    name: logo_url
+    read: true
+    type: string
+    write: true
+  - card: {}
+    default: No description available
+    depth: 1
+    is_fk: false
+    meta: {}
+    name: description
+    read: true
+    type: text
+    write: true
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta: {}
+    name: market_value
+    read: true
+    type: float
+    write: true
+  - card:
+      has: '1'
+      ref: 0..*
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: players
+    read: true
+    type: player[]
+    write: false
+  depth: 1
+  meta: {}
+  name: team
+  read: true
+  views:
+  - list
+  - form
+  write: true
+- attrs:
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta:
+      length: '256'
+    name: name
+    read: true
+    type: string
+    write: true
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta:
+      length: '512'
+    name: photo_url
+    read: true
+    type: string
+    write: true
+  - card: {}
+    default: 'true'
+    depth: 1
+    is_fk: false
+    meta: {}
+    name: is_active
+    read: true
+    type: boolean
+    write: true
+  - card:
+      has: 0..*
+      ref: '1'
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: team
+    read: true
+    type: team
+    write: true
+  depth: 1
+  meta: {}
+  name: player
+  read: true
+  views:
+  - list
+  - details
+  - form
+  write: true
+- attrs:
+  - card: {}
+    default: now
+    depth: 1
+    is_fk: false
+    meta: {}
+    name: date
+    read: true
+    type: date
+    write: true
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta:
+      options:
+      - Friendship
+      - League
+      - Cup
+    name: type
+    read: true
+    type: enum
+    write: true
+  - card:
+      has: 0..*
+      ref: '1'
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: local
+    read: true
+    type: team
+    write: true
+  - card:
+      has: 0..*
+      ref: '1'
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: visitor
+    read: true
+    type: team
+    write: true
+  - card:
+      has: '1'
+      ref: 0..*
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: scores
+    read: true
+    type: score[]
+    write: false
+  depth: 1
+  meta: {}
+  name: match
+  read: true
+  views:
+  - list
+  - details
+  write: true
+- attrs:
+  - card: {}
+    depth: 1
+    is_fk: false
+    meta: {}
+    name: min
+    read: true
+    type: int
+    write: true
+  - card:
+      has: 0..*
+      ref: '1'
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: player
+    read: true
+    type: player
+    write: true
+  - card:
+      has: 0..*
+      ref: '1'
+    depth: 1
+    is_fk: true
+    meta: {}
+    name: match
+    read: true
+    type: match
+    write: true
+  depth: 1
+  meta: {}
+  name: score
+  read: true
+  views:
+  - form
+  write: true
+name: reference
+platform: django

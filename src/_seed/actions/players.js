@@ -1,11 +1,11 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via models.json
+  (Read_only) Modify via SeedManifest.yaml
 */
 
-import Executor from 'actions/helpers/executor';
+import Action from 'actions/helpers/action';
 
-class _Players extends Executor
+class _Players extends Action
 {
   constructor()
   {
