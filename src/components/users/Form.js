@@ -1,6 +1,9 @@
 /*
 __Seed builder__v1.0
-  
+
+  Guidelines:
+    - Modify ALL components if required MAINTAINING the structure of input fields.
+
   Fields:
     - id
     - username
@@ -9,6 +12,12 @@ __Seed builder__v1.0
     - email
     - is_active
     - teams
+
+  Args:
+    - user_id
+
+  Filters:
+    - user_id 
 */
 
 import * as React from 'react';
@@ -25,6 +34,7 @@ class UserForm extends _UserForm
   render()
   {
     const { user = {} } = this.state;
+    const { filters } = this.state;
     const userId = this.getUserId();
     if (user.id == null && userId != null) return <Loading />;
     
@@ -39,7 +49,7 @@ class UserForm extends _UserForm
 
           {/* Suggested divs */}
 
-          {this.renderError()}
+          { this.renderError() }
 
           <button type="submit" className={styles.submit}>Send</button>
 

@@ -17,6 +17,15 @@
     @include box-sizing(border-box);
   }
 
+  .list .options {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .list .content {
+    padding-top: 4px;
+  }
+
   .details {
     flex: 0 0 60%;
     max-width: 60%;
@@ -24,9 +33,18 @@
     @include box-sizing(border-box);
   }
 
-  .details .details_container {
+  .details .card {
     width: 100%;
     @include card-design();
     @include box-sizing(border-box);
+  }
+
+  .details .options {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .details .content {
+    padding: 4px 10px 10px 10px;
   }
 }

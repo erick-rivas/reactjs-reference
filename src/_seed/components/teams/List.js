@@ -40,8 +40,10 @@ class _TeamList extends React.Component
   getUserId()
   {
     const { user_id } = this.props.match.params;
-    return user_id == 0 ? 
-      sessionStorage.getItem('id') : null;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
   }
   getPlayersId()
   {

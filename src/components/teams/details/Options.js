@@ -25,9 +25,12 @@ class TeamDetailsOptions extends _TeamDetailsOptions
     <div className={styles.module}>
       <Svg className={styles.back} 
         src={require('util/assets/icons/ic_arrow_back.svg')}
-        onClick={this.props.onBackClick} />
+        onClick={this.onBackClick} />
        <div className={styles.options}>
-        <button className={styles.edit} type="button" onClick={this.onEditClick}>Edit</button>
+        <button className={cx(styles.btn, styles.edit)} type="button" 
+          onClick={this.onEditClick}>Edit</button>
+         <button className={cx(styles.btn, styles.delete)} type="button" 
+          onClick={this.onDeleteClick}>Delete</button>
       </div>
       {editModal}
     </div>
@@ -37,6 +40,22 @@ class TeamDetailsOptions extends _TeamDetailsOptions
   constructor(props)
   {
     super(props);
+  }
+
+  onDelete(res)
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+  onDeleteError(error)
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 }
 

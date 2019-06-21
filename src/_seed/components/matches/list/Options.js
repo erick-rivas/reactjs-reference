@@ -52,4 +52,3 @@ class _MatchListOptions extends React.Component
   }
 }
 export default _MatchListOptions;
-

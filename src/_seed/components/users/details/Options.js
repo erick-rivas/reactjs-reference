@@ -18,7 +18,9 @@ class _UserDetailsOptions extends React.Component
       is_editing: false
     };
     this.onEditClick = this.onEditClick.bind(this);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
+    this.onBackClick = this.onBackClick.bind(this);
   }
 
 
@@ -31,11 +33,47 @@ class _UserDetailsOptions extends React.Component
     })
   }
 
+  onDeleteClick()
+  {
+    const { deleteUser } = this.props;
+    const userId = this.getUserId();
+    const onDelete = res => 
+    {
+      if (res.ok) this.onDelete(res.body);
+      else this.onDeleteError(res.body);
+    };
+    deleteUser(userId, onDelete);
+  }
+
   onModalClose()
   {
     this.setState({
       is_editing: false
     })
+  }
+
+  onBackClick()
+  {
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+
+
+
+ /* Props */
+
+  onDelete(res) {}
+  onDeleteError(error) {}
+
+  /* Args */
+
+  getUserId() 
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id ? user_id : userId;
   }
 
 
@@ -54,4 +92,3 @@ class _UserDetailsOptions extends React.Component
 }
 
 export default _UserDetailsOptions;
-

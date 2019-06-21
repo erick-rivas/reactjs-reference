@@ -1,5 +1,12 @@
 /*
 __Seed builder__v1.0
+
+  Guidelines:
+    - Modify ALL components if required
+
+  Filters:
+    - user_id
+    - team_id
 */
 
 import * as React from 'react';
@@ -8,7 +15,6 @@ import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import _PlayerList from '_seed/components/players/List';
-import Options from 'components/players/list/Options';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/players/List.module.css';
@@ -21,16 +27,11 @@ class PlayerList extends _PlayerList
     if (players == null) return <Loading />;
 
     const { Item } = this.props;
-    const { showOptions = true } = this.props;
     const { url } = this.props.match;
 
-    const options = showOptions ? 
-      <div className={styles.options}>
-        <Options match={this.props.match} />
-      </div>: null;
 
-    // Important customize
-    const playerList = this.renderPlayerList(item =>
+    const playerList = 
+      this.renderPlayerList(item =>
         <NavLink 
           to={`${url}/${item.id}`}
           className={styles.item}
@@ -46,10 +47,7 @@ class PlayerList extends _PlayerList
 
     return (
     <div className={styles.module}>
-      { options }
-      <div className={styles.list}>
-        { playerList }
-      </div>
+      { playerList }
     </div>
     );
   }

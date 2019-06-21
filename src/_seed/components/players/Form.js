@@ -61,20 +61,35 @@ class _PlayerForm extends React.Component
     getTeamList(this.state.filters);
   }
 
-  saveData = () =>
+  fillData = e =>
+  {
+    let player = this.state.player ? this.state.player : {};
+    player.name = player.name ? player.name : e.target.name.value;
+    player.photo_url = player.photo_url ? player.photo_url : e.target.photoUrl.value;
+    player.is_active = player.is_active ? player.is_active : e.target.isActive.checked;
+    player.team_id = player.team_id ? player.team_id : e.target.team.value;
+
+    this.setState({
+      player: player
+    });
+  }
+
+  saveData = e =>
   {
     const { savePlayer, setPlayer } = this.props;
-    const playerId = this.getPlayerId()
+    const playerId = this.getPlayerId();
     const onSave = res => 
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
-    }
+    };
     if (playerId == null && savePlayer != null)
       savePlayer(this.state.player, onSave)
     if (playerId != null && setPlayer != null)
       setPlayer(playerId, this.state.player, onSave);
   }
+
+
 
 
   /* Props */
@@ -83,20 +98,24 @@ class _PlayerForm extends React.Component
   onError(error) {}
 
 
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    return user_id == 0 ? 
-      sessionStorage.getItem('id') : null;
-  }
+  /* Args */
 
   getPlayerId() 
   {
     const { player_id } = this.props.match.params;
     const { playerId } = this.props;
     return player_id ? player_id : playerId;
+  }
+
+  /* Filters */
+
+  getUserId()
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
   }
   getTeamId()
   {
@@ -111,7 +130,8 @@ class _PlayerForm extends React.Component
   onSubmit(e)
   {
     e.preventDefault();
-    this.saveData();
+    this.fillData(e);
+    this.saveData(e);
   }
   
   onNameChange(e)

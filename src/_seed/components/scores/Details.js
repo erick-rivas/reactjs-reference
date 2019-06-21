@@ -27,7 +27,7 @@ class _ScoreDetails extends React.Component
   }
 
 
-  /* Filters */
+  /* Args */
 
   getScoreId() 
   {

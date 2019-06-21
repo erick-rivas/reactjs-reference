@@ -23,9 +23,9 @@ class UserListOptions extends _UserListOptions
     return (
     <div className={styles.module}>
       <div className={styles.options}>
-        <button className={styles.create} type="button" onClick={this.onCreateClick}>Create</button>
+        <button className={cx(styles.btn, styles.create)} type="button" onClick={this.onCreateClick}>Create</button>
       </div>
-      {createModal}
+      { createModal }
     </div>
     );
   }

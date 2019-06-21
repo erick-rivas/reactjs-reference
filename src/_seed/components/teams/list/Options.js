@@ -52,4 +52,3 @@ class _TeamListOptions extends React.Component
   }
 }
 export default _TeamListOptions;
-

@@ -1,11 +1,15 @@
 /*
 __Seed builder__v1.0
 
-  attributes:
+  Guidelines:
+    - Modify methods via SeedManifest.yaml
+    - Only override existing states & disp if required
+
+  Attributes:
     - users
     - teams
 
-  methods:
+  Methods:
     - getUserDetails(userId, callback)
     - getUserList(filters, callback)
     - getTeamList(filters, callback)

@@ -63,20 +63,35 @@ class _MatchForm extends React.Component
     getTeamList(this.state.filters);
   }
 
-  saveData = () =>
+  fillData = e =>
+  {
+    let match = this.state.match ? this.state.match : {};
+    match.date = match.date ? match.date : e.target.date.value;
+    match.type = match.type ? match.type : e.target.type.value;
+    match.local_id = match.local_id ? match.local_id : e.target.local.value;
+    match.visitor_id = match.visitor_id ? match.visitor_id : e.target.visitor.value;
+
+    this.setState({
+      match: match
+    });
+  }
+
+  saveData = e =>
   {
     const { saveMatch, setMatch } = this.props;
-    const matchId = this.getMatchId()
+    const matchId = this.getMatchId();
     const onSave = res => 
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
-    }
+    };
     if (matchId == null && saveMatch != null)
       saveMatch(this.state.match, onSave)
     if (matchId != null && setMatch != null)
       setMatch(matchId, this.state.match, onSave);
   }
+
+
 
 
   /* Props */
@@ -85,20 +100,24 @@ class _MatchForm extends React.Component
   onError(error) {}
 
 
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    return user_id == 0 ? 
-      sessionStorage.getItem('id') : null;
-  }
+  /* Args */
 
   getMatchId() 
   {
     const { match_id } = this.props.match.params;
     const { matchId } = this.props;
     return match_id ? match_id : matchId;
+  }
+
+  /* Filters */
+
+  getUserId()
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
   }
   getLocalId()
   {
@@ -119,7 +138,8 @@ class _MatchForm extends React.Component
   onSubmit(e)
   {
     e.preventDefault();
-    this.saveData();
+    this.fillData(e);
+    this.saveData(e);
   }
   
   onDateChange(e)

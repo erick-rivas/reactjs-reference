@@ -1,5 +1,9 @@
 /*
 __Seed builder__v1.0
+
+  Guidelines:
+    - Example component to handle navigation (single view)
+    - Recomended usage: inner navigation
 */
 
 import * as React from 'react';
@@ -40,7 +44,6 @@ class MatchView extends React.Component
          <Route
           path={`${path}/:match_id(\\d+)`}
           component={details} />
-
           <Route
             path={`${path}`}
             component={list} />

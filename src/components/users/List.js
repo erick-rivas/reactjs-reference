@@ -1,5 +1,11 @@
 /*
 __Seed builder__v1.0
+
+  Guidelines:
+    - Modify ALL components if required
+
+  Filters:
+    - user_id
 */
 
 import * as React from 'react';
@@ -8,7 +14,6 @@ import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import _UserList from '_seed/components/users/List';
-import Options from 'components/users/list/Options';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/users/List.module.css';
@@ -21,16 +26,11 @@ class UserList extends _UserList
     if (users == null) return <Loading />;
 
     const { Item } = this.props;
-    const { showOptions = true } = this.props;
     const { url } = this.props.match;
 
-    const options = showOptions ? 
-      <div className={styles.options}>
-        <Options match={this.props.match} />
-      </div>: null;
 
-    // Important customize
-    const userList = this.renderUserList(item =>
+    const userList = 
+      this.renderUserList(item =>
         <NavLink 
           to={`${url}/${item.id}`}
           className={styles.item}
@@ -46,10 +46,7 @@ class UserList extends _UserList
 
     return (
     <div className={styles.module}>
-      { options }
-      <div className={styles.list}>
-        { userList }
-      </div>
+      { userList }
     </div>
     );
   }

@@ -1,5 +1,9 @@
 /*
 __Seed builder__v1.0
+
+  Guidelines:
+    - Example component to handle navigation (divided view)
+    - Recomended usage: main navigation
 */
 
 import * as React from 'react';
@@ -9,6 +13,9 @@ import { Route } from 'react-router-dom';
 
 import PlayerDetails from 'containers/players/Details';
 import PlayerList from 'containers/players/List';
+import PlayerListOptions from 'containers/players/list/Options';
+import PlayerDetailsOptions from 'containers/players/details/Options';
+
 import Item from 'components/helpers/Item';
 
 
@@ -21,29 +28,39 @@ class PlayerPanel extends React.Component
     const { path, url } = this.props.match;
    
     const list = props =>
-      <PlayerList 
-        Item={Item} />
+    <div className={styles.list}>
+      <div className={styles.options}>
+        <PlayerListOptions {...props}/>
+      </div>
+      <div className={styles.content}>
+        <PlayerList {...props}
+          Item={Item} />
+      </div>
+    </div>
 
     const details = props =>
-      <div className={styles.details_container}>
-        <PlayerDetails />
+      <div className={styles.details}>
+        <div className={styles.card}>
+          <div className={styles.options}>
+            <PlayerDetailsOptions {...props} />
+          </div>
+          <div className={styles.content}>
+            <PlayerDetails {...props} />
+          </div>
+        </div>
       </div>
    
     return (
     <div className={styles.module}>
       
-      <div className={styles.container}>
-        <div className={styles.list}>
-          <Route
-            path={`${path}`}
-            component={list} />
-        </div>
-      <div className={styles.details}>
+      <div className={styles.container}>        
+        <Route
+          path={`${path}`}
+          component={list} />
         <Route
           path={`${path}/:player_id(\\d+)`}
           component={details} />
       </div>
-    </div>
       
     </div>
     );

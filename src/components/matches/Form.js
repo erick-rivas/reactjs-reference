@@ -1,6 +1,9 @@
 /*
 __Seed builder__v1.0
-  
+
+  Guidelines:
+    - Modify ALL components if required MAINTAINING the structure of input fields.
+
   Fields:
     - id
     - date
@@ -8,6 +11,14 @@ __Seed builder__v1.0
     - local
     - visitor
     - scores
+
+  Args:
+    - match_id
+
+  Filters:
+    - user_id
+    - local_id
+    - visitor_id 
 */
 
 import * as React from 'react';
@@ -25,6 +36,7 @@ class MatchForm extends _MatchForm
   {
     const { match = {} } = this.state;
     const { teams = [] } = this.props;
+    const { filters } = this.state;
     const matchId = this.getMatchId();
     if (match.id == null && matchId != null) return <Loading />;
     
@@ -39,41 +51,37 @@ class MatchForm extends _MatchForm
 
           {/* Suggested divs */}
           <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
-          <input type="datetime-local" className={cx(styles.dte, styles.dateDte)}  value={getDateInput(match.date)} onChange={this.onDateChange}></input>
+          <input name="date" type="datetime-local" className={cx(styles.dte, styles.dateDte)}  value={getDateInput(match.date)} onChange={this.onDateChange}></input>
           <br/>
           <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
-          <select className={cx(styles.ops, styles.typeOps)} value={match.type} onChange={this.onTypeChange}>
+          <select name="type" className={cx(styles.ops, styles.typeOps)} value={match.type} onChange={this.onTypeChange}>
             <option value='FRIENDSHIP'>Friendship</option>
             <option value='LEAGUE'>League</option>
             <option value='CUP'>Cup</option>
           </select>
           <br/>
           {
-            this.state.filters.local_id == null ?
+            filters.local_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
-              <select className={cx(styles.ops, styles.localOps)} value={match.local_id} onChange={this.onLocalChange}>
-              { 
-                teams.map(e => <option value={e.id}>{e.id}</option>)
-              }
+              <select name="local" className={cx(styles.ops, styles.localOps)} value={match.local_id} onChange={this.onLocalChange}>
+              { teams.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
               </div> : null
           }
           {
-            this.state.filters.visitor_id == null ?
+            filters.visitor_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
-              <select className={cx(styles.ops, styles.visitorOps)} value={match.visitor_id} onChange={this.onVisitorChange}>
-              { 
-                teams.map(e => <option value={e.id}>{e.id}</option>)
-              }
+              <select name="visitor" className={cx(styles.ops, styles.visitorOps)} value={match.visitor_id} onChange={this.onVisitorChange}>
+              { teams.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
               </div> : null
           }
 
-          {this.renderError()}
+          { this.renderError() }
 
           <button type="submit" className={styles.submit}>Send</button>
 

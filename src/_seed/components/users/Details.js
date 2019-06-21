@@ -27,7 +27,7 @@ class _UserDetails extends React.Component
   }
 
 
-  /* Filters */
+  /* Args */
 
   getUserId() 
   {

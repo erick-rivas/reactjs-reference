@@ -27,7 +27,7 @@ class _TeamDetails extends React.Component
   }
 
 
-  /* Filters */
+  /* Args */
 
   getTeamId() 
   {

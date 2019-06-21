@@ -1,12 +1,16 @@
 /*
 __Seed builder__v1.0
 
-  attributes:
+  Guidelines:
+    - Modify methods via SeedManifest.yaml
+    - Only override existing states & disp if required
+
+  Attributes:
     - matches
     - teams
     - scores
 
-  methods:
+  Methods:
     - getMatchDetails(matchId, callback)
     - getMatchList(filters, callback)
     - getTeamList(filters, callback)

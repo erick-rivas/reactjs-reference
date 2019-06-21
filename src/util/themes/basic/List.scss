@@ -1,16 +1,7 @@
 @import 'src/util/Util';
 
 @mixin theme {
-
-  .options {
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
-  }
-
-  .list {
-    padding-top: 4px;
-  }
-
+  
   .item {
     display: block;
     padding: 12px 14px;

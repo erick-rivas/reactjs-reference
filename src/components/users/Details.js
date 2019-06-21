@@ -1,6 +1,9 @@
 /*
 __Seed builder__v1.0
-  
+
+  Guidelines:
+    - Modify ALL components if required
+
   Fields:
     - id
     - username
@@ -9,6 +12,9 @@ __Seed builder__v1.0
     - email
     - is_active
     - teams
+
+  Args:
+    - user_id
 */
 
 import * as React from 'react';
@@ -18,7 +24,6 @@ import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
 import _UserDetails from '_seed/components/users/Details';
-import Options from 'components/users/details/Options';
 import TeamView from 'components/teams/View';
 import Loading from 'components/helpers/Loading';
 import * as DataUtil from 'util/DataUtil.js';
@@ -34,26 +39,15 @@ class UserDetails extends _UserDetails
     const user = DataUtil.getItem(users, userId);
     if (user.id == null) return <Loading />;
 
-    const { showOptions = true } = this.props;
     const { path, url } = this.props.match;
-
-    const options = showOptions ? 
-    <div className={styles.options}>
-      <Options match={this.props.match} 
-        onBackClick={this.onBackClick}/>
-    </div>: null;
-
+    
     return (
     <div className={styles.module}>
-      { options }
-      <div className={styles.details}>
-        {/* Suggested divs */}
-        <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label><br/>
-        <Route path={`${path}`}
-          component={ props => <TeamView showListOptions={false} {...props}/> } />
-        <br/>
-        
-      </div>
+      {/* Suggested divs */}
+      <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label><br/>
+      <Route path={`${path}`}
+        component={ props => <TeamView showListOptions={false} {...props}/> } />
+      <br/>
     </div>
     );
   }
@@ -61,16 +55,6 @@ class UserDetails extends _UserDetails
   constructor(props)
   {
     super(props);
-  }
-
-  /* Events */
-
-  onBackClick() 
-  {
-    //Suggested method
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
   }
 }
 

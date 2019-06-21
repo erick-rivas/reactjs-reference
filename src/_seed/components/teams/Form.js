@@ -57,20 +57,35 @@ class _TeamForm extends React.Component
   {
   }
 
-  saveData = () =>
+  fillData = e =>
+  {
+    let team = this.state.team ? this.state.team : {};
+    team.name = team.name ? team.name : e.target.name.value;
+    team.logo_url = team.logo_url ? team.logo_url : e.target.logoUrl.value;
+    team.description = team.description ? team.description : e.target.description.value;
+    team.market_value = team.market_value ? team.market_value : e.target.marketValue.value;
+
+    this.setState({
+      team: team
+    });
+  }
+
+  saveData = e =>
   {
     const { saveTeam, setTeam } = this.props;
-    const teamId = this.getTeamId()
+    const teamId = this.getTeamId();
     const onSave = res => 
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
-    }
+    };
     if (teamId == null && saveTeam != null)
       saveTeam(this.state.team, onSave)
     if (teamId != null && setTeam != null)
       setTeam(teamId, this.state.team, onSave);
   }
+
+
 
 
   /* Props */
@@ -79,20 +94,24 @@ class _TeamForm extends React.Component
   onError(error) {}
 
 
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    return user_id == 0 ? 
-      sessionStorage.getItem('id') : null;
-  }
+  /* Args */
 
   getTeamId() 
   {
     const { team_id } = this.props.match.params;
     const { teamId } = this.props;
     return team_id ? team_id : teamId;
+  }
+
+  /* Filters */
+
+  getUserId()
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
   }  
 
 
@@ -101,7 +120,8 @@ class _TeamForm extends React.Component
   onSubmit(e)
   {
     e.preventDefault();
-    this.saveData();
+    this.fillData(e);
+    this.saveData(e);
   }
   
   onNameChange(e)

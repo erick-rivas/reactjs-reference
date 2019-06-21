@@ -1,12 +1,22 @@
 /*
 __Seed builder__v1.0
-  
+
+  Guidelines:
+    - Modify ALL components if required MAINTAINING the structure of input fields.
+
   Fields:
     - id
     - name
     - photo_url
     - is_active
     - team
+
+  Args:
+    - player_id
+
+  Filters:
+    - user_id
+    - team_id 
 */
 
 import * as React from 'react';
@@ -24,6 +34,7 @@ class PlayerForm extends _PlayerForm
   {
     const { player = {} } = this.state;
     const { teams = [] } = this.props;
+    const { filters } = this.state;
     const playerId = this.getPlayerId();
     if (player.id == null && playerId != null) return <Loading />;
     
@@ -38,28 +49,26 @@ class PlayerForm extends _PlayerForm
 
           {/* Suggested divs */}
           <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
-          <input type="text" className={cx(styles.txt, styles.nameTxt)} value={player.name} onChange={this.onNameChange}></input>
+          <input type="text" name="name" className={cx(styles.txt, styles.nameTxt)} value={player.name} onChange={this.onNameChange}></input>
           <br/>
           <label className={cx(styles.lbl, styles.photoUrlLbl)}>Photo url</label><br/>
-          <input type="text" className={cx(styles.txt, styles.photoUrlTxt)} value={player.photo_url} onChange={this.onPhotoUrlChange}></input>
+          <input type="text" name="photoUrl" className={cx(styles.txt, styles.photoUrlTxt)} value={player.photo_url} onChange={this.onPhotoUrlChange}></input>
           <br/>
           <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label>
-          <input type="checkbox" className={cx(styles.chk, styles.isActiveChk)} checked={player.is_active} onChange={this.onIsActiveChange}></input>
+          <input name="isActive" type="checkbox" className={cx(styles.chk, styles.isActiveChk)} checked={player.is_active} onChange={this.onIsActiveChange}></input>
           <br/>
           {
-            this.state.filters.team_id == null ?
+            filters.team_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.teamLbl)}>Team</label>
-              <select className={cx(styles.ops, styles.teamOps)} value={player.team_id} onChange={this.onTeamChange}>
-              { 
-                teams.map(e => <option value={e.id}>{e.id}</option>)
-              }
+              <select name="team" className={cx(styles.ops, styles.teamOps)} value={player.team_id} onChange={this.onTeamChange}>
+              { teams.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
               </div> : null
           }
 
-          {this.renderError()}
+          { this.renderError() }
 
           <button type="submit" className={styles.submit}>Send</button>
 

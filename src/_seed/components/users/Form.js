@@ -53,20 +53,31 @@ class _UserForm extends React.Component
   {
   }
 
-  saveData = () =>
+  fillData = e =>
+  {
+    let user = this.state.user ? this.state.user : {};
+
+    this.setState({
+      user: user
+    });
+  }
+
+  saveData = e =>
   {
     const { saveUser, setUser } = this.props;
-    const userId = this.getUserId()
+    const userId = this.getUserId();
     const onSave = res => 
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
-    }
+    };
     if (userId == null && saveUser != null)
       saveUser(this.state.user, onSave)
     if (userId != null && setUser != null)
       setUser(userId, this.state.user, onSave);
   }
+
+
 
 
   /* Props */
@@ -75,20 +86,24 @@ class _UserForm extends React.Component
   onError(error) {}
 
 
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    return user_id == 0 ? 
-      sessionStorage.getItem('id') : null;
-  }
+  /* Args */
 
   getUserId() 
   {
     const { user_id } = this.props.match.params;
     const { userId } = this.props;
     return user_id ? user_id : userId;
+  }
+
+  /* Filters */
+
+  getUserId()
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
   }  
 
 
@@ -97,7 +112,8 @@ class _UserForm extends React.Component
   onSubmit(e)
   {
     e.preventDefault();
-    this.saveData();
+    this.fillData(e);
+    this.saveData(e);
   }
 
 

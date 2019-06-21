@@ -26,13 +26,13 @@ class Home extends _Home
       <div className={styles.drawer}>
         <div className={styles.sidenav}>
           <Route path={`${path}`}
-            component={ Sidenav } />
+            component={Sidenav} />
         </div>
       </div>
       <div className={styles.container}>
         <div className={styles.topnav}>
           <Route path={`${path}`}
-            component={ Topnav } />
+            component={Topnav} />
         </div>
         <div className={styles.content}>        
            <Switch>

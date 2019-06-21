@@ -27,7 +27,7 @@ class _MatchDetails extends React.Component
   }
 
 
-  /* Filters */
+  /* Args */
 
   getMatchId() 
   {

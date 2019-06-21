@@ -46,7 +46,8 @@ class Reducer
 
     if (type === `${this.ref.id}_${Const.DELETE}`) {
       let deleted = this.find(state.dataset, action.id);
-      let dataset = state.dataset.splice(deleted.pos, 1);
+      let dataset = state.dataset.splice(0);
+      dataset.splice(deleted.pos, 1);
       return Object.assign({}, state, {
         dataset: dataset
       });

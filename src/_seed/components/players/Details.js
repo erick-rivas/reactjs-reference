@@ -27,7 +27,7 @@ class _PlayerDetails extends React.Component
   }
 
 
-  /* Filters */
+  /* Args */
 
   getPlayerId() 
   {

@@ -64,20 +64,34 @@ class _ScoreForm extends React.Component
     getMatchList(this.state.filters);
   }
 
-  saveData = () =>
+  fillData = e =>
+  {
+    let score = this.state.score ? this.state.score : {};
+    score.min = score.min ? score.min : e.target.min.value;
+    score.player_id = score.player_id ? score.player_id : e.target.player.value;
+    score.match_id = score.match_id ? score.match_id : e.target.match.value;
+
+    this.setState({
+      score: score
+    });
+  }
+
+  saveData = e =>
   {
     const { saveScore, setScore } = this.props;
-    const scoreId = this.getScoreId()
+    const scoreId = this.getScoreId();
     const onSave = res => 
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
-    }
+    };
     if (scoreId == null && saveScore != null)
       saveScore(this.state.score, onSave)
     if (scoreId != null && setScore != null)
       setScore(scoreId, this.state.score, onSave);
   }
+
+
 
 
   /* Props */
@@ -86,20 +100,24 @@ class _ScoreForm extends React.Component
   onError(error) {}
 
 
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    return user_id == 0 ? 
-      sessionStorage.getItem('id') : null;
-  }
+  /* Args */
 
   getScoreId() 
   {
     const { score_id } = this.props.match.params;
     const { scoreId } = this.props;
     return score_id ? score_id : scoreId;
+  }
+
+  /* Filters */
+
+  getUserId()
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
   }
   getPlayerId()
   {
@@ -120,7 +138,8 @@ class _ScoreForm extends React.Component
   onSubmit(e)
   {
     e.preventDefault();
-    this.saveData();
+    this.fillData(e);
+    this.saveData(e);
   }
   
   onMinChange(e)

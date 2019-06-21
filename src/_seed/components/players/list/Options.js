@@ -52,4 +52,3 @@ class _PlayerListOptions extends React.Component
   }
 }
 export default _PlayerListOptions;
-
