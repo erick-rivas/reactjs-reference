@@ -10,14 +10,11 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-
 import MatchDetails from 'containers/matches/Details';
 import MatchList from 'containers/matches/List';
 import MatchListOptions from 'containers/matches/list/Options';
 import MatchDetailsOptions from 'containers/matches/details/Options';
-
-import Item from 'components/helpers/Item';
-
+import MatchItem from 'components/matches/Item';
 
 import styles from 'util/css/matches/Panel.module.css';
 
@@ -34,7 +31,7 @@ class MatchPanel extends React.Component
       </div>
       <div className={styles.content}>
         <MatchList {...props}
-          Item={Item} />
+          Item={MatchItem} />
       </div>
     </div>
 

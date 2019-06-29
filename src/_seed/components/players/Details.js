@@ -26,7 +26,6 @@ class _PlayerDetails extends React.Component
     getPlayerDetails(playerId);
   }
 
-
   /* Args */
 
   getPlayerId() 
@@ -35,7 +34,6 @@ class _PlayerDetails extends React.Component
     const { playerId } = this.props;
     return player_id ? player_id : playerId;
   }
-
 
   /* Events */
 

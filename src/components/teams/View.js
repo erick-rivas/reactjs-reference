@@ -10,11 +10,9 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Switch, Route } from 'react-router-dom';
 
-
 import TeamDetails from 'containers/teams/Details';
 import TeamList from 'containers/teams/List';
-import Item from 'components/helpers/Item';
-
+import TeamItem from 'components/teams/Item';
 
 import styles from 'util/css/teams/View.module.css';
 
@@ -27,7 +25,7 @@ class TeamView extends React.Component
     const list = props =>
       <div className={styles.list}>
         <TeamList 
-        Item={Item}/>
+        Item={TeamItem}/>
       </div>
       
 

@@ -37,7 +37,6 @@ class _MatchListOptions extends React.Component
     });
   }
 
-
   /* Component */
 
   renderModal() 

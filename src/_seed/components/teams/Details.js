@@ -26,7 +26,6 @@ class _TeamDetails extends React.Component
     getTeamDetails(teamId);
   }
 
-
   /* Args */
 
   getTeamId() 
@@ -35,7 +34,6 @@ class _TeamDetails extends React.Component
     const { teamId } = this.props;
     return team_id ? team_id : teamId;
   }
-
 
   /* Events */
 

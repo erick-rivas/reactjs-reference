@@ -23,7 +23,6 @@ class _MatchDetailsOptions extends React.Component
     this.onBackClick = this.onBackClick.bind(this);
   }
 
-
   /* Events */
 
   onEditClick()
@@ -59,9 +58,6 @@ class _MatchDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-
-
-
  /* Props */
 
   onDelete(res) {}
@@ -75,7 +71,6 @@ class _MatchDetailsOptions extends React.Component
     const { matchId } = this.props;
     return match_id ? match_id : matchId;
   }
-
 
   /* Components */
 

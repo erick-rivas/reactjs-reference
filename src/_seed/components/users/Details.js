@@ -26,7 +26,6 @@ class _UserDetails extends React.Component
     getUserDetails(userId);
   }
 
-
   /* Args */
 
   getUserId() 
@@ -35,7 +34,6 @@ class _UserDetails extends React.Component
     const { userId } = this.props;
     return user_id ? user_id : userId;
   }
-
 
   /* Events */
 

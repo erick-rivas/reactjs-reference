@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch';
+import * as Settings from 'settings';
 import * as Const from 'actions/helpers/const';
 
 class Action
@@ -79,7 +80,7 @@ class Action
       if (method !== "GET")
         args["body"] = JSON.stringify(body);
 
-      return fetch(`${Const.API_URL}/${path}`, args)
+      return fetch(`${Settings.API_URL}/${path}`, args)
         .then(response =>
         {
           if (!response.ok) throw response;

@@ -23,7 +23,6 @@ class _TeamDetailsOptions extends React.Component
     this.onBackClick = this.onBackClick.bind(this);
   }
 
-
   /* Events */
 
   onEditClick()
@@ -59,9 +58,6 @@ class _TeamDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-
-
-
  /* Props */
 
   onDelete(res) {}
@@ -75,7 +71,6 @@ class _TeamDetailsOptions extends React.Component
     const { teamId } = this.props;
     return team_id ? team_id : teamId;
   }
-
 
   /* Components */
 

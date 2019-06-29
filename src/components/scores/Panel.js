@@ -10,14 +10,11 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-
 import ScoreDetails from 'containers/scores/Details';
 import ScoreList from 'containers/scores/List';
 import ScoreListOptions from 'containers/scores/list/Options';
 import ScoreDetailsOptions from 'containers/scores/details/Options';
-
-import Item from 'components/helpers/Item';
-
+import ScoreItem from 'components/scores/Item';
 
 import styles from 'util/css/scores/Panel.module.css';
 
@@ -34,7 +31,7 @@ class ScorePanel extends React.Component
       </div>
       <div className={styles.content}>
         <ScoreList {...props}
-          Item={Item} />
+          Item={ScoreItem} />
       </div>
     </div>
 

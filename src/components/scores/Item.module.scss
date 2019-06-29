@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/View';
+@import 'src/util/themes/basic/Item';
 @include theme();
 
 @import 'src/util/Util';
@@ -13,7 +13,7 @@ __Seed builder__v1.0
   height: 100%;
 }
 
-.container {}
-.list {}
-.details {}
-
+.title {}
+.subtitle {}
+.options {}
+.options svg {}

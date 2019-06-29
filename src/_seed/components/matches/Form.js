@@ -91,14 +91,10 @@ class _MatchForm extends React.Component
       setMatch(matchId, this.state.match, onSave);
   }
 
-
-
-
   /* Props */
 
   onSave(res) {}
   onError(error) {}
-
 
   /* Args */
 
@@ -131,7 +127,6 @@ class _MatchForm extends React.Component
     const { visitorId } = this.props;
     return visitor_id ? visitor_id : visitorId;
   }  
-
 
   /* Events */
 
@@ -177,7 +172,6 @@ class _MatchForm extends React.Component
       match: match
     });
   }
-
 
   /* Components */
 

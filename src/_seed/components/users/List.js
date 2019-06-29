@@ -34,7 +34,6 @@ class _UserList extends React.Component
     getUserList(this.state.filters);
   }
 
-
   /* Filters */
 
   getUserId()
@@ -52,11 +51,9 @@ class _UserList extends React.Component
     return teams_id ? teams_id : teamsId;
   }  
 
-
   /* Events */
 
   onItemClick(){}
-
 
    /* Components */
 

@@ -23,7 +23,6 @@ class _UserDetailsOptions extends React.Component
     this.onBackClick = this.onBackClick.bind(this);
   }
 
-
   /* Events */
 
   onEditClick()
@@ -59,9 +58,6 @@ class _UserDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-
-
-
  /* Props */
 
   onDelete(res) {}
@@ -75,7 +71,6 @@ class _UserDetailsOptions extends React.Component
     const { userId } = this.props;
     return user_id ? user_id : userId;
   }
-
 
   /* Components */
 

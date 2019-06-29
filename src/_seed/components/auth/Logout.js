@@ -26,7 +26,6 @@ class _Logout extends React.Component
     this.props.logout(callback);
   }
 
-
   /* Props */
 
   onLogout(res) {}

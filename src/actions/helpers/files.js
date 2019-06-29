@@ -1,11 +1,11 @@
 import $ from 'ajax';
-import * as Const from 'actions/helpers/const';
+import * as Settings from 'settings';
 
 class Files
 {
   upload = (formWrapper, callback) =>
   {
-    let url = `${Const.SRC_URL}/files`;
+    let url = `${Settings.SRC_URL}/files`;
     $.ajax({
       url: url,
       type: 'POST',

@@ -10,11 +10,9 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Switch, Route } from 'react-router-dom';
 
-
 import MatchDetails from 'containers/matches/Details';
 import MatchList from 'containers/matches/List';
-import Item from 'components/helpers/Item';
-
+import MatchItem from 'components/matches/Item';
 
 import styles from 'util/css/matches/View.module.css';
 
@@ -27,7 +25,7 @@ class MatchView extends React.Component
     const list = props =>
       <div className={styles.list}>
         <MatchList 
-        Item={Item}/>
+        Item={MatchItem}/>
       </div>
       
 

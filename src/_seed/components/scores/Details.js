@@ -26,7 +26,6 @@ class _ScoreDetails extends React.Component
     getScoreDetails(scoreId);
   }
 
-
   /* Args */
 
   getScoreId() 
@@ -35,7 +34,6 @@ class _ScoreDetails extends React.Component
     const { scoreId } = this.props;
     return score_id ? score_id : scoreId;
   }
-
 
   /* Events */
 

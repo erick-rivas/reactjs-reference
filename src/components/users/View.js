@@ -10,11 +10,9 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Switch, Route } from 'react-router-dom';
 
-
 import UserDetails from 'containers/users/Details';
 import UserList from 'containers/users/List';
-import Item from 'components/helpers/Item';
-
+import UserItem from 'components/users/Item';
 
 import styles from 'util/css/users/View.module.css';
 
@@ -27,7 +25,7 @@ class UserView extends React.Component
     const list = props =>
       <div className={styles.list}>
         <UserList 
-        Item={Item}/>
+        Item={UserItem}/>
       </div>
       
 

@@ -30,7 +30,6 @@ class MatchList extends _MatchList
     const { Item } = this.props;
     const { url } = this.props.match;
 
-
     const matchList = 
       this.renderMatchList(item =>
         <NavLink 
@@ -41,8 +40,7 @@ class MatchList extends _MatchList
           <Item 
             key={item.id} 
             id={item.id}
-            title={item.id}
-            subtitle={JSON.stringify(item)}/>
+            match={item}/>
       </NavLink>
     );
 

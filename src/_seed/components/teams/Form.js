@@ -85,14 +85,10 @@ class _TeamForm extends React.Component
       setTeam(teamId, this.state.team, onSave);
   }
 
-
-
-
   /* Props */
 
   onSave(res) {}
   onError(error) {}
-
 
   /* Args */
 
@@ -113,7 +109,6 @@ class _TeamForm extends React.Component
            user_id ? user_id : 
            userId;
   }  
-
 
   /* Events */
 
@@ -159,7 +154,6 @@ class _TeamForm extends React.Component
       team: team
     });
   }
-
 
   /* Components */
 

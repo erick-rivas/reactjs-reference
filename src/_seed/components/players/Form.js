@@ -89,14 +89,10 @@ class _PlayerForm extends React.Component
       setPlayer(playerId, this.state.player, onSave);
   }
 
-
-
-
   /* Props */
 
   onSave(res) {}
   onError(error) {}
-
 
   /* Args */
 
@@ -123,7 +119,6 @@ class _PlayerForm extends React.Component
     const { teamId } = this.props;
     return team_id ? team_id : teamId;
   }  
-
 
   /* Events */
 
@@ -169,7 +164,6 @@ class _PlayerForm extends React.Component
       player: player
     });
   }
-
 
   /* Components */
 

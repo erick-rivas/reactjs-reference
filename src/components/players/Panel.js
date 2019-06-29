@@ -10,14 +10,11 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-
 import PlayerDetails from 'containers/players/Details';
 import PlayerList from 'containers/players/List';
 import PlayerListOptions from 'containers/players/list/Options';
 import PlayerDetailsOptions from 'containers/players/details/Options';
-
-import Item from 'components/helpers/Item';
-
+import PlayerItem from 'components/players/Item';
 
 import styles from 'util/css/players/Panel.module.css';
 
@@ -34,7 +31,7 @@ class PlayerPanel extends React.Component
       </div>
       <div className={styles.content}>
         <PlayerList {...props}
-          Item={Item} />
+          Item={PlayerItem} />
       </div>
     </div>
 

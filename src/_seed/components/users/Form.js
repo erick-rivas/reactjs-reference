@@ -77,14 +77,10 @@ class _UserForm extends React.Component
       setUser(userId, this.state.user, onSave);
   }
 
-
-
-
   /* Props */
 
   onSave(res) {}
   onError(error) {}
-
 
   /* Args */
 
@@ -106,7 +102,6 @@ class _UserForm extends React.Component
            userId;
   }  
 
-
   /* Events */
 
   onSubmit(e)
@@ -115,7 +110,6 @@ class _UserForm extends React.Component
     this.fillData(e);
     this.saveData(e);
   }
-
 
   /* Components */
 

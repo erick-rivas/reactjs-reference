@@ -36,7 +36,6 @@ class _MatchList extends React.Component
     getMatchList(this.state.filters);
   }
 
-
   /* Filters */
 
   getUserId()
@@ -66,11 +65,9 @@ class _MatchList extends React.Component
     return scores_id ? scores_id : scoresId;
   }  
 
-
   /* Events */
 
   onItemClick(){}
-
 
    /* Components */
 

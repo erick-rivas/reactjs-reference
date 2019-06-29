@@ -10,11 +10,9 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Switch, Route } from 'react-router-dom';
 
-
 import PlayerDetails from 'containers/players/Details';
 import PlayerList from 'containers/players/List';
-import Item from 'components/helpers/Item';
-
+import PlayerItem from 'components/players/Item';
 
 import styles from 'util/css/players/View.module.css';
 
@@ -27,7 +25,7 @@ class PlayerView extends React.Component
     const list = props =>
       <div className={styles.list}>
         <PlayerList 
-        Item={Item}/>
+        Item={PlayerItem}/>
       </div>
       
 

@@ -30,7 +30,6 @@ class ScoreList extends _ScoreList
     const { Item } = this.props;
     const { url } = this.props.match;
 
-
     const scoreList = 
       this.renderScoreList(item =>
         <NavLink 
@@ -41,8 +40,7 @@ class ScoreList extends _ScoreList
           <Item 
             key={item.id} 
             id={item.id}
-            title={item.id}
-            subtitle={JSON.stringify(item)}/>
+            score={item}/>
       </NavLink>
     );
 

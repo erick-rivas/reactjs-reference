@@ -10,14 +10,11 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-
 import UserDetails from 'containers/users/Details';
 import UserList from 'containers/users/List';
 import UserListOptions from 'containers/users/list/Options';
 import UserDetailsOptions from 'containers/users/details/Options';
-
-import Item from 'components/helpers/Item';
-
+import UserItem from 'components/users/Item';
 
 import styles from 'util/css/users/Panel.module.css';
 
@@ -34,7 +31,7 @@ class UserPanel extends React.Component
       </div>
       <div className={styles.content}>
         <UserList {...props}
-          Item={Item} />
+          Item={UserItem} />
       </div>
     </div>
 

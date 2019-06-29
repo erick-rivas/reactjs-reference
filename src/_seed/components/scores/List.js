@@ -35,7 +35,6 @@ class _ScoreList extends React.Component
     getScoreList(this.state.filters);
   }
 
-
   /* Filters */
 
   getUserId()
@@ -59,11 +58,9 @@ class _ScoreList extends React.Component
     return match_id ? match_id : matchId;
   }  
 
-
   /* Events */
 
   onItemClick(){}
-
 
    /* Components */
 

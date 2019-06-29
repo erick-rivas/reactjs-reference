@@ -37,7 +37,6 @@ class _ScoreListOptions extends React.Component
     });
   }
 
-
   /* Component */
 
   renderModal() 

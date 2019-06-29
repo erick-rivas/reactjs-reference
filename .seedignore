@@ -1,5 +1,6 @@
 src/_seed
 .git*
+build
 src/actions/*.js
 src/components/*
 src/containers/*

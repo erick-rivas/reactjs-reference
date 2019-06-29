@@ -26,7 +26,6 @@ class _MatchDetails extends React.Component
     getMatchDetails(matchId);
   }
 
-
   /* Args */
 
   getMatchId() 
@@ -35,7 +34,6 @@ class _MatchDetails extends React.Component
     const { matchId } = this.props;
     return match_id ? match_id : matchId;
   }
-
 
   /* Events */
 

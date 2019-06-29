@@ -10,11 +10,9 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Switch, Route } from 'react-router-dom';
 
-
 import ScoreDetails from 'containers/scores/Details';
 import ScoreList from 'containers/scores/List';
-import Item from 'components/helpers/Item';
-
+import ScoreItem from 'components/scores/Item';
 
 import styles from 'util/css/scores/View.module.css';
 
@@ -27,7 +25,7 @@ class ScoreView extends React.Component
     const list = props =>
       <div className={styles.list}>
         <ScoreList 
-        Item={Item}/>
+        Item={ScoreItem}/>
       </div>
       
 

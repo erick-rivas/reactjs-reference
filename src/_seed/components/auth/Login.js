@@ -15,7 +15,6 @@ class _Login extends React.Component
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-
   /* Events */
 
   onSubmit = e =>
@@ -31,12 +30,10 @@ class _Login extends React.Component
     this.props.login(email, password, callback);
   }
 
-
   /* Props */
 
   onLogin() {}
   onError() {}
-
 
   /* Components */
 

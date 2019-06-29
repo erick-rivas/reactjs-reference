@@ -91,14 +91,10 @@ class _ScoreForm extends React.Component
       setScore(scoreId, this.state.score, onSave);
   }
 
-
-
-
   /* Props */
 
   onSave(res) {}
   onError(error) {}
-
 
   /* Args */
 
@@ -131,7 +127,6 @@ class _ScoreForm extends React.Component
     const { matchId } = this.props;
     return match_id ? match_id : matchId;
   }  
-
 
   /* Events */
 
@@ -168,7 +163,6 @@ class _ScoreForm extends React.Component
       score: score
     });
   }
-
 
   /* Components */
 

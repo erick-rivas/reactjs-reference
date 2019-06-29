@@ -37,7 +37,6 @@ class _TeamListOptions extends React.Component
     });
   }
 
-
   /* Component */
 
   renderModal() 

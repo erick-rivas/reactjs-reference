@@ -37,7 +37,6 @@ class _PlayerListOptions extends React.Component
     });
   }
 
-
   /* Component */
 
   renderModal() 

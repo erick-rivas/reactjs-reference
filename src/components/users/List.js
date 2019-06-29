@@ -28,7 +28,6 @@ class UserList extends _UserList
     const { Item } = this.props;
     const { url } = this.props.match;
 
-
     const userList = 
       this.renderUserList(item =>
         <NavLink 
@@ -39,8 +38,7 @@ class UserList extends _UserList
           <Item 
             key={item.id} 
             id={item.id}
-            title={item.id}
-            subtitle={JSON.stringify(item)}/>
+            user={item}/>
       </NavLink>
     );
 

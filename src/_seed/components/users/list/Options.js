@@ -37,7 +37,6 @@ class _UserListOptions extends React.Component
     });
   }
 
-
   /* Component */
 
   renderModal() 

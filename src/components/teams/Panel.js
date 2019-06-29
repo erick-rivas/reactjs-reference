@@ -10,14 +10,11 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-
 import TeamDetails from 'containers/teams/Details';
 import TeamList from 'containers/teams/List';
 import TeamListOptions from 'containers/teams/list/Options';
 import TeamDetailsOptions from 'containers/teams/details/Options';
-
-import Item from 'components/helpers/Item';
-
+import TeamItem from 'components/teams/Item';
 
 import styles from 'util/css/teams/Panel.module.css';
 
@@ -34,7 +31,7 @@ class TeamPanel extends React.Component
       </div>
       <div className={styles.content}>
         <TeamList {...props}
-          Item={Item} />
+          Item={TeamItem} />
       </div>
     </div>
 

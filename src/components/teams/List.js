@@ -28,7 +28,6 @@ class TeamList extends _TeamList
     const { Item } = this.props;
     const { url } = this.props.match;
 
-
     const teamList = 
       this.renderTeamList(item =>
         <NavLink 
@@ -39,8 +38,7 @@ class TeamList extends _TeamList
           <Item 
             key={item.id} 
             id={item.id}
-            title={item.id}
-            subtitle={JSON.stringify(item)}/>
+            team={item}/>
       </NavLink>
     );
 

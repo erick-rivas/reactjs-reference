@@ -23,7 +23,6 @@ class _ScoreDetailsOptions extends React.Component
     this.onBackClick = this.onBackClick.bind(this);
   }
 
-
   /* Events */
 
   onEditClick()
@@ -59,9 +58,6 @@ class _ScoreDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-
-
-
  /* Props */
 
   onDelete(res) {}
@@ -75,7 +71,6 @@ class _ScoreDetailsOptions extends React.Component
     const { scoreId } = this.props;
     return score_id ? score_id : scoreId;
   }
-
 
   /* Components */
 
