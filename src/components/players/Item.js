@@ -35,7 +35,7 @@ class PlayerItem extends _PlayerItem
         <div className={styles.title}>{player.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(player)}</div>
         <Svg className={styles.options}
-          src={require('util/assets/icons/ic_expand.svg')}
+          src={require('assets/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu
           anchorEl={this.state.anchorMenu}

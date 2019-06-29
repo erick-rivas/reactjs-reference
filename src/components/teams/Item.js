@@ -36,7 +36,7 @@ class TeamItem extends _TeamItem
         <div className={styles.title}>{team.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(team)}</div>
         <Svg className={styles.options}
-          src={require('util/assets/icons/ic_expand.svg')}
+          src={require('assets/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu
           anchorEl={this.state.anchorMenu}

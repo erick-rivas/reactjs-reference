@@ -37,7 +37,7 @@ class UserItem extends _UserItem
         <div className={styles.title}>{user.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(user)}</div>
         <Svg className={styles.options}
-          src={require('util/assets/icons/ic_expand.svg')}
+          src={require('assets/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu
           anchorEl={this.state.anchorMenu}

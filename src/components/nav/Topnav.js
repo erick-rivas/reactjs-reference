@@ -11,7 +11,7 @@ class Topnav extends React.Component
     return (
     <div className={styles.module}>
        <Svg className={styles.menu} 
-        src={require('util/assets/icons/ic_menu.svg')} />
+        src={require('assets/icons/ic_menu.svg')} />
     </div>
     );
   }

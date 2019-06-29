@@ -34,7 +34,7 @@ class ScoreItem extends _ScoreItem
         <div className={styles.title}>{score.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(score)}</div>
         <Svg className={styles.options}
-          src={require('util/assets/icons/ic_expand.svg')}
+          src={require('assets/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu
           anchorEl={this.state.anchorMenu}

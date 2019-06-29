@@ -1,11 +1,5 @@
-$dark-color: #029ad0;
-$primary-color: #00a7dF;
-$primary-light: #e6f5fc;
-$secondary-color: #999;
-$accent-color: #ffc000;
-$action-color: #f03296;
-$completed-color: #92D050;
-$delayed-color: #ffb070;
+@import 'src/settings/Colors';
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;

@@ -24,7 +24,7 @@ class TeamDetailsOptions extends _TeamDetailsOptions
     return (
     <div className={styles.module}>
       <Svg className={styles.back} 
-        src={require('util/assets/icons/ic_arrow_back.svg')}
+        src={require('assets/icons/ic_arrow_back.svg')}
         onClick={this.onBackClick} />
        <div className={styles.options}>
         <button className={cx(styles.btn, styles.edit)} type="button" 
