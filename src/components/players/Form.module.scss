@@ -3,8 +3,9 @@ __Seed builder__v1.0
   Suggested styles:
     .nameLbl
     .nameTxt
-    .photoUrlLbl
-    .photoUrlTxt
+    .photoLbl
+    .photoFil
+    .photoImg
     .isActiveLbl
     .isActiveChk
     .teamLbl
@@ -27,6 +28,8 @@ __Seed builder__v1.0
 .txa {}
 .dte {}
 .chk {}
+.fil {}
+.img {}
 .ops {}
 .error {}
 .submit {}

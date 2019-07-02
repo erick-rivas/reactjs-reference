@@ -2,6 +2,8 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading and CRUD operations
+    - To filter data (fk) modify filters with router params or props
     - Modify ALL components if required MAINTAINING the structure of input fields.
 
   Fields:
@@ -52,28 +54,24 @@ class ScoreForm extends _ScoreForm
           <label className={cx(styles.lbl, styles.minLbl)}>Min</label><br/>
           <input type="number" name="min" className={cx(styles.txt, styles.minTxt)} value={score.min} onChange={this.onMinChange} required></input>
           <br/>
-          {
-            filters.player_id == null ?
+          {filters.player_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.playerLbl)}>Player</label>
               <select name="player" className={cx(styles.ops, styles.playerOps)} value={score.player_id} onChange={this.onPlayerChange}>
               { players.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
-              </div> : null
-          }
-          {
-            filters.match_id == null ?
+              </div> : null}
+          {filters.match_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.matchLbl)}>Match</label>
               <select name="match" className={cx(styles.ops, styles.matchOps)} value={score.match_id} onChange={this.onMatchChange}>
               { matches.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
-              </div> : null
-          }
+              </div> : null}
 
-          { this.renderError() }
+          {this.renderError()}
 
           <button type="submit" className={styles.submit}>Send</button>
 

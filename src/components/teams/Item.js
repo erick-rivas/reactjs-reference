@@ -7,9 +7,10 @@ __Seed builder__v1.0
   Fields:
     - id
     - name
-    - logo_url
+    - logo
     - description
     - market_value
+    - identity_docs
     - players
 */
 

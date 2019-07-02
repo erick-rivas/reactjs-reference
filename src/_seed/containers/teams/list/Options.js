@@ -6,7 +6,7 @@ __Seed builder__v1.0
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import TeamActions from 'actions/teams';
+import TeamActions from 'interactors/actions/teams';
 
 import _TeamBase from '_seed/containers/teams/Base';
 import TeamListOptions from 'components/teams/list/Options';

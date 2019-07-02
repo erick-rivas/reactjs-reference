@@ -2,6 +2,8 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading and CRUD operations
+    - To filter data (fk) modify filters with router params or props
     - Modify ALL components if required MAINTAINING the structure of input fields.
 
   Fields:
@@ -49,7 +51,7 @@ class UserForm extends _UserForm
 
           {/* Suggested divs */}
 
-          { this.renderError() }
+          {this.renderError()}
 
           <button type="submit" className={styles.submit}>Send</button>
 

@@ -7,7 +7,7 @@ __Seed builder__v1.0
   Fields:
     - id
     - name
-    - photo_url
+    - photo
     - is_active
     - team
 */

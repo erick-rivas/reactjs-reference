@@ -56,7 +56,7 @@ class _ScoreList extends React.Component
     const { match_id } = this.props.match.params;
     const { matchId } = this.props;
     return match_id ? match_id : matchId;
-  }  
+  }
 
   /* Events */
 

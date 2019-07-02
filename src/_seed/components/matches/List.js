@@ -63,7 +63,7 @@ class _MatchList extends React.Component
     const { scores_id } = this.props.match.params;
     const { scoresId } = this.props;
     return scores_id ? scores_id : scoresId;
-  }  
+  }
 
   /* Events */
 

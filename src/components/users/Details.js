@@ -2,6 +2,7 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading
     - Modify ALL components if required
 
   Fields:
@@ -40,13 +41,13 @@ class UserDetails extends _UserDetails
     if (user.id == null) return <Loading />;
 
     const { path, url } = this.props.match;
-    
+
     return (
     <div className={styles.module}>
       {/* Suggested divs */}
       <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label><br/>
       <Route path={`${path}`}
-        component={ props => <TeamView showListOptions={false} {...props}/> } />
+        component={ props => <TeamView {...props}/> } />
       <br/>
     </div>
     );

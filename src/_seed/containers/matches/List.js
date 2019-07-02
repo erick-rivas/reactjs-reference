@@ -6,7 +6,7 @@ __Seed builder__v1.0
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import MatchActions from 'actions/matches';
+import MatchActions from 'interactors/actions/matches';
 
 import _MatchBase from '_seed/containers/matches/Base';
 import MatchList from 'components/matches/List';

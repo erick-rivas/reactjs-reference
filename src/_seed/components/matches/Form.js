@@ -126,7 +126,7 @@ class _MatchForm extends React.Component
     const { visitor_id } = this.props.match.params;
     const { visitorId } = this.props;
     return visitor_id ? visitor_id : visitorId;
-  }  
+  }
 
   /* Events */
 

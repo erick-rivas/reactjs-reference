@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import AuthActions from 'actions/helpers/auth'
+import AuthActions from 'interactors/actions/helpers/auth'
 
 import Logout from 'components/auth/Logout'
 

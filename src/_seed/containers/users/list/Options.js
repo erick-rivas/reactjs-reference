@@ -6,7 +6,7 @@ __Seed builder__v1.0
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import UserActions from 'actions/users';
+import UserActions from 'interactors/actions/users';
 
 import _UserBase from '_seed/containers/users/Base';
 import UserListOptions from 'components/users/list/Options';

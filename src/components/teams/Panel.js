@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 
   Guidelines:
-    - Example component to handle navigation (divided view)
+    - EXAMPLE component to handle navigation (divided view)
     - Recomended usage: main navigation
 */
 

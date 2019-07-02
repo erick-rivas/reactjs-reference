@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { Theme } from 'util/Theme';
+import { MuiTheme } from 'settings/MuiTheme';
 
 import App from 'components/App';
 import Worker from 'util/bin/Worker';
@@ -12,11 +12,11 @@ import Store from 'util/bin/Store';
 import 'index.css';
 
 const store = Store();
-const theme = Theme();
+const muiTheme = MuiTheme();
 
 ReactDOM.render(
     <Provider store={store}>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={muiTheme}>
             <App />
         </MuiThemeProvider>
     </Provider>,

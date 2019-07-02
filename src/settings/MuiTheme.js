@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const Theme = () =>
+const MuiTheme = () =>
 {
   return createMuiTheme(
     {
@@ -35,4 +35,4 @@ const checkboxStyle = {
 };
 
 
-export { Theme, checkboxStyle }
+export { MuiTheme, checkboxStyle }

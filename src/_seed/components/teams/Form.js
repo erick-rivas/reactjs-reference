@@ -24,7 +24,7 @@ class _TeamForm extends React.Component
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
-    this.onLogoUrlChange = this.onLogoUrlChange.bind(this);
+    this.onLogoChange = this.onLogoChange.bind(this);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onMarketValueChange = this.onMarketValueChange.bind(this);
   }
@@ -61,7 +61,7 @@ class _TeamForm extends React.Component
   {
     let team = this.state.team ? this.state.team : {};
     team.name = team.name ? team.name : e.target.name.value;
-    team.logo_url = team.logo_url ? team.logo_url : e.target.logoUrl.value;
+    team.logo = team.logo ? team.logo : e.target.logo.value;
     team.description = team.description ? team.description : e.target.description.value;
     team.market_value = team.market_value ? team.market_value : e.target.marketValue.value;
 
@@ -108,7 +108,7 @@ class _TeamForm extends React.Component
     return user_id == 0 ? sessionStorage.getItem('id') : 
            user_id ? user_id : 
            userId;
-  }  
+  }
 
   /* Events */
 
@@ -128,13 +128,18 @@ class _TeamForm extends React.Component
     });
   }
   
-  onLogoUrlChange(e)
+  onLogoChange(e)
   {
-    let team = this.state.team ? this.state.team : {};
-    team.logo_url = e.target.value;  
-    this.setState({
-      team: team
-    });
+    const { uploadFile } = this.props;
+    const callback = res => {
+      let team = this.state.team ? this.state.team : {};
+      team.logo = res.body;
+      team.logo_id = res.body.id;
+      this.setState({
+        team: team
+      });
+    }
+    uploadFile(e.target.form, callback);
   }
   
   onDescriptionChange(e)

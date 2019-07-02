@@ -2,6 +2,8 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading and filtering
+    - To filter data modify filters with router params or props
     - Modify ALL components if required
 
   Filters:

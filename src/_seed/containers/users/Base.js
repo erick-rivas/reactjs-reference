@@ -3,8 +3,8 @@ __Seed builder__v1.0
   (Read_only) Modify via SeedManifest.yaml
 */
 
-import UserActions from 'actions/users';
-import TeamActions from 'actions/teams';
+import UserActions from 'interactors/actions/users';
+import TeamActions from 'interactors/actions/teams';
 
 class _UserBase
 {

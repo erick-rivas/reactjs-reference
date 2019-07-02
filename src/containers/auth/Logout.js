@@ -1,5 +1,8 @@
 /*
 __Seed builder__v1.0
+
+  Default methods:
+    - logout(callback)
 */
 
 import _Logout from '_seed/containers/auth/Logout';

@@ -2,14 +2,16 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading
     - Modify ALL components if required
 
   Fields:
     - id
     - name
-    - logo_url
+    - logo
     - description
     - market_value
+    - identity_docs
     - players
 
   Args:
@@ -39,15 +41,15 @@ class TeamDetails extends _TeamDetails
     if (team.id == null) return <Loading />;
 
     const { path, url } = this.props.match;
-    
+
     return (
     <div className={styles.module}>
       {/* Suggested divs */}
       <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
       <label className={cx(styles.txt, styles.nameTxt)}>{team.name.toString()}</label>
       <br/>
-      <label className={cx(styles.lbl, styles.logoUrlLbl)}>Logo url</label><br/>
-      <label className={cx(styles.txt, styles.logoUrlTxt)}>{team.logo_url.toString()}</label>
+      <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
+      <img src={team.logo.url} className={cx(styles.img, styles.logoImg)}></img>
       <br/>
       <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
       <label className={cx(styles.txt, styles.descriptionTxt)}>{team.description.toString()}</label>
@@ -55,9 +57,12 @@ class TeamDetails extends _TeamDetails
       <label className={cx(styles.lbl, styles.marketValueLbl)}>Market value</label><br/>
       <label className={cx(styles.txt, styles.marketValueTxt)}>{team.market_value.toString()}</label>
       <br/>
+      <label className={cx(styles.lbl, styles.identityDocsLbl)}>Identity docs</label><br/>
+      <label className={cx(styles.txt, styles.identityDocsTxt)}>{team.identity_docs.toString()}</label>
+      <br/>
       <label className={cx(styles.lbl, styles.playersLbl)}>Players</label><br/>
       <Route path={`${path}`}
-        component={ props => <PlayerView showListOptions={false} {...props}/> } />
+        component={ props => <PlayerView {...props}/> } />
       <br/>
     </div>
     );

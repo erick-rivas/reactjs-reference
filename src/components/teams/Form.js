@@ -2,14 +2,17 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading and CRUD operations
+    - To filter data (fk) modify filters with router params or props
     - Modify ALL components if required MAINTAINING the structure of input fields.
 
   Fields:
     - id
     - name
-    - logo_url
+    - logo
     - description
     - market_value
+    - identity_docs
     - players
 
   Args:
@@ -50,9 +53,12 @@ class TeamForm extends _TeamForm
           <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
           <input type="text" name="name" className={cx(styles.txt, styles.nameTxt)} value={team.name} onChange={this.onNameChange}></input>
           <br/>
-          <label className={cx(styles.lbl, styles.logoUrlLbl)}>Logo url</label><br/>
-          <input type="text" name="logoUrl" className={cx(styles.txt, styles.logoUrlTxt)} value={team.logo_url} onChange={this.onLogoUrlChange}></input>
-          <br/>
+          <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
+          <form encType="multipart/form-data">
+            <input name="file" type="file" className={cx(styles.fil, styles.logoFil)} accept="image/*" onChange={this.onLogoChange}></input>
+          </form>
+          {team.logo ?
+            <img src={team.logo.url} className={cx(styles.img, styles.logoImg)} /> : null }
           <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
           <textarea name="description" type="text" rows="3" className={cx(styles.txa, styles.descriptionTxa)} value={team.description} onChange={this.onDescriptionChange}></textarea>
           <br/>
@@ -60,7 +66,7 @@ class TeamForm extends _TeamForm
           <input type="number" name="marketValue" className={cx(styles.txt, styles.marketValueTxt)} value={team.market_value} onChange={this.onMarketValueChange} required></input>
           <br/>
 
-          { this.renderError() }
+          {this.renderError()}
 
           <button type="submit" className={styles.submit}>Send</button>
 

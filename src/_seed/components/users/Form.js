@@ -100,7 +100,7 @@ class _UserForm extends React.Component
     return user_id == 0 ? sessionStorage.getItem('id') : 
            user_id ? user_id : 
            userId;
-  }  
+  }
 
   /* Events */
 

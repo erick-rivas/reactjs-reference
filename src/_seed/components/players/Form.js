@@ -26,7 +26,7 @@ class _PlayerForm extends React.Component
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
-    this.onPhotoUrlChange = this.onPhotoUrlChange.bind(this);
+    this.onPhotoChange = this.onPhotoChange.bind(this);
     this.onIsActiveChange = this.onIsActiveChange.bind(this);
     this.onTeamChange = this.onTeamChange.bind(this);
   }
@@ -65,7 +65,7 @@ class _PlayerForm extends React.Component
   {
     let player = this.state.player ? this.state.player : {};
     player.name = player.name ? player.name : e.target.name.value;
-    player.photo_url = player.photo_url ? player.photo_url : e.target.photoUrl.value;
+    player.photo = player.photo ? player.photo : e.target.photo.value;
     player.is_active = player.is_active ? player.is_active : e.target.isActive.checked;
     player.team_id = player.team_id ? player.team_id : e.target.team.value;
 
@@ -118,7 +118,7 @@ class _PlayerForm extends React.Component
     const { team_id } = this.props.match.params;
     const { teamId } = this.props;
     return team_id ? team_id : teamId;
-  }  
+  }
 
   /* Events */
 
@@ -138,13 +138,18 @@ class _PlayerForm extends React.Component
     });
   }
   
-  onPhotoUrlChange(e)
+  onPhotoChange(e)
   {
-    let player = this.state.player ? this.state.player : {};
-    player.photo_url = e.target.value;  
-    this.setState({
-      player: player
-    });
+    const { uploadFile } = this.props;
+    const callback = res => {
+      let player = this.state.player ? this.state.player : {};
+      player.photo = res.body;
+      player.photo_id = res.body.id;
+      this.setState({
+        player: player
+      });
+    }
+    uploadFile(e.target.form, callback);
   }
   
   onIsActiveChange(e)

@@ -49,7 +49,7 @@ class _TeamList extends React.Component
     const { players_id } = this.props.match.params;
     const { playersId } = this.props;
     return players_id ? players_id : playersId;
-  }  
+  }
 
   /* Events */
 

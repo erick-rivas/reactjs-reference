@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 
   Guidelines:
-    - Example component to handle navigation (single view)
+    - EXAMPLE component to handle navigation (single view)
     - Recomended usage: inner navigation
 */
 
@@ -27,7 +27,6 @@ class UserView extends React.Component
         <UserList 
         Item={UserItem}/>
       </div>
-      
 
     const details = props =>
       <div className={styles.details}>

@@ -2,6 +2,8 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading and CRUD operations
+    - To filter data (fk) modify filters with router params or props
     - Modify ALL components if required MAINTAINING the structure of input fields.
 
   Fields:
@@ -60,28 +62,24 @@ class MatchForm extends _MatchForm
             <option value='CUP'>Cup</option>
           </select>
           <br/>
-          {
-            filters.local_id == null ?
+          {filters.local_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
               <select name="local" className={cx(styles.ops, styles.localOps)} value={match.local_id} onChange={this.onLocalChange}>
               { teams.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
-              </div> : null
-          }
-          {
-            filters.visitor_id == null ?
+              </div> : null}
+          {filters.visitor_id == null ?
               <div>
               <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
               <select name="visitor" className={cx(styles.ops, styles.visitorOps)} value={match.visitor_id} onChange={this.onVisitorChange}>
               { teams.map(e => <option value={e.id}>{e.id}</option>) }
               </select>
               <br/>
-              </div> : null
-          }
+              </div> : null}
 
-          { this.renderError() }
+          {this.renderError()}
 
           <button type="submit" className={styles.submit}>Send</button>
 

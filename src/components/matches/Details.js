@@ -2,6 +2,7 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading
     - Modify ALL components if required
 
   Fields:
@@ -40,7 +41,7 @@ class MatchDetails extends _MatchDetails
     if (match.id == null) return <Loading />;
 
     const { path, url } = this.props.match;
-    
+
     return (
     <div className={styles.module}>
       {/* Suggested divs */}
@@ -58,7 +59,7 @@ class MatchDetails extends _MatchDetails
       <br/>
       <label className={cx(styles.lbl, styles.scoresLbl)}>Scores</label><br/>
       <Route path={`${path}`}
-        component={ props => <ScoreView showListOptions={false} {...props}/> } />
+        component={ props => <ScoreView {...props}/> } />
       <br/>
     </div>
     );

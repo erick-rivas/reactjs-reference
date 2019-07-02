@@ -1,5 +1,9 @@
 /*
 __Seed builder__v1.0
+
+  Guidelines:
+    - Parent component automatically handle data loading and CRUD operations
+    - Modify ALL components if required
 */
 
 import * as React from 'react';

@@ -3,9 +3,9 @@ __Seed builder__v1.0
   (Read_only) Modify via SeedManifest.yaml
 */
 
-import ScoreActions from 'actions/scores';
-import PlayerActions from 'actions/players';
-import MatchActions from 'actions/matches';
+import ScoreActions from 'interactors/actions/scores';
+import PlayerActions from 'interactors/actions/players';
+import MatchActions from 'interactors/actions/matches';
 
 class _ScoreBase
 {

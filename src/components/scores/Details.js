@@ -2,6 +2,7 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading
     - Modify ALL components if required
 
   Fields:
@@ -38,7 +39,7 @@ class ScoreDetails extends _ScoreDetails
     if (score.id == null) return <Loading />;
 
     const { path, url } = this.props.match;
-    
+
     return (
     <div className={styles.module}>
       {/* Suggested divs */}

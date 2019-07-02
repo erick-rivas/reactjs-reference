@@ -2,15 +2,16 @@
 __Seed builder__v1.0
 
   Guidelines:
-    - Modify methods via SeedManifest.yaml
-    - Only override existing states & disp if required
-
-  Attributes:
+    - Modify default methods & attributes via SeedManifest.yaml
+    - Include extra states & props according to current models or ACTIONS
+      - Example getTopPlayers()
+      
+  Default attributes:
     - scores
     - players
     - matches
 
-  Methods:
+  Default methods:
     - getScoreDetails(scoreId, callback)
     - getScoreList(filters, callback)
     - getPlayerList(filters, callback)
@@ -18,6 +19,7 @@ __Seed builder__v1.0
     - saveScore(score, callback)
     - setScore(scoreId, score, callback)
     - deleteScore: (scoreId, callback)
+    - uploadFile(formWrapper, callback)
 */
 
 import _ScoreForm from '_seed/containers/scores/Form';

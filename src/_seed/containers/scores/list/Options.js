@@ -6,7 +6,7 @@ __Seed builder__v1.0
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import ScoreActions from 'actions/scores';
+import ScoreActions from 'interactors/actions/scores';
 
 import _ScoreBase from '_seed/containers/scores/Base';
 import ScoreListOptions from 'components/scores/list/Options';

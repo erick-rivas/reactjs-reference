@@ -13,6 +13,8 @@
 
   .form {
     padding: 15px 27px 27px 24px;
+    overflow: auto;
+    max-height: 450px;
     background: white;
     @include box-sizing(border-box);
   }
@@ -38,17 +40,26 @@
     padding: 4px 8px;
     border: 1px solid #d0d0d0;
   }
-  
+
   .dte {
     margin-left: 10px;
     background: #fff;
     border: 1px solid #d0d0d0;
   }
-  
+
   .chk {
     margin-left: 10px;
   }
-  
+
+  .fil {
+    background: #fff;
+    border: 1px solid #d0d0d0;
+  }
+
+  .img {
+    max-width: 100%;
+  }
+
   .ops {
     margin-left: 10px;
     min-width: 50px;

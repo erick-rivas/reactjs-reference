@@ -49,7 +49,7 @@ class _UserList extends React.Component
     const { teams_id } = this.props.match.params;
     const { teamsId } = this.props;
     return teams_id ? teams_id : teamsId;
-  }  
+  }
 
   /* Events */
 

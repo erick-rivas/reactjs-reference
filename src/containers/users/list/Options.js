@@ -2,14 +2,15 @@
 __Seed builder__v1.0
 
   Guidelines:
-    - Modify methods via SeedManifest.yaml
-    - Only override existing states & disp if required
-
-  Attributes:
+    - Modify default methods & attributes via SeedManifest.yaml
+    - Include extra states & props according to current models or ACTIONS
+      - Example getTopPlayers()
+      
+  Default attributes:
     - users
     - teams
 
-  Methods:
+  Default methods:
     - getUserDetails(userId, callback)
     - getUserList(filters, callback)
     - getTeamList(filters, callback)

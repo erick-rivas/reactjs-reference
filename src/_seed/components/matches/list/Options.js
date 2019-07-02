@@ -19,8 +19,7 @@ class _MatchListOptions extends React.Component
     this.onCreateClick = this.onCreateClick.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
   }
-  
-  
+
   /* Events */
 
   onCreateClick()

@@ -6,7 +6,7 @@ __Seed builder__v1.0
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import PlayerActions from 'actions/players';
+import PlayerActions from 'interactors/actions/players';
 
 import _PlayerBase from '_seed/containers/players/Base';
 import PlayerList from 'components/players/List';

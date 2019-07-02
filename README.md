@@ -10,7 +10,7 @@ The reference uses a architecure based on [Flux architecture](https://facebook.g
 
 ### Overview
 
-![alt architecture](./public/dev/architecture.jpg)
+![alt architecture](./public/images/architecture.jpg)
 
 ### Description
 

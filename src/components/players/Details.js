@@ -2,12 +2,13 @@
 __Seed builder__v1.0
 
   Guidelines:
+    - Parent component automatically handle data loading
     - Modify ALL components if required
 
   Fields:
     - id
     - name
-    - photo_url
+    - photo
     - is_active
     - team
 
@@ -38,15 +39,15 @@ class PlayerDetails extends _PlayerDetails
     if (player.id == null) return <Loading />;
 
     const { path, url } = this.props.match;
-    
+
     return (
     <div className={styles.module}>
       {/* Suggested divs */}
       <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
       <label className={cx(styles.txt, styles.nameTxt)}>{player.name.toString()}</label>
       <br/>
-      <label className={cx(styles.lbl, styles.photoUrlLbl)}>Photo url</label><br/>
-      <label className={cx(styles.txt, styles.photoUrlTxt)}>{player.photo_url.toString()}</label>
+      <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label><br/>
+      <img src={player.photo.url} className={cx(styles.img, styles.photoImg)}></img>
       <br/>
       <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label><br/>
       <label className={cx(styles.txt, styles.isActiveTxt)}>{player.is_active.toString()}</label>

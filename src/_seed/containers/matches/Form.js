@@ -6,7 +6,8 @@ __Seed builder__v1.0
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import MatchActions from 'actions/matches';
+import MatchActions from 'interactors/actions/matches';
+import FileActions from 'interactors/actions/helpers/files';
 
 import _MatchBase from '_seed/containers/matches/Base';
 import MatchForm from 'components/matches/Form';
@@ -14,11 +15,14 @@ import MatchForm from 'components/matches/Form';
 class _MatchForm extends _MatchBase
 {
   matches = new MatchActions();
+  files = new FileActions();
 
   _states = (state, props) => ({
   });
 
   _disps = disp => ({
+    uploadFile: (formWrapper, callback) =>
+      disp(this.files.uploadFile(formWrapper, callback)),
   })
 
   getRouter = () =>
