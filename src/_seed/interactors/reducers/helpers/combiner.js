@@ -8,8 +8,8 @@ import { combineReducers } from 'redux';
 import Users from 'interactors/reducers/users';
 import Teams from 'interactors/reducers/teams';
 import Players from 'interactors/reducers/players';
-import Matches from 'interactors/reducers/matches';
-import Scores from 'interactors/reducers/scores';
+import Matches from 'interactors/reducers/stats/matches';
+import Scores from 'interactors/reducers/stats/scores';
 
 class _Combiner
 {

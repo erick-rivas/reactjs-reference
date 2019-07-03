@@ -9,6 +9,7 @@ models:
     read: true
     type: team[]
     write: false
+  group: ''
   meta: {}
   name: user
   read: true
@@ -62,6 +63,7 @@ models:
     read: true
     type: player[]
     write: false
+  group: ''
   meta: {}
   name: team
   read: true
@@ -103,6 +105,7 @@ models:
     read: true
     type: team
     write: true
+  group: ''
   meta: {}
   name: player
   read: true
@@ -158,6 +161,7 @@ models:
     read: true
     type: score[]
     write: false
+  group: stat
   meta: {}
   name: match
   read: true
@@ -191,6 +195,7 @@ models:
     read: true
     type: match
     write: true
+  group: stat
   meta: {}
   name: score
   read: true

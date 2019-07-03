@@ -10,8 +10,8 @@ import _Home from '_seed/components/Home';
 import UserPanel from 'components/users/Panel';
 import TeamPanel from 'components/teams/Panel';
 import PlayerPanel from 'components/players/Panel';
-import MatchPanel from 'components/matches/Panel';
-import ScorePanel from 'components/scores/Panel';
+import MatchPanel from 'components/stats/matches/Panel';
+import ScorePanel from 'components/stats/scores/Panel';
 
 import styles from 'util/css/Home.module.css';
 
