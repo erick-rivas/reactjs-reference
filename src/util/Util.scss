@@ -1,4 +1,4 @@
-@import 'src/settings/Colors';
+@import 'src/util/settings/Colors';
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

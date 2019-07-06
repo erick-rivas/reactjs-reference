@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { MuiTheme } from 'settings/MuiTheme';
+import { MuiTheme } from 'util/settings/MuiTheme';
 
 import App from 'components/App';
 import Worker from 'util/bin/Worker';

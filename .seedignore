@@ -2,11 +2,11 @@
 build
 node_modules
 src/sbuild
-src/actions/*.js
 src/components/*
 src/containers/*
-src/reducers/*.js
-src/util/css/*
+src/actions/*
+src/reducers/*
+src/resources/css/*
 ?app.js
 ?package.json
 ?package-lock.json
@@ -14,7 +14,7 @@ src/util/css/*
 ?public/*
 ?src/index.css
 ?src/index.js
-?src/assets/*
-?src/settings/*
+?src/resources/*
+?src/util/settings/*
 !.gitignore
 !*helpers

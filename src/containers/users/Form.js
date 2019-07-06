@@ -1,34 +1,43 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Modify default methods & attributes via SeedManifest.yaml
-    - Include extra states & props according to current models or ACTIONS
-      - Example getTopPlayers()
-      
-  Default attributes:
-    - users
-    - teams
-
-  Default methods:
-    - getUserDetails(userId, callback)
-    - getUserList(filters, callback)
-    - getTeamList(filters, callback)
-    - saveUser(user, callback)
-    - setUser(userId, user, callback)
-    - deleteUser: (userId, callback)
-    - uploadFile(formWrapper, callback)
 */
 
-import _UserForm from 'sbuild/containers/users/Form';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class UserForm extends _UserForm
-{
-  states = state => ({
-  });
+import UserActions from 'actions/users';
+import TeamActions from 'actions/teams';
+import FileActions from 'actions/helpers/files';
 
-  disps = disp => ({
-  });
-}
+import UserForm from 'components/users/Form';
 
-export default new UserForm().getRouter()
+const users = new UserActions();
+const teams = new TeamActions();
+const files = new FileActions();
+
+const stateToProps = (state, props) => ({
+  users: state.users.dataset,
+  teams: state.teams.dataset,
+});
+
+const dispToProps = disp => ({
+  getUserDetails: (userId, callback) =>
+    disp(users.getUserDetails(userId, callback)),
+  getUserList: (params, callback) =>
+    disp(users.getUserList(params, callback)),
+  getTeamList: (params, callback) =>
+    disp(teams.getTeamList(params, callback)),
+  saveUser: (user, callback) =>
+    disp(users.saveUser(user, callback)),
+  setUser: (userId, user, callback) =>
+    disp(users.setUser(userId, user, callback)),
+  deleteUser: (userId, callback) =>
+    disp(users.deleteUser(userId, callback)),
+  uploadFile: (formWrapper, callback) =>
+    disp(files.uploadFile(formWrapper, callback)),
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(UserForm));

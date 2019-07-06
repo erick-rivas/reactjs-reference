@@ -2,15 +2,18 @@
 __Seed builder__v1.0
 */
 
-import _Topnav from 'sbuild/containers/nav/Topnav';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class Topnav extends _Topnav
-{
-  states = state => ({
-  });
+import Topnav from 'components/nav/Topnav'
 
-  disps = disp => ({
-  })
-}
+const stateToProps = (state, props) => ({
+});
 
-export default new _Topnav().getRouter()
+const dispToProps = disp => ({
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(Topnav));

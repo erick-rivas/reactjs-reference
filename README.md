@@ -66,7 +66,7 @@ GET http://localhost:3000
 
 ### Set production settings
 
--  Configure src/settings/Urls.js file with api & server settings
+-  Configure src/util/settings/Urls.js file with api & server settings
 
 ### Deploy
 

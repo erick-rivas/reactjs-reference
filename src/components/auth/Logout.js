@@ -5,34 +5,17 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import _Logout from 'sbuild/components/auth/Logout';
+import Component from 'components/auth/Logout.link.js'
 
-import styles from 'util/css/auth/Logout.module.css';
+import styles from 'resources/css/auth/Logout.module.css';
 
-class Logout extends _Logout
+class Logout extends Component
 {
   render()
   {
     return (
-    <div className={styles.module}></div>
+      <div className={styles.module}></div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-  }
-
-  onLogout(res)
-  {
-    //Suggested method
-    this.props.history.replace('/login');
-  }
-
-  onError(error)
-  {
-    //Suggested method
-    this.props.history.replace('/login');
   }
 }
 

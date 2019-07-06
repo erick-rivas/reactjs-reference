@@ -1,9 +1,5 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - EXAMPLE component to handle navigation (single view)
-    - Recomended usage: inner navigation
 */
 
 import * as React from 'react';
@@ -14,9 +10,11 @@ import TeamDetails from 'containers/teams/Details';
 import TeamList from 'containers/teams/List';
 import TeamItem from 'components/teams/Item';
 
-import styles from 'util/css/nav/teams/View.module.css';
+import Component from 'components/nav/teams/View.link.js'
 
-class TeamView extends React.Component
+import styles from 'resources/css/nav/teams/View.module.css';
+
+class TeamView extends Component
 {
   render()
   {
@@ -34,28 +32,23 @@ class TeamView extends React.Component
       </div>
    
     return (
-    <div className={styles.module}>
-      
-      <div className={styles.container}>
-        <Switch>
-         <Route
-          path={`${path}/:team_id(\\d+)`}
-          component={details} />
-          <Route
-            path={`${path}`}
-            component={list} />
-        </Switch>
+      <div className={styles.module}>
+        
+        <div className={styles.container}>
+          <Switch>
+           <Route
+            path={`${path}/:team_id(\\d+)`}
+            component={details} />
+            <Route
+              path={`${path}`}
+              component={list} />
+          </Switch>
+        </div>
+        
       </div>
-      
-    </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 
 export default TeamView;
+

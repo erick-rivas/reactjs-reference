@@ -1,0 +1,18 @@
+.module .container {
+  position: relative;
+  width: 500px;
+  height: 550px;
+  left: 50%;
+  margin-left: -250px;
+  top: 50%;
+  margin-top: -275px; }
+
+.module .close {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: -37px;
+  margin-left: 470px; }
+
+.module .close svg {
+  width: 21px;
+  height: 21px; }

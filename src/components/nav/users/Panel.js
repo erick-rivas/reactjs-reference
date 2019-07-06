@@ -1,9 +1,5 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - EXAMPLE component to handle navigation (divided view)
-    - Recomended usage: main navigation
 */
 
 import * as React from 'react';
@@ -12,28 +8,30 @@ import { Route } from 'react-router-dom';
 
 import UserDetails from 'containers/users/Details';
 import UserList from 'containers/users/List';
-import UserListOptions from 'containers/users/list/Options';
-import UserDetailsOptions from 'containers/users/details/Options';
+import UserListOptions from 'containers/users/ListOptions';
+import UserDetailsOptions from 'containers/users/DetailsOptions';
 import UserItem from 'components/users/Item';
 
-import styles from 'util/css/nav/users/Panel.module.css';
+import Component from 'components/nav/users/Panel.link.js'
 
-class UserPanel extends React.Component
+import styles from 'resources/css/nav/users/Panel.module.css';
+
+class UserPanel extends Component
 {
   render()
   {
     const { path, url } = this.props.match;
    
     const list = props =>
-    <div className={styles.list}>
-      <div className={styles.options}>
-        <UserListOptions {...props}/>
+      <div className={styles.list}>
+        <div className={styles.options}>
+          <UserListOptions {...props}/>
+        </div>
+        <div className={styles.content}>
+          <UserList {...props}
+            Item={UserItem} />
+        </div>
       </div>
-      <div className={styles.content}>
-        <UserList {...props}
-          Item={UserItem} />
-      </div>
-    </div>
 
     const details = props =>
       <div className={styles.details}>
@@ -48,25 +46,17 @@ class UserPanel extends React.Component
       </div>
    
     return (
-    <div className={styles.module}>
-      
-      <div className={styles.container}>        
-        <Route
-          path={`${path}`}
-          component={list} />
-        <Route
-          path={`${path}/:user_id(\\d+)`}
-          component={details} />
+      <div className={styles.module}>
+        <div className={styles.container}>        
+          <Route
+            path={`${path}`}
+            component={list} />
+          <Route
+            path={`${path}/:user_id(\\d+)`}
+            component={details} />
+        </div>
       </div>
-      
-    </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 

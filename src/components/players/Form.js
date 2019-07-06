@@ -1,36 +1,18 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Parent component automatically handle data loading and CRUD operations
-    - To filter data (fk) modify filters with router params or props
-    - Modify ALL components if required MAINTAINING the structure of input fields.
-
-  Fields:
-    - id
-    - name
-    - photo
-    - is_active
-    - team
-
-  Args:
-    - player_id
-
-  Filters:
-    - user_id
-    - team_id 
 */
 
 import * as React from 'react';
 import cx from 'classnames';
 
-import _PlayerForm from 'sbuild/components/players/Form';
+import { getDateInput } from 'util/FormatUtil';
 import Loading from 'components/helpers/Loading';
 
-import styles from 'util/css/players/Form.module.css';
-import { getDateInput } from 'util/FormatUtil';
+import Component from 'components/players/Form.link.js';
 
-class PlayerForm extends _PlayerForm
+import styles from 'resources/css/players/Form.module.css';
+
+class PlayerForm extends Component
 {
   render()
   {
@@ -80,26 +62,6 @@ class PlayerForm extends _PlayerForm
     </div>
     );
   }
-
-  constructor(props)
-  {
-    super(props);
-  }
-
-  onSave(res)
-  {
-    //Suggested method
-    this.props.onClose();
-  }
-
-  onError(error)
-  {
-    //Suggested method
-    this.setState({
-      error: 'An error has occurred, try again'
-    });
-  }
-
 }
 
 export default PlayerForm;

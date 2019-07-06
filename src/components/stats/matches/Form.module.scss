@@ -1,0 +1,35 @@
+/*
+__Seed builder__v1.0
+  Suggested styles:
+    .dateLbl
+    .dateDte
+    .typeLbl
+    .typeOps
+    .localLbl
+    .localOps
+    .visitorLbl
+    .visitorOps
+*/
+
+/* Default theme */
+@import 'src/resources/themes/basic/Form';
+@include theme();
+
+@import 'src/util/Util';
+
+.module {
+  width: 100%;
+  height: 100%;
+}
+
+.lbl {}
+.txt {}
+.txa {}
+.dte {}
+.chk {}
+.fil {}
+.img {}
+.ops {}
+.error {}
+.submit {}
+

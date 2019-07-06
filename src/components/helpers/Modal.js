@@ -5,7 +5,7 @@ import ModalContainer from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import classes from 'util/css/helpers/Modal.module.css';
+import classes from 'resources/css/helpers/Modal.module.css';
 
 class Modal extends React.Component
 {

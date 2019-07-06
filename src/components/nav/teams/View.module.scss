@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/View';
+@import 'src/resources/themes/basic/View';
 @include theme();
 
 @import 'src/util/Util';

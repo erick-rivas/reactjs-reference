@@ -2,19 +2,22 @@ import * as React from 'react';
 import cx from 'classnames';
 import Svg from 'react-svg';
 
-import styles from 'util/css/nav/Topnav.module.css';
+import Component from 'components/nav/Topnav.link.js'
 
-class Topnav extends React.Component
+import styles from 'resources/css/nav/Topnav.module.css';
+
+class Topnav extends Component
 {
   render()
   {
     return (
     <div className={styles.module}>
        <Svg className={styles.menu} 
-        src={require('assets/icons/ic_menu.svg')} />
+        src={require('resources/icons/ic_menu.svg')} />
     </div>
     );
   }
 }
 
 export default Topnav;
+

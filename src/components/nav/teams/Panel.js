@@ -1,9 +1,5 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - EXAMPLE component to handle navigation (divided view)
-    - Recomended usage: main navigation
 */
 
 import * as React from 'react';
@@ -12,28 +8,30 @@ import { Route } from 'react-router-dom';
 
 import TeamDetails from 'containers/teams/Details';
 import TeamList from 'containers/teams/List';
-import TeamListOptions from 'containers/teams/list/Options';
-import TeamDetailsOptions from 'containers/teams/details/Options';
+import TeamListOptions from 'containers/teams/ListOptions';
+import TeamDetailsOptions from 'containers/teams/DetailsOptions';
 import TeamItem from 'components/teams/Item';
 
-import styles from 'util/css/nav/teams/Panel.module.css';
+import Component from 'components/nav/teams/Panel.link.js'
 
-class TeamPanel extends React.Component
+import styles from 'resources/css/nav/teams/Panel.module.css';
+
+class TeamPanel extends Component
 {
   render()
   {
     const { path, url } = this.props.match;
    
     const list = props =>
-    <div className={styles.list}>
-      <div className={styles.options}>
-        <TeamListOptions {...props}/>
+      <div className={styles.list}>
+        <div className={styles.options}>
+          <TeamListOptions {...props}/>
+        </div>
+        <div className={styles.content}>
+          <TeamList {...props}
+            Item={TeamItem} />
+        </div>
       </div>
-      <div className={styles.content}>
-        <TeamList {...props}
-          Item={TeamItem} />
-      </div>
-    </div>
 
     const details = props =>
       <div className={styles.details}>
@@ -48,25 +46,17 @@ class TeamPanel extends React.Component
       </div>
    
     return (
-    <div className={styles.module}>
-      
-      <div className={styles.container}>        
-        <Route
-          path={`${path}`}
-          component={list} />
-        <Route
-          path={`${path}/:team_id(\\d+)`}
-          component={details} />
+      <div className={styles.module}>
+        <div className={styles.container}>        
+          <Route
+            path={`${path}`}
+            component={list} />
+          <Route
+            path={`${path}/:team_id(\\d+)`}
+            component={details} />
+        </div>
       </div>
-      
-    </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 

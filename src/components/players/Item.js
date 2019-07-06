@@ -1,15 +1,5 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Modify ALL components if required
-
-  Fields:
-    - id
-    - name
-    - photo
-    - is_active
-    - team
 */
 
 import * as React from 'react';
@@ -19,12 +9,13 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import _PlayerItem from 'sbuild/components/players/Item';
 import * as DataUtil from 'util/DataUtil.js';
 
-import styles from 'util/css/players/Item.module.css';
+import Component from 'components/players/Item.link.js';
 
-class PlayerItem extends _PlayerItem
+import styles from 'resources/css/players/Item.module.css';
+
+class PlayerItem extends Component
 {
   render()
   {
@@ -35,7 +26,7 @@ class PlayerItem extends _PlayerItem
         <div className={styles.title}>{player.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(player)}</div>
         <Svg className={styles.options}
-          src={require('assets/icons/ic_expand.svg')}
+          src={require('resources/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu
           anchorEl={this.state.anchorMenu}

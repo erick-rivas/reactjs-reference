@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/Login';
+@import 'src/resources/themes/basic/Login';
 @include theme();
 
 @import 'src/util/Util';
@@ -24,4 +24,3 @@ __Seed builder__v1.0
 .remember {}
 .error {}
 .submit {}
-

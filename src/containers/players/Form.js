@@ -1,34 +1,43 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Modify default methods & attributes via SeedManifest.yaml
-    - Include extra states & props according to current models or ACTIONS
-      - Example getTopPlayers()
-      
-  Default attributes:
-    - players
-    - teams
-
-  Default methods:
-    - getPlayerDetails(playerId, callback)
-    - getPlayerList(filters, callback)
-    - getTeamList(filters, callback)
-    - savePlayer(player, callback)
-    - setPlayer(playerId, player, callback)
-    - deletePlayer: (playerId, callback)
-    - uploadFile(formWrapper, callback)
 */
 
-import _PlayerForm from 'sbuild/containers/players/Form';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class PlayerForm extends _PlayerForm
-{
-  states = state => ({
-  });
+import PlayerActions from 'actions/players';
+import TeamActions from 'actions/teams';
+import FileActions from 'actions/helpers/files';
 
-  disps = disp => ({
-  });
-}
+import PlayerForm from 'components/players/Form';
 
-export default new PlayerForm().getRouter()
+const players = new PlayerActions();
+const teams = new TeamActions();
+const files = new FileActions();
+
+const stateToProps = (state, props) => ({
+  players: state.players.dataset,
+  teams: state.teams.dataset,
+});
+
+const dispToProps = disp => ({
+  getPlayerDetails: (playerId, callback) =>
+    disp(players.getPlayerDetails(playerId, callback)),
+  getPlayerList: (params, callback) =>
+    disp(players.getPlayerList(params, callback)),
+  getTeamList: (params, callback) =>
+    disp(teams.getTeamList(params, callback)),
+  savePlayer: (player, callback) =>
+    disp(players.savePlayer(player, callback)),
+  setPlayer: (playerId, player, callback) =>
+    disp(players.setPlayer(playerId, player, callback)),
+  deletePlayer: (playerId, callback) =>
+    disp(players.deletePlayer(playerId, callback)),
+  uploadFile: (formWrapper, callback) =>
+    disp(files.uploadFile(formWrapper, callback)),
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(PlayerForm));

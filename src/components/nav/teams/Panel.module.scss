@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/Panel';
+@import 'src/resources/themes/basic/Panel';
 @include theme();
 
 @import 'src/util/Util';
@@ -21,4 +21,3 @@ __Seed builder__v1.0
 .details .card {}
 .details .options {}
 .details .content {}
-

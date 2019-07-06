@@ -2,15 +2,18 @@
 __Seed builder__v1.0
 */
 
-import _Home from 'sbuild/containers/Home';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class Home extends _Home
-{
-  states = state => ({
-  });
+import Home from 'components/Home'
 
-  disps = disp => ({
-  })
-}
+const stateToProps = (state, props) => ({
+});
 
-export default new Home().getRouter()
+const dispToProps = disp => ({
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(Home));

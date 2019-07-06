@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/Topnav';
+@import 'src/resources/themes/basic/Topnav';
 @include theme();
 
 @import 'src/util/Util';
@@ -14,4 +14,3 @@ __Seed builder__v1.0
 }
 
 .menu {}
-

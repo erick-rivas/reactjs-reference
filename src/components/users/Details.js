@@ -1,61 +1,42 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Parent component automatically handle data loading
-    - Modify ALL components if required
-
-  Fields:
-    - id
-    - username
-    - first_name
-    - last_name
-    - email
-    - is_active
-    - teams
-
-  Args:
-    - user_id
 */
 
 import * as React from 'react';
+import * as DataUtil from 'util/DataUtil.js';
+
 import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-
-import _UserDetails from 'sbuild/components/users/Details';
 import TeamView from 'components/nav/teams/View';
 import Loading from 'components/helpers/Loading';
-import * as DataUtil from 'util/DataUtil.js';
 
-import styles from 'util/css/users/Details.module.css';
+import Component from 'components/users/Details.link.js'
 
-class UserDetails extends _UserDetails
+import styles from 'resources/css/users/Details.module.css';
+
+class UserDetails extends Component
 {
   render()
   {
     const { users = [] } = this.props;
     const userId = this.getUserId();
     const user = DataUtil.getItem(users, userId);
+      
     if (user.id == null) return <Loading />;
 
     const { path, url } = this.props.match;
-
+    
     return (
-    <div className={styles.module}>
-      {/* Suggested divs */}
-      <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label><br/>
-      <Route path={`${path}`}
-        component={ props => <TeamView {...props}/> } />
-      <br/>
-    </div>
+      <div className={styles.module}>
+        {/* Suggested divs */}
+        <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label><br/>
+        <Route path={`${path}`}
+          component={ props => <TeamView {...props}/> } />
+        <br/>
+      </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
   }
 }
 

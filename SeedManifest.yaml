@@ -161,7 +161,7 @@ models:
     read: true
     type: score[]
     write: false
-  group: stat
+  group: stats
   meta: {}
   name: match
   read: true
@@ -195,7 +195,7 @@ models:
     read: true
     type: match
     write: true
-  group: stat
+  group: stats
   meta: {}
   name: score
   read: true

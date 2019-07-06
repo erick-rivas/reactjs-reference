@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/List';
+@import 'src/resources/themes/basic/List';
 @include theme();
 
 @import 'src/util/Util';
@@ -16,4 +16,3 @@ __Seed builder__v1.0
 .item {}
 .item:hover,
 .item.active {} 
-

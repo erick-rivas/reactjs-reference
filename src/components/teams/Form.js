@@ -1,37 +1,18 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Parent component automatically handle data loading and CRUD operations
-    - To filter data (fk) modify filters with router params or props
-    - Modify ALL components if required MAINTAINING the structure of input fields.
-
-  Fields:
-    - id
-    - name
-    - logo
-    - description
-    - market_value
-    - identity_docs
-    - players
-
-  Args:
-    - team_id
-
-  Filters:
-    - user_id 
 */
 
 import * as React from 'react';
 import cx from 'classnames';
 
-import _TeamForm from 'sbuild/components/teams/Form';
+import { getDateInput } from 'util/FormatUtil';
 import Loading from 'components/helpers/Loading';
 
-import styles from 'util/css/teams/Form.module.css';
-import { getDateInput } from 'util/FormatUtil';
+import Component from 'components/teams/Form.link.js';
 
-class TeamForm extends _TeamForm
+import styles from 'resources/css/teams/Form.module.css';
+
+class TeamForm extends Component
 {
   render()
   {
@@ -75,26 +56,6 @@ class TeamForm extends _TeamForm
     </div>
     );
   }
-
-  constructor(props)
-  {
-    super(props);
-  }
-
-  onSave(res)
-  {
-    //Suggested method
-    this.props.onClose();
-  }
-
-  onError(error)
-  {
-    //Suggested method
-    this.setState({
-      error: 'An error has occurred, try again'
-    });
-  }
-
 }
 
 export default TeamForm;

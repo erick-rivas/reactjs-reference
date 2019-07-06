@@ -1,19 +1,25 @@
 /*
 __Seed builder__v1.0
-
-  Default methods:
-    - logout(callback)
 */
 
-import _Logout from 'sbuild/containers/auth/Logout';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class Logout extends _Logout
-{
-  states = state => ({
-  });
+import AuthActions from 'actions/helpers/auth'
 
-  disps = disp => ({
-  })
-}
+import Logout from 'components/auth/Logout'
 
-export default new Logout().getRouter()
+const auth = new AuthActions();
+
+const stateToProps = (state, props) => ({
+});
+
+const dispToProps = disp => ({
+  logout: callback =>
+    disp(auth.logout(callback))
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(Logout));

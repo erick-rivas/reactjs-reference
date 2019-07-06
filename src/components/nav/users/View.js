@@ -1,9 +1,5 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - EXAMPLE component to handle navigation (single view)
-    - Recomended usage: inner navigation
 */
 
 import * as React from 'react';
@@ -14,9 +10,11 @@ import UserDetails from 'containers/users/Details';
 import UserList from 'containers/users/List';
 import UserItem from 'components/users/Item';
 
-import styles from 'util/css/nav/users/View.module.css';
+import Component from 'components/nav/users/View.link.js'
 
-class UserView extends React.Component
+import styles from 'resources/css/nav/users/View.module.css';
+
+class UserView extends Component
 {
   render()
   {
@@ -34,28 +32,23 @@ class UserView extends React.Component
       </div>
    
     return (
-    <div className={styles.module}>
-      
-      <div className={styles.container}>
-        <Switch>
-         <Route
-          path={`${path}/:user_id(\\d+)`}
-          component={details} />
-          <Route
-            path={`${path}`}
-            component={list} />
-        </Switch>
+      <div className={styles.module}>
+        
+        <div className={styles.container}>
+          <Switch>
+           <Route
+            path={`${path}/:user_id(\\d+)`}
+            component={details} />
+            <Route
+              path={`${path}`}
+              component={list} />
+          </Switch>
+        </div>
+        
       </div>
-      
-    </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 
 export default UserView;
+

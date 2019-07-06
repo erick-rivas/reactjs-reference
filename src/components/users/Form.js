@@ -1,37 +1,18 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Parent component automatically handle data loading and CRUD operations
-    - To filter data (fk) modify filters with router params or props
-    - Modify ALL components if required MAINTAINING the structure of input fields.
-
-  Fields:
-    - id
-    - username
-    - first_name
-    - last_name
-    - email
-    - is_active
-    - teams
-
-  Args:
-    - user_id
-
-  Filters:
-    - user_id 
 */
 
 import * as React from 'react';
 import cx from 'classnames';
 
-import _UserForm from 'sbuild/components/users/Form';
+import { getDateInput } from 'util/FormatUtil';
 import Loading from 'components/helpers/Loading';
 
-import styles from 'util/css/users/Form.module.css';
-import { getDateInput } from 'util/FormatUtil';
+import Component from 'components/users/Form.link.js';
 
-class UserForm extends _UserForm
+import styles from 'resources/css/users/Form.module.css';
+
+class UserForm extends Component
 {
   render()
   {
@@ -60,26 +41,6 @@ class UserForm extends _UserForm
     </div>
     );
   }
-
-  constructor(props)
-  {
-    super(props);
-  }
-
-  onSave(res)
-  {
-    //Suggested method
-    this.props.onClose();
-  }
-
-  onError(error)
-  {
-    //Suggested method
-    this.setState({
-      error: 'An error has occurred, try again'
-    });
-  }
-
 }
 
 export default UserForm;

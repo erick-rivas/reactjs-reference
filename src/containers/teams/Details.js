@@ -1,33 +1,39 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Modify default methods & attributes via SeedManifest.yaml
-    - Include extra states & props according to current models or ACTIONS
-      - Example getTopPlayers()
-
-  Default attributes:
-    - teams
-    - players
-
-  Default methods:
-    - getTeamDetails(teamId, callback)
-    - getTeamList(filters, callback)
-    - getPlayerList(filters, callback)
-    - saveTeam(team, callback)
-    - setTeam(teamId, team, callback)
-    - deleteTeam: (teamId, callback)
 */
 
-import _TeamDetails from 'sbuild/containers/teams/Details';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class TeamDetails extends _TeamDetails
-{
-  states = state => ({
-  });
+import TeamActions from 'actions/teams';
+import PlayerActions from 'actions/players';
 
-  disps = disp => ({
-  });
-}
+import TeamDetails from 'components/teams/Details';
 
-export default new TeamDetails().getRouter()
+const teams = new TeamActions();
+const players = new PlayerActions();
+
+const stateToProps = (state, props) => ({
+  teams: state.teams.dataset,
+  players: state.players.dataset,
+});
+
+const dispToProps = disp => ({
+  getTeamDetails: (teamId, callback) =>
+    disp(teams.getTeamDetails(teamId, callback)),
+  getTeamList: (params, callback) =>
+    disp(teams.getTeamList(params, callback)),
+  getPlayerList: (params, callback) =>
+    disp(players.getPlayerList(params, callback)),
+  saveTeam: (team, callback) =>
+    disp(teams.saveTeam(team, callback)),
+  setTeam: (teamId, team, callback) =>
+    disp(teams.setTeam(teamId, team, callback)),
+  deleteTeam: (teamId, callback) =>
+    disp(teams.deleteTeam(teamId, callback)),
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(TeamDetails));

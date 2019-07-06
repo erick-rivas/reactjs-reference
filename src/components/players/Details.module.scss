@@ -12,7 +12,7 @@ __Seed builder__v1.0
 */
 
 /* Default theme */
-@import 'src/util/themes/basic/Details';
+@import 'src/resources/themes/basic/Details';
 @include theme();
 
 @import 'src/util/Util';
@@ -27,4 +27,3 @@ __Seed builder__v1.0
 .lbl {}
 .txt {}
 .img {}
-

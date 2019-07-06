@@ -1,19 +1,25 @@
 /*
 __Seed builder__v1.0
-
-  Default methods:
-    - login(email, password, callback)
 */
 
-import _Login from 'sbuild/containers/auth/Login';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class Login extends _Login
-{
-  states = state => ({
-  });
+import AuthActions from 'actions/helpers/auth'
 
-  disps = disp => ({
-  })
-}
+import Login from 'components/auth/Login'
 
-export default new Login().getRouter()
+const auth = new AuthActions();
+
+const stateToProps = (state, props) => ({
+});
+
+const dispToProps = disp => ({
+  login: (email, password, callback) =>
+    disp(auth.login(email, password, callback))
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(Login));

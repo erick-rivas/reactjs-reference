@@ -2,15 +2,18 @@
 __Seed builder__v1.0
 */
 
-import _Sidenav from 'sbuild/containers/nav/Sidenav';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class Sidenav extends _Sidenav
-{
-  states = state => ({
-  });
+import Sidenav from 'components/nav/Sidenav'
 
-  disps = disp => ({
-  })
-}
+const stateToProps = (state, props) => ({
+});
 
-export default new Sidenav().getRouter()
+const dispToProps = disp => ({
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(Sidenav));

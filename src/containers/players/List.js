@@ -1,33 +1,39 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Modify default methods & attributes via SeedManifest.yaml
-    - Include extra states & props according to current models or ACTIONS
-      - Example getTopPlayers()
-      
-  Default attributes:
-    - players
-    - teams
-
-  Default methods:
-    - getPlayerDetails(playerId, callback)
-    - getPlayerList(filters, callback)
-    - getTeamList(filters, callback)
-    - savePlayer(player, callback)
-    - setPlayer(playerId, player, callback)
-    - deletePlayer: (playerId, callback)
 */
 
-import _PlayerList from 'sbuild/containers/players/List';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
-class PlayerList extends _PlayerList
-{
-  states = state => ({
-  });
+import PlayerActions from 'actions/players';
+import TeamActions from 'actions/teams';
 
-  disps = disp => ({
-  });
-}
+import PlayerList from 'components/players/List';
 
-export default new PlayerList().getRouter()
+const players = new PlayerActions();
+const teams = new TeamActions();
+
+const stateToProps = (state, props) => ({
+  players: state.players.dataset,
+  teams: state.teams.dataset,
+});
+
+const dispToProps = disp => ({
+  getPlayerDetails: (playerId, callback) =>
+    disp(players.getPlayerDetails(playerId, callback)),
+  getPlayerList: (params, callback) =>
+    disp(players.getPlayerList(params, callback)),
+  getTeamList: (params, callback) =>
+    disp(teams.getTeamList(params, callback)),
+  savePlayer: (player, callback) =>
+    disp(players.savePlayer(player, callback)),
+  setPlayer: (playerId, player, callback) =>
+    disp(players.setPlayer(playerId, player, callback)),
+  deletePlayer: (playerId, callback) =>
+    disp(players.deletePlayer(playerId, callback)),
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(PlayerList));

@@ -1,13 +1,5 @@
 /*
 __Seed builder__v1.0
-
-  Guidelines:
-    - Parent component automatically handle data loading and filtering
-    - To filter data modify filters with router params or props
-    - Modify ALL components if required
-
-  Filters:
-    - user_id
 */
 
 import * as React from 'react';
@@ -15,12 +7,13 @@ import cx from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 
-import _TeamList from 'sbuild/components/teams/List';
 import Loading from 'components/helpers/Loading';
 
-import styles from 'util/css/teams/List.module.css';
+import Component from 'components/teams/List.link.js';
 
-class TeamList extends _TeamList
+import styles from 'resources/css/teams/List.module.css';
+
+class TeamList extends Component
 {
   render()
   {
@@ -49,17 +42,6 @@ class TeamList extends _TeamList
       { teamList }
     </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-  }
-
-  /* Events */
-
-  onItemClick(teamId)
-  {
   }
 }
 
