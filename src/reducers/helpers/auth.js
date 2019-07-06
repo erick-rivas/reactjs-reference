@@ -1,3 +1,8 @@
+/*
+__Seed builder__v1.0
+  (Read_only) Builder helper
+*/
+
 import Actions from 'actions/helpers/auth'
 import Reducer from 'reducers/helpers/reducer'
 

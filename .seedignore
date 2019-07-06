@@ -1,4 +1,6 @@
 .git*
+.seedignore
+LICENSE
 build
 node_modules
 src/sbuild

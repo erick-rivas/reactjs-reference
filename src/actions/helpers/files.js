@@ -1,3 +1,8 @@
+/*
+__Seed builder__v1.0
+  (Read_only) Builder helper
+*/
+
 import $ from 'jquery';
 import * as Urls from 'util/settings/Urls';
 

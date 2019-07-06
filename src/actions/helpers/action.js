@@ -1,3 +1,8 @@
+/*
+__Seed builder__v1.0
+  (Read_only) Builder helper
+*/
+
 import fetch from 'cross-fetch';
 import * as Urls from 'util/settings/Urls';
 import * as Const from 'actions/helpers/const';

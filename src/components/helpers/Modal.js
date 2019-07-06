@@ -1,3 +1,8 @@
+/*
+__Seed builder__v1.0
+  (Read_only) Builder helper
+*/
+
 import * as React from 'react';
 import cx from 'classnames';
 
@@ -5,9 +10,11 @@ import ModalContainer from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import classes from 'resources/css/helpers/Modal.module.css';
+import Component from 'components/helpers/Loading.link.js'
 
-class Modal extends React.Component
+import styles from 'resources/css/helpers/Modal.module.css';
+
+class Modal extends Component
 {
   render() 
   {
@@ -35,15 +42,15 @@ class Modal extends React.Component
 
     return (
       <ModalContainer
-        className={classes.module}
+        className={styles.module}
         open={true}
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={cx(classes.container,'animated',animation)} style={containerStyle}>
+        <div className={cx(styles.container,'animated',animation)} style={containerStyle}>
 
           <IconButton
-            className={classes.close}
+            className={styles.close}
             style={closeStyle}
             onClick={this.onClose}>
             <CloseIcon />
