@@ -7,14 +7,14 @@ __Seed builder__v1.0
       - Example: For operation purposes
  
   States:
-    - users
-    - teams
     - players
+    - teams
+    - users
     - matches
     - scores
 */
 
-import _Combiner from '_seed/interactors/reducers/helpers/combiner';
+import _Combiner from 'sbuild/interactors/reducers/helpers/combiner';
 
 import Auth from 'interactors/reducers/helpers/auth';
 

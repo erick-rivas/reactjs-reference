@@ -24,7 +24,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import _PlayerForm from '_seed/components/players/Form';
+import _PlayerForm from 'sbuild/components/players/Form';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/players/Form.module.css';

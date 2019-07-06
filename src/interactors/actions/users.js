@@ -13,7 +13,7 @@ __Seed builder__v1.0
     - deleteUser(userId, callback)
 */
 
-import _Users from '_seed/interactors/actions/users';
+import _Users from 'sbuild/interactors/actions/users';
 
 class Users extends _Users {}
 

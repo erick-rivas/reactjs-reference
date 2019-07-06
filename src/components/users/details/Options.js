@@ -12,7 +12,7 @@ import Svg from 'react-svg';
 
 import { Link } from 'react-router-dom';
 
-import _UserDetailsOptions from '_seed/components/users/details/Options';
+import _UserDetailsOptions from 'sbuild/components/users/details/Options';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/users/details/Options.module.css';

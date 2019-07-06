@@ -25,7 +25,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import _TeamForm from '_seed/components/teams/Form';
+import _TeamForm from 'sbuild/components/teams/Form';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/teams/Form.module.css';

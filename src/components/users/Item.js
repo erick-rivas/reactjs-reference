@@ -21,7 +21,7 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import _UserItem from '_seed/components/users/Item';
+import _UserItem from 'sbuild/components/users/Item';
 import * as DataUtil from 'util/DataUtil.js';
 
 import styles from 'util/css/users/Item.module.css';

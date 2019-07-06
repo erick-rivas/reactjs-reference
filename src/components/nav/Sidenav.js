@@ -20,10 +20,10 @@ class Sidenav extends React.Component
         <ul>
           <li>
             <NavLink
-              to={`${url}/users`}
-              className={cx(styles.userItem, styles.item)}
+              to={`${url}/players`}
+              className={cx(styles.playerItem, styles.item)}
               activeClassName={styles.active}>
-              Users
+              Players
             </NavLink>
           </li>
           <li>
@@ -36,10 +36,10 @@ class Sidenav extends React.Component
           </li>
           <li>
             <NavLink
-              to={`${url}/players`}
-              className={cx(styles.playerItem, styles.item)}
+              to={`${url}/users`}
+              className={cx(styles.userItem, styles.item)}
               activeClassName={styles.active}>
-              Players
+              Users
             </NavLink>
           </li>
           <li>

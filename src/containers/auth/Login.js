@@ -5,7 +5,7 @@ __Seed builder__v1.0
     - login(email, password, callback)
 */
 
-import _Login from '_seed/containers/auth/Login';
+import _Login from 'sbuild/containers/auth/Login';
 
 class Login extends _Login
 {

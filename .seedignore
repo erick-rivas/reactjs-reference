@@ -1,7 +1,7 @@
 .git*
 build
 node_modules
-src/_seed
+src/sbuild
 src/actions/*.js
 src/components/*
 src/containers/*

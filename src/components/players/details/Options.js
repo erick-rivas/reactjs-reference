@@ -12,7 +12,7 @@ import Svg from 'react-svg';
 
 import { Link } from 'react-router-dom';
 
-import _PlayerDetailsOptions from '_seed/components/players/details/Options';
+import _PlayerDetailsOptions from 'sbuild/components/players/details/Options';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/players/details/Options.module.css';

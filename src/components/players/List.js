@@ -16,7 +16,7 @@ import cx from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 
-import _PlayerList from '_seed/components/players/List';
+import _PlayerList from 'sbuild/components/players/List';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/players/List.module.css';

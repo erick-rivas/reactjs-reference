@@ -14,7 +14,7 @@ __Seed builder__v1.0
     - <id>_RESTART
 */
 
-import _Teams from '_seed/interactors/reducers/teams';
+import _Teams from 'sbuild/interactors/reducers/teams';
 
 class Teams extends _Teams
 {

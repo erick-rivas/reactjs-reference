@@ -19,7 +19,7 @@ __Seed builder__v1.0
     - deleteTeam: (teamId, callback)
 */
 
-import _TeamList from '_seed/containers/teams/List';
+import _TeamList from 'sbuild/containers/teams/List';
 
 class TeamList extends _TeamList
 {

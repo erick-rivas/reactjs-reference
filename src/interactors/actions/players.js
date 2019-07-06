@@ -13,7 +13,7 @@ __Seed builder__v1.0
     - deletePlayer(playerId, callback)
 */
 
-import _Players from '_seed/interactors/actions/players';
+import _Players from 'sbuild/interactors/actions/players';
 
 class Players extends _Players {}
 

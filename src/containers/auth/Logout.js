@@ -5,7 +5,7 @@ __Seed builder__v1.0
     - logout(callback)
 */
 
-import _Logout from '_seed/containers/auth/Logout';
+import _Logout from 'sbuild/containers/auth/Logout';
 
 class Logout extends _Logout
 {

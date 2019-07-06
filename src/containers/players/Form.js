@@ -20,7 +20,7 @@ __Seed builder__v1.0
     - uploadFile(formWrapper, callback)
 */
 
-import _PlayerForm from '_seed/containers/players/Form';
+import _PlayerForm from 'sbuild/containers/players/Form';
 
 class PlayerForm extends _PlayerForm
 {

@@ -13,7 +13,7 @@ __Seed builder__v1.0
     - deleteTeam(teamId, callback)
 */
 
-import _Teams from '_seed/interactors/actions/teams';
+import _Teams from 'sbuild/interactors/actions/teams';
 
 class Teams extends _Teams {}
 

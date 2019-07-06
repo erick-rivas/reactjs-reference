@@ -11,7 +11,7 @@ import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 
-import _PlayerListOptions from '_seed/components/players/list/Options';
+import _PlayerListOptions from 'sbuild/components/players/list/Options';
 
 import styles from 'util/css/players/list/Options.module.css';
 

@@ -1,0 +1,32 @@
+/*
+__Seed builder__v1.0
+  (Read_only) Modify via SeedManifest.yaml
+*/
+
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import MatchActions from 'interactors/actions/stat/matches';
+
+import _MatchBase from 'sbuild/containers/stat/matches/Base';
+import MatchList from 'components/stat/matches/List';
+
+class _MatchList extends _MatchBase
+{
+  matches = new MatchActions();
+
+  _states = state => ({
+  });
+
+  _disps = disp => ({
+  })
+
+  getRouter = () =>
+    withRouter(connect(
+      this.stateToProps,
+      this.dispToProps
+    )(MatchList));
+}
+
+export default _MatchList;
+

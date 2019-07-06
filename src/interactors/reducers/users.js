@@ -14,7 +14,7 @@ __Seed builder__v1.0
     - <id>_RESTART
 */
 
-import _Users from '_seed/interactors/reducers/users';
+import _Users from 'sbuild/interactors/reducers/users';
 
 class Users extends _Users
 {

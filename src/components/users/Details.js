@@ -24,8 +24,8 @@ import cx from 'classnames';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
-import _UserDetails from '_seed/components/users/Details';
-import TeamView from 'components/teams/View';
+import _UserDetails from 'sbuild/components/users/Details';
+import TeamView from 'components/nav/teams/View';
 import Loading from 'components/helpers/Loading';
 import * as DataUtil from 'util/DataUtil.js';
 

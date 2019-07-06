@@ -1,19 +1,46 @@
 models:
 - attrs:
+  - card: {}
+    is_fk: false
+    meta:
+      length: '256'
+    name: name
+    read: true
+    type: string
+    write: true
+  - card: {}
+    is_fk: false
+    meta:
+      length: '512'
+    name: photo
+    read: true
+    type: image
+    write: true
+  - card: {}
+    default: 'true'
+    is_fk: false
+    meta: {}
+    name: is_active
+    read: true
+    type: boolean
+    write: true
   - card:
       has: 0..*
-      ref: 0..*
+      ref: '1'
     is_fk: true
     meta: {}
-    name: teams
+    name: team
     read: true
-    type: team[]
-    write: false
+    type: team
+    write: true
   group: ''
   meta: {}
-  name: user
+  name: player
   read: true
-  views: []
+  views:
+  - list
+  - details
+  - form
   write: true
 - attrs:
   - card: {}
@@ -72,47 +99,20 @@ models:
   - form
   write: true
 - attrs:
-  - card: {}
-    is_fk: false
-    meta:
-      length: '256'
-    name: name
-    read: true
-    type: string
-    write: true
-  - card: {}
-    is_fk: false
-    meta:
-      length: '512'
-    name: photo
-    read: true
-    type: image
-    write: true
-  - card: {}
-    default: 'true'
-    is_fk: false
-    meta: {}
-    name: is_active
-    read: true
-    type: boolean
-    write: true
   - card:
       has: 0..*
-      ref: '1'
+      ref: 0..*
     is_fk: true
     meta: {}
-    name: team
+    name: teams
     read: true
-    type: team
-    write: true
+    type: team[]
+    write: false
   group: ''
   meta: {}
-  name: player
+  name: user
   read: true
-  views:
-  - list
-  - details
-  - form
+  views: []
   write: true
 - attrs:
   - card: {}

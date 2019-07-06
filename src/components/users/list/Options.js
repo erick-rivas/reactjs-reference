@@ -11,7 +11,7 @@ import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 
-import _UserListOptions from '_seed/components/users/list/Options';
+import _UserListOptions from 'sbuild/components/users/list/Options';
 
 import styles from 'util/css/users/list/Options.module.css';
 

@@ -6,12 +6,12 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Sidenav from 'containers/nav/Sidenav'
 import Topnav from 'containers/nav/Topnav'
 
-import _Home from '_seed/components/Home';
-import UserPanel from 'components/users/Panel';
-import TeamPanel from 'components/teams/Panel';
-import PlayerPanel from 'components/players/Panel';
-import MatchPanel from 'components/stats/matches/Panel';
-import ScorePanel from 'components/stats/scores/Panel';
+import _Home from 'sbuild/components/Home';
+import PlayerPanel from 'components/nav/players/Panel';
+import TeamPanel from 'components/nav/teams/Panel';
+import UserPanel from 'components/nav/users/Panel';
+import MatchPanel from 'components/nav/stat/matches/Panel';
+import ScorePanel from 'components/nav/stat/scores/Panel';
 
 import styles from 'util/css/Home.module.css';
 
@@ -37,14 +37,14 @@ class Home extends _Home
         <div className={styles.content}>        
            <Switch>
             <Route
-              path={`${path}/users`}
-              component={UserPanel} />
+              path={`${path}/players`}
+              component={PlayerPanel} />
             <Route
               path={`${path}/teams`}
               component={TeamPanel} />
             <Route
-              path={`${path}/players`}
-              component={PlayerPanel} />
+              path={`${path}/users`}
+              component={UserPanel} />
             <Route
               path={`${path}/matches`}
               component={MatchPanel} />

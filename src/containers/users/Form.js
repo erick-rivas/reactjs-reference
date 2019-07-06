@@ -20,7 +20,7 @@ __Seed builder__v1.0
     - uploadFile(formWrapper, callback)
 */
 
-import _UserForm from '_seed/containers/users/Form';
+import _UserForm from 'sbuild/containers/users/Form';
 
 class UserForm extends _UserForm
 {

@@ -15,7 +15,7 @@ import cx from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 
-import _UserList from '_seed/components/users/List';
+import _UserList from 'sbuild/components/users/List';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/users/List.module.css';

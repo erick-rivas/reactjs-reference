@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _Topnav from '_seed/containers/nav/Topnav';
+import _Topnav from 'sbuild/containers/nav/Topnav';
 
 class Topnav extends _Topnav
 {

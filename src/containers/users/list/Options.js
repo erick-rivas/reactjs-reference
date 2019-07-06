@@ -19,7 +19,7 @@ __Seed builder__v1.0
     - deleteUser: (userId, callback)
 */
 
-import _UserListOptions from '_seed/containers/users/list/Options';
+import _UserListOptions from 'sbuild/containers/users/list/Options';
 
 class UserListOptions extends _UserListOptions
 {

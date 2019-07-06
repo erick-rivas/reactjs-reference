@@ -19,7 +19,7 @@ __Seed builder__v1.0
     - deleteTeam: (teamId, callback)
 */
 
-import _TeamDetails from '_seed/containers/teams/Details';
+import _TeamDetails from 'sbuild/containers/teams/Details';
 
 class TeamDetails extends _TeamDetails
 {

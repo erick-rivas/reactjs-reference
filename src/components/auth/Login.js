@@ -5,7 +5,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import _Login from '_seed/components/auth/Login';
+import _Login from 'sbuild/components/auth/Login';
 
 import styles from 'util/css/auth/Login.module.css';
 

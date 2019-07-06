@@ -19,7 +19,7 @@ __Seed builder__v1.0
     - deletePlayer: (playerId, callback)
 */
 
-import _PlayerDetails from '_seed/containers/players/Details';
+import _PlayerDetails from 'sbuild/containers/players/Details';
 
 class PlayerDetails extends _PlayerDetails
 {

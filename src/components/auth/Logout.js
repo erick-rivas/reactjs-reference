@@ -5,7 +5,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import _Logout from '_seed/components/auth/Logout';
+import _Logout from 'sbuild/components/auth/Logout';
 
 import styles from 'util/css/auth/Logout.module.css';
 

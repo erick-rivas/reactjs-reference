@@ -14,7 +14,7 @@ __Seed builder__v1.0
     - <id>_RESTART
 */
 
-import _Players from '_seed/interactors/reducers/players';
+import _Players from 'sbuild/interactors/reducers/players';
 
 class Players extends _Players
 {

@@ -19,7 +19,7 @@ __Seed builder__v1.0
     - deleteUser: (userId, callback)
 */
 
-import _UserDetails from '_seed/containers/users/Details';
+import _UserDetails from 'sbuild/containers/users/Details';
 
 class UserDetails extends _UserDetails
 {

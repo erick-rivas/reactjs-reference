@@ -20,7 +20,7 @@ __Seed builder__v1.0
     - uploadFile(formWrapper, callback)
 */
 
-import _TeamForm from '_seed/containers/teams/Form';
+import _TeamForm from 'sbuild/containers/teams/Form';
 
 class TeamForm extends _TeamForm
 {

@@ -2,7 +2,7 @@
 __Seed builder__v1.0
 */
 
-import _Home from '_seed/containers/Home';
+import _Home from 'sbuild/containers/Home';
 
 class Home extends _Home
 {

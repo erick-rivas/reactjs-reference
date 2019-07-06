@@ -11,7 +11,7 @@ import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 
-import _TeamListOptions from '_seed/components/teams/list/Options';
+import _TeamListOptions from 'sbuild/components/teams/list/Options';
 
 import styles from 'util/css/teams/list/Options.module.css';
 

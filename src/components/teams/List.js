@@ -15,7 +15,7 @@ import cx from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 
-import _TeamList from '_seed/components/teams/List';
+import _TeamList from 'sbuild/components/teams/List';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/teams/List.module.css';

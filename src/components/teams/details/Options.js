@@ -12,7 +12,7 @@ import Svg from 'react-svg';
 
 import { Link } from 'react-router-dom';
 
-import _TeamDetailsOptions from '_seed/components/teams/details/Options';
+import _TeamDetailsOptions from 'sbuild/components/teams/details/Options';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/teams/details/Options.module.css';

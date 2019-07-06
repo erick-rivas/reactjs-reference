@@ -21,7 +21,7 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import _TeamItem from '_seed/components/teams/Item';
+import _TeamItem from 'sbuild/components/teams/Item';
 import * as DataUtil from 'util/DataUtil.js';
 
 import styles from 'util/css/teams/Item.module.css';

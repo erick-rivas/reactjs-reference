@@ -25,7 +25,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import _UserForm from '_seed/components/users/Form';
+import _UserForm from 'sbuild/components/users/Form';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'util/css/users/Form.module.css';
