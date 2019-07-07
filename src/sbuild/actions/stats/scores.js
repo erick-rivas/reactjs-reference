@@ -7,12 +7,13 @@ import Action from 'actions/helpers/action';
 
 class _Scores extends Action
 {
-  constructor()
+  constructor(fetch)
   {
     super(
       `SCORES`,
       `scores`,
-      state => state.scores
+      state => state.scores,
+      fetch
     )
   }
 

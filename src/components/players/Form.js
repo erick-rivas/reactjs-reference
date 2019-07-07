@@ -36,6 +36,7 @@ class PlayerForm extends Component
           <input type="text" name="name" className={cx(styles.txt, styles.nameTxt)} value={player.name} onChange={this.onNameChange}></input>
           <br/>
           <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label><br/>
+          <input name="photo" type="hidden" value={player.photo ? player.photo.id : null}/>
           <form encType="multipart/form-data">
             <input name="file" type="file" className={cx(styles.fil, styles.photoFil)} accept="image/*" onChange={this.onPhotoChange}></input>
           </form>

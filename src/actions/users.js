@@ -3,6 +3,8 @@ __Seed builder__v1.0
 
   Guidelines:
     - Modify methods via SeedManifest.yaml
+    - Modify fetch data
+      -
     - Only override existing methods if required
 
   Default methods:
@@ -19,6 +21,15 @@ __Seed builder__v1.0
 
 import _Users from 'sbuild/actions/users';
 
-class Users extends _Users {}
+class Users extends _Users 
+{
+  constructor()
+  {
+    const fetch = [
+      "teams.*",
+    ]
+    super(fetch)
+  }
+}
 
 export default Users;

@@ -9,6 +9,7 @@ import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+import TeamView from 'components/nav/teams/View';
 import PlayerView from 'components/nav/players/View';
 import Loading from 'components/helpers/Loading';
 
@@ -45,6 +46,9 @@ class TeamDetails extends Component
         <br/>
         <label className={cx(styles.lbl, styles.identityDocsLbl)}>Identity docs</label><br/>
         <label className={cx(styles.txt, styles.identityDocsTxt)}>{team.identity_docs.toString()}</label>
+        <br/>
+        <label className={cx(styles.lbl, styles.rivalLbl)}>Rival</label><br/>
+        <label className={cx(styles.txt, styles.rivalTxt)}>{team.rival_id}</label>
         <br/>
         <label className={cx(styles.lbl, styles.playersLbl)}>Players</label><br/>
         <Route path={`${path}`}

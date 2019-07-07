@@ -7,12 +7,13 @@ import Action from 'actions/helpers/action';
 
 class _Matches extends Action
 {
-  constructor()
+  constructor(fetch)
   {
     super(
       `MATCHES`,
       `matches`,
-      state => state.matches
+      state => state.matches,
+      fetch
     )
   }
 

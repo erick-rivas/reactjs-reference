@@ -17,6 +17,7 @@ class TeamForm extends Component
   render()
   {
     const { team = {} } = this.state;
+    const { teams = [] } = this.props;
     const { filters } = this.state;
     const teamId = this.getTeamId();
     if (team.id == null && teamId != null) return <Loading />;
@@ -35,6 +36,7 @@ class TeamForm extends Component
           <input type="text" name="name" className={cx(styles.txt, styles.nameTxt)} value={team.name} onChange={this.onNameChange}></input>
           <br/>
           <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
+          <input name="logo" type="hidden" value={team.logo ? team.logo.id : null}/>
           <form encType="multipart/form-data">
             <input name="file" type="file" className={cx(styles.fil, styles.logoFil)} accept="image/*" onChange={this.onLogoChange}></input>
           </form>
@@ -46,6 +48,14 @@ class TeamForm extends Component
           <label className={cx(styles.lbl, styles.marketValueLbl)}>Market value</label><br/>
           <input type="number" name="marketValue" className={cx(styles.txt, styles.marketValueTxt)} value={team.market_value} onChange={this.onMarketValueChange} required></input>
           <br/>
+          {filters.rival_id == null ?
+              <div>
+              <label className={cx(styles.lbl, styles.rivalLbl)}>Rival</label>
+              <select name="rival" className={cx(styles.ops, styles.rivalOps)} value={team.rival_id} onChange={this.onRivalChange}>
+              { teams.map(e => <option value={e.id}>{e.id}</option>) }
+              </select>
+              <br/>
+              </div> : null}
 
           {this.renderError()}
 

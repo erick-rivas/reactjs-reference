@@ -3,6 +3,8 @@ __Seed builder__v1.0
 
   Guidelines:
     - Modify methods via SeedManifest.yaml
+    - Modify fetch data
+      -
     - Only override existing methods if required
 
   Default methods:
@@ -19,6 +21,16 @@ __Seed builder__v1.0
 
 import _Teams from 'sbuild/actions/teams';
 
-class Teams extends _Teams {}
+class Teams extends _Teams 
+{
+  constructor()
+  {
+    const fetch = [
+      "rival.*",
+      "players.*",
+    ]
+    super(fetch)
+  }
+}
 
 export default Teams;

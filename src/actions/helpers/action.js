@@ -12,27 +12,37 @@ class Action
   id;
   path;
   state;
+  fetch;
 
-  constructor(id, path, state)
+  constructor(id, path, state, fetch)
   {
     this.id = id;
     this.path = path;
     this.state = state;
+    this.fetch = fetch;
   }
 
   /**
    === REQUESTS ===
    */
 
-  getList = (params, callback) =>
+  getFetch()
+  {
+    let query = '';
+    for (let f of this.fetch)
+        query += `include[]=${f}&`;
+    return query;
+  }
+
+  getList = (filters, callback) =>
   {
    let query = '';
-    for (let param in params)
-      if (params[param] != null)
-        query += `${param}=${params[param]}&`;
+    for (let filter in filters)
+      if (filters[filter] != null)
+        query += `filter{${filter}}=${filters[filter]}&`;
 
     return this.request(
-      `${this.path}/?${query}`,
+      `${this.path}/?${query}${this.getFetch()}`,
       this.onGetList,
       callback);
   }
@@ -40,7 +50,7 @@ class Action
   getDetails = (id, callback) =>
   {
     return this.request(
-      `${this.path}/${id}/`,
+      `${this.path}/${id}/?${this.getFetch()}`,
       this.onGetDetails,
       callback);
   }
@@ -48,7 +58,7 @@ class Action
   saveData = (body, callback) =>
   {
     return this.request(
-      `${this.path}/`,
+      `${this.path}/?${this.getFetch()}`,
       this.onSaveData,
       callback,
       "POST",
@@ -58,7 +68,7 @@ class Action
   setData = (id, body, callback) =>
   {
     return this.request(
-      `${this.path}/${id}/`,
+      `${this.path}/${id}/?${this.getFetch()}`,
       this.onSetData,
       callback,
       "PUT",

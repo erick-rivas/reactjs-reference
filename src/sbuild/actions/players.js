@@ -7,12 +7,13 @@ import Action from 'actions/helpers/action';
 
 class _Players extends Action
 {
-  constructor()
+  constructor(fetch)
   {
     super(
       `PLAYERS`,
       `players`,
-      state => state.players
+      state => state.players,
+      fetch
     )
   }
 

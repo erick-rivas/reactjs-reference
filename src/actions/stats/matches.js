@@ -3,6 +3,8 @@ __Seed builder__v1.0
 
   Guidelines:
     - Modify methods via SeedManifest.yaml
+    - Modify fetch data
+      -
     - Only override existing methods if required
 
   Default methods:
@@ -19,6 +21,17 @@ __Seed builder__v1.0
 
 import _Matches from 'sbuild/actions/stats/matches';
 
-class Matches extends _Matches {}
+class Matches extends _Matches 
+{
+  constructor()
+  {
+    const fetch = [
+      "local.*",
+      "visitor.*",
+      "scores.*",
+    ]
+    super(fetch)
+  }
+}
 
 export default Matches;

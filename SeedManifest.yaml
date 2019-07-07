@@ -2,16 +2,14 @@ models:
 - attrs:
   - card: {}
     is_fk: false
-    meta:
-      length: '256'
+    length: '256'
     name: name
     read: true
     type: string
     write: true
   - card: {}
     is_fk: false
-    meta:
-      length: '512'
+    length: '512'
     name: photo
     read: true
     type: image
@@ -19,7 +17,6 @@ models:
   - card: {}
     default: 'true'
     is_fk: false
-    meta: {}
     name: is_active
     read: true
     type: boolean
@@ -28,33 +25,26 @@ models:
       has: 0..*
       ref: '1'
     is_fk: true
-    meta: {}
     name: team
     read: true
     type: team
     write: true
+  empty: false
   group: ''
-  meta: {}
   name: player
   read: true
-  views:
-  - list
-  - details
-  - form
   write: true
 - attrs:
   - card: {}
     is_fk: false
-    meta:
-      length: '256'
+    length: '256'
     name: name
     read: true
     type: string
     write: true
   - card: {}
     is_fk: false
-    meta:
-      length: '512'
+    length: '512'
     name: logo
     read: true
     type: image
@@ -62,21 +52,27 @@ models:
   - card: {}
     default: No description available
     is_fk: false
-    meta: {}
     name: description
     read: true
     type: text
     write: true
   - card: {}
     is_fk: false
-    meta: {}
     name: market_value
     read: true
     type: float
     write: true
+  - card:
+      has: 0..*
+      ref: '1'
+    empty: true
+    is_fk: true
+    name: rival
+    read: true
+    type: team
+    write: true
   - card: {}
     is_fk: false
-    meta: {}
     name: identity_docs
     read: true
     type: file[]
@@ -85,52 +81,44 @@ models:
       has: '1'
       ref: 0..*
     is_fk: true
-    meta: {}
     name: players
     read: true
     type: player[]
     write: false
+  empty: false
   group: ''
-  meta: {}
   name: team
   read: true
-  views:
-  - list
-  - form
   write: true
 - attrs:
   - card:
       has: 0..*
       ref: 0..*
     is_fk: true
-    meta: {}
     name: teams
     read: true
     type: team[]
     write: false
+  empty: false
   group: ''
-  meta: {}
   name: user
   read: true
-  views: []
   write: true
 - attrs:
   - card: {}
     default: now
     is_fk: false
-    meta: {}
     name: date
     read: true
     type: date
     write: true
   - card: {}
     is_fk: false
-    meta:
-      options:
-      - Friendship
-      - League
-      - Cup
     name: type
+    options:
+    - Friendship
+    - League
+    - Cup
     read: true
     type: enum
     write: true
@@ -138,7 +126,6 @@ models:
       has: 0..*
       ref: '1'
     is_fk: true
-    meta: {}
     name: local
     read: true
     type: team
@@ -147,7 +134,6 @@ models:
       has: 0..*
       ref: '1'
     is_fk: true
-    meta: {}
     name: visitor
     read: true
     type: team
@@ -156,23 +142,18 @@ models:
       has: '1'
       ref: 0..*
     is_fk: true
-    meta: {}
     name: scores
     read: true
     type: score[]
     write: false
+  empty: false
   group: stats
-  meta: {}
   name: match
   read: true
-  views:
-  - list
-  - details
   write: true
 - attrs:
   - card: {}
     is_fk: false
-    meta: {}
     name: min
     read: true
     type: int
@@ -181,7 +162,6 @@ models:
       has: 0..*
       ref: '1'
     is_fk: true
-    meta: {}
     name: player
     read: true
     type: player
@@ -190,16 +170,13 @@ models:
       has: 0..*
       ref: '1'
     is_fk: true
-    meta: {}
     name: match
     read: true
     type: match
     write: true
+  empty: false
   group: stats
-  meta: {}
   name: score
   read: true
-  views:
-  - form
   write: true
 name: reference

@@ -16,6 +16,7 @@ class _TeamList extends React.Component
     this.state = {
       filters: {
         user_id: this.getUserId(),
+        rival_id: this.getRivalId(),
         players_id: this.getPlayersId(), 
       }
     };
@@ -48,6 +49,12 @@ class _TeamList extends React.Component
     return user_id == 0 ? sessionStorage.getItem('id') : 
            user_id ? user_id : 
            userId;
+  }
+  getRivalId()
+  {
+    const { rival_id } = this.props.match.params;
+    const { rivalId } = this.props;
+    return rival_id ? rival_id : rivalId;
   }
   getPlayersId()
   {

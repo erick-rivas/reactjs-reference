@@ -24,12 +24,12 @@ const stateToProps = (state, props) => ({
 const dispToProps = disp => ({
   getScoreDetails: (scoreId, callback) =>
     disp(scores.getScoreDetails(scoreId, callback)),
-  getScoreList: (params, callback) =>
-    disp(scores.getScoreList(params, callback)),
-  getPlayerList: (params, callback) =>
-    disp(players.getPlayerList(params, callback)),
-  getMatchList: (params, callback) =>
-    disp(matches.getMatchList(params, callback)),
+  getScoreList: (filters, callback) =>
+    disp(scores.getScoreList(filters, callback)),
+  getPlayerList: (filters, callback) =>
+    disp(players.getPlayerList(filters, callback)),
+  getMatchList: (filters, callback) =>
+    disp(matches.getMatchList(filters, callback)),
   saveScore: (score, callback) =>
     disp(scores.saveScore(score, callback)),
   setScore: (scoreId, score, callback) =>

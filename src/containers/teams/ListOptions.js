@@ -21,10 +21,10 @@ const stateToProps = (state, props) => ({
 const dispToProps = disp => ({
   getTeamDetails: (teamId, callback) =>
     disp(teams.getTeamDetails(teamId, callback)),
-  getTeamList: (params, callback) =>
-    disp(teams.getTeamList(params, callback)),
-  getPlayerList: (params, callback) =>
-    disp(players.getPlayerList(params, callback)),
+  getTeamList: (filters, callback) =>
+    disp(teams.getTeamList(filters, callback)),
+  getPlayerList: (filters, callback) =>
+    disp(players.getPlayerList(filters, callback)),
   saveTeam: (team, callback) =>
     disp(teams.saveTeam(team, callback)),
   setTeam: (teamId, team, callback) =>

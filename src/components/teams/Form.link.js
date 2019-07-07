@@ -15,9 +15,11 @@ class _TeamForm extends React.Component
     super(props);
     this.state = {
       team: {
+        rival_id: this.getRivalId(),
       },
       filters: {
-        user_id: this.getUserId(), 
+        user_id: this.getUserId(),
+        rival_id: this.getRivalId(), 
       }
     };
 
@@ -26,6 +28,7 @@ class _TeamForm extends React.Component
     this.onLogoChange = this.onLogoChange.bind(this);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onMarketValueChange = this.onMarketValueChange.bind(this);
+    this.onRivalChange = this.onRivalChange.bind(this);
   }
 
   componentDidMount()
@@ -70,6 +73,8 @@ class _TeamForm extends React.Component
 
   loadFkData = () => 
   {
+    const { getTeamList } = this.props;
+    getTeamList(this.state.filters);
   }
 
   fillData = e =>
@@ -79,6 +84,7 @@ class _TeamForm extends React.Component
     team.logo = team.logo ? team.logo : e.target.logo.value;
     team.description = team.description ? team.description : e.target.description.value;
     team.market_value = team.market_value ? team.market_value : e.target.marketValue.value;
+    team.rival_id = team.rival_id ? team.rival_id : e.target.rival.value;
 
     this.setState({
       team: team
@@ -118,6 +124,12 @@ class _TeamForm extends React.Component
     return user_id == 0 ? sessionStorage.getItem('id') : 
            user_id ? user_id : 
            userId;
+  }
+  getRivalId()
+  {
+    const { rival_id } = this.props.match.params;
+    const { rivalId } = this.props;
+    return rival_id ? rival_id : rivalId;
   }
 
   /* Events */
@@ -165,6 +177,15 @@ class _TeamForm extends React.Component
   {
     let team = this.state.team ? this.state.team : {};
     team.market_value = e.target.value;  
+    this.setState({
+      team: team
+    });
+  }
+  
+  onRivalChange(e)
+  {
+    let team = this.state.team ? this.state.team : {};
+    team.rival_id = e.target.value;
     this.setState({
       team: team
     });
