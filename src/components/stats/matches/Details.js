@@ -9,11 +9,11 @@ import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import TeamView from 'components/nav/teams/View';
-import ScoreView from 'components/nav/stats/scores/View';
+import TeamView from 'components/teams/nav/View';
+import ScoreView from 'components/stats/scores/nav/View';
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/stats/matches/Details.link.js'
+import Component from 'components/stats/matches/Details.link'
 
 import styles from 'resources/css/stats/matches/Details.module.css';
 

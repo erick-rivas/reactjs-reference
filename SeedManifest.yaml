@@ -1,21 +1,24 @@
 models:
 - attrs:
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     length: '256'
     name: name
     read: true
     type: string
     write: true
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     length: '512'
     name: photo
     read: true
     type: image
     write: true
-  - card: {}
-    default: 'true'
+  - default: 'true'
+    delete: CASCADE
+    empty: false
     is_fk: false
     name: is_active
     read: true
@@ -24,39 +27,44 @@ models:
   - card:
       has: 0..*
       ref: '1'
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: team
     read: true
     type: team
     write: true
-  empty: false
   group: ''
   name: player
   read: true
   write: true
 - attrs:
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     length: '256'
     name: name
     read: true
     type: string
     write: true
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     length: '512'
     name: logo
     read: true
     type: image
     write: true
-  - card: {}
-    default: No description available
+  - default: No description available
+    delete: CASCADE
+    empty: false
     is_fk: false
     name: description
     read: true
     type: text
     write: true
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     name: market_value
     read: true
@@ -65,13 +73,15 @@ models:
   - card:
       has: 0..*
       ref: '1'
+    delete: CASCADE
     empty: true
     is_fk: true
     name: rival
     read: true
     type: team
     write: true
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     name: identity_docs
     read: true
@@ -80,12 +90,13 @@ models:
   - card:
       has: '1'
       ref: 0..*
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: players
     read: true
     type: player[]
     write: false
-  empty: false
   group: ''
   name: team
   read: true
@@ -94,25 +105,28 @@ models:
   - card:
       has: 0..*
       ref: 0..*
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: teams
     read: true
     type: team[]
     write: false
-  empty: false
   group: ''
   name: user
   read: true
   write: true
 - attrs:
-  - card: {}
-    default: now
+  - default: now
+    delete: CASCADE
+    empty: false
     is_fk: false
     name: date
     read: true
     type: date
     write: true
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     name: type
     options:
@@ -125,6 +139,8 @@ models:
   - card:
       has: 0..*
       ref: '1'
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: local
     read: true
@@ -133,6 +149,8 @@ models:
   - card:
       has: 0..*
       ref: '1'
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: visitor
     read: true
@@ -141,18 +159,20 @@ models:
   - card:
       has: '1'
       ref: 0..*
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: scores
     read: true
     type: score[]
     write: false
-  empty: false
   group: stats
   name: match
   read: true
   write: true
 - attrs:
-  - card: {}
+  - delete: CASCADE
+    empty: false
     is_fk: false
     name: min
     read: true
@@ -161,6 +181,8 @@ models:
   - card:
       has: 0..*
       ref: '1'
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: player
     read: true
@@ -169,12 +191,13 @@ models:
   - card:
       has: 0..*
       ref: '1'
+    delete: CASCADE
+    empty: false
     is_fk: true
     name: match
     read: true
     type: match
     write: true
-  empty: false
   group: stats
   name: score
   read: true

@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/teams/List.link.js';
+import Component from 'components/teams/List.link';
 
 import styles from 'resources/css/teams/List.module.css';
 

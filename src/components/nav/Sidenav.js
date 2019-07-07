@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 
-import Component from 'components/nav/Sidenav.link.js'
+import Component from 'components/nav/Sidenav.link'
 
 import styles from 'resources/css/nav/Sidenav.module.css';
 

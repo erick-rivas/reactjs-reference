@@ -8,7 +8,7 @@ import cx from 'classnames';
 import { getDateInput } from 'util/FormatUtil';
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/teams/Form.link.js';
+import Component from 'components/teams/Form.link';
 
 import styles from 'resources/css/teams/Form.module.css';
 

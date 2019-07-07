@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import Svg from 'react-svg';
 
-import Component from 'components/nav/Topnav.link.js'
+import Component from 'components/nav/Topnav.link'
 
 import styles from 'resources/css/nav/Topnav.module.css';
 

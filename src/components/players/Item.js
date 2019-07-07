@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import * as DataUtil from 'util/DataUtil.js';
 
-import Component from 'components/players/Item.link.js';
+import Component from 'components/players/Item.link';
 
 import styles from 'resources/css/players/Item.module.css';
 

@@ -9,10 +9,10 @@ import cx from 'classnames';
 
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import TeamView from 'components/nav/teams/View';
+import TeamView from 'components/teams/nav/View';
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/users/Details.link.js'
+import Component from 'components/users/Details.link'
 
 import styles from 'resources/css/users/Details.module.css';
 

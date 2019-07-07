@@ -4,7 +4,6 @@ __Seed builder__v1.0
   Guidelines:
     - Modify methods via SeedManifest.yaml
     - Modify fetch data
-      -
     - Only override existing methods if required
 
   Default methods:

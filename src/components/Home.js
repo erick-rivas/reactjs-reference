@@ -9,13 +9,13 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Sidenav from 'containers/nav/Sidenav'
 import Topnav from 'containers/nav/Topnav'
-import PlayerPanel from 'components/nav/players/Panel';
-import TeamPanel from 'components/nav/teams/Panel';
-import UserPanel from 'components/nav/users/Panel';
-import MatchPanel from 'components/nav/stats/matches/Panel';
-import ScorePanel from 'components/nav/stats/scores/Panel';
+import PlayerPanel from 'components/players/nav/Panel';
+import TeamPanel from 'components/teams/nav/Panel';
+import UserPanel from 'components/users/nav/Panel';
+import MatchPanel from 'components/stats/matches/nav/Panel';
+import ScorePanel from 'components/stats/scores/nav/Panel';
 
-import Component from 'components/Home.link.js'
+import Component from 'components/Home.link'
 
 import styles from 'resources/css/Home.module.css';
 

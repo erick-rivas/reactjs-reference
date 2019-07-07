@@ -9,7 +9,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import Component from 'components/Template.link.js'
+import Component from 'components/Template.link'
 
 import styles from 'resources/css/Template.module.css';
 

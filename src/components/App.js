@@ -5,7 +5,7 @@ import Login from 'containers/auth/Login';
 import Logout from 'containers/auth/Logout';
 import Home from 'containers/Home';
 
-import Component from 'components/App.link.js'
+import Component from 'components/App.link'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 

@@ -14,25 +14,19 @@ class Action
   state;
   fetch;
 
-  constructor(id, path, state, fetch)
+  constructor(id, path, state, fetchData = [])
   {
     this.id = id;
     this.path = path;
     this.state = state;
-    this.fetch = fetch;
+    this.fetch = '';
+    for (let f of fetchData)
+        this.fetch += `include[]=${f}&`;
   }
 
   /**
    === REQUESTS ===
    */
-
-  getFetch()
-  {
-    let query = '';
-    for (let f of this.fetch)
-        query += `include[]=${f}&`;
-    return query;
-  }
 
   getList = (filters, callback) =>
   {
@@ -41,50 +35,79 @@ class Action
       if (filters[filter] != null)
         query += `filter{${filter}}=${filters[filter]}&`;
 
-    return this.request(
-      `${this.path}/?${query}${this.getFetch()}`,
+    return this.reqGet(
+      ``, query,
       this.onGetList,
       callback);
   }
 
   getDetails = (id, callback) =>
   {
-    return this.request(
-      `${this.path}/${id}/?${this.getFetch()}`,
+    return this.reqGet(
+      `/${id}`, ``,
       this.onGetDetails,
       callback);
   }
 
   saveData = (body, callback) =>
   {
-    return this.request(
-      `${this.path}/?${this.getFetch()}`,
+    return this.reqPost(
+      ``, body,
       this.onSaveData,
-      callback,
-      "POST",
-      body);
+      callback);
   }
 
   setData = (id, body, callback) =>
   {
-    return this.request(
-      `${this.path}/${id}/?${this.getFetch()}`,
+    return this.reqPut(
+      `/${id}`, body,
       this.onSetData,
-      callback,
-      "PUT",
-      body);
+      callback);
   }
 
   deleteData = (id, callback) =>
   {
-    return this.request(
-      `${this.path}/${id}/`,
+    return this.reqDelete(
+      `/${id}`,
       this.onDeleteData,
-      callback,
-      "DELETE");
+      callback);
   }
 
-  request = (path, toDisp, callback, method = "GET", body = {}) =>
+
+  reqGet(path, query, toDisp, callback)
+  {
+     return this.request(
+      "GET", path, query, {},
+      toDisp,
+      callback);
+  }
+
+  reqPost(path, body, toDisp, callback)
+  {
+    return this.request(
+      "POST", path, "", body,
+      toDisp,
+      callback);
+  }
+
+  reqPut(path, body, toDisp, callback)
+  {
+    return this.request(
+      "PUT", path, "", body,
+      toDisp,
+      callback);
+  }
+
+  reqDelete(path, toDisp, callback)
+  {
+     return this.request(
+      "DELETE", path, "", {},
+      toDisp,
+      callback);
+  }
+
+
+  request = (method, path, query, body, toDisp, callback) =>
   {
     return disp =>
     {
@@ -100,7 +123,8 @@ class Action
       if (method !== "GET")
         args["body"] = JSON.stringify(body);
 
-      return fetch(`${Urls.API_URL}/${path}`, args)
+
+      return fetch(`${Urls.API_URL}/${this.path}${path}/?${this.fetch}${query}`, args)
         .then(response =>
         {
           if (!response.ok) throw response;
