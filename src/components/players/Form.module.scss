@@ -12,8 +12,8 @@ __Seed builder__v1.0
     .teamOps
 */
 
-@import 'src/sbuild/themes/base';
-@import 'src/sbuild/themes/basic/form';
+@import 'src/seed/themes/base';
+@import 'src/seed/themes/basic/form';
 @include theme();
 
 .module {

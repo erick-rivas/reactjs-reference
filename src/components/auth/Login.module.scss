@@ -2,8 +2,8 @@
 __Seed builder__v1.0
 */
 
-@import 'src/sbuild/themes/base';
-@import 'src/sbuild/themes/basic/auth/login';
+@import 'src/seed/themes/base';
+@import 'src/seed/themes/basic/auth/login';
 @include theme();
 
 .module {

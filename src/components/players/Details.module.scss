@@ -11,8 +11,8 @@ __Seed builder__v1.0
     .teamTxt {}
 */
 
-@import 'src/sbuild/themes/base';
-@import 'src/sbuild/themes/basic/details';
+@import 'src/seed/themes/base';
+@import 'src/seed/themes/basic/details';
 @include theme();
 
 .module {

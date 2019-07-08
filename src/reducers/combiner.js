@@ -14,7 +14,7 @@ __Seed builder__v1.0
     - scores
 */
 
-import _Combiner from 'sbuild/reducers/combiner';
+import _Combiner from 'seed/reducers/combiner';
 
 import Auth from 'reducers/helpers/auth';
 

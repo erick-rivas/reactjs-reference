@@ -3,8 +3,8 @@
 LICENSE
 build
 node_modules
-src/sbuild/actions/*
-src/sbuild/reducers/*
+src/seed/actions/*
+src/seed/reducers/*
 src/components/*
 src/containers/*
 src/actions/*

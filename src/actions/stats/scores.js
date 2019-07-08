@@ -18,7 +18,7 @@ __Seed builder__v1.0
       - Use this parent method to call new actions
 */
 
-import _Scores from 'sbuild/actions/stats/scores';
+import _Scores from 'seed/actions/stats/scores';
 
 class Scores extends _Scores 
 {

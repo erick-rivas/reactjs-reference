@@ -18,7 +18,7 @@ __Seed builder__v1.0
       - Use this parent method to call new actions
 */
 
-import _Teams from 'sbuild/actions/teams';
+import _Teams from 'seed/actions/teams';
 
 class Teams extends _Teams 
 {

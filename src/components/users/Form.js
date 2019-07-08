@@ -5,7 +5,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import { getDateInput } from 'sbuild/util/FormatUtil';
+import { getDateInput } from 'seed/util/FormatUtil';
 import Loading from 'components/helpers/Loading';
 
 import Component from 'components/users/Form.link';

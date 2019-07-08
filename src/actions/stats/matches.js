@@ -18,7 +18,7 @@ __Seed builder__v1.0
       - Use this parent method to call new actions
 */
 
-import _Matches from 'sbuild/actions/stats/matches';
+import _Matches from 'seed/actions/stats/matches';
 
 class Matches extends _Matches 
 {

@@ -18,7 +18,7 @@ __Seed builder__v1.0
       - Use this parent method to call new actions
 */
 
-import _Users from 'sbuild/actions/users';
+import _Users from 'seed/actions/users';
 
 class Users extends _Users 
 {

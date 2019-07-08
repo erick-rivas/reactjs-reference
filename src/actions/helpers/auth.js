@@ -3,7 +3,7 @@ __Seed builder__v1.0
   (Read_only) Builder helper
 */
 
-import Action from 'sbuild/helpers/action'
+import Action from 'seed/helpers/action'
 
 class Auth extends Action
 {

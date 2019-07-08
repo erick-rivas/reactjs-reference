@@ -4,7 +4,7 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 
-import * as DataUtil from 'sbuild/util/DataUtil';
+import * as DataUtil from 'seed/util/DataUtil';
 import Modal from 'components/helpers/Modal';
 import PlayerForm from 'containers/players/Form';
 

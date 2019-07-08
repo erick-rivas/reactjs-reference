@@ -15,7 +15,7 @@ __Seed builder__v1.0
 */
 
 import Actions from 'actions/teams';
-import Reducer from 'sbuild/helpers/reducer';
+import Reducer from 'seed/helpers/reducer';
 
 class _Teams extends Reducer
 {

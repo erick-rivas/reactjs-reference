@@ -13,8 +13,8 @@ __Seed builder__v1.0
     .scoreItem.active {}
 */
 
-@import 'src/sbuild/themes/base';
-@import 'src/sbuild/themes/basic/nav/sidenav';
+@import 'src/seed/themes/base';
+@import 'src/seed/themes/basic/nav/sidenav';
 @include theme();
 
 .module {
