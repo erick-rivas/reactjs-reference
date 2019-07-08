@@ -2,11 +2,9 @@
 __Seed builder__v1.0
 */
 
-/* Default theme */
-@import 'src/resources/themes/basic/Item';
+@import 'src/sbuild/themes/base';
+@import 'src/sbuild/themes/basic/item';
 @include theme();
-
-@import 'src/util/Util';
 
 .module {
   width: 100%;

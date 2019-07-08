@@ -3,7 +3,8 @@
 LICENSE
 build
 node_modules
-src/sbuild
+src/sbuild/actions/*
+src/sbuild/reducers/*
 src/components/*
 src/containers/*
 src/actions/*
@@ -17,6 +18,6 @@ src/resources/css/*
 ?src/index.css
 ?src/index.js
 ?src/resources/*
-?src/util/settings/*
+?src/util/*
 !.gitignore
 !*helpers

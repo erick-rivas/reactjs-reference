@@ -11,11 +11,9 @@ __Seed builder__v1.0
     .teamTxt {}
 */
 
-/* Default theme */
-@import 'src/resources/themes/basic/Details';
+@import 'src/sbuild/themes/base';
+@import 'src/sbuild/themes/basic/details';
 @include theme();
-
-@import 'src/util/Util';
 
 .module {
   width: 100%;

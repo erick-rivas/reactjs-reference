@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import MatchActions from 'actions/stats/matches';
 import TeamActions from 'actions/teams';
 import ScoreActions from 'actions/stats/scores';
-import FileActions from 'actions/helpers/files';
+import FileActions from 'sbuild/helpers/files';
 
 import MatchForm from 'components/stats/matches/Form';
 

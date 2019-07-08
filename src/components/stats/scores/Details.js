@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'util/DataUtil.js';
+import * as DataUtil from 'sbuild/util/DataUtil.js';
 
 import cx from 'classnames';
 

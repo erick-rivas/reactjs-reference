@@ -9,8 +9,6 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import * as DataUtil from 'util/DataUtil.js';
-
 import Component from 'components/stats/scores/Item.link';
 
 import styles from 'resources/css/stats/scores/Item.module.css';

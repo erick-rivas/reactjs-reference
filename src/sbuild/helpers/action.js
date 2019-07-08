@@ -5,7 +5,7 @@ __Seed builder__v1.0
 
 import fetch from 'cross-fetch';
 import * as Urls from 'util/settings/Urls';
-import * as Const from 'actions/helpers/const';
+import * as Const from 'sbuild/helpers/redux_const';
 
 class Action
 {

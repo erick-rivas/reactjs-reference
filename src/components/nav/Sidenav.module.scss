@@ -13,11 +13,9 @@ __Seed builder__v1.0
     .scoreItem.active {}
 */
 
-/* Default theme */
-@import 'src/resources/themes/basic/Sidenav';
+@import 'src/sbuild/themes/base';
+@import 'src/sbuild/themes/basic/nav/sidenav';
 @include theme();
-
-@import 'src/util/Util';
 
 .module {
   width: 100%;

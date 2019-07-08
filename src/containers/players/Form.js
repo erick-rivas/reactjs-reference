@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 
 import PlayerActions from 'actions/players';
 import TeamActions from 'actions/teams';
-import FileActions from 'actions/helpers/files';
+import FileActions from 'sbuild/helpers/files';
 
 import PlayerForm from 'components/players/Form';
 

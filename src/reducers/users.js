@@ -15,7 +15,7 @@ __Seed builder__v1.0
 */
 
 import Actions from 'actions/users';
-import Reducer from 'reducers/helpers/reducer';
+import Reducer from 'sbuild/helpers/reducer';
 
 class _Users extends Reducer
 {

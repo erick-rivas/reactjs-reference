@@ -3,7 +3,7 @@ __Seed builder__v1.0
   (Read_only) Modify via SeedManifest.yaml
 */
 
-import Action from 'actions/helpers/action';
+import Action from 'sbuild/helpers/action';
 
 class _Players extends Action
 {
