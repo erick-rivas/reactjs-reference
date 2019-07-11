@@ -1,9 +1,5 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via SeedManifest.yaml
-
-  Guidelines: 
-    - Use template as base for component creation
 */
 
 import * as React from 'react';
@@ -18,7 +14,10 @@ class Template extends Component
   render()
   {
     return (
-      <div></div>
+      <div>
+        <h2>Hi!</h2>
+        <p>To test project template open /app</p>
+      </div>
     );
   }
 };

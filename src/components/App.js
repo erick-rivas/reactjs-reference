@@ -1,9 +1,14 @@
+/*
+__Seed builder__v1.0
+*/
+
 import * as React from 'react';
 import cx from 'classnames';
 
-import Login from 'containers/auth/Login';
-import Logout from 'containers/auth/Logout';
-import Home from 'containers/Home';
+import Login from 'containers/templates/auth/Login';
+import Logout from 'containers/templates/auth/Logout';
+import Home from 'containers/templates/Home';
+import Test from 'containers/Template'
 
 import Component from 'components/App.link'
 
@@ -19,7 +24,8 @@ class App extends Component
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
           <Route path='/app' component={Home} />
-          <Redirect to='/app' />
+          <Route path="/test" component={Test} />
+          <Redirect to='/test' />
         </Switch>
       </Router>
     );

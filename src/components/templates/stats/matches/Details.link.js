@@ -1,0 +1,38 @@
+/*
+__Seed builder__v1.0
+  (Read_only) Modify via SeedManifest.yaml
+*/
+
+import * as React from 'react';
+
+class MatchDetails extends React.Component
+{
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount()
+  {
+    this.loadData();
+  }
+
+  loadData = () =>
+  {
+    const { getMatchDetails } = this.props;
+    const matchId = this.getMatchId()
+    getMatchDetails(matchId);
+  }
+
+  /* Args */
+
+  getMatchId() 
+  {
+    const { match_id } = this.props.match.params;
+    const { matchId } = this.props;
+    return match_id ? match_id : matchId;
+  }
+}
+
+export default MatchDetails;

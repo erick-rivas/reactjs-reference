@@ -26,3 +26,4 @@ class Combiner extends _Combiner
 }
 
 export default new Combiner().combine();
+

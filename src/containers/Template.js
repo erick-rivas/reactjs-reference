@@ -1,10 +1,6 @@
 /*
 __Seed builder__v1.0
   (Read_only) Modify via SeedManifest.yaml
-
-   Guidelines:
-    - Template containers with all actions and default methods
-    - Suggested usage: Copy content
 */
 
 import { connect } from 'react-redux'
@@ -15,6 +11,7 @@ import UserActions from 'actions/users';
 import MatchActions from 'actions/stats/matches';
 import ScoreActions from 'actions/stats/scores';
 
+import Template from 'components/Template';
 const players = new PlayerActions();
 const teams = new TeamActions();
 const users = new UserActions();
@@ -85,4 +82,9 @@ const dispToProps = disp => ({
     disp(scores.setScore(scoreId, score, callback)),
   deleteScore: (scoreId, callback) =>
     disp(scores.deleteScore(scoreId, callback)),
-})
+});
+
+export default withRouter(connect(
+  stateToProps,
+  dispToProps
+)(Template));

@@ -19,5 +19,6 @@ src/resources/css/*
 ?src/index.js
 ?src/resources/*
 ?src/util/*
+!.keep
 !.gitignore
 !*helpers
