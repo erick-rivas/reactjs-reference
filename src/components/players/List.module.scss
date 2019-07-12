@@ -1,11 +1,9 @@
 /*
 __Seed builder__v1.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
 */
 
 @import 'src/seed/themes/base';
-@import 'src/seed/themes/basic/nav/topnav';
+@import 'src/seed/themes/basic/list';
 @include theme();
 
 .module {
@@ -13,4 +11,6 @@ __Seed builder__v1.0
   height: 100%;
 }
 
-.menu {}
+.item {}
+.item:hover,
+.item.active {} 

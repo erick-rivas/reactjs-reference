@@ -10,11 +10,9 @@ import ModalContainer from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import Component from 'components/helpers/Loading.link'
-
 import styles from 'resources/css/helpers/Modal.module.css';
 
-class Modal extends Component
+class Modal extends React.Component
 {
   render() 
   {

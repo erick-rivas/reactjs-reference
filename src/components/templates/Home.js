@@ -1,6 +1,7 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via SeedManifest.yaml
+  AUTO_GENERATED (Read only)
+  Modify via builder
 */
 
 import * as React from 'react';
@@ -10,11 +11,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Sidenav from 'components/templates/nav/Sidenav'
 import Topnav from 'components/templates/nav/Topnav'
-import PlayerPanel from 'components/templates/players/nav/Panel';
-import TeamPanel from 'components/templates/teams/nav/Panel';
-import UserPanel from 'components/templates/users/nav/Panel';
-import MatchPanel from 'components/templates/stats/matches/nav/Panel';
-import ScorePanel from 'components/templates/stats/scores/nav/Panel';
 
 import styles from 'resources/css/templates/Home.module.css';
 
@@ -39,21 +35,7 @@ class Home extends React.Component
           </div>
           <div className={styles.content}>        
              <Switch>
-              <Route
-                path={`${path}/players`}
-                component={PlayerPanel} />
-              <Route
-                path={`${path}/teams`}
-                component={TeamPanel} />
-              <Route
-                path={`${path}/users`}
-                component={UserPanel} />
-              <Route
-                path={`${path}/matches`}
-                component={MatchPanel} />
-              <Route
-                path={`${path}/scores`}
-                component={ScorePanel} />
+                {/* Suggest: Include model panels*/}
             </Switch>
           </div>
         </div>

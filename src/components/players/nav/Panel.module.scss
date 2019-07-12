@@ -5,7 +5,7 @@ __Seed builder__v1.0
 */
 
 @import 'src/seed/themes/base';
-@import 'src/seed/themes/basic/home';
+@import 'src/seed/themes/basic/nav/panel';
 @include theme();
 
 .module {
@@ -13,8 +13,11 @@ __Seed builder__v1.0
   height: 100%;
 }
 
-.drawer {}
-.sidenav {}
-.container {}
-.topnav {}
-.content {}
+.list {}
+.list .options {}
+.list .content {}
+
+.details {}
+.details .card {}
+.details .options {}
+.details .content {}

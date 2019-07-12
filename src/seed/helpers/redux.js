@@ -1,6 +1,7 @@
 /*
 __Seed builder__v1.0
-  (Read_only) Modify via SeedManifest.yaml
+  AUTO_GENERATED (Read only)
+  Modify via builder
 */
 
 import { connect } from 'react-redux'
