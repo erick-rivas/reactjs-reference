@@ -5,17 +5,16 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Switch, Route } from 'react-router-dom';
 
-import MatchDetails from 'containers/templates/stats/matches/Details';
-import MatchList from 'containers/templates/stats/matches/List';
+import MatchDetails from 'components/templates/stats/matches/Details';
+import MatchList from 'components/templates/stats/matches/List';
 import MatchItem from 'components/templates/stats/matches/Item';
-
-import Component from 'components/templates/stats/matches/nav/View.link'
 
 import styles from 'resources/css/templates/stats/matches/nav/View.module.css';
 
-class MatchView extends Component
+class MatchView extends React.Component
 {
   render()
   {
@@ -49,7 +48,17 @@ class MatchView extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default MatchView;
+export default redux(MatchView);
 

@@ -5,10 +5,8 @@ build
 node_modules
 src/seed/actions/*
 src/seed/reducers/*
-src/components/*
-src/containers/*
 src/actions/*
-src/reducers/*
+src/components/*
 src/resources/css/*
 ?app.js
 ?package.json

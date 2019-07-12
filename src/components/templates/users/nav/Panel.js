@@ -5,19 +5,18 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
-import UserDetails from 'containers/templates/users/Details';
-import UserList from 'containers/templates/users/List';
-import UserListOptions from 'containers/templates/users/options/List';
-import UserDetailsOptions from 'containers/templates/users/options/Details';
+import UserDetails from 'components/templates/users/Details';
+import UserList from 'components/templates/users/List';
+import UserListOptions from 'components/templates/users/options/List';
+import UserDetailsOptions from 'components/templates/users/options/Details';
 import UserItem from 'components/templates/users/Item';
-
-import Component from 'components/templates/users/nav/Panel.link'
 
 import styles from 'resources/css/templates/users/nav/Panel.module.css';
 
-class UserPanel extends Component
+class UserPanel extends React.Component
 {
   render()
   {
@@ -58,6 +57,16 @@ class UserPanel extends Component
         </div>
       </div>
     );
+  }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
   }
 }
 

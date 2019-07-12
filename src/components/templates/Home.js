@@ -5,22 +5,20 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
-
+import redux from 'seed/helpers/redux';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Sidenav from 'containers/templates/nav/Sidenav'
-import Topnav from 'containers/templates/nav/Topnav'
+import Sidenav from 'components/templates/nav/Sidenav'
+import Topnav from 'components/templates/nav/Topnav'
 import PlayerPanel from 'components/templates/players/nav/Panel';
 import TeamPanel from 'components/templates/teams/nav/Panel';
 import UserPanel from 'components/templates/users/nav/Panel';
 import MatchPanel from 'components/templates/stats/matches/nav/Panel';
 import ScorePanel from 'components/templates/stats/scores/nav/Panel';
 
-import Component from 'components/templates/Home.link'
-
 import styles from 'resources/css/templates/Home.module.css';
 
-class Home extends Component
+class Home extends React.Component
 {
   render()
   {
@@ -62,6 +60,23 @@ class Home extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount()
+  {
+    const userId = sessionStorage.getItem('id');
+    if (userId == null)
+      return this.props.history.replace('/login');
+  }
 }
 
-export default Home;
+export default redux(Home);

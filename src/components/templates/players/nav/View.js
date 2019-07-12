@@ -5,17 +5,16 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Switch, Route } from 'react-router-dom';
 
-import PlayerDetails from 'containers/templates/players/Details';
-import PlayerList from 'containers/templates/players/List';
+import PlayerDetails from 'components/templates/players/Details';
+import PlayerList from 'components/templates/players/List';
 import PlayerItem from 'components/templates/players/Item';
-
-import Component from 'components/templates/players/nav/View.link'
 
 import styles from 'resources/css/templates/players/nav/View.module.css';
 
-class PlayerView extends Component
+class PlayerView extends React.Component
 {
   render()
   {
@@ -49,7 +48,17 @@ class PlayerView extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default PlayerView;
+export default redux(PlayerView);
 

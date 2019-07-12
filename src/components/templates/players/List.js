@@ -4,17 +4,17 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import * as DataUtil from 'seed/util/DataUtil';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/templates/players/List.link';
-
 import styles from 'resources/css/templates/players/List.module.css';
 
-class PlayerList extends Component
+class PlayerList extends React.Component
 {
   render()
   {
@@ -44,6 +44,67 @@ class PlayerList extends Component
     </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      filters: {
+        user_id: this.getUserId(),
+        team_id: this.getTeamId(), 
+      }
+    };
+    this.onItemClick = this.onItemClick.bind(this);
+  }
+  
+  componentDidMount()
+  {
+    this.loadData();
+  }
+
+  /* Props */
+
+  onItemClick()
+  {
+  }
+  
+  loadData = () =>
+  {
+    const { getPlayerList } = this.props;
+    getPlayerList(this.state.filters);
+  }
+
+  /* Filters */
+
+  getUserId()
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id == 0 ? sessionStorage.getItem('id') : 
+           user_id ? user_id : 
+           userId;
+  }
+  getTeamId()
+  {
+    const { team_id } = this.props.match.params;
+    const { teamId } = this.props;
+    return team_id ? team_id : teamId;
+  }
+
+   /* Components */
+
+  renderPlayerList(map)
+  {
+    const { players = [] } = this.props;
+    const dataset = DataUtil
+      .filter(players, this.state.filters)
+      .sort((d1,d2) => d2.id - d1.id);
+    return dataset.map(map);
+  }
 }
 
-export default PlayerList;
+export default redux(PlayerList);

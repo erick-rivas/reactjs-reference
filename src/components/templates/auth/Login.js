@@ -5,12 +5,11 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
-
-import Component from 'components/templates/auth/Login.link'
+import redux from 'seed/helpers/redux';
 
 import styles from 'resources/css/templates/auth/Login.module.css';
 
-class Login extends Component
+class Login extends React.Component
 {
   render()
   {
@@ -52,6 +51,47 @@ class Login extends Component
       error ? <div className={styles.error}>{error}</div> : null
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
+
+  /* Props */
+
+  onLogin(res)
+  {
+    //Suggested method
+    this.props.history.replace('/');
+  }
+
+  onError(error)
+  {
+    //Suggested method
+    this.setState({
+      error: 'Invalid user or password'
+    })
+  }
+
+  /* Events */
+
+  onSubmit = e =>
+  {
+    e.preventDefault();
+    let email = e.target.email.value;
+    let password = e.target.password.value;
+    let callback = res =>
+    {
+      if (res.ok) this.onLogin(res.body);
+      else this.onError(res.body);
+    };
+    this.props.login(email, password, callback);
+  }
 }
 
-export default Login;
+export default redux(Login);

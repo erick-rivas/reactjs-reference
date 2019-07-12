@@ -5,17 +5,16 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Switch, Route } from 'react-router-dom';
 
-import ScoreDetails from 'containers/templates/stats/scores/Details';
-import ScoreList from 'containers/templates/stats/scores/List';
+import ScoreDetails from 'components/templates/stats/scores/Details';
+import ScoreList from 'components/templates/stats/scores/List';
 import ScoreItem from 'components/templates/stats/scores/Item';
-
-import Component from 'components/templates/stats/scores/nav/View.link'
 
 import styles from 'resources/css/templates/stats/scores/nav/View.module.css';
 
-class ScoreView extends Component
+class ScoreView extends React.Component
 {
   render()
   {
@@ -49,7 +48,17 @@ class ScoreView extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default ScoreView;
+export default redux(ScoreView);
 

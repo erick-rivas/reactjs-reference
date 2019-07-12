@@ -8,7 +8,7 @@ import * as Urls from 'util/settings/Urls';
 
 class Files
 {
-  uploadFile = (formWrapper, callback) =>
+  uploadFile(formWrapper, callback)
   {
     return disp =>
     {

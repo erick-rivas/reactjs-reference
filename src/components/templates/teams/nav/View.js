@@ -5,17 +5,16 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Switch, Route } from 'react-router-dom';
 
-import TeamDetails from 'containers/templates/teams/Details';
-import TeamList from 'containers/templates/teams/List';
+import TeamDetails from 'components/templates/teams/Details';
+import TeamList from 'components/templates/teams/List';
 import TeamItem from 'components/templates/teams/Item';
-
-import Component from 'components/templates/teams/nav/View.link'
 
 import styles from 'resources/css/templates/teams/nav/View.module.css';
 
-class TeamView extends Component
+class TeamView extends React.Component
 {
   render()
   {
@@ -49,7 +48,17 @@ class TeamView extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default TeamView;
+export default redux(TeamView);
 

@@ -5,16 +5,14 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import Login from 'containers/templates/auth/Login';
-import Logout from 'containers/templates/auth/Logout';
-import Home from 'containers/templates/Home';
-import Test from 'containers/Template'
-
-import Component from 'components/App.link'
+import Login from 'components/templates/auth/Login';
+import Logout from 'components/templates/auth/Logout';
+import Home from 'components/templates/Home';
+import Test from 'components/Template'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
-class App extends Component
+class App extends React.Component
 {
   render()
   {
@@ -29,6 +27,16 @@ class App extends Component
         </Switch>
       </Router>
     );
+  }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
   }
 }
 

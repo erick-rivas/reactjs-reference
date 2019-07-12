@@ -6,15 +6,14 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 import Svg from 'react-svg';
+import redux from 'seed/helpers/redux';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Component from 'components/templates/users/Item.link';
-
 import styles from 'resources/css/templates/users/Item.module.css';
 
-class UserItem extends Component
+class UserItem extends React.Component
 {
   render()
   {
@@ -37,6 +36,35 @@ class UserItem extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      anchorMenu: null
+    }
+    this.onClickOptions = this.onClickOptions.bind(this);
+    this.onCloseMenu = this.onCloseMenu.bind(this);
+  }
+
+  onClickOptions = e =>
+  {
+    this.setState({
+      anchorMenu: e.currentTarget
+    });
+  };
+
+  onCloseMenu = e =>
+  {
+    this.setState({
+      anchorMenu: null
+    });
+  };
+
 }
 
-export default UserItem;
+export default redux(UserItem);

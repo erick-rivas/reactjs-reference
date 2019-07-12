@@ -5,14 +5,15 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
-
+import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
-import Component from 'components/templates/teams/options/List.link';
+import Modal from 'components/helpers/Modal';
+import TeamForm from 'components/templates/teams/Form';
 
 import styles from 'resources/css/templates/teams/options/List.module.css';
 
-class TeamListOptions extends Component
+class TeamListOptions extends React.Component
 {
   render()
   {
@@ -29,6 +30,49 @@ class TeamListOptions extends Component
     </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      is_creating: false
+    };
+    this.onCreateClick = this.onCreateClick.bind(this);
+    this.onModalClose = this.onModalClose.bind(this);
+  }
+
+  /* Events */
+
+  onCreateClick()
+  {
+    this.setState({
+      is_creating: true
+    });
+  }
+
+  onModalClose()
+  {
+    this.setState({
+      is_creating: false
+    });
+  }
+
+  /* Component */
+
+  renderModal() 
+  {
+    return (
+    <Modal
+        match={this.props.match}
+        onClose={this.onModalClose}>
+        <TeamForm />
+      </Modal>
+    );
+  }
 }
 
-export default TeamListOptions;
+export default redux(TeamListOptions);

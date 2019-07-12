@@ -5,19 +5,18 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
-import TeamDetails from 'containers/templates/teams/Details';
-import TeamList from 'containers/templates/teams/List';
-import TeamListOptions from 'containers/templates/teams/options/List';
-import TeamDetailsOptions from 'containers/templates/teams/options/Details';
+import TeamDetails from 'components/templates/teams/Details';
+import TeamList from 'components/templates/teams/List';
+import TeamListOptions from 'components/templates/teams/options/List';
+import TeamDetailsOptions from 'components/templates/teams/options/Details';
 import TeamItem from 'components/templates/teams/Item';
-
-import Component from 'components/templates/teams/nav/Panel.link'
 
 import styles from 'resources/css/templates/teams/nav/Panel.module.css';
 
-class TeamPanel extends Component
+class TeamPanel extends React.Component
 {
   render()
   {
@@ -58,6 +57,16 @@ class TeamPanel extends Component
         </div>
       </div>
     );
+  }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
   }
 }
 

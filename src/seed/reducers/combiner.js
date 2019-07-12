@@ -5,29 +5,21 @@ __Seed builder__v1.0
 
 import { combineReducers } from 'redux';
 
-import Players from 'reducers/players';
-import Teams from 'reducers/teams';
-import Users from 'reducers/users';
-import Matches from 'reducers/stats/matches';
-import Scores from 'reducers/stats/scores';
+import Players from 'seed/reducers/players';
+import Teams from 'seed/reducers/teams';
+import Users from 'seed/reducers/users';
+import Matches from 'seed/reducers/matches';
+import Scores from 'seed/reducers/scores';
+import Auth from 'seed/reducers/helpers/auth';
 
-class _Combiner
-{
-  additionalReducers = {};
-  
-  combine()
-  {
-    let defReducers = {
-      players: new Players().reducer,
-      teams: new Teams().reducer,
-      users: new Users().reducer,
-      matches: new Matches().reducer,
-      scores: new Scores().reducer,
-    } 
-    const reducers = Object.assign(defReducers, this.additionalReducers);
-    return combineReducers(reducers);
-  }
-}
+const reducers = {
+  auth: new Auth().reducer,
+  players: new Players().reducer,
+  teams: new Teams().reducer,
+  users: new Users().reducer,
+  matches: new Matches().reducer,
+  scores: new Scores().reducer,
+} 
 
-export default _Combiner;
+export default combineReducers(reducers); 
 

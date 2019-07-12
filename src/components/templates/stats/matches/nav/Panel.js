@@ -5,19 +5,18 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
-import MatchDetails from 'containers/templates/stats/matches/Details';
-import MatchList from 'containers/templates/stats/matches/List';
-import MatchListOptions from 'containers/templates/stats/matches/options/List';
-import MatchDetailsOptions from 'containers/templates/stats/matches/options/Details';
+import MatchDetails from 'components/templates/stats/matches/Details';
+import MatchList from 'components/templates/stats/matches/List';
+import MatchListOptions from 'components/templates/stats/matches/options/List';
+import MatchDetailsOptions from 'components/templates/stats/matches/options/Details';
 import MatchItem from 'components/templates/stats/matches/Item';
-
-import Component from 'components/templates/stats/matches/nav/Panel.link'
 
 import styles from 'resources/css/templates/stats/matches/nav/Panel.module.css';
 
-class MatchPanel extends Component
+class MatchPanel extends React.Component
 {
   render()
   {
@@ -58,6 +57,16 @@ class MatchPanel extends Component
         </div>
       </div>
     );
+  }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
   }
 }
 

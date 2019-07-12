@@ -5,20 +5,17 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil.js';
-
 import cx from 'classnames';
-
+import redux from 'seed/helpers/redux';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import TeamView from 'components/templates/teams/nav/View';
 import PlayerView from 'components/templates/players/nav/View';
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/templates/teams/Details.link'
-
 import styles from 'resources/css/templates/teams/Details.module.css';
 
-class TeamDetails extends Component
+class TeamDetails extends React.Component
 {
   render()
   {
@@ -58,6 +55,37 @@ class TeamDetails extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount()
+  {
+    this.loadData();
+  }
+
+  loadData = () =>
+  {
+    const { getTeamDetails } = this.props;
+    const teamId = this.getTeamId()
+    getTeamDetails(teamId);
+  }
+
+  /* Args */
+
+  getTeamId() 
+  {
+    const { team_id } = this.props.match.params;
+    const { teamId } = this.props;
+    return team_id ? team_id : teamId;
+  }
 }
 
-export default TeamDetails;
+export default redux(TeamDetails);

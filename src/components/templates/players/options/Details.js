@@ -6,16 +6,16 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 import Svg from 'react-svg';
-
+import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
 import Loading from 'components/helpers/Loading';
-
-import Component from 'components/templates/players/options/Details.link';
+import Modal from 'components/helpers/Modal';
+import PlayerForm from 'components/templates/players/Form';
 
 import styles from 'resources/css/templates/players/options/Details.module.css';
 
-class PlayerDetailsOptions extends Component
+class PlayerDetailsOptions extends React.Component
 {
   render()
   {
@@ -38,6 +38,98 @@ class PlayerDetailsOptions extends Component
     </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      player: {},
+      is_editing: false
+    };
+    this.onEditClick = this.onEditClick.bind(this);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
+    this.onModalClose = this.onModalClose.bind(this);
+    this.onBackClick = this.onBackClick.bind(this);
+  }
+
+  /* Props */
+
+  onDelete(res)
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+  onDeleteError(error)
+  {
+    //Suggested method
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+  /* Events */
+
+  onEditClick()
+  {
+    this.setState({
+      is_editing: true
+    })
+  }
+
+  onDeleteClick()
+  {
+    const { deletePlayer } = this.props;
+    const playerId = this.getPlayerId();
+    const onDelete = res => 
+    {
+      if (res.ok) this.onDelete(res.body);
+      else this.onDeleteError(res.body);
+    };
+    deletePlayer(playerId, onDelete);
+  }
+
+  onModalClose()
+  {
+    this.setState({
+      is_editing: false
+    })
+  }
+
+  onBackClick()
+  {
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+  /* Args */
+
+  getPlayerId() 
+  {
+    const { player_id } = this.props.match.params;
+    const { playerId } = this.props;
+    return player_id ? player_id : playerId;
+  }
+
+  /* Components */
+
+  renderModal()
+  {
+    return (
+    <Modal
+        match={this.props.match}
+        onClose={this.onModalClose}>
+        <PlayerForm />
+      </Modal>
+    );
+  }
 }
 
-export default PlayerDetailsOptions;
+export default redux(PlayerDetailsOptions);

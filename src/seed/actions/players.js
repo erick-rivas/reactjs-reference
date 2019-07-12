@@ -17,27 +17,27 @@ class _Players extends Action
     )
   }
 
-  getPlayerList = (params = {}, callback) =>
+  getPlayerList(params = {}, callback)
   {
     return this.getList(params, callback);
   }
 
-  getPlayerDetails = (playerId, callback) =>
+  getPlayerDetails(playerId, callback)
   {
     return this.getDetails(playerId, callback);
   }
 
-  savePlayer = (player, callback) =>
+  savePlayer(player, callback)
   {
     return this.saveData(player, callback);
   }
 
-  setPlayer = (playerId, player, callback) =>
+  setPlayer(playerId, player, callback)
   {
     return this.setData(playerId, player, callback);
   }
 
-  deletePlayer = (playerId, callback) =>
+  deletePlayer(playerId, callback)
   {
     return this.deleteData(playerId, callback);
   }

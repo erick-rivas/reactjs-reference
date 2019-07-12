@@ -17,27 +17,27 @@ class _Users extends Action
     )
   }
 
-  getUserList = (params = {}, callback) =>
+  getUserList(params = {}, callback)
   {
     return this.getList(params, callback);
   }
 
-  getUserDetails = (userId, callback) =>
+  getUserDetails(userId, callback)
   {
     return this.getDetails(userId, callback);
   }
 
-  saveUser = (user, callback) =>
+  saveUser(user, callback)
   {
     return this.saveData(user, callback);
   }
 
-  setUser = (userId, user, callback) =>
+  setUser(userId, user, callback)
   {
     return this.setData(userId, user, callback);
   }
 
-  deleteUser = (userId, callback) =>
+  deleteUser(userId, callback)
   {
     return this.deleteData(userId, callback);
   }

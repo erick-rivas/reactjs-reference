@@ -5,19 +5,16 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil.js';
-
 import cx from 'classnames';
-
+import redux from 'seed/helpers/redux';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import TeamView from 'components/templates/teams/nav/View';
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/templates/users/Details.link'
-
 import styles from 'resources/css/templates/users/Details.module.css';
 
-class UserDetails extends Component
+class UserDetails extends React.Component
 {
   render()
   {
@@ -39,6 +36,37 @@ class UserDetails extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount()
+  {
+    this.loadData();
+  }
+
+  loadData = () =>
+  {
+    const { getUserDetails } = this.props;
+    const userId = this.getUserId()
+    getUserDetails(userId);
+  }
+
+  /* Args */
+
+  getUserId() 
+  {
+    const { user_id } = this.props.match.params;
+    const { userId } = this.props;
+    return user_id ? user_id : userId;
+  }
 }
 
-export default UserDetails;
+export default redux(UserDetails);

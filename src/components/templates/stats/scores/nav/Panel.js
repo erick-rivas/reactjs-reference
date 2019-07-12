@@ -5,19 +5,18 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
-import ScoreDetails from 'containers/templates/stats/scores/Details';
-import ScoreList from 'containers/templates/stats/scores/List';
-import ScoreListOptions from 'containers/templates/stats/scores/options/List';
-import ScoreDetailsOptions from 'containers/templates/stats/scores/options/Details';
+import ScoreDetails from 'components/templates/stats/scores/Details';
+import ScoreList from 'components/templates/stats/scores/List';
+import ScoreListOptions from 'components/templates/stats/scores/options/List';
+import ScoreDetailsOptions from 'components/templates/stats/scores/options/Details';
 import ScoreItem from 'components/templates/stats/scores/Item';
-
-import Component from 'components/templates/stats/scores/nav/Panel.link'
 
 import styles from 'resources/css/templates/stats/scores/nav/Panel.module.css';
 
-class ScorePanel extends Component
+class ScorePanel extends React.Component
 {
   render()
   {
@@ -58,6 +57,16 @@ class ScorePanel extends Component
         </div>
       </div>
     );
+  }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
   }
 }
 

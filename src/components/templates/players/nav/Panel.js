@@ -5,19 +5,18 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
-import PlayerDetails from 'containers/templates/players/Details';
-import PlayerList from 'containers/templates/players/List';
-import PlayerListOptions from 'containers/templates/players/options/List';
-import PlayerDetailsOptions from 'containers/templates/players/options/Details';
+import PlayerDetails from 'components/templates/players/Details';
+import PlayerList from 'components/templates/players/List';
+import PlayerListOptions from 'components/templates/players/options/List';
+import PlayerDetailsOptions from 'components/templates/players/options/Details';
 import PlayerItem from 'components/templates/players/Item';
-
-import Component from 'components/templates/players/nav/Panel.link'
 
 import styles from 'resources/css/templates/players/nav/Panel.module.css';
 
-class PlayerPanel extends Component
+class PlayerPanel extends React.Component
 {
   render()
   {
@@ -58,6 +57,16 @@ class PlayerPanel extends Component
         </div>
       </div>
     );
+  }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
   }
 }
 

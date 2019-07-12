@@ -4,12 +4,11 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
-
-import Component from 'components/Template.link'
+import redux from 'seed/helpers/redux'
 
 import styles from 'resources/css/Template.module.css';
 
-class Template extends Component
+class Template extends React.Component
 {
   render()
   {
@@ -20,6 +19,16 @@ class Template extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 };
 
-export default Template;
+export default redux(Template);

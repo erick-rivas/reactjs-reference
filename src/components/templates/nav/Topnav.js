@@ -6,12 +6,11 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 import Svg from 'react-svg';
-
-import Component from 'components/templates/nav/Topnav.link'
+import redux from 'seed/helpers/redux';
 
 import styles from 'resources/css/templates/nav/Topnav.module.css';
 
-class Topnav extends Component
+class Topnav extends React.Component
 {
   render()
   {
@@ -22,6 +21,16 @@ class Topnav extends Component
     </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default Topnav;
+export default redux(Topnav);

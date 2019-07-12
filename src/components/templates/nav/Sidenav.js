@@ -5,14 +5,12 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
-
+import redux from 'seed/helpers/redux';
 import { NavLink } from 'react-router-dom';
-
-import Component from 'components/templates/nav/Sidenav.link'
 
 import styles from 'resources/css/templates/nav/Sidenav.module.css';
 
-class Sidenav extends Component
+class Sidenav extends React.Component
 {
   render()
   {
@@ -70,6 +68,16 @@ class Sidenav extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default Sidenav;
+export default redux(Sidenav);

@@ -5,17 +5,16 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import cx from 'classnames';
+import redux from 'seed/helpers/redux';
 import { Switch, Route } from 'react-router-dom';
 
-import UserDetails from 'containers/templates/users/Details';
-import UserList from 'containers/templates/users/List';
+import UserDetails from 'components/templates/users/Details';
+import UserList from 'components/templates/users/List';
 import UserItem from 'components/templates/users/Item';
-
-import Component from 'components/templates/users/nav/View.link'
 
 import styles from 'resources/css/templates/users/nav/View.module.css';
 
-class UserView extends Component
+class UserView extends React.Component
 {
   render()
   {
@@ -49,7 +48,17 @@ class UserView extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
 }
 
-export default UserView;
+export default redux(UserView);
 

@@ -17,27 +17,27 @@ class _Teams extends Action
     )
   }
 
-  getTeamList = (params = {}, callback) =>
+  getTeamList(params = {}, callback)
   {
     return this.getList(params, callback);
   }
 
-  getTeamDetails = (teamId, callback) =>
+  getTeamDetails(teamId, callback)
   {
     return this.getDetails(teamId, callback);
   }
 
-  saveTeam = (team, callback) =>
+  saveTeam(team, callback)
   {
     return this.saveData(team, callback);
   }
 
-  setTeam = (teamId, team, callback) =>
+  setTeam(teamId, team, callback)
   {
     return this.setData(teamId, team, callback);
   }
 
-  deleteTeam = (teamId, callback) =>
+  deleteTeam(teamId, callback)
   {
     return this.deleteData(teamId, callback);
   }

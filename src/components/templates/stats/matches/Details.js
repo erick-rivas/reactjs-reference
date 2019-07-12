@@ -5,20 +5,17 @@ __Seed builder__v1.0
 
 import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil.js';
-
 import cx from 'classnames';
-
+import redux from 'seed/helpers/redux';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import TeamView from 'components/templates/teams/nav/View';
 import ScoreView from 'components/templates/stats/scores/nav/View';
 import Loading from 'components/helpers/Loading';
 
-import Component from 'components/templates/stats/matches/Details.link'
-
 import styles from 'resources/css/templates/stats/matches/Details.module.css';
 
-class MatchDetails extends Component
+class MatchDetails extends React.Component
 {
   render()
   {
@@ -52,6 +49,37 @@ class MatchDetails extends Component
       </div>
     );
   }
+
+  /*
+  * Business logic
+  */
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount()
+  {
+    this.loadData();
+  }
+
+  loadData = () =>
+  {
+    const { getMatchDetails } = this.props;
+    const matchId = this.getMatchId()
+    getMatchDetails(matchId);
+  }
+
+  /* Args */
+
+  getMatchId() 
+  {
+    const { match_id } = this.props.match.params;
+    const { matchId } = this.props;
+    return match_id ? match_id : matchId;
+  }
 }
 
-export default MatchDetails;
+export default redux(MatchDetails);
