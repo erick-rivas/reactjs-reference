@@ -3,8 +3,8 @@ __Seed builder__v1.0
   AUTO_GENERATED (Read only)
   Modify via builder
 */
+import Actions from 'seed/actions/matches';
 
-import Actions from 'actions/matches';
 import Reducer from 'seed/helpers/reducer';
 
 class _Matches extends Reducer

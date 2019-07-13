@@ -1,7 +1,5 @@
 /*
 __Seed builder__v1.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
 */
 
 import * as React from 'react';
@@ -9,7 +7,7 @@ import cx from 'classnames';
 import redux from 'seed/helpers/redux';
 import { NavLink } from 'react-router-dom';
 
-import styles from 'resources/css/templates/nav/Sidenav.module.css';
+import styles from 'resources/css/nav/Sidenav.module.css';
 
 class Sidenav extends React.Component
 {

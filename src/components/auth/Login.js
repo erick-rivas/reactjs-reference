@@ -1,14 +1,12 @@
 /*
 __Seed builder__v1.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
 */
 
 import * as React from 'react';
 import cx from 'classnames';
 import redux from 'seed/helpers/redux';
 
-import styles from 'resources/css/templates/auth/Login.module.css';
+import styles from 'resources/css/auth/Login.module.css';
 
 class Login extends React.Component
 {

@@ -45,4 +45,3 @@ class _Scores extends Action
 }
 
 export default _Scores;
-

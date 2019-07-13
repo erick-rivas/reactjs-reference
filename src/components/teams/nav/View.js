@@ -7,13 +7,13 @@ import cx from 'classnames';
 import redux from 'seed/helpers/redux';
 import { Switch, Route } from 'react-router-dom';
 
-import PlayerDetails from 'components/players/Details';
-import PlayerList from 'components/players/List';
-import PlayerItem from 'components/players/Item';
+import TeamDetails from 'components/teams/Details';
+import TeamList from 'components/teams/List';
+import TeamItem from 'components/teams/Item';
 
-import styles from 'resources/css/players/nav/View.module.css';
+import styles from 'resources/css/teams/nav/View.module.css';
 
-class PlayerView extends React.Component
+class TeamView extends React.Component
 {
   render()
   {
@@ -21,13 +21,13 @@ class PlayerView extends React.Component
    
     const list = props =>
       <div className={styles.list}>
-        <PlayerList 
-        Item={PlayerItem}/>
+        <TeamList 
+        Item={TeamItem}/>
       </div>
 
     const details = props =>
       <div className={styles.details}>
-        <PlayerDetails />
+        <TeamDetails />
       </div>
    
     return (
@@ -36,7 +36,7 @@ class PlayerView extends React.Component
         <div className={styles.container}>
           <Switch>
            <Route
-            path={`${path}/:player_id(\\d+)`}
+            path={`${path}/:team_id(\\d+)`}
             component={details} />
             <Route
               path={`${path}`}
@@ -59,4 +59,5 @@ class PlayerView extends React.Component
   }
 }
 
-export default redux(PlayerView);
+export default redux(TeamView);
+

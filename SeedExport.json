@@ -1,0 +1,10 @@
+{
+  "actions": [
+    "team",
+    "player"
+  ],
+  "components": [
+    "team",
+    "player"
+  ]
+}

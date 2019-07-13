@@ -1,14 +1,12 @@
 /*
 __Seed builder__v1.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
 */
 
 import * as React from 'react';
 import cx from 'classnames';
 import redux from 'seed/helpers/redux';
 
-import styles from 'resources/css/templates/auth/Logout.module.css';
+import styles from 'resources/css/auth/Logout.module.css';
 
 class Logout extends React.Component
 {

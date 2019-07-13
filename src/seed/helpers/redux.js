@@ -11,18 +11,15 @@ import _TeamActions from 'seed/actions/teams';
 import _UserActions from 'seed/actions/users';
 import _MatchActions from 'seed/actions/matches';
 import _ScoreActions from 'seed/actions/scores';
-import PlayerActions from 'actions/players';
 import TeamActions from 'actions/teams';
-import UserActions from 'actions/users';
-import MatchActions from 'actions/matches';
-import ScoreActions from 'actions/scores';
+import PlayerActions from 'actions/players';
 import AuthActions from 'seed/actions/helpers/auth'
 import FileActions from 'seed/helpers/files';
 const players = new PlayerActions();
 const teams = new TeamActions();
-const users = new UserActions();
-const matches = new MatchActions();
-const scores = new ScoreActions();
+const users = new _UserActions();
+const matches = new _MatchActions();
+const scores = new _ScoreActions();
 const auth = new AuthActions();
 const files = new FileActions();
 
@@ -48,24 +45,12 @@ const actions = [
     object: scores
   },
   {
-    className: PlayerActions,
-    object: players
-  },
-  {
     className: TeamActions,
     object: teams
   },
   {
-    className: UserActions,
-    object: users
-  },
-  {
-    className: MatchActions,
-    object: matches
-  },
-  {
-    className: ScoreActions,
-    object: scores
+    className: PlayerActions,
+    object: players
   },
   {
     className: AuthActions,
@@ -105,4 +90,5 @@ const redux = (component) => {
 }
 
 export default redux;
+
 

@@ -9,7 +9,7 @@ import redux from 'seed/helpers/redux';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
-/* TODO include subviews
+/* Suggest: include subviews
 import TeamView from 'components/teams/nav/View';
 */
 import Loading from 'components/helpers/Loading';
@@ -40,7 +40,7 @@ class PlayerDetails extends React.Component
         <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label><br/>
         <label className={cx(styles.txt, styles.isActiveTxt)}>{player.is_active.toString()}</label>
         <br/>
-        {/* TODO include subviews
+        {/* Suggest: include subviews
         <label className={cx(styles.lbl, styles.teamLbl)}>Team</label><br/>
         <label className={cx(styles.txt, styles.teamTxt)}>{player.team_id}</label>
         <br/>

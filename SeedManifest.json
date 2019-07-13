@@ -1,0 +1,545 @@
+{
+  "name": "reference",
+  "models": [
+    {
+      "name": "player",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "length": "256"
+        },
+        {
+          "name": "photo",
+          "type": "image",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "length": "512"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "default": "true"
+        },
+        {
+          "name": "team",
+          "type": "team",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true,
+      "group": ""
+    },
+    {
+      "name": "team",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "length": "256"
+        },
+        {
+          "name": "logo",
+          "type": "image",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "length": "512"
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "default": "No description available"
+        },
+        {
+          "name": "market_value",
+          "type": "float",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "rival",
+          "type": "team",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": true,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "identity_docs",
+          "type": "file[]",
+          "is_fk": false,
+          "read": true,
+          "write": false,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "players",
+          "type": "player[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "read": true,
+          "write": false,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true,
+      "group": ""
+    },
+    {
+      "name": "user",
+      "attrs": [
+        {
+          "name": "teams",
+          "type": "team[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": false,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true,
+      "group": ""
+    },
+    {
+      "name": "match",
+      "attrs": [
+        {
+          "name": "date",
+          "type": "date",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "default": "now"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "options": [
+            "Friendship",
+            "League",
+            "Cup"
+          ]
+        },
+        {
+          "name": "local",
+          "type": "team",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "visitor",
+          "type": "team",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "scores",
+          "type": "score[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "read": true,
+          "write": false,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true,
+      "group": "stats"
+    },
+    {
+      "name": "score",
+      "attrs": [
+        {
+          "name": "min",
+          "type": "int",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "player",
+          "type": "player",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "match",
+          "type": "match",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true,
+      "group": "stats"
+    }
+  ],
+  "export": {
+    "actions": [
+      {
+        "name": "team",
+        "attrs": [
+          {
+            "name": "name",
+            "type": "string",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "256"
+          },
+          {
+            "name": "logo",
+            "type": "image",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "512"
+          },
+          {
+            "name": "description",
+            "type": "text",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "default": "No description available"
+          },
+          {
+            "name": "market_value",
+            "type": "float",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE"
+          },
+          {
+            "name": "rival",
+            "type": "team",
+            "is_fk": true,
+            "card": {
+              "ref": "1",
+              "has": "0..*"
+            },
+            "read": true,
+            "write": true,
+            "empty": true,
+            "delete": "CASCADE"
+          },
+          {
+            "name": "identity_docs",
+            "type": "file[]",
+            "is_fk": false,
+            "read": true,
+            "write": false,
+            "empty": false,
+            "delete": "CASCADE"
+          },
+          {
+            "name": "players",
+            "type": "player[]",
+            "is_fk": true,
+            "card": {
+              "ref": "0..*",
+              "has": "1"
+            },
+            "read": true,
+            "write": false,
+            "empty": false,
+            "delete": "CASCADE"
+          }
+        ],
+        "read": true,
+        "write": true,
+        "group": ""
+      },
+      {
+        "name": "player",
+        "attrs": [
+          {
+            "name": "name",
+            "type": "string",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "256"
+          },
+          {
+            "name": "photo",
+            "type": "image",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "512"
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "default": "true"
+          },
+          {
+            "name": "team",
+            "type": "team",
+            "is_fk": true,
+            "card": {
+              "ref": "1",
+              "has": "0..*"
+            },
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE"
+          }
+        ],
+        "read": true,
+        "write": true,
+        "group": ""
+      }
+    ],
+    "components": [
+      {
+        "name": "team",
+        "attrs": [
+          {
+            "name": "name",
+            "type": "string",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "256"
+          },
+          {
+            "name": "logo",
+            "type": "image",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "512"
+          },
+          {
+            "name": "description",
+            "type": "text",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "default": "No description available"
+          },
+          {
+            "name": "market_value",
+            "type": "float",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE"
+          },
+          {
+            "name": "rival",
+            "type": "team",
+            "is_fk": true,
+            "card": {
+              "ref": "1",
+              "has": "0..*"
+            },
+            "read": true,
+            "write": true,
+            "empty": true,
+            "delete": "CASCADE"
+          },
+          {
+            "name": "identity_docs",
+            "type": "file[]",
+            "is_fk": false,
+            "read": true,
+            "write": false,
+            "empty": false,
+            "delete": "CASCADE"
+          },
+          {
+            "name": "players",
+            "type": "player[]",
+            "is_fk": true,
+            "card": {
+              "ref": "0..*",
+              "has": "1"
+            },
+            "read": true,
+            "write": false,
+            "empty": false,
+            "delete": "CASCADE"
+          }
+        ],
+        "read": true,
+        "write": true,
+        "group": ""
+      },
+      {
+        "name": "player",
+        "attrs": [
+          {
+            "name": "name",
+            "type": "string",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "256"
+          },
+          {
+            "name": "photo",
+            "type": "image",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "length": "512"
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "is_fk": false,
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE",
+            "default": "true"
+          },
+          {
+            "name": "team",
+            "type": "team",
+            "is_fk": true,
+            "card": {
+              "ref": "1",
+              "has": "0..*"
+            },
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE"
+          }
+        ],
+        "read": true,
+        "write": true,
+        "group": ""
+      }
+    ]
+  }
+}

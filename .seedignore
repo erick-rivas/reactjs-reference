@@ -1,6 +1,8 @@
 .git*
 .seedignore
 LICENSE
+SeedManifest.json
+SeedExport.json
 build
 node_modules
 src/seed/actions/*

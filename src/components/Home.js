@@ -1,7 +1,5 @@
 /*
 __Seed builder__v1.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
 */
 
 import * as React from 'react';
@@ -9,10 +7,10 @@ import cx from 'classnames';
 import redux from 'seed/helpers/redux';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Sidenav from 'components/templates/nav/Sidenav'
-import Topnav from 'components/templates/nav/Topnav'
+import Sidenav from 'components/nav/Sidenav'
+import Topnav from 'components/nav/Topnav'
 
-import styles from 'resources/css/templates/Home.module.css';
+import styles from 'resources/css/Home.module.css';
 
 class Home extends React.Component
 {
@@ -34,9 +32,8 @@ class Home extends React.Component
               component={Topnav} />
           </div>
           <div className={styles.content}>        
-             <Switch>
-                {/* Suggest: Include model panels*/}
-            </Switch>
+              <h2>Hi!</h2>
+              <p>Add components and action with <code>seed export components:model_name </code></p>
           </div>
         </div>
       </div>
