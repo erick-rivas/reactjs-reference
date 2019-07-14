@@ -5,6 +5,7 @@
   .options {}
 
   .options .btn {
+    display: inline-block;
     border: 1px solid $action-color;
     color: $action-color;
     padding: 3px 11px;
@@ -12,6 +13,7 @@
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
+    text-decoration: none;
     @include border-radius(5px)
   }
 

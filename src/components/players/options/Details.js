@@ -9,8 +9,6 @@ import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
 import Loading from 'components/helpers/Loading';
-import Modal from 'components/helpers/Modal';
-import PlayerForm from 'components/players/Form';
 
 import styles from 'resources/css/players/options/Details.module.css';
 
@@ -19,33 +17,17 @@ class PlayerDetailsOptions extends React.Component
   render()
   {
     const { url } = this.props.match;
-    const { is_editing } = this.state;
-    const editModal = is_editing ? this.renderModal() : null;
     
     return (
     <div className={styles.module}>
       <Svg className={styles.back} 
         src={require('resources/icons/ic_arrow_back.svg')}
-        onClick={this.onBackClick} />
+        onClick={this.onClickBack} />
        <div className={styles.options}>
-        <button className={cx(styles.btn, styles.edit)} type="button" 
-          onClick={this.onEditClick}>Edit</button>
-         <button className={cx(styles.btn, styles.delete)} type="button" 
-          onClick={this.onDeleteClick}>Delete</button>
+        <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
+        <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
       </div>
-      {editModal}
     </div>
-    );
-  }
-
-  renderModal()
-  {
-    return (
-    <Modal
-        match={this.props.match}
-        onClose={this.onModalClose}>
-        <PlayerForm />
-      </Modal>
     );
   }
 
@@ -57,13 +39,10 @@ class PlayerDetailsOptions extends React.Component
   {
     super(props);
     this.state = {
-      player: {},
-      is_editing: false
+      player: {}
     };
-    this.onEditClick = this.onEditClick.bind(this);
-    this.onDeleteClick = this.onDeleteClick.bind(this);
-    this.onModalClose = this.onModalClose.bind(this);
-    this.onBackClick = this.onBackClick.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
+    this.onClickBack = this.onClickBack.bind(this);
   }
 
   /* Props */
@@ -84,16 +63,7 @@ class PlayerDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  /* Events */
-
-  onEditClick()
-  {
-    this.setState({
-      is_editing: true
-    })
-  }
-
-  onDeleteClick()
+  onClickDelete()
   {
     const { deletePlayer } = this.props;
     const playerId = this.getPlayerId();
@@ -105,14 +75,7 @@ class PlayerDetailsOptions extends React.Component
     deletePlayer(playerId, onDelete);
   }
 
-  onModalClose()
-  {
-    this.setState({
-      is_editing: false
-    })
-  }
-
-  onBackClick()
+  onClickBack()
   {
     const { url } = this.props.match
     const backUrl = url.substring(0, url.lastIndexOf('/'));

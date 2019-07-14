@@ -12,6 +12,9 @@ import TeamList from 'components/teams/List';
 import TeamListOptions from 'components/teams/options/List';
 import TeamDetailsOptions from 'components/teams/options/Details';
 import TeamItem from 'components/teams/Item';
+import TeamForm from 'components/teams/Form';
+
+import Modal from 'components/helpers/Modal';
 
 import styles from 'resources/css/teams/Panel.module.css';
 
@@ -43,17 +46,31 @@ class TeamPanel extends React.Component
           </div>
         </div>
       </div>
-   
+
+    const form = props =>
+      <Modal
+        match={this.props.match}
+        onClose={this.onModalClose}>
+        <TeamForm />
+      </Modal>
+
     return (
       <div className={styles.module}>
-        <div className={styles.container}>        
+        <div className={styles.container}>   
           <Route
-            path={`${path}`}
+            path={[`${path}/:team_id(\\d+)`, `${path}`]}
             component={list} />
           <Route
             path={`${path}/:team_id(\\d+)`}
             component={details} />
         </div>
+
+        <Route
+          path={
+            [`${path}/:any/new`,`${path}/new`,
+            `${path}/:team_id(\\d+)/edit`] }
+          component={form} />
+
       </div>
     );
   }
@@ -66,7 +83,14 @@ class TeamPanel extends React.Component
   {
     super(props);
     this.state = {};
+    this.onModalClose = this.onModalClose.bind(this);
   }
+
+  onModalClose()
+  {
+    this.props.history.goBack()
+  }
+
 }
 
 export default TeamPanel;

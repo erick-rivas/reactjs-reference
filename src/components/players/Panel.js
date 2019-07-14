@@ -12,6 +12,9 @@ import PlayerList from 'components/players/List';
 import PlayerListOptions from 'components/players/options/List';
 import PlayerDetailsOptions from 'components/players/options/Details';
 import PlayerItem from 'components/players/Item';
+import PlayerForm from 'components/players/Form';
+
+import Modal from 'components/helpers/Modal';
 
 import styles from 'resources/css/players/Panel.module.css';
 
@@ -43,17 +46,31 @@ class PlayerPanel extends React.Component
           </div>
         </div>
       </div>
-   
+
+    const form = props =>
+      <Modal
+        match={this.props.match}
+        onClose={this.onModalClose}>
+        <PlayerForm />
+      </Modal>
+
     return (
       <div className={styles.module}>
-        <div className={styles.container}>        
+        <div className={styles.container}>   
           <Route
-            path={`${path}`}
+            path={[`${path}/:player_id(\\d+)`, `${path}`]}
             component={list} />
           <Route
             path={`${path}/:player_id(\\d+)`}
             component={details} />
         </div>
+
+        <Route
+          path={
+            [`${path}/:any/new`,`${path}/new`,
+            `${path}/:player_id(\\d+)/edit`] }
+          component={form} />
+
       </div>
     );
   }
@@ -66,7 +83,14 @@ class PlayerPanel extends React.Component
   {
     super(props);
     this.state = {};
+    this.onModalClose = this.onModalClose.bind(this);
   }
+
+  onModalClose()
+  {
+    this.props.history.goBack()
+  }
+
 }
 
 export default PlayerPanel;
