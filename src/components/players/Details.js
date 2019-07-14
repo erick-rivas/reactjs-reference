@@ -42,7 +42,7 @@ class PlayerDetails extends React.Component
   }
 
   /*
-  * Business logic
+  * Component Logic
   */
 
   constructor(props)
@@ -56,11 +56,12 @@ class PlayerDetails extends React.Component
     this.loadData();
   }
 
+  /* Actions */
+
   loadData = () =>
   {
-    const { getPlayerDetails } = this.props;
     const playerId = this.getPlayerId()
-    getPlayerDetails(playerId);
+    this.props.getPlayerDetails(playerId);
   }
 
   /* Args */

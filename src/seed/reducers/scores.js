@@ -3,7 +3,7 @@ __Seed builder__v1.0
   AUTO_GENERATED (Read only)
   Modify via builder
 */
-import Actions from 'seed/actions/scores';
+import Actions from 'actions/scores';
 
 import Reducer from 'seed/helpers/reducer';
 

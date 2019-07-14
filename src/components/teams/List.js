@@ -28,7 +28,7 @@ class TeamList extends React.Component
           to={`${url}/${item.id}`}
           className={styles.item}
           activeClassName={styles.active}
-          onClick={this.onItemClick}>
+          onClick={this.onClickItem}>
           <Item 
             key={item.id} 
             id={item.id}
@@ -53,7 +53,7 @@ class TeamList extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -66,7 +66,7 @@ class TeamList extends React.Component
         players_id: this.getPlayersId(), 
       }
     };
-    this.onItemClick = this.onItemClick.bind(this);
+    this.onClickItem = this.onClickItem.bind(this);
   }
   
   componentDidMount()
@@ -74,11 +74,11 @@ class TeamList extends React.Component
     this.loadData();
   }
 
-  /* Props */
+  /* Events */
 
-  onItemClick()
-  {
-  }
+  onClickItem(){}
+
+  /* Actions */
   
   loadData = () =>
   {

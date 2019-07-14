@@ -25,7 +25,7 @@ class PlayerListOptions extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -36,3 +36,4 @@ class PlayerListOptions extends React.Component
 }
 
 export default redux(PlayerListOptions);
+

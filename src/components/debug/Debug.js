@@ -12,14 +12,14 @@ class Debug extends React.Component
   render()
   {
     return (
-        <div className={styles.module}>
-            Debuuug!
-        </div>
+      <div className={styles.module}>
+        Debuuug!
+      </div>
     );
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)

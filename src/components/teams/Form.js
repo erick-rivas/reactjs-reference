@@ -6,8 +6,8 @@ import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil';
 import cx from 'classnames';
 import redux from 'seed/helpers/redux';
+import { Formik, Field } from 'formik';
 
-import { getDateInput } from 'seed/util/FormatUtil';
 import Loading from 'components/helpers/Loading';
 
 import styles from 'resources/css/teams/Form.module.css';
@@ -23,47 +23,61 @@ class TeamForm extends React.Component
     if (team.id == null && teamId != null) return <Loading />;
     
     return (
-    <div className={styles.module}>
-      <div className={styles.header}>
-        Team
-      </div>
+      <div className={styles.module}>
 
-      <div className={styles.form}>
-        <form  onSubmit={this.onSubmit}>
+        <div className={styles.header}>
+          Team
+        </div>
 
-          {/* Suggested divs */}
-          <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
-          <input type="text" name="name" className={cx(styles.txt, styles.nameTxt)} value={team.name} onChange={this.onNameChange}></input>
-          <br/>
-          <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
-          <input name="logo" type="hidden" value={team.logo ? team.logo.id : null}/>
-          <form encType="multipart/form-data">
-            <input name="file" type="file" className={cx(styles.fil, styles.logoFil)} accept="image/*" onChange={this.onLogoChange}></input>
+        <div className={styles.form}>
+
+          <Formik
+            initialValues={team}
+            validate={this.onValidate}
+            onSubmit={this.onSubmit}>
+          {({
+            values,
+            errors,
+            handleSubmit
+          }) => (
+
+          <form onSubmit={handleSubmit}>
+
+            {/* Suggested divs */}
+            <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
+            <Field type="text" name="name" className={cx(styles.txt, styles.nameTxt)} />
+            <br/>
+            <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
+            <Field name="logo" type="hidden" value={team.logo ? team.logo.id : null}/>
+            <form encType="multipart/form-data">
+              <input name="file" type="file" className={cx(styles.fil, styles.logoFil)} accept="image/*" onChange={this.onLogoChange}></input>
+            </form>
+            {team.logo ?
+              <img src={team.logo.url} className={cx(styles.img, styles.logoImg)} /> : null }
+            <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
+            <Field component="textarea" name="description" type="text" rows="3" className={cx(styles.txa, styles.descriptionTxa)} />
+            <br/>
+            <label className={cx(styles.lbl, styles.marketValueLbl)}>Market value</label><br/>
+            <Field type="number" name="market_value" className={cx(styles.txt, styles.marketValueTxt)} />
+            <br/>
+            {filters.rival_id == null ?
+                <div>
+                <label className={cx(styles.lbl, styles.rivalLbl)}>Rival</label>
+                <Field component="select" name="rival_id" className={cx(styles.ops, styles.rivalOps)} >
+                  { teams.map(e => <option value={e.id}>{e.id}</option>) }
+                </Field>
+                <br/>
+                </div> : null}
+
+            {this.renderError()}
+
+            <button type="submit" className={styles.submit}>Send</button>
+
           </form>
-          {team.logo ?
-            <img src={team.logo.url} className={cx(styles.img, styles.logoImg)} /> : null }
-          <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
-          <textarea name="description" type="text" rows="3" className={cx(styles.txa, styles.descriptionTxa)} value={team.description} onChange={this.onDescriptionChange}></textarea>
-          <br/>
-          <label className={cx(styles.lbl, styles.marketValueLbl)}>Market value</label><br/>
-          <input type="number" name="marketValue" className={cx(styles.txt, styles.marketValueTxt)} value={team.market_value} onChange={this.onMarketValueChange} required></input>
-          <br/>
-          {filters.rival_id == null ?
-              <div>
-              <label className={cx(styles.lbl, styles.rivalLbl)}>Rival</label>
-              <select name="rival" className={cx(styles.ops, styles.rivalOps)} value={team.rival_id} onChange={this.onRivalChange}>
-              { teams.map(e => <option value={e.id}>{e.id}</option>) }
-              </select>
-              <br/>
-              </div> : null}
-
-          {this.renderError()}
-
-          <button type="submit" className={styles.submit}>Send</button>
-
-        </form>
+          )}
+          </Formik>
+        </div>
       </div>
-    </div>
     );
   }
 
@@ -76,7 +90,7 @@ class TeamForm extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -93,11 +107,8 @@ class TeamForm extends React.Component
     };
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onNameChange = this.onNameChange.bind(this);
+    this.onValidate = this.onValidate.bind(this);
     this.onLogoChange = this.onLogoChange.bind(this);
-    this.onDescriptionChange = this.onDescriptionChange.bind(this);
-    this.onMarketValueChange = this.onMarketValueChange.bind(this);
-    this.onRivalChange = this.onRivalChange.bind(this);
   }
 
   componentDidMount()
@@ -106,7 +117,7 @@ class TeamForm extends React.Component
     this.loadFkData();
   }
 
-  /* Props */
+  /* Events */
 
   onSave(res)
   {
@@ -121,6 +132,26 @@ class TeamForm extends React.Component
       error: 'An error has occurred, try again'
     });
   }
+
+  onSubmit(values, { setSubmitting })
+  {
+    let team = this.state.team ? this.state.team : {};
+    team.name = values.name;
+    team.description = values.description;
+    team.market_value = values.market_value;
+    team.rival_id = values.rival_id;
+
+    this.setState({
+      team: team
+    });
+    this.saveData();
+  }
+
+  onValidate()
+  {
+  }
+
+  /* Actions */
 
   loadData = () =>
   {
@@ -146,21 +177,7 @@ class TeamForm extends React.Component
     getTeamList(this.state.filters);
   }
 
-  fillData = e =>
-  {
-    let team = this.state.team ? this.state.team : {};
-    team.name = team.name ? team.name : e.target.name.value;
-    team.logo = team.logo ? team.logo : e.target.logo.value;
-    team.description = team.description ? team.description : e.target.description.value;
-    team.market_value = team.market_value ? team.market_value : e.target.marketValue.value;
-    team.rival_id = team.rival_id ? team.rival_id : e.target.rival.value;
-
-    this.setState({
-      team: team
-    });
-  }
-
-  saveData = e =>
+  saveData = () =>
   {
     const { saveTeam, setTeam } = this.props;
     const teamId = this.getTeamId();
@@ -200,24 +217,6 @@ class TeamForm extends React.Component
     const { rivalId } = this.props;
     return rival_id ? rival_id : rivalId;
   }
-
-  /* Events */
-
-  onSubmit(e)
-  {
-    e.preventDefault();
-    this.fillData(e);
-    this.saveData(e);
-  }
-  
-  onNameChange(e)
-  {
-    let team = this.state.team ? this.state.team : {};
-    team.name = e.target.value;  
-    this.setState({
-      team: team
-    });
-  }
   
   onLogoChange(e)
   {
@@ -231,33 +230,6 @@ class TeamForm extends React.Component
       });
     }
     uploadFile(e.target.form, callback);
-  }
-  
-  onDescriptionChange(e)
-  {
-    let team = this.state.team ? this.state.team : {};
-    team.description = e.target.value;  
-    this.setState({
-      team: team
-    });
-  }
-  
-  onMarketValueChange(e)
-  {
-    let team = this.state.team ? this.state.team : {};
-    team.market_value = e.target.value;  
-    this.setState({
-      team: team
-    });
-  }
-  
-  onRivalChange(e)
-  {
-    let team = this.state.team ? this.state.team : {};
-    team.rival_id = e.target.value;
-    this.setState({
-      team: team
-    });
   }
 }
 

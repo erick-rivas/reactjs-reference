@@ -48,7 +48,7 @@ class TeamDetails extends React.Component
   }
 
   /*
-  * Business logic
+  * Component Logic
   */
 
   constructor(props)
@@ -62,11 +62,12 @@ class TeamDetails extends React.Component
     this.loadData();
   }
 
+  /* Actions */
+
   loadData = () =>
   {
-    const { getTeamDetails } = this.props;
     const teamId = this.getTeamId()
-    getTeamDetails(teamId);
+    this.props.getTeamDetails(teamId);
   }
 
   /* Args */

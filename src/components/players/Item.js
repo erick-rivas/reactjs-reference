@@ -37,7 +37,7 @@ class PlayerItem extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)

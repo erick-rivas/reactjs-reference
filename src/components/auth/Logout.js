@@ -18,7 +18,7 @@ class Logout extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -32,7 +32,7 @@ class Logout extends React.Component
     this.logout();
   }
 
-  /* Props */
+  /* Events */
 
   onLogout(res)
   {
@@ -46,9 +46,12 @@ class Logout extends React.Component
     this.props.history.replace('/login');
   }
 
-  logout = () =>
+  /* Actions */
+
+  logout()
   {
-    let callback = res => {
+    let callback = res => 
+    {
       if (res.ok) this.onLogout(res.body);
       else this.onError(res.body);
     }

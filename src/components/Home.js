@@ -39,7 +39,7 @@ class Home extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)

@@ -32,7 +32,7 @@ class PlayerDetailsOptions extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -45,7 +45,7 @@ class PlayerDetailsOptions extends React.Component
     this.onClickBack = this.onClickBack.bind(this);
   }
 
-  /* Props */
+  /* Events */
 
   onDelete(res)
   {
@@ -65,14 +65,13 @@ class PlayerDetailsOptions extends React.Component
 
   onClickDelete()
   {
-    const { deletePlayer } = this.props;
     const playerId = this.getPlayerId();
     const onDelete = res => 
     {
       if (res.ok) this.onDelete(res.body);
       else this.onDeleteError(res.body);
     };
-    deletePlayer(playerId, onDelete);
+    this.props.deletePlayer(playerId, onDelete);
   }
 
   onClickBack()

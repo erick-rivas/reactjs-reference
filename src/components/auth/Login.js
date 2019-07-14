@@ -52,7 +52,7 @@ class Login extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -61,7 +61,7 @@ class Login extends React.Component
     this.state = {};
   }
 
-  /* Props */
+  /* Events */
 
   onLogin(res)
   {
@@ -77,13 +77,18 @@ class Login extends React.Component
     })
   }
 
-  /* Events */
-
-  onSubmit = e =>
+  onSubmit(e)
   {
     e.preventDefault();
     let email = e.target.email.value;
     let password = e.target.password.value;
+    this.login(email, password)
+  }
+
+  /* Actions */
+
+  login(email, password)
+  {
     let callback = res =>
     {
       if (res.ok) this.onLogin(res.body);

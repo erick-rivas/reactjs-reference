@@ -76,7 +76,7 @@ class PlayerPanel extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
@@ -85,6 +85,8 @@ class PlayerPanel extends React.Component
     this.state = {};
     this.onModalClose = this.onModalClose.bind(this);
   }
+
+  /* Events */
 
   onModalClose()
   {

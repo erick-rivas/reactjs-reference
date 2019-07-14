@@ -11,15 +11,18 @@ import _TeamActions from 'seed/actions/teams';
 import _UserActions from 'seed/actions/users';
 import _MatchActions from 'seed/actions/matches';
 import _ScoreActions from 'seed/actions/scores';
+import UserActions from 'actions/users';
 import TeamActions from 'actions/teams';
 import PlayerActions from 'actions/players';
+import MatchActions from 'actions/matches';
+import ScoreActions from 'actions/scores';
 import AuthActions from 'seed/actions/helpers/auth'
 import FileActions from 'seed/helpers/files';
 const players = new PlayerActions();
 const teams = new TeamActions();
-const users = new _UserActions();
-const matches = new _MatchActions();
-const scores = new _ScoreActions();
+const users = new UserActions();
+const matches = new MatchActions();
+const scores = new ScoreActions();
 const auth = new AuthActions();
 const files = new FileActions();
 
@@ -45,12 +48,24 @@ const actions = [
     object: scores
   },
   {
+    className: UserActions,
+    object: users
+  },
+  {
     className: TeamActions,
     object: teams
   },
   {
     className: PlayerActions,
     object: players
+  },
+  {
+    className: MatchActions,
+    object: matches
+  },
+  {
+    className: ScoreActions,
+    object: scores
   },
   {
     className: AuthActions,

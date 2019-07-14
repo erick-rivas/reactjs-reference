@@ -23,6 +23,7 @@ class Sidenav extends React.Component
         <nav className={styles.nav}>
           <ul>
             <li>
+              {/* Suggest: Include component links */}
               <NavLink
                 to={`/logout`}
                 className={cx(styles.item)}
@@ -37,7 +38,7 @@ class Sidenav extends React.Component
   }
 
   /*
-  * Business logic
+  * Component logic
   */
 
   constructor(props)
