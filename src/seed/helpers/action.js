@@ -37,77 +37,77 @@ class Action
 
     return this.reqGet(
       ``, query,
-      this.onGetList,
-      callback);
+      callback,
+      this.onGetList);
   }
 
   getDetails = (id, callback) =>
   {
     return this.reqGet(
       `/${id}`, ``,
-      this.onGetDetails,
-      callback);
+      callback,
+      this.onGetDetails);
   }
 
   saveData = (body, callback) =>
   {
     return this.reqPost(
       ``, body,
-      this.onSaveData,
-      callback);
+      callback,
+      this.onSaveData);
   }
 
   setData = (id, body, callback) =>
   {
     return this.reqPut(
       `/${id}`, body,
-      this.onSetData,
-      callback);
+      callback,
+      this.onSetData);
   }
 
   deleteData = (id, callback) =>
   {
     return this.reqDelete(
       `/${id}`,
-      this.onDeleteData,
-      callback);
+      callback,
+      this.onDeleteData);
   }
 
 
-  reqGet(path, query, toDisp, callback)
+  reqGet(path, query, callback, toDisp)
   {
      return this.request(
       "GET", path, query, {},
-      toDisp,
-      callback);
+      callback,
+      toDisp);
   }
 
-  reqPost(path, body, toDisp, callback)
+  reqPost(path, body, callback, toDisp)
   {
     return this.request(
       "POST", path, "", body,
-      toDisp,
-      callback);
+      callback,
+      toDisp);
   }
 
-  reqPut(path, body, toDisp, callback)
+  reqPut(path, body, callback, toDisp)
   {
     return this.request(
       "PUT", path, "", body,
-      toDisp,
-      callback);
+      callback,
+      toDisp);
   }
 
-  reqDelete(path, toDisp, callback)
+  reqDelete(path, callback,  toDisp)
   {
      return this.request(
       "DELETE", path, "", {},
-      toDisp,
-      callback);
+      callback,
+      toDisp);
   }
 
 
-  request = (method, path, query, body, toDisp, callback) =>
+  request = (method, path, query, body, callback, toDisp) =>
   {
     return disp =>
     {

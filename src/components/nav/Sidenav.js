@@ -24,42 +24,10 @@ class Sidenav extends React.Component
           <ul>
             <li>
               <NavLink
-                to={`${url}/players`}
-                className={cx(styles.playerItem, styles.item)}
+                to={`/logout`}
+                className={cx(styles.item)}
                 activeClassName={styles.active}>
-                Players
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={`${url}/teams`}
-                className={cx(styles.teamItem, styles.item)}
-                activeClassName={styles.active}>
-                Teams
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={`${url}/users`}
-                className={cx(styles.userItem, styles.item)}
-                activeClassName={styles.active}>
-                Users
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={`${url}/matches`}
-                className={cx(styles.matchItem, styles.item)}
-                activeClassName={styles.active}>
-                Matches
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={`${url}/scores`}
-                className={cx(styles.scoreItem, styles.item)}
-                activeClassName={styles.active}>
-                Scores
+                Logout
               </NavLink>
             </li>
           </ul>

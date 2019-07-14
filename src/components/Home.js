@@ -31,9 +31,7 @@ class Home extends React.Component
             <Route path={`${path}`}
               component={Topnav} />
           </div>
-          <div className={styles.content}>        
-              <h2>Hi!</h2>
-              <p>Add components and action with <code>seed export components:model_name </code></p>
+          <div className={styles.content}>
           </div>
         </div>
       </div>

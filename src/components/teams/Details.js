@@ -9,10 +9,6 @@ import redux from 'seed/helpers/redux';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
-/* Suggest: include subviews
-import TeamView from 'components/teams/nav/View';
-import PlayerView from 'components/players/nav/View';
-*/
 import Loading from 'components/helpers/Loading';
 
 import styles from 'resources/css/teams/Details.module.css';
@@ -47,15 +43,6 @@ class TeamDetails extends React.Component
         <label className={cx(styles.lbl, styles.identityDocsLbl)}>Identity docs</label><br/>
         <label className={cx(styles.txt, styles.identityDocsTxt)}>{team.identity_docs.toString()}</label>
         <br/>
-        {/* Suggest: include subviews
-        <label className={cx(styles.lbl, styles.rivalLbl)}>Rival</label><br/>
-        <label className={cx(styles.txt, styles.rivalTxt)}>{team.rival_id}</label>
-        <br/>
-        <label className={cx(styles.lbl, styles.playersLbl)}>Players</label><br/>
-        <Route path={`${path}`}
-          component={ props => <PlayerView {...props}/> } />
-        <br/>
-        */ }
       </div>
     );
   }

@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 @import 'src/seed/themes/base';
-@import 'src/seed/themes/basic/nav/panel';
+@import 'src/seed/themes/basic/panel';
 @include theme();
 
 .module {

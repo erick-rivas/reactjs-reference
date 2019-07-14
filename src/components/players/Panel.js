@@ -7,15 +7,15 @@ import cx from 'classnames';
 import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
-import TeamDetails from 'components/teams/Details';
-import TeamList from 'components/teams/List';
-import TeamListOptions from 'components/teams/options/List';
-import TeamDetailsOptions from 'components/teams/options/Details';
-import TeamItem from 'components/teams/Item';
+import PlayerDetails from 'components/players/Details';
+import PlayerList from 'components/players/List';
+import PlayerListOptions from 'components/players/options/List';
+import PlayerDetailsOptions from 'components/players/options/Details';
+import PlayerItem from 'components/players/Item';
 
-import styles from 'resources/css/teams/nav/Panel.module.css';
+import styles from 'resources/css/players/Panel.module.css';
 
-class TeamPanel extends React.Component
+class PlayerPanel extends React.Component
 {
   render()
   {
@@ -24,11 +24,11 @@ class TeamPanel extends React.Component
     const list = props =>
       <div className={styles.list}>
         <div className={styles.options}>
-          <TeamListOptions {...props}/>
+          <PlayerListOptions {...props}/>
         </div>
         <div className={styles.content}>
-          <TeamList {...props}
-            Item={TeamItem} />
+          <PlayerList {...props}
+            Item={PlayerItem} />
         </div>
       </div>
 
@@ -36,10 +36,10 @@ class TeamPanel extends React.Component
       <div className={styles.details}>
         <div className={styles.card}>
           <div className={styles.options}>
-            <TeamDetailsOptions {...props} />
+            <PlayerDetailsOptions {...props} />
           </div>
           <div className={styles.content}>
-            <TeamDetails {...props} />
+            <PlayerDetails {...props} />
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ class TeamPanel extends React.Component
             path={`${path}`}
             component={list} />
           <Route
-            path={`${path}/:team_id(\\d+)`}
+            path={`${path}/:player_id(\\d+)`}
             component={details} />
         </div>
       </div>
@@ -69,4 +69,4 @@ class TeamPanel extends React.Component
   }
 }
 
-export default TeamPanel;
+export default PlayerPanel;
