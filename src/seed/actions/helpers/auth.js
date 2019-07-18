@@ -31,7 +31,7 @@ class Auth extends Action
     }
 
     return this.reqPost(
-      `/login`, body, this.onLogin, onLogin);
+      `/login`, body, onLogin, this.onLogin);
   }
 
   logout(callback)
@@ -44,7 +44,7 @@ class Auth extends Action
     }
 
     return this.reqPost(
-      `/logout`, {}, this.onLogout, onLogout);
+      `/logout`, {}, onLogout, this.onLogout);
   }
 
   onLogin = data => ({

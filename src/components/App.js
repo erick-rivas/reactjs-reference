@@ -5,11 +5,10 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import Login from 'components/auth/Login'
-import Logout from 'components/auth/Logout'
 import Debug from 'components/debug/Debug'
-import Exports from 'components/debug/Exports'
-import Home from 'components/Home'
+import Login from 'components/templates/auth/Login'
+import Logout from 'components/templates/auth/Logout'
+import Home from 'components/templates/Home'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
@@ -25,7 +24,6 @@ class App extends React.Component
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
-            <Route path="/debug/exports" component={Exports} />
             <Route path="/debug" component={Debug} />
             <Route path="/app" component={Home} />
             <Redirect to='/app' />

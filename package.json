@@ -38,7 +38,7 @@
     "redux-thunk": "2.3.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/components -o src/resources/css",
+    "build-css": "node-sass-chokidar src/components -o src/resources/css && node-sass-chokidar src/seed/components -o src/resources/css",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "watch-css": "npm run build-css && node-sass-chokidar src/components -o src/resources/css --watch --recursive",

@@ -105,5 +105,3 @@ const redux = (component) => {
 }
 
 export default redux;
-
-

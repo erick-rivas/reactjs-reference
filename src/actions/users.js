@@ -1,19 +1,7 @@
 /*
 __Seed builder__v1.0
 
-  Guidelines:
-    - Modify methods via builder
-    - Modify fetch data
-    - Only override existing methods if required
-
-  Base methods:
-    - getUserList(filters, callback)
-    - getUserDetails(userId, callback)
-    - saveUser(user, callback)
-    - setUser(userId, user, callback)
-    - deleteUser(userId, callback)
-
-  Request methods:
+ Request methods:
     - reqGet(path, query, callback, toDisp)
     - reqPost(path, body, callback, toDisp)
     - reqPut(path, body, callback, toDisp)
