@@ -10,6 +10,13 @@ class _Matches extends Action
 {
   constructor(fetch)
   {
+    if (fetch == null)
+      fetch = [
+        "local.*",
+        "visitor.*",
+        "scores.*",
+      ];
+
     super(
       `MATCHES`,
       `matches`,

@@ -59,13 +59,6 @@ class TeamDetails extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
     const teamId = this.getTeamId()
     this.props.getTeamDetails(teamId);
   }

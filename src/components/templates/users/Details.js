@@ -44,13 +44,6 @@ class UserDetails extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
     const userId = this.getUserId()
     this.props.getUserDetails(userId);
   }

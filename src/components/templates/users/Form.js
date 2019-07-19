@@ -18,7 +18,6 @@ class UserForm extends React.Component
   render()
   {
     const { user = {} } = this.state;
-    const { filters } = this.state;
     const userId = this.getUserId();
     if (user.id == null && userId != null) return <Loading />;
     
@@ -36,20 +35,14 @@ class UserForm extends React.Component
             validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
-            values,
-            errors,
-            setFieldValue,
-            handleSubmit
+            values, errors, setFieldValue, handleSubmit
           }) => (
 
           <form onSubmit={handleSubmit}>
 
-            {/* Suggested divs */}
-
             {this.renderError()}
 
             <button type="submit" className={styles.submit}>Send</button>
-
           </form>
           )}
           </Formik>
@@ -61,9 +54,7 @@ class UserForm extends React.Component
   renderError()
   {
     const { error } = this.state;
-    return ( 
-    error ? <div className={styles.error}>{error}</div> : null
-    );
+    return (error ? <div className={styles.error}>{error}</div> : null);
   }
 
   /*
@@ -74,11 +65,7 @@ class UserForm extends React.Component
   {
     super(props);
     this.state = {
-      user: {
-      },
-      filters: {
-        user_id: this.getUserId(), 
-      }
+      user: {}
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -87,11 +74,58 @@ class UserForm extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
+    const userId = this.getUserId();
+    if (userId != null) 
+      this.loadData();
     this.loadFkData();
   }
 
   /* Events */
+
+  onSubmit(values, { setSubmitting })
+  {
+    let user = this.state.user ? this.state.user : {};
+
+    this.saveData(user);
+  }
+
+  onValidate(){}
+
+  /* Actions */
+
+  loadData()
+  {
+    const userId = this.getUserId();
+    const callback = res => 
+    {
+      const userId = this.getUserId();
+      const user = DataUtil.getItem(this.props.users, userId);
+      if (user.id != null)
+        this.setState({
+          user: Object.assign({}, this.state.user, user)
+        })
+    }
+    this.props.getUserDetails(userId, callback);
+    
+  }
+
+  loadFkData() 
+  {
+  }
+
+  saveData(user)
+  {
+    const userId = this.getUserId();
+    const onSave = res => 
+    {
+      if (res.ok) this.onSave(res.body);
+      else this.onError(res.body)
+    };
+    if (userId == null)
+      this.props.saveUser(user, onSave)
+    else
+      this.props.setUser(userId, user, onSave);
+  }
 
   onSave(res)
   {
@@ -107,59 +141,6 @@ class UserForm extends React.Component
     });
   }
 
-  onSubmit(values, { setSubmitting })
-  {
-    let user = this.state.user ? this.state.user : {};
-
-    this.setState({
-      user: user
-    });
-    this.saveData();
-  }
-
-  onValidate()
-  {
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
-    const { getUserDetails } = this.props;
-    const userId = this.getUserId();
-    if (userId != null) {
-      const callback = res => 
-      {
-        const userId = this.getUserId();
-        const user = DataUtil.getItem(this.props.users, userId);
-        if (user.id != null)
-          this.setState({
-            user: Object.assign({}, this.state.user, user)
-          })
-      }
-      getUserDetails(userId, callback);
-    }
-  }
-
-  loadFkData = () => 
-  {
-  }
-
-  saveData = () =>
-  {
-    const { saveUser, setUser } = this.props;
-    const userId = this.getUserId();
-    const onSave = res => 
-    {
-      if (res.ok) this.onSave(res.body);
-      else this.onError(res.body)
-    };
-    if (userId == null && saveUser != null)
-      saveUser(this.state.user, onSave)
-    if (userId != null && setUser != null)
-      setUser(userId, this.state.user, onSave);
-  }
-
   /* Args */
 
   getUserId() 
@@ -168,17 +149,6 @@ class UserForm extends React.Component
     const { userId } = this.props;
     return user_id ? user_id : userId;
   }
-
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    const { userId } = this.props;
-    return user_id == 0 ? sessionStorage.getItem('id') : 
-           user_id ? user_id : 
-           userId;
-  }  
 }
 
 export default redux(UserForm);

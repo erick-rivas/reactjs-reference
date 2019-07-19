@@ -19,7 +19,6 @@ class MatchForm extends React.Component
   {
     const { match = {} } = this.state;
     const { teams = [] } = this.props;
-    const { filters } = this.state;
     const matchId = this.getMatchId();
     if (match.id == null && matchId != null) return <Loading />;
     
@@ -37,18 +36,15 @@ class MatchForm extends React.Component
             validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
-            values,
-            errors,
-            setFieldValue,
-            handleSubmit
+            values, errors, setFieldValue, handleSubmit
           }) => (
 
           <form onSubmit={handleSubmit}>
-
-            {/* Suggested divs */}
+            {/* date */}
             <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
             <Field name="date" type="datetime-local" className={cx(styles.dte, styles.dateDte)} />
             <br/>
+            {/* type */}
             <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
             <Field component="select" name="type" className={cx(styles.ops, styles.typeOps)} >
               <option value='FRIENDSHIP'>Friendship</option>
@@ -56,29 +52,28 @@ class MatchForm extends React.Component
               <option value='CUP'>Cup</option>
             </Field>
             <br/>
-            {filters.local_id == null ?
-                <div>
-                <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
-                <Field component="select" name="local_id" className={cx(styles.ops, styles.localOps)} >
-                  <option value="">Select an option</option>
-                  { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
-                </Field>
-                <br/>
-                </div> : null}
-            {filters.visitor_id == null ?
-                <div>
-                <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
-                <Field component="select" name="visitor_id" className={cx(styles.ops, styles.visitorOps)} >
-                  <option value="">Select an option</option>
-                  { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
-                </Field>
-                <br/>
-                </div> : null}
+            {/* local */}
+            <div>
+            <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
+            <Field component="select" name="local_id" className={cx(styles.ops, styles.localOps)} >
+              <option value="">Select an option</option>
+              { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+            </Field>
+            <br/>
+            </div>
+            {/* visitor */}
+            <div>
+            <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
+            <Field component="select" name="visitor_id" className={cx(styles.ops, styles.visitorOps)} >
+              <option value="">Select an option</option>
+              { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+            </Field>
+            <br/>
+            </div>
 
             {this.renderError()}
 
             <button type="submit" className={styles.submit}>Send</button>
-
           </form>
           )}
           </Formik>
@@ -90,9 +85,7 @@ class MatchForm extends React.Component
   renderError()
   {
     const { error } = this.state;
-    return ( 
-    error ? <div className={styles.error}>{error}</div> : null
-    );
+    return (error ? <div className={styles.error}>{error}</div> : null);
   }
 
   /*
@@ -103,15 +96,7 @@ class MatchForm extends React.Component
   {
     super(props);
     this.state = {
-      match: {
-        local_id: this.getLocalId(),
-        visitor_id: this.getVisitorId(),
-      },
-      filters: {
-        user_id: this.getUserId(),
-        local_id: this.getLocalId(),
-        visitor_id: this.getVisitorId(), 
-      }
+      match: {}
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -120,11 +105,65 @@ class MatchForm extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
+    const matchId = this.getMatchId();
+    if (matchId != null) 
+      this.loadData();
     this.loadFkData();
   }
 
   /* Events */
+
+  onSubmit(values, { setSubmitting })
+  {
+    let match = this.state.match ? this.state.match : {};
+    
+    match.date = values.date;
+    match.type = values.type;
+
+    match.local_id = values.local_id;
+    match.visitor_id = values.visitor_id;
+    
+    this.saveData(match);
+  }
+
+  onValidate(){}
+
+  /* Actions */
+
+  loadData()
+  {
+    const matchId = this.getMatchId();
+    const callback = res => 
+    {
+      const matchId = this.getMatchId();
+      const match = DataUtil.getItem(this.props.matches, matchId);
+      if (match.id != null)
+        this.setState({
+          match: Object.assign({}, this.state.match, match)
+        })
+    }
+    this.props.getMatchDetails(matchId, callback);
+    
+  }
+
+  loadFkData() 
+  {
+    this.props.getTeamList();
+  }
+
+  saveData(match)
+  {
+    const matchId = this.getMatchId();
+    const onSave = res => 
+    {
+      if (res.ok) this.onSave(res.body);
+      else this.onError(res.body)
+    };
+    if (matchId == null)
+      this.props.saveMatch(match, onSave)
+    else
+      this.props.setMatch(matchId, match, onSave);
+  }
 
   onSave(res)
   {
@@ -140,67 +179,6 @@ class MatchForm extends React.Component
     });
   }
 
-  onSubmit(values, { setSubmitting })
-  {
-    let match = this.state.match ? this.state.match : {};
-    
-    match.date = values.date;
-    match.type = values.type;
-
-    match.local_id = values.local_id;
-    match.visitor_id = values.visitor_id;
-    
-    this.setState({
-      match: match
-    });
-    this.saveData();
-  }
-
-  onValidate()
-  {
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
-    const { getMatchDetails } = this.props;
-    const matchId = this.getMatchId();
-    if (matchId != null) {
-      const callback = res => 
-      {
-        const matchId = this.getMatchId();
-        const match = DataUtil.getItem(this.props.matches, matchId);
-        if (match.id != null)
-          this.setState({
-            match: Object.assign({}, this.state.match, match)
-          })
-      }
-      getMatchDetails(matchId, callback);
-    }
-  }
-
-  loadFkData = () => 
-  {
-    const { getTeamList } = this.props;
-    getTeamList(this.state.filters);
-  }
-
-  saveData = () =>
-  {
-    const { saveMatch, setMatch } = this.props;
-    const matchId = this.getMatchId();
-    const onSave = res => 
-    {
-      if (res.ok) this.onSave(res.body);
-      else this.onError(res.body)
-    };
-    if (matchId == null && saveMatch != null)
-      saveMatch(this.state.match, onSave)
-    if (matchId != null && setMatch != null)
-      setMatch(matchId, this.state.match, onSave);
-  }
-
   /* Args */
 
   getMatchId() 
@@ -209,29 +187,6 @@ class MatchForm extends React.Component
     const { matchId } = this.props;
     return match_id ? match_id : matchId;
   }
-
-  /* Filters */
-
-  getUserId()
-  {
-    const { user_id } = this.props.match.params;
-    const { userId } = this.props;
-    return user_id == 0 ? sessionStorage.getItem('id') : 
-           user_id ? user_id : 
-           userId;
-  }
-  getLocalId()
-  {
-    const { local_id } = this.props.match.params;
-    const { localId } = this.props;
-    return local_id ? local_id : localId;
-  }
-  getVisitorId()
-  {
-    const { visitor_id } = this.props.match.params;
-    const { visitorId } = this.props;
-    return visitor_id ? visitor_id : visitorId;
-  }  
 }
 
 export default redux(MatchForm);

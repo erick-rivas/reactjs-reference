@@ -10,6 +10,12 @@ class _Scores extends Action
 {
   constructor(fetch)
   {
+    if (fetch == null)
+      fetch = [
+        "player.*",
+        "match.*",
+      ];
+
     super(
       `SCORES`,
       `scores`,

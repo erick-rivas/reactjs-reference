@@ -50,13 +50,6 @@ class MatchDetails extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
     const matchId = this.getMatchId()
     this.props.getMatchDetails(matchId);
   }

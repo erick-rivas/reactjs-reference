@@ -10,6 +10,12 @@ class _Teams extends Action
 {
   constructor(fetch)
   {
+    if (fetch == null)
+      fetch = [
+        "rival.*",
+        "players.*",
+      ];
+
     super(
       `TEAMS`,
       `teams`,

@@ -10,6 +10,11 @@ class _Users extends Action
 {
   constructor(fetch)
   {
+    if (fetch == null)
+      fetch = [
+        "teams.*",
+      ];
+
     super(
       `USERS`,
       `users`,

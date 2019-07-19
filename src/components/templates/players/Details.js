@@ -53,13 +53,6 @@ class PlayerDetails extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
     const playerId = this.getPlayerId()
     this.props.getPlayerDetails(playerId);
   }

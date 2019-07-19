@@ -31,7 +31,7 @@ class TeamList extends React.Component
     * See /actions/__guides.md to see dataset list
     */
 
-    const { teams } = this.props;
+    const { teams = [] } = this.props;
 
     const teamList = teams.map(item =>
         <div>item.name</div>
@@ -91,20 +91,19 @@ class TeamForm extends React.Component
 
       <Formik
         initialValues={team}
+        validate={this.onValidate}
         onSubmit={this.onSubmit}>
       {({
-        values,
-        errors,
-        setFieldValue,
-        handleSubmit
+        values, errors, setFieldValue, handleSubmit
       }) => (
 
       <form onSubmit={handleSubmit}>
 
-        {/* Suggested divs */}
+        {/* Name */}
         <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
         <Field type="text" name="name" className={cx(styles.txt, styles.nameTxt)} />
         <br/>
+        {/* Description */}
         <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
         <Field component="textarea" name="description" type="text" rows="3" className={cx(styles.txa, styles.descriptionTxa)} />
         <br/>
@@ -123,10 +122,6 @@ class TeamForm extends React.Component
   {
     super(props);
     this.state = {};
-
-    /**
-    * Bind events
-    */
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -137,18 +132,6 @@ class TeamForm extends React.Component
 
   /* Events */
 
-  onSave(res)
-  {
-    this.props.onClose();
-  }
-
-  onError(error)
-  {
-    this.setState({
-      error: 'An error has occurred, try again'
-    });
-  }
-
   onSubmit(values, { setSubmitting })
   {
     /*
@@ -158,16 +141,12 @@ class TeamForm extends React.Component
     let team = this.state.team ? this.state.team : {};
     team.name = values.name;
     team.description = values.description;
-
-    this.setState({
-      team: team
-    });
-    this.saveData();
+    this.saveData(team);
   }
 
   /* Actions */
 
-  loadData = () =>
+  loadData()
   {
     /*
     * Load data to set initial data (Modify requirements)
@@ -190,24 +169,35 @@ class TeamForm extends React.Component
     }
   }
 
-  saveData = () =>
+  saveData(team)
   {
     /*
     * Save and set methods are also provided automatically by redux functions
     * See /actions/__guides.md to see method list
-    * /
+    */
 
-    const { saveTeam, setTeam } = this.props;
     const teamId = this.props.teamId;
     const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (teamId == null && saveTeam != null)
-      saveTeam(this.state.team, onSave)
-    if (teamId != null && setTeam != null)
-      setTeam(teamId, this.state.team, onSave);
+    if (teamId == null)
+      this.props.saveTeam(team, onSave)
+    else
+      this.props.setTeam(teamId, team, onSave);
+  }
+
+  onSave(res)
+  {
+    this.props.onClose();
+  }
+
+  onError(error)
+  {
+    this.setState({
+      error: 'An error has occurred, try again'
+    });
   }
 }
 

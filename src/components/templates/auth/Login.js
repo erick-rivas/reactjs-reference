@@ -46,9 +46,7 @@ class Login extends React.Component
   renderError()
   {
     const { error } = this.state;
-    return ( 
-      error ? <div className={styles.error}>{error}</div> : null
-    );
+    return (error ? <div className={styles.error}>{error}</div> : null);
   }
 
   /*
@@ -64,20 +62,6 @@ class Login extends React.Component
 
   /* Events */
 
-  onLogin(res)
-  {
-    //Suggested method
-    this.props.history.replace('/');
-  }
-
-  onError(error)
-  {
-    //Suggested method
-    this.setState({
-      error: 'Invalid user or password'
-    })
-  }
-
   onSubmit(e)
   {
     e.preventDefault();
@@ -92,11 +76,24 @@ class Login extends React.Component
   {
     let callback = res =>
     {
-      
       if (res.ok) this.onLogin(res.body);
       else this.onError(res.body);
     };
     this.props.login(email, password, callback);
+  }
+
+  onLogin(res)
+  {
+    //Suggested method
+    this.props.history.replace('/');
+  }
+
+  onError(error)
+  {
+    //Suggested method
+    this.setState({
+      error: 'Invalid user or password'
+    })
   }
 }
 

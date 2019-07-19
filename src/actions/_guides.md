@@ -6,6 +6,8 @@ Represents the module that handle API connection
 
 -  [Description](#description)
 -  [Guidelines](#guidelines)
+-  [Request methods](#request-methods)
+-  [ToDisp methods](#todisp-methods)
 -  [Examples](#example)
     -  [GET example](#get-example)
     -  [POST example](#post-example)
@@ -30,6 +32,32 @@ Those methods are binded **automatically** binded in components using redux() wr
 -  Modify 'fetch' data to define which field include in the request
 -  Only override existing methods if required
 
+## Request methods
+
+Those methods are helpers to ease the api requests
+-  reqGet(path, query, callback, toDisp)
+   > Example: this.reqGet('/1/action', 'name=1', callback, this.onGetDetails) \
+   > Example: this.reqGet('/action', '', callback, this.onGetList)
+-  reqPost(path, body, callback, toDisp)
+   > Example this.reqPost('/action', {arg: 1}, callback, this.onSaveData)
+-  reqPut(path, body, callback, toDisp)
+   > Example this.reqPut('/1/action', {arg: 1}, callback, this.onSetData)
+-  reqDelete(path, callback,  toDisp)
+   > Example this.reqDelete('/1/action', {arg: 1}, callback, this.onDeleteData)
+
+## ToDisp methods
+
+Those methods are used to ease redux updates (state tree)
+
+The data that receive is defined base on REST API standards, 
+  -  example: Return a resource json when execute a POST operation
+
+-  onGetList: Receive a collection and add to tree
+-  onGetDetails: Receive an object and add to tree
+-  onSaveData: Receive an saved object and add to tree
+-  onSetData: Receive an modified object and update tree
+-  onDeleteData: Receive an id and delete the element from tree
+
 ## Examples
 
 ### GET example
@@ -46,10 +74,10 @@ class Players extends _Players
     super(fetch)
   }
 
-  getTopPlayerList(category, callback)
+  getTop10PlayerList(category, callback)
   {
-    return this.getReq(
-      `/top_players`, //Path to send
+    return this.reqGet(
+      `/top_10`, //Path to send
       `category=${category}`, //Query
       callback, //callback when complete
       this.onGetDetails //disp function
@@ -63,20 +91,14 @@ class Players extends _Players
 ```javascript
 class Users extends _Users
 {
-  constructor()
+  createUserProfile(userId, callback)
   {
-    # Don't fetch extra data
-    const fetch = []
-    super(fetch)
-  }
-
-  getTopPlayerList(category, callback)
-  {
-    return this.getReq(
-      `/top_players`, //Path to send
-      `category=${category}`, //Query
+    let body = {}
+    return this.reqPost(
+      `/{userId}/create_profile`, //Path to send
+      body, //Query
       callback, //callback when complete
-      this.onGetDetails //disp function
+      this.onSaveData //disp function
     )
   }
 }

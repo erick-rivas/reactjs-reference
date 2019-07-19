@@ -47,13 +47,6 @@ class ScoreDetails extends React.Component
 
   componentDidMount()
   {
-    this.loadData();
-  }
-
-  /* Actions */
-
-  loadData = () =>
-  {
     const scoreId = this.getScoreId()
     this.props.getScoreDetails(scoreId);
   }

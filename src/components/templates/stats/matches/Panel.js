@@ -50,7 +50,7 @@ class MatchPanel extends React.Component
     const form = props =>
       <Modal
         match={this.props.match}
-        onClose={this.onModalClose}>
+        onClose={this.onFormClose}>
         <MatchForm />
       </Modal>
 
@@ -83,12 +83,12 @@ class MatchPanel extends React.Component
   {
     super(props);
     this.state = {};
-    this.onModalClose = this.onModalClose.bind(this);
+    this.onFormClose = this.onFormClose.bind(this);
   }
 
   /* Events */
 
-  onModalClose()
+  onFormClose()
   {
     this.props.history.goBack()
   }
