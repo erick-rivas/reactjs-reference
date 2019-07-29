@@ -24,12 +24,9 @@ class UserForm extends React.Component
     return (
       <div className={styles.module}>
 
-        <div className={styles.header}>
-          User
-        </div>
+        <div className={styles.header}>User</div>
 
         <div className={styles.form}>
-
           <Formik
             initialValues={user}
             validate={this.onValidate}
@@ -39,9 +36,7 @@ class UserForm extends React.Component
           }) => (
 
           <form onSubmit={handleSubmit}>
-
             {this.renderError()}
-
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
@@ -84,48 +79,17 @@ class UserForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    let user = this.state.user ? this.state.user : {};
-
-    this.saveData(user);
-  }
-
-  onValidate(){}
-
-  /* Actions */
-
-  loadData()
-  {
     const userId = this.getUserId();
-    const callback = res => 
-    {
-      const userId = this.getUserId();
-      const user = DataUtil.getItem(this.props.users, userId);
-      if (user.id != null)
-        this.setState({
-          user: Object.assign({}, this.state.user, user)
-        })
-    }
-    this.props.getUserDetails(userId, callback);
-    
-  }
-
-  loadFkData() 
-  {
-  }
-
-  saveData(user)
-  {
-    const userId = this.getUserId();
-    const onSave = res => 
+    const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (userId == null)
-      this.props.saveUser(user, onSave)
-    else
-      this.props.setUser(userId, user, onSave);
+    if (userId == null) this.props.saveUser(values, onSave)
+    else this.props.setUser(userId, values, onSave);
   }
+
+  onValidate(){}
 
   onSave(res)
   {
@@ -141,13 +105,33 @@ class UserForm extends React.Component
     });
   }
 
+  /* Actions */
+
+  loadData()
+  {
+    const userId = this.getUserId();
+    const callback = res => 
+    {
+      const user = DataUtil.getItem(this.props.users, userId);
+      if (user.id != null)
+        this.setState({
+          user: Object.assign({}, this.state.user, user)
+        })
+    }
+    this.props.getUserDetails(userId, callback);
+  }
+
+  loadFkData() 
+  {
+  }
+
   /* Args */
 
   getUserId() 
   {
-    const { user_id } = this.props.match.params;
-    const { userId } = this.props;
-    return user_id ? user_id : userId;
+    return this.props.userId ?
+      this.props.userId :
+      this.props.match.params.user_id;
   }
 }
 

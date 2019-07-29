@@ -8,8 +8,6 @@ import Svg from 'react-svg';
 import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
-import Loading from 'seed/components/helpers/Loading';
-
 import styles from 'resources/css/templates/players/options/Details.module.css';
 
 class PlayerDetailsOptions extends React.Component
@@ -19,15 +17,15 @@ class PlayerDetailsOptions extends React.Component
     const { url } = this.props.match;
     
     return (
-    <div className={styles.module}>
-      <Svg className={styles.back} 
-        src={require('resources/icons/ic_arrow_back.svg')}
-        onClick={this.onClickBack} />
-       <div className={styles.options}>
-        <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
-        <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
+      <div className={styles.module}>
+        <Svg className={styles.back}
+          src={require('resources/icons/ic_arrow_back.svg')}
+          onClick={this.onClickBack} />
+         <div className={styles.options}>
+          <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
+          <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
+        </div>
       </div>
-    </div>
     );
   }
 
@@ -38,14 +36,30 @@ class PlayerDetailsOptions extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      player: {}
-    };
+    this.state = {};
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
   }
 
   /* Events */
+
+  onClickBack()
+  {
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+  onClickDelete()
+  {
+    const playerId = this.getPlayerId();
+    const onDelete = res => 
+    {
+      if (res.ok) this.onDelete(res.body);
+      else this.onDeleteError(res.body);
+    };
+    this.props.deletePlayer(playerId, onDelete);
+  }
 
   onDelete(res)
   {
@@ -63,31 +77,13 @@ class PlayerDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  onClickDelete()
-  {
-    const playerId = this.getPlayerId();
-    const onDelete = res => 
-    {
-      if (res.ok) this.onDelete(res.body);
-      else this.onDeleteError(res.body);
-    };
-    this.props.deletePlayer(playerId, onDelete);
-  }
-
-  onClickBack()
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
-
   /* Args */
 
   getPlayerId() 
   {
-    const { player_id } = this.props.match.params;
-    const { playerId } = this.props;
-    return player_id ? player_id : playerId;
+    return this.props.playerId ?
+      this.props.playerId :
+      this.props.match.params.player_id;
   }
 }
 

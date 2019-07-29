@@ -6,8 +6,6 @@ import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil.js';
 import cx from 'classnames';
 import redux from 'seed/helpers/redux';
-import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
@@ -23,8 +21,6 @@ class ScoreDetails extends React.Component
       
     if (score.id == null) return <Loading />;
 
-    const { path, url } = this.props.match;
-    
     return (
       <div className={styles.module}>
         {/* Suggested divs */}
@@ -55,9 +51,9 @@ class ScoreDetails extends React.Component
 
   getScoreId() 
   {
-    const { score_id } = this.props.match.params;
-    const { scoreId } = this.props;
-    return score_id ? score_id : scoreId;
+    return this.props.scoreId ?
+      this.props.scoreId :
+      this.props.match.params.score_id;
   }
 }
 

@@ -26,8 +26,8 @@ class ScoreItem extends React.Component
           src={require('resources/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu
-          anchorEl={this.state.anchorMenu}
-          open={Boolean(this.state.anchorMenu)}
+          anchorEl={this.state.optionMenu}
+          open={Boolean(this.state.optionMenu)}
           onClose={this.onCloseMenu}>
           <MenuItem>Delete</MenuItem>
         </Menu>
@@ -44,26 +44,25 @@ class ScoreItem extends React.Component
   {
     super(props);
     this.state = {
-      anchorMenu: null
+      optionMenu: null
     }
     this.onClickOptions = this.onClickOptions.bind(this);
     this.onCloseMenu = this.onCloseMenu.bind(this);
   }
 
-  onClickOptions = e =>
+  onClickOptions(e)
   {
     this.setState({
-      anchorMenu: e.currentTarget
+      optionMenu: e.currentTarget
     });
-  };
+  }
 
-  onCloseMenu = e =>
+  onCloseMenu(e)
   {
     this.setState({
-      anchorMenu: null
+      optionMenu: null
     });
-  };
-
+  }
 }
 
 export default redux(ScoreItem);

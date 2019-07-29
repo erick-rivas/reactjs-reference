@@ -25,12 +25,9 @@ class MatchForm extends React.Component
     return (
       <div className={styles.module}>
 
-        <div className={styles.header}>
-          Match
-        </div>
+        <div className={styles.header}>Match</div>
 
         <div className={styles.form}>
-
           <Formik
             initialValues={match}
             validate={this.onValidate}
@@ -70,9 +67,7 @@ class MatchForm extends React.Component
             </Field>
             <br/>
             </div>
-
             {this.renderError()}
-
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
@@ -115,55 +110,17 @@ class MatchForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    let match = this.state.match ? this.state.match : {};
-    
-    match.date = values.date;
-    match.type = values.type;
-
-    match.local_id = values.local_id;
-    match.visitor_id = values.visitor_id;
-    
-    this.saveData(match);
-  }
-
-  onValidate(){}
-
-  /* Actions */
-
-  loadData()
-  {
     const matchId = this.getMatchId();
-    const callback = res => 
-    {
-      const matchId = this.getMatchId();
-      const match = DataUtil.getItem(this.props.matches, matchId);
-      if (match.id != null)
-        this.setState({
-          match: Object.assign({}, this.state.match, match)
-        })
-    }
-    this.props.getMatchDetails(matchId, callback);
-    
-  }
-
-  loadFkData() 
-  {
-    this.props.getTeamList();
-  }
-
-  saveData(match)
-  {
-    const matchId = this.getMatchId();
-    const onSave = res => 
+    const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (matchId == null)
-      this.props.saveMatch(match, onSave)
-    else
-      this.props.setMatch(matchId, match, onSave);
+    if (matchId == null) this.props.saveMatch(values, onSave)
+    else this.props.setMatch(matchId, values, onSave);
   }
+
+  onValidate(){}
 
   onSave(res)
   {
@@ -179,13 +136,34 @@ class MatchForm extends React.Component
     });
   }
 
+  /* Actions */
+
+  loadData()
+  {
+    const matchId = this.getMatchId();
+    const callback = res => 
+    {
+      const match = DataUtil.getItem(this.props.matches, matchId);
+      if (match.id != null)
+        this.setState({
+          match: Object.assign({}, this.state.match, match)
+        })
+    }
+    this.props.getMatchDetails(matchId, callback);
+  }
+
+  loadFkData() 
+  {
+    this.props.getTeamList();
+  }
+
   /* Args */
 
   getMatchId() 
   {
-    const { match_id } = this.props.match.params;
-    const { matchId } = this.props;
-    return match_id ? match_id : matchId;
+    return this.props.matchId ?
+      this.props.matchId :
+      this.props.match.params.match_id;
   }
 }
 

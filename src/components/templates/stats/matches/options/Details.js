@@ -8,8 +8,6 @@ import Svg from 'react-svg';
 import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
-import Loading from 'seed/components/helpers/Loading';
-
 import styles from 'resources/css/templates/stats/matches/options/Details.module.css';
 
 class MatchDetailsOptions extends React.Component
@@ -19,15 +17,15 @@ class MatchDetailsOptions extends React.Component
     const { url } = this.props.match;
     
     return (
-    <div className={styles.module}>
-      <Svg className={styles.back} 
-        src={require('resources/icons/ic_arrow_back.svg')}
-        onClick={this.onClickBack} />
-       <div className={styles.options}>
-        <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
-        <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
+      <div className={styles.module}>
+        <Svg className={styles.back}
+          src={require('resources/icons/ic_arrow_back.svg')}
+          onClick={this.onClickBack} />
+         <div className={styles.options}>
+          <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
+          <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
+        </div>
       </div>
-    </div>
     );
   }
 
@@ -38,14 +36,30 @@ class MatchDetailsOptions extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      match: {}
-    };
+    this.state = {};
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
   }
 
   /* Events */
+
+  onClickBack()
+  {
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
+  }
+
+  onClickDelete()
+  {
+    const matchId = this.getMatchId();
+    const onDelete = res => 
+    {
+      if (res.ok) this.onDelete(res.body);
+      else this.onDeleteError(res.body);
+    };
+    this.props.deleteMatch(matchId, onDelete);
+  }
 
   onDelete(res)
   {
@@ -63,31 +77,13 @@ class MatchDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  onClickDelete()
-  {
-    const matchId = this.getMatchId();
-    const onDelete = res => 
-    {
-      if (res.ok) this.onDelete(res.body);
-      else this.onDeleteError(res.body);
-    };
-    this.props.deleteMatch(matchId, onDelete);
-  }
-
-  onClickBack()
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
-
   /* Args */
 
   getMatchId() 
   {
-    const { match_id } = this.props.match.params;
-    const { matchId } = this.props;
-    return match_id ? match_id : matchId;
+    return this.props.matchId ?
+      this.props.matchId :
+      this.props.match.params.match_id;
   }
 }
 

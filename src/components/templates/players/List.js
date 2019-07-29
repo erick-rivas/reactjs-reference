@@ -22,8 +22,7 @@ class PlayerList extends React.Component
     const { Item } = this.props;
     const { url } = this.props.match;
 
-    const playerList = 
-      players.map(item =>
+    const playerList = players.map(item =>
         <NavLink 
           to={`${url}/${item.id}`}
           className={styles.item}

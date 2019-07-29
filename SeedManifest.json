@@ -270,6 +270,7 @@
       "group": "stats"
     }
   ],
+  "platform": "reactjs",
   "export": {
     "actions": [
       {

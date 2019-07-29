@@ -6,8 +6,6 @@ import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil.js';
 import cx from 'classnames';
 import redux from 'seed/helpers/redux';
-import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
@@ -23,8 +21,6 @@ class MatchDetails extends React.Component
       
     if (match.id == null) return <Loading />;
 
-    const { path, url } = this.props.match;
-    
     return (
       <div className={styles.module}>
         {/* Suggested divs */}
@@ -58,9 +54,9 @@ class MatchDetails extends React.Component
 
   getMatchId() 
   {
-    const { match_id } = this.props.match.params;
-    const { matchId } = this.props;
-    return match_id ? match_id : matchId;
+    return this.props.matchId ?
+      this.props.matchId :
+      this.props.match.params.match_id;
   }
 }
 

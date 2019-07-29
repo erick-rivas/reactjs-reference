@@ -49,8 +49,7 @@ class ScorePanel extends React.Component
 
     const form = props =>
       <Modal
-        match={this.props.match}
-        onClose={this.onFormClose}>
+        {...this.props}>
         <ScoreForm />
       </Modal>
 
@@ -58,19 +57,17 @@ class ScorePanel extends React.Component
       <div className={styles.module}>
         <div className={styles.container}>   
           <Route
-            path={[`${path}/:score_id(\\d+)`, `${path}`]}
+            path={[`${path}`]}
             component={list} />
           <Route
             path={`${path}/:score_id(\\d+)`}
             component={details} />
         </div>
-
         <Route
           path={
             [`${path}/:any/new`,`${path}/new`,
             `${path}/:score_id(\\d+)/edit`] }
           component={form} />
-
       </div>
     );
   }
@@ -83,16 +80,7 @@ class ScorePanel extends React.Component
   {
     super(props);
     this.state = {};
-    this.onFormClose = this.onFormClose.bind(this);
   }
-
-  /* Events */
-
-  onFormClose()
-  {
-    this.props.history.goBack()
-  }
-
 }
 
 export default ScorePanel;

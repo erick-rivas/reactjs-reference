@@ -26,12 +26,9 @@ class ScoreForm extends React.Component
     return (
       <div className={styles.module}>
 
-        <div className={styles.header}>
-          Score
-        </div>
+        <div className={styles.header}>Score</div>
 
         <div className={styles.form}>
-
           <Formik
             initialValues={score}
             validate={this.onValidate}
@@ -63,9 +60,7 @@ class ScoreForm extends React.Component
             </Field>
             <br/>
             </div>
-
             {this.renderError()}
-
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
@@ -108,55 +103,17 @@ class ScoreForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    let score = this.state.score ? this.state.score : {};
-    
-    score.min = values.min;
-
-    score.player_id = values.player_id;
-    score.match_id = values.match_id;
-    
-    this.saveData(score);
-  }
-
-  onValidate(){}
-
-  /* Actions */
-
-  loadData()
-  {
     const scoreId = this.getScoreId();
-    const callback = res => 
-    {
-      const scoreId = this.getScoreId();
-      const score = DataUtil.getItem(this.props.scores, scoreId);
-      if (score.id != null)
-        this.setState({
-          score: Object.assign({}, this.state.score, score)
-        })
-    }
-    this.props.getScoreDetails(scoreId, callback);
-    
-  }
-
-  loadFkData() 
-  {
-    this.props.getPlayerList();
-    this.props.getMatchList();
-  }
-
-  saveData(score)
-  {
-    const scoreId = this.getScoreId();
-    const onSave = res => 
+    const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (scoreId == null)
-      this.props.saveScore(score, onSave)
-    else
-      this.props.setScore(scoreId, score, onSave);
+    if (scoreId == null) this.props.saveScore(values, onSave)
+    else this.props.setScore(scoreId, values, onSave);
   }
+
+  onValidate(){}
 
   onSave(res)
   {
@@ -172,13 +129,35 @@ class ScoreForm extends React.Component
     });
   }
 
+  /* Actions */
+
+  loadData()
+  {
+    const scoreId = this.getScoreId();
+    const callback = res => 
+    {
+      const score = DataUtil.getItem(this.props.scores, scoreId);
+      if (score.id != null)
+        this.setState({
+          score: Object.assign({}, this.state.score, score)
+        })
+    }
+    this.props.getScoreDetails(scoreId, callback);
+  }
+
+  loadFkData() 
+  {
+    this.props.getPlayerList();
+    this.props.getMatchList();
+  }
+
   /* Args */
 
   getScoreId() 
   {
-    const { score_id } = this.props.match.params;
-    const { scoreId } = this.props;
-    return score_id ? score_id : scoreId;
+    return this.props.scoreId ?
+      this.props.scoreId :
+      this.props.match.params.score_id;
   }
 }
 

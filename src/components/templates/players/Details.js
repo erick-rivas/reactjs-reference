@@ -6,8 +6,6 @@ import * as React from 'react';
 import * as DataUtil from 'seed/util/DataUtil.js';
 import cx from 'classnames';
 import redux from 'seed/helpers/redux';
-import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
@@ -23,8 +21,6 @@ class PlayerDetails extends React.Component
       
     if (player.id == null) return <Loading />;
 
-    const { path, url } = this.props.match;
-    
     return (
       <div className={styles.module}>
         {/* Suggested divs */}
@@ -61,9 +57,9 @@ class PlayerDetails extends React.Component
 
   getPlayerId() 
   {
-    const { player_id } = this.props.match.params;
-    const { playerId } = this.props;
-    return player_id ? player_id : playerId;
+    return this.props.playerId ?
+      this.props.playerId :
+      this.props.match.params.player_id;
   }
 }
 

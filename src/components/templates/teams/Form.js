@@ -25,12 +25,9 @@ class TeamForm extends React.Component
     return (
       <div className={styles.module}>
 
-        <div className={styles.header}>
-          Team
-        </div>
+        <div className={styles.header}>Team</div>
 
         <div className={styles.form}>
-
           <Formik
             initialValues={team}
             validate={this.onValidate}
@@ -66,9 +63,7 @@ class TeamForm extends React.Component
             </Field>
             <br/>
             </div>
-
             {this.renderError()}
-
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
@@ -111,56 +106,17 @@ class TeamForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    let team = this.state.team ? this.state.team : {};
-    
-    team.name = values.name;
-    team.logo_id = values.logo.id;
-    team.description = values.description;
-    team.market_value = values.market_value;
-
-    team.rival_id = values.rival_id;
-    
-    this.saveData(team);
-  }
-
-  onValidate(){}
-
-  /* Actions */
-
-  loadData()
-  {
     const teamId = this.getTeamId();
-    const callback = res => 
-    {
-      const teamId = this.getTeamId();
-      const team = DataUtil.getItem(this.props.teams, teamId);
-      if (team.id != null)
-        this.setState({
-          team: Object.assign({}, this.state.team, team)
-        })
-    }
-    this.props.getTeamDetails(teamId, callback);
-    
-  }
-
-  loadFkData() 
-  {
-    this.props.getTeamList();
-  }
-
-  saveData(team)
-  {
-    const teamId = this.getTeamId();
-    const onSave = res => 
+    const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (teamId == null)
-      this.props.saveTeam(team, onSave)
-    else
-      this.props.setTeam(teamId, team, onSave);
+    if (teamId == null) this.props.saveTeam(values, onSave)
+    else this.props.setTeam(teamId, values, onSave);
   }
+
+  onValidate(){}
 
   onSave(res)
   {
@@ -176,13 +132,34 @@ class TeamForm extends React.Component
     });
   }
 
+  /* Actions */
+
+  loadData()
+  {
+    const teamId = this.getTeamId();
+    const callback = res => 
+    {
+      const team = DataUtil.getItem(this.props.teams, teamId);
+      if (team.id != null)
+        this.setState({
+          team: Object.assign({}, this.state.team, team)
+        })
+    }
+    this.props.getTeamDetails(teamId, callback);
+  }
+
+  loadFkData() 
+  {
+    this.props.getTeamList();
+  }
+
   /* Args */
 
   getTeamId() 
   {
-    const { team_id } = this.props.match.params;
-    const { teamId } = this.props;
-    return team_id ? team_id : teamId;
+    return this.props.teamId ?
+      this.props.teamId :
+      this.props.match.params.team_id;
   }
 }
 

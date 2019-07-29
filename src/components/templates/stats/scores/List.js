@@ -22,8 +22,7 @@ class ScoreList extends React.Component
     const { Item } = this.props;
     const { url } = this.props.match;
 
-    const scoreList = 
-      scores.map(item =>
+    const scoreList = scores.map(item =>
         <NavLink 
           to={`${url}/${item.id}`}
           className={styles.item}

@@ -22,8 +22,7 @@ class UserList extends React.Component
     const { Item } = this.props;
     const { url } = this.props.match;
 
-    const userList = 
-      users.map(item =>
+    const userList = users.map(item =>
         <NavLink 
           to={`${url}/${item.id}`}
           className={styles.item}

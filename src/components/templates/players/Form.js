@@ -25,12 +25,9 @@ class PlayerForm extends React.Component
     return (
       <div className={styles.module}>
 
-        <div className={styles.header}>
-          Player
-        </div>
+        <div className={styles.header}>Player</div>
 
         <div className={styles.form}>
-
           <Formik
             initialValues={player}
             validate={this.onValidate}
@@ -62,9 +59,7 @@ class PlayerForm extends React.Component
             </Field>
             <br/>
             </div>
-
             {this.renderError()}
-
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
@@ -107,55 +102,17 @@ class PlayerForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    let player = this.state.player ? this.state.player : {};
-    
-    player.name = values.name;
-    player.photo_id = values.photo.id;
-    player.is_active = values.is_active;
-
-    player.team_id = values.team_id;
-    
-    this.saveData(player);
-  }
-
-  onValidate(){}
-
-  /* Actions */
-
-  loadData()
-  {
     const playerId = this.getPlayerId();
-    const callback = res => 
-    {
-      const playerId = this.getPlayerId();
-      const player = DataUtil.getItem(this.props.players, playerId);
-      if (player.id != null)
-        this.setState({
-          player: Object.assign({}, this.state.player, player)
-        })
-    }
-    this.props.getPlayerDetails(playerId, callback);
-    
-  }
-
-  loadFkData() 
-  {
-    this.props.getTeamList();
-  }
-
-  saveData(player)
-  {
-    const playerId = this.getPlayerId();
-    const onSave = res => 
+    const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (playerId == null)
-      this.props.savePlayer(player, onSave)
-    else
-      this.props.setPlayer(playerId, player, onSave);
+    if (playerId == null) this.props.savePlayer(values, onSave)
+    else this.props.setPlayer(playerId, values, onSave);
   }
+
+  onValidate(){}
 
   onSave(res)
   {
@@ -171,13 +128,34 @@ class PlayerForm extends React.Component
     });
   }
 
+  /* Actions */
+
+  loadData()
+  {
+    const playerId = this.getPlayerId();
+    const callback = res => 
+    {
+      const player = DataUtil.getItem(this.props.players, playerId);
+      if (player.id != null)
+        this.setState({
+          player: Object.assign({}, this.state.player, player)
+        })
+    }
+    this.props.getPlayerDetails(playerId, callback);
+  }
+
+  loadFkData() 
+  {
+    this.props.getTeamList();
+  }
+
   /* Args */
 
   getPlayerId() 
   {
-    const { player_id } = this.props.match.params;
-    const { playerId } = this.props;
-    return player_id ? player_id : playerId;
+    return this.props.playerId ?
+      this.props.playerId :
+      this.props.match.params.player_id;
   }
 }
 

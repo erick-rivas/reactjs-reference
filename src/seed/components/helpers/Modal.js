@@ -77,7 +77,9 @@ class Modal extends React.Component
 
   onClose()
   {
-    this.props.onClose(this.props.match);
+    if (this.props.onClose == null)
+      this.props.history.goBack()
+    else this.props.onClose(this.props.match);
   }
 }
 

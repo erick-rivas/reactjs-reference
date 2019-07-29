@@ -35,8 +35,10 @@ class Loading extends React.Component
   {
     const { setFieldValue, name } = this.props;
     const { uploadFile } = this.props;
-    const callback = res =>
+    const callback = res => {
       setFieldValue(name, res.body);
+      setFieldValue(name + "_id", res.body.id);
+    }
     uploadFile(e.target.form, callback);
   }
 }

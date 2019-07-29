@@ -49,8 +49,7 @@ class UserPanel extends React.Component
 
     const form = props =>
       <Modal
-        match={this.props.match}
-        onClose={this.onFormClose}>
+        {...this.props}>
         <UserForm />
       </Modal>
 
@@ -58,19 +57,17 @@ class UserPanel extends React.Component
       <div className={styles.module}>
         <div className={styles.container}>   
           <Route
-            path={[`${path}/:user_id(\\d+)`, `${path}`]}
+            path={[`${path}`]}
             component={list} />
           <Route
             path={`${path}/:user_id(\\d+)`}
             component={details} />
         </div>
-
         <Route
           path={
             [`${path}/:any/new`,`${path}/new`,
             `${path}/:user_id(\\d+)/edit`] }
           component={form} />
-
       </div>
     );
   }
@@ -83,16 +80,7 @@ class UserPanel extends React.Component
   {
     super(props);
     this.state = {};
-    this.onFormClose = this.onFormClose.bind(this);
   }
-
-  /* Events */
-
-  onFormClose()
-  {
-    this.props.history.goBack()
-  }
-
 }
 
 export default UserPanel;
