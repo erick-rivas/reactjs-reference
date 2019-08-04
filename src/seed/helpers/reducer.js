@@ -7,10 +7,8 @@ import * as Const from 'seed/helpers/redux_const';
 
 class Reducer
 {
-  initialState = {
-    dataset: []
-  };
   ref;
+  initialState = { dataset: [] };
 
   constructor(ref)
   {

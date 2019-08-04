@@ -1,14 +1,16 @@
-const getItem = (dataSet, id) =>
+const get = (dataset, id) =>
 {
-  for (let data of dataSet)
-    if (data.id == id) return data;
-  return {};
+  return find(dataset, i => i.id == id);
+}
+
+const find = (dataset, func) =>
+{
+  const item = dataset.find(func);
+  return item ? item : {};
 }
 
 const filter = (dataset, filters) =>
 {
-  console.log(dataset);
-  console.log(filters);
   return dataset.filter(d =>
   {
     for (let filter in filters)
@@ -19,4 +21,4 @@ const filter = (dataset, filters) =>
   })
 }
 
-export { getItem, filter }
+export { get, find, filter }

@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil.js';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 
 import Loading from 'seed/components/helpers/Loading';
 
@@ -15,10 +15,8 @@ class ScoreDetails extends React.Component
 {
   render()
   {
-    const { scores = [] } = this.props;
     const scoreId = this.getScoreId();
-    const score = DataUtil.getItem(scores, scoreId);
-      
+    const score = Util.get(this.props.scores, scoreId);
     if (score.id == null) return <Loading />;
 
     return (

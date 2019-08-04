@@ -3,8 +3,8 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Route } from 'react-router-dom';
 
 import TeamDetails from 'components/templates/teams/Details';

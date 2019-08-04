@@ -4,8 +4,8 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import redux from 'seed/helpers/redux';
 
 import styles from 'resources/css/helpers/FileField.module.css';
 

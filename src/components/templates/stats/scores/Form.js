@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Formik, Field } from 'formik';
 
 import FileField from 'seed/components/helpers/FileField'
@@ -17,10 +17,11 @@ class ScoreForm extends React.Component
 {
   render()
   {
-    const { score = {} } = this.state;
-    const { players = [] } = this.props;
-    const { matches = [] } = this.props;
     const scoreId = this.getScoreId();
+    const score = Util.get(this.props.scores, scoreId);
+    const players = Util.filter(this.props.players, {})
+    const matches = Util.filter(this.props.matches, {})
+
     if (score.id == null && scoreId != null) return <Loading />;
     
     return (
@@ -31,7 +32,6 @@ class ScoreForm extends React.Component
         <div className={styles.form}>
           <Formik
             initialValues={score}
-            validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
             values, errors, setFieldValue, handleSubmit
@@ -83,12 +83,8 @@ class ScoreForm extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      score: {}
-    };
-
+    this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
-    this.onValidate = this.onValidate.bind(this);
   }
 
   componentDidMount()
@@ -103,17 +99,15 @@ class ScoreForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    const scoreId = this.getScoreId();
     const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
+    const scoreId = this.getScoreId();
     if (scoreId == null) this.props.saveScore(values, onSave)
     else this.props.setScore(scoreId, values, onSave);
   }
-
-  onValidate(){}
 
   onSave(res)
   {
@@ -134,21 +128,13 @@ class ScoreForm extends React.Component
   loadData()
   {
     const scoreId = this.getScoreId();
-    const callback = res => 
-    {
-      const score = DataUtil.getItem(this.props.scores, scoreId);
-      if (score.id != null)
-        this.setState({
-          score: Object.assign({}, this.state.score, score)
-        })
-    }
-    this.props.getScoreDetails(scoreId, callback);
+    this.props.getScoreDetails(scoreId);
   }
 
   loadFkData() 
   {
-    this.props.getPlayerList();
-    this.props.getMatchList();
+    this.props.getPlayerList({});
+    this.props.getMatchList({});
   }
 
   /* Args */

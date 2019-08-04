@@ -26,27 +26,27 @@ class _Scores extends Action
 
   getScoreList(params = {}, callback)
   {
-    return this.getList(params, callback);
+    return this.getList('', params, callback);
   }
 
   getScoreDetails(scoreId, callback)
   {
-    return this.getDetails(scoreId, callback);
+    return this.getDetails(scoreId, '', callback);
   }
 
   saveScore(score, callback)
   {
-    return this.saveData(score, callback);
+    return this.saveData('', score, callback);
   }
 
   setScore(scoreId, score, callback)
   {
-    return this.setData(scoreId, score, callback);
+    return this.setData(scoreId, '', score, callback);
   }
 
   deleteScore(scoreId, callback)
   {
-    return this.deleteData(scoreId, callback);
+    return this.deleteData(scoreId, '', callback);
   }
 }
 

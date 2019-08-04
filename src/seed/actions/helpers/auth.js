@@ -30,8 +30,9 @@ class Auth extends Action
       password: password
     }
 
-    return this.reqPost(
-      `/login`, body, onLogin, this.onLogin);
+    return this.request(
+      'POST', `/login`, '',
+      body, onLogin, this.onLogin);
   }
 
   logout(callback)
@@ -43,8 +44,9 @@ class Auth extends Action
       callback(res);
     }
 
-    return this.reqPost(
-      `/logout`, {}, onLogout, this.onLogout);
+    return this.request(
+      'POST, '`/logout`, '',
+       {}, onLogout, this.onLogout);
   }
 
   onLogin = data => ({

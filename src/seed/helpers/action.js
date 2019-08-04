@@ -28,84 +28,50 @@ class Action
    === REQUESTS ===
    */
 
-  getList = (filters, callback) =>
+  getList = (action, filters, callback) =>
   {
    let query = '';
     for (let filter in filters)
       if (filters[filter] != null)
         query += `filter{${filter}}=${filters[filter]}&`;
 
-    return this.reqGet(
-      ``, query,
+    return this.request(
+      "GET", `${action}`, query, {},
       callback,
       this.onGetList);
   }
 
-  getDetails = (id, callback) =>
+  getDetails = (id, action, callback) =>
   {
-    return this.reqGet(
-      `/${id}`, ``,
+    return this.request(
+      "GET", `/${id}${action}`, "", {},
       callback,
       this.onGetDetails);
   }
 
-  saveData = (body, callback) =>
+  saveData = (action, body, callback) =>
   {
-    return this.reqPost(
-      ``, body,
+    return this.request(
+      "POST", `${action}`, "", body,
       callback,
       this.onSaveData);
   }
 
-  setData = (id, body, callback) =>
+  setData = (id, action, body, callback) =>
   {
-    return this.reqPut(
-      `/${id}`, body,
+   return this.request(
+      "PUT", `/${id}${action}`, "", body,
       callback,
       this.onSetData);
   }
 
-  deleteData = (id, callback) =>
+  deleteData = (id, action, callback) =>
   {
-    return this.reqDelete(
-      `/${id}`,
+    return this.request(
+      "DELETE", `/${id}${action}`, "", {},
       callback,
       this.onDeleteData);
   }
-
-
-  reqGet(path, query, callback, toDisp)
-  {
-     return this.request(
-      "GET", path, query, {},
-      callback,
-      toDisp);
-  }
-
-  reqPost(path, body, callback, toDisp)
-  {
-    return this.request(
-      "POST", path, "", body,
-      callback,
-      toDisp);
-  }
-
-  reqPut(path, body, callback, toDisp)
-  {
-    return this.request(
-      "PUT", path, "", body,
-      callback,
-      toDisp);
-  }
-
-  reqDelete(path, callback,  toDisp)
-  {
-     return this.request(
-      "DELETE", path, "", {},
-      callback,
-      toDisp);
-  }
-
 
   request = (method, path, query, body, callback, toDisp) =>
   {
@@ -190,18 +156,6 @@ class Action
     type: `${this.id}_${Const.DELETE}`,
     id: data.id
   });
-
-
-  /**
-  === UTIL ===
-  */
-
-  getDataDetails = (id, dataset) =>
-  {
-    for (let data of dataset)
-      if (data.id === id) return data;
-    return null;
-  };
 
 }
 

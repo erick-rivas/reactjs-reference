@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Formik, Field } from 'formik';
 
 import FileField from 'seed/components/helpers/FileField'
@@ -17,9 +17,10 @@ class PlayerForm extends React.Component
 {
   render()
   {
-    const { player = {} } = this.state;
-    const { teams = [] } = this.props;
     const playerId = this.getPlayerId();
+    const player = Util.get(this.props.players, playerId);
+    const teams = Util.filter(this.props.teams, {})
+
     if (player.id == null && playerId != null) return <Loading />;
     
     return (
@@ -30,7 +31,6 @@ class PlayerForm extends React.Component
         <div className={styles.form}>
           <Formik
             initialValues={player}
-            validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
             values, errors, setFieldValue, handleSubmit
@@ -82,12 +82,8 @@ class PlayerForm extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      player: {}
-    };
-
+    this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
-    this.onValidate = this.onValidate.bind(this);
   }
 
   componentDidMount()
@@ -102,17 +98,15 @@ class PlayerForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    const playerId = this.getPlayerId();
     const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
+    const playerId = this.getPlayerId();
     if (playerId == null) this.props.savePlayer(values, onSave)
     else this.props.setPlayer(playerId, values, onSave);
   }
-
-  onValidate(){}
 
   onSave(res)
   {
@@ -133,20 +127,12 @@ class PlayerForm extends React.Component
   loadData()
   {
     const playerId = this.getPlayerId();
-    const callback = res => 
-    {
-      const player = DataUtil.getItem(this.props.players, playerId);
-      if (player.id != null)
-        this.setState({
-          player: Object.assign({}, this.state.player, player)
-        })
-    }
-    this.props.getPlayerDetails(playerId, callback);
+    this.props.getPlayerDetails(playerId);
   }
 
   loadFkData() 
   {
-    this.props.getTeamList();
+    this.props.getTeamList({});
   }
 
   /* Args */

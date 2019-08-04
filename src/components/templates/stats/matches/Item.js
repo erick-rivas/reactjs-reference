@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
 import Svg from 'react-svg';
-import redux from 'seed/helpers/redux';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,8 +16,7 @@ class MatchItem extends React.Component
 {
   render()
   {
-    const { match } = this.props;
-
+    const match = this.props.match;
     return (
       <div className={styles.module}>
         <div className={styles.title}>{match.id}</div>
@@ -29,7 +28,7 @@ class MatchItem extends React.Component
           anchorEl={this.state.optionMenu}
           open={Boolean(this.state.optionMenu)}
           onClose={this.onCloseMenu}>
-          <MenuItem>Delete</MenuItem>
+          <MenuItem onClick={this.onClickDelete}>Delete</MenuItem>
         </Menu>
 
       </div>
@@ -47,18 +46,29 @@ class MatchItem extends React.Component
       optionMenu: null
     }
     this.onClickOptions = this.onClickOptions.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
     this.onCloseMenu = this.onCloseMenu.bind(this);
   }
 
+  /* Events */
+
   onClickOptions(e)
   {
+    e.preventDefault();
     this.setState({
       optionMenu: e.currentTarget
     });
   }
 
+  onClickDelete(e)
+  {
+    e.preventDefault();
+    this.props.deleteMatch(this.props.match.id);
+  }
+
   onCloseMenu(e)
   {
+    e.preventDefault();
     this.setState({
       optionMenu: null
     });

@@ -27,27 +27,27 @@ class _Matches extends Action
 
   getMatchList(params = {}, callback)
   {
-    return this.getList(params, callback);
+    return this.getList('', params, callback);
   }
 
   getMatchDetails(matchId, callback)
   {
-    return this.getDetails(matchId, callback);
+    return this.getDetails(matchId, '', callback);
   }
 
   saveMatch(match, callback)
   {
-    return this.saveData(match, callback);
+    return this.saveData('', match, callback);
   }
 
   setMatch(matchId, match, callback)
   {
-    return this.setData(matchId, match, callback);
+    return this.setData(matchId, '', match, callback);
   }
 
   deleteMatch(matchId, callback)
   {
-    return this.deleteData(matchId, callback);
+    return this.deleteData(matchId, '', callback);
   }
 }
 

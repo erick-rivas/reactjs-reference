@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil.js';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 
 import Loading from 'seed/components/helpers/Loading';
 
@@ -15,10 +15,8 @@ class MatchDetails extends React.Component
 {
   render()
   {
-    const { matches = [] } = this.props;
     const matchId = this.getMatchId();
-    const match = DataUtil.getItem(matches, matchId);
-      
+    const match = Util.get(this.props.matches, matchId);
     if (match.id == null) return <Loading />;
 
     return (

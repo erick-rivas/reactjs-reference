@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Formik, Field } from 'formik';
 
 import FileField from 'seed/components/helpers/FileField'
@@ -17,8 +17,9 @@ class UserForm extends React.Component
 {
   render()
   {
-    const { user = {} } = this.state;
     const userId = this.getUserId();
+    const user = Util.get(this.props.users, userId);
+
     if (user.id == null && userId != null) return <Loading />;
     
     return (
@@ -29,7 +30,6 @@ class UserForm extends React.Component
         <div className={styles.form}>
           <Formik
             initialValues={user}
-            validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
             values, errors, setFieldValue, handleSubmit
@@ -59,12 +59,8 @@ class UserForm extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      user: {}
-    };
-
+    this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
-    this.onValidate = this.onValidate.bind(this);
   }
 
   componentDidMount()
@@ -79,17 +75,15 @@ class UserForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    const userId = this.getUserId();
     const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
+    const userId = this.getUserId();
     if (userId == null) this.props.saveUser(values, onSave)
     else this.props.setUser(userId, values, onSave);
   }
-
-  onValidate(){}
 
   onSave(res)
   {
@@ -110,15 +104,7 @@ class UserForm extends React.Component
   loadData()
   {
     const userId = this.getUserId();
-    const callback = res => 
-    {
-      const user = DataUtil.getItem(this.props.users, userId);
-      if (user.id != null)
-        this.setState({
-          user: Object.assign({}, this.state.user, user)
-        })
-    }
-    this.props.getUserDetails(userId, callback);
+    this.props.getUserDetails(userId);
   }
 
   loadFkData() 

@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
 import Svg from 'react-svg';
-import redux from 'seed/helpers/redux';
 
 import styles from 'resources/css/templates/nav/Topnav.module.css';
 

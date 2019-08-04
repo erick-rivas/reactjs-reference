@@ -4,8 +4,10 @@ __Seed builder__v1.0
   Modify via builder
 */
 
+import * as Util from 'seed/util'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+
 import _PlayerActions from 'seed/actions/players';
 import _TeamActions from 'seed/actions/teams';
 import _UserActions from 'seed/actions/users';
@@ -93,15 +95,17 @@ const dispToProps = disp => {
       if (method != "constructor")
         res[method] = (...args) => disp(action.object[method](...args));
   }
-  console.log(res);
   return res;
-}
+};
 
-const redux = (component) => {
-  return withRouter(connect(
+const mergeProps = (states, disps, props) => {
+  return Object.assign({}, states, disps, props)
+};
+
+const redux = component =>
+  withRouter(connect(
     stateToProps,
-    dispToProps
+    dispToProps,
+    mergeProps
   )(component));
-}
-
 export default redux;

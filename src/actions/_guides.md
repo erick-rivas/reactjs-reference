@@ -35,28 +35,16 @@ Those methods are binded **automatically** binded in components using redux() wr
 ## Request methods
 
 Those methods are helpers to ease the api requests
--  reqGet(path, query, callback, toDisp)
-   > Example: this.reqGet('/1/action', 'name=1', callback, this.onGetDetails) \
-   > Example: this.reqGet('/action', '', callback, this.onGetList)
--  reqPost(path, body, callback, toDisp)
-   > Example this.reqPost('/action', {arg: 1}, callback, this.onSaveData)
--  reqPut(path, body, callback, toDisp)
-   > Example this.reqPut('/1/action', {arg: 1}, callback, this.onSetData)
--  reqDelete(path, callback,  toDisp)
-   > Example this.reqDelete('/1/action', {arg: 1}, callback, this.onDeleteData)
-
-## ToDisp methods
-
-Those methods are used to ease redux updates (state tree)
-
-The data that receive is defined base on REST API standards, 
-  -  example: Return a resource json when execute a POST operation
-
--  onGetList: Receive a collection and add to tree
--  onGetDetails: Receive an object and add to tree
--  onSaveData: Receive an saved object and add to tree
--  onSetData: Receive an modified object and update tree
--  onDeleteData: Receive an id and delete the element from tree
+-  getList(action, filters, callback)
+   > Example: this.getList('/action', {name: 1}, callback)
+-  getDetails(id, action, callback)
+   > Example: this.getDetails(1, '/action',callback)
+-  saveData(action, body, callback)
+   > Example this.saveData('/action', {arg: 1}, callback)
+-  setData(id, action, body, callback)
+   > Example this.setData(1, '/action', {arg: 1}, callback)
+-  deleteData(id, action, callback)
+   > Example this.deleteData(1, '/action', callback)
 
 ## Examples
 
@@ -76,11 +64,10 @@ class Players extends _Players
 
   getTop10PlayerList(category, callback)
   {
-    return this.reqGet(
-      `/top_10`, //Path to send
-      `category=${category}`, //Query
-      callback, //callback when complete
-      this.onGetDetails //disp function
+    return this.getList(
+      `/top_10`, //Action
+      {category: category}, //Filters
+      callback //callback when complete
     )
   }
 }
@@ -95,10 +82,9 @@ class Users extends _Users
   {
     let body = {}
     return this.reqPost(
-      `/{userId}/create_profile`, //Path to send
-      body, //Query
-      callback, //callback when complete
-      this.onSaveData //disp function
+      `create_profile`, //Action
+      body, //Body
+      callback //callback when complete
     )
   }
 }

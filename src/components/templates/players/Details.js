@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil.js';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 
 import Loading from 'seed/components/helpers/Loading';
 
@@ -15,10 +15,8 @@ class PlayerDetails extends React.Component
 {
   render()
   {
-    const { players = [] } = this.props;
     const playerId = this.getPlayerId();
-    const player = DataUtil.getItem(players, playerId);
-      
+    const player = Util.get(this.props.players, playerId);
     if (player.id == null) return <Loading />;
 
     return (

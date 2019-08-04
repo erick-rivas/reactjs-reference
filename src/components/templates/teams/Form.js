@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Formik, Field } from 'formik';
 
 import FileField from 'seed/components/helpers/FileField'
@@ -17,9 +17,10 @@ class TeamForm extends React.Component
 {
   render()
   {
-    const { team = {} } = this.state;
-    const { teams = [] } = this.props;
     const teamId = this.getTeamId();
+    const team = Util.get(this.props.teams, teamId);
+    const teams = Util.filter(this.props.teams, {})
+
     if (team.id == null && teamId != null) return <Loading />;
     
     return (
@@ -30,7 +31,6 @@ class TeamForm extends React.Component
         <div className={styles.form}>
           <Formik
             initialValues={team}
-            validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
             values, errors, setFieldValue, handleSubmit
@@ -86,12 +86,8 @@ class TeamForm extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      team: {}
-    };
-
+    this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
-    this.onValidate = this.onValidate.bind(this);
   }
 
   componentDidMount()
@@ -106,17 +102,15 @@ class TeamForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    const teamId = this.getTeamId();
     const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
+    const teamId = this.getTeamId();
     if (teamId == null) this.props.saveTeam(values, onSave)
     else this.props.setTeam(teamId, values, onSave);
   }
-
-  onValidate(){}
 
   onSave(res)
   {
@@ -137,20 +131,12 @@ class TeamForm extends React.Component
   loadData()
   {
     const teamId = this.getTeamId();
-    const callback = res => 
-    {
-      const team = DataUtil.getItem(this.props.teams, teamId);
-      if (team.id != null)
-        this.setState({
-          team: Object.assign({}, this.state.team, team)
-        })
-    }
-    this.props.getTeamDetails(teamId, callback);
+    this.props.getTeamDetails(teamId);
   }
 
   loadFkData() 
   {
-    this.props.getTeamList();
+    this.props.getTeamList({});
   }
 
   /* Args */

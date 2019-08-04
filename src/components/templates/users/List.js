@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
@@ -16,7 +16,8 @@ class UserList extends React.Component
 {
   render()
   {
-    const { users = [] } = this.props;
+    const users =
+      Util.filter(this.props.users, {}).sort((i1,i2) => i2.id - i1.id)
     if (users == null) return <Loading />;
 
     const { Item } = this.props;
@@ -52,7 +53,7 @@ class UserList extends React.Component
   
   componentDidMount()
   {
-    this.props.getUserList();
+    this.props.getUserList({});
   }
 }
 

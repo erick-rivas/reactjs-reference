@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
 import Svg from 'react-svg';
-import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
 import styles from 'resources/css/templates/players/options/Details.module.css';
@@ -52,12 +52,12 @@ class PlayerDetailsOptions extends React.Component
 
   onClickDelete()
   {
-    const playerId = this.getPlayerId();
-    const onDelete = res => 
+    const onDelete = res =>
     {
       if (res.ok) this.onDelete(res.body);
       else this.onDeleteError(res.body);
     };
+    const playerId = this.getPlayerId();
     this.props.deletePlayer(playerId, onDelete);
   }
 

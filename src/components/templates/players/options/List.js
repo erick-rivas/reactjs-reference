@@ -3,8 +3,8 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux'
 import { Link } from 'react-router-dom';
 
 import styles from 'resources/css/templates/players/options/List.module.css';

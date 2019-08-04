@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Formik, Field } from 'formik';
 
 import FileField from 'seed/components/helpers/FileField'
@@ -17,9 +17,10 @@ class MatchForm extends React.Component
 {
   render()
   {
-    const { match = {} } = this.state;
-    const { teams = [] } = this.props;
     const matchId = this.getMatchId();
+    const match = Util.get(this.props.matches, matchId);
+    const teams = Util.filter(this.props.teams, {})
+
     if (match.id == null && matchId != null) return <Loading />;
     
     return (
@@ -30,7 +31,6 @@ class MatchForm extends React.Component
         <div className={styles.form}>
           <Formik
             initialValues={match}
-            validate={this.onValidate}
             onSubmit={this.onSubmit}>
           {({
             values, errors, setFieldValue, handleSubmit
@@ -90,12 +90,8 @@ class MatchForm extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      match: {}
-    };
-
+    this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
-    this.onValidate = this.onValidate.bind(this);
   }
 
   componentDidMount()
@@ -110,17 +106,15 @@ class MatchForm extends React.Component
 
   onSubmit(values, { setSubmitting })
   {
-    const matchId = this.getMatchId();
     const onSave = res =>
     {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
+    const matchId = this.getMatchId();
     if (matchId == null) this.props.saveMatch(values, onSave)
     else this.props.setMatch(matchId, values, onSave);
   }
-
-  onValidate(){}
 
   onSave(res)
   {
@@ -141,20 +135,12 @@ class MatchForm extends React.Component
   loadData()
   {
     const matchId = this.getMatchId();
-    const callback = res => 
-    {
-      const match = DataUtil.getItem(this.props.matches, matchId);
-      if (match.id != null)
-        this.setState({
-          match: Object.assign({}, this.state.match, match)
-        })
-    }
-    this.props.getMatchDetails(matchId, callback);
+    this.props.getMatchDetails(matchId);
   }
 
   loadFkData() 
   {
-    this.props.getTeamList();
+    this.props.getTeamList({});
   }
 
   /* Args */

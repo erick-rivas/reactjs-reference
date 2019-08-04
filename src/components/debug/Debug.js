@@ -3,6 +3,7 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
 
 import styles from 'resources/css/debug/Debug.module.css';
@@ -29,4 +30,4 @@ class Debug extends React.Component
   }
 }
 
-export default Debug;
+export default redux(Debug);

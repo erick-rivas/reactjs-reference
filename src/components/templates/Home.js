@@ -3,8 +3,8 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import UserPanel from 'components/templates/users/Panel';
 import TeamPanel from 'components/templates/teams/Panel';

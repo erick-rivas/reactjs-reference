@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import * as React from 'react';
-import * as DataUtil from 'seed/util/DataUtil';
+import * as Util from 'seed/util';
+import redux from 'seed/redux';
 import cx from 'classnames';
-import redux from 'seed/helpers/redux';
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
@@ -16,7 +16,8 @@ class MatchList extends React.Component
 {
   render()
   {
-    const { matches = [] } = this.props;
+    const matches =
+      Util.filter(this.props.matches, {}).sort((i1,i2) => i2.id - i1.id)
     if (matches == null) return <Loading />;
 
     const { Item } = this.props;
@@ -52,7 +53,7 @@ class MatchList extends React.Component
   
   componentDidMount()
   {
-    this.props.getMatchList();
+    this.props.getMatchList({});
   }
 }
 
