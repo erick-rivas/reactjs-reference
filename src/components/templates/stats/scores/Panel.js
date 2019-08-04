@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import ScoreDetails from 'components/templates/stats/scores/Details';
+import ScoreTable from 'components/templates/stats/scores/Table';
 import ScoreList from 'components/templates/stats/scores/List';
 import ScoreListOptions from 'components/templates/stats/scores/options/List';
 import ScoreDetailsOptions from 'components/templates/stats/scores/options/Details';
@@ -24,18 +25,28 @@ class ScorePanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const list = props =>
+    const List =
       <div className={styles.list}>
         <div className={styles.options}>
-          <ScoreListOptions {...props}/>
+          <ScoreListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <ScoreList {...props}
+          <ScoreList {...this.props}
             Item={ScoreItem} />
         </div>
       </div>
 
-    const details = props =>
+    const Table =
+      <div className={styles.table}>
+        <div className={styles.options}>
+          <ScoreListOptions {...this.props}/>
+        </div>
+        <div className={styles.content}>
+          <ScoreTable  {...this.props} />
+        </div>
+      </div>
+
+    const Details = props =>
       <div className={styles.details}>
         <div className={styles.card}>
           <div className={styles.options}>
@@ -47,7 +58,7 @@ class ScorePanel extends React.Component
         </div>
       </div>
 
-    const form = props =>
+    const Form = props =>
       <Modal
         {...this.props}>
         <ScoreForm />
@@ -55,19 +66,17 @@ class ScorePanel extends React.Component
 
     return (
       <div className={styles.module}>
-        <div className={styles.container}>   
-          <Route
-            path={[`${path}`]}
-            component={list} />
+        <div className={styles.container}>
+          {Table}
           <Route
             path={`${path}/:score_id(\\d+)`}
-            component={details} />
+            component={Details} />
         </div>
         <Route
           path={
             [`${path}/:any/new`,`${path}/new`,
             `${path}/:score_id(\\d+)/edit`] }
-          component={form} />
+          component={Form} />
       </div>
     );
   }

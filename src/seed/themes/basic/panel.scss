@@ -26,6 +26,23 @@
     padding-top: 4px;
   }
 
+  .table {
+    flex: 0 0 40%;
+    max-width: 40%;
+    background: #fff;
+    border-right: 1px solid #e7e7e7;
+    @include box-sizing(border-box);
+  }
+
+  .table .options {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .table .content {
+    padding: 12px;
+  }
+
   .details {
     flex: 0 0 60%;
     max-width: 60%;

@@ -45,7 +45,7 @@ class Auth extends Action
     }
 
     return this.request(
-      'POST, '`/logout`, '',
+      'POST', `/logout`, '',
        {}, onLogout, this.onLogout);
   }
 

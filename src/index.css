@@ -61,3 +61,36 @@ input:-webkit-autofill:active {
   color: #444;
   text-decoration: none;
 }
+
+/* Data tables */
+
+.dataTables_info,
+.dataTables_length,
+.dataTables_filter,
+.dataTables_paginate {
+  font-size: 14px;
+  color: #555 !important;
+}
+
+.dataTables_length select {
+  background: #fff;
+}
+
+.dataTables_filter input {
+  background: #fff;
+  font-size: 14px;
+  padding: 1px 4px;
+  border: 1px solid #d0d0d0;
+}
+
+.dataTables_paginate .paginate_button:hover {
+  background: #f0f0f0 !important;
+  color: #444 !important;
+  border: none !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+  background: #f0f0f0 !important;
+  color: #444 !important;
+  border: none !important;
+}

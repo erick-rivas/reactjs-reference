@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import MatchDetails from 'components/templates/stats/matches/Details';
+import MatchTable from 'components/templates/stats/matches/Table';
 import MatchList from 'components/templates/stats/matches/List';
 import MatchListOptions from 'components/templates/stats/matches/options/List';
 import MatchDetailsOptions from 'components/templates/stats/matches/options/Details';
@@ -24,18 +25,28 @@ class MatchPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const list = props =>
+    const List =
       <div className={styles.list}>
         <div className={styles.options}>
-          <MatchListOptions {...props}/>
+          <MatchListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <MatchList {...props}
+          <MatchList {...this.props}
             Item={MatchItem} />
         </div>
       </div>
 
-    const details = props =>
+    const Table =
+      <div className={styles.table}>
+        <div className={styles.options}>
+          <MatchListOptions {...this.props}/>
+        </div>
+        <div className={styles.content}>
+          <MatchTable  {...this.props} />
+        </div>
+      </div>
+
+    const Details = props =>
       <div className={styles.details}>
         <div className={styles.card}>
           <div className={styles.options}>
@@ -47,7 +58,7 @@ class MatchPanel extends React.Component
         </div>
       </div>
 
-    const form = props =>
+    const Form = props =>
       <Modal
         {...this.props}>
         <MatchForm />
@@ -55,19 +66,17 @@ class MatchPanel extends React.Component
 
     return (
       <div className={styles.module}>
-        <div className={styles.container}>   
-          <Route
-            path={[`${path}`]}
-            component={list} />
+        <div className={styles.container}>
+          {Table}
           <Route
             path={`${path}/:match_id(\\d+)`}
-            component={details} />
+            component={Details} />
         </div>
         <Route
           path={
             [`${path}/:any/new`,`${path}/new`,
             `${path}/:match_id(\\d+)/edit`] }
-          component={form} />
+          component={Form} />
       </div>
     );
   }

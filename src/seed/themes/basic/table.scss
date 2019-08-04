@@ -1,0 +1,14 @@
+@import 'src/seed/themes/base';
+
+@mixin theme {
+  .table {
+    font-size: 14px;
+  }
+
+  .table .options .details{
+    color: #999;
+  }
+  .table .options .details.active{
+    color: #444;
+  }
+}

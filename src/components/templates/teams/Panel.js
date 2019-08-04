@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import TeamDetails from 'components/templates/teams/Details';
+import TeamTable from 'components/templates/teams/Table';
 import TeamList from 'components/templates/teams/List';
 import TeamListOptions from 'components/templates/teams/options/List';
 import TeamDetailsOptions from 'components/templates/teams/options/Details';
@@ -24,18 +25,28 @@ class TeamPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const list = props =>
+    const List =
       <div className={styles.list}>
         <div className={styles.options}>
-          <TeamListOptions {...props}/>
+          <TeamListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <TeamList {...props}
+          <TeamList {...this.props}
             Item={TeamItem} />
         </div>
       </div>
 
-    const details = props =>
+    const Table =
+      <div className={styles.table}>
+        <div className={styles.options}>
+          <TeamListOptions {...this.props}/>
+        </div>
+        <div className={styles.content}>
+          <TeamTable  {...this.props} />
+        </div>
+      </div>
+
+    const Details = props =>
       <div className={styles.details}>
         <div className={styles.card}>
           <div className={styles.options}>
@@ -47,7 +58,7 @@ class TeamPanel extends React.Component
         </div>
       </div>
 
-    const form = props =>
+    const Form = props =>
       <Modal
         {...this.props}>
         <TeamForm />
@@ -55,19 +66,17 @@ class TeamPanel extends React.Component
 
     return (
       <div className={styles.module}>
-        <div className={styles.container}>   
-          <Route
-            path={[`${path}`]}
-            component={list} />
+        <div className={styles.container}>
+          {Table}
           <Route
             path={`${path}/:team_id(\\d+)`}
-            component={details} />
+            component={Details} />
         </div>
         <Route
           path={
             [`${path}/:any/new`,`${path}/new`,
             `${path}/:team_id(\\d+)/edit`] }
-          component={form} />
+          component={Form} />
       </div>
     );
   }

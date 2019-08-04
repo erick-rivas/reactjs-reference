@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import PlayerDetails from 'components/templates/players/Details';
+import PlayerTable from 'components/templates/players/Table';
 import PlayerList from 'components/templates/players/List';
 import PlayerListOptions from 'components/templates/players/options/List';
 import PlayerDetailsOptions from 'components/templates/players/options/Details';
@@ -24,18 +25,28 @@ class PlayerPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const list = props =>
+    const List =
       <div className={styles.list}>
         <div className={styles.options}>
-          <PlayerListOptions {...props}/>
+          <PlayerListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <PlayerList {...props}
+          <PlayerList {...this.props}
             Item={PlayerItem} />
         </div>
       </div>
 
-    const details = props =>
+    const Table =
+      <div className={styles.table}>
+        <div className={styles.options}>
+          <PlayerListOptions {...this.props}/>
+        </div>
+        <div className={styles.content}>
+          <PlayerTable  {...this.props} />
+        </div>
+      </div>
+
+    const Details = props =>
       <div className={styles.details}>
         <div className={styles.card}>
           <div className={styles.options}>
@@ -47,7 +58,7 @@ class PlayerPanel extends React.Component
         </div>
       </div>
 
-    const form = props =>
+    const Form = props =>
       <Modal
         {...this.props}>
         <PlayerForm />
@@ -55,19 +66,17 @@ class PlayerPanel extends React.Component
 
     return (
       <div className={styles.module}>
-        <div className={styles.container}>   
-          <Route
-            path={[`${path}`]}
-            component={list} />
+        <div className={styles.container}>
+          {Table}
           <Route
             path={`${path}/:player_id(\\d+)`}
-            component={details} />
+            component={Details} />
         </div>
         <Route
           path={
             [`${path}/:any/new`,`${path}/new`,
             `${path}/:player_id(\\d+)/edit`] }
-          component={form} />
+          component={Form} />
       </div>
     );
   }
