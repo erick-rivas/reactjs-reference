@@ -8,6 +8,7 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Formik, Field } from 'formik';
 
+import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
@@ -19,6 +20,7 @@ class UserForm extends React.Component
   {
     const userId = this.getUserId();
     const user = Util.get(this.props.users, userId);
+    const teams = Util.filter(this.props.teams, {})
 
     if (user.id == null && userId != null) return <Loading />;
     
@@ -36,6 +38,16 @@ class UserForm extends React.Component
           }) => (
 
           <form onSubmit={handleSubmit}>
+            {/* teams */}
+            <div>
+            <label className={cx(styles.lbl, styles.teamsLbl)}>Teamses</label>
+            <div className={cx(styles.mul, styles.teamsMul)}>
+            <MultiField name="teams_ids"
+              values={ teams.map((e, idx) => { return {value: e.id, label: e.id} }) }
+              setFieldValue={setFieldValue} value={values.teams_ids} />
+            </div>
+            <br/>
+            </div>
             {this.renderError()}
             <button type="submit" className={styles.submit}>Send</button>
           </form>
@@ -109,6 +121,7 @@ class UserForm extends React.Component
 
   loadFkData() 
   {
+    this.props.getTeamList({});
   }
 
   /* Args */

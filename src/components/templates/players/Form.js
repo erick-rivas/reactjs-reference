@@ -8,6 +8,7 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Formik, Field } from 'formik';
 
+import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 

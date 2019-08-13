@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@material-ui/core": "4.3.1",
-    "@material-ui/icons": "4.2.1",
     "bootstrap": "4.3.1",
     "classnames": "2.2.6",
     "cross-fetch": "3.0.4",

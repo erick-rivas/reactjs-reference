@@ -8,7 +8,6 @@ import cx from 'classnames';
 
 import ModalContainer from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 
 import styles from 'resources/css/helpers/Modal.module.css';
 
@@ -51,7 +50,7 @@ class Modal extends React.Component
             className={styles.close}
             style={closeStyle}
             onClick={this.onClose}>
-            <CloseIcon />
+            <i class="fas fa-times"></i>
           </IconButton>
 
           {children}
