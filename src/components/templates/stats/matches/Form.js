@@ -40,11 +40,12 @@ class MatchForm extends React.Component
           <form onSubmit={handleSubmit}>
             {/* date */}
             <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
-            <Field name="date" type="datetime-local" className={cx(styles.dte, styles.dateDte)} />
+            <Field name="date" type="date" className={cx(styles.dte, styles.dateDte)} />
             <br/>
             {/* type */}
             <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
             <Field component="select" name="type" className={cx(styles.ops, styles.typeOps)} >
+              <option value="">Select an option</option>
               <option value='FRIENDSHIP'>Friendship</option>
               <option value='LEAGUE'>League</option>
               <option value='CUP'>Cup</option>

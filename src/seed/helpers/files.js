@@ -4,7 +4,7 @@ __Seed builder__v1.0
 */
 
 import $ from 'jquery';
-import * as Urls from 'util/settings/Urls';
+import * as Urls from 'settings/Urls';
 
 class Files
 {

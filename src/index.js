@@ -3,11 +3,11 @@ import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { MuiTheme } from 'util/settings/MuiTheme';
+import { MuiTheme } from 'settings/MuiTheme';
 
 import App from 'components/App';
-import Worker from 'util/bin/Worker';
-import Store from 'util/bin/Store';
+import Worker from 'settings/bin/Worker';
+import Store from 'settings/bin/Store';
 
 import 'index.css';
 

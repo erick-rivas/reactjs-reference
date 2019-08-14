@@ -22,7 +22,7 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 ### Production settings
 
--  Configure src/util/settings/Urls.js file with api & server settings
+-  Configure src/settings/Urls.js file with api & server settings
 
 ### Deploy example
 

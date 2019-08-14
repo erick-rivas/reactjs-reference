@@ -40,11 +40,11 @@ class UserForm extends React.Component
           <form onSubmit={handleSubmit}>
             {/* teams */}
             <div>
-            <label className={cx(styles.lbl, styles.teamsLbl)}>Teamses</label>
+            <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label>
             <div className={cx(styles.mul, styles.teamsMul)}>
-            <MultiField name="teams_ids"
+            <MultiField name="team_ids"
               values={ teams.map((e, idx) => { return {value: e.id, label: e.id} }) }
-              setFieldValue={setFieldValue} value={values.teams_ids} />
+              setFieldValue={setFieldValue} value={values.team_ids} />
             </div>
             <br/>
             </div>
