@@ -23,13 +23,13 @@ class MatchPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const List =
+    const List = props =>
       <div className={c.list}>
         <div className={c.options}>
-          <MatchListOptions {...this.props}/>
+          <MatchListOptions {...props}/>
         </div>
         <div className={c.content}>
-          <MatchList {...this.props} />
+          <MatchList {...props} />
         </div>
       </div>
 
@@ -46,15 +46,14 @@ class MatchPanel extends React.Component
       </div>
 
     const Form = props =>
-      <Modal
-        {...this.props}>
+      <Modal {...this.props}>
         <MatchForm />
       </Modal>
 
     return (
       <div className={c.module}>
         <div className={c.container}>
-          {List}
+          <List />
           <Route
             path={`${path}/:match_id(\\d+)`}
             component={Details} />

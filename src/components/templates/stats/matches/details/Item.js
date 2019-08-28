@@ -30,7 +30,6 @@ class MatchItem extends React.Component
           onClose={this.onCloseMenu}>
           <MenuItem onClick={this.onClickDelete}>Delete</MenuItem>
         </Menu>
-
       </div>
     );
   }

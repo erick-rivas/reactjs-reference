@@ -23,13 +23,13 @@ class UserPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const List =
+    const List = props =>
       <div className={c.list}>
         <div className={c.options}>
-          <UserListOptions {...this.props}/>
+          <UserListOptions {...props}/>
         </div>
         <div className={c.content}>
-          <UserList {...this.props} />
+          <UserList {...props} />
         </div>
       </div>
 
@@ -46,15 +46,14 @@ class UserPanel extends React.Component
       </div>
 
     const Form = props =>
-      <Modal
-        {...this.props}>
+      <Modal {...this.props}>
         <UserForm />
       </Modal>
 
     return (
       <div className={c.module}>
         <div className={c.container}>
-          {List}
+          <List />
           <Route
             path={`${path}/:user_id(\\d+)`}
             component={Details} />

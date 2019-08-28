@@ -23,13 +23,13 @@ class PlayerPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const List =
+    const List = props =>
       <div className={c.list}>
         <div className={c.options}>
-          <PlayerListOptions {...this.props}/>
+          <PlayerListOptions {...props}/>
         </div>
         <div className={c.content}>
-          <PlayerList {...this.props} />
+          <PlayerList {...props} />
         </div>
       </div>
 
@@ -46,15 +46,14 @@ class PlayerPanel extends React.Component
       </div>
 
     const Form = props =>
-      <Modal
-        {...this.props}>
+      <Modal {...this.props}>
         <PlayerForm />
       </Modal>
 
     return (
       <div className={c.module}>
         <div className={c.container}>
-          {List}
+          <List />
           <Route
             path={`${path}/:player_id(\\d+)`}
             component={Details} />

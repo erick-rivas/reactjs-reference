@@ -23,13 +23,13 @@ class TeamPanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const List =
+    const List = props =>
       <div className={c.list}>
         <div className={c.options}>
-          <TeamListOptions {...this.props}/>
+          <TeamListOptions {...props}/>
         </div>
         <div className={c.content}>
-          <TeamList {...this.props} />
+          <TeamList {...props} />
         </div>
       </div>
 
@@ -46,15 +46,14 @@ class TeamPanel extends React.Component
       </div>
 
     const Form = props =>
-      <Modal
-        {...this.props}>
+      <Modal {...this.props}>
         <TeamForm />
       </Modal>
 
     return (
       <div className={c.module}>
         <div className={c.container}>
-          {List}
+          <List />
           <Route
             path={`${path}/:team_id(\\d+)`}
             component={Details} />

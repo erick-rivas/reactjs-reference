@@ -23,13 +23,13 @@ class ScorePanel extends React.Component
   {
     const { path, url } = this.props.match;
    
-    const List =
+    const List = props =>
       <div className={c.list}>
         <div className={c.options}>
-          <ScoreListOptions {...this.props}/>
+          <ScoreListOptions {...props}/>
         </div>
         <div className={c.content}>
-          <ScoreList {...this.props} />
+          <ScoreList {...props} />
         </div>
       </div>
 
@@ -46,15 +46,14 @@ class ScorePanel extends React.Component
       </div>
 
     const Form = props =>
-      <Modal
-        {...this.props}>
+      <Modal {...this.props}>
         <ScoreForm />
       </Modal>
 
     return (
       <div className={c.module}>
         <div className={c.container}>
-          {List}
+          <List />
           <Route
             path={`${path}/:score_id(\\d+)`}
             component={Details} />
