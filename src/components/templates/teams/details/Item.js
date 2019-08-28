@@ -10,15 +10,17 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import styles from 'resources/css/templates/teams/Item.module.css';
+import styles from 'resources/css/templates/teams/details/Item.module.css';
 
 class TeamItem extends React.Component
 {
   render()
   {
     const team = this.props.team;
+
     return (
       <div className={styles.module}>
+
         <div className={styles.title}>{team.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(team)}</div>
         <Svg className={styles.options}

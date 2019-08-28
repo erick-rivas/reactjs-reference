@@ -10,15 +10,17 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import styles from 'resources/css/templates/stats/scores/Item.module.css';
+import styles from 'resources/css/templates/stats/scores/details/Item.module.css';
 
 class ScoreItem extends React.Component
 {
   render()
   {
     const score = this.props.score;
+
     return (
       <div className={styles.module}>
+
         <div className={styles.title}>{score.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(score)}</div>
         <Svg className={styles.options}

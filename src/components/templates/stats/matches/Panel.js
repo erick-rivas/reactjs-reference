@@ -7,12 +7,10 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-import MatchDetails from 'components/templates/stats/matches/Details';
-import MatchTable from 'components/templates/stats/matches/Table';
+import MatchDetails from 'components/templates/stats/matches/details/Details';
 import MatchList from 'components/templates/stats/matches/List';
 import MatchListOptions from 'components/templates/stats/matches/options/List';
 import MatchDetailsOptions from 'components/templates/stats/matches/options/Details';
-import MatchItem from 'components/templates/stats/matches/Item';
 import MatchForm from 'components/templates/stats/matches/Form';
 
 import Modal from 'seed/components/helpers/Modal';
@@ -31,18 +29,7 @@ class MatchPanel extends React.Component
           <MatchListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <MatchList {...this.props}
-            Item={MatchItem} />
-        </div>
-      </div>
-
-    const Table =
-      <div className={styles.table}>
-        <div className={styles.options}>
-          <MatchListOptions {...this.props}/>
-        </div>
-        <div className={styles.content}>
-          <MatchTable  {...this.props} />
+          <MatchList {...this.props} />
         </div>
       </div>
 
@@ -67,7 +54,7 @@ class MatchPanel extends React.Component
     return (
       <div className={styles.module}>
         <div className={styles.container}>
-          {Table}
+          {List}
           <Route
             path={`${path}/:match_id(\\d+)`}
             component={Details} />
@@ -79,16 +66,6 @@ class MatchPanel extends React.Component
           component={Form} />
       </div>
     );
-  }
-
-  /*
-  * Component logic
-  */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 

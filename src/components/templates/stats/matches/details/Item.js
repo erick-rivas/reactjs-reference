@@ -10,17 +10,19 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import styles from 'resources/css/templates/users/Item.module.css';
+import styles from 'resources/css/templates/stats/matches/details/Item.module.css';
 
-class UserItem extends React.Component
+class MatchItem extends React.Component
 {
   render()
   {
-    const user = this.props.user;
+    const match = this.props.match;
+
     return (
       <div className={styles.module}>
-        <div className={styles.title}>{user.id}</div>
-        <div className={styles.subtitle}>{JSON.stringify(user)}</div>
+
+        <div className={styles.title}>{match.id}</div>
+        <div className={styles.subtitle}>{JSON.stringify(match)}</div>
         <Svg className={styles.options}
           src={require('resources/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
@@ -63,7 +65,7 @@ class UserItem extends React.Component
   onClickDelete(e)
   {
     e.preventDefault();
-    this.props.deleteUser(this.props.user.id);
+    this.props.deleteMatch(this.props.match.id);
   }
 
   onCloseMenu(e)
@@ -75,4 +77,4 @@ class UserItem extends React.Component
   }
 }
 
-export default redux(UserItem);
+export default redux(MatchItem);

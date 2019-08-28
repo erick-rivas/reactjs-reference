@@ -30,21 +30,20 @@ class UserForm extends React.Component
         <div className={styles.header}>User</div>
 
         <div className={styles.form}>
-          <Formik
-            initialValues={user}
-            onSubmit={this.onSubmit}>
-          {({
-            values, errors, setFieldValue, handleSubmit
-          }) => (
 
-          <form onSubmit={handleSubmit}>
+           <Formik
+             initialValues={user}
+             onSubmit={this.onSubmit}
+             render={f => (
+             
+          <form onSubmit={f.handleSubmit}>
             {/* teams */}
             <div>
             <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label>
             <div className={cx(styles.mul, styles.teamsMul)}>
             <MultiField name="team_ids"
               values={ teams.map((e, idx) => { return {value: e.id, label: e.id} }) }
-              setFieldValue={setFieldValue} value={values.team_ids} />
+              setFieldValue={f.setFieldValue} value={f.values.team_ids} />
             </div>
             <br/>
             </div>
@@ -52,7 +51,7 @@ class UserForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-          </Formik>
+         />
         </div>
       </div>
     );
@@ -78,14 +77,14 @@ class UserForm extends React.Component
   componentDidMount()
   {
     const userId = this.getUserId();
-    if (userId != null) 
+    if (userId != null)
       this.loadData();
     this.loadFkData();
   }
 
   /* Events */
 
-  onSubmit(values, { setSubmitting })
+  onSubmit(values)
   {
     const onSave = res =>
     {
@@ -99,13 +98,13 @@ class UserForm extends React.Component
 
   onSave(res)
   {
-    //Suggested method
-    this.props.onClose();
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 
   onError(error)
   {
-    //Suggested method
     this.setState({
       error: 'An error has occurred, try again'
     });

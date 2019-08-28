@@ -58,12 +58,6 @@ class ScoreList extends React.Component
   /*
   * Component logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
   
   componentDidMount()
   {

@@ -91,13 +91,10 @@ class TeamForm extends React.Component
 
       <Formik
         initialValues={team}
-        validate={this.onValidate}
-        onSubmit={this.onSubmit}>
-      {({
-        values, errors, setFieldValue, handleSubmit
-      }) => (
+        onSubmit={this.onSubmit}
+        render={f => (
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={f.handleSubmit}>
 
         {/* Name */}
         <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
@@ -132,7 +129,7 @@ class TeamForm extends React.Component
 
   /* Events */
 
-  onSubmit(values, { setSubmitting })
+  onSubmit(values)
   {
     /*
     * Create a team object based on form values

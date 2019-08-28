@@ -30,23 +30,22 @@ class PlayerForm extends React.Component
         <div className={styles.header}>Player</div>
 
         <div className={styles.form}>
-          <Formik
-            initialValues={player}
-            onSubmit={this.onSubmit}>
-          {({
-            values, errors, setFieldValue, handleSubmit
-          }) => (
 
-          <form onSubmit={handleSubmit}>
+           <Formik
+             initialValues={player}
+             onSubmit={this.onSubmit}
+             render={f => (
+             
+          <form onSubmit={f.handleSubmit}>
             {/* name */}
             <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
             <Field type="text" name="name" className={cx(styles.txt, styles.nameTxt)} />
             <br/>
             {/* photo */}
             <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label><br/>
-            <FileField name="photo" className={cx(styles.fil, styles.photoFil)} accept="image/*" setFieldValue={setFieldValue}/>
-            { values.photo ?
-              <img src={values.photo.url} className={cx(styles.img, styles.photoImg)} /> : null }
+            <FileField name="photo" className={cx(styles.fil, styles.photoFil)} accept="image/*" setFieldValue={f.setFieldValue}/>
+            { f.values.photo ?
+              <img src={f.values.photo.url} className={cx(styles.img, styles.photoImg)} /> : null }
             {/* is_active */}
             <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label>
             <Field name="is_active" type="checkbox" className={cx(styles.chk, styles.isActiveChk)} />
@@ -64,7 +63,7 @@ class PlayerForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-          </Formik>
+         />
         </div>
       </div>
     );
@@ -90,14 +89,14 @@ class PlayerForm extends React.Component
   componentDidMount()
   {
     const playerId = this.getPlayerId();
-    if (playerId != null) 
+    if (playerId != null)
       this.loadData();
     this.loadFkData();
   }
 
   /* Events */
 
-  onSubmit(values, { setSubmitting })
+  onSubmit(values)
   {
     const onSave = res =>
     {
@@ -111,13 +110,13 @@ class PlayerForm extends React.Component
 
   onSave(res)
   {
-    //Suggested method
-    this.props.onClose();
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 
   onError(error)
   {
-    //Suggested method
     this.setState({
       error: 'An error has occurred, try again'
     });

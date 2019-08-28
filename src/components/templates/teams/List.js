@@ -9,6 +9,7 @@ import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
+import Item from 'components/templates/teams/details/Item';
 
 import styles from 'resources/css/templates/teams/List.module.css';
 
@@ -16,11 +17,9 @@ class TeamList extends React.Component
 {
   render()
   {
-    const teams =
-      Util.filter(this.props.teams, {}).sort((i1,i2) => i2.id - i1.id)
+    const teams = Util.filter(this.props.teams, {});
     if (teams == null) return <Loading />;
 
-    const { Item } = this.props;
     const { url } = this.props.match;
 
     const teamList = teams.map(item =>
@@ -44,12 +43,6 @@ class TeamList extends React.Component
   /*
   * Component logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
   
   componentDidMount()
   {

@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/teams/Details.module.css';
+import styles from 'resources/css/templates/teams/details/Details.module.css';
 
 class TeamDetails extends React.Component
 {
@@ -44,12 +44,6 @@ class TeamDetails extends React.Component
   /*
   * Component Logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
 
   componentDidMount()
   {

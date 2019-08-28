@@ -30,23 +30,22 @@ class TeamForm extends React.Component
         <div className={styles.header}>Team</div>
 
         <div className={styles.form}>
-          <Formik
-            initialValues={team}
-            onSubmit={this.onSubmit}>
-          {({
-            values, errors, setFieldValue, handleSubmit
-          }) => (
 
-          <form onSubmit={handleSubmit}>
+           <Formik
+             initialValues={team}
+             onSubmit={this.onSubmit}
+             render={f => (
+             
+          <form onSubmit={f.handleSubmit}>
             {/* name */}
             <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
             <Field type="text" name="name" className={cx(styles.txt, styles.nameTxt)} />
             <br/>
             {/* logo */}
             <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
-            <FileField name="logo" className={cx(styles.fil, styles.logoFil)} accept="image/*" setFieldValue={setFieldValue}/>
-            { values.logo ?
-              <img src={values.logo.url} className={cx(styles.img, styles.logoImg)} /> : null }
+            <FileField name="logo" className={cx(styles.fil, styles.logoFil)} accept="image/*" setFieldValue={f.setFieldValue}/>
+            { f.values.logo ?
+              <img src={f.values.logo.url} className={cx(styles.img, styles.logoImg)} /> : null }
             {/* description */}
             <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
             <Field component="textarea" name="description" type="text" rows="3" className={cx(styles.txa, styles.descriptionTxa)} />
@@ -68,7 +67,7 @@ class TeamForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-          </Formik>
+         />
         </div>
       </div>
     );
@@ -94,14 +93,14 @@ class TeamForm extends React.Component
   componentDidMount()
   {
     const teamId = this.getTeamId();
-    if (teamId != null) 
+    if (teamId != null)
       this.loadData();
     this.loadFkData();
   }
 
   /* Events */
 
-  onSubmit(values, { setSubmitting })
+  onSubmit(values)
   {
     const onSave = res =>
     {
@@ -115,13 +114,13 @@ class TeamForm extends React.Component
 
   onSave(res)
   {
-    //Suggested method
-    this.props.onClose();
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 
   onError(error)
   {
-    //Suggested method
     this.setState({
       error: 'An error has occurred, try again'
     });

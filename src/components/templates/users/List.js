@@ -9,6 +9,7 @@ import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
+import Item from 'components/templates/users/details/Item';
 
 import styles from 'resources/css/templates/users/List.module.css';
 
@@ -16,11 +17,9 @@ class UserList extends React.Component
 {
   render()
   {
-    const users =
-      Util.filter(this.props.users, {}).sort((i1,i2) => i2.id - i1.id)
+    const users = Util.filter(this.props.users, {});
     if (users == null) return <Loading />;
 
-    const { Item } = this.props;
     const { url } = this.props.match;
 
     const userList = users.map(item =>
@@ -44,12 +43,6 @@ class UserList extends React.Component
   /*
   * Component logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
   
   componentDidMount()
   {

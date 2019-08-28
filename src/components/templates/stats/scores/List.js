@@ -9,6 +9,7 @@ import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
+import Item from 'components/templates/stats/scores/details/Item';
 
 import styles from 'resources/css/templates/stats/scores/List.module.css';
 
@@ -16,11 +17,9 @@ class ScoreList extends React.Component
 {
   render()
   {
-    const scores =
-      Util.filter(this.props.scores, {}).sort((i1,i2) => i2.id - i1.id)
+    const scores = Util.filter(this.props.scores, {});
     if (scores == null) return <Loading />;
 
-    const { Item } = this.props;
     const { url } = this.props.match;
 
     const scoreList = scores.map(item =>
@@ -44,12 +43,6 @@ class ScoreList extends React.Component
   /*
   * Component logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
   
   componentDidMount()
   {

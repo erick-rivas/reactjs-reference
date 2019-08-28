@@ -7,12 +7,10 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-import PlayerDetails from 'components/templates/players/Details';
-import PlayerTable from 'components/templates/players/Table';
+import PlayerDetails from 'components/templates/players/details/Details';
 import PlayerList from 'components/templates/players/List';
 import PlayerListOptions from 'components/templates/players/options/List';
 import PlayerDetailsOptions from 'components/templates/players/options/Details';
-import PlayerItem from 'components/templates/players/Item';
 import PlayerForm from 'components/templates/players/Form';
 
 import Modal from 'seed/components/helpers/Modal';
@@ -31,18 +29,7 @@ class PlayerPanel extends React.Component
           <PlayerListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <PlayerList {...this.props}
-            Item={PlayerItem} />
-        </div>
-      </div>
-
-    const Table =
-      <div className={styles.table}>
-        <div className={styles.options}>
-          <PlayerListOptions {...this.props}/>
-        </div>
-        <div className={styles.content}>
-          <PlayerTable  {...this.props} />
+          <PlayerList {...this.props} />
         </div>
       </div>
 
@@ -67,7 +54,7 @@ class PlayerPanel extends React.Component
     return (
       <div className={styles.module}>
         <div className={styles.container}>
-          {Table}
+          {List}
           <Route
             path={`${path}/:player_id(\\d+)`}
             component={Details} />
@@ -79,16 +66,6 @@ class PlayerPanel extends React.Component
           component={Form} />
       </div>
     );
-  }
-
-  /*
-  * Component logic
-  */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 

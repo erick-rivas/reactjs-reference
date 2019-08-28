@@ -9,6 +9,7 @@ import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
+import Item from 'components/templates/stats/matches/details/Item';
 
 import styles from 'resources/css/templates/stats/matches/List.module.css';
 
@@ -16,11 +17,9 @@ class MatchList extends React.Component
 {
   render()
   {
-    const matches =
-      Util.filter(this.props.matches, {}).sort((i1,i2) => i2.id - i1.id)
+    const matches = Util.filter(this.props.matches, {});
     if (matches == null) return <Loading />;
 
-    const { Item } = this.props;
     const { url } = this.props.match;
 
     const matchList = matches.map(item =>
@@ -44,12 +43,6 @@ class MatchList extends React.Component
   /*
   * Component logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
   
   componentDidMount()
   {

@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/stats/matches/Details.module.css';
+import styles from 'resources/css/templates/stats/matches/details/Details.module.css';
 
 class MatchDetails extends React.Component
 {
@@ -35,12 +35,6 @@ class MatchDetails extends React.Component
   /*
   * Component Logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
 
   componentDidMount()
   {

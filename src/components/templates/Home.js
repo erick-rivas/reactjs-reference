@@ -63,17 +63,11 @@ class Home extends React.Component
   * Component logic
   */
 
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount()
   {
     const userId = sessionStorage.getItem('id');
     if (userId == null)
-      return this.props.history.replace('/login');
+      return this.props.history.replace('/templates/login');
   }
 }
 

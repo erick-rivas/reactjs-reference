@@ -23,16 +23,6 @@ class UserListOptions extends React.Component
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
 }
 
 export default redux(UserListOptions);

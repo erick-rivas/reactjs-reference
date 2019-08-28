@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/players/Details.module.css';
+import styles from 'resources/css/templates/players/details/Details.module.css';
 
 class PlayerDetails extends React.Component
 {
@@ -38,12 +38,6 @@ class PlayerDetails extends React.Component
   /*
   * Component Logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
 
   componentDidMount()
   {

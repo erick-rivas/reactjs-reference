@@ -30,14 +30,13 @@ class MatchForm extends React.Component
         <div className={styles.header}>Match</div>
 
         <div className={styles.form}>
-          <Formik
-            initialValues={match}
-            onSubmit={this.onSubmit}>
-          {({
-            values, errors, setFieldValue, handleSubmit
-          }) => (
 
-          <form onSubmit={handleSubmit}>
+           <Formik
+             initialValues={match}
+             onSubmit={this.onSubmit}
+             render={f => (
+             
+          <form onSubmit={f.handleSubmit}>
             {/* date */}
             <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
             <Field name="date" type="date" className={cx(styles.dte, styles.dateDte)} />
@@ -73,7 +72,7 @@ class MatchForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-          </Formik>
+         />
         </div>
       </div>
     );
@@ -99,14 +98,14 @@ class MatchForm extends React.Component
   componentDidMount()
   {
     const matchId = this.getMatchId();
-    if (matchId != null) 
+    if (matchId != null)
       this.loadData();
     this.loadFkData();
   }
 
   /* Events */
 
-  onSubmit(values, { setSubmitting })
+  onSubmit(values)
   {
     const onSave = res =>
     {
@@ -120,13 +119,13 @@ class MatchForm extends React.Component
 
   onSave(res)
   {
-    //Suggested method
-    this.props.onClose();
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 
   onError(error)
   {
-    //Suggested method
     this.setState({
       error: 'An error has occurred, try again'
     });

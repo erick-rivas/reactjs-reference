@@ -7,12 +7,10 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
-import TeamDetails from 'components/templates/teams/Details';
-import TeamTable from 'components/templates/teams/Table';
+import TeamDetails from 'components/templates/teams/details/Details';
 import TeamList from 'components/templates/teams/List';
 import TeamListOptions from 'components/templates/teams/options/List';
 import TeamDetailsOptions from 'components/templates/teams/options/Details';
-import TeamItem from 'components/templates/teams/Item';
 import TeamForm from 'components/templates/teams/Form';
 
 import Modal from 'seed/components/helpers/Modal';
@@ -31,18 +29,7 @@ class TeamPanel extends React.Component
           <TeamListOptions {...this.props}/>
         </div>
         <div className={styles.content}>
-          <TeamList {...this.props}
-            Item={TeamItem} />
-        </div>
-      </div>
-
-    const Table =
-      <div className={styles.table}>
-        <div className={styles.options}>
-          <TeamListOptions {...this.props}/>
-        </div>
-        <div className={styles.content}>
-          <TeamTable  {...this.props} />
+          <TeamList {...this.props} />
         </div>
       </div>
 
@@ -67,7 +54,7 @@ class TeamPanel extends React.Component
     return (
       <div className={styles.module}>
         <div className={styles.container}>
-          {Table}
+          {List}
           <Route
             path={`${path}/:team_id(\\d+)`}
             component={Details} />
@@ -79,16 +66,6 @@ class TeamPanel extends React.Component
           component={Form} />
       </div>
     );
-  }
-
-  /*
-  * Component logic
-  */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 

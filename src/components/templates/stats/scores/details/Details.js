@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/stats/scores/Details.module.css';
+import styles from 'resources/css/templates/stats/scores/details/Details.module.css';
 
 class ScoreDetails extends React.Component
 {
@@ -32,12 +32,6 @@ class ScoreDetails extends React.Component
   /*
   * Component Logic
   */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
 
   componentDidMount()
   {

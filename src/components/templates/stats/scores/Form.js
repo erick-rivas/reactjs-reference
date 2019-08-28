@@ -31,14 +31,13 @@ class ScoreForm extends React.Component
         <div className={styles.header}>Score</div>
 
         <div className={styles.form}>
-          <Formik
-            initialValues={score}
-            onSubmit={this.onSubmit}>
-          {({
-            values, errors, setFieldValue, handleSubmit
-          }) => (
 
-          <form onSubmit={handleSubmit}>
+           <Formik
+             initialValues={score}
+             onSubmit={this.onSubmit}
+             render={f => (
+             
+          <form onSubmit={f.handleSubmit}>
             {/* min */}
             <label className={cx(styles.lbl, styles.minLbl)}>Min</label><br/>
             <Field type="number" name="min" className={cx(styles.txt, styles.minTxt)} />
@@ -65,7 +64,7 @@ class ScoreForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-          </Formik>
+         />
         </div>
       </div>
     );
@@ -91,14 +90,14 @@ class ScoreForm extends React.Component
   componentDidMount()
   {
     const scoreId = this.getScoreId();
-    if (scoreId != null) 
+    if (scoreId != null)
       this.loadData();
     this.loadFkData();
   }
 
   /* Events */
 
-  onSubmit(values, { setSubmitting })
+  onSubmit(values)
   {
     const onSave = res =>
     {
@@ -112,13 +111,13 @@ class ScoreForm extends React.Component
 
   onSave(res)
   {
-    //Suggested method
-    this.props.onClose();
+    const { url } = this.props.match
+    const backUrl = url.substring(0, url.lastIndexOf('/'));
+    this.props.history.push(backUrl);
   }
 
   onError(error)
   {
-    //Suggested method
     this.setState({
       error: 'An error has occurred, try again'
     });

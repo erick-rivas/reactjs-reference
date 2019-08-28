@@ -5,7 +5,6 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import Debug from 'components/debug/Debug'
 import Login from 'components/templates/auth/Login'
 import Logout from 'components/templates/auth/Logout'
 import Home from 'components/templates/Home'
@@ -22,11 +21,10 @@ class App extends React.Component
       <div className={styles.module}>
         <Router>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/logout" component={Logout} />
-            <Route path="/debug" component={Debug} />
-            <Route path="/app" component={Home} />
-            <Redirect to='/app' />
+            <Route path='/templates/login' component={Login} />
+            <Route path='/templates/logout' component={Logout} />
+            <Route path='/templates/app' component={Home} />
+            <Redirect to='/templates/app' />
           </Switch>
         </Router>
       </div>

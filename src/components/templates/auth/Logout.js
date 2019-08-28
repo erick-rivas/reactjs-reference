@@ -21,12 +21,6 @@ class Logout extends React.Component
   * Component logic
   */
 
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount()
   {
     this.logout();
@@ -46,13 +40,11 @@ class Logout extends React.Component
 
   onLogout(res)
   {
-    //Suggested method
     this.props.history.replace('/login');
   }
 
   onError(error)
   {
-    //Suggested method
     this.props.history.replace('/login');
   }
 }

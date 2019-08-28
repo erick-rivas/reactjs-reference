@@ -36,7 +36,6 @@ class MatchDetailsOptions extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {};
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickBack = this.onClickBack.bind(this);
   }
@@ -63,7 +62,6 @@ class MatchDetailsOptions extends React.Component
 
   onDelete(res)
   {
-    //Suggested method
     const { url } = this.props.match
     const backUrl = url.substring(0, url.lastIndexOf('/'));
     this.props.history.push(backUrl);

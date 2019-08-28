@@ -16,6 +16,7 @@ class Login extends React.Component
       <div className={styles.module}>
         <div className={styles.background}>
           <div className={cx(styles.container, 'animated zoomIn')}>
+
               <label className={styles.title}>Login</label>
               <form onSubmit={this.onSubmit}>
                 <label className={styles.emailLbl}>Email</label><br/>
