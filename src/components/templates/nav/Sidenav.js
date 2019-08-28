@@ -64,7 +64,7 @@ class Sidenav extends React.Component
             </li>
             <li>
               <NavLink
-                to={`/logout`}
+                to={`/templates/logout`}
                 className={cx(styles.item)}
                 activeClassName={styles.active}>
                 Logout

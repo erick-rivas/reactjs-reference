@@ -31,11 +31,11 @@ class TeamForm extends React.Component
 
         <div className={styles.form}>
 
-           <Formik
+          <Formik
              initialValues={team}
              onSubmit={this.onSubmit}
              render={f => (
-             
+
           <form onSubmit={f.handleSubmit}>
             {/* name */}
             <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
@@ -67,7 +67,7 @@ class TeamForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-         />
+          />
         </div>
       </div>
     );
@@ -93,7 +93,7 @@ class TeamForm extends React.Component
   componentDidMount()
   {
     const teamId = this.getTeamId();
-    if (teamId != null)
+    if (teamId != null) 
       this.loadData();
     this.loadFkData();
   }

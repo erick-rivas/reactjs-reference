@@ -69,7 +69,6 @@ class ScoreDetailsOptions extends React.Component
 
   onDeleteError(error)
   {
-    //Suggested method
     const { url } = this.props.match
     const backUrl = url.substring(0, url.lastIndexOf('/'));
     this.props.history.push(backUrl);

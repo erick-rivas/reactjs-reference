@@ -23,14 +23,7 @@ class Logout extends React.Component
 
   componentDidMount()
   {
-    this.logout();
-  }
-  
-  /* Actions */
-
-  logout()
-  {
-    let callback = res => 
+    let callback = res =>
     {
       if (res.ok) this.onLogout(res.body);
       else this.onError(res.body);
@@ -40,12 +33,12 @@ class Logout extends React.Component
 
   onLogout(res)
   {
-    this.props.history.replace('/login');
+    this.props.history.replace('/');
   }
 
   onError(error)
   {
-    this.props.history.replace('/login');
+    this.props.history.replace('/');
   }
 }
 

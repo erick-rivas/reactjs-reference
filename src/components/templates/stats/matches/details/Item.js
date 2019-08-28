@@ -17,10 +17,8 @@ class MatchItem extends React.Component
   render()
   {
     const match = this.props.match;
-
     return (
       <div className={styles.module}>
-
         <div className={styles.title}>{match.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(match)}</div>
         <Svg className={styles.options}

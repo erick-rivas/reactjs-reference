@@ -134,11 +134,7 @@ class TeamForm extends React.Component
     /*
     * Create a team object based on form values
     */
-
-    let team = this.state.team ? this.state.team : {};
-    team.name = values.name;
-    team.description = values.description;
-    this.saveData(team);
+    this.saveData(values);
   }
 
   /* Actions */

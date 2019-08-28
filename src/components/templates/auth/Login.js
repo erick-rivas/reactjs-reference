@@ -16,7 +16,6 @@ class Login extends React.Component
       <div className={styles.module}>
         <div className={styles.background}>
           <div className={cx(styles.container, 'animated zoomIn')}>
-
               <label className={styles.title}>Login</label>
               <form onSubmit={this.onSubmit}>
                 <label className={styles.emailLbl}>Email</label><br/>
@@ -85,13 +84,11 @@ class Login extends React.Component
 
   onLogin(res)
   {
-    //Suggested method
     this.props.history.replace('/');
   }
 
   onError(error)
   {
-    //Suggested method
     this.setState({
       error: 'Invalid user or password'
     })

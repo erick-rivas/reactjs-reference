@@ -32,11 +32,11 @@ class ScoreForm extends React.Component
 
         <div className={styles.form}>
 
-           <Formik
+          <Formik
              initialValues={score}
              onSubmit={this.onSubmit}
              render={f => (
-             
+
           <form onSubmit={f.handleSubmit}>
             {/* min */}
             <label className={cx(styles.lbl, styles.minLbl)}>Min</label><br/>
@@ -64,7 +64,7 @@ class ScoreForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-         />
+          />
         </div>
       </div>
     );
@@ -90,7 +90,7 @@ class ScoreForm extends React.Component
   componentDidMount()
   {
     const scoreId = this.getScoreId();
-    if (scoreId != null)
+    if (scoreId != null) 
       this.loadData();
     this.loadFkData();
   }

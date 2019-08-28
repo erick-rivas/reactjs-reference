@@ -31,11 +31,11 @@ class UserForm extends React.Component
 
         <div className={styles.form}>
 
-           <Formik
+          <Formik
              initialValues={user}
              onSubmit={this.onSubmit}
              render={f => (
-             
+
           <form onSubmit={f.handleSubmit}>
             {/* teams */}
             <div>
@@ -51,7 +51,7 @@ class UserForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-         />
+          />
         </div>
       </div>
     );
@@ -77,7 +77,7 @@ class UserForm extends React.Component
   componentDidMount()
   {
     const userId = this.getUserId();
-    if (userId != null)
+    if (userId != null) 
       this.loadData();
     this.loadFkData();
   }

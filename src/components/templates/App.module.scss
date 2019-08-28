@@ -3,7 +3,7 @@ __Seed builder__v1.0
 */
 
 @import 'src/seed/themes/base';
-@import 'src/seed/themes/basic/nav/topnav';
+@import 'src/seed/themes/basic/home';
 @include theme();
 
 .module {
@@ -11,4 +11,8 @@ __Seed builder__v1.0
   height: 100%;
 }
 
-.menu {}
+.drawer {}
+.sidenav {}
+.container {}
+.topnav {}
+.content {}

@@ -17,10 +17,8 @@ class PlayerItem extends React.Component
   render()
   {
     const player = this.props.player;
-
     return (
       <div className={styles.module}>
-
         <div className={styles.title}>{player.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(player)}</div>
         <Svg className={styles.options}

@@ -31,11 +31,11 @@ class MatchForm extends React.Component
 
         <div className={styles.form}>
 
-           <Formik
+          <Formik
              initialValues={match}
              onSubmit={this.onSubmit}
              render={f => (
-             
+
           <form onSubmit={f.handleSubmit}>
             {/* date */}
             <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
@@ -72,7 +72,7 @@ class MatchForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-         />
+          />
         </div>
       </div>
     );
@@ -98,7 +98,7 @@ class MatchForm extends React.Component
   componentDidMount()
   {
     const matchId = this.getMatchId();
-    if (matchId != null)
+    if (matchId != null) 
       this.loadData();
     this.loadFkData();
   }

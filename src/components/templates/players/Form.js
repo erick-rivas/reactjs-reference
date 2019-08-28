@@ -31,11 +31,11 @@ class PlayerForm extends React.Component
 
         <div className={styles.form}>
 
-           <Formik
+          <Formik
              initialValues={player}
              onSubmit={this.onSubmit}
              render={f => (
-             
+
           <form onSubmit={f.handleSubmit}>
             {/* name */}
             <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
@@ -63,7 +63,7 @@ class PlayerForm extends React.Component
             <button type="submit" className={styles.submit}>Send</button>
           </form>
           )}
-         />
+          />
         </div>
       </div>
     );
@@ -89,7 +89,7 @@ class PlayerForm extends React.Component
   componentDidMount()
   {
     const playerId = this.getPlayerId();
-    if (playerId != null)
+    if (playerId != null) 
       this.loadData();
     this.loadFkData();
   }

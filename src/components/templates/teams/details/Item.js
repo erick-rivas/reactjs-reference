@@ -17,10 +17,8 @@ class TeamItem extends React.Component
   render()
   {
     const team = this.props.team;
-
     return (
       <div className={styles.module}>
-
         <div className={styles.title}>{team.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(team)}</div>
         <Svg className={styles.options}

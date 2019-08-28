@@ -17,10 +17,8 @@ class ScoreItem extends React.Component
   render()
   {
     const score = this.props.score;
-
     return (
       <div className={styles.module}>
-
         <div className={styles.title}>{score.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(score)}</div>
         <Svg className={styles.options}

@@ -5,9 +5,7 @@ __Seed builder__v1.0
 import * as React from 'react';
 import cx from 'classnames';
 
-import Login from 'components/templates/auth/Login'
-import Logout from 'components/templates/auth/Logout'
-import Home from 'components/templates/Home'
+import Templates from 'components/templates/App'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
@@ -21,24 +19,12 @@ class App extends React.Component
       <div className={styles.module}>
         <Router>
           <Switch>
-            <Route path='/templates/login' component={Login} />
-            <Route path='/templates/logout' component={Logout} />
-            <Route path='/templates/app' component={Home} />
-            <Redirect to='/templates/app' />
+            <Route path="/templates" component={Templates} />
+            <Redirect to="/templates" />
           </Switch>
         </Router>
       </div>
     );
-  }
-
-  /*
-  * Component logic
-  */
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
   }
 }
 

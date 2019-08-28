@@ -17,10 +17,8 @@ class UserItem extends React.Component
   render()
   {
     const user = this.props.user;
-
     return (
       <div className={styles.module}>
-
         <div className={styles.title}>{user.id}</div>
         <div className={styles.subtitle}>{JSON.stringify(user)}</div>
         <Svg className={styles.options}
