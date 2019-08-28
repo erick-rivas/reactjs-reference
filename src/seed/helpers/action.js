@@ -41,7 +41,7 @@ class Action
       this.onGetList);
   }
 
-  getDetails = (id, action, callback) =>
+  getDetails = (action, id, callback) =>
   {
     return this.request(
       "GET", `/${id}${action}`, "", {},
@@ -49,23 +49,23 @@ class Action
       this.onGetDetails);
   }
 
-  saveData = (action, body, callback) =>
+  postData = (action, body, callback) =>
   {
     return this.request(
       "POST", `${action}`, "", body,
       callback,
-      this.onSaveData);
+      this.onPostData);
   }
 
-  setData = (id, action, body, callback) =>
+  putData = (action, id, body, callback) =>
   {
    return this.request(
       "PUT", `/${id}${action}`, "", body,
       callback,
-      this.onSetData);
+      this.onPutData);
   }
 
-  deleteData = (id, action, callback) =>
+  deleteData = (action, id, callback) =>
   {
     return this.request(
       "DELETE", `/${id}${action}`, "", {},
@@ -142,13 +142,13 @@ class Action
     data: data
   });
 
-  onSaveData = data => ({
-    type: `${this.id}_${Const.SAVE}`,
+  onPostData = data => ({
+    type: `${this.id}_${Const.POST}`,
     data: data
   });
 
-  onSetData = data => ({
-    type: `${this.id}_${Const.SET}`,
+  onPutData = data => ({
+    type: `${this.id}_${Const.PUT}`,
     data: data
   });
 

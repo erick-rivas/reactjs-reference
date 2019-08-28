@@ -30,22 +30,22 @@ class _Players extends Action
 
   getPlayerDetails(playerId, callback)
   {
-    return this.getDetails(playerId, '', callback);
+    return this.getDetails('', playerId, callback);
   }
 
   savePlayer(player, callback)
   {
-    return this.saveData('', player, callback);
+    return this.postData('', player, callback);
   }
 
   setPlayer(playerId, player, callback)
   {
-    return this.setData(playerId, '', player, callback);
+    return this.putData('', playerId, player, callback);
   }
 
   deletePlayer(playerId, callback)
   {
-    return this.deleteData(playerId, '', callback);
+    return this.deleteData('', playerId, callback);
   }
 }
 

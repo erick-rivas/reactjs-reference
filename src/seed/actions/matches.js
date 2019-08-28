@@ -32,22 +32,22 @@ class _Matches extends Action
 
   getMatchDetails(matchId, callback)
   {
-    return this.getDetails(matchId, '', callback);
+    return this.getDetails('', matchId, callback);
   }
 
   saveMatch(match, callback)
   {
-    return this.saveData('', match, callback);
+    return this.postData('', match, callback);
   }
 
   setMatch(matchId, match, callback)
   {
-    return this.setData(matchId, '', match, callback);
+    return this.putData('', matchId, match, callback);
   }
 
   deleteMatch(matchId, callback)
   {
-    return this.deleteData(matchId, '', callback);
+    return this.deleteData('', matchId, callback);
   }
 }
 

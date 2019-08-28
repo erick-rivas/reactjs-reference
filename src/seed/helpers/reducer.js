@@ -33,11 +33,11 @@ class Reducer
         });
     }
 
-    // GetDetails, Save & Set
+    // GetDetails, post & put
 
     if (type === `${this.ref.id}_${Const.GET_DETAILS}` ||
-      type === `${this.ref.id}_${Const.SAVE}` ||
-      type === `${this.ref.id}_${Const.SET}`) {
+      type === `${this.ref.id}_${Const.POST}` ||
+      type === `${this.ref.id}_${Const.PUT}`) {
       let merge = this.mergeDataset(state.dataset, [action.data]);
       if (merge.changed)
         return Object.assign({}, state, {

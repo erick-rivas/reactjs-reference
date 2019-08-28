@@ -31,22 +31,22 @@ class _Teams extends Action
 
   getTeamDetails(teamId, callback)
   {
-    return this.getDetails(teamId, '', callback);
+    return this.getDetails('', teamId, callback);
   }
 
   saveTeam(team, callback)
   {
-    return this.saveData('', team, callback);
+    return this.postData('', team, callback);
   }
 
   setTeam(teamId, team, callback)
   {
-    return this.setData(teamId, '', team, callback);
+    return this.putData('', teamId, team, callback);
   }
 
   deleteTeam(teamId, callback)
   {
-    return this.deleteData(teamId, '', callback);
+    return this.deleteData('', teamId, callback);
   }
 }
 

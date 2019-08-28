@@ -37,14 +37,14 @@ Those methods are binded **automatically** binded in components using redux() wr
 Those methods are helpers to ease the api requests
 -  getList(action, filters, callback)
    > Example: this.getList('/action', {name: 1}, callback)
--  getDetails(id, action, callback)
-   > Example: this.getDetails(1, '/action',callback)
--  saveData(action, body, callback)
-   > Example this.saveData('/action', {arg: 1}, callback)
--  setData(id, action, body, callback)
-   > Example this.setData(1, '/action', {arg: 1}, callback)
--  deleteData(id, action, callback)
-   > Example this.deleteData(1, '/action', callback)
+-  getDetails(action, id, callback)
+   > Example: this.getDetails('/action', 1, callback)
+-  postData(action, body, callback)
+   > Example this.postData('/action', {arg: 1}, callback)
+-  putData(action, id, body, callback)
+   > Example this.putData('/action', 1, {arg: 1}, callback)
+-  deleteData(action, id, callback)
+   > Example this.deleteData('/action', 1, callback)
 
 ## Examples
 
@@ -81,7 +81,7 @@ class Users extends _Users
   createUserProfile(userId, callback)
   {
     let body = {}
-    return this.reqPost(
+    return this.postData(
       `create_profile`, //Action
       body, //Body
       callback //callback when complete
