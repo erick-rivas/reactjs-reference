@@ -6,34 +6,34 @@ import * as React from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 
-import styles from 'resources/css/templates/auth/Login.module.css';
+import c from 'resources/css/templates/auth/Login.module.css';
 
 class Login extends React.Component
 {
   render()
   {
     return (
-      <div className={styles.module}>
-        <div className={styles.background}>
-          <div className={cx(styles.container, 'animated zoomIn')}>
-              <label className={styles.title}>Login</label>
+      <div className={c.module}>
+        <div className={c.background}>
+          <div className={cx(c.container, 'animated zoomIn')}>
+              <label className={c.title}>Login</label>
               <form onSubmit={this.onSubmit}>
-                <label className={styles.emailLbl}>Email</label><br/>
-                <input className={styles.email} 
+                <label className={c.emailLbl}>Email</label><br/>
+                <input className={c.email}
                   name="email"
                   type="email"
                   required /><br/>
-                <label className={styles.passwordLbl}>Password</label><br/>
-                <input className={styles.password} 
+                <label className={c.passwordLbl}>Password</label><br/>
+                <input className={c.password}
                   name="password"
                   type="password"
                   required /><br/>
-                <input className={styles.remember} 
+                <input className={c.remember}
                   name="remember"
                   type="checkbox" />
-                <label className={styles.rememberLbl}>Remember me</label><br/>
+                <label className={c.rememberLbl}>Remember me</label><br/>
                 { this.renderError() }
-                <button type="submit" className={styles.submit}>Login</button>
+                <button type="submit" className={c.submit}>Login</button>
               </form>
              
           </div>
@@ -46,7 +46,7 @@ class Login extends React.Component
   renderError()
   {
     const { error } = this.state;
-    return (error ? <div className={styles.error}>{error}</div> : null);
+    return (error ? <div className={c.error}>{error}</div> : null);
   }
 
   /*

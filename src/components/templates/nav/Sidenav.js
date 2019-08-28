@@ -7,7 +7,7 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
-import styles from 'resources/css/templates/nav/Sidenav.module.css';
+import c from 'resources/css/templates/nav/Sidenav.module.css';
 
 class Sidenav extends React.Component
 {
@@ -15,58 +15,58 @@ class Sidenav extends React.Component
   {
     const { url } = this.props.match;
     return (
-      <div className={styles.module}>
-        <header className={styles.header}>
+      <div className={c.module}>
+        <header className={c.header}>
           Seed builder
-          <div className={styles.subtitle}>Panel</div>
+          <div className={c.subtitle}>Panel</div>
         </header>
-        <nav className={styles.nav}>
+        <nav className={c.nav}>
           <ul>
             <li>
               <NavLink
                 to={`${url}/players`}
-                className={cx(styles.playerItem, styles.item)}
-                activeClassName={styles.active}>
+                className={cx(c.playerItem, c.item)}
+                activeClassName={c.active}>
                 Players
               </NavLink>
             </li>
             <li>
               <NavLink
                 to={`${url}/teams`}
-                className={cx(styles.teamItem, styles.item)}
-                activeClassName={styles.active}>
+                className={cx(c.teamItem, c.item)}
+                activeClassName={c.active}>
                 Teams
               </NavLink>
             </li>
             <li>
               <NavLink
                 to={`${url}/users`}
-                className={cx(styles.userItem, styles.item)}
-                activeClassName={styles.active}>
+                className={cx(c.userItem, c.item)}
+                activeClassName={c.active}>
                 Users
               </NavLink>
             </li>
             <li>
               <NavLink
                 to={`${url}/matches`}
-                className={cx(styles.matchItem, styles.item)}
-                activeClassName={styles.active}>
+                className={cx(c.matchItem, c.item)}
+                activeClassName={c.active}>
                 Matches
               </NavLink>
             </li>
             <li>
               <NavLink
                 to={`${url}/scores`}
-                className={cx(styles.scoreItem, styles.item)}
-                activeClassName={styles.active}>
+                className={cx(c.scoreItem, c.item)}
+                activeClassName={c.active}>
                 Scores
               </NavLink>
             </li>
             <li>
               <NavLink
                 to={`/templates/logout`}
-                className={cx(styles.item)}
-                activeClassName={styles.active}>
+                className={cx(c.item)}
+                activeClassName={c.active}>
                 Logout
               </NavLink>
             </li>

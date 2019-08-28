@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import Item from 'components/templates/teams/details/Item';
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/teams/List.module.css';
+import c from 'resources/css/templates/teams/List.module.css';
 
 class TeamList extends React.Component
 {
@@ -26,8 +26,8 @@ class TeamList extends React.Component
     const teamList = teams.map(item =>
         <NavLink 
           to={`${url}/${item.id}`}
-          className={styles.item}
-          activeClassName={styles.active}>
+          className={c.item}
+          activeClassName={c.active}>
           <Item 
             key={item.id} 
             id={item.id}
@@ -35,7 +35,7 @@ class TeamList extends React.Component
       </NavLink>);
 
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
         { teamList }
       </div>
     );

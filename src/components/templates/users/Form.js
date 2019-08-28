@@ -12,7 +12,7 @@ import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/users/Form.module.css';
+import c from 'resources/css/templates/users/Form.module.css';
 
 class UserForm extends React.Component
 {
@@ -25,11 +25,11 @@ class UserForm extends React.Component
     if (user.id == null && userId != null) return <Loading />;
     
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
 
-        <div className={styles.header}>User</div>
+        <div className={c.header}>User</div>
 
-        <div className={styles.form}>
+        <div className={c.form}>
 
           <Formik
              initialValues={user}
@@ -39,8 +39,8 @@ class UserForm extends React.Component
           <form onSubmit={f.handleSubmit}>
             {/* teams */}
             <div>
-            <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label>
-            <div className={cx(styles.mul, styles.teamsMul)}>
+            <label className={cx(c.lbl, c.teamsLbl)}>Teams</label>
+            <div className={cx(c.mul, c.teamsMul)}>
             <MultiField name="team_ids"
               values={ teams.map((e, idx) => { return {value: e.id, label: e.id} }) }
               setFieldValue={f.setFieldValue} value={f.values.team_ids} />
@@ -48,7 +48,7 @@ class UserForm extends React.Component
             <br/>
             </div>
             {this.renderError()}
-            <button type="submit" className={styles.submit}>Send</button>
+            <button type="submit" className={c.submit}>Send</button>
           </form>
           )}
           />
@@ -60,7 +60,7 @@ class UserForm extends React.Component
   renderError()
   {
     const { error } = this.state;
-    return (error ? <div className={styles.error}>{error}</div> : null);
+    return (error ? <div className={c.error}>{error}</div> : null);
   }
 
   /*

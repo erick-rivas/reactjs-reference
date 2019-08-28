@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/stats/scores/details/Details.module.css';
+import c from 'resources/css/templates/stats/scores/details/Details.module.css';
 
 class ScoreDetails extends React.Component
 {
@@ -20,10 +20,10 @@ class ScoreDetails extends React.Component
     if (score.id == null) return <Loading />;
 
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
         {/* Suggested divs */}
-        <label className={cx(styles.lbl, styles.minLbl)}>Min</label><br/>
-        <label className={cx(styles.txt, styles.minTxt)}>{score.min.toString()}</label>
+        <label className={cx(c.lbl, c.minLbl)}>Min</label><br/>
+        <label className={cx(c.txt, c.minTxt)}>{score.min.toString()}</label>
         <br/>
       </div>
     );

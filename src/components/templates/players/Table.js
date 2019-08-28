@@ -11,9 +11,9 @@ import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/players/Table.module.css';
+import c from 'resources/css/templates/players/Table.module.css';
 
-class PlayerList extends React.Component
+class PlayerTable extends React.Component
 {
   render()
   {
@@ -21,26 +21,24 @@ class PlayerList extends React.Component
       Util.filter(this.props.players, {}).sort((i1,i2) => i2.id - i1.id)
     if (players == null) return <Loading />;
 
-    const { Item } = this.props;
     const { url } = this.props.match;
 
     const playerTable = players.map(item =>
-
-         <tr>
-           <td>{item.id}</td>
-           <td className={styles.options}>
-            <NavLink
-              to={`${url}/${item.id}`}
-              className={styles.details}
-              activeClassName={styles.active}>
-              Details
-            </NavLink>
-           </td>
-         </tr>);
+       <tr>
+         <td>{item.id}</td>
+         <td className={c.options}>
+          <NavLink
+            to={`${url}/${item.id}`}
+            className={c.details}
+            activeClassName={c.active}>
+            Details
+          </NavLink>
+         </td>
+       </tr>);
 
     return (
-      <div className={styles.module}>
-        <table className={cx("hover","row-border", styles.table)}>
+      <div className={c.module}>
+        <table className={cx("hover","row-border", c.table)}>
           <thead>
             <tr>
               <th>Id</th>
@@ -62,9 +60,9 @@ class PlayerList extends React.Component
   componentDidMount()
   {
     $.DataTable = require('datatables.net');
-    const callback = () =>  $(`.${styles.table}`).DataTable();
+    const callback = () =>  $(`.${c.table}`).DataTable();
     this.props.getPlayerList({}, callback);
   }
 }
 
-export default redux(PlayerList);
+export default redux(PlayerTable);

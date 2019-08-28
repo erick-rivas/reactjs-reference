@@ -12,7 +12,7 @@ import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/stats/matches/Form.module.css';
+import c from 'resources/css/templates/stats/matches/Form.module.css';
 
 class MatchForm extends React.Component
 {
@@ -25,11 +25,11 @@ class MatchForm extends React.Component
     if (match.id == null && matchId != null) return <Loading />;
     
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
 
-        <div className={styles.header}>Match</div>
+        <div className={c.header}>Match</div>
 
-        <div className={styles.form}>
+        <div className={c.form}>
 
           <Formik
              initialValues={match}
@@ -38,12 +38,12 @@ class MatchForm extends React.Component
 
           <form onSubmit={f.handleSubmit}>
             {/* date */}
-            <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
-            <Field name="date" type="date" className={cx(styles.dte, styles.dateDte)} />
+            <label className={cx(c.lbl, c.dateLbl)}>Date</label>
+            <Field name="date" type="date" className={cx(c.dte, c.dateDte)} />
             <br/>
             {/* type */}
-            <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
-            <Field component="select" name="type" className={cx(styles.ops, styles.typeOps)} >
+            <label className={cx(c.lbl, c.typeLbl)}>Type</label>
+            <Field component="select" name="type" className={cx(c.ops, c.typeOps)} >
               <option value="">Select an option</option>
               <option value='FRIENDSHIP'>Friendship</option>
               <option value='LEAGUE'>League</option>
@@ -52,8 +52,8 @@ class MatchForm extends React.Component
             <br/>
             {/* local */}
             <div>
-            <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
-            <Field component="select" name="local_id" className={cx(styles.ops, styles.localOps)} >
+            <label className={cx(c.lbl, c.localLbl)}>Local</label>
+            <Field component="select" name="local_id" className={cx(c.ops, c.localOps)} >
               <option value="">Select an option</option>
               { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
@@ -61,15 +61,15 @@ class MatchForm extends React.Component
             </div>
             {/* visitor */}
             <div>
-            <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
-            <Field component="select" name="visitor_id" className={cx(styles.ops, styles.visitorOps)} >
+            <label className={cx(c.lbl, c.visitorLbl)}>Visitor</label>
+            <Field component="select" name="visitor_id" className={cx(c.ops, c.visitorOps)} >
               <option value="">Select an option</option>
               { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
             {this.renderError()}
-            <button type="submit" className={styles.submit}>Send</button>
+            <button type="submit" className={c.submit}>Send</button>
           </form>
           )}
           />
@@ -81,7 +81,7 @@ class MatchForm extends React.Component
   renderError()
   {
     const { error } = this.state;
-    return (error ? <div className={styles.error}>{error}</div> : null);
+    return (error ? <div className={c.error}>{error}</div> : null);
   }
 
   /*

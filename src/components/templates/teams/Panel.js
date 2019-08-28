@@ -15,7 +15,7 @@ import TeamForm from 'components/templates/teams/Form';
 
 import Modal from 'seed/components/helpers/Modal';
 
-import styles from 'resources/css/templates/teams/Panel.module.css';
+import c from 'resources/css/templates/teams/Panel.module.css';
 
 class TeamPanel extends React.Component
 {
@@ -24,22 +24,22 @@ class TeamPanel extends React.Component
     const { path, url } = this.props.match;
    
     const List =
-      <div className={styles.list}>
-        <div className={styles.options}>
+      <div className={c.list}>
+        <div className={c.options}>
           <TeamListOptions {...this.props}/>
         </div>
-        <div className={styles.content}>
+        <div className={c.content}>
           <TeamList {...this.props} />
         </div>
       </div>
 
     const Details = props =>
-      <div className={styles.details}>
-        <div className={styles.card}>
-          <div className={styles.options}>
+      <div className={c.details}>
+        <div className={c.card}>
+          <div className={c.options}>
             <TeamDetailsOptions {...props} />
           </div>
-          <div className={styles.content}>
+          <div className={c.content}>
             <TeamDetails {...props} />
           </div>
         </div>
@@ -52,8 +52,8 @@ class TeamPanel extends React.Component
       </Modal>
 
     return (
-      <div className={styles.module}>
-        <div className={styles.container}>
+      <div className={c.module}>
+        <div className={c.container}>
           {List}
           <Route
             path={`${path}/:team_id(\\d+)`}

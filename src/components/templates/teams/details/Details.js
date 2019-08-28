@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import styles from 'resources/css/templates/teams/details/Details.module.css';
+import c from 'resources/css/templates/teams/details/Details.module.css';
 
 class TeamDetails extends React.Component
 {
@@ -20,22 +20,22 @@ class TeamDetails extends React.Component
     if (team.id == null) return <Loading />;
 
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
         {/* Suggested divs */}
-        <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
-        <label className={cx(styles.txt, styles.nameTxt)}>{team.name.toString()}</label>
+        <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
+        <label className={cx(c.txt, c.nameTxt)}>{team.name.toString()}</label>
         <br/>
-        <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label><br/>
-        <img src={team.logo.url} className={cx(styles.img, styles.logoImg)}></img>
+        <label className={cx(c.lbl, c.logoLbl)}>Logo</label><br/>
+        <img src={team.logo.url} className={cx(c.img, c.logoImg)}></img>
         <br/>
-        <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
-        <label className={cx(styles.txt, styles.descriptionTxt)}>{team.description.toString()}</label>
+        <label className={cx(c.lbl, c.descriptionLbl)}>Description</label><br/>
+        <label className={cx(c.txt, c.descriptionTxt)}>{team.description.toString()}</label>
         <br/>
-        <label className={cx(styles.lbl, styles.marketValueLbl)}>Market value</label><br/>
-        <label className={cx(styles.txt, styles.marketValueTxt)}>{team.market_value.toString()}</label>
+        <label className={cx(c.lbl, c.marketValueLbl)}>Market value</label><br/>
+        <label className={cx(c.txt, c.marketValueTxt)}>{team.market_value.toString()}</label>
         <br/>
-        <label className={cx(styles.lbl, styles.identityDocsLbl)}>Identity docs</label><br/>
-        <label className={cx(styles.txt, styles.identityDocsTxt)}>{team.identity_docs.toString()}</label>
+        <label className={cx(c.lbl, c.identityDocsLbl)}>Identity docs</label><br/>
+        <label className={cx(c.txt, c.identityDocsTxt)}>{team.identity_docs.toString()}</label>
         <br/>
       </div>
     );

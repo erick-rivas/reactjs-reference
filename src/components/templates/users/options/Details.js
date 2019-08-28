@@ -8,7 +8,7 @@ import cx from 'classnames';
 import Svg from 'react-svg';
 import { Link } from 'react-router-dom';
 
-import styles from 'resources/css/templates/users/options/Details.module.css';
+import c from 'resources/css/templates/users/options/Details.module.css';
 
 class UserDetailsOptions extends React.Component
 {
@@ -17,13 +17,13 @@ class UserDetailsOptions extends React.Component
     const { url } = this.props.match;
     
     return (
-      <div className={styles.module}>
-        <Svg className={styles.back}
+      <div className={c.module}>
+        <Svg className={c.back}
           src={require('resources/icons/ic_arrow_back.svg')}
           onClick={this.onClickBack} />
-         <div className={styles.options}>
-          <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
-          <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
+         <div className={c.options}>
+          <Link to={`${url}/edit`} className={cx(c.btn, c.edit)}>Edit</Link>
+          <button className={cx(c.btn, c.delete)} onClick={this.onClickDelete}>Delete</button>
         </div>
       </div>
     );

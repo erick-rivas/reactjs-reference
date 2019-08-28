@@ -14,7 +14,7 @@ import ScorePanel from 'components/templates/stats/scores/Panel';
 import Sidenav from 'components/templates/nav/Sidenav'
 import Topnav from 'components/templates/nav/Topnav'
 
-import styles from 'resources/css/templates/Home.module.css';
+import c from 'resources/css/templates/Home.module.css';
 
 class Home extends React.Component
 {
@@ -23,19 +23,19 @@ class Home extends React.Component
     const { path } = this.props.match;
 
     return (
-      <div className={styles.module}>
-        <div className={styles.drawer}>
-          <div className={styles.sidenav}>
+      <div className={c.module}>
+        <div className={c.drawer}>
+          <div className={c.sidenav}>
             <Route path={`${path}`}
               component={Sidenav} />
           </div>
         </div>
-        <div className={styles.container}>
-          <div className={styles.topnav}>
+        <div className={c.container}>
+          <div className={c.topnav}>
             <Route path={`${path}`}
               component={Topnav} />
           </div>
-          <div className={styles.content}>
+          <div className={c.content}>
              <Switch>
                <Route
                  path={`${path}/users`}

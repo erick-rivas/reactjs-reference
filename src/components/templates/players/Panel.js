@@ -15,7 +15,7 @@ import PlayerForm from 'components/templates/players/Form';
 
 import Modal from 'seed/components/helpers/Modal';
 
-import styles from 'resources/css/templates/players/Panel.module.css';
+import c from 'resources/css/templates/players/Panel.module.css';
 
 class PlayerPanel extends React.Component
 {
@@ -24,22 +24,22 @@ class PlayerPanel extends React.Component
     const { path, url } = this.props.match;
    
     const List =
-      <div className={styles.list}>
-        <div className={styles.options}>
+      <div className={c.list}>
+        <div className={c.options}>
           <PlayerListOptions {...this.props}/>
         </div>
-        <div className={styles.content}>
+        <div className={c.content}>
           <PlayerList {...this.props} />
         </div>
       </div>
 
     const Details = props =>
-      <div className={styles.details}>
-        <div className={styles.card}>
-          <div className={styles.options}>
+      <div className={c.details}>
+        <div className={c.card}>
+          <div className={c.options}>
             <PlayerDetailsOptions {...props} />
           </div>
-          <div className={styles.content}>
+          <div className={c.content}>
             <PlayerDetails {...props} />
           </div>
         </div>
@@ -52,8 +52,8 @@ class PlayerPanel extends React.Component
       </Modal>
 
     return (
-      <div className={styles.module}>
-        <div className={styles.container}>
+      <div className={c.module}>
+        <div className={c.container}>
           {List}
           <Route
             path={`${path}/:player_id(\\d+)`}

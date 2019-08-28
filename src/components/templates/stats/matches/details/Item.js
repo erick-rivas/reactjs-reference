@@ -10,7 +10,7 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import styles from 'resources/css/templates/stats/matches/details/Item.module.css';
+import c from 'resources/css/templates/stats/matches/details/Item.module.css';
 
 class MatchItem extends React.Component
 {
@@ -18,10 +18,10 @@ class MatchItem extends React.Component
   {
     const match = this.props.match;
     return (
-      <div className={styles.module}>
-        <div className={styles.title}>{match.id}</div>
-        <div className={styles.subtitle}>{JSON.stringify(match)}</div>
-        <Svg className={styles.options}
+      <div className={c.module}>
+        <div className={c.title}>{match.id}</div>
+        <div className={c.subtitle}>{JSON.stringify(match)}</div>
+        <Svg className={c.options}
           src={require('resources/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import styles from 'resources/css/helpers/MultiField.module.css'
+import c from 'resources/css/helpers/MultiField.module.css'
 
 
 class MultiField extends React.Component
@@ -18,14 +18,14 @@ class MultiField extends React.Component
     {
       let isSelected = Boolean(selected[v.value]);
       return (
-        <div className={styles.item}>
+        <div className={c.item}>
           <input type="checkbox" title={v.value} checked={isSelected} onChange={this.onItemSelected}></input>
           {v.label}
         </div>);
     });
 
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
         {items}
       </div>
     );

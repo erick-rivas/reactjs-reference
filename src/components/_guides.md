@@ -38,7 +38,7 @@ class TeamList extends React.Component
     );
 
     return (
-    <div className={styles.module}>
+    <div className={c.module}>
       { teamList }
     </div>
     );
@@ -83,7 +83,7 @@ class TeamForm extends React.Component
     if (team.id == null && teamId != null) return <Loading />;
 
     return (
-      <div className={styles.module}>
+      <div className={c.module}>
 
       /**
       * Use formik to simplify event handling of inputs
@@ -97,14 +97,14 @@ class TeamForm extends React.Component
       <form onSubmit={f.handleSubmit}>
 
         {/* Name */}
-        <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
-        <Field type="text" name="name" className={cx(styles.txt, styles.nameTxt)} />
+        <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
+        <Field type="text" name="name" className={cx(c.txt, c.nameTxt)} />
         <br/>
         {/* Description */}
-        <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label><br/>
-        <Field component="textarea" name="description" type="text" rows="3" className={cx(styles.txa, styles.descriptionTxa)} />
+        <label className={cx(c.lbl, c.descriptionLbl)}>Description</label><br/>
+        <Field component="textarea" name="description" type="text" rows="3" className={cx(c.txa, c.descriptionTxa)} />
         <br/>
-        <button type="submit" className={styles.submit}>Send</button>
+        <button type="submit" className={c.submit}>Send</button>
       </form>
       )}
       </Formik>

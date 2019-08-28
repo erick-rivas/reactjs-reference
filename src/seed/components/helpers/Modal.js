@@ -9,7 +9,7 @@ import cx from 'classnames';
 import ModalContainer from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
 
-import styles from 'resources/css/helpers/Modal.module.css';
+import c from 'resources/css/helpers/Modal.module.css';
 
 class Modal extends React.Component
 {
@@ -39,15 +39,15 @@ class Modal extends React.Component
 
     return (
       <ModalContainer
-        className={styles.module}
+        className={c.module}
         open={true}
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={cx(styles.container,'animated',animation)} style={containerStyle}>
+        <div className={cx(c.container,'animated',animation)} style={containerStyle}>
 
           <IconButton
-            className={styles.close}
+            className={c.close}
             style={closeStyle}
             onClick={this.onClose}>
             <i class="fas fa-times"></i>

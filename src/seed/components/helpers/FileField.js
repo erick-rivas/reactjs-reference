@@ -7,7 +7,7 @@ import * as React from 'react';
 import redux from 'seed/redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import styles from 'resources/css/helpers/FileField.module.css';
+import c from 'resources/css/helpers/FileField.module.css';
 
 class Loading extends React.Component
 {

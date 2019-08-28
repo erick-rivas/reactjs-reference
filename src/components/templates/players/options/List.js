@@ -7,18 +7,17 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import styles from 'resources/css/templates/players/options/List.module.css';
+import c from 'resources/css/templates/players/options/List.module.css';
 
 class PlayerListOptions extends React.Component
 {
   render()
   {
     const { url } = this.props.match;
-
     return (
-      <div className={styles.module}>
-        <div className={styles.options}>
-          <Link to={`${url}/new`} className={cx(styles.btn, styles.create)}>Create</Link>
+      <div className={c.module}>
+        <div className={c.options}>
+          <Link to={`${url}/new`} className={cx(c.btn, c.create)}>Create</Link>
         </div>
       </div>
     );
