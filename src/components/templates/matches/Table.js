@@ -11,19 +11,18 @@ import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/templates/stats/scores/Table.module.css';
+import c from 'resources/css/templates/matches/Table.module.css';
 
-class ScoreTable extends React.Component
+class MatchTable extends React.Component
 {
   render()
   {
-    const scores =
-      Util.filter(this.props.scores, {}).sort((i1,i2) => i2.id - i1.id)
-    if (scores == null) return <Loading />;
+    const matches = Util.filter(this.props.matches, {})
+    if (matches == null) return <Loading />;
 
     const { url } = this.props.match;
 
-    const scoreTable = scores.map(item =>
+    const matchTable = matches.map(item =>
        <tr>
          <td>{item.id}</td>
          <td className={c.options}>
@@ -46,23 +45,19 @@ class ScoreTable extends React.Component
             </tr>
           </thead>
           <tbody>
-            { scoreTable }
+            { matchTable }
           </tbody>
         </table>
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
   
   componentDidMount()
   {
     $.DataTable = require('datatables.net');
     const callback = () =>  $(`.${c.table}`).DataTable();
-    this.props.getScoreList({}, callback);
+    this.props.getMatchList({}, callback);
   }
 }
 
-export default redux(ScoreTable);
+export default redux(MatchTable);

@@ -7,9 +7,9 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import c from 'resources/css/templates/stats/matches/options/List.module.css';
+import c from 'resources/css/templates/scores/options/List.module.css';
 
-class MatchListOptions extends React.Component
+class ScoreListOptions extends React.Component
 {
   render()
   {
@@ -24,5 +24,4 @@ class MatchListOptions extends React.Component
   }
 }
 
-export default redux(MatchListOptions);
-
+export default redux(ScoreListOptions);

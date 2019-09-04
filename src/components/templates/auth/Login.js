@@ -32,7 +32,8 @@ class Login extends React.Component
                   name="remember"
                   type="checkbox" />
                 <label className={c.rememberLbl}>Remember me</label><br/>
-                { this.renderError() }
+                {this.state.error ?
+                  <div className={c.error}>{this.state.error}</div> : null}
                 <button type="submit" className={c.submit}>Login</button>
               </form>
              
@@ -42,16 +43,6 @@ class Login extends React.Component
       </div>
     );
   }
-
-  renderError()
-  {
-    const { error } = this.state;
-    return (error ? <div className={c.error}>{error}</div> : null);
-  }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {

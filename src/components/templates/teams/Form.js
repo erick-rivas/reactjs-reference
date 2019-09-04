@@ -37,33 +37,46 @@ class TeamForm extends React.Component
              render={f => (
 
           <form onSubmit={f.handleSubmit}>
+            
             {/* name */}
             <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
-            <Field type="text" name="name" className={cx(c.txt, c.nameTxt)} />
+            <Field type="text" name="name"
+              className={cx(c.txt, c.nameTxt)} />
             <br/>
+            
             {/* logo */}
             <label className={cx(c.lbl, c.logoLbl)}>Logo</label><br/>
-            <FileField name="logo" className={cx(c.fil, c.logoFil)} accept="image/*" setFieldValue={f.setFieldValue}/>
+            <FileField name="logo"
+              accept="image/*" setFieldValue={f.setFieldValue}
+              className={cx(c.fil, c.logoFil)}  />
             { f.values.logo ?
               <img src={f.values.logo.url} className={cx(c.img, c.logoImg)} /> : null }
+            
             {/* description */}
             <label className={cx(c.lbl, c.descriptionLbl)}>Description</label><br/>
-            <Field component="textarea" name="description" type="text" rows="3" className={cx(c.txa, c.descriptionTxa)} />
+            <Field type="text" name="description"
+              component="textarea" rows="3"
+              className={cx(c.txa, c.descriptionTxa)} />
             <br/>
+            
             {/* market_value */}
             <label className={cx(c.lbl, c.marketValueLbl)}>Market value</label><br/>
-            <Field type="number" name="market_value" className={cx(c.txt, c.marketValueTxt)} />
+            <Field type="number" name="market_value"
+              className={cx(c.txt, c.marketValueTxt)} />
             <br/>
+            
             {/* rival */}
             <div>
             <label className={cx(c.lbl, c.rivalLbl)}>Rival</label>
-            <Field component="select" name="rival_id" className={cx(c.ops, c.rivalOps)} >
+            <Field component="select" name="rival_id"
+              className={cx(c.ops, c.rivalOps)} >
               <option value="">Select an option</option>
               { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
-            {this.renderError()}
+            {this.state.error ?
+              <div className={c.error}>{this.state.error}</div> : null}
             <button type="submit" className={c.submit}>Send</button>
           </form>
           )}
@@ -72,16 +85,6 @@ class TeamForm extends React.Component
       </div>
     );
   }
-
-  renderError()
-  {
-    const { error } = this.state;
-    return (error ? <div className={c.error}>{error}</div> : null);
-  }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {
@@ -143,9 +146,7 @@ class TeamForm extends React.Component
 
   getTeamId() 
   {
-    return this.props.teamId ?
-      this.props.teamId :
-      this.props.match.params.team_id;
+    return this.props.match.params.team_id;
   }
 }
 

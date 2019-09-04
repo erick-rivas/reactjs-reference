@@ -17,8 +17,7 @@ class UserTable extends React.Component
 {
   render()
   {
-    const users =
-      Util.filter(this.props.users, {}).sort((i1,i2) => i2.id - i1.id)
+    const users = Util.filter(this.props.users, {})
     if (users == null) return <Loading />;
 
     const { url } = this.props.match;
@@ -52,10 +51,6 @@ class UserTable extends React.Component
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
   
   componentDidMount()
   {

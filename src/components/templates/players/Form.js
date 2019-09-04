@@ -37,29 +37,39 @@ class PlayerForm extends React.Component
              render={f => (
 
           <form onSubmit={f.handleSubmit}>
+            
             {/* name */}
             <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
-            <Field type="text" name="name" className={cx(c.txt, c.nameTxt)} />
+            <Field type="text" name="name"
+              className={cx(c.txt, c.nameTxt)} />
             <br/>
+            
             {/* photo */}
             <label className={cx(c.lbl, c.photoLbl)}>Photo</label><br/>
-            <FileField name="photo" className={cx(c.fil, c.photoFil)} accept="image/*" setFieldValue={f.setFieldValue}/>
+            <FileField name="photo"
+              accept="image/*" setFieldValue={f.setFieldValue}
+              className={cx(c.fil, c.photoFil)}  />
             { f.values.photo ?
               <img src={f.values.photo.url} className={cx(c.img, c.photoImg)} /> : null }
+            
             {/* is_active */}
             <label className={cx(c.lbl, c.isActiveLbl)}>Is active</label>
-            <Field name="is_active" type="checkbox" className={cx(c.chk, c.isActiveChk)} />
+            <Field type="checkbox" name="is_active"
+              className={cx(c.chk, c.isActiveChk)} />
             <br/>
+            
             {/* team */}
             <div>
             <label className={cx(c.lbl, c.teamLbl)}>Team</label>
-            <Field component="select" name="team_id" className={cx(c.ops, c.teamOps)} >
+            <Field component="select" name="team_id"
+              className={cx(c.ops, c.teamOps)} >
               <option value="">Select an option</option>
               { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
-            {this.renderError()}
+            {this.state.error ?
+              <div className={c.error}>{this.state.error}</div> : null}
             <button type="submit" className={c.submit}>Send</button>
           </form>
           )}
@@ -68,16 +78,6 @@ class PlayerForm extends React.Component
       </div>
     );
   }
-
-  renderError()
-  {
-    const { error } = this.state;
-    return (error ? <div className={c.error}>{error}</div> : null);
-  }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {
@@ -139,9 +139,7 @@ class PlayerForm extends React.Component
 
   getPlayerId() 
   {
-    return this.props.playerId ?
-      this.props.playerId :
-      this.props.match.params.player_id;
+    return this.props.match.params.player_id;
   }
 }
 

@@ -8,22 +8,21 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
-import Item from 'components/templates/stats/matches/details/Item';
+import Item from 'components/templates/scores/details/Item';
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/templates/stats/matches/List.module.css';
+import c from 'resources/css/templates/scores/List.module.css';
 
-class MatchList extends React.Component
+class ScoreList extends React.Component
 {
   render()
   {
-    const matches =
-      Util.filter(this.props.matches, {}).sort((i1,i2) => i2.id - i1.id)
-    if (matches == null) return <Loading />;
+    const scores = Util.filter(this.props.scores, {})
+    if (scores == null) return <Loading />;
 
     const { url } = this.props.match;
 
-    const matchList = matches.map(item =>
+    const scoreList = scores.map(item =>
         <NavLink 
           to={`${url}/${item.id}`}
           className={c.item}
@@ -31,24 +30,20 @@ class MatchList extends React.Component
           <Item 
             key={item.id} 
             id={item.id}
-            match={item}/>
+            score={item}/>
       </NavLink>);
 
     return (
       <div className={c.module}>
-        { matchList }
+        { scoreList }
       </div>
     );
   }
 
-  /*
-  * Component logic
-  */
-
   componentDidMount()
   {
-    this.props.getMatchList({});
+    this.props.getScoreList({});
   }
 }
 
-export default redux(MatchList);
+export default redux(ScoreList);

@@ -41,23 +41,15 @@ class TeamDetails extends React.Component
     );
   }
 
-  /*
-  * Component Logic
-  */
-
   componentDidMount()
   {
     const teamId = this.getTeamId()
     this.props.getTeamDetails(teamId);
   }
 
-  /* Args */
-
   getTeamId() 
   {
-    return this.props.teamId ?
-      this.props.teamId :
-      this.props.match.params.team_id;
+    return this.props.match.params.team_id;
   }
 }
 

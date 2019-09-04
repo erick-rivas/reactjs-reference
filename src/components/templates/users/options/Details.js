@@ -29,10 +29,6 @@ class UserDetailsOptions extends React.Component
     );
   }
 
-  /*
-  * Component logic
-  */
-
   constructor(props)
   {
     super(props);
@@ -67,20 +63,13 @@ class UserDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  onDeleteError(error)
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
+  onDeleteError(error) {}
 
   /* Args */
 
   getUserId() 
   {
-    return this.props.userId ?
-      this.props.userId :
-      this.props.match.params.user_id;
+    return this.props.match.params.user_id;
   }
 }
 

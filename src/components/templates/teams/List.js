@@ -17,8 +17,7 @@ class TeamList extends React.Component
 {
   render()
   {
-    const teams =
-      Util.filter(this.props.teams, {}).sort((i1,i2) => i2.id - i1.id)
+    const teams = Util.filter(this.props.teams, {})
     if (teams == null) return <Loading />;
 
     const { url } = this.props.match;
@@ -40,10 +39,6 @@ class TeamList extends React.Component
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
 
   componentDidMount()
   {

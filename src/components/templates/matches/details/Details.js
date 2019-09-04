@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/templates/stats/matches/details/Details.module.css';
+import c from 'resources/css/templates/matches/details/Details.module.css';
 
 class MatchDetails extends React.Component
 {
@@ -32,23 +32,15 @@ class MatchDetails extends React.Component
     );
   }
 
-  /*
-  * Component Logic
-  */
-
   componentDidMount()
   {
     const matchId = this.getMatchId()
     this.props.getMatchDetails(matchId);
   }
 
-  /* Args */
-
   getMatchId() 
   {
-    return this.props.matchId ?
-      this.props.matchId :
-      this.props.match.params.match_id;
+    return this.props.match.params.match_id;
   }
 }
 

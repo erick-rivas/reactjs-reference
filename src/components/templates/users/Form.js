@@ -37,6 +37,7 @@ class UserForm extends React.Component
              render={f => (
 
           <form onSubmit={f.handleSubmit}>
+            
             {/* teams */}
             <div>
             <label className={cx(c.lbl, c.teamsLbl)}>Teams</label>
@@ -47,7 +48,8 @@ class UserForm extends React.Component
             </div>
             <br/>
             </div>
-            {this.renderError()}
+            {this.state.error ?
+              <div className={c.error}>{this.state.error}</div> : null}
             <button type="submit" className={c.submit}>Send</button>
           </form>
           )}
@@ -56,16 +58,6 @@ class UserForm extends React.Component
       </div>
     );
   }
-
-  renderError()
-  {
-    const { error } = this.state;
-    return (error ? <div className={c.error}>{error}</div> : null);
-  }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {
@@ -127,9 +119,7 @@ class UserForm extends React.Component
 
   getUserId() 
   {
-    return this.props.userId ?
-      this.props.userId :
-      this.props.match.params.user_id;
+    return this.props.match.params.user_id;
   }
 }
 

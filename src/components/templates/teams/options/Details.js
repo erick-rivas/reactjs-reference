@@ -29,10 +29,6 @@ class TeamDetailsOptions extends React.Component
     );
   }
 
-  /*
-  * Component logic
-  */
-
   constructor(props)
   {
     super(props);
@@ -67,20 +63,13 @@ class TeamDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  onDeleteError(error)
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
+  onDeleteError(error) {}
 
   /* Args */
 
   getTeamId() 
   {
-    return this.props.teamId ?
-      this.props.teamId :
-      this.props.match.params.team_id;
+    return this.props.match.params.team_id;
   }
 }
 

@@ -12,7 +12,7 @@ import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/templates/stats/scores/Form.module.css';
+import c from 'resources/css/templates/scores/Form.module.css';
 
 class ScoreForm extends React.Component
 {
@@ -38,29 +38,36 @@ class ScoreForm extends React.Component
              render={f => (
 
           <form onSubmit={f.handleSubmit}>
+            
             {/* min */}
             <label className={cx(c.lbl, c.minLbl)}>Min</label><br/>
-            <Field type="number" name="min" className={cx(c.txt, c.minTxt)} />
+            <Field type="number" name="min"
+              className={cx(c.txt, c.minTxt)} />
             <br/>
+            
             {/* player */}
             <div>
             <label className={cx(c.lbl, c.playerLbl)}>Player</label>
-            <Field component="select" name="player_id" className={cx(c.ops, c.playerOps)} >
+            <Field component="select" name="player_id"
+              className={cx(c.ops, c.playerOps)} >
               <option value="">Select an option</option>
               { players.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
+            
             {/* match */}
             <div>
             <label className={cx(c.lbl, c.matchLbl)}>Match</label>
-            <Field component="select" name="match_id" className={cx(c.ops, c.matchOps)} >
+            <Field component="select" name="match_id"
+              className={cx(c.ops, c.matchOps)} >
               <option value="">Select an option</option>
               { matches.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
-            {this.renderError()}
+            {this.state.error ?
+              <div className={c.error}>{this.state.error}</div> : null}
             <button type="submit" className={c.submit}>Send</button>
           </form>
           )}
@@ -69,16 +76,6 @@ class ScoreForm extends React.Component
       </div>
     );
   }
-
-  renderError()
-  {
-    const { error } = this.state;
-    return (error ? <div className={c.error}>{error}</div> : null);
-  }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {
@@ -141,9 +138,7 @@ class ScoreForm extends React.Component
 
   getScoreId() 
   {
-    return this.props.scoreId ?
-      this.props.scoreId :
-      this.props.match.params.score_id;
+    return this.props.match.params.score_id;
   }
 }
 

@@ -35,23 +35,15 @@ class PlayerDetails extends React.Component
     );
   }
 
-  /*
-  * Component Logic
-  */
-
   componentDidMount()
   {
     const playerId = this.getPlayerId()
     this.props.getPlayerDetails(playerId);
   }
 
-  /* Args */
-
   getPlayerId() 
   {
-    return this.props.playerId ?
-      this.props.playerId :
-      this.props.match.params.player_id;
+    return this.props.match.params.player_id;
   }
 }
 

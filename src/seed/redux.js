@@ -8,11 +8,11 @@ import * as Util from 'seed/util'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
+import _MatchActions from 'seed/actions/matches';
 import _PlayerActions from 'seed/actions/players';
+import _ScoreActions from 'seed/actions/scores';
 import _TeamActions from 'seed/actions/teams';
 import _UserActions from 'seed/actions/users';
-import _MatchActions from 'seed/actions/matches';
-import _ScoreActions from 'seed/actions/scores';
 import UserActions from 'actions/users';
 import TeamActions from 'actions/teams';
 import PlayerActions from 'actions/players';
@@ -20,18 +20,26 @@ import MatchActions from 'actions/matches';
 import ScoreActions from 'actions/scores';
 import AuthActions from 'seed/actions/helpers/auth'
 import FileActions from 'seed/helpers/files';
+const matches = new MatchActions();
 const players = new PlayerActions();
+const scores = new ScoreActions();
 const teams = new TeamActions();
 const users = new UserActions();
-const matches = new MatchActions();
-const scores = new ScoreActions();
 const auth = new AuthActions();
 const files = new FileActions();
 
 const actions = [
   {
+    className: _MatchActions,
+    object: matches
+  },
+  {
     className: _PlayerActions,
     object: players
+  },
+  {
+    className: _ScoreActions,
+    object: scores
   },
   {
     className: _TeamActions,
@@ -40,14 +48,6 @@ const actions = [
   {
     className: _UserActions,
     object: users
-  },
-  {
-    className: _MatchActions,
-    object: matches
-  },
-  {
-    className: _ScoreActions,
-    object: scores
   },
   {
     className: UserActions,
@@ -80,11 +80,11 @@ const actions = [
 ]
 
 const stateToProps = (state, props) => ({
+  matches: state.matches.dataset,
   players: state.players.dataset,
+  scores: state.scores.dataset,
   teams: state.teams.dataset,
   users: state.users.dataset,
-  matches: state.matches.dataset,
-  scores: state.scores.dataset,
 });
 
 const dispToProps = disp => {

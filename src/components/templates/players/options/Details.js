@@ -29,10 +29,6 @@ class PlayerDetailsOptions extends React.Component
     );
   }
 
-  /*
-  * Component logic
-  */
-
   constructor(props)
   {
     super(props);
@@ -67,20 +63,13 @@ class PlayerDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  onDeleteError(error)
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
+  onDeleteError(error) {}
 
   /* Args */
 
   getPlayerId() 
   {
-    return this.props.playerId ?
-      this.props.playerId :
-      this.props.match.params.player_id;
+    return this.props.match.params.player_id;
   }
 }
 

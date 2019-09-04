@@ -17,8 +17,7 @@ class PlayerTable extends React.Component
 {
   render()
   {
-    const players =
-      Util.filter(this.props.players, {}).sort((i1,i2) => i2.id - i1.id)
+    const players = Util.filter(this.props.players, {})
     if (players == null) return <Loading />;
 
     const { url } = this.props.match;
@@ -52,10 +51,6 @@ class PlayerTable extends React.Component
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
   
   componentDidMount()
   {

@@ -1,6 +1,75 @@
 {
-  "name": "reference",
   "models": [
+    {
+      "name": "match",
+      "attrs": [
+        {
+          "name": "date",
+          "type": "date",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "default": "now"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE",
+          "options": [
+            "Friendship",
+            "League",
+            "Cup"
+          ]
+        },
+        {
+          "name": "local",
+          "type": "team",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "visitor",
+          "type": "team",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "scores",
+          "type": "score[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "read": true,
+          "write": false,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true
+    },
     {
       "name": "player",
       "attrs": [
@@ -49,8 +118,49 @@
         }
       ],
       "read": true,
-      "write": true,
-      "group": ""
+      "write": true
+    },
+    {
+      "name": "score",
+      "attrs": [
+        {
+          "name": "min",
+          "type": "int",
+          "is_fk": false,
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "player",
+          "type": "player",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        },
+        {
+          "name": "match",
+          "type": "match",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true
     },
     {
       "name": "team",
@@ -131,8 +241,7 @@
         }
       ],
       "read": true,
-      "write": true,
-      "group": ""
+      "write": true
     },
     {
       "name": "user",
@@ -152,122 +261,7 @@
         }
       ],
       "read": true,
-      "write": true,
-      "group": ""
-    },
-    {
-      "name": "match",
-      "attrs": [
-        {
-          "name": "date",
-          "type": "date",
-          "is_fk": false,
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "default": "now"
-        },
-        {
-          "name": "type",
-          "type": "enum",
-          "is_fk": false,
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "options": [
-            "Friendship",
-            "League",
-            "Cup"
-          ]
-        },
-        {
-          "name": "local",
-          "type": "team",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          },
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE"
-        },
-        {
-          "name": "visitor",
-          "type": "team",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          },
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE"
-        },
-        {
-          "name": "scores",
-          "type": "score[]",
-          "is_fk": true,
-          "card": {
-            "ref": "0..*",
-            "has": "1"
-          },
-          "read": true,
-          "write": false,
-          "empty": false,
-          "delete": "CASCADE"
-        }
-      ],
-      "read": true,
-      "write": true,
-      "group": "stats"
-    },
-    {
-      "name": "score",
-      "attrs": [
-        {
-          "name": "min",
-          "type": "int",
-          "is_fk": false,
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE"
-        },
-        {
-          "name": "player",
-          "type": "player",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          },
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE"
-        },
-        {
-          "name": "match",
-          "type": "match",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          },
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE"
-        }
-      ],
-      "read": true,
-      "write": true,
-      "group": "stats"
+      "write": true
     }
   ],
   "platform": "reactjs",
@@ -291,8 +285,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": ""
+        "write": true
       },
       {
         "name": "team",
@@ -373,8 +366,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": ""
+        "write": true
       },
       {
         "name": "player",
@@ -424,8 +416,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": ""
+        "write": true
       },
       {
         "name": "match",
@@ -495,8 +486,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": "stats"
+        "write": true
       },
       {
         "name": "score",
@@ -538,8 +528,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": "stats"
+        "write": true
       }
     ],
     "components": [
@@ -561,8 +550,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": ""
+        "write": true
       },
       {
         "name": "team",
@@ -643,8 +631,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": ""
+        "write": true
       },
       {
         "name": "player",
@@ -694,8 +681,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": ""
+        "write": true
       },
       {
         "name": "match",
@@ -765,8 +751,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": "stats"
+        "write": true
       },
       {
         "name": "score",
@@ -808,8 +793,7 @@
           }
         ],
         "read": true,
-        "write": true,
-        "group": "stats"
+        "write": true
       }
     ]
   }

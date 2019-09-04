@@ -9,8 +9,8 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import UserPanel from 'components/templates/users/Panel';
 import TeamPanel from 'components/templates/teams/Panel';
 import PlayerPanel from 'components/templates/players/Panel';
-import MatchPanel from 'components/templates/stats/matches/Panel';
-import ScorePanel from 'components/templates/stats/scores/Panel';
+import MatchPanel from 'components/templates/matches/Panel';
+import ScorePanel from 'components/templates/scores/Panel';
 import Sidenav from 'components/templates/nav/Sidenav'
 import Topnav from 'components/templates/nav/Topnav'
 
@@ -58,10 +58,6 @@ class Home extends React.Component
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
 
   componentDidMount()
   {

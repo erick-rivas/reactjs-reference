@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/templates/stats/scores/details/Details.module.css';
+import c from 'resources/css/templates/scores/details/Details.module.css';
 
 class ScoreDetails extends React.Component
 {
@@ -29,23 +29,15 @@ class ScoreDetails extends React.Component
     );
   }
 
-  /*
-  * Component Logic
-  */
-
   componentDidMount()
   {
     const scoreId = this.getScoreId()
     this.props.getScoreDetails(scoreId);
   }
 
-  /* Args */
-
   getScoreId() 
   {
-    return this.props.scoreId ?
-      this.props.scoreId :
-      this.props.match.params.score_id;
+    return this.props.match.params.score_id;
   }
 }
 

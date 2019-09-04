@@ -8,9 +8,9 @@ import cx from 'classnames';
 import Svg from 'react-svg';
 import { Link } from 'react-router-dom';
 
-import c from 'resources/css/templates/stats/matches/options/Details.module.css';
+import c from 'resources/css/templates/scores/options/Details.module.css';
 
-class MatchDetailsOptions extends React.Component
+class ScoreDetailsOptions extends React.Component
 {
   render()
   {
@@ -28,10 +28,6 @@ class MatchDetailsOptions extends React.Component
       </div>
     );
   }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {
@@ -56,8 +52,8 @@ class MatchDetailsOptions extends React.Component
       if (res.ok) this.onDelete(res.body);
       else this.onDeleteError(res.body);
     };
-    const matchId = this.getMatchId();
-    this.props.deleteMatch(matchId, onDelete);
+    const scoreId = this.getScoreId();
+    this.props.deleteScore(scoreId, onDelete);
   }
 
   onDelete(res)
@@ -67,21 +63,14 @@ class MatchDetailsOptions extends React.Component
     this.props.history.push(backUrl);
   }
 
-  onDeleteError(error)
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
+  onDeleteError(error) {}
 
   /* Args */
 
-  getMatchId() 
+  getScoreId() 
   {
-    return this.props.matchId ?
-      this.props.matchId :
-      this.props.match.params.match_id;
+    return this.props.match.params.score_id;
   }
 }
 
-export default redux(MatchDetailsOptions);
+export default redux(ScoreDetailsOptions);

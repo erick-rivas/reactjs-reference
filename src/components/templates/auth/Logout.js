@@ -17,10 +17,6 @@ class Logout extends React.Component
     );
   }
 
-  /*
-  * Component logic
-  */
-
   componentDidMount()
   {
     let callback = res =>
@@ -36,10 +32,7 @@ class Logout extends React.Component
     this.props.history.replace('/');
   }
 
-  onError(error)
-  {
-    this.props.history.replace('/');
-  }
+  onError(error){}
 }
 
 export default redux(Logout);

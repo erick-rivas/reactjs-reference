@@ -26,23 +26,15 @@ class UserDetails extends React.Component
     );
   }
 
-  /*
-  * Component Logic
-  */
-
   componentDidMount()
   {
     const userId = this.getUserId()
     this.props.getUserDetails(userId);
   }
 
-  /* Args */
-
   getUserId() 
   {
-    return this.props.userId ?
-      this.props.userId :
-      this.props.match.params.user_id;
+    return this.props.match.params.user_id;
   }
 }
 

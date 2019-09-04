@@ -10,7 +10,7 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import c from 'resources/css/templates/stats/scores/details/Item.module.css';
+import c from 'resources/css/templates/scores/details/Item.module.css';
 
 class ScoreItem extends React.Component
 {

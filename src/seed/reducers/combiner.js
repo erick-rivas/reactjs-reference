@@ -6,20 +6,20 @@ __Seed builder__v1.0
 
 import { combineReducers } from 'redux';
 
+import Matches from 'seed/reducers/matches';
 import Players from 'seed/reducers/players';
+import Scores from 'seed/reducers/scores';
 import Teams from 'seed/reducers/teams';
 import Users from 'seed/reducers/users';
-import Matches from 'seed/reducers/matches';
-import Scores from 'seed/reducers/scores';
 import Auth from 'seed/reducers/helpers/auth';
 
 const reducers = {
   auth: new Auth().reducer,
+  matches: new Matches().reducer,
   players: new Players().reducer,
+  scores: new Scores().reducer,
   teams: new Teams().reducer,
   users: new Users().reducer,
-  matches: new Matches().reducer,
-  scores: new Scores().reducer,
 } 
 
 export default combineReducers(reducers); 
