@@ -12,10 +12,10 @@
 - Model structure:
 ```json
 {
-  "date": null
-  "type": null
-  ""local_id": null,
-  ""visitor_id": null,
+  "date": null,
+  "type": null,
+  "local_id": null,
+  "visitor_id": null,
 }
 ```
 -  Dataset: this.props.matches
@@ -32,10 +32,10 @@
 - Model structure:
 ```json
 {
-  "name": null
-  "photo_id": null
-  "is_active": null
-  ""team_id": null,
+  "name": null,
+  "photo_id": null,
+  "is_active": null,
+  "team_id": null,
 }
 ```
 -  Dataset: this.props.players
@@ -52,9 +52,9 @@
 - Model structure:
 ```json
 {
-  "min": null
-  ""player_id": null,
-  ""match_id": null,
+  "min": null,
+  "player_id": null,
+  "match_id": null,
 }
 ```
 -  Dataset: this.props.scores
@@ -71,11 +71,11 @@
 - Model structure:
 ```json
 {
-  "name": null
-  "logo_id": null
-  "description": null
-  "market_value": null
-  ""rival_id": null,
+  "name": null,
+  "logo_id": null,
+  "description": null,
+  "market_value": null,
+  "rival_id": null,
 }
 ```
 -  Dataset: this.props.teams
