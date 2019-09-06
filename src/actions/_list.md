@@ -1,4 +1,4 @@
-# Actions list
+# Base Actions
 
 ## Table of content
 -  [matches](#matches)
@@ -20,12 +20,12 @@
 ```
 -  Dataset: this.props.matches
 -  Methods:
-  -  getMatchList(filters, callback?)
-  -  getMatchDetails(matchId, callback?)
-  -  saveMatch(match, callback?)
-  -  setMatch(matchId, match, callback?)
-  -  deleteMatch(matchId, callback?)
--  Reference: [matches](../seed/actions/matches.js) \
+   -  getMatchList(filters, callback?)
+   -  getMatchDetails(matchId, callback?)
+   -  saveMatch(match, callback?)
+   -  setMatch(matchId, match, callback?)
+   -  deleteMatch(matchId, callback?)
+-  Reference: [matches](../seed/actions/matches.js)
 
 ##  players
 
@@ -40,12 +40,12 @@
 ```
 -  Dataset: this.props.players
 -  Methods:
-  -  getPlayerList(filters, callback?)
-  -  getPlayerDetails(playerId, callback?)
-  -  savePlayer(player, callback?)
-  -  setPlayer(playerId, player, callback?)
-  -  deletePlayer(playerId, callback?)
--  Reference: [players](../seed/actions/players.js) \
+   -  getPlayerList(filters, callback?)
+   -  getPlayerDetails(playerId, callback?)
+   -  savePlayer(player, callback?)
+   -  setPlayer(playerId, player, callback?)
+   -  deletePlayer(playerId, callback?)
+-  Reference: [players](../seed/actions/players.js)
 
 ##  scores
 
@@ -59,12 +59,12 @@
 ```
 -  Dataset: this.props.scores
 -  Methods:
-  -  getScoreList(filters, callback?)
-  -  getScoreDetails(scoreId, callback?)
-  -  saveScore(score, callback?)
-  -  setScore(scoreId, score, callback?)
-  -  deleteScore(scoreId, callback?)
--  Reference: [scores](../seed/actions/scores.js) \
+   -  getScoreList(filters, callback?)
+   -  getScoreDetails(scoreId, callback?)
+   -  saveScore(score, callback?)
+   -  setScore(scoreId, score, callback?)
+   -  deleteScore(scoreId, callback?)
+-  Reference: [scores](../seed/actions/scores.js)
 
 ##  teams
 
@@ -80,12 +80,12 @@
 ```
 -  Dataset: this.props.teams
 -  Methods:
-  -  getTeamList(filters, callback?)
-  -  getTeamDetails(teamId, callback?)
-  -  saveTeam(team, callback?)
-  -  setTeam(teamId, team, callback?)
-  -  deleteTeam(teamId, callback?)
--  Reference: [teams](../seed/actions/teams.js) \
+   -  getTeamList(filters, callback?)
+   -  getTeamDetails(teamId, callback?)
+   -  saveTeam(team, callback?)
+   -  setTeam(teamId, team, callback?)
+   -  deleteTeam(teamId, callback?)
+-  Reference: [teams](../seed/actions/teams.js)
 
 ##  users
 
@@ -97,10 +97,9 @@
 ```
 -  Dataset: this.props.users
 -  Methods:
-  -  getUserList(filters, callback?)
-  -  getUserDetails(userId, callback?)
-  -  saveUser(user, callback?)
-  -  setUser(userId, user, callback?)
-  -  deleteUser(userId, callback?)
--  Reference: [users](../seed/actions/users.js) \
-
+   -  getUserList(filters, callback?)
+   -  getUserDetails(userId, callback?)
+   -  saveUser(user, callback?)
+   -  setUser(userId, user, callback?)
+   -  deleteUser(userId, callback?)
+-  Reference: [users](../seed/actions/users.js)
