@@ -12,12 +12,6 @@ Represents the module that handle API connection
     -  [GET example](#get-example)
     -  [POST example](#post-example)
 -  [References](#references)
--  [Seed actions](#seed-models)
-    -  [matches](#matches)
-    -  [players](#players)
-    -  [scores](#scores)
-    -  [teams](#teams)
-    -  [users](#users)
 
 ## Description
 
@@ -27,6 +21,8 @@ Those methods are binded **automatically** binded in components using redux() wr
 
 ## Guidelines
 
+-  To export an action use command
+  > $ seed-builder export -m actions:model_name
 -  Just add new methods to *define endpoint actions*
     - Example: /api/players/top_players
 -  Modify 'fetch' data to define which field include in the request
@@ -36,15 +32,10 @@ Those methods are binded **automatically** binded in components using redux() wr
 
 Those methods are helpers to ease the api requests
 -  getList(action, filters, callback?)
-   > Example: this.getList('/action', {name: 1}, callback)
 -  getDetails(action, id, callback?)
-   > Example: this.getDetails('/action', 1, callback)
 -  postData(action, body, callback?)
-   > Example this.postData('/action', {arg: 1}, callback)
 -  putData(action, id, body, callback?)
-   > Example this.putData('/action', 1, {arg: 1}, callback)
 -  deleteData(action, id, callback?)
-   > Example this.deleteData('/action', 1, callback)
 
 ## Examples
 
@@ -53,17 +44,17 @@ Those methods are helpers to ease the api requests
 ```javascript
 class Players extends _Players
 {
-  constructor()
-  {
-    // Fetch all attributes of inner team attribute
-    const fetch = [
-      "team.*",
-    ]
-    super(fetch)
-  }
-
   getTop10PlayerList(category, callback)
   {
+    constructor()
+    {
+      // Fetch all attributes of inner team attribute
+      const fetch = [
+        "team.*",
+      ]
+      super(fetch)
+    }
+
     return this.getList(
       `/top_10`, //Action
       {category: category}, //Filters
@@ -89,65 +80,3 @@ class Users extends _Users
   }
 }
 ```
-
-## References
-
-## Seed models
-
-###  matches
-
-Reference: [matches](../seed/actions/matches.js) \
-Dataset: this.props.matches
-Methods:
--  getMatchList(filters, callback?)
--  getMatchDetails(matchId, callback?)
--  saveMatch(match, callback?)
--  setMatch(matchId, match, callback?)
--  deleteMatch(matchId, callback?)
-
-###  players
-
-Reference: [players](../seed/actions/players.js) \
-Dataset: this.props.players
-Methods:
--  getPlayerList(filters, callback?)
--  getPlayerDetails(playerId, callback?)
--  savePlayer(player, callback?)
--  setPlayer(playerId, player, callback?)
--  deletePlayer(playerId, callback?)
-
-###  scores
-
-Reference: [scores](../seed/actions/scores.js) \
-Dataset: this.props.scores
-Methods:
--  getScoreList(filters, callback?)
--  getScoreDetails(scoreId, callback?)
--  saveScore(score, callback?)
--  setScore(scoreId, score, callback?)
--  deleteScore(scoreId, callback?)
-
-###  teams
-
-Reference: [teams](../seed/actions/teams.js) \
-Dataset: this.props.teams
-Methods:
--  getTeamList(filters, callback?)
--  getTeamDetails(teamId, callback?)
--  saveTeam(team, callback?)
--  setTeam(teamId, team, callback?)
--  deleteTeam(teamId, callback?)
-
-###  users
-
-Reference: [users](../seed/actions/users.js) \
-Dataset: this.props.users
-Methods:
--  getUserList(filters, callback?)
--  getUserDetails(userId, callback?)
--  saveUser(user, callback?)
--  setUser(userId, user, callback?)
--  deleteUser(userId, callback?)
-
-> To export a action use command \
-> $ seed export -m actions:model_name

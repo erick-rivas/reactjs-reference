@@ -5,6 +5,7 @@ __Seed builder__v1.0
 */
 
 import * as Util from 'seed/util'
+import defs from 'actions/defs'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -76,7 +77,8 @@ const actions = [
   {
     className: FileActions,
     object: files
-  }
+  },
+  ...defs
 ]
 
 const stateToProps = (state, props) => ({

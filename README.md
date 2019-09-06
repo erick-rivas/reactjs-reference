@@ -31,6 +31,11 @@ The architecture uses the following structure:
 $ npm install
 ```
 
+- Install builder
+```bash
+$ npm install -g seed-builder
+```
+
 -  Run server.
 ```bash
 $ npm start
