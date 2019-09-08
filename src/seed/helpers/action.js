@@ -111,9 +111,12 @@ class Action
         })
         .catch(error =>
         {
-          if (callback)
+         if (callback)
             callback({
-              body: error,
+              body: {
+                status: error.status,
+                text: error.statusText
+              },
               ok: false
             });
         })
