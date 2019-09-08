@@ -6,26 +6,22 @@
         {
           "name": "date",
           "type": "date",
-          "is_fk": false,
+          "default": "now",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "default": "now"
+          "empty": false
         },
         {
           "name": "type",
           "type": "enum",
-          "is_fk": false,
-          "read": true,
-          "write": true,
-          "empty": false,
-          "delete": "CASCADE",
           "options": [
             "Friendship",
             "League",
             "Cup"
-          ]
+          ],
+          "read": true,
+          "write": true,
+          "empty": false
         },
         {
           "name": "local",
@@ -61,14 +57,15 @@
             "ref": "0..*",
             "has": "1"
           },
-          "read": true,
           "write": false,
+          "read": true,
           "empty": false,
           "delete": "CASCADE"
         }
       ],
       "read": true,
-      "write": true
+      "write": true,
+      "empty": false
     },
     {
       "name": "player",
@@ -76,32 +73,26 @@
         {
           "name": "name",
           "type": "string",
-          "is_fk": false,
+          "length": "256",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "length": "256"
+          "empty": false
         },
         {
           "name": "photo",
           "type": "image",
-          "is_fk": false,
+          "length": "512",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "length": "512"
+          "empty": false
         },
         {
           "name": "is_active",
           "type": "boolean",
-          "is_fk": false,
+          "default": "true",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "default": "true"
+          "empty": false
         },
         {
           "name": "team",
@@ -118,7 +109,8 @@
         }
       ],
       "read": true,
-      "write": true
+      "write": true,
+      "empty": false
     },
     {
       "name": "score",
@@ -126,11 +118,9 @@
         {
           "name": "min",
           "type": "int",
-          "is_fk": false,
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE"
+          "empty": false
         },
         {
           "name": "player",
@@ -160,7 +150,8 @@
         }
       ],
       "read": true,
-      "write": true
+      "write": true,
+      "empty": false
     },
     {
       "name": "team",
@@ -168,41 +159,33 @@
         {
           "name": "name",
           "type": "string",
-          "is_fk": false,
+          "length": "256",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "length": "256"
+          "empty": false
         },
         {
           "name": "logo",
           "type": "image",
-          "is_fk": false,
+          "length": "512",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "length": "512"
+          "empty": false
         },
         {
           "name": "description",
           "type": "text",
-          "is_fk": false,
+          "default": "No description available",
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE",
-          "default": "No description available"
+          "empty": false
         },
         {
           "name": "market_value",
           "type": "float",
-          "is_fk": false,
           "read": true,
           "write": true,
-          "empty": false,
-          "delete": "CASCADE"
+          "empty": false
         },
         {
           "name": "rival",
@@ -212,19 +195,17 @@
             "ref": "1",
             "has": "0..*"
           },
+          "empty": true,
           "read": true,
           "write": true,
-          "empty": true,
           "delete": "CASCADE"
         },
         {
           "name": "identity_docs",
           "type": "file[]",
-          "is_fk": false,
-          "read": true,
           "write": false,
-          "empty": false,
-          "delete": "CASCADE"
+          "read": true,
+          "empty": false
         },
         {
           "name": "players",
@@ -234,14 +215,15 @@
             "ref": "0..*",
             "has": "1"
           },
-          "read": true,
           "write": false,
+          "read": true,
           "empty": false,
           "delete": "CASCADE"
         }
       ],
       "read": true,
-      "write": true
+      "write": true,
+      "empty": false
     },
     {
       "name": "user",
@@ -254,14 +236,15 @@
             "ref": "0..*",
             "has": "0..*"
           },
-          "read": true,
           "write": true,
+          "read": true,
           "empty": false,
           "delete": "CASCADE"
         }
       ],
       "read": true,
-      "write": true
+      "write": true,
+      "empty": false
     }
   ],
   "platform": "reactjs",
@@ -278,14 +261,15 @@
               "ref": "0..*",
               "has": "0..*"
             },
-            "read": true,
             "write": true,
+            "read": true,
             "empty": false,
             "delete": "CASCADE"
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "team",
@@ -293,41 +277,33 @@
           {
             "name": "name",
             "type": "string",
-            "is_fk": false,
+            "length": "256",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "256"
+            "empty": false
           },
           {
             "name": "logo",
             "type": "image",
-            "is_fk": false,
+            "length": "512",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "512"
+            "empty": false
           },
           {
             "name": "description",
             "type": "text",
-            "is_fk": false,
+            "default": "No description available",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "default": "No description available"
+            "empty": false
           },
           {
             "name": "market_value",
             "type": "float",
-            "is_fk": false,
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE"
+            "empty": false
           },
           {
             "name": "rival",
@@ -337,19 +313,17 @@
               "ref": "1",
               "has": "0..*"
             },
+            "empty": true,
             "read": true,
             "write": true,
-            "empty": true,
             "delete": "CASCADE"
           },
           {
             "name": "identity_docs",
             "type": "file[]",
-            "is_fk": false,
-            "read": true,
             "write": false,
-            "empty": false,
-            "delete": "CASCADE"
+            "read": true,
+            "empty": false
           },
           {
             "name": "players",
@@ -359,14 +333,15 @@
               "ref": "0..*",
               "has": "1"
             },
-            "read": true,
             "write": false,
+            "read": true,
             "empty": false,
             "delete": "CASCADE"
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "player",
@@ -374,32 +349,26 @@
           {
             "name": "name",
             "type": "string",
-            "is_fk": false,
+            "length": "256",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "256"
+            "empty": false
           },
           {
             "name": "photo",
             "type": "image",
-            "is_fk": false,
+            "length": "512",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "512"
+            "empty": false
           },
           {
             "name": "is_active",
             "type": "boolean",
-            "is_fk": false,
+            "default": "true",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "default": "true"
+            "empty": false
           },
           {
             "name": "team",
@@ -416,7 +385,8 @@
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "match",
@@ -424,26 +394,22 @@
           {
             "name": "date",
             "type": "date",
-            "is_fk": false,
+            "default": "now",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "default": "now"
+            "empty": false
           },
           {
             "name": "type",
             "type": "enum",
-            "is_fk": false,
-            "read": true,
-            "write": true,
-            "empty": false,
-            "delete": "CASCADE",
             "options": [
               "Friendship",
               "League",
               "Cup"
-            ]
+            ],
+            "read": true,
+            "write": true,
+            "empty": false
           },
           {
             "name": "local",
@@ -479,14 +445,15 @@
               "ref": "0..*",
               "has": "1"
             },
-            "read": true,
             "write": false,
+            "read": true,
             "empty": false,
             "delete": "CASCADE"
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "score",
@@ -494,11 +461,9 @@
           {
             "name": "min",
             "type": "int",
-            "is_fk": false,
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE"
+            "empty": false
           },
           {
             "name": "player",
@@ -528,7 +493,8 @@
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       }
     ],
     "components": [
@@ -543,14 +509,15 @@
               "ref": "0..*",
               "has": "0..*"
             },
-            "read": true,
             "write": true,
+            "read": true,
             "empty": false,
             "delete": "CASCADE"
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "team",
@@ -558,41 +525,33 @@
           {
             "name": "name",
             "type": "string",
-            "is_fk": false,
+            "length": "256",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "256"
+            "empty": false
           },
           {
             "name": "logo",
             "type": "image",
-            "is_fk": false,
+            "length": "512",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "512"
+            "empty": false
           },
           {
             "name": "description",
             "type": "text",
-            "is_fk": false,
+            "default": "No description available",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "default": "No description available"
+            "empty": false
           },
           {
             "name": "market_value",
             "type": "float",
-            "is_fk": false,
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE"
+            "empty": false
           },
           {
             "name": "rival",
@@ -602,19 +561,17 @@
               "ref": "1",
               "has": "0..*"
             },
+            "empty": true,
             "read": true,
             "write": true,
-            "empty": true,
             "delete": "CASCADE"
           },
           {
             "name": "identity_docs",
             "type": "file[]",
-            "is_fk": false,
-            "read": true,
             "write": false,
-            "empty": false,
-            "delete": "CASCADE"
+            "read": true,
+            "empty": false
           },
           {
             "name": "players",
@@ -624,14 +581,15 @@
               "ref": "0..*",
               "has": "1"
             },
-            "read": true,
             "write": false,
+            "read": true,
             "empty": false,
             "delete": "CASCADE"
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "player",
@@ -639,32 +597,26 @@
           {
             "name": "name",
             "type": "string",
-            "is_fk": false,
+            "length": "256",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "256"
+            "empty": false
           },
           {
             "name": "photo",
             "type": "image",
-            "is_fk": false,
+            "length": "512",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "length": "512"
+            "empty": false
           },
           {
             "name": "is_active",
             "type": "boolean",
-            "is_fk": false,
+            "default": "true",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "default": "true"
+            "empty": false
           },
           {
             "name": "team",
@@ -681,7 +633,8 @@
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "match",
@@ -689,26 +642,22 @@
           {
             "name": "date",
             "type": "date",
-            "is_fk": false,
+            "default": "now",
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE",
-            "default": "now"
+            "empty": false
           },
           {
             "name": "type",
             "type": "enum",
-            "is_fk": false,
-            "read": true,
-            "write": true,
-            "empty": false,
-            "delete": "CASCADE",
             "options": [
               "Friendship",
               "League",
               "Cup"
-            ]
+            ],
+            "read": true,
+            "write": true,
+            "empty": false
           },
           {
             "name": "local",
@@ -744,14 +693,15 @@
               "ref": "0..*",
               "has": "1"
             },
-            "read": true,
             "write": false,
+            "read": true,
             "empty": false,
             "delete": "CASCADE"
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       },
       {
         "name": "score",
@@ -759,11 +709,9 @@
           {
             "name": "min",
             "type": "int",
-            "is_fk": false,
             "read": true,
             "write": true,
-            "empty": false,
-            "delete": "CASCADE"
+            "empty": false
           },
           {
             "name": "player",
@@ -793,7 +741,8 @@
           }
         ],
         "read": true,
-        "write": true
+        "write": true,
+        "empty": false
       }
     ]
   }
