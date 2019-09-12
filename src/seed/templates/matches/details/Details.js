@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/matches/details/Details.module.css';
+import cls from 'resources/css/seed/templates/matches/details/Details.module.css';
 
 class MatchDetails extends React.Component
 {
@@ -20,13 +20,13 @@ class MatchDetails extends React.Component
     if (match.id == null) return <Loading />;
 
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
         {/* Suggested divs */}
-        <label className={cx(c.lbl, c.dateLbl)}>Date</label><br/>
-        <label className={cx(c.txt, c.dateTxt)}>{match.date.toString()}</label>
+        <label className={cx(cls.lbl, cls.dateLbl)}>Date</label><br/>
+        <label className={cx(cls.txt, cls.dateTxt)}>{match.date.toString()}</label>
         <br/>
-        <label className={cx(c.lbl, c.typeLbl)}>Type</label><br/>
-        <label className={cx(c.txt, c.typeTxt)}>{match.type.toString()}</label>
+        <label className={cx(cls.lbl, cls.typeLbl)}>Type</label><br/>
+        <label className={cx(cls.txt, cls.typeTxt)}>{match.type.toString()}</label>
         <br/>
       </div>
     );

@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/players/Table.module.css';
+import cls from 'resources/css/seed/templates/players/Table.module.css';
 
 class PlayerTable extends React.Component
 {
@@ -25,19 +25,19 @@ class PlayerTable extends React.Component
     const playerTable = players.map(item =>
        <tr>
          <td>{item.id}</td>
-         <td className={c.options}>
+         <td className={cls.options}>
           <NavLink
             to={`${url}/${item.id}`}
-            className={c.details}
-            activeClassName={c.active}>
+            className={cls.details}
+            activeClassName={cls.active}>
             Details
           </NavLink>
          </td>
        </tr>);
 
     return (
-      <div className={c.module}>
-        <table className={cx("hover","row-border", c.table)}>
+      <div className={cls.module}>
+        <table className={cx("hover","row-border", cls.table)}>
           <thead>
             <tr>
               <th>Id</th>
@@ -55,7 +55,7 @@ class PlayerTable extends React.Component
   componentDidMount()
   {
     $.DataTable = require('datatables.net');
-    const callback = () =>  $(`.${c.table}`).DataTable();
+    const callback = () =>  $(`.${cls.table}`).DataTable();
     this.props.getPlayerList({}, callback);
   }
 }

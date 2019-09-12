@@ -7,7 +7,7 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import c from 'resources/css/seed/templates/matches/options/List.module.css';
+import cls from 'resources/css/seed/templates/matches/options/List.module.css';
 
 class MatchListOptions extends React.Component
 {
@@ -15,9 +15,9 @@ class MatchListOptions extends React.Component
   {
     const { url } = this.props.match;
     return (
-      <div className={c.module}>
-        <div className={c.options}>
-          <Link to={`${url}/new`} className={cx(c.btn, c.create)}>Create</Link>
+      <div className={cls.module}>
+        <div className={cls.options}>
+          <Link to={`${url}/new`} className={cx(cls.btn, cls.create)}>Create</Link>
         </div>
       </div>
     );

@@ -8,6 +8,7 @@ import { combineReducers } from 'redux';
 
 import Matches from 'seed/reducers/matches';
 import Players from 'seed/reducers/players';
+import PlayerTypes from 'seed/reducers/playerTypes';
 import Scores from 'seed/reducers/scores';
 import Teams from 'seed/reducers/teams';
 import Users from 'seed/reducers/users';
@@ -17,6 +18,7 @@ const reducers = {
   auth: new Auth().reducer,
   matches: new Matches().reducer,
   players: new Players().reducer,
+  playerTypes: new PlayerTypes().reducer,
   scores: new Scores().reducer,
   teams: new Teams().reducer,
   users: new Users().reducer,

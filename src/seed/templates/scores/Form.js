@@ -12,7 +12,7 @@ import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/scores/Form.module.css';
+import cls from 'resources/css/seed/templates/scores/Form.module.css';
 
 class ScoreForm extends React.Component
 {
@@ -26,11 +26,11 @@ class ScoreForm extends React.Component
     if (score.id == null && scoreId != null) return <Loading />;
     
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
 
-        <div className={c.header}>Score</div>
+        <div className={cls.header}>Score</div>
 
-        <div className={c.form}>
+        <div className={cls.form}>
 
           <Formik
              initialValues={score}
@@ -40,16 +40,16 @@ class ScoreForm extends React.Component
           <form onSubmit={f.handleSubmit}>
             
             {/* min */}
-            <label className={cx(c.lbl, c.minLbl)}>Min</label><br/>
+            <label className={cx(cls.lbl, cls.minLbl)}>Min</label><br/>
             <Field type="number" name="min"
-              className={cx(c.txt, c.minTxt)} />
+              className={cx(cls.txt, cls.minTxt)} />
             <br/>
             
             {/* player */}
             <div>
-            <label className={cx(c.lbl, c.playerLbl)}>Player</label>
+            <label className={cx(cls.lbl, cls.playerLbl)}>Player</label>
             <Field component="select" name="player_id"
-              className={cx(c.ops, c.playerOps)} >
+              className={cx(cls.ops, cls.playerOps)} >
               <option value="">Select an option</option>
               { players.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
@@ -58,17 +58,17 @@ class ScoreForm extends React.Component
             
             {/* match */}
             <div>
-            <label className={cx(c.lbl, c.matchLbl)}>Match</label>
+            <label className={cx(cls.lbl, cls.matchLbl)}>Match</label>
             <Field component="select" name="match_id"
-              className={cx(c.ops, c.matchOps)} >
+              className={cx(cls.ops, cls.matchOps)} >
               <option value="">Select an option</option>
               { matches.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
             {this.state.error ?
-              <div className={c.error}>{this.state.error}</div> : null}
-            <button type="submit" className={c.submit}>Send</button>
+              <div className={cls.error}>{this.state.error}</div> : null}
+            <button type="submit" className={cls.submit}>Send</button>
           </form>
           )}
           />

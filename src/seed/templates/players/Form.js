@@ -12,7 +12,7 @@ import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/players/Form.module.css';
+import cls from 'resources/css/seed/templates/players/Form.module.css';
 
 class PlayerForm extends React.Component
 {
@@ -21,15 +21,16 @@ class PlayerForm extends React.Component
     const playerId = this.getPlayerId();
     const player = Util.get(this.props.players, playerId);
     const teams = Util.filter(this.props.teams, {})
+    const playerTypes = Util.filter(this.props.playerTypes, {})
 
     if (player.id == null && playerId != null) return <Loading />;
     
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
 
-        <div className={c.header}>Player</div>
+        <div className={cls.header}>Player</div>
 
-        <div className={c.form}>
+        <div className={cls.form}>
 
           <Formik
              initialValues={player}
@@ -39,38 +40,49 @@ class PlayerForm extends React.Component
           <form onSubmit={f.handleSubmit}>
             
             {/* name */}
-            <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
+            <label className={cx(cls.lbl, cls.nameLbl)}>Name</label><br/>
             <Field type="text" name="name"
-              className={cx(c.txt, c.nameTxt)} />
+              className={cx(cls.txt, cls.nameTxt)} />
             <br/>
             
             {/* photo */}
-            <label className={cx(c.lbl, c.photoLbl)}>Photo</label><br/>
+            <label className={cx(cls.lbl, cls.photoLbl)}>Photo</label><br/>
             <FileField name="photo"
               accept="image/*" setFieldValue={f.setFieldValue}
-              className={cx(c.fil, c.photoFil)}  />
+              className={cx(cls.fil, cls.photoFil)}  />
             { f.values.photo ?
-              <img src={f.values.photo.url} className={cx(c.img, c.photoImg)} /> : null }
+              <img src={f.values.photo.url} className={cx(cls.img, cls.photoImg)} /> : null }
             
             {/* is_active */}
-            <label className={cx(c.lbl, c.isActiveLbl)}>Is active</label>
+            <label className={cx(cls.lbl, cls.isActiveLbl)}>Is active</label>
             <Field type="checkbox" name="is_active"
-              className={cx(c.chk, c.isActiveChk)} />
+              className={cx(cls.chk, cls.isActiveChk)} />
             <br/>
             
             {/* team */}
             <div>
-            <label className={cx(c.lbl, c.teamLbl)}>Team</label>
+            <label className={cx(cls.lbl, cls.teamLbl)}>Team</label>
             <Field component="select" name="team_id"
-              className={cx(c.ops, c.teamOps)} >
+              className={cx(cls.ops, cls.teamOps)} >
               <option value="">Select an option</option>
               { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
+            
+            {/* type */}
+            <div>
+            <label className={cx(cls.lbl, cls.typeLbl)}>Type</label>
+            <Field component="select" name="type_id"
+              className={cx(cls.ops, cls.typeOps)} >
+              <option value="">Select an option</option>
+              { playerTypes.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+            </Field>
+            <br/>
+            </div>
             {this.state.error ?
-              <div className={c.error}>{this.state.error}</div> : null}
-            <button type="submit" className={c.submit}>Send</button>
+              <div className={cls.error}>{this.state.error}</div> : null}
+            <button type="submit" className={cls.submit}>Send</button>
           </form>
           )}
           />
@@ -133,6 +145,7 @@ class PlayerForm extends React.Component
   loadFkData() 
   {
     this.props.getTeamList({});
+    this.props.getPlayerTypeList({});
   }
 
   /* Args */

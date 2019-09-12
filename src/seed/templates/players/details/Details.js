@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/players/details/Details.module.css';
+import cls from 'resources/css/seed/templates/players/details/Details.module.css';
 
 class PlayerDetails extends React.Component
 {
@@ -20,16 +20,16 @@ class PlayerDetails extends React.Component
     if (player.id == null) return <Loading />;
 
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
         {/* Suggested divs */}
-        <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
-        <label className={cx(c.txt, c.nameTxt)}>{player.name.toString()}</label>
+        <label className={cx(cls.lbl, cls.nameLbl)}>Name</label><br/>
+        <label className={cx(cls.txt, cls.nameTxt)}>{player.name.toString()}</label>
         <br/>
-        <label className={cx(c.lbl, c.photoLbl)}>Photo</label><br/>
-        <img src={player.photo.url} className={cx(c.img, c.photoImg)}></img>
+        <label className={cx(cls.lbl, cls.photoLbl)}>Photo</label><br/>
+        <img src={player.photo.url} className={cx(cls.img, cls.photoImg)}></img>
         <br/>
-        <label className={cx(c.lbl, c.isActiveLbl)}>Is active</label><br/>
-        <label className={cx(c.txt, c.isActiveTxt)}>{player.is_active.toString()}</label>
+        <label className={cx(cls.lbl, cls.isActiveLbl)}>Is active</label><br/>
+        <label className={cx(cls.txt, cls.isActiveTxt)}>{player.is_active.toString()}</label>
         <br/>
       </div>
     );

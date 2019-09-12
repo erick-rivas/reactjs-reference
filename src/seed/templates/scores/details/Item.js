@@ -10,7 +10,7 @@ import Svg from 'react-svg';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import c from 'resources/css/seed/templates/scores/details/Item.module.css';
+import cls from 'resources/css/seed/templates/scores/details/Item.module.css';
 
 class ScoreItem extends React.Component
 {
@@ -18,10 +18,10 @@ class ScoreItem extends React.Component
   {
     const score = this.props.score;
     return (
-      <div className={c.module}>
-        <div className={c.title}>{score.id}</div>
-        <div className={c.subtitle}>{JSON.stringify(score)}</div>
-        <Svg className={c.options}
+      <div className={cls.module}>
+        <div className={cls.title}>{score.id}</div>
+        <div className={cls.subtitle}>{JSON.stringify(score)}</div>
+        <Svg className={cls.options}
           src={require('resources/icons/ic_expand.svg')}
           onClick={this.onClickOptions} />
         <Menu

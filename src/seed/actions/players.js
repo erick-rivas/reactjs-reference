@@ -13,6 +13,7 @@ class _Players extends Action
     if (fetch == null)
       fetch = [
         "team.*",
+        "type.*",
       ];
 
     super(

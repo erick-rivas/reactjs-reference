@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/users/details/Details.module.css';
+import cls from 'resources/css/seed/templates/users/details/Details.module.css';
 
 class UserDetails extends React.Component
 {
@@ -20,7 +20,7 @@ class UserDetails extends React.Component
     if (user.id == null) return <Loading />;
 
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
         {/* Suggested divs */}
       </div>
     );

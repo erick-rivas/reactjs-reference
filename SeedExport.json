@@ -4,13 +4,15 @@
     "team",
     "player",
     "match",
-    "score"
+    "score",
+    "player_type"
   ],
   "components": [
     "user",
     "team",
     "player",
     "match",
-    "score"
+    "score",
+    "player_type"
   ]
 }

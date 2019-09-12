@@ -6,35 +6,35 @@ import * as React from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 
-import c from 'resources/css/seed/templates/auth/Login.module.css';
+import cls from 'resources/css/seed/templates/auth/Login.module.css';
 
 class Login extends React.Component
 {
   render()
   {
     return (
-      <div className={c.module}>
-        <div className={c.background}>
-          <div className={cx(c.container, 'animated zoomIn')}>
-              <label className={c.title}>Login</label>
+      <div className={cls.module}>
+        <div className={cls.background}>
+          <div className={cx(cls.container, 'animated zoomIn')}>
+              <label className={cls.title}>Login</label>
               <form onSubmit={this.onSubmit}>
-                <label className={c.emailLbl}>Email</label><br/>
-                <input className={c.email}
+                <label className={cls.emailLbl}>Email</label><br/>
+                <input className={cls.email}
                   name="email"
                   type="email"
                   required /><br/>
-                <label className={c.passwordLbl}>Password</label><br/>
-                <input className={c.password}
+                <label className={cls.passwordLbl}>Password</label><br/>
+                <input className={cls.password}
                   name="password"
                   type="password"
                   required /><br/>
-                <input className={c.remember}
+                <input className={cls.remember}
                   name="remember"
                   type="checkbox" />
-                <label className={c.rememberLbl}>Remember me</label><br/>
+                <label className={cls.rememberLbl}>Remember me</label><br/>
                 {this.state.error ?
-                  <div className={c.error}>{this.state.error}</div> : null}
-                <button type="submit" className={c.submit}>Login</button>
+                  <div className={cls.error}>{this.state.error}</div> : null}
+                <button type="submit" className={cls.submit}>Login</button>
               </form>
              
           </div>

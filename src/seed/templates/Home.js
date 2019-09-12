@@ -11,10 +11,11 @@ import TeamPanel from 'seed/templates/teams/Panel';
 import PlayerPanel from 'seed/templates/players/Panel';
 import MatchPanel from 'seed/templates/matches/Panel';
 import ScorePanel from 'seed/templates/scores/Panel';
+import PlayerTypePanel from 'seed/templates/player_types/Panel';
 import Sidenav from 'seed/templates/nav/Sidenav'
 import Topnav from 'seed/templates/nav/Topnav'
 
-import c from 'resources/css/seed/templates/Home.module.css';
+import cls from 'resources/css/seed/templates/Home.module.css';
 
 class Home extends React.Component
 {
@@ -23,19 +24,19 @@ class Home extends React.Component
     const { path } = this.props.match;
 
     return (
-      <div className={c.module}>
-        <div className={c.drawer}>
-          <div className={c.sidenav}>
+      <div className={cls.module}>
+        <div className={cls.drawer}>
+          <div className={cls.sidenav}>
             <Route path={`${path}`}
               component={Sidenav} />
           </div>
         </div>
-        <div className={c.container}>
-          <div className={c.topnav}>
+        <div className={cls.container}>
+          <div className={cls.topnav}>
             <Route path={`${path}`}
               component={Topnav} />
           </div>
-          <div className={c.content}>
+          <div className={cls.content}>
              <Switch>
                <Route
                  path={`${path}/users`}
@@ -52,6 +53,9 @@ class Home extends React.Component
                <Route
                  path={`${path}/scores`}
                  component={ScorePanel} />
+               <Route
+                 path={`${path}/player_types`}
+                 component={PlayerTypePanel} />
              </Switch>
           </div>
         </div>

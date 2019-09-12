@@ -12,7 +12,7 @@ import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/teams/Form.module.css';
+import cls from 'resources/css/seed/templates/teams/Form.module.css';
 
 class TeamForm extends React.Component
 {
@@ -25,11 +25,11 @@ class TeamForm extends React.Component
     if (team.id == null && teamId != null) return <Loading />;
     
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
 
-        <div className={c.header}>Team</div>
+        <div className={cls.header}>Team</div>
 
-        <div className={c.form}>
+        <div className={cls.form}>
 
           <Formik
              initialValues={team}
@@ -39,45 +39,45 @@ class TeamForm extends React.Component
           <form onSubmit={f.handleSubmit}>
             
             {/* name */}
-            <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
+            <label className={cx(cls.lbl, cls.nameLbl)}>Name</label><br/>
             <Field type="text" name="name"
-              className={cx(c.txt, c.nameTxt)} />
+              className={cx(cls.txt, cls.nameTxt)} />
             <br/>
             
             {/* logo */}
-            <label className={cx(c.lbl, c.logoLbl)}>Logo</label><br/>
+            <label className={cx(cls.lbl, cls.logoLbl)}>Logo</label><br/>
             <FileField name="logo"
               accept="image/*" setFieldValue={f.setFieldValue}
-              className={cx(c.fil, c.logoFil)}  />
+              className={cx(cls.fil, cls.logoFil)}  />
             { f.values.logo ?
-              <img src={f.values.logo.url} className={cx(c.img, c.logoImg)} /> : null }
+              <img src={f.values.logo.url} className={cx(cls.img, cls.logoImg)} /> : null }
             
             {/* description */}
-            <label className={cx(c.lbl, c.descriptionLbl)}>Description</label><br/>
+            <label className={cx(cls.lbl, cls.descriptionLbl)}>Description</label><br/>
             <Field type="text" name="description"
               component="textarea" rows="3"
-              className={cx(c.txa, c.descriptionTxa)} />
+              className={cx(cls.txa, cls.descriptionTxa)} />
             <br/>
             
             {/* market_value */}
-            <label className={cx(c.lbl, c.marketValueLbl)}>Market value</label><br/>
+            <label className={cx(cls.lbl, cls.marketValueLbl)}>Market value</label><br/>
             <Field type="number" name="market_value"
-              className={cx(c.txt, c.marketValueTxt)} />
+              className={cx(cls.txt, cls.marketValueTxt)} />
             <br/>
             
             {/* rival */}
             <div>
-            <label className={cx(c.lbl, c.rivalLbl)}>Rival</label>
+            <label className={cx(cls.lbl, cls.rivalLbl)}>Rival</label>
             <Field component="select" name="rival_id"
-              className={cx(c.ops, c.rivalOps)} >
+              className={cx(cls.ops, cls.rivalOps)} >
               <option value="">Select an option</option>
               { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
             </Field>
             <br/>
             </div>
             {this.state.error ?
-              <div className={c.error}>{this.state.error}</div> : null}
-            <button type="submit" className={c.submit}>Send</button>
+              <div className={cls.error}>{this.state.error}</div> : null}
+            <button type="submit" className={cls.submit}>Send</button>
           </form>
           )}
           />

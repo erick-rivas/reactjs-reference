@@ -15,7 +15,7 @@ import ScoreForm from 'seed/templates/scores/Form';
 
 import Modal from 'seed/components/helpers/Modal';
 
-import c from 'resources/css/seed/templates/scores/Panel.module.css';
+import cls from 'resources/css/seed/templates/scores/Panel.module.css';
 
 class ScorePanel extends React.Component
 {
@@ -24,22 +24,22 @@ class ScorePanel extends React.Component
     const { path, url } = this.props.match;
    
     const List = props =>
-      <div className={c.list}>
-        <div className={c.options}>
+      <div className={cls.list}>
+        <div className={cls.options}>
           <ScoreListOptions {...props}/>
         </div>
-        <div className={c.content}>
+        <div className={cls.content}>
           <ScoreList {...props} />
         </div>
       </div>
 
     const Details = props =>
-      <div className={c.details}>
-        <div className={c.card}>
-          <div className={c.options}>
+      <div className={cls.details}>
+        <div className={cls.card}>
+          <div className={cls.options}>
             <ScoreDetailsOptions {...props} />
           </div>
-          <div className={c.content}>
+          <div className={cls.content}>
             <ScoreDetails {...props} />
           </div>
         </div>
@@ -51,8 +51,8 @@ class ScorePanel extends React.Component
       </Modal>
 
     return (
-      <div className={c.module}>
-        <div className={c.container}>
+      <div className={cls.module}>
+        <div className={cls.container}>
           <List />
           <Route
             path={`${path}/:score_id(\\d+)`}

@@ -7,15 +7,15 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import Svg from 'react-svg';
 
-import c from 'resources/css/seed/templates/nav/Topnav.module.css';
+import cls from 'resources/css/seed/templates/nav/Topnav.module.css';
 
 class Topnav extends React.Component
 {
   render()
   {
     return (
-    <div className={c.module}>
-       <Svg className={c.menu}
+    <div className={cls.module}>
+       <Svg className={cls.menu}
         src={require('resources/icons/ic_menu.svg')} />
     </div>
     );

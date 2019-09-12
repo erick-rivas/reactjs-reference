@@ -106,6 +106,35 @@
           "write": true,
           "empty": false,
           "delete": "CASCADE"
+        },
+        {
+          "name": "type",
+          "type": "player_type",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "read": true,
+          "write": true,
+          "empty": false,
+          "delete": "CASCADE"
+        }
+      ],
+      "read": true,
+      "write": true,
+      "empty": false
+    },
+    {
+      "name": "player_type",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "length": "256",
+          "read": true,
+          "write": true,
+          "empty": false
         }
       ],
       "read": true,
@@ -382,6 +411,19 @@
             "write": true,
             "empty": false,
             "delete": "CASCADE"
+          },
+          {
+            "name": "type",
+            "type": "player_type",
+            "is_fk": true,
+            "card": {
+              "ref": "1",
+              "has": "0..*"
+            },
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE"
           }
         ],
         "read": true,
@@ -490,6 +532,22 @@
             "write": true,
             "empty": false,
             "delete": "CASCADE"
+          }
+        ],
+        "read": true,
+        "write": true,
+        "empty": false
+      },
+      {
+        "name": "player_type",
+        "attrs": [
+          {
+            "name": "name",
+            "type": "string",
+            "length": "256",
+            "read": true,
+            "write": true,
+            "empty": false
           }
         ],
         "read": true,
@@ -630,6 +688,19 @@
             "write": true,
             "empty": false,
             "delete": "CASCADE"
+          },
+          {
+            "name": "type",
+            "type": "player_type",
+            "is_fk": true,
+            "card": {
+              "ref": "1",
+              "has": "0..*"
+            },
+            "read": true,
+            "write": true,
+            "empty": false,
+            "delete": "CASCADE"
           }
         ],
         "read": true,
@@ -738,6 +809,22 @@
             "write": true,
             "empty": false,
             "delete": "CASCADE"
+          }
+        ],
+        "read": true,
+        "write": true,
+        "empty": false
+      },
+      {
+        "name": "player_type",
+        "attrs": [
+          {
+            "name": "name",
+            "type": "string",
+            "length": "256",
+            "read": true,
+            "write": true,
+            "empty": false
           }
         ],
         "read": true,

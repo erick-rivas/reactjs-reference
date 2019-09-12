@@ -15,7 +15,7 @@ import UserForm from 'seed/templates/users/Form';
 
 import Modal from 'seed/components/helpers/Modal';
 
-import c from 'resources/css/seed/templates/users/Panel.module.css';
+import cls from 'resources/css/seed/templates/users/Panel.module.css';
 
 class UserPanel extends React.Component
 {
@@ -24,22 +24,22 @@ class UserPanel extends React.Component
     const { path, url } = this.props.match;
    
     const List = props =>
-      <div className={c.list}>
-        <div className={c.options}>
+      <div className={cls.list}>
+        <div className={cls.options}>
           <UserListOptions {...props}/>
         </div>
-        <div className={c.content}>
+        <div className={cls.content}>
           <UserList {...props} />
         </div>
       </div>
 
     const Details = props =>
-      <div className={c.details}>
-        <div className={c.card}>
-          <div className={c.options}>
+      <div className={cls.details}>
+        <div className={cls.card}>
+          <div className={cls.options}>
             <UserDetailsOptions {...props} />
           </div>
-          <div className={c.content}>
+          <div className={cls.content}>
             <UserDetails {...props} />
           </div>
         </div>
@@ -51,8 +51,8 @@ class UserPanel extends React.Component
       </Modal>
 
     return (
-      <div className={c.module}>
-        <div className={c.container}>
+      <div className={cls.module}>
+        <div className={cls.container}>
           <List />
           <Route
             path={`${path}/:user_id(\\d+)`}

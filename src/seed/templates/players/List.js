@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import Item from 'seed/templates/players/details/Item';
 import Loading from 'seed/components/helpers/Loading';
 
-import c from 'resources/css/seed/templates/players/List.module.css';
+import cls from 'resources/css/seed/templates/players/List.module.css';
 
 class PlayerList extends React.Component
 {
@@ -25,8 +25,8 @@ class PlayerList extends React.Component
     const playerList = players.map(item =>
         <NavLink 
           to={`${url}/${item.id}`}
-          className={c.item}
-          activeClassName={c.active}>
+          className={cls.item}
+          activeClassName={cls.active}>
           <Item 
             key={item.id} 
             id={item.id}
@@ -34,7 +34,7 @@ class PlayerList extends React.Component
       </NavLink>);
 
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
         { playerList }
       </div>
     );

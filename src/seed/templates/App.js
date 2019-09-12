@@ -11,14 +11,14 @@ import Home from 'seed/templates/Home'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
-import c from 'resources/css/seed/templates/App.module.css';
+import cls from 'resources/css/seed/templates/App.module.css';
 
 class App extends React.Component
 {
   render()
   {
     return (
-      <div className={c.module}>
+      <div className={cls.module}>
         <Router>
           <Switch>
              <Route path='/templates/login' component={Login} />

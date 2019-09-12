@@ -6,14 +6,14 @@ import * as React from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 
-import c from 'resources/css/seed/templates/auth/Logout.module.css';
+import cls from 'resources/css/seed/templates/auth/Logout.module.css';
 
 class Logout extends React.Component
 {
   render()
   {
     return (
-      <div className={c.module}></div>
+      <div className={cls.module}></div>
     );
   }
 

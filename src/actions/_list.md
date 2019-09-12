@@ -3,6 +3,7 @@
 ## Table of content
 -  [matches](#matches)
 -  [players](#players)
+-  [playerTypes](#playerTypes)
 -  [scores](#scores)
 -  [teams](#teams)
 -  [users](#users)
@@ -36,6 +37,7 @@
   "photo_id": null,
   "is_active": null,
   "team_id": null,
+  "type_id": null,
 }
 ```
 -  Dataset: this.props.players
@@ -46,6 +48,23 @@
    -  setPlayer(playerId, player, callback?)
    -  deletePlayer(playerId, callback?)
 -  Reference: [players](../seed/actions/players.js)
+
+##  playerTypes
+
+- Model structure:
+```json
+{
+  "name": null,
+}
+```
+-  Dataset: this.props.playerTypes
+-  Methods:
+   -  getPlayerTypeList(filters, callback?)
+   -  getPlayerTypeDetails(playerTypeId, callback?)
+   -  savePlayerType(playerType, callback?)
+   -  setPlayerType(playerTypeId, playerType, callback?)
+   -  deletePlayerType(playerTypeId, callback?)
+-  Reference: [playerTypes](../seed/actions/player_types.js)
 
 ##  scores
 
