@@ -8,6 +8,8 @@ node_modules
 src/seed/actions/*
 src/seed/reducers/*
 src/seed/templates/*
+src/seed/gql/*
+src/seed/redux.js
 src/actions/*
 src/components/*
 src/resources/css/*
@@ -20,8 +22,6 @@ src/resources/css/*
 ?src/index.js
 ?src/resources/*
 ?src/settings/*
-!src/seed/api.js
-!src/seed/graphql.js
 !.keep
 !.gitignore
 !*helpers

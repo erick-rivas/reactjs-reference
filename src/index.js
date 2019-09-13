@@ -13,7 +13,7 @@ import Store from 'settings/bin/Store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
+import { SeedProvider } from 'seed/context'
 
 import 'index.css';
 
@@ -21,20 +21,22 @@ const store = Store();
 const muiTheme = MuiTheme();
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: `$url/graphql`,
+  uri: Urls.GRAPH_URL,
   cache
 });
 
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ApolloProvider client={client}>
-          <MuiThemeProvider theme={muiTheme}>
-              <Popup />
-              <App />
-          </MuiThemeProvider>
-        </ApolloProvider>
-    </Provider>,
+    <SeedProvider>
+      <Provider store={store}>
+          <ApolloProvider client={client}>
+            <MuiThemeProvider theme={muiTheme}>
+                <Popup />
+                <App />
+            </MuiThemeProvider>
+          </ApolloProvider>
+      </Provider>
+    </SeedProvider>,
     document.getElementById('root')
 );
 Worker();

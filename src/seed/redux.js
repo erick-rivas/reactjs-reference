@@ -123,3 +123,4 @@ const redux = component =>
     mergeProps
   )(component));
 export default redux;
+
