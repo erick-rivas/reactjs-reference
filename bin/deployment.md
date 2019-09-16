@@ -24,14 +24,9 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 -  Configure src/settings/Urls.js file with api & server settings
 
-### Deploy example
+### Deploy
 
--  Build app
+-  Run script
 ```bash
-$ npm run-script build
-```
-
--  Deploy to aws.
-```bash
-$ eb deploy
+$ ./bin/deploy
 ```

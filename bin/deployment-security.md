@@ -2,24 +2,6 @@
 
 This file contains guides to enable security practices (hardware & deployment) for reactJS web
 
-## Token authentication
-
-To enable token authentication:
-
-- Add ENABLE_SECURITY=true to .env files
-
-### Test token request
-
-- Generate temp token
-```bash
-(.venv)$ python3 manage.py drf_create_token 
-```
-
-- Send a request with the authentication params
-```bash
-$ curl -i -X GET http://127.0.0.1:8000/api/players -H 'Authorization: Token '
-```
-
 ## Https
 
 To enable a https connection:
