@@ -2,37 +2,29 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import redux from 'seed/redux';
+import React, { useEffect } from 'react';
+import * as api from 'seed/api'
 import cx from 'classnames';
 
-import cls from 'resources/css/seed/templates/auth/Logout.module.css';
+import styles from 'resources/css/seed/templates/auth/Logout.module.css';
 
-class Logout extends React.Component
+function Logout(props)
 {
-  render()
-  {
-    return (
-      <div className={cls.module}></div>
-    );
+  const [logout, onLogout] = api.post("/auth/logout")
+
+  if (onLogout.called && !onLogout.loading) {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('id');
+    props.history.replace('/');
   }
 
-  componentDidMount()
-  {
-    let callback = res =>
-    {
-      if (res.ok) this.onLogout(res.body);
-      else this.onError(res.body);
-    }
-    this.props.logout(callback);
-  }
+  useEffect(() => {
+    logout();
+  }, []);
 
-  onLogout(res)
-  {
-    this.props.history.replace('/');
-  }
-
-  onError(error){}
+  return (
+    <div className={styles.module}></div>
+  );
 }
 
-export default redux(Logout);
+export default Logout;

@@ -4,8 +4,8 @@ __Seed builder__v1.0
   Modify via builder
 */
 
-export const UPDATE_MATCH = `
-mutation Update(
+export const SET_MATCH = `
+mutation Set(
   $id: Int!,
   $date: DateTime,
   $type: String,
@@ -13,7 +13,7 @@ mutation Update(
   $visitor: Int,
 )
 {
-  updateMatch(
+  setMatch(
     id: $id,
     date: $date,
     type: $type,
@@ -36,15 +36,15 @@ mutation Update(
 }
 `
 
-export const CREATE_MATCH = `
-mutation Create(
+export const SAVE_MATCH = `
+mutation Save(
   $date: DateTime!,
   $type: String!,
   $local: Int!,
   $visitor: Int!,
 )
 {
-  createMatch(
+  saveMatch(
     date: $date,
     type: $type,
     local: $local,
@@ -68,8 +68,8 @@ mutation Delete($id: Int!)
 }
 `
 
-export const UPDATE_PLAYER = `
-mutation Update(
+export const SET_PLAYER = `
+mutation Set(
   $id: Int!,
   $name: String,
   $photo: Int,
@@ -78,7 +78,7 @@ mutation Update(
   $type: Int,
 )
 {
-  updatePlayer(
+  setPlayer(
     id: $id,
     name: $name,
     photo: $photo,
@@ -105,8 +105,8 @@ mutation Update(
 }
 `
 
-export const CREATE_PLAYER = `
-mutation Create(
+export const SAVE_PLAYER = `
+mutation Save(
   $name: String!,
   $photo: Int!,
   $isActive: Boolean!,
@@ -114,7 +114,7 @@ mutation Create(
   $type: Int!,
 )
 {
-  createPlayer(
+  savePlayer(
     name: $name,
     photo: $photo,
     isActive: $isActive,
@@ -139,13 +139,13 @@ mutation Delete($id: Int!)
 }
 `
 
-export const UPDATE_PLAYER_TYPE = `
-mutation Update(
+export const SET_PLAYER_TYPE = `
+mutation Set(
   $id: Int!,
   $name: String,
 )
 {
-  updatePlayerType(
+  setPlayerType(
     id: $id,
     name: $name,
   ) {
@@ -158,12 +158,12 @@ mutation Update(
 }
 `
 
-export const CREATE_PLAYER_TYPE = `
-mutation Create(
+export const SAVE_PLAYER_TYPE = `
+mutation Save(
   $name: String!,
 )
 {
-  createPlayerType(
+  savePlayerType(
     name: $name,
   ) {
     playerType
@@ -184,15 +184,15 @@ mutation Delete($id: Int!)
 }
 `
 
-export const UPDATE_SCORE = `
-mutation Update(
+export const SET_SCORE = `
+mutation Set(
   $id: Int!,
   $min: Int,
   $player: Int,
   $match: Int,
 )
 {
-  updateScore(
+  setScore(
     id: $id,
     min: $min,
     player: $player,
@@ -213,14 +213,14 @@ mutation Update(
 }
 `
 
-export const CREATE_SCORE = `
-mutation Create(
+export const SAVE_SCORE = `
+mutation Save(
   $min: Int!,
   $player: Int!,
   $match: Int!,
 )
 {
-  createScore(
+  saveScore(
     min: $min,
     player: $player,
     match: $match,
@@ -243,8 +243,8 @@ mutation Delete($id: Int!)
 }
 `
 
-export const UPDATE_TEAM = `
-mutation Update(
+export const SET_TEAM = `
+mutation Set(
   $id: Int!,
   $name: String,
   $logo: Int,
@@ -253,7 +253,7 @@ mutation Update(
   $rival: Int,
 )
 {
-  updateTeam(
+  setTeam(
     id: $id,
     name: $name,
     logo: $logo,
@@ -278,8 +278,8 @@ mutation Update(
 }
 `
 
-export const CREATE_TEAM = `
-mutation Create(
+export const SAVE_TEAM = `
+mutation Save(
   $name: String!,
   $logo: Int!,
   $description: String!,
@@ -287,7 +287,7 @@ mutation Create(
   $rival: Int,
 )
 {
-  createTeam(
+  saveTeam(
     name: $name,
     logo: $logo,
     description: $description,
@@ -312,8 +312,8 @@ mutation Delete($id: Int!)
 }
 `
 
-export const UPDATE_USER = `
-mutation Update(
+export const SET_USER = `
+mutation Set(
   $id: Int!,
   $username: String,
   $firstName: String,
@@ -324,7 +324,7 @@ mutation Update(
   $teams: [Int],
 )
 {
-  updateUser(
+  setUser(
     id: $id,
     username: $username,
     firstName: $firstName,
@@ -351,8 +351,8 @@ mutation Update(
 }
 `
 
-export const CREATE_USER = `
-mutation Create(
+export const SAVE_USER = `
+mutation Save(
   $username: String!,
   $firstName: String!,
   $lastName: String!,
@@ -362,7 +362,7 @@ mutation Create(
   $teams: [Int],
 )
 {
-  createUser(
+  saveUser(
     username: $username,
     firstName: $firstName,
     lastName: $lastName,
