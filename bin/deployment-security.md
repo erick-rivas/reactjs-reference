@@ -17,7 +17,10 @@ To enable a https connection:
    -  Go to inbound
    -  Enable 443 port
 
--  Configure DNS settings in domain provider, e.g *godaddy*
+-  Set proxy server to apache
+    -  Open elastic beanstalk panel
+    -  Go to Configuration > Software
+    -  Select apache as proxy server
 
 ### Configure server
 
@@ -33,11 +36,10 @@ $ eb ssh
 
 ```bash
 $ sudo vim /etc/httpd/conf.d/temp.conf
-# Listen 80
-# 
-# 	ServerName 
-# 	DocumentRoot /var/www/html
-# 
+<VirtualHost *:80 *:443>
+	ServerName <HTTPS_DOMAIN>
+	DocumentRoot /var/www/html
+</VirtualHost>
 ```
 
 -  Install and configure certbot
@@ -45,9 +47,8 @@ $ sudo vim /etc/httpd/conf.d/temp.conf
 ```bash
 $ sudo wget https://dl.eff.org/certbot-auto
 $ sudo chmod a+x ./certbot-auto
-$ sudo ./certbot-auto certonly --debug --webroot
-# root: /var/www/html
 $ sudo ./certbot-auto certonly --debug
+  # Select 1. apache
 ```
 
 -  Copy bin/http-instance.config to .ebextensions folder
