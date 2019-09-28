@@ -26,7 +26,7 @@ const options = (method = "GET", body={}) =>
   return res;
 }
 
-const mutate = (method, endpoint, params = {}) => {
+const useMutate = (method, endpoint, params = {}) => {
   const [call, setCall] = useState({body: null, called: false})
   const calling = (args = {}) =>
      args.body ? setCall({body: args.body}) : setCall({body: {}})
@@ -39,17 +39,16 @@ const mutate = (method, endpoint, params = {}) => {
   return [calling, {...fetch, loading: fetch.isLoading, called: call.called }];
  }
 
-const get = (endpoint, params = {}) =>
+const useGet = (endpoint, params = {}) =>
   useFetch(`${Urls.API_URL}${endpoint}/?${query(params)}`);
 
-const post = (endpoint, params = {}) =>
-  mutate("POST", endpoint, params);
+const usePost = (endpoint, params = {}) =>
+  useMutate("POST", endpoint, params);
 
-const put = (endpoint, params = {}) =>
-  mutate("PUT", endpoint, params);
+const usePut = (endpoint, params = {}) =>
+  useMutate("PUT", endpoint, params);
 
-const del = (endpoint, params = {}) =>
-  mutate("DELETE", endpoint, params);
+const useDel = (endpoint, params = {}) =>
+  useMutate("DELETE", endpoint, params);
 
-export { get, post, put, del }
-
+export { useGet, usePost, usePut, useDel }

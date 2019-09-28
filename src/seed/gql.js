@@ -1,35 +1,34 @@
-import { useQuery } from '@apollo/react-hooks';
-import { useMutation } from '@apollo/react-hooks';
+import * as Apollo from '@apollo/react-hooks';
 import { useContext } from 'react'
 import { gql } from 'apollo-boost';
 import {SINGULARS} from 'seed/gql/const'
 import SeedContext from 'seed/context'
 
 
-const get = (raw, id) => {
-  const model = raw.match(/[\w]+/g)[0]
-  const wrapper = `${model}(id: ${id})`
-  const query = raw.replace(model, wrapper)
-  return useQuery(gql(query));
-}
-
-const list = (raw, args) => {
+const useQuery = (raw, args) => {
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}${args ? '(query: "' + args + '")' : ''}`
   const query = raw.replace(model, wrapper)
   const { addGqlQuery } = useContext(SeedContext)
 
-  return useQuery(gql(query), {
+  return Apollo.useQuery(gql(query), {
     onCompleted: () => addGqlQuery(query)
   });
 }
 
-const update = raw => {
-  const query = gql(raw)
-  return useMutation(query);
+const useGet = (raw, id) => {
+  const model = raw.match(/[\w]+/g)[0]
+  const wrapper = `${model}(id: ${id})`
+  const query = raw.replace(model, wrapper)
+  return Apollo.useQuery(gql(query));
 }
 
-const create = raw => {
+const useSet = raw => {
+  const query = gql(raw)
+  return Apollo.useMutation(query);
+}
+
+const useSave = raw => {
   const query = gql(raw);
   const { gqlQueries } = useContext(SeedContext);
   const cacheQueries = gqlQueries.filter(cQueryRaw => {
@@ -38,14 +37,14 @@ const create = raw => {
     const cHeader = "create" + cModel.charAt(0).toUpperCase() + cModel.slice(1)
     return raw.indexOf(cHeader) != -1;
   })
-  return useMutation(query, {
+  return Apollo.useMutation(query, {
     refetchQueries: cacheQueries.map(q => ({ query: gql(q) }))
   });
 }
 
-const del = raw => {
+const useDel = raw => {
   const { gqlQueries } = useContext(SeedContext);
-  return useMutation(gql(raw), {
+  return Apollo.useMutation(gql(raw), {
     update(cache, { data }) {
       gqlQueries.map(cQueryRaw => {
         const cModels = cQueryRaw.match(/[\w]+/g)[0]
@@ -72,4 +71,4 @@ const del = raw => {
   });
 }
 
-export { get, list, update, create, del }
+export { useQuery, useGet, useSet, useSave, useDel }

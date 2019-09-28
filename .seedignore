@@ -7,7 +7,7 @@ build
 node_modules
 src/seed/actions/*
 src/seed/reducers/*
-src/seed/templates/*
+src/seed/examples/*
 src/seed/gql/*
 src/seed/redux.js
 src/actions/*

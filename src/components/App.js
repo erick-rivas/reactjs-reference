@@ -2,30 +2,27 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
+import React from 'react';
 import cx from 'classnames';
 
-import Templates from 'seed/templates/App'
+import Examples from 'seed/examples/App'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
-import cls from 'resources/css/App.module.css';
+import styles from 'resources/css/App.module.css';
 
-class App extends React.Component
+function App(props)
 {
-  render()
-  {
-    return (
-      <div className={cls.module}>
-        <Router>
-          <Switch>
-            <Route path="/templates" component={Templates} />
-            <Redirect to="/templates" />
-          </Switch>
-        </Router>
-      </div>
-    );
-  }
+  return (
+    <div className={styles.module}>
+      <Router>
+        <Switch>
+          <Route path="/examples" component={Examples} />
+          <Redirect to="/examples" />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
