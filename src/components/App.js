@@ -5,7 +5,7 @@ __Seed builder__v1.0
 import React from 'react';
 import cx from 'classnames';
 
-import Examples from 'seed/examples/App'
+import Examples from 'examples/App'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 

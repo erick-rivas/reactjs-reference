@@ -48,7 +48,7 @@ const usePost = (endpoint, params = {}) =>
 const usePut = (endpoint, params = {}) =>
   useMutate("PUT", endpoint, params);
 
-const useDel = (endpoint, params = {}) =>
+const useDelete = (endpoint, params = {}) =>
   useMutate("DELETE", endpoint, params);
 
-export { useGet, usePost, usePut, useDel }
+export { useGet, usePost, usePut, useDelete }

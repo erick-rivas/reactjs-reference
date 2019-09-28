@@ -7,12 +7,12 @@ build
 node_modules
 src/seed/actions/*
 src/seed/reducers/*
-src/seed/examples/*
 src/seed/gql/*
 src/seed/redux.js
 src/actions/*
 src/components/*
 src/resources/css/*
+src/examples
 ?app.js
 ?package.json
 ?package-lock.json
