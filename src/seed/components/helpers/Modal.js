@@ -7,13 +7,12 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import ModalContainer from '@material-ui/core/Modal';
-import IconButton from '@material-ui/core/IconButton';
 
-import c from 'resources/css/seed/helpers/Modal.module.css';
+import styles from 'resources/css/seed/helpers/Modal.module.css';
 
 class Modal extends React.Component
 {
-  render() 
+  render()
   {
     const children = React.Children.map(this.props.children,
       child =>
@@ -34,24 +33,24 @@ class Modal extends React.Component
     } : {};
 
     const closeStyle = width && height ? {
-      marginLeft: (width - 30) + "px"
+      marginLeft: (width - 24) + "px"
     } : {};
 
     return (
       <ModalContainer
-        className={c.module}
+        className={styles.module}
         open={true}
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={cx(c.container,'animated',animation)} style={containerStyle}>
+        <div className={cx(styles.container,'animated',animation)} style={containerStyle}>
 
-          <IconButton
-            className={c.close}
+          <button
+            className={styles.close}
             style={closeStyle}
             onClick={this.onClose}>
-            <i class="fas fa-times"></i>
-          </IconButton>
+            <i className="fas fa-times"></i>
+          </button>
 
           {children}
 
