@@ -3,17 +3,17 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import UserDetails from 'examples/users/Details';
 import UserList from 'examples/users/List';
+import UserTable from 'examples/users/Table';
 import UserListOptions from 'examples/users/options/List';
 import UserDetailsOptions from 'examples/users/options/Details';
 import UserForm from 'examples/users/Form';
-
 import Modal from 'seed/components/helpers/Modal';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/users/Panel.module.css';
 
 function UserPanel(props)
@@ -27,6 +27,16 @@ function UserPanel(props)
       </div>
       <div className={styles.content}>
         <UserList {...props} />
+      </div>
+    </div>
+
+  const Table = props =>
+    <div className={styles.table}>
+      <div className={styles.options}>
+        <UserListOptions {...props}/>
+      </div>
+      <div className={styles.content}>
+        <UserTable {...props} />
       </div>
     </div>
 
@@ -44,7 +54,7 @@ function UserPanel(props)
 
   const Form = props =>
     <Modal {...props}>
-      <UserForm />
+      <UserForm {...props} />
     </Modal>
 
   return (
@@ -52,7 +62,7 @@ function UserPanel(props)
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={List} />
+          component={Table} />
         <Route
           path={`${path}/:user_id(\\d+)`}
           component={Details} />

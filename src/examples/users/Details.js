@@ -2,40 +2,44 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useDetail } from 'seed/gql'
 
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/users/Details.module.css';
 
-class UserDetails extends React.Component
+const USER  = `
 {
-  render()
-  {
-    const userId = this.getUserId();
-    const user = Util.get(this.props.users, userId);
-    if (user.id == null) return <Loading />;
-
-    return (
-      <div className={styles.module}>
-        {/* Suggested divs */}
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    const userId = this.getUserId()
-    this.props.getUserDetails(userId);
-  }
-
-  getUserId() 
-  {
-    return this.props.match.params.user_id;
+  user {
+    id
+    username
+    firstName
+    lastName
+    email
+    isActive
+    teams {
+      id
+    }
   }
 }
+`
+function UserDetails(props)
+{
+  const { user_id }  = props.match.params;
 
-export default redux(UserDetails);
+  const qUser = useDetail(USER, user_id);
+
+  if (qUser.loading) return <Loading />
+  if (qUser.error) return "Error"
+
+  const { user = {} } = qUser.data
+
+  return (
+    <div className={styles.module}>
+    </div>
+  );
+}
+
+export default UserDetails;

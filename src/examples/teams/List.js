@@ -2,48 +2,67 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
 import Item from 'examples/teams/list/Item';
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/teams/List.module.css';
 
-class TeamList extends React.Component
+const TEAMS  = `
 {
-  render()
-  {
-    const teams = Util.filter(this.props.teams, {})
-    if (teams == null) return <Loading />;
-
-    const { url } = this.props.match;
-
-    const teamList = teams.map(item =>
-        <NavLink 
-          to={`${url}/${item.id}`}
-          className={styles.item}
-          activeClassName={styles.active}>
-          <Item 
-            key={item.id} 
-            id={item.id}
-            team={item}/>
-      </NavLink>);
-
-    return (
-      <div className={styles.module}>
-        { teamList }
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    this.props.getTeamList({});
+  teams {
+    id
+    name
+    description
+    marketValue
+    logo {
+      id
+    }
+    rival {
+      id
+    }
+    identityDocs {
+      id
+    }
+    players {
+      id
+    }
   }
 }
+`
 
-export default redux(TeamList);
+function TeamList(props)
+{
+  const { url } = props.match;
+
+  const qTeams = useQuery(TEAMS);
+
+  if (qTeams.loading) return <Loading />
+  if (qTeams.error) return "Error"
+
+  const { teams } = qTeams.data
+
+  const teamList = teams.map(item =>
+    <NavLink
+      key={item.id}
+      to={`${url}/${item.id}`}
+      className={styles.item}
+      activeClassName={styles.active}>
+      <Item
+        key={item.id}
+        id={item.id}
+        team={item}/>
+    </NavLink>);
+
+  return (
+    <div className={styles.module}>
+      { teamList }
+    </div>
+  );
+}
+
+export default TeamList;

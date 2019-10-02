@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/nav/Sidenav.module.css';
 
 function Sidenav(props)
@@ -14,7 +14,7 @@ function Sidenav(props)
   return (
     <div className={styles.module}>
       <header className={styles.header}>
-        Seed builder
+        Seed Builder
         <div className={styles.subtitle}>Panel</div>
       </header>
       <nav className={styles.nav}>
@@ -37,10 +37,10 @@ function Sidenav(props)
           </li>
           <li>
             <NavLink
-              to={`${url}/player_types`}
-              className={cx(styles.playerTypeItem, styles.item)}
+              to={`${url}/player_positions`}
+              className={cx(styles.playerPositionItem, styles.item)}
               activeClassName={styles.active}>
-              Player types
+              Player positions
             </NavLink>
           </li>
           <li>

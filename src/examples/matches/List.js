@@ -2,48 +2,63 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
 import Item from 'examples/matches/list/Item';
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/matches/List.module.css';
 
-class MatchList extends React.Component
+const MATCHES  = `
 {
-  render()
-  {
-    const matches = Util.filter(this.props.matches, {})
-    if (matches == null) return <Loading />;
-
-    const { url } = this.props.match;
-
-    const matchList = matches.map(item =>
-        <NavLink 
-          to={`${url}/${item.id}`}
-          className={styles.item}
-          activeClassName={styles.active}>
-          <Item 
-            key={item.id} 
-            id={item.id}
-            match={item}/>
-      </NavLink>);
-
-    return (
-      <div className={styles.module}>
-        { matchList }
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    this.props.getMatchList({});
+  matches {
+    id
+    date
+    type
+    local {
+      id
+    }
+    visitor {
+      id
+    }
+    scores {
+      id
+    }
   }
 }
+`
 
-export default redux(MatchList);
+function MatchList(props)
+{
+  const { url } = props.match;
+
+  const qMatches = useQuery(MATCHES);
+
+  if (qMatches.loading) return <Loading />
+  if (qMatches.error) return "Error"
+
+  const { matches } = qMatches.data
+
+  const matchList = matches.map(item =>
+    <NavLink
+      key={item.id}
+      to={`${url}/${item.id}`}
+      className={styles.item}
+      activeClassName={styles.active}>
+      <Item
+        key={item.id}
+        id={item.id}
+        match={item}/>
+    </NavLink>);
+
+  return (
+    <div className={styles.module}>
+      { matchList }
+    </div>
+  );
+}
+
+export default MatchList;

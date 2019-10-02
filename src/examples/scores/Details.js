@@ -2,43 +2,47 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useDetail } from 'seed/gql'
 
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/scores/Details.module.css';
 
-class ScoreDetails extends React.Component
+const SCORE  = `
 {
-  render()
-  {
-    const scoreId = this.getScoreId();
-    const score = Util.get(this.props.scores, scoreId);
-    if (score.id == null) return <Loading />;
-
-    return (
-      <div className={styles.module}>
-        {/* Suggested divs */}
-        <label className={cx(styles.lbl, styles.minLbl)}>Min</label><br/>
-        <label className={cx(styles.txt, styles.minTxt)}>{score.min.toString()}</label>
-        <br/>
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    const scoreId = this.getScoreId()
-    this.props.getScoreDetails(scoreId);
-  }
-
-  getScoreId() 
-  {
-    return this.props.match.params.score_id;
+  score {
+    id
+    min
+    player {
+      id
+    }
+    match {
+      id
+    }
   }
 }
+`
+function ScoreDetails(props)
+{
+  const { score_id }  = props.match.params;
 
-export default redux(ScoreDetails);
+  const qScore = useDetail(SCORE, score_id);
+
+  if (qScore.loading) return <Loading />
+  if (qScore.error) return "Error"
+
+  const { score = {} } = qScore.data
+
+  return (
+    <div className={styles.module}>
+      <label className={cx(styles.lbl, styles.minLbl)}>Min</label>
+      <br/>
+      <label className={cx(styles.txt, styles.minTxt)}>{score.min.toString()}</label>
+      <br/>
+    </div>
+  );
+}
+
+export default ScoreDetails;

@@ -26,29 +26,37 @@ const options = (method = "GET", body={}) =>
   return res;
 }
 
-const useMutate = (method, endpoint, params = {}) => {
+const useMutate = (method, endpoint, mutOptions = {}) => {
   const [call, setCall] = useState({body: null, called: false})
-  const calling = (args = {}) =>
-     args.body ? setCall({body: args.body}) : setCall({body: {}})
-  const fetch = useFetch(`${Urls.API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/?${query(params)}`, {
+  const calling = body =>
+     body ? setCall({body: body}) : setCall({body: {}})
+  const fetch = useFetch(`${Urls.API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
     ...options(method, call.body),
     depends: [call.body != null]
   });
-  if (call.body != null && !call.called && fetch.isLoading) setCall({...call, called: true});
-  if (call.body != null && call.called && !fetch.isLoading) setCall({body: null, called: false});
-  return [calling, {...fetch, loading: fetch.isLoading, called: call.called }];
+  if (call.body != null && !call.called && fetch.isLoading)
+    setCall({...call, called: true});
+  if (call.body != null && call.called && !fetch.isLoading){
+    if (mutOptions.onCompleted != null && fetch.error == null)
+      mutOptions.onCompleted(fetch.data)
+    if (mutOptions.onError != null && fetch.error != null)
+      mutOptions.onError(fetch.error)
+
+    setCall({body: null, called: false});
+  }
+  return [calling, {...fetch, loading: fetch.isLoading, called: call.called}];
  }
 
 const useGet = (endpoint, params = {}) =>
   useFetch(`${Urls.API_URL}${endpoint}/?${query(params)}`);
 
-const usePost = (endpoint, params = {}) =>
-  useMutate("POST", endpoint, params);
+const usePost = (endpoint, options = {}) =>
+  useMutate("POST", endpoint, options);
 
-const usePut = (endpoint, params = {}) =>
-  useMutate("PUT", endpoint, params);
+const usePut = (endpoint, options = {}) =>
+  useMutate("PUT", endpoint, options);
 
-const useDelete = (endpoint, params = {}) =>
-  useMutate("DELETE", endpoint, params);
+const useDelete = (endpoint, options = {}) =>
+  useMutate("DELETE", endpoint, options);
 
 export { useGet, usePost, usePut, useDelete }

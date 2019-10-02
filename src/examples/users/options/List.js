@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/users/options/List.module.css';
 
 function UserListOptions(props)

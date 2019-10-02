@@ -3,11 +3,11 @@ __Seed builder__v1.0
   AUTO_GENERATED (Read only)
   Modify via builder
 */
-import Actions from 'actions/playerTypes';
+import Actions from 'actions/playerPositions';
 
 import Reducer from 'seed/helpers/reducer';
 
-class _PlayerTypes extends Reducer
+class _PlayerPositions extends Reducer
 {
   constructor()
   {
@@ -20,4 +20,4 @@ class _PlayerTypes extends Reducer
   };
 }
 
-export default _PlayerTypes;
+export default _PlayerPositions;

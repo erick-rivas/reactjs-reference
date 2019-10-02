@@ -4,6 +4,21 @@ __Seed builder__v1.0
   Modify via builder
 */
 
+export const MATCH = `
+{
+  match {
+    id
+    date
+    type
+    local {
+      id
+    }
+    visitor {
+      id
+    }
+  }
+}
+`
 export const SET_MATCH = `
 mutation Set(
   $id: Int!,
@@ -20,8 +35,7 @@ mutation Set(
     local: $local,
     visitor: $visitor,
   ) {
-    match
-    {
+    match {
       id
       date
       type
@@ -50,8 +64,7 @@ mutation Save(
     local: $local,
     visitor: $visitor,
   ) {
-    match
-    {
+    match {
       id
     }
   }
@@ -68,6 +81,24 @@ mutation Delete($id: Int!)
 }
 `
 
+export const PLAYER = `
+{
+  player {
+    id
+    name
+    isActive
+    photo {
+      id
+    }
+    team {
+      id
+    }
+    position {
+      id
+    }
+  }
+}
+`
 export const SET_PLAYER = `
 mutation Set(
   $id: Int!,
@@ -75,7 +106,7 @@ mutation Set(
   $photo: Int,
   $isActive: Boolean,
   $team: Int,
-  $type: Int,
+  $position: Int,
 )
 {
   setPlayer(
@@ -84,10 +115,9 @@ mutation Set(
     photo: $photo,
     isActive: $isActive,
     team: $team,
-    type: $type,
+    position: $position,
   ) {
-    player
-    {
+    player {
       id
       name
       isActive
@@ -97,7 +127,7 @@ mutation Set(
       team {
         id
       }
-      type {
+      position {
         id
       }
     }
@@ -111,7 +141,7 @@ mutation Save(
   $photo: Int!,
   $isActive: Boolean!,
   $team: Int!,
-  $type: Int!,
+  $position: Int!,
 )
 {
   savePlayer(
@@ -119,10 +149,9 @@ mutation Save(
     photo: $photo,
     isActive: $isActive,
     team: $team,
-    type: $type,
+    position: $position,
   ) {
-    player
-    {
+    player {
       id
     }
   }
@@ -139,18 +168,25 @@ mutation Delete($id: Int!)
 }
 `
 
-export const SET_PLAYER_TYPE = `
+export const PLAYER_POSITION = `
+{
+  playerPosition {
+    id
+    name
+  }
+}
+`
+export const SET_PLAYER_POSITION = `
 mutation Set(
   $id: Int!,
   $name: String,
 )
 {
-  setPlayerType(
+  setPlayerPosition(
     id: $id,
     name: $name,
   ) {
-    playerType
-    {
+    playerPosition {
       id
       name
     }
@@ -158,32 +194,45 @@ mutation Set(
 }
 `
 
-export const SAVE_PLAYER_TYPE = `
+export const SAVE_PLAYER_POSITION = `
 mutation Save(
   $name: String!,
 )
 {
-  savePlayerType(
+  savePlayerPosition(
     name: $name,
   ) {
-    playerType
-    {
+    playerPosition {
       id
     }
   }
 }
 `
 
-export const DELETE_PLAYER_TYPE = `
+export const DELETE_PLAYER_POSITION = `
 mutation Delete($id: Int!)
 {
-  deletePlayerType(id: $id)
+  deletePlayerPosition(id: $id)
   {
     id
   }
 }
 `
 
+export const SCORE = `
+{
+  score {
+    id
+    min
+    player {
+      id
+    }
+    match {
+      id
+    }
+  }
+}
+`
 export const SET_SCORE = `
 mutation Set(
   $id: Int!,
@@ -198,8 +247,7 @@ mutation Set(
     player: $player,
     match: $match,
   ) {
-    score
-    {
+    score {
       id
       min
       player {
@@ -225,8 +273,7 @@ mutation Save(
     player: $player,
     match: $match,
   ) {
-    score
-    {
+    score {
       id
     }
   }
@@ -243,6 +290,22 @@ mutation Delete($id: Int!)
 }
 `
 
+export const TEAM = `
+{
+  team {
+    id
+    name
+    description
+    marketValue
+    logo {
+      id
+    }
+    rival {
+      id
+    }
+  }
+}
+`
 export const SET_TEAM = `
 mutation Set(
   $id: Int!,
@@ -261,8 +324,7 @@ mutation Set(
     marketValue: $marketValue,
     rival: $rival,
   ) {
-    team
-    {
+    team {
       id
       name
       description
@@ -294,8 +356,7 @@ mutation Save(
     marketValue: $marketValue,
     rival: $rival,
   ) {
-    team
-    {
+    team {
       id
     }
   }
@@ -312,6 +373,21 @@ mutation Delete($id: Int!)
 }
 `
 
+export const USER = `
+{
+  user {
+    id
+    username
+    firstName
+    lastName
+    email
+    isActive
+    teams {
+      id
+    }
+  }
+}
+`
 export const SET_USER = `
 mutation Set(
   $id: Int!,
@@ -334,15 +410,13 @@ mutation Set(
     password: $password,
     teams: $teams,
   ) {
-    user
-    {
+    user {
       id
       username
       firstName
       lastName
       email
       isActive
-      password
       teams {
         id
       }
@@ -371,8 +445,7 @@ mutation Save(
     password: $password,
     teams: $teams,
   ) {
-    user
-    {
+    user {
       id
     }
   }

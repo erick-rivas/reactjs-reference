@@ -2,153 +2,122 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React, {useState} from 'react';
+import { useSave, useSet, useQuery, useDetail } from 'seed/gql'
+import * as queries from 'seed/gql/queries'
 import { Formik, Field } from 'formik';
 
 import MultiField from 'seed/components/helpers/MultiField'
 import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/matches/Form.module.css';
 
-class MatchForm extends React.Component
+const TEAMS  = `
 {
-  render()
-  {
-    const matchId = this.getMatchId();
-    const match = Util.get(this.props.matches, matchId);
-    const teams = Util.filter(this.props.teams, {})
-
-    if (match.id == null && matchId != null) return <Loading />;
-    
-    return (
-      <div className={styles.module}>
-
-        <div className={styles.header}>Match</div>
-
-        <div className={styles.form}>
-
-          <Formik
-             initialValues={match}
-             onSubmit={this.onSubmit}
-             render={f => (
-
-          <form onSubmit={f.handleSubmit}>
-            
-            {/* date */}
-            <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
-            <Field type="date" name="date"
-              className={cx(styles.dte, styles.dateDte)} />
-            <br/>
-            
-            {/* type */}
-            <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
-            <Field component="select" name="type"
-              className={cx(styles.ops, styles.typeOps)} >
-              <option value="">Select an option</option>
-              <option value='FRIENDSHIP'>Friendship</option>
-              <option value='LEAGUE'>League</option>
-              <option value='CUP'>Cup</option>
-            </Field>
-            <br/>
-            
-            {/* local */}
-            <div>
-            <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
-            <Field component="select" name="local_id"
-              className={cx(styles.ops, styles.localOps)} >
-              <option value="">Select an option</option>
-              { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
-            </Field>
-            <br/>
-            </div>
-            
-            {/* visitor */}
-            <div>
-            <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
-            <Field component="select" name="visitor_id"
-              className={cx(styles.ops, styles.visitorOps)} >
-              <option value="">Select an option</option>
-              { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
-            </Field>
-            <br/>
-            </div>
-            {this.state.error ?
-              <div className={styles.error}>{this.state.error}</div> : null}
-            <button type="submit" className={styles.submit}>Send</button>
-          </form>
-          )}
-          />
-        </div>
-      </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  componentDidMount()
-  {
-    const matchId = this.getMatchId();
-    if (matchId != null) 
-      this.loadData();
-    this.loadFkData();
-  }
-
-  /* Events */
-
-  onSubmit(values)
-  {
-    const onSave = res =>
-    {
-      if (res.ok) this.onSave(res.body);
-      else this.onError(res.body)
-    };
-    const matchId = this.getMatchId();
-    if (matchId == null) this.props.saveMatch(values, onSave)
-    else this.props.setMatch(matchId, values, onSave);
-  }
-
-  onSave(res)
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
-
-  onError(error)
-  {
-    this.setState({
-      error: 'An error has occurred, try again'
-    });
-  }
-
-  /* Actions */
-
-  loadData()
-  {
-    const matchId = this.getMatchId();
-    this.props.getMatchDetails(matchId);
-  }
-
-  loadFkData() 
-  {
-    this.props.getTeamList({});
-  }
-
-  /* Args */
-
-  getMatchId() 
-  {
-    return this.props.match.params.match_id;
+  teams {
+    id
   }
 }
+`
 
-export default redux(MatchForm);
+function MatchForm(props)
+{
+   const { url } = props.match;
+   const { match_id }  = props.match.params;
+   const editMode = match_id != null
+
+  const [state, setState] = useState({})
+
+  const saveOptions = {
+    onCompleted: data =>
+    {
+      const backUrl = url.substring(0, url.lastIndexOf('/'));
+      props.history.push(backUrl);
+    },
+    onError: error => setState({ error: 'An error has occurred, try again' })
+  }
+  const [callSave, qSave] = useSave(queries.SAVE_MATCH, saveOptions)
+  const [callSet, qSet] = useSet(queries.SET_MATCH, saveOptions)
+
+  const qMatch = useDetail(queries.MATCH, match_id);
+  const qTeams = useQuery(TEAMS);
+
+  if (editMode && qMatch.loading) return <Loading />;
+  if (editMode && qMatch.error) return "Error";
+
+  const onSubmit = values =>
+  {
+    values.id = match_id;
+    if (editMode) callSet(values)
+    else callSave(values)
+  }
+
+  const { match = {} } = qMatch.data ? qMatch.data : {}
+  const { teams = [] } = qTeams.data ? qTeams.data : {}
+
+  return (
+    <div className={styles.module}>
+
+      <div className={styles.header}>Match</div>
+
+      <div className={styles.form}>
+
+        <Formik
+           initialValues={match}
+           onSubmit={onSubmit}
+           render={f => (
+
+        <form onSubmit={f.handleSubmit}>
+          
+          {/* date */}
+          <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
+          <Field type="date" name="date"
+            className={cx(styles.dte, styles.dateDte)} />
+          <br/>
+          
+          {/* type */}
+          <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
+          <Field component="select" name="type.id"
+            className={cx(styles.ops, styles.typeOps)} >
+            <option value="">Select an option</option>
+            <option value='FRIENDSHIP'>Friendship</option>
+            <option value='LEAGUE'>League</option>
+            <option value='CUP'>Cup</option>
+          </Field>
+          <br/>
+          
+          {/* local */}
+          <div>
+          <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
+          <Field component="select" name="local.id"
+            className={cx(styles.ops, styles.localOps)} >
+            <option value="">Select an option</option>
+            { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          </Field>
+          <br/>
+          </div>
+          
+          {/* visitor */}
+          <div>
+          <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
+          <Field component="select" name="visitor.id"
+            className={cx(styles.ops, styles.visitorOps)} >
+            <option value="">Select an option</option>
+            { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          </Field>
+          <br/>
+          </div>
+          {state.error ?
+            <div className={styles.error}>{state.error}</div> : null}
+          <button type="submit" className={styles.submit}>Send</button>
+        </form>
+        )}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default MatchForm;

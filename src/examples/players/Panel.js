@@ -3,17 +3,17 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import PlayerDetails from 'examples/players/Details';
 import PlayerList from 'examples/players/List';
+import PlayerTable from 'examples/players/Table';
 import PlayerListOptions from 'examples/players/options/List';
 import PlayerDetailsOptions from 'examples/players/options/Details';
 import PlayerForm from 'examples/players/Form';
-
 import Modal from 'seed/components/helpers/Modal';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/players/Panel.module.css';
 
 function PlayerPanel(props)
@@ -27,6 +27,16 @@ function PlayerPanel(props)
       </div>
       <div className={styles.content}>
         <PlayerList {...props} />
+      </div>
+    </div>
+
+  const Table = props =>
+    <div className={styles.table}>
+      <div className={styles.options}>
+        <PlayerListOptions {...props}/>
+      </div>
+      <div className={styles.content}>
+        <PlayerTable {...props} />
       </div>
     </div>
 
@@ -44,7 +54,7 @@ function PlayerPanel(props)
 
   const Form = props =>
     <Modal {...props}>
-      <PlayerForm />
+      <PlayerForm {...props} />
     </Modal>
 
   return (
@@ -52,7 +62,7 @@ function PlayerPanel(props)
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={List} />
+          component={Table} />
         <Route
           path={`${path}/:player_id(\\d+)`}
           component={Details} />

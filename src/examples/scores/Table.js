@@ -2,62 +2,77 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
+import React, { useEffect }  from 'react';
 import $ from 'jquery';
-import cx from 'classnames';
+import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/scores/Table.module.css';
 
-class ScoreTable extends React.Component
+const SCORES  = `
 {
-  render()
-  {
-    const scores = Util.filter(this.props.scores, {})
-    if (scores == null) return <Loading />;
-
-    const { url } = this.props.match;
-
-    const scoreTable = scores.map(item =>
-       <tr>
-         <td>{item.id}</td>
-         <td className={styles.options}>
-          <NavLink
-            to={`${url}/${item.id}`}
-            className={styles.details}
-            activeClassName={styles.active}>
-            Details
-          </NavLink>
-         </td>
-       </tr>);
-
-    return (
-      <div className={styles.module}>
-        <table className={cx("hover","row-border", styles.table)}>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            { scoreTable }
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-  
-  componentDidMount()
-  {
-    $.DataTable = require('datatables.net');
-    const callback = () =>  $(`.${styles.table}`).DataTable();
-    this.props.getScoreList({}, callback);
+  scores {
+    id
+    min
+    player {
+      id
+    }
+    match {
+      id
+    }
   }
 }
+`
 
-export default redux(ScoreTable);
+function ScoreTable(props)
+{
+  const { url } = props.match;
+
+  const qScores = useQuery(SCORES, "", {
+    onCompleted: data =>
+    {
+      $.DataTable = require('datatables.net');
+      $(`.${styles.table}`).DataTable();
+    }
+  });
+
+  if (qScores.loading) return <Loading />
+  if (qScores.error) return "Error"
+
+  const { scores } = qScores.data
+
+  const scoreTable = scores.map(item =>
+     <tr>
+       <td>{item.id}</td>
+       <td className={styles.options}>
+        <NavLink
+          key={item.id}
+          to={`${url}/${item.id}`}
+          className={styles.details}
+          activeClassName={styles.active}>
+          Details
+        </NavLink>
+       </td>
+     </tr>);
+
+  return (
+    <div className={styles.module}>
+      <table className={cx("hover","row-border", styles.table)}>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          { scoreTable }
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default ScoreTable;

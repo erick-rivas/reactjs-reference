@@ -5,36 +5,63 @@ import { SINGULARS } from 'seed/gql/const'
 import SeedContext from 'seed/context'
 
 
-const useQuery = (raw, args) =>
+const useQuery = (raw, queryStr, options={}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
-  const wrapper = `${model}${args ? '(query: "' + args + '")' : ''}`
+  const wrapper = `${model}${queryStr ? '(query: "' + queryStr + '")' : ''}`
   const query = raw.replace(model, wrapper)
   const { addGqlQuery } = useContext(SeedContext)
 
   return Apollo.useQuery(gql(query), {
-    onCompleted: () => addGqlQuery(query)
+    ...options,
+    onCompleted: () => {
+      addGqlQuery(query);
+      if (options.onCompleted) options.onCompleted();
+    }
   });
 }
 
-const useGet = (raw, id) =>
+const useDetail = (raw, id, options={}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}(id: ${id})`
   const query = raw.replace(model, wrapper)
-  return Apollo.useQuery(gql(query));
+  return Apollo.useQuery(gql(query), options);
 }
 
-const useSet = raw =>
+const useMutate = mutation =>
+{
+  const [call, res] = mutation;
+  const wrap = body => {
+    const vars = body ? body : {};
+    for (let key in vars){
+      let ele = vars[key];
+      if (ele != null){
+        if (ele.id != null)
+          vars[key] = vars[key].id
+        if (Array.isArray(ele))
+          for (let i = 0; i < ele.length; i++)
+            if (ele[i].id != null)
+              vars[key][i] = ele[i].id
+      }
+    }
+    call({variables: vars})
+  }
+   return [wrap, res];
+}
+
+const useSet = (raw, options = {}) =>
 {
   const query = gql(raw)
-  return Apollo.useMutation(query);
+  const mutation = Apollo.useMutation(query, options);
+  return useMutate(mutation)
 }
 
-const useSave = raw =>
+const useSave = (raw, options = {}) =>
 {
   const query = gql(raw);
-  return Apollo.useMutation(query, {
+  const mutation = Apollo.useMutation(query, {
+    ...options,
     refetchQueries:
       useContext(SeedContext)
         .gqlQueries.filter(cQueryRaw =>
@@ -46,12 +73,15 @@ const useSave = raw =>
         })
         .map(q => ({ query: gql(q) }))
   });
+  return useMutate(mutation)
 }
 
-const useDelete = raw =>
+const useDelete = (raw, options = {}) =>
 {
   const context = useContext(SeedContext);
-  return Apollo.useMutation(gql(raw), {
+  const query = gql(raw)
+  const mutation = Apollo.useMutation(query, {
+    ...options,
     update(cache, { data })
     {
       context.gqlQueries
@@ -79,6 +109,7 @@ const useDelete = raw =>
         })
     }
   });
+  return useMutate(mutation)
 }
 
-export { useQuery, useGet, useSet, useSave, useDelete }
+export { useQuery, useDetail, useSet, useSave, useDelete }

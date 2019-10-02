@@ -2,48 +2,59 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
 import Item from 'examples/scores/list/Item';
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/scores/List.module.css';
 
-class ScoreList extends React.Component
+const SCORES  = `
 {
-  render()
-  {
-    const scores = Util.filter(this.props.scores, {})
-    if (scores == null) return <Loading />;
-
-    const { url } = this.props.match;
-
-    const scoreList = scores.map(item =>
-        <NavLink 
-          to={`${url}/${item.id}`}
-          className={styles.item}
-          activeClassName={styles.active}>
-          <Item 
-            key={item.id} 
-            id={item.id}
-            score={item}/>
-      </NavLink>);
-
-    return (
-      <div className={styles.module}>
-        { scoreList }
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    this.props.getScoreList({});
+  scores {
+    id
+    min
+    player {
+      id
+    }
+    match {
+      id
+    }
   }
 }
+`
 
-export default redux(ScoreList);
+function ScoreList(props)
+{
+  const { url } = props.match;
+
+  const qScores = useQuery(SCORES);
+
+  if (qScores.loading) return <Loading />
+  if (qScores.error) return "Error"
+
+  const { scores } = qScores.data
+
+  const scoreList = scores.map(item =>
+    <NavLink
+      key={item.id}
+      to={`${url}/${item.id}`}
+      className={styles.item}
+      activeClassName={styles.active}>
+      <Item
+        key={item.id}
+        id={item.id}
+        score={item}/>
+    </NavLink>);
+
+  return (
+    <div className={styles.module}>
+      { scoreList }
+    </div>
+  );
+}
+
+export default ScoreList;

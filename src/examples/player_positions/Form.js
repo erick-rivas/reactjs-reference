@@ -12,21 +12,13 @@ import FileField from 'seed/components/helpers/FileField'
 import Loading from 'seed/components/helpers/Loading';
 
 import cx from 'classnames';
-import styles from 'resources/css/examples/users/Form.module.css';
+import styles from 'resources/css/examples/player_positions/Form.module.css';
 
-const TEAMS  = `
-{
-  teams {
-    id
-  }
-}
-`
-
-function UserForm(props)
+function PlayerPositionForm(props)
 {
    const { url } = props.match;
-   const { user_id }  = props.match.params;
-   const editMode = user_id != null
+   const { player_position_id }  = props.match.params;
+   const editMode = player_position_id != null
 
   const [state, setState] = useState({})
 
@@ -38,49 +30,42 @@ function UserForm(props)
     },
     onError: error => setState({ error: 'An error has occurred, try again' })
   }
-  const [callSave, qSave] = useSave(queries.SAVE_USER, saveOptions)
-  const [callSet, qSet] = useSet(queries.SET_USER, saveOptions)
+  const [callSave, qSave] = useSave(queries.SAVE_PLAYER_POSITION, saveOptions)
+  const [callSet, qSet] = useSet(queries.SET_PLAYER_POSITION, saveOptions)
 
-  const qUser = useDetail(queries.USER, user_id);
-  const qTeams = useQuery(TEAMS);
+  const qPlayerPosition = useDetail(queries.PLAYER_POSITION, player_position_id);
 
-  if (editMode && qUser.loading) return <Loading />;
-  if (editMode && qUser.error) return "Error";
+  if (editMode && qPlayerPosition.loading) return <Loading />;
+  if (editMode && qPlayerPosition.error) return "Error";
 
   const onSubmit = values =>
   {
-    values.id = user_id;
+    values.id = player_position_id;
     if (editMode) callSet(values)
     else callSave(values)
   }
 
-  const { user = {} } = qUser.data ? qUser.data : {}
-  const { teams = [] } = qTeams.data ? qTeams.data : {}
+  const { playerPosition = {} } = qPlayerPosition.data ? qPlayerPosition.data : {}
 
   return (
     <div className={styles.module}>
 
-      <div className={styles.header}>User</div>
+      <div className={styles.header}>Player position</div>
 
       <div className={styles.form}>
 
         <Formik
-           initialValues={user}
+           initialValues={playerPosition}
            onSubmit={onSubmit}
            render={f => (
 
         <form onSubmit={f.handleSubmit}>
           
-          {/* teams */}
-          <div>
-          <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label>
-          <div className={cx(styles.mul, styles.teamsMul)}>
-          <MultiField name="teams"
-            values={ teams.map((e, idx) => { return {value: e, label: e.id} }) }
-            setFieldValue={f.setFieldValue} value={f.values.teams} />
-          </div>
+          {/* name */}
+          <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
+          <Field type="text" name="name"
+            className={cx(styles.txt, styles.nameTxt)} />
           <br/>
-          </div>
           {state.error ?
             <div className={styles.error}>{state.error}</div> : null}
           <button type="submit" className={styles.submit}>Send</button>
@@ -92,4 +77,4 @@ function UserForm(props)
   );
 }
 
-export default UserForm;
+export default PlayerPositionForm;

@@ -8,7 +8,7 @@ export const SINGULARS =
 {
    "matches": "match",
    "players": "player",
-   "playerTypes": "playerType",
+   "playerPositions": "playerPosition",
    "scores": "score",
    "teams": "team",
    "users": "user",

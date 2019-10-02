@@ -4,35 +4,34 @@ __Seed builder__v1.0
 
 import React, { useState } from 'react';
 import { usePost } from 'seed/api'
-import cx from 'classnames';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/auth/Login.module.css';
 
 function Login(props)
 {
   const [state, setState] = useState(0);
-
-  const [login, onLogin] = usePost("/auth/login")
-
-  if (onLogin.called && !onLogin.loading) {
-    if (onLogin.error == null){
-      sessionStorage.setItem('token', onLogin.data.key);
-      sessionStorage.setItem('id', onLogin.data.user);
+  const [cLogin, qLogin] = usePost("/auth/login", {
+    onCompleted: data =>
+    {
+      sessionStorage.setItem('token', data.key);
+      sessionStorage.setItem('id', data.user);
       props.history.replace('/');
-    } else setState({ error: 'Invalid user or password' })
-  }
+    },
+    onError: error => setState({ error: 'Invalid user or password' })
+  })
 
   const onSubmit = e =>
   {
     e.preventDefault();
     let email = e.target.email.value;
     let password = e.target.password.value;
-    login({body: {email: email, password: password}});
+    cLogin({email: email, password: password});
   }
 
   return (
     <div className={styles.module}>
-      <div className={styles.background}>
+      <div className={styles.background} style={ { backgroundImage: `url(${require("resources/images/wave.svg")})` }}>
         <div className={cx(styles.container, 'animated zoomIn')}>
             <label className={styles.title}>Login</label>
             <form onSubmit={onSubmit}>

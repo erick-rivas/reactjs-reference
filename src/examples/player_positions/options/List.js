@@ -3,12 +3,12 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import styles from 'resources/css/examples/player_types/options/List.module.css';
+import cx from 'classnames';
+import styles from 'resources/css/examples/player_positions/options/List.module.css';
 
-function PlayerTypeListOptions(props)
+function PlayerPositionListOptions(props)
 {
   const { url } = props.match;
   return (
@@ -20,5 +20,5 @@ function PlayerTypeListOptions(props)
   );
 }
 
-export default PlayerTypeListOptions;
+export default PlayerPositionListOptions;
 

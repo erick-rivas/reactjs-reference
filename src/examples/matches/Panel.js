@@ -3,17 +3,17 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import MatchDetails from 'examples/matches/Details';
 import MatchList from 'examples/matches/List';
+import MatchTable from 'examples/matches/Table';
 import MatchListOptions from 'examples/matches/options/List';
 import MatchDetailsOptions from 'examples/matches/options/Details';
 import MatchForm from 'examples/matches/Form';
-
 import Modal from 'seed/components/helpers/Modal';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/matches/Panel.module.css';
 
 function MatchPanel(props)
@@ -27,6 +27,16 @@ function MatchPanel(props)
       </div>
       <div className={styles.content}>
         <MatchList {...props} />
+      </div>
+    </div>
+
+  const Table = props =>
+    <div className={styles.table}>
+      <div className={styles.options}>
+        <MatchListOptions {...props}/>
+      </div>
+      <div className={styles.content}>
+        <MatchTable {...props} />
       </div>
     </div>
 
@@ -44,7 +54,7 @@ function MatchPanel(props)
 
   const Form = props =>
     <Modal {...props}>
-      <MatchForm />
+      <MatchForm {...props} />
     </Modal>
 
   return (
@@ -52,7 +62,7 @@ function MatchPanel(props)
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={List} />
+          component={Table} />
         <Route
           path={`${path}/:match_id(\\d+)`}
           component={Details} />

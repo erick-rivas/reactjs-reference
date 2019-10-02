@@ -2,74 +2,49 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import redux from 'seed/redux';
-import cx from 'classnames';
-import Svg from 'react-svg';
+import React from 'react';
+import { useDelete } from 'seed/gql';
+import * as queries from 'seed/gql/queries';
 import { Link } from 'react-router-dom';
+import Svg from 'react-svg';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/matches/options/Details.module.css';
 
-class MatchDetailsOptions extends React.Component
+function MatchDetailsOptions(props)
 {
-  render()
-  {
-    const { url } = this.props.match;
+    const { url } = props.match;
+    const { match_id } = props.match.params;
+
+    const [callDelete, qDelete] = useDelete(queries.DELETE_MATCH,
+    {
+      onCompleted: data =>
+      {
+        const backUrl = url.substring(0, url.lastIndexOf('/'));
+        props.history.push(backUrl);
+       }
+    })
+
+    const onClickDelete = () =>
+      callDelete({ id: match_id })
+
+    const onClickBack = () =>
+    {
+      const backUrl = url.substring(0, url.lastIndexOf('/'));
+      props.history.push(backUrl);
+    }
+
     return (
       <div className={styles.module}>
         <Svg className={styles.back}
           src={require('resources/icons/ic_arrow_back.svg')}
-          onClick={this.onClickBack} />
+          onClick={onClickBack} />
          <div className={styles.options}>
           <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
-          <button className={cx(styles.btn, styles.delete)} onClick={this.onClickDelete}>Delete</button>
+          <button className={cx(styles.btn, styles.delete)} onClick={onClickDelete}>Delete</button>
         </div>
       </div>
     );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.onClickDelete = this.onClickDelete.bind(this);
-    this.onClickBack = this.onClickBack.bind(this);
-  }
-
-  /* Events */
-
-  onClickBack()
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
-
-  onClickDelete()
-  {
-    const onDelete = res =>
-    {
-      if (res.ok) this.onDelete(res.body);
-      else this.onDeleteError(res.body);
-    };
-    const matchId = this.getMatchId();
-    this.props.deleteMatch(matchId, onDelete);
-  }
-
-  onDelete(res)
-  {
-    const { url } = this.props.match
-    const backUrl = url.substring(0, url.lastIndexOf('/'));
-    this.props.history.push(backUrl);
-  }
-
-  onDeleteError(error) {}
-
-  /* Args */
-
-  getMatchId() 
-  {
-    return this.props.match.params.match_id;
-  }
 }
 
-export default redux(MatchDetailsOptions);
+export default MatchDetailsOptions;

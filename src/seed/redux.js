@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom'
 
 import _MatchActions from 'seed/actions/matches';
 import _PlayerActions from 'seed/actions/players';
-import _PlayerTypeActions from 'seed/actions/playerTypes';
+import _PlayerPositionActions from 'seed/actions/playerPositions';
 import _ScoreActions from 'seed/actions/scores';
 import _TeamActions from 'seed/actions/teams';
 import _UserActions from 'seed/actions/users';
@@ -20,12 +20,12 @@ import TeamActions from 'actions/teams';
 import PlayerActions from 'actions/players';
 import MatchActions from 'actions/matches';
 import ScoreActions from 'actions/scores';
-import PlayerTypeActions from 'actions/playerTypes';
+import PlayerPositionActions from 'actions/playerPositions';
 import AuthActions from 'seed/actions/helpers/auth'
 import FileActions from 'seed/helpers/files';
 const matches = new MatchActions();
 const players = new PlayerActions();
-const playerTypes = new PlayerTypeActions();
+const playerPositions = new PlayerPositionActions();
 const scores = new ScoreActions();
 const teams = new TeamActions();
 const users = new UserActions();
@@ -42,8 +42,8 @@ const actions = [
     object: players
   },
   {
-    className: _PlayerTypeActions,
-    object: playerTypes
+    className: _PlayerPositionActions,
+    object: playerPositions
   },
   {
     className: _ScoreActions,
@@ -78,8 +78,8 @@ const actions = [
     object: scores
   },
   {
-    className: PlayerTypeActions,
-    object: playerTypes
+    className: PlayerPositionActions,
+    object: playerPositions
   },
   {
     className: AuthActions,
@@ -95,7 +95,7 @@ const actions = [
 const stateToProps = (state, props) => ({
   matches: state.matches.dataset,
   players: state.players.dataset,
-  playerTypes: state.playerTypes.dataset,
+  playerPositions: state.playerPositions.dataset,
   scores: state.scores.dataset,
   teams: state.teams.dataset,
   users: state.users.dataset,

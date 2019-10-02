@@ -4,21 +4,23 @@ import styles from 'resources/css/seed/helpers/MultiField.module.css'
 
 class MultiField extends React.Component
 {
+
   render()
   {
     const { values = [] } = this.props;
     const { value = [] } = this.props;
+    const gv = val => val.id ? parseInt(val.id) : val;
 
     let selected = {}
     for (let d of value)
-      selected[d] = true;
+      selected[gv(d)] = true;
 
     let items = values.map(v =>
     {
-      let isSelected = Boolean(selected[v.value]);
+      let isSelected = Boolean(selected[gv(v.value)]);
       return (
         <div className={styles.item}>
-          <input type="checkbox" title={v.value} checked={isSelected} onChange={this.onItemSelected}></input>
+          <input type="checkbox" checked={isSelected} onChange={() => this.onItemSelected(v.value)}></input>
           {v.label}
         </div>);
     });
@@ -36,19 +38,18 @@ class MultiField extends React.Component
     this.onItemSelected = this.onItemSelected.bind(this);
   }
 
-  onItemSelected(e)
+  onItemSelected(selected)
   {
     const { setFieldValue, name } = this.props;
     const { value = [] } = this.props;
+    const gv = val => val.id ? val.id : val;
 
     const singleChoice = this.props.singleChoice;
-    const title = e.currentTarget.title;
-    const tVal = !isNaN(title) ? parseInt(title) : title;
 
     let res = value;
-    let pos = res.indexOf(tVal);
+    let pos = res.map(r => gv(r)).indexOf(gv(selected));
     if (pos == -1)
-      res.unshift(tVal)
+      res.unshift(selected)
     else res.splice(pos, 1);
 
     if (!singleChoice)

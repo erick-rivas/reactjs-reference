@@ -5,7 +5,7 @@
     "player",
     "match",
     "score",
-    "player_type"
+    "player_position"
   ],
   "components": [
     "user",
@@ -13,6 +13,6 @@
     "player",
     "match",
     "score",
-    "player_type"
+    "player_position"
   ]
 }

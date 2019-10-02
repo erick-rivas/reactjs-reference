@@ -2,49 +2,59 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useDetail } from 'seed/gql'
 
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/players/Details.module.css';
 
-class PlayerDetails extends React.Component
+const PLAYER  = `
 {
-  render()
-  {
-    const playerId = this.getPlayerId();
-    const player = Util.get(this.props.players, playerId);
-    if (player.id == null) return <Loading />;
-
-    return (
-      <div className={styles.module}>
-        {/* Suggested divs */}
-        <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
-        <label className={cx(styles.txt, styles.nameTxt)}>{player.name.toString()}</label>
-        <br/>
-        <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label><br/>
-        <img src={player.photo.url} className={cx(styles.img, styles.photoImg)}></img>
-        <br/>
-        <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label><br/>
-        <label className={cx(styles.txt, styles.isActiveTxt)}>{player.is_active.toString()}</label>
-        <br/>
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    const playerId = this.getPlayerId()
-    this.props.getPlayerDetails(playerId);
-  }
-
-  getPlayerId() 
-  {
-    return this.props.match.params.player_id;
+  player {
+    id
+    name
+    isActive
+    photo {
+      id
+    }
+    team {
+      id
+    }
+    position {
+      id
+    }
   }
 }
+`
+function PlayerDetails(props)
+{
+  const { player_id }  = props.match.params;
 
-export default redux(PlayerDetails);
+  const qPlayer = useDetail(PLAYER, player_id);
+
+  if (qPlayer.loading) return <Loading />
+  if (qPlayer.error) return "Error"
+
+  const { player = {} } = qPlayer.data
+
+  return (
+    <div className={styles.module}>
+      <label className={cx(styles.lbl, styles.nameLbl)}>Name</label>
+      <br/>
+      <label className={cx(styles.txt, styles.nameTxt)}>{player.name.toString()}</label>
+      <br/>
+      <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label>
+      <br/>
+      <label className={cx(styles.txt, styles.photoTxt)}>{player.photo.toString()}</label>
+      <br/>
+      <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label>
+      <br/>
+      <label className={cx(styles.txt, styles.isActiveTxt)}>{player.isActive.toString()}</label>
+      <br/>
+    </div>
+  );
+}
+
+export default PlayerDetails;

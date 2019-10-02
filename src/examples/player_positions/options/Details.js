@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom';
 import Svg from 'react-svg';
 
 import cx from 'classnames';
-import styles from 'resources/css/examples/users/options/Details.module.css';
+import styles from 'resources/css/examples/player_positions/options/Details.module.css';
 
-function UserDetailsOptions(props)
+function PlayerPositionDetailsOptions(props)
 {
     const { url } = props.match;
-    const { user_id } = props.match.params;
+    const { player_position_id } = props.match.params;
 
-    const [callDelete, qDelete] = useDelete(queries.DELETE_USER,
+    const [callDelete, qDelete] = useDelete(queries.DELETE_PLAYER_POSITION,
     {
       onCompleted: data =>
       {
@@ -26,7 +26,7 @@ function UserDetailsOptions(props)
     })
 
     const onClickDelete = () =>
-      callDelete({ id: user_id })
+      callDelete({ id: player_position_id })
 
     const onClickBack = () =>
     {
@@ -47,4 +47,4 @@ function UserDetailsOptions(props)
     );
 }
 
-export default UserDetailsOptions;
+export default PlayerPositionDetailsOptions;

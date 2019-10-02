@@ -3,17 +3,17 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import TeamDetails from 'examples/teams/Details';
 import TeamList from 'examples/teams/List';
+import TeamTable from 'examples/teams/Table';
 import TeamListOptions from 'examples/teams/options/List';
 import TeamDetailsOptions from 'examples/teams/options/Details';
 import TeamForm from 'examples/teams/Form';
-
 import Modal from 'seed/components/helpers/Modal';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/teams/Panel.module.css';
 
 function TeamPanel(props)
@@ -27,6 +27,16 @@ function TeamPanel(props)
       </div>
       <div className={styles.content}>
         <TeamList {...props} />
+      </div>
+    </div>
+
+  const Table = props =>
+    <div className={styles.table}>
+      <div className={styles.options}>
+        <TeamListOptions {...props}/>
+      </div>
+      <div className={styles.content}>
+        <TeamTable {...props} />
       </div>
     </div>
 
@@ -44,7 +54,7 @@ function TeamPanel(props)
 
   const Form = props =>
     <Modal {...props}>
-      <TeamForm />
+      <TeamForm {...props} />
     </Modal>
 
   return (
@@ -52,7 +62,7 @@ function TeamPanel(props)
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={List} />
+          component={Table} />
         <Route
           path={`${path}/:team_id(\\d+)`}
           component={Details} />

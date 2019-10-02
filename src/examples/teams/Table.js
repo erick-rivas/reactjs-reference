@@ -2,62 +2,85 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
+import React, { useEffect }  from 'react';
 import $ from 'jquery';
-import cx from 'classnames';
+import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/teams/Table.module.css';
 
-class TeamTable extends React.Component
+const TEAMS  = `
 {
-  render()
-  {
-    const teams = Util.filter(this.props.teams, {})
-    if (teams == null) return <Loading />;
-
-    const { url } = this.props.match;
-
-    const teamTable = teams.map(item =>
-       <tr>
-         <td>{item.id}</td>
-         <td className={styles.options}>
-          <NavLink
-            to={`${url}/${item.id}`}
-            className={styles.details}
-            activeClassName={styles.active}>
-            Details
-          </NavLink>
-         </td>
-       </tr>);
-
-    return (
-      <div className={styles.module}>
-        <table className={cx("hover","row-border", styles.table)}>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            { teamTable }
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-  
-  componentDidMount()
-  {
-    $.DataTable = require('datatables.net');
-    const callback = () =>  $(`.${styles.table}`).DataTable();
-    this.props.getTeamList({}, callback);
+  teams {
+    id
+    name
+    description
+    marketValue
+    logo {
+      id
+    }
+    rival {
+      id
+    }
+    identityDocs {
+      id
+    }
+    players {
+      id
+    }
   }
 }
+`
 
-export default redux(TeamTable);
+function TeamTable(props)
+{
+  const { url } = props.match;
+
+  const qTeams = useQuery(TEAMS, "", {
+    onCompleted: data =>
+    {
+      $.DataTable = require('datatables.net');
+      $(`.${styles.table}`).DataTable();
+    }
+  });
+
+  if (qTeams.loading) return <Loading />
+  if (qTeams.error) return "Error"
+
+  const { teams } = qTeams.data
+
+  const teamTable = teams.map(item =>
+     <tr>
+       <td>{item.id}</td>
+       <td className={styles.options}>
+        <NavLink
+          key={item.id}
+          to={`${url}/${item.id}`}
+          className={styles.details}
+          activeClassName={styles.active}>
+          Details
+        </NavLink>
+       </td>
+     </tr>);
+
+  return (
+    <div className={styles.module}>
+      <table className={cx("hover","row-border", styles.table)}>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          { teamTable }
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default TeamTable;

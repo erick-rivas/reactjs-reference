@@ -5,38 +5,38 @@ __Seed builder__v1.0
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import ScoreDetails from 'examples/scores/Details';
-import ScoreList from 'examples/scores/List';
-import ScoreTable from 'examples/scores/Table';
-import ScoreListOptions from 'examples/scores/options/List';
-import ScoreDetailsOptions from 'examples/scores/options/Details';
-import ScoreForm from 'examples/scores/Form';
+import PlayerPositionDetails from 'examples/player_positions/Details';
+import PlayerPositionList from 'examples/player_positions/List';
+import PlayerPositionTable from 'examples/player_positions/Table';
+import PlayerPositionListOptions from 'examples/player_positions/options/List';
+import PlayerPositionDetailsOptions from 'examples/player_positions/options/Details';
+import PlayerPositionForm from 'examples/player_positions/Form';
 import Modal from 'seed/components/helpers/Modal';
 
 import cx from 'classnames';
-import styles from 'resources/css/examples/scores/Panel.module.css';
+import styles from 'resources/css/examples/player_positions/Panel.module.css';
 
-function ScorePanel(props)
+function PlayerPositionPanel(props)
 {
   const { path, url } = props.match;
 
   const List = props =>
     <div className={styles.list}>
       <div className={styles.options}>
-        <ScoreListOptions {...props}/>
+        <PlayerPositionListOptions {...props}/>
       </div>
       <div className={styles.content}>
-        <ScoreList {...props} />
+        <PlayerPositionList {...props} />
       </div>
     </div>
 
   const Table = props =>
     <div className={styles.table}>
       <div className={styles.options}>
-        <ScoreListOptions {...props}/>
+        <PlayerPositionListOptions {...props}/>
       </div>
       <div className={styles.content}>
-        <ScoreTable {...props} />
+        <PlayerPositionTable {...props} />
       </div>
     </div>
 
@@ -44,17 +44,17 @@ function ScorePanel(props)
     <div className={styles.details}>
       <div className={styles.card}>
         <div className={styles.options}>
-          <ScoreDetailsOptions {...props} />
+          <PlayerPositionDetailsOptions {...props} />
         </div>
         <div className={styles.content}>
-          <ScoreDetails {...props} />
+          <PlayerPositionDetails {...props} />
         </div>
       </div>
     </div>
 
   const Form = props =>
     <Modal {...props}>
-      <ScoreForm {...props} />
+      <PlayerPositionForm {...props} />
     </Modal>
 
   return (
@@ -64,16 +64,16 @@ function ScorePanel(props)
           path={`${path}`}
           component={Table} />
         <Route
-          path={`${path}/:score_id(\\d+)`}
+          path={`${path}/:player_position_id(\\d+)`}
           component={Details} />
       </div>
       <Route
         path={
           [`${path}/:any/new`,`${path}/new`,
-          `${path}/:score_id(\\d+)/edit`] }
+          `${path}/:player_position_id(\\d+)/edit`] }
         component={Form} />
     </div>
   );
 }
 
-export default ScorePanel;
+export default PlayerPositionPanel;

@@ -10,29 +10,22 @@ import { NavLink } from 'react-router-dom';
 import Loading from 'seed/components/helpers/Loading';
 
 import cx from 'classnames';
-import styles from 'resources/css/examples/users/Table.module.css';
+import styles from 'resources/css/examples/player_positions/Table.module.css';
 
-const USERS  = `
+const PLAYER_POSITIONS  = `
 {
-  users {
+  playerPositions {
     id
-    username
-    firstName
-    lastName
-    email
-    isActive
-    teams {
-      id
-    }
+    name
   }
 }
 `
 
-function UserTable(props)
+function PlayerPositionTable(props)
 {
   const { url } = props.match;
 
-  const qUsers = useQuery(USERS, "", {
+  const qPlayerPositions = useQuery(PLAYER_POSITIONS, "", {
     onCompleted: data =>
     {
       $.DataTable = require('datatables.net');
@@ -40,12 +33,12 @@ function UserTable(props)
     }
   });
 
-  if (qUsers.loading) return <Loading />
-  if (qUsers.error) return "Error"
+  if (qPlayerPositions.loading) return <Loading />
+  if (qPlayerPositions.error) return "Error"
 
-  const { users } = qUsers.data
+  const { playerPositions } = qPlayerPositions.data
 
-  const userTable = users.map(item =>
+  const playerPositionTable = playerPositions.map(item =>
      <tr>
        <td>{item.id}</td>
        <td className={styles.options}>
@@ -69,11 +62,11 @@ function UserTable(props)
           </tr>
         </thead>
         <tbody>
-          { userTable }
+          { playerPositionTable }
         </tbody>
       </table>
     </div>
   );
 }
 
-export default UserTable;
+export default PlayerPositionTable;

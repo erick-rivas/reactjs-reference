@@ -2,48 +2,63 @@
 __Seed builder__v1.0
 */
 
-import * as React from 'react';
-import * as Util from 'seed/util';
-import redux from 'seed/redux';
-import cx from 'classnames';
+import React from 'react';
+import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
 import Item from 'examples/players/list/Item';
 import Loading from 'seed/components/helpers/Loading';
 
+import cx from 'classnames';
 import styles from 'resources/css/examples/players/List.module.css';
 
-class PlayerList extends React.Component
+const PLAYERS  = `
 {
-  render()
-  {
-    const players = Util.filter(this.props.players, {})
-    if (players == null) return <Loading />;
-
-    const { url } = this.props.match;
-
-    const playerList = players.map(item =>
-        <NavLink 
-          to={`${url}/${item.id}`}
-          className={styles.item}
-          activeClassName={styles.active}>
-          <Item 
-            key={item.id} 
-            id={item.id}
-            player={item}/>
-      </NavLink>);
-
-    return (
-      <div className={styles.module}>
-        { playerList }
-      </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    this.props.getPlayerList({});
+  players {
+    id
+    name
+    isActive
+    photo {
+      id
+    }
+    team {
+      id
+    }
+    position {
+      id
+    }
   }
 }
+`
 
-export default redux(PlayerList);
+function PlayerList(props)
+{
+  const { url } = props.match;
+
+  const qPlayers = useQuery(PLAYERS);
+
+  if (qPlayers.loading) return <Loading />
+  if (qPlayers.error) return "Error"
+
+  const { players } = qPlayers.data
+
+  const playerList = players.map(item =>
+    <NavLink
+      key={item.id}
+      to={`${url}/${item.id}`}
+      className={styles.item}
+      activeClassName={styles.active}>
+      <Item
+        key={item.id}
+        id={item.id}
+        player={item}/>
+    </NavLink>);
+
+  return (
+    <div className={styles.module}>
+      { playerList }
+    </div>
+  );
+}
+
+export default PlayerList;
