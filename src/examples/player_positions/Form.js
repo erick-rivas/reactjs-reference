@@ -16,11 +16,11 @@ import styles from 'resources/css/examples/player_positions/Form.module.css';
 
 function PlayerPositionForm(props)
 {
-   const { url } = props.match;
-   const { player_position_id }  = props.match.params;
-   const editMode = player_position_id != null
+  const [state, setState] = useState({});
 
-  const [state, setState] = useState({})
+  const { url } = props.match;
+  const { player_position_id }  = props.match.params;
+  const editMode = player_position_id != null;
 
   const saveOptions = {
     onCompleted: data =>
@@ -29,9 +29,10 @@ function PlayerPositionForm(props)
       props.history.push(backUrl);
     },
     onError: error => setState({ error: 'An error has occurred, try again' })
-  }
-  const [callSave, qSave] = useSave(queries.SAVE_PLAYER_POSITION, saveOptions)
-  const [callSet, qSet] = useSet(queries.SET_PLAYER_POSITION, saveOptions)
+  };
+
+  const [callSave, qSave] = useSave(queries.SAVE_PLAYER_POSITION, saveOptions);
+  const [callSet, qSet] = useSet(queries.SET_PLAYER_POSITION, saveOptions);
 
   const qPlayerPosition = useDetail(queries.PLAYER_POSITION, player_position_id);
 
@@ -41,19 +42,16 @@ function PlayerPositionForm(props)
   const onSubmit = values =>
   {
     values.id = player_position_id;
-    if (editMode) callSet(values)
-    else callSave(values)
+    if (editMode) callSet(values);
+    else callSave(values);
   }
 
-  const { playerPosition = {} } = qPlayerPosition.data ? qPlayerPosition.data : {}
+  const { playerPosition = {} } = qPlayerPosition.data;
 
   return (
     <div className={styles.module}>
-
       <div className={styles.header}>Player position</div>
-
       <div className={styles.form}>
-
         <Formik
            initialValues={playerPosition}
            onSubmit={onSubmit}
@@ -61,11 +59,11 @@ function PlayerPositionForm(props)
 
         <form onSubmit={f.handleSubmit}>
           
-          {/* name */}
-          <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
+          <label className={styles.lbl}>Name</label><br/>
           <Field type="text" name="name"
-            className={cx(styles.txt, styles.nameTxt)} />
+            className={styles.txt} />
           <br/>
+          
           {state.error ?
             <div className={styles.error}>{state.error}</div> : null}
           <button type="submit" className={styles.submit}>Send</button>

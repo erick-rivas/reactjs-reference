@@ -5,7 +5,6 @@ __Seed builder__v1.0
 */
 
 import * as Util from 'seed/util'
-import defs from 'actions/defs'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
@@ -15,20 +14,14 @@ import _PlayerPositionActions from 'seed/actions/playerPositions';
 import _ScoreActions from 'seed/actions/scores';
 import _TeamActions from 'seed/actions/teams';
 import _UserActions from 'seed/actions/users';
-import UserActions from 'actions/users';
-import TeamActions from 'actions/teams';
-import PlayerActions from 'actions/players';
-import MatchActions from 'actions/matches';
-import ScoreActions from 'actions/scores';
-import PlayerPositionActions from 'actions/playerPositions';
 import AuthActions from 'seed/actions/helpers/auth'
 import FileActions from 'seed/helpers/files';
-const matches = new MatchActions();
-const players = new PlayerActions();
-const playerPositions = new PlayerPositionActions();
-const scores = new ScoreActions();
-const teams = new TeamActions();
-const users = new UserActions();
+const matches = new _MatchActions();
+const players = new _PlayerActions();
+const playerPositions = new _PlayerPositionActions();
+const scores = new _ScoreActions();
+const teams = new _TeamActions();
+const users = new _UserActions();
 const auth = new AuthActions();
 const files = new FileActions();
 
@@ -58,30 +51,6 @@ const actions = [
     object: users
   },
   {
-    className: UserActions,
-    object: users
-  },
-  {
-    className: TeamActions,
-    object: teams
-  },
-  {
-    className: PlayerActions,
-    object: players
-  },
-  {
-    className: MatchActions,
-    object: matches
-  },
-  {
-    className: ScoreActions,
-    object: scores
-  },
-  {
-    className: PlayerPositionActions,
-    object: playerPositions
-  },
-  {
     className: AuthActions,
     object: auth
   },
@@ -89,7 +58,6 @@ const actions = [
     className: FileActions,
     object: files
   },
-  ...defs
 ]
 
 const stateToProps = (state, props) => ({
@@ -123,4 +91,5 @@ const redux = component =>
     mergeProps
   )(component));
 export default redux;
+
 

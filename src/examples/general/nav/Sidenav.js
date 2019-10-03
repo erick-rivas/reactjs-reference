@@ -6,7 +6,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import cx from 'classnames';
-import styles from 'resources/css/examples/nav/Sidenav.module.css';
+import styles from 'resources/css/examples/general/nav/Sidenav.module.css';
 
 function Sidenav(props)
 {

@@ -41,17 +41,14 @@ function PlayerDetails(props)
 
   return (
     <div className={styles.module}>
-      <label className={cx(styles.lbl, styles.nameLbl)}>Name</label>
+      <label className={styles.lbl}>Name</label><br/>
+      <label className={styles.txt}>{player.name.toString()}</label>
       <br/>
-      <label className={cx(styles.txt, styles.nameTxt)}>{player.name.toString()}</label>
+      <label className={styles.lbl}>Photo</label><br/>
+      <label className={styles.txt}>{player.photo.toString()}</label>
       <br/>
-      <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label>
-      <br/>
-      <label className={cx(styles.txt, styles.photoTxt)}>{player.photo.toString()}</label>
-      <br/>
-      <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label>
-      <br/>
-      <label className={cx(styles.txt, styles.isActiveTxt)}>{player.isActive.toString()}</label>
+      <label className={styles.lbl}>Is active</label><br/>
+      <label className={styles.txt}>{player.isActive.toString()}</label>
       <br/>
     </div>
   );

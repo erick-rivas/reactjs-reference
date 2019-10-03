@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 
 import ScoreDetails from 'examples/scores/Details';
 import ScoreList from 'examples/scores/List';
-import ScoreTable from 'examples/scores/Table';
 import ScoreListOptions from 'examples/scores/options/List';
 import ScoreDetailsOptions from 'examples/scores/options/Details';
 import ScoreForm from 'examples/scores/Form';
@@ -28,17 +27,7 @@ function ScorePanel(props)
       <div className={styles.content}>
         <ScoreList {...props} />
       </div>
-    </div>
-
-  const Table = props =>
-    <div className={styles.table}>
-      <div className={styles.options}>
-        <ScoreListOptions {...props}/>
-      </div>
-      <div className={styles.content}>
-        <ScoreTable {...props} />
-      </div>
-    </div>
+    </div>;
 
   const Details = props =>
     <div className={styles.details}>
@@ -50,19 +39,19 @@ function ScorePanel(props)
           <ScoreDetails {...props} />
         </div>
       </div>
-    </div>
+    </div>;
 
   const Form = props =>
     <Modal {...props}>
       <ScoreForm {...props} />
-    </Modal>
+    </Modal>;
 
   return (
     <div className={styles.module}>
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={Table} />
+          component={List} />
         <Route
           path={`${path}/:score_id(\\d+)`}
           component={Details} />

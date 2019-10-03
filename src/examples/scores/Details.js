@@ -37,9 +37,8 @@ function ScoreDetails(props)
 
   return (
     <div className={styles.module}>
-      <label className={cx(styles.lbl, styles.minLbl)}>Min</label>
-      <br/>
-      <label className={cx(styles.txt, styles.minTxt)}>{score.min.toString()}</label>
+      <label className={styles.lbl}>Min</label><br/>
+      <label className={styles.txt}>{score.min.toString()}</label>
       <br/>
     </div>
   );

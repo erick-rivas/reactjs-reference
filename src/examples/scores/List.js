@@ -6,7 +6,6 @@ import React from 'react';
 import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
 
-import Item from 'examples/scores/list/Item';
 import Loading from 'seed/components/helpers/Loading';
 
 import cx from 'classnames';
@@ -44,10 +43,8 @@ function ScoreList(props)
       to={`${url}/${item.id}`}
       className={styles.item}
       activeClassName={styles.active}>
-      <Item
-        key={item.id}
-        id={item.id}
-        score={item}/>
+        <div className={styles.title}>{item.id}</div>
+        <div className={styles.subtitle}>{JSON.stringify(item)}</div>
     </NavLink>);
 
   return (

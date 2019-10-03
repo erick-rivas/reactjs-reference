@@ -31,11 +31,11 @@ const PLAYER_POSITIONS  = `
 
 function PlayerForm(props)
 {
-   const { url } = props.match;
-   const { player_id }  = props.match.params;
-   const editMode = player_id != null
+  const [state, setState] = useState({});
 
-  const [state, setState] = useState({})
+  const { url } = props.match;
+  const { player_id }  = props.match.params;
+  const editMode = player_id != null;
 
   const saveOptions = {
     onCompleted: data =>
@@ -44,9 +44,10 @@ function PlayerForm(props)
       props.history.push(backUrl);
     },
     onError: error => setState({ error: 'An error has occurred, try again' })
-  }
-  const [callSave, qSave] = useSave(queries.SAVE_PLAYER, saveOptions)
-  const [callSet, qSet] = useSet(queries.SET_PLAYER, saveOptions)
+  };
+
+  const [callSave, qSave] = useSave(queries.SAVE_PLAYER, saveOptions);
+  const [callSet, qSet] = useSet(queries.SET_PLAYER, saveOptions);
 
   const qPlayer = useDetail(queries.PLAYER, player_id);
   const qTeams = useQuery(TEAMS);
@@ -58,21 +59,18 @@ function PlayerForm(props)
   const onSubmit = values =>
   {
     values.id = player_id;
-    if (editMode) callSet(values)
-    else callSave(values)
+    if (editMode) callSet(values);
+    else callSave(values);
   }
 
-  const { player = {} } = qPlayer.data ? qPlayer.data : {}
-  const { teams = [] } = qTeams.data ? qTeams.data : {}
-  const { playerPositions = [] } = qPlayerPositions.data ? qPlayerPositions.data : {}
+  const { player = {} } = qPlayer.data;
+  const { teams = [] } = qTeams.data;
+  const { playerPositions = [] } = qPlayerPositions.data;
 
   return (
     <div className={styles.module}>
-
       <div className={styles.header}>Player</div>
-
       <div className={styles.form}>
-
         <Formik
            initialValues={player}
            onSubmit={onSubmit}
@@ -80,47 +78,43 @@ function PlayerForm(props)
 
         <form onSubmit={f.handleSubmit}>
           
-          {/* name */}
-          <label className={cx(styles.lbl, styles.nameLbl)}>Name</label><br/>
+          <label className={styles.lbl}>Name</label><br/>
           <Field type="text" name="name"
-            className={cx(styles.txt, styles.nameTxt)} />
+            className={styles.txt} />
           <br/>
           
-          {/* photo */}
-          <label className={cx(styles.lbl, styles.photoLbl)}>Photo</label><br/>
+          <label className={styles.lbl}>Photo</label><br/>
           <FileField name="photo"
             accept="image/*" setFieldValue={f.setFieldValue}
-            className={cx(styles.fil, styles.photoFil)}  />
+            className={styles.fil}  />
           { f.values.photo ?
-            <img src={f.values.photo.url} className={cx(styles.img, styles.photoImg)} /> : null }
+            <img src={f.values.photo.url} className={styles.img} /> : null }
           
-          {/* is_active */}
-          <label className={cx(styles.lbl, styles.isActiveLbl)}>Is active</label>
+          <label className={styles.lbl}>Is active</label>
           <Field type="checkbox" name="isActive"
-            className={cx(styles.chk, styles.isActiveChk)} />
+            className={styles.chk} />
           <br/>
           
-          {/* team */}
           <div>
-          <label className={cx(styles.lbl, styles.teamLbl)}>Team</label>
+          <label className={styles.lbl}>Team</label>
           <Field component="select" name="team.id"
-            className={cx(styles.ops, styles.teamOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
           </Field>
           <br/>
           </div>
           
-          {/* position */}
           <div>
-          <label className={cx(styles.lbl, styles.positionLbl)}>Position</label>
+          <label className={styles.lbl}>Position</label>
           <Field component="select" name="position.id"
-            className={cx(styles.ops, styles.positionOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             { playerPositions.map((e, idx) => <option value={e.id}>{e.id}</option>) }
           </Field>
           <br/>
           </div>
+          
           {state.error ?
             <div className={styles.error}>{state.error}</div> : null}
           <button type="submit" className={styles.submit}>Send</button>

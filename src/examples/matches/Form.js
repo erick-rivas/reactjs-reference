@@ -24,11 +24,11 @@ const TEAMS  = `
 
 function MatchForm(props)
 {
-   const { url } = props.match;
-   const { match_id }  = props.match.params;
-   const editMode = match_id != null
+  const [state, setState] = useState({});
 
-  const [state, setState] = useState({})
+  const { url } = props.match;
+  const { match_id }  = props.match.params;
+  const editMode = match_id != null;
 
   const saveOptions = {
     onCompleted: data =>
@@ -37,9 +37,10 @@ function MatchForm(props)
       props.history.push(backUrl);
     },
     onError: error => setState({ error: 'An error has occurred, try again' })
-  }
-  const [callSave, qSave] = useSave(queries.SAVE_MATCH, saveOptions)
-  const [callSet, qSet] = useSet(queries.SET_MATCH, saveOptions)
+  };
+
+  const [callSave, qSave] = useSave(queries.SAVE_MATCH, saveOptions);
+  const [callSet, qSet] = useSet(queries.SET_MATCH, saveOptions);
 
   const qMatch = useDetail(queries.MATCH, match_id);
   const qTeams = useQuery(TEAMS);
@@ -50,20 +51,17 @@ function MatchForm(props)
   const onSubmit = values =>
   {
     values.id = match_id;
-    if (editMode) callSet(values)
-    else callSave(values)
+    if (editMode) callSet(values);
+    else callSave(values);
   }
 
-  const { match = {} } = qMatch.data ? qMatch.data : {}
-  const { teams = [] } = qTeams.data ? qTeams.data : {}
+  const { match = {} } = qMatch.data;
+  const { teams = [] } = qTeams.data;
 
   return (
     <div className={styles.module}>
-
       <div className={styles.header}>Match</div>
-
       <div className={styles.form}>
-
         <Formik
            initialValues={match}
            onSubmit={onSubmit}
@@ -71,16 +69,14 @@ function MatchForm(props)
 
         <form onSubmit={f.handleSubmit}>
           
-          {/* date */}
-          <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
+          <label className={styles.lbl}>Date</label>
           <Field type="date" name="date"
-            className={cx(styles.dte, styles.dateDte)} />
+            className={styles.dte} />
           <br/>
           
-          {/* type */}
-          <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
+          <label className={styles.lbl}>Type</label>
           <Field component="select" name="type.id"
-            className={cx(styles.ops, styles.typeOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             <option value='FRIENDSHIP'>Friendship</option>
             <option value='LEAGUE'>League</option>
@@ -88,27 +84,26 @@ function MatchForm(props)
           </Field>
           <br/>
           
-          {/* local */}
           <div>
-          <label className={cx(styles.lbl, styles.localLbl)}>Local</label>
+          <label className={styles.lbl}>Local</label>
           <Field component="select" name="local.id"
-            className={cx(styles.ops, styles.localOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
           </Field>
           <br/>
           </div>
           
-          {/* visitor */}
           <div>
-          <label className={cx(styles.lbl, styles.visitorLbl)}>Visitor</label>
+          <label className={styles.lbl}>Visitor</label>
           <Field component="select" name="visitor.id"
-            className={cx(styles.ops, styles.visitorOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             { teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
           </Field>
           <br/>
           </div>
+          
           {state.error ?
             <div className={styles.error}>{state.error}</div> : null}
           <button type="submit" className={styles.submit}>Send</button>

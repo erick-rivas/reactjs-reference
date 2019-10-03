@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 
 import MatchDetails from 'examples/matches/Details';
 import MatchList from 'examples/matches/List';
-import MatchTable from 'examples/matches/Table';
 import MatchListOptions from 'examples/matches/options/List';
 import MatchDetailsOptions from 'examples/matches/options/Details';
 import MatchForm from 'examples/matches/Form';
@@ -28,17 +27,7 @@ function MatchPanel(props)
       <div className={styles.content}>
         <MatchList {...props} />
       </div>
-    </div>
-
-  const Table = props =>
-    <div className={styles.table}>
-      <div className={styles.options}>
-        <MatchListOptions {...props}/>
-      </div>
-      <div className={styles.content}>
-        <MatchTable {...props} />
-      </div>
-    </div>
+    </div>;
 
   const Details = props =>
     <div className={styles.details}>
@@ -50,19 +39,19 @@ function MatchPanel(props)
           <MatchDetails {...props} />
         </div>
       </div>
-    </div>
+    </div>;
 
   const Form = props =>
     <Modal {...props}>
       <MatchForm {...props} />
-    </Modal>
+    </Modal>;
 
   return (
     <div className={styles.module}>
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={Table} />
+          component={List} />
         <Route
           path={`${path}/:match_id(\\d+)`}
           component={Details} />

@@ -31,9 +31,8 @@ function PlayerPositionDetails(props)
 
   return (
     <div className={styles.module}>
-      <label className={cx(styles.lbl, styles.nameLbl)}>Name</label>
-      <br/>
-      <label className={cx(styles.txt, styles.nameTxt)}>{playerPosition.name.toString()}</label>
+      <label className={styles.lbl}>Name</label><br/>
+      <label className={styles.txt}>{playerPosition.name.toString()}</label>
       <br/>
     </div>
   );

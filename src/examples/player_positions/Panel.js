@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 
 import PlayerPositionDetails from 'examples/player_positions/Details';
 import PlayerPositionList from 'examples/player_positions/List';
-import PlayerPositionTable from 'examples/player_positions/Table';
 import PlayerPositionListOptions from 'examples/player_positions/options/List';
 import PlayerPositionDetailsOptions from 'examples/player_positions/options/Details';
 import PlayerPositionForm from 'examples/player_positions/Form';
@@ -28,17 +27,7 @@ function PlayerPositionPanel(props)
       <div className={styles.content}>
         <PlayerPositionList {...props} />
       </div>
-    </div>
-
-  const Table = props =>
-    <div className={styles.table}>
-      <div className={styles.options}>
-        <PlayerPositionListOptions {...props}/>
-      </div>
-      <div className={styles.content}>
-        <PlayerPositionTable {...props} />
-      </div>
-    </div>
+    </div>;
 
   const Details = props =>
     <div className={styles.details}>
@@ -50,19 +39,19 @@ function PlayerPositionPanel(props)
           <PlayerPositionDetails {...props} />
         </div>
       </div>
-    </div>
+    </div>;
 
   const Form = props =>
     <Modal {...props}>
       <PlayerPositionForm {...props} />
-    </Modal>
+    </Modal>;
 
   return (
     <div className={styles.module}>
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={Table} />
+          component={List} />
         <Route
           path={`${path}/:player_position_id(\\d+)`}
           component={Details} />

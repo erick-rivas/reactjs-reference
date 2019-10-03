@@ -24,11 +24,11 @@ const TEAMS  = `
 
 function UserForm(props)
 {
-   const { url } = props.match;
-   const { user_id }  = props.match.params;
-   const editMode = user_id != null
+  const [state, setState] = useState({});
 
-  const [state, setState] = useState({})
+  const { url } = props.match;
+  const { user_id }  = props.match.params;
+  const editMode = user_id != null;
 
   const saveOptions = {
     onCompleted: data =>
@@ -37,9 +37,10 @@ function UserForm(props)
       props.history.push(backUrl);
     },
     onError: error => setState({ error: 'An error has occurred, try again' })
-  }
-  const [callSave, qSave] = useSave(queries.SAVE_USER, saveOptions)
-  const [callSet, qSet] = useSet(queries.SET_USER, saveOptions)
+  };
+
+  const [callSave, qSave] = useSave(queries.SAVE_USER, saveOptions);
+  const [callSet, qSet] = useSet(queries.SET_USER, saveOptions);
 
   const qUser = useDetail(queries.USER, user_id);
   const qTeams = useQuery(TEAMS);
@@ -50,20 +51,17 @@ function UserForm(props)
   const onSubmit = values =>
   {
     values.id = user_id;
-    if (editMode) callSet(values)
-    else callSave(values)
+    if (editMode) callSet(values);
+    else callSave(values);
   }
 
-  const { user = {} } = qUser.data ? qUser.data : {}
-  const { teams = [] } = qTeams.data ? qTeams.data : {}
+  const { user = {} } = qUser.data;
+  const { teams = [] } = qTeams.data;
 
   return (
     <div className={styles.module}>
-
       <div className={styles.header}>User</div>
-
       <div className={styles.form}>
-
         <Formik
            initialValues={user}
            onSubmit={onSubmit}
@@ -71,16 +69,16 @@ function UserForm(props)
 
         <form onSubmit={f.handleSubmit}>
           
-          {/* teams */}
           <div>
-          <label className={cx(styles.lbl, styles.teamsLbl)}>Teams</label>
-          <div className={cx(styles.mul, styles.teamsMul)}>
+          <label className={styles.lbl}>Teams</label>
+          <div className={styles.mul}>
           <MultiField name="teams"
             values={ teams.map((e, idx) => { return {value: e, label: e.id} }) }
             setFieldValue={f.setFieldValue} value={f.values.teams} />
           </div>
           <br/>
           </div>
+          
           {state.error ?
             <div className={styles.error}>{state.error}</div> : null}
           <button type="submit" className={styles.submit}>Send</button>

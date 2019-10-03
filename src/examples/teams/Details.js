@@ -45,25 +45,20 @@ function TeamDetails(props)
 
   return (
     <div className={styles.module}>
-      <label className={cx(styles.lbl, styles.nameLbl)}>Name</label>
+      <label className={styles.lbl}>Name</label><br/>
+      <label className={styles.txt}>{team.name.toString()}</label>
       <br/>
-      <label className={cx(styles.txt, styles.nameTxt)}>{team.name.toString()}</label>
+      <label className={styles.lbl}>Logo</label><br/>
+      <label className={styles.txt}>{team.logo.toString()}</label>
       <br/>
-      <label className={cx(styles.lbl, styles.logoLbl)}>Logo</label>
+      <label className={styles.lbl}>Description</label><br/>
+      <label className={styles.txt}>{team.description.toString()}</label>
       <br/>
-      <label className={cx(styles.txt, styles.logoTxt)}>{team.logo.toString()}</label>
+      <label className={styles.lbl}>Market value</label><br/>
+      <label className={styles.txt}>{team.marketValue.toString()}</label>
       <br/>
-      <label className={cx(styles.lbl, styles.descriptionLbl)}>Description</label>
-      <br/>
-      <label className={cx(styles.txt, styles.descriptionTxt)}>{team.description.toString()}</label>
-      <br/>
-      <label className={cx(styles.lbl, styles.marketValueLbl)}>Market value</label>
-      <br/>
-      <label className={cx(styles.txt, styles.marketValueTxt)}>{team.marketValue.toString()}</label>
-      <br/>
-      <label className={cx(styles.lbl, styles.identityDocsLbl)}>Identity docs</label>
-      <br/>
-      <label className={cx(styles.txt, styles.identityDocsTxt)}>{team.identityDocs.toString()}</label>
+      <label className={styles.lbl}>Identity docs</label><br/>
+      <label className={styles.txt}>{team.identityDocs.toString()}</label>
       <br/>
     </div>
   );

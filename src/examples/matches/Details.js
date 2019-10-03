@@ -41,13 +41,11 @@ function MatchDetails(props)
 
   return (
     <div className={styles.module}>
-      <label className={cx(styles.lbl, styles.dateLbl)}>Date</label>
+      <label className={styles.lbl}>Date</label><br/>
+      <label className={styles.txt}>{match.date.toString()}</label>
       <br/>
-      <label className={cx(styles.txt, styles.dateTxt)}>{match.date.toString()}</label>
-      <br/>
-      <label className={cx(styles.lbl, styles.typeLbl)}>Type</label>
-      <br/>
-      <label className={cx(styles.txt, styles.typeTxt)}>{match.type.toString()}</label>
+      <label className={styles.lbl}>Type</label><br/>
+      <label className={styles.txt}>{match.type.toString()}</label>
       <br/>
     </div>
   );

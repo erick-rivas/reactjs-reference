@@ -1,18 +1,1 @@
-{
-  "actions": [
-    "user",
-    "team",
-    "player",
-    "match",
-    "score",
-    "player_position"
-  ],
-  "components": [
-    "user",
-    "team",
-    "player",
-    "match",
-    "score",
-    "player_position"
-  ]
-}
+{}

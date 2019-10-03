@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { usePost } from 'seed/api'
 
 import cx from 'classnames';
-import styles from 'resources/css/examples/auth/Login.module.css';
+import styles from 'resources/css/examples/general/auth/Login.module.css';
 
 function Login(props)
 {
@@ -19,7 +19,7 @@ function Login(props)
       props.history.replace('/');
     },
     onError: error => setState({ error: 'Invalid user or password' })
-  })
+  });
 
   const onSubmit = e =>
   {
@@ -31,8 +31,10 @@ function Login(props)
 
   return (
     <div className={styles.module}>
-      <div className={styles.background} style={ { backgroundImage: `url(${require("resources/images/wave.svg")})` }}>
+      <div className={styles.background}
+        style={ { backgroundImage: `url(${require("resources/images/wave.svg")})` }}>
         <div className={cx(styles.container, 'animated zoomIn')}>
+
             <label className={styles.title}>Login</label>
             <form onSubmit={onSubmit}>
               <label className={styles.emailLbl}>Email</label><br/>

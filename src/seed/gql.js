@@ -12,13 +12,14 @@ const useQuery = (raw, queryStr, options={}) =>
   const query = raw.replace(model, wrapper)
   const { addGqlQuery } = useContext(SeedContext)
 
-  return Apollo.useQuery(gql(query), {
+  const res = Apollo.useQuery(gql(query), {
     ...options,
     onCompleted: () => {
       addGqlQuery(query);
       if (options.onCompleted) options.onCompleted();
     }
   });
+  return {...res, data: res.data ? res.data : {}}
 }
 
 const useDetail = (raw, id, options={}) =>
@@ -26,7 +27,8 @@ const useDetail = (raw, id, options={}) =>
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}(id: ${id})`
   const query = raw.replace(model, wrapper)
-  return Apollo.useQuery(gql(query), options);
+  const res = Apollo.useQuery(gql(query), options);
+  return {...res, data: res.data ? res.data : {}}
 }
 
 const useMutate = mutation =>
@@ -47,7 +49,7 @@ const useMutate = mutation =>
     }
     call({variables: vars})
   }
-   return [wrap, res];
+   return [wrap, {...res, data: res.data ? res.data : {}}];
 }
 
 const useSet = (raw, options = {}) =>

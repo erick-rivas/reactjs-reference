@@ -22,3 +22,20 @@ __Seed builder__v1.0
   background: #f7f7f7;
   text-decoration: none;
 }
+
+.item .title {
+  font-size: 15px;
+  color: #444;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.item .subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #999;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

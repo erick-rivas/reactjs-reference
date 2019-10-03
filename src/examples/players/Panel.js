@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 
 import PlayerDetails from 'examples/players/Details';
 import PlayerList from 'examples/players/List';
-import PlayerTable from 'examples/players/Table';
 import PlayerListOptions from 'examples/players/options/List';
 import PlayerDetailsOptions from 'examples/players/options/Details';
 import PlayerForm from 'examples/players/Form';
@@ -28,17 +27,7 @@ function PlayerPanel(props)
       <div className={styles.content}>
         <PlayerList {...props} />
       </div>
-    </div>
-
-  const Table = props =>
-    <div className={styles.table}>
-      <div className={styles.options}>
-        <PlayerListOptions {...props}/>
-      </div>
-      <div className={styles.content}>
-        <PlayerTable {...props} />
-      </div>
-    </div>
+    </div>;
 
   const Details = props =>
     <div className={styles.details}>
@@ -50,19 +39,19 @@ function PlayerPanel(props)
           <PlayerDetails {...props} />
         </div>
       </div>
-    </div>
+    </div>;
 
   const Form = props =>
     <Modal {...props}>
       <PlayerForm {...props} />
-    </Modal>
+    </Modal>;
 
   return (
     <div className={styles.module}>
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={Table} />
+          component={List} />
         <Route
           path={`${path}/:player_id(\\d+)`}
           component={Details} />

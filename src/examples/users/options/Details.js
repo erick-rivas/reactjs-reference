@@ -6,7 +6,6 @@ import React from 'react';
 import { useDelete } from 'seed/gql';
 import * as queries from 'seed/gql/queries';
 import { Link } from 'react-router-dom';
-import Svg from 'react-svg';
 
 import cx from 'classnames';
 import styles from 'resources/css/examples/users/options/Details.module.css';
@@ -36,12 +35,13 @@ function UserDetailsOptions(props)
 
     return (
       <div className={styles.module}>
-        <Svg className={styles.back}
-          src={require('resources/icons/ic_arrow_back.svg')}
+        <i className={cx(styles.back, "fas fa-arrow-left")}
           onClick={onClickBack} />
-         <div className={styles.options}>
-          <Link to={`${url}/edit`} className={cx(styles.btn, styles.edit)}>Edit</Link>
-          <button className={cx(styles.btn, styles.delete)} onClick={onClickDelete}>Delete</button>
+        <div className={styles.options}>
+          <Link to={`${url}/edit`}
+            className={cx(styles.btn, styles.edit)}>Edit</Link>
+          <button className={cx(styles.btn, styles.delete)}
+            onClick={onClickDelete}>Delete</button>
         </div>
       </div>
     );

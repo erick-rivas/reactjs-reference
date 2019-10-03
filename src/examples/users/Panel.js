@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 
 import UserDetails from 'examples/users/Details';
 import UserList from 'examples/users/List';
-import UserTable from 'examples/users/Table';
 import UserListOptions from 'examples/users/options/List';
 import UserDetailsOptions from 'examples/users/options/Details';
 import UserForm from 'examples/users/Form';
@@ -28,17 +27,7 @@ function UserPanel(props)
       <div className={styles.content}>
         <UserList {...props} />
       </div>
-    </div>
-
-  const Table = props =>
-    <div className={styles.table}>
-      <div className={styles.options}>
-        <UserListOptions {...props}/>
-      </div>
-      <div className={styles.content}>
-        <UserTable {...props} />
-      </div>
-    </div>
+    </div>;
 
   const Details = props =>
     <div className={styles.details}>
@@ -50,19 +39,19 @@ function UserPanel(props)
           <UserDetails {...props} />
         </div>
       </div>
-    </div>
+    </div>;
 
   const Form = props =>
     <Modal {...props}>
       <UserForm {...props} />
-    </Modal>
+    </Modal>;
 
   return (
     <div className={styles.module}>
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={Table} />
+          component={List} />
         <Route
           path={`${path}/:user_id(\\d+)`}
           component={Details} />

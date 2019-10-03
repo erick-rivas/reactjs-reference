@@ -14,7 +14,8 @@ function ScoreListOptions(props)
   return (
     <div className={styles.module}>
       <div className={styles.options}>
-        <Link to={`${url}/new`} className={cx(styles.btn, styles.create)}>Create</Link>
+        <Link to={`${url}/new`}
+          className={cx(styles.btn, styles.create)}>Create</Link>
       </div>
     </div>
   );

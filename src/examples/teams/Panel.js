@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom';
 
 import TeamDetails from 'examples/teams/Details';
 import TeamList from 'examples/teams/List';
-import TeamTable from 'examples/teams/Table';
 import TeamListOptions from 'examples/teams/options/List';
 import TeamDetailsOptions from 'examples/teams/options/Details';
 import TeamForm from 'examples/teams/Form';
@@ -28,17 +27,7 @@ function TeamPanel(props)
       <div className={styles.content}>
         <TeamList {...props} />
       </div>
-    </div>
-
-  const Table = props =>
-    <div className={styles.table}>
-      <div className={styles.options}>
-        <TeamListOptions {...props}/>
-      </div>
-      <div className={styles.content}>
-        <TeamTable {...props} />
-      </div>
-    </div>
+    </div>;
 
   const Details = props =>
     <div className={styles.details}>
@@ -50,19 +39,19 @@ function TeamPanel(props)
           <TeamDetails {...props} />
         </div>
       </div>
-    </div>
+    </div>;
 
   const Form = props =>
     <Modal {...props}>
       <TeamForm {...props} />
-    </Modal>
+    </Modal>;
 
   return (
     <div className={styles.module}>
       <div className={styles.container}>
         <Route
           path={`${path}`}
-          component={Table} />
+          component={List} />
         <Route
           path={`${path}/:team_id(\\d+)`}
           component={Details} />

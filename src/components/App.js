@@ -3,9 +3,9 @@ __Seed builder__v1.0
 */
 
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import Examples from 'examples/App'
+import Examples from 'examples/Examples';
 
 import cx from 'classnames';
 import styles from 'resources/css/App.module.css';
@@ -16,7 +16,8 @@ function App(props)
     <div className={styles.module}>
       <Router>
         <Switch>
-          <Route path="/examples" component={Examples} />
+          <Route path="/examples"
+            component={Examples} />
           <Redirect to="/examples" />
         </Switch>
       </Router>

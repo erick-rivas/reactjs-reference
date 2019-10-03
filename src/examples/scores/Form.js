@@ -31,11 +31,11 @@ const MATCHES  = `
 
 function ScoreForm(props)
 {
-   const { url } = props.match;
-   const { score_id }  = props.match.params;
-   const editMode = score_id != null
+  const [state, setState] = useState({});
 
-  const [state, setState] = useState({})
+  const { url } = props.match;
+  const { score_id }  = props.match.params;
+  const editMode = score_id != null;
 
   const saveOptions = {
     onCompleted: data =>
@@ -44,9 +44,10 @@ function ScoreForm(props)
       props.history.push(backUrl);
     },
     onError: error => setState({ error: 'An error has occurred, try again' })
-  }
-  const [callSave, qSave] = useSave(queries.SAVE_SCORE, saveOptions)
-  const [callSet, qSet] = useSet(queries.SET_SCORE, saveOptions)
+  };
+
+  const [callSave, qSave] = useSave(queries.SAVE_SCORE, saveOptions);
+  const [callSet, qSet] = useSet(queries.SET_SCORE, saveOptions);
 
   const qScore = useDetail(queries.SCORE, score_id);
   const qPlayers = useQuery(PLAYERS);
@@ -58,21 +59,18 @@ function ScoreForm(props)
   const onSubmit = values =>
   {
     values.id = score_id;
-    if (editMode) callSet(values)
-    else callSave(values)
+    if (editMode) callSet(values);
+    else callSave(values);
   }
 
-  const { score = {} } = qScore.data ? qScore.data : {}
-  const { players = [] } = qPlayers.data ? qPlayers.data : {}
-  const { matches = [] } = qMatches.data ? qMatches.data : {}
+  const { score = {} } = qScore.data;
+  const { players = [] } = qPlayers.data;
+  const { matches = [] } = qMatches.data;
 
   return (
     <div className={styles.module}>
-
       <div className={styles.header}>Score</div>
-
       <div className={styles.form}>
-
         <Formik
            initialValues={score}
            onSubmit={onSubmit}
@@ -80,33 +78,31 @@ function ScoreForm(props)
 
         <form onSubmit={f.handleSubmit}>
           
-          {/* min */}
-          <label className={cx(styles.lbl, styles.minLbl)}>Min</label><br/>
+          <label className={styles.lbl}>Min</label><br/>
           <Field type="number" name="min"
-            className={cx(styles.txt, styles.minTxt)} />
+            className={styles.txt} />
           <br/>
           
-          {/* player */}
           <div>
-          <label className={cx(styles.lbl, styles.playerLbl)}>Player</label>
+          <label className={styles.lbl}>Player</label>
           <Field component="select" name="player.id"
-            className={cx(styles.ops, styles.playerOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             { players.map((e, idx) => <option value={e.id}>{e.id}</option>) }
           </Field>
           <br/>
           </div>
           
-          {/* match */}
           <div>
-          <label className={cx(styles.lbl, styles.matchLbl)}>Match</label>
+          <label className={styles.lbl}>Match</label>
           <Field component="select" name="match.id"
-            className={cx(styles.ops, styles.matchOps)} >
+            className={styles.ops} >
             <option value="">Select an option</option>
             { matches.map((e, idx) => <option value={e.id}>{e.id}</option>) }
           </Field>
           <br/>
           </div>
+          
           {state.error ?
             <div className={styles.error}>{state.error}</div> : null}
           <button type="submit" className={styles.submit}>Send</button>
