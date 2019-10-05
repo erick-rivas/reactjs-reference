@@ -5,6 +5,12 @@ __Seed builder__v1.0
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
+import MatchPanel from 'examples/matches/Panel';
+import PlayerPanel from 'examples/players/Panel';
+import PlayerPositionPanel from 'examples/player_positions/Panel';
+import ScorePanel from 'examples/scores/Panel';
+import TeamPanel from 'examples/teams/Panel';
+import UserPanel from 'examples/users/Panel';
 import Sidenav from 'examples/general/nav/Sidenav';
 import Topnav from 'examples/general/nav/Topnav';
 
@@ -36,6 +42,18 @@ function Home(props)
         </div>
         <div className={styles.content}>
            <Switch>
+             <Route path={`${path}/matches`}
+               component={MatchPanel} />
+             <Route path={`${path}/players`}
+               component={PlayerPanel} />
+             <Route path={`${path}/player_positions`}
+               component={PlayerPositionPanel} />
+             <Route path={`${path}/scores`}
+               component={ScorePanel} />
+             <Route path={`${path}/teams`}
+               component={TeamPanel} />
+             <Route path={`${path}/users`}
+               component={UserPanel} />
            </Switch>
         </div>
       </div>
