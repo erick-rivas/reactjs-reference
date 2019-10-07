@@ -1,5 +1,5 @@
 /*
-__Seed builder__v1.0
+__Seed builder__v0.1.7
 */
 
 import React, { useEffect } from 'react';

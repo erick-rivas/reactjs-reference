@@ -4,7 +4,6 @@ import { gql } from 'apollo-boost';
 import { SINGULARS } from 'seed/gql/const'
 import SeedContext from 'seed/context'
 
-
 const useQuery = (raw, queryStr, options={}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
