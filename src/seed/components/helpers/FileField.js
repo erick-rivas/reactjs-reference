@@ -1,5 +1,5 @@
 /*
-__Seed builder__v1.0
+__Seed builder__v1.7
   (Read_only) Builder helper
 */
 
@@ -9,21 +9,18 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import styles from 'resources/css/seed/helpers/FileField.module.css';
 
-class Loading extends React.Component
+class FileField extends React.Component
 {
   render()
   {
-    const {className, accept} = this.props;
+    const {className, accept, multiple=false} = this.props;
     return (
       <form encType="multipart/form-data">
-        <input name="file" type="file" className={className} accept={accept} onChange={this.onFileChange}></input>
+        <input name="file" type="file" className={className} accept={accept}
+          onChange={this.onFileChange} multiple={multiple}></input>
        </form>
     );
   }
-
-  /*
-  * Component logic
-  */
 
   constructor(props)
   {
@@ -43,4 +40,4 @@ class Loading extends React.Component
   }
 }
 
-export default redux(Loading);
+export default redux(FileField);

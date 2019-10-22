@@ -60,10 +60,6 @@ class Modal extends React.Component
     );
   }
 
-  /*
-  * Component logic
-  */
-
   constructor(props)
   {
     super(props);

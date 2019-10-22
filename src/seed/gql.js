@@ -1,10 +1,17 @@
+/*
+__Seed builder__v0.1.7
+  AUTO_GENERATED (Read only)
+  Modify via builder
+*/
+
 import * as Apollo from '@apollo/react-hooks';
 import { useContext } from 'react'
 import { gql } from 'apollo-boost';
 import { SINGULARS } from 'seed/gql/const'
 import SeedContext from 'seed/context'
 
-const useQuery = (raw, queryStr, options={}) =>
+
+const useQuery = (raw, queryStr, options = {}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}${queryStr ? '(query: "' + queryStr + '")' : ''}`
@@ -13,31 +20,33 @@ const useQuery = (raw, queryStr, options={}) =>
 
   const res = Apollo.useQuery(gql(query), {
     ...options,
-    onCompleted: () => {
+    onCompleted: data =>
+    {
       addGqlQuery(query);
-      if (options.onCompleted) options.onCompleted();
+      if (options.onCompleted) options.onCompleted(data);
     }
   });
-  return {...res, data: res.data ? res.data : {}}
+  return { ...res, data: res.data ? res.data : {} }
 }
 
-const useDetail = (raw, id, options={}) =>
+const useDetail = (raw, id, options = {}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}(id: ${id})`
   const query = raw.replace(model, wrapper)
   const res = Apollo.useQuery(gql(query), options);
-  return {...res, data: res.data ? res.data : {}}
+  return { ...res, data: res.data ? res.data : {} }
 }
 
 const useMutate = mutation =>
 {
   const [call, res] = mutation;
-  const wrap = body => {
+  const wrap = body =>
+  {
     const vars = body ? body : {};
-    for (let key in vars){
+    for (let key in vars) {
       let ele = vars[key];
-      if (ele != null){
+      if (ele != null) {
         if (ele.id != null)
           vars[key] = vars[key].id
         if (Array.isArray(ele))
@@ -46,9 +55,9 @@ const useMutate = mutation =>
               vars[key][i] = ele[i].id
       }
     }
-    call({variables: vars})
+    call({ variables: vars })
   }
-   return [wrap, {...res, data: res.data ? res.data : {}}];
+  return [wrap, { ...res, data: res.data ? res.data : {} }];
 }
 
 const useSet = (raw, options = {}) =>
