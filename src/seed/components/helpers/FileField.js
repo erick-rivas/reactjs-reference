@@ -13,12 +13,11 @@ class FileField extends React.Component
 {
   render()
   {
-    const {className, accept, multiple=false} = this.props;
+    const { className, accept, multiple = false } = this.props;
     return (
       <form encType="multipart/form-data">
-        <input name="file" type="file" className={className} accept={accept}
-          onChange={this.onFileChange} multiple={multiple}></input>
-       </form>
+        <input name="file" type="file" className={className} accept={accept} onChange={this.onFileChange} multiple={multiple}></input>
+      </form>
     );
   }
 
@@ -30,11 +29,22 @@ class FileField extends React.Component
 
   onFileChange(e)
   {
-    const { setFieldValue, name } = this.props;
+    const { setFieldValue, name, multiple } = this.props;
     const { uploadFile } = this.props;
-    const callback = res => {
-      setFieldValue(name, res.body);
-      setFieldValue(name + "_id", res.body.id);
+    const callback = res =>
+    {
+      if (multiple) {
+        if (Array.isArray(res)) {
+          setFieldValue(name, res.body);
+          setFieldValue(name + "_ids", res.body.map(r => r.id));
+        } else {
+          setFieldValue(name, [res.body]);
+          setFieldValue(name + "_ids", [res.body.id]);
+        }
+      } else {
+        setFieldValue(name, res.body);
+        setFieldValue(name + "_id", res.body.id);
+      }
     }
     uploadFile(e.target.form, callback);
   }
