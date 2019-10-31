@@ -11,11 +11,19 @@ import { SINGULARS } from 'seed/gql/const'
 import SeedContext from 'seed/context'
 
 
+const cleanQuery = query =>
+{
+  const fBracePos = query.indexOf("{");
+  let res = query.substring(fBracePos + 1)
+  res = "{ " + res.replace(/{/g, "{ id ")
+  return res;
+}
+
 const useQuery = (raw, queryStr, options = {}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}${queryStr ? '(query: "' + queryStr + '")' : ''}`
-  const query = raw.replace(model, wrapper)
+  const query = cleanQuery(raw.replace(model, wrapper))
   const { addGqlQuery } = useContext(SeedContext)
 
   const res = Apollo.useQuery(gql(query), {
@@ -33,7 +41,7 @@ const useDetail = (raw, id, options = {}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
   const wrapper = `${model}(id: ${id})`
-  const query = raw.replace(model, wrapper)
+  const query = cleanQuery(raw.replace(model, wrapper))
   const res = Apollo.useQuery(gql(query), options);
   return { ...res, data: res.data ? res.data : {} }
 }

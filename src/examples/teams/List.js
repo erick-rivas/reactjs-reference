@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React from 'react';
 import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
@@ -14,22 +10,13 @@ import styles from 'resources/css/examples/teams/List.module.css';
 const TEAMS  = `
 {
   teams {
-    id
     name
     description
     marketValue
-    logo {
-      id
-    }
-    rival {
-      id
-    }
-    identityDocs {
-      id
-    }
-    players {
-      id
-    }
+    logo { }
+    rival { }
+    identityDocs { }
+    players { }
   }
 }
 `

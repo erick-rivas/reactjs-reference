@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React, { useState } from 'react';
 import { usePost } from 'seed/api'
 

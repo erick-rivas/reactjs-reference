@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React from 'react';
 import Svg from 'react-svg';
 

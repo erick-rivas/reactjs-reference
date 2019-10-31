@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React from 'react';
 import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
@@ -14,18 +10,11 @@ import styles from 'resources/css/examples/matches/List.module.css';
 const MATCHES  = `
 {
   matches {
-    id
     date
     type
-    local {
-      id
-    }
-    visitor {
-      id
-    }
-    scores {
-      id
-    }
+    local { }
+    visitor { }
+    scores { }
   }
 }
 `

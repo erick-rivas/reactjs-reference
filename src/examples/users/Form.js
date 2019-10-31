@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React, {useState} from 'react';
 import { useSave, useSet, useQuery, useDetail } from 'seed/gql'
 import * as queries from 'seed/gql/queries'
@@ -16,9 +12,7 @@ import styles from 'resources/css/examples/users/Form.module.css';
 
 const TEAMS  = `
 {
-  teams {
-    id
-  }
+  teams { }
 }
 `
 

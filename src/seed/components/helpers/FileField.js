@@ -34,7 +34,7 @@ class FileField extends React.Component
     const callback = res =>
     {
       if (multiple) {
-        if (Array.isArray(res)) {
+        if (Array.isArray(res.body)) {
           setFieldValue(name, res.body);
           setFieldValue(name + "_ids", res.body.map(r => r.id));
         } else {

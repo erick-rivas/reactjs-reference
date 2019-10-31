@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 

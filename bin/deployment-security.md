@@ -51,5 +51,5 @@ $ sudo ./certbot-auto certonly --debug
   # Select 1. apache
 ```
 
--  Copy bin/http-instance.config to .ebextensions folder
+-  Copy bin/eb/http-instance.config to .ebextensions folder
 -  Set HTTPS_DOMAIN in .ebextensions/nodecommand.config

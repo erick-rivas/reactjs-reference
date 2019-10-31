@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React, { useEffect } from 'react';
 import { usePost } from 'seed/api'
 
@@ -13,8 +9,7 @@ function Logout(props)
   const [logout, onLogout] = usePost("/auth/logout", {
     onCompleted: data =>
     {
-      sessionStorage.removeItem('token');
-      sessionStorage.removeItem('id');
+      sessionStorage.clear();
       props.history.replace('/');
     }
   });

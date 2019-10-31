@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React from 'react';
 import { useDelete } from 'seed/gql';
 import * as queries from 'seed/gql/queries';

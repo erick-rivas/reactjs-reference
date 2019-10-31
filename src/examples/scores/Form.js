@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React, {useState} from 'react';
 import { useSave, useSet, useQuery, useDetail } from 'seed/gql'
 import * as queries from 'seed/gql/queries'
@@ -16,16 +12,12 @@ import styles from 'resources/css/examples/scores/Form.module.css';
 
 const PLAYERS  = `
 {
-  players {
-    id
-  }
+  players { }
 }
 `
 const MATCHES  = `
 {
-  matches {
-    id
-  }
+  matches { }
 }
 `
 

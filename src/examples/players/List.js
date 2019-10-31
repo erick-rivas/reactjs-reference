@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React from 'react';
 import { useQuery } from 'seed/gql'
 import { NavLink } from 'react-router-dom';
@@ -14,18 +10,11 @@ import styles from 'resources/css/examples/players/List.module.css';
 const PLAYERS  = `
 {
   players {
-    id
     name
     isActive
-    photo {
-      id
-    }
-    team {
-      id
-    }
-    position {
-      id
-    }
+    photo { }
+    team { }
+    position { }
   }
 }
 `

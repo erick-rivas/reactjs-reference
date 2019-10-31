@@ -1,7 +1,3 @@
-/*
-__Seed builder__v0.1.8
-*/
-
 import React from 'react';
 import { useDetail } from 'seed/gql'
 
@@ -13,7 +9,6 @@ import styles from 'resources/css/examples/player_positions/Details.module.css';
 const PLAYER_POSITION  = `
 {
   playerPosition {
-    id
     name
   }
 }

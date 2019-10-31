@@ -22,6 +22,7 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 ### Production settings
 
+-  Move bin/eb/.ebextensions & bin/eb/.ebignore to root folder
 -  Configure src/settings/Urls.js file with api & server settings
 
 ### Deploy
