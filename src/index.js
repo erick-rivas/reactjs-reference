@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as Urls from 'settings/Urls';
 
+import { GRAPH_URL } from 'settings/Config';
 import { Provider } from 'react-redux'
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { MuiTheme } from 'settings/MuiTheme';
@@ -21,7 +21,7 @@ const store = Store();
 const muiTheme = MuiTheme();
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: Urls.GRAPH_URL,
+  uri: GRAPH_URL,
   cache
 });
 

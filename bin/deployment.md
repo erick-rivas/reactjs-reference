@@ -23,7 +23,8 @@ This file contains guides to deploy project to aws elastic beanstalk
 ### Production settings
 
 -  Move bin/eb/.ebextensions & bin/eb/.ebignore to root folder
--  Configure src/settings/Urls.js file with api & server settings
+-  Configure src/settings/Config.js file with api & server settings
+  > Set DEBUG = false
 
 ### Deploy
 
@@ -31,3 +32,4 @@ This file contains guides to deploy project to aws elastic beanstalk
 ```bash
 $ ./bin/deploy
 ```
+  > In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version

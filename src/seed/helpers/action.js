@@ -4,7 +4,7 @@ __Seed builder__v0.1.8
 */
 
 import fetch from 'cross-fetch';
-import * as Urls from 'settings/Urls';
+import { API_URL } from 'settings/Config';
 import * as Const from 'seed/helpers/redux_const';
 
 class Action
@@ -90,7 +90,7 @@ class Action
         args["body"] = JSON.stringify(body);
 
 
-      return fetch(`${Urls.API_URL}/${this.path}${path}/?${this.fetch}${query}`, args)
+      return fetch(`${API_URL}/${this.path}${path}/?${this.fetch}${query}`, args)
         .then(response =>
         {
           if (!response.ok) throw response;

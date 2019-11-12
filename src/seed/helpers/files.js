@@ -4,7 +4,7 @@ __Seed builder__v0.1.8
 */
 
 import $ from 'jquery';
-import * as Urls from 'settings/Urls';
+import { API_URL } from 'settings/Config';
 
 class Files
 {
@@ -12,7 +12,7 @@ class Files
   {
     return disp =>
     {
-      let url = `${Urls.API_URL}/files/`;
+      let url = `${API_URL}/files/`;
       $.ajax({
         url: url,
         type: 'POST',

@@ -6,7 +6,7 @@ __Seed builder__v0.1.8
 
 import React, { useState } from "react";
 import useFetch from "react-fetch-hook";
-import * as Urls from 'settings/Urls';
+import { API_URL } from 'settings/Config';
 
 const query = params =>
 {
@@ -37,7 +37,7 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
   const [call, setCall] = useState({ body: null, called: false })
   const calling = body =>
     body ? setCall({ body: body }) : setCall({ body: {} })
-  const fetch = useFetch(`${Urls.API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
+  const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
     ...options(method, call.body),
     formatter: (response) => {
       if (!response.ok) throw response;
@@ -64,7 +64,7 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
 }
 
 const useGet = (endpoint, params = {}) =>
-  useFetch(`${Urls.API_URL}${endpoint}/?${query(params)}`);
+  useFetch(`${API_URL}${endpoint}/?${query(params)}`);
 
 const usePost = (endpoint, options = {}) =>
   useMutate("POST", endpoint, options);
