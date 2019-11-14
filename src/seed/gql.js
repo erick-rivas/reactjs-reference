@@ -4,11 +4,11 @@ __Seed builder__v0.1.8
   Modify via builder
 */
 
-import * as Apollo from '@apollo/react-hooks';
-import { useContext } from 'react'
-import { gql } from 'apollo-boost';
-import { SINGULARS } from 'seed/gql/const'
-import SeedContext from 'seed/context'
+import * as Apollo from "@apollo/react-hooks";
+import { useContext } from "react"
+import { gql } from "apollo-boost";
+import { SINGULARS } from "seed/gql/const"
+import SeedContext from "seed/context"
 
 
 const cleanQuery = query =>
@@ -22,7 +22,7 @@ const cleanQuery = query =>
 const useQuery = (raw, queryStr, options = {}) =>
 {
   const model = raw.match(/[\w]+/g)[0]
-  const wrapper = `${model}${queryStr ? '(query: "' + queryStr + '")' : ''}`
+  const wrapper = `${model}${queryStr ? "(query: \"" + queryStr + "\")" : ""}`
   const query = cleanQuery(raw.replace(model, wrapper))
   const { addGqlQuery } = useContext(SeedContext)
 

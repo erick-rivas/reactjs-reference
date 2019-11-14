@@ -3,8 +3,8 @@ __Seed builder__v0.1.8
   (Read_only) Builder helper
 */
 
-import $ from 'jquery';
-import { API_URL } from 'settings/Config';
+import $ from "jquery";
+import { API_URL } from "settings/Config";
 
 class Files
 {
@@ -15,7 +15,7 @@ class Files
       let url = `${API_URL}/files/`;
       $.ajax({
         url: url,
-        type: 'POST',
+        type: "POST",
         data: new FormData(formWrapper),
         cache: false,
         contentType: false,

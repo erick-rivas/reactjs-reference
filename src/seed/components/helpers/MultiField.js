@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import styles from 'resources/css/seed/helpers/MultiField.module.css'
+import styles from "resources/css/seed/helpers/MultiField.module.css"
 
 class MultiField extends React.Component
 {

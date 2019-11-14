@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDelete } from 'seed/gql';
-import * as queries from 'seed/gql/queries';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useDelete } from "seed/gql";
+import * as queries from "seed/gql/queries";
+import { Link } from "react-router-dom";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/scores/options/Details.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/scores/options/Details.module.css";
 
 function ScoreDetailsOptions(props)
 {
@@ -15,7 +15,7 @@ function ScoreDetailsOptions(props)
     {
       onCompleted: data =>
       {
-        const backUrl = url.substring(0, url.lastIndexOf('/'));
+        const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
        }
     })
@@ -25,7 +25,7 @@ function ScoreDetailsOptions(props)
 
     const onClickBack = () =>
     {
-      const backUrl = url.substring(0, url.lastIndexOf('/'));
+      const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     }
 

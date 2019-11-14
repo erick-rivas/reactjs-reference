@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { usePost } from 'seed/api'
+import React, { useEffect } from "react";
+import { usePost } from "seed/api"
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/general/auth/Logout.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/general/auth/Logout.module.css";
 
 function Logout(props)
 {
@@ -10,7 +10,7 @@ function Logout(props)
     onCompleted: data =>
     {
       sessionStorage.clear();
-      props.history.replace('/');
+      props.history.replace("/");
     }
   });
 

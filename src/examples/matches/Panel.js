@@ -1,15 +1,15 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React from "react";
+import { Route } from "react-router-dom";
 
-import MatchDetails from 'examples/matches/Details';
-import MatchList from 'examples/matches/List';
-import MatchListOptions from 'examples/matches/options/List';
-import MatchDetailsOptions from 'examples/matches/options/Details';
-import MatchForm from 'examples/matches/Form';
-import Modal from 'seed/components/helpers/Modal';
+import MatchDetails from "examples/matches/Details";
+import MatchList from "examples/matches/List";
+import MatchListOptions from "examples/matches/options/List";
+import MatchDetailsOptions from "examples/matches/options/Details";
+import MatchForm from "examples/matches/Form";
+import Modal from "seed/components/helpers/Modal";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/matches/Panel.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/matches/Panel.module.css";
 
 function MatchPanel(props)
 {

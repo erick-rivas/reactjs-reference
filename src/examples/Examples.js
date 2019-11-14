@@ -1,13 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 
-import Login from 'examples/general/auth/Login';
-import Logout from 'examples/general/auth/Logout';
-import Analytics from 'examples/general/nav/Analytics'
-import Home from 'examples/Home';
+import Login from "examples/general/auth/Login";
+import Logout from "examples/general/auth/Logout";
+import Analytics from "examples/general/nav/Analytics"
+import Home from "examples/Home";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/Examples.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/Examples.module.css";
 
 function Examples(props)
 {

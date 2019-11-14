@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import { useSave, useSet, useQuery, useDetail } from 'seed/gql'
-import * as queries from 'seed/gql/queries'
-import { Formik, Field } from 'formik';
+import React, {useState} from "react";
+import { useSave, useSet, useQuery, useDetail } from "seed/gql"
+import * as queries from "seed/gql/queries"
+import { Formik, Field } from "formik";
 
-import MultiField from 'seed/components/helpers/MultiField'
-import FileField from 'seed/components/helpers/FileField'
-import Loading from 'seed/components/helpers/Loading';
+import MultiField from "seed/components/helpers/MultiField"
+import FileField from "seed/components/helpers/FileField"
+import Loading from "seed/components/helpers/Loading";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/scores/Form.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/scores/Form.module.css";
 
 const PLAYERS  = `
 {
@@ -32,10 +32,10 @@ function ScoreForm(props)
   const saveOptions = {
     onCompleted: data =>
     {
-      const backUrl = url.substring(0, url.lastIndexOf('/'));
+      const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: error => setState({ error: 'An error has occurred, try again' })
+    onError: error => setState({ error: "An error has occurred, try again" })
   };
 
   const [callSave, qSave] = useSave(queries.SAVE_SCORE, saveOptions);

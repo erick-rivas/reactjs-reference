@@ -4,7 +4,7 @@ __Seed builder__v0.1.8
   Modify via builder
 */
 
-import Action from 'seed/helpers/action';
+import Action from "seed/helpers/action";
 
 class _Teams extends Action
 {
@@ -26,27 +26,27 @@ class _Teams extends Action
 
   getTeamList(params = {}, callback)
   {
-    return this.getList('', params, callback);
+    return this.getList("", params, callback);
   }
 
   getTeamDetails(teamId, callback)
   {
-    return this.getDetails('', teamId, callback);
+    return this.getDetails("", teamId, callback);
   }
 
   saveTeam(team, callback)
   {
-    return this.postData('', team, callback);
+    return this.postData("", team, callback);
   }
 
   setTeam(teamId, team, callback)
   {
-    return this.putData('', teamId, team, callback);
+    return this.putData("", teamId, team, callback);
   }
 
   deleteTeam(teamId, callback)
   {
-    return this.deleteData('', teamId, callback);
+    return this.deleteData("", teamId, callback);
   }
 }
 

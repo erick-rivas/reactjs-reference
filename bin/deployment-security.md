@@ -11,16 +11,16 @@ To enable a https connection:
 -   Create an elastic beanstalk instance for reactjs support (see [README.md](../README.md))   
 
 -   Enable 443 port in ec2 settings
-      -   Go to ec2 pane 
-      -   Press instance name
-      -   Open first security groups
-      -   Go to inbound
-      -   Enable 443 port
+    -   Go to ec2 pane 
+    -   Press instance name
+    -   Open first security groups
+    -   Go to inbound
+    -   Enable 443 port
 
 -   Set proxy server to apache
-      -   Open elastic beanstalk panel
-      -   Go to Configuration > Software
-      -   Select apache as proxy server
+    -   Open elastic beanstalk panel
+    -   Go to Configuration > Software
+    -   Select apache as proxy server
 
 ### Configure server
 

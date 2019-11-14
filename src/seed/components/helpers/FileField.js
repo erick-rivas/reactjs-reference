@@ -3,11 +3,11 @@ __Seed builder__v1.7
   (Read_only) Builder helper
 */
 
-import * as React from 'react';
-import redux from 'seed/redux';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import * as React from "react";
+import redux from "seed/redux";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-import styles from 'resources/css/seed/helpers/FileField.module.css';
+import styles from "resources/css/seed/helpers/FileField.module.css";
 
 class FileField extends React.Component
 {

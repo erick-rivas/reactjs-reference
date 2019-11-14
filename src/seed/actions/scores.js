@@ -4,7 +4,7 @@ __Seed builder__v0.1.8
   Modify via builder
 */
 
-import Action from 'seed/helpers/action';
+import Action from "seed/helpers/action";
 
 class _Scores extends Action
 {
@@ -26,27 +26,27 @@ class _Scores extends Action
 
   getScoreList(params = {}, callback)
   {
-    return this.getList('', params, callback);
+    return this.getList("", params, callback);
   }
 
   getScoreDetails(scoreId, callback)
   {
-    return this.getDetails('', scoreId, callback);
+    return this.getDetails("", scoreId, callback);
   }
 
   saveScore(score, callback)
   {
-    return this.postData('', score, callback);
+    return this.postData("", score, callback);
   }
 
   setScore(scoreId, score, callback)
   {
-    return this.putData('', scoreId, score, callback);
+    return this.putData("", scoreId, score, callback);
   }
 
   deleteScore(scoreId, callback)
   {
-    return this.deleteData('', scoreId, callback);
+    return this.deleteData("", scoreId, callback);
   }
 }
 

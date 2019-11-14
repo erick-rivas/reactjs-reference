@@ -1,15 +1,15 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React from "react";
+import { Route } from "react-router-dom";
 
-import ScoreDetails from 'examples/scores/Details';
-import ScoreList from 'examples/scores/List';
-import ScoreListOptions from 'examples/scores/options/List';
-import ScoreDetailsOptions from 'examples/scores/options/Details';
-import ScoreForm from 'examples/scores/Form';
-import Modal from 'seed/components/helpers/Modal';
+import ScoreDetails from "examples/scores/Details";
+import ScoreList from "examples/scores/List";
+import ScoreListOptions from "examples/scores/options/List";
+import ScoreDetailsOptions from "examples/scores/options/Details";
+import ScoreForm from "examples/scores/Form";
+import Modal from "seed/components/helpers/Modal";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/scores/Panel.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/scores/Panel.module.css";
 
 function ScorePanel(props)
 {

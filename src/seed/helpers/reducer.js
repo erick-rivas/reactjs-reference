@@ -3,7 +3,7 @@ __Seed builder__v0.1.8
   (Read_only) Builder helper
 */
 
-import * as Const from 'seed/helpers/redux_const';
+import * as Const from "seed/helpers/redux_const";
 
 class Reducer
 {

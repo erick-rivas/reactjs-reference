@@ -1,15 +1,15 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React from "react";
+import { Route } from "react-router-dom";
 
-import PlayerDetails from 'examples/players/Details';
-import PlayerList from 'examples/players/List';
-import PlayerListOptions from 'examples/players/options/List';
-import PlayerDetailsOptions from 'examples/players/options/Details';
-import PlayerForm from 'examples/players/Form';
-import Modal from 'seed/components/helpers/Modal';
+import PlayerDetails from "examples/players/Details";
+import PlayerList from "examples/players/List";
+import PlayerListOptions from "examples/players/options/List";
+import PlayerDetailsOptions from "examples/players/options/Details";
+import PlayerForm from "examples/players/Form";
+import Modal from "seed/components/helpers/Modal";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/players/Panel.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/players/Panel.module.css";
 
 function PlayerPanel(props)
 {

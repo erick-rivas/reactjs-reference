@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDelete } from 'seed/gql';
-import * as queries from 'seed/gql/queries';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useDelete } from "seed/gql";
+import * as queries from "seed/gql/queries";
+import { Link } from "react-router-dom";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/users/options/Details.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/users/options/Details.module.css";
 
 function UserDetailsOptions(props)
 {
@@ -15,7 +15,7 @@ function UserDetailsOptions(props)
     {
       onCompleted: data =>
       {
-        const backUrl = url.substring(0, url.lastIndexOf('/'));
+        const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
        }
     })
@@ -25,7 +25,7 @@ function UserDetailsOptions(props)
 
     const onClickBack = () =>
     {
-      const backUrl = url.substring(0, url.lastIndexOf('/'));
+      const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     }
 

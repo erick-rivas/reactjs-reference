@@ -4,7 +4,7 @@ __Seed builder__v0.1.8
   Modify via builder
 */
 
-import Action from 'seed/helpers/action';
+import Action from "seed/helpers/action";
 
 class _Users extends Action
 {
@@ -25,27 +25,27 @@ class _Users extends Action
 
   getUserList(params = {}, callback)
   {
-    return this.getList('', params, callback);
+    return this.getList("", params, callback);
   }
 
   getUserDetails(userId, callback)
   {
-    return this.getDetails('', userId, callback);
+    return this.getDetails("", userId, callback);
   }
 
   saveUser(user, callback)
   {
-    return this.postData('', user, callback);
+    return this.postData("", user, callback);
   }
 
   setUser(userId, user, callback)
   {
-    return this.putData('', userId, user, callback);
+    return this.putData("", userId, user, callback);
   }
 
   deleteUser(userId, callback)
   {
-    return this.deleteData('', userId, callback);
+    return this.deleteData("", userId, callback);
   }
 }
 

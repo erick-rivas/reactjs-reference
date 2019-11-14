@@ -1,21 +1,21 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-import { GRAPH_URL } from 'settings/Config';
-import { Provider } from 'react-redux'
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import { MuiTheme } from 'settings/MuiTheme';
+import { GRAPH_URL } from "settings/Config";
+import { Provider } from "react-redux"
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiTheme } from "settings/MuiTheme";
 
-import App from 'components/App';
-import Popup from 'react-popup';
-import Worker from 'settings/bin/Worker';
-import Store from 'settings/bin/Store';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { SeedProvider } from 'seed/context'
+import App from "components/App";
+import Popup from "react-popup";
+import Worker from "settings/bin/Worker";
+import Store from "settings/bin/Store";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { SeedProvider } from "seed/context"
 
-import 'index.css';
+import "index.css";
 
 const store = Store();
 const muiTheme = MuiTheme();
@@ -37,6 +37,6 @@ ReactDOM.render(
           </ApolloProvider>
       </Provider>
     </SeedProvider>,
-    document.getElementById('root')
+    document.getElementById("root")
 );
 Worker();

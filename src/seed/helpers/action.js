@@ -3,9 +3,9 @@ __Seed builder__v0.1.8
   (Read_only) Builder helper
 */
 
-import fetch from 'cross-fetch';
-import { API_URL } from 'settings/Config';
-import * as Const from 'seed/helpers/redux_const';
+import fetch from "cross-fetch";
+import { API_URL } from "settings/Config";
+import * as Const from "seed/helpers/redux_const";
 
 class Action
 {
@@ -19,7 +19,7 @@ class Action
     this.id = id;
     this.path = path;
     this.state = state;
-    this.fetch = '';
+    this.fetch = "";
     for (let f of fetchData)
         this.fetch += `include[]=${f}&`;
   }
@@ -30,7 +30,7 @@ class Action
 
   getList = (action, filters, callback) =>
   {
-   let query = '';
+   let query = "";
     for (let filter in filters)
       if (filters[filter] != null)
         query += `filter{${filter}}=${filters[filter]}&`;
@@ -80,9 +80,9 @@ class Action
       let args = {
         method: method,
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${sessionStorage.getItem('token')}`
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": `Token ${sessionStorage.getItem("token")}`
         }
       };
 

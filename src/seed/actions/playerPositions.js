@@ -4,7 +4,7 @@ __Seed builder__v0.1.8
   Modify via builder
 */
 
-import Action from 'seed/helpers/action';
+import Action from "seed/helpers/action";
 
 class _PlayerPositions extends Action
 {
@@ -24,27 +24,27 @@ class _PlayerPositions extends Action
 
   getPlayerPositionList(params = {}, callback)
   {
-    return this.getList('', params, callback);
+    return this.getList("", params, callback);
   }
 
   getPlayerPositionDetails(playerPositionId, callback)
   {
-    return this.getDetails('', playerPositionId, callback);
+    return this.getDetails("", playerPositionId, callback);
   }
 
   savePlayerPosition(playerPosition, callback)
   {
-    return this.postData('', playerPosition, callback);
+    return this.postData("", playerPosition, callback);
   }
 
   setPlayerPosition(playerPositionId, playerPosition, callback)
   {
-    return this.putData('', playerPositionId, playerPosition, callback);
+    return this.putData("", playerPositionId, playerPosition, callback);
   }
 
   deletePlayerPosition(playerPositionId, callback)
   {
-    return this.deleteData('', playerPositionId, callback);
+    return this.deleteData("", playerPositionId, callback);
   }
 }
 

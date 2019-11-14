@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/players/options/List.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/players/options/List.module.css";
 
 function PlayerListOptions(props)
 {

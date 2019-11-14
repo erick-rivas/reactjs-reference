@@ -8,8 +8,8 @@ This file contains guides to deploy project to aws elastic beanstalk
 -   Go to elastic beanstalk pane
 -   Create a new application (if required)
 -   Create a new environment
-      -   Select nodejs platform
-      >   For development(sandbox)  use preferably a t3a.nano instance
+    -   Select nodejs platform
+    >   For development(sandbox)  use preferably a t3a.nano instance
    
 ### EB CLI
 
@@ -24,7 +24,7 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 -   Move bin/eb/.ebextensions & bin/eb/.ebignore to root folder
 -   Configure src/settings/Config.js file with api & server settings
-   >    Set DEBUG = false
+    >   Set DEBUG = false
 
 ### Deploy
 
@@ -32,4 +32,4 @@ This file contains guides to deploy project to aws elastic beanstalk
 ```bash
 $ ./bin/deploy
 ```
-   >   In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version
+    >   In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version

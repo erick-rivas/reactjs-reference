@@ -1,10 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import Examples from 'examples/Examples';
+import Examples from "examples/Examples";
 
-import cx from 'classnames';
-import styles from 'resources/css/App.module.css';
+import cx from "classnames";
+import styles from "resources/css/App.module.css";
 
 function App(props)
 {

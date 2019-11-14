@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDetail } from 'seed/gql'
+import React from "react";
+import { useDetail } from "seed/gql"
 
-import Loading from 'seed/components/helpers/Loading';
+import Loading from "seed/components/helpers/Loading";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/users/Details.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/users/Details.module.css";
 
 const USER  = `
 {

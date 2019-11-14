@@ -1,11 +1,11 @@
-import React from 'react';
-import { useQuery } from 'seed/gql'
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { useQuery } from "seed/gql"
+import { NavLink } from "react-router-dom";
 
-import Loading from 'seed/components/helpers/Loading';
+import Loading from "seed/components/helpers/Loading";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/player_positions/List.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/player_positions/List.module.css";
 
 const PLAYER_POSITIONS  = `
 {

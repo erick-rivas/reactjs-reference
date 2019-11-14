@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { GA_KEY } from 'settings/Config';
-import ReactGA from 'react-ga';
+import React, { useEffect } from "react";
+import { GA_KEY } from "settings/Config";
+import ReactGA from "react-ga";
 
-import styles from 'resources/css/examples/general/nav/Analytics.module.css';
+import styles from "resources/css/examples/general/nav/Analytics.module.css";
 
 function Analytics(props)
 {

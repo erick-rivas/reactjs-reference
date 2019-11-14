@@ -3,7 +3,7 @@ __Seed builder__v0.1.8
   (Read_only) Builder helper
 */
 
-import Action from 'seed/helpers/action'
+import Action from "seed/helpers/action"
 
 class Auth extends Action
 {
@@ -20,8 +20,8 @@ class Auth extends Action
   {
     const onLogin = res =>
     {
-      sessionStorage.setItem('token', res.body.key);
-      sessionStorage.setItem('id', res.body.user);
+      sessionStorage.setItem("token", res.body.key);
+      sessionStorage.setItem("id", res.body.user);
       callback(res);
     }
 
@@ -31,7 +31,7 @@ class Auth extends Action
     }
 
     return this.request(
-      'POST', `/login`, '',
+      "POST", `/login`, "",
       body, onLogin, this.onLogin);
   }
 
@@ -39,13 +39,13 @@ class Auth extends Action
   {
     const onLogout = res =>
     {
-      sessionStorage.removeItem('token');
-      sessionStorage.removeItem('id');
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("id");
       callback(res);
     }
 
     return this.request(
-      'POST', `/logout`, '',
+      "POST", `/logout`, "",
        {}, onLogout, this.onLogout);
   }
 

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import cx from 'classnames';
-import styles from 'resources/css/examples/teams/options/List.module.css';
+import cx from "classnames";
+import styles from "resources/css/examples/teams/options/List.module.css";
 
 function TeamListOptions(props)
 {

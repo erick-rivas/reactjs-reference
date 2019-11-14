@@ -6,11 +6,11 @@ __Seed builder__v0.1.8
 
 import React, { useState } from "react";
 import useFetch from "react-fetch-hook";
-import { API_URL } from 'settings/Config';
+import { API_URL } from "settings/Config";
 
 const query = params =>
 {
-  let query = '';
+  let query = "";
   for (let param in params)
     if (params[param] != null)
       query += `${param}=${params[param]}&`;
@@ -22,9 +22,9 @@ const options = (method = "GET", body = {}) =>
   let res = {
     method: method,
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Token ${sessionStorage.getItem('token')}`
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": `Token ${sessionStorage.getItem("token")}`
     }
   };
   if (method !== "GET")
