@@ -23,7 +23,7 @@ function Login(props)
     let email = e.target.email.value;
     let password = e.target.password.value;
     cLogin({email: email, password: password});
-  }
+  };
 
   return (
     <div className={styles.module}>

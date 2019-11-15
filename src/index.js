@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { GRAPH_URL } from "settings/Config";
-import { Provider } from "react-redux"
+import { Provider } from "react-redux";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { MuiTheme } from "settings/MuiTheme";
 

@@ -47,7 +47,7 @@ function MatchForm(props)
     values.id = match_id;
     if (editMode) callSet(values);
     else callSave(values);
-  }
+  };
 
   const { match = {} } = qMatch.data;
   const { teams = [] } = qTeams.data;

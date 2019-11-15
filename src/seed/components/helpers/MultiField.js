@@ -4,14 +4,13 @@ import styles from "resources/css/seed/helpers/MultiField.module.css"
 
 class MultiField extends React.Component
 {
-
   render()
   {
     const { values = [] } = this.props;
     const { value = [] } = this.props;
     const gv = val => val.id ? parseInt(val.id) : val;
 
-    let selected = {}
+    let selected = {};
     for (let d of value)
       selected[gv(d)] = true;
 
@@ -49,14 +48,13 @@ class MultiField extends React.Component
     let res = value;
     let pos = res.map(r => gv(r)).indexOf(gv(selected));
     if (pos == -1)
-      res.unshift(selected)
+      res.unshift(selected);
     else res.splice(pos, 1);
 
     if (!singleChoice)
       setFieldValue(name, res);
     else setFieldValue(name, res[0]);
   }
-
 }
 
 export default MultiField;

@@ -47,7 +47,7 @@ function UserForm(props)
     values.id = user_id;
     if (editMode) callSet(values);
     else callSave(values);
-  }
+  };
 
   const { user = {} } = qUser.data;
   const { teams = [] } = qTeams.data;
@@ -67,7 +67,7 @@ function UserForm(props)
           <label className={styles.lbl}>Teams</label>
           <div className={styles.mul}>
           <MultiField name="teams"
-            values={ teams.map((e, idx) => { return {value: e, label: e.id} }) }
+            values={ teams.map((e, idx) => { return {value: e, label: e.id}; }) }
             setFieldValue={f.setFieldValue} value={f.values.teams} />
           </div>
           <br/>

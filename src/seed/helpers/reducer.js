@@ -73,12 +73,12 @@ class Reducer
         return {
           value: dataset[i],
           pos: i
-        }
+        };
     }
     return {
       value: null,
       pos: -1
-    }
+    };
   }
 
   mergeDataset(original, dataset)
@@ -100,7 +100,7 @@ class Reducer
     return {
       changed: changed,
       dataset: result
-    }
+    };
   }
 }
 export default Reducer;

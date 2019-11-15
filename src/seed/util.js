@@ -18,7 +18,7 @@ const filter = (dataset, filters) =>
         d[filter] != filters[filter])
         return false;
     return true;
-  })
+  });
 };
 
 export { find, get, filter };

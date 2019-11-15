@@ -36,8 +36,8 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
 {
   const [call, setCall] = useState({ body: null, called: false })
   const calling = body =>
-    body ? setCall({ body: body }) : setCall({ body: {} })
-  const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
+    body ? setCall({ body: body }) : setCall({ body: {} });
+    const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
     ...options(method, call.body),
     formatter: (response) => {
       if (!response.ok) throw response;
@@ -49,14 +49,14 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
     setCall({ ...call, called: true });
   if (call.body != null && call.called && !fetch.isLoading) {
     if (mutOptions.onCompleted != null && fetch.error == null) {
-      let json = {}
+      let json = {};
       try {
         json = JSON.parse(fetch.data);
       } catch (e) { }
-      mutOptions.onCompleted(json)
+      mutOptions.onCompleted(json);
     }
     if (mutOptions.onError != null && fetch.error != null)
-      mutOptions.onError(fetch.error)
+      mutOptions.onError(fetch.error);
 
     setCall({ body: null, called: false });
   }

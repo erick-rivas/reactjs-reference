@@ -47,7 +47,7 @@ function TeamForm(props)
     values.id = team_id;
     if (editMode) callSet(values);
     else callSave(values);
-  }
+  };
 
   const { team = {} } = qTeam.data;
   const { teams = [] } = qTeams.data;

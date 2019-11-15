@@ -18,7 +18,7 @@ function TeamDetailsOptions(props)
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
        }
-    })
+    });
 
     const onClickDelete = () =>
       callDelete({ id: team_id });
@@ -27,7 +27,7 @@ function TeamDetailsOptions(props)
     {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
-    }
+    };
 
     return (
       <div className={styles.module}>

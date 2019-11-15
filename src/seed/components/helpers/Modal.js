@@ -65,14 +65,14 @@ class Modal extends React.Component
     super(props);
     this.state = {
       open: false
-    }
+    };
     this.onClose = this.onClose.bind(this);
   }
 
   onClose()
   {
     if (this.props.onClose == null)
-      this.props.history.goBack()
+      this.props.history.goBack();
     else this.props.onClose(this.props.match);
   }
 }

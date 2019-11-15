@@ -40,7 +40,7 @@ function PlayerPositionForm(props)
     values.id = player_position_id;
     if (editMode) callSet(values);
     else callSave(values);
-  }
+  };
 
   const { playerPosition = {} } = qPlayerPosition.data;
 

@@ -54,7 +54,7 @@ function ScoreForm(props)
     values.id = score_id;
     if (editMode) callSet(values);
     else callSave(values);
-  }
+  };
 
   const { score = {} } = qScore.data;
   const { players = [] } = qPlayers.data;

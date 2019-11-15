@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useState } from "react";
 
 const SeedContext = createContext({
   gqlQueries: [],
@@ -17,7 +17,7 @@ export const SeedProvider = ({ children }) => {
     let query = data.replace(/[\s,]+/g, " ").trim();
     if (!queries.includes(query)){
       queries.push(query);
-      setCache(prevState => ({ ...prevState, gqlQueries: queries }))
+      setCache(prevState => ({ ...prevState, gqlQueries: queries }));
     }
   };
 
@@ -36,5 +36,5 @@ export const SeedProvider = ({ children }) => {
       {children}
     </SeedContext.Provider>
   );
-}
+};
 

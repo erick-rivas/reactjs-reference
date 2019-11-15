@@ -64,7 +64,7 @@ const useMutate = mutation =>
       }
     }
     call({ variables: vars });
-  }
+  };
   return [wrap, { ...res, data: res.data ? res.data : {} }];
 };
 
@@ -124,10 +124,10 @@ const useDelete = (raw, options = {}) =>
             query: cQuery,
             data: cData,
           });
-        })
+        });
     }
   });
-  return useMutate(mutation)
+  return useMutate(mutation);
 };
 
 export { useQuery, useDetail, useSet, useSave, useDelete };

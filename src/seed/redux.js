@@ -70,9 +70,9 @@ const stateToProps = (state, props) => ({
 });
 
 const dispToProps = disp => {
-  let res = {}
+  let res = {};
   for (let action of actions){
-    let methods = Object.getOwnPropertyNames(action.className.prototype) 
+    let methods = Object.getOwnPropertyNames(action.className.prototype);
     for (let method of methods)
       if (method != "constructor")
         res[method] = (...args) => disp(action.object[method](...args));
@@ -80,9 +80,8 @@ const dispToProps = disp => {
   return res;
 };
 
-const mergeProps = (states, disps, props) => {
-  return Object.assign({}, states, disps, props)
-};
+const mergeProps = (states, disps, props) =>
+  Object.assign({}, states, disps, props);
 
 const redux = component =>
   withRouter(connect(

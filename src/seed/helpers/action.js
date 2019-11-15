@@ -94,7 +94,7 @@ class Action
         .then(response =>
         {
           if (!response.ok) throw response;
-          return response.text()
+          return response.text();
         })
         .then(text => 
         {
