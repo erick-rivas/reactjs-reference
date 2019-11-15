@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import { useSave, useSet, useQuery, useDetail } from "seed/gql"
-import * as queries from "seed/gql/queries"
+import { useSave, useSet, useQuery, useDetail } from "seed/gql";
+import * as queries from "seed/gql/queries";
 import { Formik, Field } from "formik";
 
-import MultiField from "seed/components/helpers/MultiField"
-import FileField from "seed/components/helpers/FileField"
+import MultiField from "seed/components/helpers/MultiField";
+import FileField from "seed/components/helpers/FileField";
 import Loading from "seed/components/helpers/Loading";
 
 import cx from "classnames";

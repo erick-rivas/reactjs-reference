@@ -1,5 +1,5 @@
 import React from "react";
-import { useDetail } from "seed/gql"
+import { useDetail } from "seed/gql";
 
 import Loading from "seed/components/helpers/Loading";
 
@@ -14,17 +14,18 @@ const SCORE  = `
     match { }
   }
 }
-`
+`;
+
 function ScoreDetails(props)
 {
   const { score_id }  = props.match.params;
 
   const qScore = useDetail(SCORE, score_id);
 
-  if (qScore.loading) return <Loading />
-  if (qScore.error) return "Error"
+  if (qScore.loading) return <Loading />;
+  if (qScore.error) return "Error";
 
-  const { score = {} } = qScore.data
+  const { score = {} } = qScore.data;
 
   return (
     <div className={styles.module}>

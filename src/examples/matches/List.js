@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "seed/gql"
+import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 
 import Loading from "seed/components/helpers/Loading";
@@ -17,7 +17,7 @@ const MATCHES  = `
     scores { }
   }
 }
-`
+`;
 
 function MatchList(props)
 {
@@ -25,10 +25,10 @@ function MatchList(props)
 
   const qMatches = useQuery(MATCHES);
 
-  if (qMatches.loading) return <Loading />
-  if (qMatches.error) return "Error"
+  if (qMatches.loading) return <Loading />;
+  if (qMatches.error) return "Error";
 
-  const { matches } = qMatches.data
+  const { matches } = qMatches.data;
 
   const matchList = matches.map(item =>
     <NavLink

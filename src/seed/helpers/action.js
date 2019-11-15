@@ -120,7 +120,7 @@ class Action
               ok: false
             });
         })
-    }
+    };
   }
 
   /**

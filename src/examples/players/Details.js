@@ -1,5 +1,5 @@
 import React from "react";
-import { useDetail } from "seed/gql"
+import { useDetail } from "seed/gql";
 
 import Loading from "seed/components/helpers/Loading";
 
@@ -16,17 +16,18 @@ const PLAYER  = `
     position { }
   }
 }
-`
+`;
+
 function PlayerDetails(props)
 {
   const { player_id }  = props.match.params;
 
   const qPlayer = useDetail(PLAYER, player_id);
 
-  if (qPlayer.loading) return <Loading />
-  if (qPlayer.error) return "Error"
+  if (qPlayer.loading) return <Loading />;
+  if (qPlayer.error) return "Error";
 
-  const { player = {} } = qPlayer.data
+  const { player = {} } = qPlayer.data;
 
   return (
     <div className={styles.module}>

@@ -21,7 +21,7 @@ function ScoreDetailsOptions(props)
     })
 
     const onClickDelete = () =>
-      callDelete({ id: score_id })
+      callDelete({ id: score_id });
 
     const onClickBack = () =>
     {

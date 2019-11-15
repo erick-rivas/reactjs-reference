@@ -1,5 +1,5 @@
 import React from "react";
-import { useDetail } from "seed/gql"
+import { useDetail } from "seed/gql";
 
 import Loading from "seed/components/helpers/Loading";
 
@@ -17,17 +17,18 @@ const USER  = `
     teams { }
   }
 }
-`
+`;
+
 function UserDetails(props)
 {
   const { user_id }  = props.match.params;
 
   const qUser = useDetail(USER, user_id);
 
-  if (qUser.loading) return <Loading />
-  if (qUser.error) return "Error"
+  if (qUser.loading) return <Loading />;
+  if (qUser.error) return "Error";
 
-  const { user = {} } = qUser.data
+  const { user = {} } = qUser.data;
 
   return (
     <div className={styles.module}>

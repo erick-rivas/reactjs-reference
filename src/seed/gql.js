@@ -5,26 +5,26 @@ __Seed builder__v0.1.8
 */
 
 import * as Apollo from "@apollo/react-hooks";
-import { useContext } from "react"
+import { useContext } from "react";
 import { gql } from "apollo-boost";
-import { SINGULARS } from "seed/gql/const"
-import SeedContext from "seed/context"
+import { SINGULARS } from "seed/gql/const";
+import SeedContext from "seed/context";
 
 
 const cleanQuery = query =>
 {
   const fBracePos = query.indexOf("{");
-  let res = query.substring(fBracePos + 1)
-  res = "{ " + res.replace(/{/g, "{ id ")
+  let res = query.substring(fBracePos + 1);
+  res = "{ " + res.replace(/{/g, "{ id ");
   return res;
 }
 
 const useQuery = (raw, queryStr, options = {}) =>
 {
-  const model = raw.match(/[\w]+/g)[0]
-  const wrapper = `${model}${queryStr ? "(query: \"" + queryStr + "\")" : ""}`
-  const query = cleanQuery(raw.replace(model, wrapper))
-  const { addGqlQuery } = useContext(SeedContext)
+  const model = raw.match(/[\w]+/g)[0];
+  const wrapper = `${model}${queryStr ? "(query: \"" + queryStr + "\")" : ""}`;
+  const query = cleanQuery(raw.replace(model, wrapper));
+  const { addGqlQuery } = useContext(SeedContext);
 
   const res = Apollo.useQuery(gql(query), {
     ...options,
@@ -34,17 +34,17 @@ const useQuery = (raw, queryStr, options = {}) =>
       if (options.onCompleted) options.onCompleted(data);
     }
   });
-  return { ...res, data: res.data ? res.data : {} }
-}
+  return { ...res, data: res.data ? res.data : {} };
+};
 
 const useDetail = (raw, id, options = {}) =>
 {
-  const model = raw.match(/[\w]+/g)[0]
-  const wrapper = `${model}(id: ${id})`
-  const query = cleanQuery(raw.replace(model, wrapper))
+  const model = raw.match(/[\w]+/g)[0];
+  const wrapper = `${model}(id: ${id})`;
+  const query = cleanQuery(raw.replace(model, wrapper));
   const res = Apollo.useQuery(gql(query), options);
-  return { ...res, data: res.data ? res.data : {} }
-}
+  return { ...res, data: res.data ? res.data : {} };
+};
 
 const useMutate = mutation =>
 {
@@ -56,24 +56,24 @@ const useMutate = mutation =>
       let ele = vars[key];
       if (ele != null) {
         if (ele.id != null)
-          vars[key] = vars[key].id
+          vars[key] = vars[key].id;
         if (Array.isArray(ele))
           for (let i = 0; i < ele.length; i++)
             if (ele[i].id != null)
-              vars[key][i] = ele[i].id
+              vars[key][i] = ele[i].id;
       }
     }
-    call({ variables: vars })
+    call({ variables: vars });
   }
   return [wrap, { ...res, data: res.data ? res.data : {} }];
-}
+};
 
 const useSet = (raw, options = {}) =>
 {
-  const query = gql(raw)
+  const query = gql(raw);
   const mutation = Apollo.useMutation(query, options);
-  return useMutate(mutation)
-}
+  return useMutate(mutation);
+};
 
 const useSave = (raw, options = {}) =>
 {
@@ -84,20 +84,20 @@ const useSave = (raw, options = {}) =>
       useContext(SeedContext)
         .gqlQueries.filter(cQueryRaw =>
         {
-          const cModels = cQueryRaw.match(/[\w]+/g)[0]
+          const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
-          const cHeader = "save" + cModel.charAt(0).toUpperCase() + cModel.slice(1)
+          const cHeader = "save" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
           return raw.indexOf(cHeader) != -1;
         })
         .map(q => ({ query: gql(q) }))
   });
-  return useMutate(mutation)
-}
+  return useMutate(mutation);
+};
 
 const useDelete = (raw, options = {}) =>
 {
   const context = useContext(SeedContext);
-  const query = gql(raw)
+  const query = gql(raw);
   const mutation = Apollo.useMutation(query, {
     ...options,
     update(cache, { data })
@@ -105,11 +105,11 @@ const useDelete = (raw, options = {}) =>
       context.gqlQueries
         .map(cQueryRaw =>
         {
-          const cModels = cQueryRaw.match(/[\w]+/g)[0]
+          const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
-          const cHeader = "delete" + cModel.charAt(0).toUpperCase() + cModel.slice(1)
+          const cHeader = "delete" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
           if (raw.indexOf(cHeader) == -1) return;
-          const cQuery = gql(cQueryRaw)
+          const cQuery = gql(cQueryRaw);
           const cResult = cache.readQuery({ query: cQuery });
           const itemId = data[cHeader].id;
           let cData = {}, idx = -1;
@@ -119,7 +119,7 @@ const useDelete = (raw, options = {}) =>
           if (idx == -1) return;
           let result = JSON.parse(JSON.stringify(cResult[cModels])).splice(0);
           result.splice(idx, 1);
-          cData[cModels] = result
+          cData[cModels] = result;
           cache.writeQuery({
             query: cQuery,
             data: cData,
@@ -128,6 +128,6 @@ const useDelete = (raw, options = {}) =>
     }
   });
   return useMutate(mutation)
-}
+};
 
-export { useQuery, useDetail, useSet, useSave, useDelete }
+export { useQuery, useDetail, useSet, useSave, useDelete };

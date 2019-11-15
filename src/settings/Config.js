@@ -14,4 +14,4 @@ if (!DEBUG) {
   GA_KEY = "UA-000000000-0";
 }
 
-export { GRAPH_URL, API_URL, APP_URL, GA_KEY }
+export { GRAPH_URL, API_URL, APP_URL, GA_KEY };

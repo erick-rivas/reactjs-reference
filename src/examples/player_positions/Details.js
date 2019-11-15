@@ -1,5 +1,5 @@
 import React from "react";
-import { useDetail } from "seed/gql"
+import { useDetail } from "seed/gql";
 
 import Loading from "seed/components/helpers/Loading";
 
@@ -12,17 +12,18 @@ const PLAYER_POSITION  = `
     name
   }
 }
-`
+`;
+
 function PlayerPositionDetails(props)
 {
   const { player_position_id }  = props.match.params;
 
   const qPlayerPosition = useDetail(PLAYER_POSITION, player_position_id);
 
-  if (qPlayerPosition.loading) return <Loading />
-  if (qPlayerPosition.error) return "Error"
+  if (qPlayerPosition.loading) return <Loading />;
+  if (qPlayerPosition.error) return "Error";
 
-  const { playerPosition = {} } = qPlayerPosition.data
+  const { playerPosition = {} } = qPlayerPosition.data;
 
   return (
     <div className={styles.module}>

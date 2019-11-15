@@ -16,11 +16,11 @@ class _Users extends Action
       ];
 
     super(
-      `USERS`,
-      `users`,
+      "USERS",
+      "users",
       state => state.users,
       fetch
-    )
+    );
   }
 
   getUserList(params = {}, callback)

@@ -18,7 +18,8 @@ export const MATCH = `
     }
   }
 }
-`
+`;
+
 export const SET_MATCH = `
 mutation Set(
   $id: Int!,
@@ -48,7 +49,7 @@ mutation Set(
     }
   }
 }
-`
+`;
 
 export const SAVE_MATCH = `
 mutation Save(
@@ -69,7 +70,7 @@ mutation Save(
     }
   }
 }
-`
+`;
 
 export const DELETE_MATCH = `
 mutation Delete($id: Int!)
@@ -79,7 +80,7 @@ mutation Delete($id: Int!)
     id
   }
 }
-`
+`;
 
 export const PLAYER = `
 {
@@ -98,7 +99,8 @@ export const PLAYER = `
     }
   }
 }
-`
+`;
+
 export const SET_PLAYER = `
 mutation Set(
   $id: Int!,
@@ -133,7 +135,7 @@ mutation Set(
     }
   }
 }
-`
+`;
 
 export const SAVE_PLAYER = `
 mutation Save(
@@ -156,7 +158,7 @@ mutation Save(
     }
   }
 }
-`
+`;
 
 export const DELETE_PLAYER = `
 mutation Delete($id: Int!)
@@ -166,7 +168,7 @@ mutation Delete($id: Int!)
     id
   }
 }
-`
+`;
 
 export const PLAYER_POSITION = `
 {
@@ -175,7 +177,8 @@ export const PLAYER_POSITION = `
     name
   }
 }
-`
+`;
+
 export const SET_PLAYER_POSITION = `
 mutation Set(
   $id: Int!,
@@ -192,7 +195,7 @@ mutation Set(
     }
   }
 }
-`
+`;
 
 export const SAVE_PLAYER_POSITION = `
 mutation Save(
@@ -207,7 +210,7 @@ mutation Save(
     }
   }
 }
-`
+`;
 
 export const DELETE_PLAYER_POSITION = `
 mutation Delete($id: Int!)
@@ -217,7 +220,7 @@ mutation Delete($id: Int!)
     id
   }
 }
-`
+`;
 
 export const SCORE = `
 {
@@ -232,7 +235,8 @@ export const SCORE = `
     }
   }
 }
-`
+`;
+
 export const SET_SCORE = `
 mutation Set(
   $id: Int!,
@@ -259,7 +263,7 @@ mutation Set(
     }
   }
 }
-`
+`;
 
 export const SAVE_SCORE = `
 mutation Save(
@@ -278,7 +282,7 @@ mutation Save(
     }
   }
 }
-`
+`;
 
 export const DELETE_SCORE = `
 mutation Delete($id: Int!)
@@ -288,7 +292,7 @@ mutation Delete($id: Int!)
     id
   }
 }
-`
+`;
 
 export const TEAM = `
 {
@@ -305,7 +309,8 @@ export const TEAM = `
     }
   }
 }
-`
+`;
+
 export const SET_TEAM = `
 mutation Set(
   $id: Int!,
@@ -338,7 +343,7 @@ mutation Set(
     }
   }
 }
-`
+`;
 
 export const SAVE_TEAM = `
 mutation Save(
@@ -361,7 +366,7 @@ mutation Save(
     }
   }
 }
-`
+`;
 
 export const DELETE_TEAM = `
 mutation Delete($id: Int!)
@@ -371,7 +376,7 @@ mutation Delete($id: Int!)
     id
   }
 }
-`
+`;
 
 export const USER = `
 {
@@ -387,7 +392,8 @@ export const USER = `
     }
   }
 }
-`
+`;
+
 export const SET_USER = `
 mutation Set(
   $id: Int!,
@@ -423,7 +429,7 @@ mutation Set(
     }
   }
 }
-`
+`;
 
 export const SAVE_USER = `
 mutation Save(
@@ -450,7 +456,7 @@ mutation Save(
     }
   }
 }
-`
+`;
 
 export const DELETE_USER = `
 mutation Delete($id: Int!)
@@ -460,5 +466,5 @@ mutation Delete($id: Int!)
     id
   }
 }
-`
+`;
 

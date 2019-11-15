@@ -17,11 +17,11 @@ class _Teams extends Action
       ];
 
     super(
-      `TEAMS`,
-      `teams`,
+      "TEAMS",
+      "teams",
       state => state.teams,
       fetch
-    )
+    );
   }
 
   getTeamList(params = {}, callback)

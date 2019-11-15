@@ -21,7 +21,7 @@ function TeamDetailsOptions(props)
     })
 
     const onClickDelete = () =>
-      callDelete({ id: team_id })
+      callDelete({ id: team_id });
 
     const onClickBack = () =>
     {

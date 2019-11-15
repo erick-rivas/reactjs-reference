@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "seed/gql"
+import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 
 import Loading from "seed/components/helpers/Loading";
@@ -19,7 +19,7 @@ const TEAMS  = `
     players { }
   }
 }
-`
+`;
 
 function TeamList(props)
 {
@@ -27,10 +27,10 @@ function TeamList(props)
 
   const qTeams = useQuery(TEAMS);
 
-  if (qTeams.loading) return <Loading />
-  if (qTeams.error) return "Error"
+  if (qTeams.loading) return <Loading />;
+  if (qTeams.error) return "Error";
 
-  const { teams } = qTeams.data
+  const { teams } = qTeams.data;
 
   const teamList = teams.map(item =>
     <NavLink

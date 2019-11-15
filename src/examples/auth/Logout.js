@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { usePost } from "seed/api"
+import { usePost } from "seed/api";
 
 import cx from "classnames";
-import styles from "resources/css/examples/general/auth/Logout.module.css";
+import styles from "resources/css/examples/auth/Logout.module.css";
 
 function Logout(props)
 {

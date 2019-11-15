@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "seed/gql"
+import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 
 import Loading from "seed/components/helpers/Loading";
@@ -13,7 +13,7 @@ const PLAYER_POSITIONS  = `
     name
   }
 }
-`
+`;
 
 function PlayerPositionList(props)
 {
@@ -21,10 +21,10 @@ function PlayerPositionList(props)
 
   const qPlayerPositions = useQuery(PLAYER_POSITIONS);
 
-  if (qPlayerPositions.loading) return <Loading />
-  if (qPlayerPositions.error) return "Error"
+  if (qPlayerPositions.loading) return <Loading />;
+  if (qPlayerPositions.error) return "Error";
 
-  const { playerPositions } = qPlayerPositions.data
+  const { playerPositions } = qPlayerPositions.data;
 
   const playerPositionList = playerPositions.map(item =>
     <NavLink

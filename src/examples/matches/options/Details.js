@@ -21,7 +21,7 @@ function MatchDetailsOptions(props)
     })
 
     const onClickDelete = () =>
-      callDelete({ id: match_id })
+      callDelete({ id: match_id });
 
     const onClickBack = () =>
     {

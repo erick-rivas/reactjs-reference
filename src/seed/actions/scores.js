@@ -17,11 +17,11 @@ class _Scores extends Action
       ];
 
     super(
-      `SCORES`,
-      `scores`,
+      "SCORES",
+      "scores",
       state => state.scores,
       fetch
-    )
+    );
   }
 
   getScoreList(params = {}, callback)

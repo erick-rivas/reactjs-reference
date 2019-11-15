@@ -3,17 +3,17 @@ __Seed builder__v0.1.8
   (Read_only) Builder helper
 */
 
-import Action from "seed/helpers/action"
+import Action from "seed/helpers/action";
 
 class Auth extends Action
 {
   constructor()
   {
     super(
-      `AUTH`,
-      `auth`,
+      "AUTH",
+      "auth",
       state => state.auth
-    )
+    );
   }
 
   login(email, password, callback)
@@ -28,10 +28,10 @@ class Auth extends Action
     const body = {
       email: email,
       password: password
-    }
+    };
 
     return this.request(
-      "POST", `/login`, "",
+      "POST", "/login", "",
       body, onLogin, this.onLogin);
   }
 
@@ -45,7 +45,7 @@ class Auth extends Action
     }
 
     return this.request(
-      "POST", `/logout`, "",
+      "POST", "/logout", "",
        {}, onLogout, this.onLogout);
   }
 

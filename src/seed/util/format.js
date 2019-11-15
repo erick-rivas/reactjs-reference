@@ -1,6 +1,6 @@
 
 
-const getDateInput = data =>{
+const getDateInput = data => {
   if (!data) return "";
   const f = num => ("0" + num).slice(-2);
   let date = new Date(data);
@@ -17,11 +17,11 @@ const getDateFormat = (date) =>
 
 const getDeadlineFormat = (date) =>
 {
-  if (!date) return ""
+  if (!date) return "";
   const day = 86400000;
   const period = Math.abs(new Date().getTime() - new Date(date).getTime());
   if (period > day * 7) return getDateFormat(date);
   return Math.ceil(period / day) - 1 + " días";
 }
 
-export {  getDateInput, getDateFormat, getDeadlineFormat }
+export {  getDateInput, getDateFormat, getDeadlineFormat };

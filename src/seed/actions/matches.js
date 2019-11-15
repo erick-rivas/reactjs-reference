@@ -18,11 +18,11 @@ class _Matches extends Action
       ];
 
     super(
-      `MATCHES`,
-      `matches`,
+      "MATCHES",
+      "matches",
       state => state.matches,
       fetch
-    )
+    );
   }
 
   getMatchList(params = {}, callback)

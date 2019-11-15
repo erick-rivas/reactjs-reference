@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { usePost } from "seed/api"
+import { usePost } from "seed/api";
 
 import cx from "classnames";
-import styles from "resources/css/examples/general/auth/Login.module.css";
+import styles from "resources/css/examples/auth/Login.module.css";
 
 function Login(props)
 {

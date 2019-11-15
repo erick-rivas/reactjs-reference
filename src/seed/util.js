@@ -2,12 +2,12 @@ const find = (dataset, func) =>
 {
   const item = dataset.find(func);
   return item ? item : {};
-}
+};
 
 const get = (dataset, id) =>
 {
   return find(dataset, i => i.id == id);
-}
+};
 
 const filter = (dataset, filters) =>
 {
@@ -19,6 +19,6 @@ const filter = (dataset, filters) =>
         return false;
     return true;
   })
-}
+};
 
-export { find, get, filter }
+export { find, get, filter };

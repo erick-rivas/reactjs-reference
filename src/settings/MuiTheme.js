@@ -19,7 +19,7 @@ const MuiTheme = () =>
         }
       },
     });
-}
+};
 
 const checkboxStyle = {
   root: {
@@ -35,4 +35,4 @@ const checkboxStyle = {
 };
 
 
-export { MuiTheme, checkboxStyle }
+export { MuiTheme, checkboxStyle };

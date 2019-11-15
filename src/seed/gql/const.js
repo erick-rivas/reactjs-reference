@@ -12,4 +12,4 @@ export const SINGULARS =
    "scores": "score",
    "teams": "team",
    "users": "user",
-}
+};

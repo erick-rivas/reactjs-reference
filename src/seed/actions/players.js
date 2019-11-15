@@ -17,11 +17,11 @@ class _Players extends Action
       ];
 
     super(
-      `PLAYERS`,
-      `players`,
+      "PLAYERS",
+      "players",
       state => state.players,
       fetch
-    )
+    );
   }
 
   getPlayerList(params = {}, callback)

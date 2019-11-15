@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import Login from "examples/general/auth/Login";
-import Logout from "examples/general/auth/Logout";
-import Analytics from "examples/general/nav/Analytics"
+import Login from "examples/auth/Login";
+import Logout from "examples/auth/Logout";
+import Analytics from "examples/nav/Analytics";
 import Home from "examples/Home";
 
 import cx from "classnames";
@@ -24,7 +24,7 @@ function Examples(props)
             component={Home} />
           <Redirect to={`${path}/app`} />
         </Switch>
-        <Route path={`/`}
+        <Route path={"/"}
           component={Analytics} />
       </Router>
     </div>
