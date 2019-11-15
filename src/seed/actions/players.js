@@ -19,7 +19,7 @@ class _Players extends Action
     super(
       "PLAYERS",
       "players",
-      state => state.players,
+      (state) => state.players,
       fetch
     );
   }

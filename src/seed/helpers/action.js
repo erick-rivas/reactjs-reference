@@ -75,7 +75,7 @@ class Action
 
   request = (method, path, query, body, callback, toDisp) =>
   {
-    return disp =>
+    return (disp) =>
     {
       let args = {
         method: method,
@@ -91,14 +91,14 @@ class Action
 
 
       return fetch(`${API_URL}/${this.path}${path}/?${this.fetch}${query}`, args)
-        .then(response =>
+        .then((response) =>
         {
           if (!response.ok) throw response;
           return response.text();
         })
-        .then(text => 
+        .then((text) =>
         {
-          let json = {}
+          let json = {};
           try {
             json = JSON.parse(text);
           } catch (e) { }
@@ -109,7 +109,7 @@ class Action
               ok: true
             });
         })
-        .catch(error =>
+        .catch((error) =>
         {
          if (callback)
             callback({
@@ -119,7 +119,7 @@ class Action
               },
               ok: false
             });
-        })
+        });
     };
   }
 
@@ -135,27 +135,27 @@ class Action
    === EVENTS (TO REDUCERS) ===
    */
 
-  onGetList = dataset => ({
+  onGetList = (dataset) => ({
     type: `${this.id}_${Const.GET_LIST}`,
     dataset: dataset
   });
 
-  onGetDetails = data => ({
+  onGetDetails = (data) => ({
     type: `${this.id}_${Const.GET_DETAILS}`,
     data: data
   });
 
-  onPostData = data => ({
+  onPostData = (data) => ({
     type: `${this.id}_${Const.POST}`,
     data: data
   });
 
-  onPutData = data => ({
+  onPutData = (data) => ({
     type: `${this.id}_${Const.PUT}`,
     data: data
   });
 
-  onDeleteData = data => ({
+  onDeleteData = (data) => ({
     type: `${this.id}_${Const.DELETE}`,
     id: data.id
   });

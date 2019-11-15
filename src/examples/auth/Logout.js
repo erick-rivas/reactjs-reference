@@ -7,7 +7,7 @@ import styles from "resources/css/examples/auth/Logout.module.css";
 function Logout(props)
 {
   const [logout, onLogout] = usePost("/auth/logout", {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       sessionStorage.clear();
       props.history.replace("/");

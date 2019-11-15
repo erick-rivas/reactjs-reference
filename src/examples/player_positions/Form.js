@@ -19,12 +19,12 @@ function PlayerPositionForm(props)
   const editMode = player_position_id != null;
 
   const saveOptions = {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: error => setState({ error: "An error has occurred, try again" })
+    onError: (error) => setState({ error: "An error has occurred, try again" })
   };
 
   const [callSave, qSave] = useSave(queries.SAVE_PLAYER_POSITION, saveOptions);
@@ -35,7 +35,7 @@ function PlayerPositionForm(props)
   if (editMode && qPlayerPosition.loading) return <Loading />;
   if (editMode && qPlayerPosition.error) return "Error";
 
-  const onSubmit = values =>
+  const onSubmit = (values) =>
   {
     values.id = player_position_id;
     if (editMode) callSet(values);
@@ -51,7 +51,7 @@ function PlayerPositionForm(props)
         <Formik
            initialValues={playerPosition}
            onSubmit={onSubmit}
-           render={f => (
+           render={(f) => (
 
         <form onSubmit={f.handleSubmit}>
           

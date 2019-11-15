@@ -20,7 +20,7 @@ class _Matches extends Action
     super(
       "MATCHES",
       "matches",
-      state => state.matches,
+      (state) => state.matches,
       fetch
     );
   }

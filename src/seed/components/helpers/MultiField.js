@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "resources/css/seed/helpers/MultiField.module.css"
+import styles from "resources/css/seed/helpers/MultiField.module.css";
 
 class MultiField extends React.Component
 {
@@ -8,13 +8,13 @@ class MultiField extends React.Component
   {
     const { values = [] } = this.props;
     const { value = [] } = this.props;
-    const gv = val => val.id ? parseInt(val.id) : val;
+    const gv = (val) => val.id ? parseInt(val.id) : val;
 
     let selected = {};
     for (let d of value)
       selected[gv(d)] = true;
 
-    let items = values.map(v =>
+    let items = values.map((v) =>
     {
       let isSelected = Boolean(selected[gv(v.value)]);
       return (
@@ -41,12 +41,12 @@ class MultiField extends React.Component
   {
     const { setFieldValue, name } = this.props;
     const { value = [] } = this.props;
-    const gv = val => val.id ? val.id : val;
+    const gv = (val) => val.id ? val.id : val;
 
     const singleChoice = this.props.singleChoice;
 
     let res = value;
-    let pos = res.map(r => gv(r)).indexOf(gv(selected));
+    let pos = res.map((r) => gv(r)).indexOf(gv(selected));
     if (pos == -1)
       res.unshift(selected);
     else res.splice(pos, 1);

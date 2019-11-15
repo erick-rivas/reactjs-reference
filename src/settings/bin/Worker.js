@@ -11,7 +11,7 @@ function registerValidSW(swUrl)
 {
   navigator.serviceWorker
     .register(swUrl)
-    .then(registration =>
+    .then((registration) =>
     {
       registration.onupdatefound = () =>
       {
@@ -28,7 +28,7 @@ function registerValidSW(swUrl)
         };
       };
     })
-    .catch(error =>
+    .catch((error) =>
     {
       console.error("Error during service worker registration:", error);
     });
@@ -37,13 +37,13 @@ function registerValidSW(swUrl)
 function checkValidServiceWorker(swUrl)
 {
   fetch(swUrl)
-    .then(response =>
+    .then((response) =>
     {
       if (
         response.status === 404 ||
         response.headers.get("content-type").indexOf("javascript") === -1
       ) {
-        navigator.serviceWorker.ready.then(registration =>
+        navigator.serviceWorker.ready.then((registration) =>
         {
           registration.unregister().then(() =>
           {
@@ -92,7 +92,7 @@ export default function register()
 export function unregister()
 {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.ready.then(registration =>
+    navigator.serviceWorker.ready.then((registration) =>
     {
       registration.unregister();
     });

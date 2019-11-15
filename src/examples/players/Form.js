@@ -31,12 +31,12 @@ function PlayerForm(props)
   const editMode = player_id != null;
 
   const saveOptions = {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: error => setState({ error: "An error has occurred, try again" })
+    onError: (error) => setState({ error: "An error has occurred, try again" })
   };
 
   const [callSave, qSave] = useSave(queries.SAVE_PLAYER, saveOptions);
@@ -49,7 +49,7 @@ function PlayerForm(props)
   if (editMode && qPlayer.loading) return <Loading />;
   if (editMode && qPlayer.error) return "Error";
 
-  const onSubmit = values =>
+  const onSubmit = (values) =>
   {
     values.id = player_id;
     if (editMode) callSet(values);
@@ -67,7 +67,7 @@ function PlayerForm(props)
         <Formik
            initialValues={player}
            onSubmit={onSubmit}
-           render={f => (
+           render={(f) => (
 
         <form onSubmit={f.handleSubmit}>
           

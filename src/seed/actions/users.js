@@ -18,7 +18,7 @@ class _Users extends Action
     super(
       "USERS",
       "users",
-      state => state.users,
+      (state) => state.users,
       fetch
     );
   }

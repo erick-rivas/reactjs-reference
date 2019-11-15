@@ -25,12 +25,12 @@ function MatchForm(props)
   const editMode = match_id != null;
 
   const saveOptions = {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: error => setState({ error: "An error has occurred, try again" })
+    onError: (error) => setState({ error: "An error has occurred, try again" })
   };
 
   const [callSave, qSave] = useSave(queries.SAVE_MATCH, saveOptions);
@@ -42,7 +42,7 @@ function MatchForm(props)
   if (editMode && qMatch.loading) return <Loading />;
   if (editMode && qMatch.error) return "Error";
 
-  const onSubmit = values =>
+  const onSubmit = (values) =>
   {
     values.id = match_id;
     if (editMode) callSet(values);
@@ -59,7 +59,7 @@ function MatchForm(props)
         <Formik
            initialValues={match}
            onSubmit={onSubmit}
-           render={f => (
+           render={(f) => (
 
         <form onSubmit={f.handleSubmit}>
           

@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import useFetch from "react-fetch-hook";
 import { API_URL } from "settings/Config";
 
-const query = params =>
+const query = (params) =>
 {
   let query = "";
   for (let param in params)
@@ -34,8 +34,8 @@ const options = (method = "GET", body = {}) =>
 
 const useMutate = (method, endpoint, mutOptions = {}) =>
 {
-  const [call, setCall] = useState({ body: null, called: false })
-  const calling = body =>
+  const [call, setCall] = useState({ body: null, called: false });
+  const calling = (body) =>
     body ? setCall({ body: body }) : setCall({ body: {} });
     const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
     ...options(method, call.body),
@@ -61,7 +61,7 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
     setCall({ body: null, called: false });
   }
   return [calling, { ...fetch, loading: fetch.isLoading, called: call.called }];
-}
+};
 
 const useGet = (endpoint, params = {}) =>
   useFetch(`${API_URL}${endpoint}/?${query(params)}`);

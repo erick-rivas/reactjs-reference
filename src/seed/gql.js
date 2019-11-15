@@ -11,13 +11,13 @@ import { SINGULARS } from "seed/gql/const";
 import SeedContext from "seed/context";
 
 
-const cleanQuery = query =>
+const cleanQuery = (query) =>
 {
   const fBracePos = query.indexOf("{");
   let res = query.substring(fBracePos + 1);
   res = "{ " + res.replace(/{/g, "{ id ");
   return res;
-}
+};
 
 const useQuery = (raw, queryStr, options = {}) =>
 {
@@ -28,7 +28,7 @@ const useQuery = (raw, queryStr, options = {}) =>
 
   const res = Apollo.useQuery(gql(query), {
     ...options,
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       addGqlQuery(query);
       if (options.onCompleted) options.onCompleted(data);
@@ -46,10 +46,10 @@ const useDetail = (raw, id, options = {}) =>
   return { ...res, data: res.data ? res.data : {} };
 };
 
-const useMutate = mutation =>
+const useMutate = (mutation) =>
 {
   const [call, res] = mutation;
-  const wrap = body =>
+  const wrap = (body) =>
   {
     const vars = body ? body : {};
     for (let key in vars) {
@@ -82,14 +82,14 @@ const useSave = (raw, options = {}) =>
     ...options,
     refetchQueries:
       useContext(SeedContext)
-        .gqlQueries.filter(cQueryRaw =>
+        .gqlQueries.filter((cQueryRaw) =>
         {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
           const cHeader = "save" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
           return raw.indexOf(cHeader) != -1;
         })
-        .map(q => ({ query: gql(q) }))
+        .map((q) => ({ query: gql(q) }))
   });
   return useMutate(mutation);
 };
@@ -103,7 +103,7 @@ const useDelete = (raw, options = {}) =>
     update(cache, { data })
     {
       context.gqlQueries
-        .map(cQueryRaw =>
+        .map((cQueryRaw) =>
         {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];

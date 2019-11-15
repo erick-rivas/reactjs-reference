@@ -19,7 +19,7 @@ class _Teams extends Action
     super(
       "TEAMS",
       "teams",
-      state => state.teams,
+      (state) => state.teams,
       fetch
     );
   }

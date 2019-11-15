@@ -15,6 +15,5 @@ export default function configureStore(preloadedState)
       loggerMiddleware
     )
   );
-
   return store;
-};
+}

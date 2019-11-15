@@ -13,7 +13,7 @@ function MatchDetailsOptions(props)
 
     const [callDelete, qDelete] = useDelete(queries.DELETE_MATCH,
     {
-      onCompleted: data =>
+      onCompleted: (data) =>
       {
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);

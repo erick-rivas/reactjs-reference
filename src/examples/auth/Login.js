@@ -8,16 +8,16 @@ function Login(props)
 {
   const [state, setState] = useState(0);
   const [cLogin, qLogin] = usePost("/auth/login", {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       sessionStorage.setItem("token", data.key);
       sessionStorage.setItem("id", data.user);
       props.history.replace("/");
     },
-    onError: error => setState({ error: "Invalid user or password" })
+    onError: (error) => setState({ error: "Invalid user or password" })
   });
 
-  const onSubmit = e =>
+  const onSubmit = (e) =>
   {
     e.preventDefault();
     let email = e.target.email.value;

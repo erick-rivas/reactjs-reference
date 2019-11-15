@@ -6,12 +6,12 @@ const find = (dataset, func) =>
 
 const get = (dataset, id) =>
 {
-  return find(dataset, i => i.id == id);
+  return find(dataset, (i) => i.id == id);
 };
 
 const filter = (dataset, filters) =>
 {
-  return dataset.filter(d =>
+  return dataset.filter((d) =>
   {
     for (let filter in filters)
       if (filters[filter] != null &&

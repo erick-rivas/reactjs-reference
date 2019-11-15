@@ -25,12 +25,12 @@ function UserForm(props)
   const editMode = user_id != null;
 
   const saveOptions = {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: error => setState({ error: "An error has occurred, try again" })
+    onError: (error) => setState({ error: "An error has occurred, try again" })
   };
 
   const [callSave, qSave] = useSave(queries.SAVE_USER, saveOptions);
@@ -42,7 +42,7 @@ function UserForm(props)
   if (editMode && qUser.loading) return <Loading />;
   if (editMode && qUser.error) return "Error";
 
-  const onSubmit = values =>
+  const onSubmit = (values) =>
   {
     values.id = user_id;
     if (editMode) callSet(values);
@@ -59,7 +59,7 @@ function UserForm(props)
         <Formik
            initialValues={user}
            onSubmit={onSubmit}
-           render={f => (
+           render={(f) => (
 
         <form onSubmit={f.handleSubmit}>
           

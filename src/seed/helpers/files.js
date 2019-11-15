@@ -10,7 +10,7 @@ class Files
 {
   uploadFile(formWrapper, callback)
   {
-    return disp =>
+    return (disp) =>
     {
       let url = `${API_URL}/files/`;
       $.ajax({
@@ -25,19 +25,19 @@ class Files
           var myXhr = $.ajaxSettings.xhr();
           return myXhr;
         },
-        success: json =>
+        success: (json) =>
         {
           callback({
             body: json,
             ok: true
           });
         },
-        error: error =>
+        error: (error) =>
         {
           callback({
             body: error,
             ok: false
-          })
+          });
         }
       });
     };

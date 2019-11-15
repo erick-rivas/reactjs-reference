@@ -69,7 +69,7 @@ const stateToProps = (state, props) => ({
   users: state.users.dataset,
 });
 
-const dispToProps = disp => {
+const dispToProps = (disp) => {
   let res = {};
   for (let action of actions){
     let methods = Object.getOwnPropertyNames(action.className.prototype);
@@ -83,7 +83,7 @@ const dispToProps = disp => {
 const mergeProps = (states, disps, props) =>
   Object.assign({}, states, disps, props);
 
-const redux = component =>
+const redux = (component) =>
   withRouter(connect(
     stateToProps,
     dispToProps,

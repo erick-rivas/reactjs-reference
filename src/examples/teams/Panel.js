@@ -15,7 +15,7 @@ function TeamPanel(props)
 {
   const { path, url } = props.match;
 
-  const List = props =>
+  const List = (props) =>
     <div className={styles.list}>
       <div className={styles.options}>
         <TeamListOptions {...props}/>
@@ -25,7 +25,7 @@ function TeamPanel(props)
       </div>
     </div>;
 
-  const Details = props =>
+  const Details = (props) =>
     <div className={styles.details}>
       <div className={styles.card}>
         <div className={styles.options}>
@@ -37,7 +37,7 @@ function TeamPanel(props)
       </div>
     </div>;
 
-  const Form = props =>
+  const Form = (props) =>
     <Modal {...props}>
       <TeamForm {...props} />
     </Modal>;

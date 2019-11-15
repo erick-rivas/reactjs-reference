@@ -15,7 +15,7 @@ class Modal extends React.Component
   render()
   {
     const children = React.Children.map(this.props.children,
-      child =>
+      (child) =>
       {
         return React.cloneElement(child, {
           onClose: this.onClose,

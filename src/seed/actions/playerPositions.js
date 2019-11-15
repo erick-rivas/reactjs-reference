@@ -17,7 +17,7 @@ class _PlayerPositions extends Action
     super(
       "PLAYER_POSITIONS",
       "player_positions",
-      state => state.playerPositions,
+      (state) => state.playerPositions,
       fetch
     );
   }

@@ -31,12 +31,12 @@ function ScoreForm(props)
   const editMode = score_id != null;
 
   const saveOptions = {
-    onCompleted: data =>
+    onCompleted: (data) =>
     {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: error => setState({ error: "An error has occurred, try again" })
+    onError: (error) => setState({ error: "An error has occurred, try again" })
   };
 
   const [callSave, qSave] = useSave(queries.SAVE_SCORE, saveOptions);
@@ -49,7 +49,7 @@ function ScoreForm(props)
   if (editMode && qScore.loading) return <Loading />;
   if (editMode && qScore.error) return "Error";
 
-  const onSubmit = values =>
+  const onSubmit = (values) =>
   {
     values.id = score_id;
     if (editMode) callSet(values);
@@ -67,7 +67,7 @@ function ScoreForm(props)
         <Formik
            initialValues={score}
            onSubmit={onSubmit}
-           render={f => (
+           render={(f) => (
 
         <form onSubmit={f.handleSubmit}>
           

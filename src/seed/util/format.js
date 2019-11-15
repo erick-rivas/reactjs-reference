@@ -1,6 +1,6 @@
-const getDateInput = data => {
+const getDateInput = (data) => {
   if (!data) return "";
-  const f = num => ("0" + num).slice(-2);
+  const f = (num) => ("0" + num).slice(-2);
   let date = new Date(data);
   let res = `${date.getFullYear()}-${f(date.getMonth())}-${f(date.getDate())}T${f(date.getHours())}:${f(date.getMinutes())}:${f(date.getSeconds())}`;
   return res;

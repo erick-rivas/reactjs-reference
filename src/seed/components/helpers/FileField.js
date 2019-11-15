@@ -31,12 +31,12 @@ class FileField extends React.Component
   {
     const { setFieldValue, name, multiple } = this.props;
     const { uploadFile } = this.props;
-    const callback = res =>
+    const callback = (res) =>
     {
       if (multiple) {
         if (Array.isArray(res.body)) {
           setFieldValue(name, res.body);
-          setFieldValue(name + "_ids", res.body.map(r => r.id));
+          setFieldValue(name + "_ids", res.body.map((r) => r.id));
         } else {
           setFieldValue(name, [res.body]);
           setFieldValue(name + "_ids", [res.body.id]);
@@ -45,7 +45,7 @@ class FileField extends React.Component
         setFieldValue(name, res.body);
         setFieldValue(name + "_id", res.body.id);
       }
-    }
+    };
     uploadFile(e.target.form, callback);
   }
 }

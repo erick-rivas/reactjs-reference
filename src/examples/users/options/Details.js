@@ -13,7 +13,7 @@ function UserDetailsOptions(props)
 
     const [callDelete, qDelete] = useDelete(queries.DELETE_USER,
     {
-      onCompleted: data =>
+      onCompleted: (data) =>
       {
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);

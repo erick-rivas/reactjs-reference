@@ -25,7 +25,6 @@ const client = new ApolloClient({
   cache
 });
 
-
 ReactDOM.render(
     <SeedProvider>
       <Provider store={store}>

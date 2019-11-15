@@ -19,7 +19,7 @@ class _Scores extends Action
     super(
       "SCORES",
       "scores",
-      state => state.scores,
+      (state) => state.scores,
       fetch
     );
   }
