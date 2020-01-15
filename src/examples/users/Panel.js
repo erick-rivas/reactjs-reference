@@ -1,14 +1,12 @@
 import React from "react";
+import cx from "classnames";
 import { Route } from "react-router-dom";
-
 import UserDetails from "examples/users/Details";
 import UserList from "examples/users/List";
 import UserListOptions from "examples/users/options/List";
 import UserDetailsOptions from "examples/users/options/Details";
 import UserForm from "examples/users/Form";
 import Modal from "seed/components/helpers/Modal";
-
-import cx from "classnames";
 import styles from "resources/css/examples/users/Panel.module.css";
 
 function UserPanel(props)

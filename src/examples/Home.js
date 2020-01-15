@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
+import cx from "classnames";
 import { Switch, Route, Redirect } from "react-router-dom";
-
 import MatchPanel from "examples/matches/Panel";
 import PlayerPanel from "examples/players/Panel";
 import PlayerPositionPanel from "examples/player_positions/Panel";
@@ -9,8 +9,6 @@ import TeamPanel from "examples/teams/Panel";
 import UserPanel from "examples/users/Panel";
 import Sidenav from "examples/nav/Sidenav";
 import Topnav from "examples/nav/Topnav";
-
-import cx from "classnames";
 import styles from "resources/css/examples/Home.module.css";
 
 function Home(props)

@@ -1,6 +1,11 @@
-import * as React from "react";
+/*
+__Seed builder__v0.1.8
+  (Read_only) Builder helper
+*/
 
+import React from "react";
 import styles from "resources/css/seed/helpers/MultiField.module.css";
+
 
 class MultiField extends React.Component
 {

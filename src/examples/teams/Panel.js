@@ -1,14 +1,12 @@
 import React from "react";
+import cx from "classnames";
 import { Route } from "react-router-dom";
-
 import TeamDetails from "examples/teams/Details";
 import TeamList from "examples/teams/List";
 import TeamListOptions from "examples/teams/options/List";
 import TeamDetailsOptions from "examples/teams/options/Details";
 import TeamForm from "examples/teams/Form";
 import Modal from "seed/components/helpers/Modal";
-
-import cx from "classnames";
 import styles from "resources/css/examples/teams/Panel.module.css";
 
 function TeamPanel(props)

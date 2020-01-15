@@ -1,14 +1,12 @@
 import React from "react";
+import cx from "classnames";
 import { Route } from "react-router-dom";
-
 import PlayerPositionDetails from "examples/player_positions/Details";
 import PlayerPositionList from "examples/player_positions/List";
 import PlayerPositionListOptions from "examples/player_positions/options/List";
 import PlayerPositionDetailsOptions from "examples/player_positions/options/Details";
 import PlayerPositionForm from "examples/player_positions/Form";
 import Modal from "seed/components/helpers/Modal";
-
-import cx from "classnames";
 import styles from "resources/css/examples/player_positions/Panel.module.css";
 
 function PlayerPositionPanel(props)

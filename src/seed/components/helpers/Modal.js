@@ -3,12 +3,11 @@ __Seed builder__v0.1.8
   (Read_only) Builder helper
 */
 
-import * as React from "react";
+import React from "react";
 import cx from "classnames";
-
 import ModalContainer from "@material-ui/core/Modal";
-
 import styles from "resources/css/seed/helpers/Modal.module.css";
+
 
 class Modal extends React.Component
 {
@@ -43,17 +42,15 @@ class Modal extends React.Component
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={cx(styles.container,"animated",animation)} style={containerStyle}>
-
+        <div className={cx(styles.container,"animated",animation)}
+          style={containerStyle}>
           <button
             className={styles.close}
             style={closeStyle}
             onClick={this.onClose}>
             <i className="fas fa-times"></i>
           </button>
-
           {children}
-
         </div>
 
       </ModalContainer>
@@ -63,9 +60,7 @@ class Modal extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      open: false
-    };
+    this.state = { open: false };
     this.onClose = this.onClose.bind(this);
   }
 

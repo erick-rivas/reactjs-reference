@@ -1,7 +1,6 @@
 import React from "react";
-import Svg from "react-svg";
-
 import cx from "classnames";
+import Svg from "react-svg";
 import styles from "resources/css/examples/nav/Topnav.module.css";
 
 function Topnav(props)

@@ -22,6 +22,13 @@ const muiTheme = MuiTheme();
 const cache = new InMemoryCache();
 const client = new ApolloClient({
   uri: GRAPH_URL,
+  request: (operation) => {
+    operation.setContext({
+      headers: {
+        authorization: `Token ${sessionStorage.getItem("token")}`
+      }
+    })
+  },
   cache
 });
 

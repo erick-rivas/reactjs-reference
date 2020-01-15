@@ -1,13 +1,11 @@
 import React, {useState} from "react";
+import cx from "classnames";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
 import { Formik, Field } from "formik";
-
 import MultiField from "seed/components/helpers/MultiField";
 import FileField from "seed/components/helpers/FileField";
 import Loading from "seed/components/helpers/Loading";
-
-import cx from "classnames";
 import styles from "resources/css/examples/users/Form.module.css";
 
 const TEAMS  = `

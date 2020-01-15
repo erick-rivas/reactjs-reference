@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(express.static(path.join(__dirname, "build")));
+const maxAge = 3600000 * 24; // 1day
+app.use(express.static(path.join(__dirname, 'build'), { maxAge: maxAge }));
 app.get("*", (req, res) => {
   res.sendfile(path.join(__dirname, "build", "index.html"));
 });

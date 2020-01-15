@@ -1,9 +1,8 @@
 import React from "react";
+import cx from "classnames";
 import { useDelete } from "seed/gql";
 import * as queries from "seed/gql/queries";
 import { Link } from "react-router-dom";
-
-import cx from "classnames";
 import styles from "resources/css/examples/players/options/Details.module.css";
 
 function PlayerDetailsOptions(props)
@@ -17,7 +16,7 @@ function PlayerDetailsOptions(props)
       {
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
-       }
+      }
     });
 
     const onClickDelete = () =>
