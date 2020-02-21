@@ -22,7 +22,13 @@ const cleanQuery = (query) =>
 const useQuery = (raw, queryStr, options = {}) =>
 {
   const model = raw.match(/[\w]+/g)[0];
-  const wrapper = `${model}${queryStr ? "(query: \"" + queryStr + "\")" : ""}`;
+  let params = ""
+  if (queryStr) params += "query: \"" + queryStr + "\",";
+  if (options.orderBy) params += "orderBy: \"" + options.orderBy + "\",";
+  if (options.start) params += "start: " + options.start + ",";
+  if (options.end) params += "end: " + options.end + ",";
+  if (params.endsWith(","))  params.slice(0, -1);
+  const wrapper = `${model}${params != "" ? "(" + params + ")" : ""}`;
   const query = cleanQuery(raw.replace(model, wrapper));
   const { addGqlQuery } = useContext(SeedContext);
 
@@ -30,11 +36,31 @@ const useQuery = (raw, queryStr, options = {}) =>
     ...options,
     onCompleted: (data) =>
     {
-      addGqlQuery(query);
+      if (options.addQuery == null || options.addQuery != false)
+        addGqlQuery(query);
       if (options.onCompleted) options.onCompleted(data);
     }
   });
   return { ...res, data: res.data ? res.data : {} };
+};
+
+const usePage = (raw, queryStr, pageNum, pageSize, options = {}) =>
+{
+  let start = pageSize * (pageNum - 1);
+  let end = pageSize * pageNum;
+  return useQuery(raw, queryStr, {...options, start: start, end: end })
+};
+
+const useCount = (modelName, queryStr, options = {}) =>
+{
+    const raw = `
+     {
+        ${modelName}Count {
+          count
+        }
+     }
+    `
+    return useQuery(raw, queryStr, { ...options, addQuery: false })
 };
 
 const useDetail = (raw, id, options = {}) =>
@@ -130,4 +156,4 @@ const useDelete = (raw, options = {}) =>
   return useMutate(mutation);
 };
 
-export { useQuery, useDetail, useSet, useSave, useDelete };
+export { useQuery, usePage, useCount, useDetail, useSet, useSave, useDelete };
