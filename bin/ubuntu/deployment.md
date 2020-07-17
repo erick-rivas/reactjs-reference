@@ -18,6 +18,6 @@ ssh <USER@SERVER_URL>
 
 -   Run script
 ```bash
-$ ./bin/ubuntu/deploy
+$ ./bin/ubuntu/deploy.sh
 ```
     >   In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version

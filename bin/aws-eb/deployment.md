@@ -28,6 +28,6 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 -   Run script
 ```bash
-$ ./bin/aws-eb/deploy
+$ ./bin/aws-eb/deploy.sh
 ```
     >   In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version
