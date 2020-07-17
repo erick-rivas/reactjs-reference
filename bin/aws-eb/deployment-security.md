@@ -33,7 +33,6 @@ $ eb ssh
 ```
 
 -   Setup apache settings
-
 ```bash
 $ sudo vim /etc/httpd/conf.d/temp.conf
 <VirtualHost *:80 *:443>
@@ -43,7 +42,6 @@ $ sudo vim /etc/httpd/conf.d/temp.conf
 ```
 
 -   Install and configure certbot
-
 ```bash
 $ sudo wget https://dl.eff.org/certbot-auto
 $ sudo chmod a+x ./certbot-auto
@@ -51,5 +49,5 @@ $ sudo ./certbot-auto certonly --debug
   # Select 1. apache
 ```
 
--   Copy bin/eb/http-instance.config to .ebextensions folder
+-   Copy bin/awb-eb/config/.ebextensions to .ebextensions folder
 -   Set HTTPS_DOMAIN in .ebextensions/nodecommand.config

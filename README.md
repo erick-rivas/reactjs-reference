@@ -32,17 +32,12 @@ The architecture uses the following structure:
 -   Configure src/settings/Config.js attributes
 -   Install dependencies.
 ```bash
-$ npm install
-```
-
--   Install builder
-```bash
-$ npm install -g seed-builder
+npm install
 ```
 
 -   Run server.
 ```bash
-$ npm start
+npm start
 ```
 
 ## Examples
@@ -54,4 +49,10 @@ GET http://localhost:3000
 
 ## Deployment
 
--   To deploy application to aws see [deployment](./bin/deployment.md).
+### AWS - Elastic Beanstalk
+
+To deploy application to aws-eb see [deployment](./bin/aws-eb/deployment.md).
+
+### Ubuntu Server (Debian)
+
+To deploy application to a Ubuntu Server (Debian) see [deployment](./bin/ubuntu/deployment.md).

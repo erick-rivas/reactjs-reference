@@ -1,4 +1,4 @@
-# ReactJS Web - Deployment
+# ReactJS Web - Deployment AWS
 
 This file contains guides to deploy project to aws elastic beanstalk
 
@@ -22,12 +22,12 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 ### Production settings
 
--   Move bin/eb/.ebextensions & bin/eb/.ebignore to root folder
+-   Move bin/aws-eb/config/.ebextensions & bin/aws-eb/config/.ebignore to root folder
 
 ### Deploy
 
 -   Run script
 ```bash
-$ ./bin/deploy
+$ ./bin/aws-eb/deploy
 ```
     >   In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version
