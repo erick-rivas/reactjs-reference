@@ -91,5 +91,3 @@ const redux = (component) =>
   )(component));
 
 export default redux;
-
-
