@@ -3,6 +3,7 @@
 LICENSE
 SeedManifest.json
 SeedExport.json
+SeedModeling.mdj
 build
 node_modules
 src/seed/actions/*

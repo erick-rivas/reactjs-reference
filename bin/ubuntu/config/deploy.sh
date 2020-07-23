@@ -1,7 +1,3 @@
-# Connect to server
-
-ssh <SERVER_URL>
-
 # Update project
 
 cd <PROJECT_WEB_PATH>

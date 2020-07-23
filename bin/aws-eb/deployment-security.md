@@ -8,7 +8,7 @@ To enable a https connection:
 
 ### Configure aws/dns settings
 
--   Create an elastic beanstalk instance for reactjs support (see [README.md](../README.md))   
+-   Create an elastic beanstalk instance for reactjs support (see [deployment.md](./deployment.md))   
 
 -   Enable 443 port in ec2 settings
     -   Go to ec2 pane 
@@ -24,30 +24,33 @@ To enable a https connection:
 
 ### Configure server
 
--   Install eb terminal and init project (see [README.md](../README.md))
+-   Install eb terminal and init project (see [deployment.md](./deployment.md))
 -   Enable & execute ssh
 
 ```bash
-$ eb ssh --setup
-$ eb ssh
+eb ssh --setup
+eb ssh
 ```
 
 -   Setup apache settings
 ```bash
-$ sudo vim /etc/httpd/conf.d/temp.conf
+sudo vim /etc/httpd/conf.d/temp.conf
+```
+-   Set config content
+```
 <VirtualHost *:80 *:443>
-	ServerName <HTTPS_DOMAIN>
+	ServerName #HTTPS_DOMAIN#
 	DocumentRoot /var/www/html
 </VirtualHost>
 ```
 
 -   Install and configure certbot
 ```bash
-$ sudo wget https://dl.eff.org/certbot-auto
-$ sudo chmod a+x ./certbot-auto
-$ sudo ./certbot-auto certonly --debug
-  # Select 1. apache
+sudo wget https://dl.eff.org/certbot-auto
+sudo chmod a+x ./certbot-auto
+sudo ./certbot-auto certonly --debug
+# Select 1. apache
 ```
 
--   Copy bin/awb-eb/config/.ebextensions to .ebextensions folder
--   Set HTTPS_DOMAIN in .ebextensions/nodecommand.config
+-   Copy [config/https-instance.config](.config/https-instance.config) to .ebextensions folder
+-   Replace #HTTPS_DOMAIN# to server name
