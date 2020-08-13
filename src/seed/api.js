@@ -32,6 +32,36 @@ const options = (method = "GET", body = {}) =>
   return res;
 }
 
+const usePoll = (endpoint, params, pollOptions = {}) =>
+{
+  const [status, setStatus] = useState({ data: null, isLoading: true });
+  const fetch = useFetch(`${API_URL}${endpoint}/?${query(params)}`, {
+    ...options("GET"),
+    formatter: (response) => {
+      if (!response.ok) throw response;
+      return response.text();
+    }
+  });
+
+  if ((fetch.data != null || fetch.error != null) && status.isLoading) {
+    let data = null
+    if (fetch.error == null){
+      data = {};
+      try {
+        data = JSON.parse(fetch.data);
+      } catch (e) { }
+      if (pollOptions.onCompleted != null) 
+        pollOptions.onCompleted(data);
+    } else {
+      if (pollOptions.onError != null)
+        pollOptions.onError(fetch.error);
+    }
+    setStatus({ data: data, isLoading: false });
+  }
+
+  return { ...fetch, loading: status.isLoading, data: status.data };
+}
+
 const useMutate = (method, endpoint, mutOptions = {}) =>
 {
   const [call, setCall] = useState({ body: null, called: false });
@@ -45,6 +75,7 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
     },
     depends: [call.body != null]
   });
+
   if (call.body != null && !call.called && fetch.isLoading)
     setCall({ ...call, called: true });
   if (call.body != null && call.called && !fetch.isLoading) {
@@ -63,8 +94,8 @@ const useMutate = (method, endpoint, mutOptions = {}) =>
   return [calling, { ...fetch, loading: fetch.isLoading, called: call.called }];
 };
 
-const useGet = (endpoint, params = {}) =>
-  useFetch(`${API_URL}${endpoint}/?${query(params)}`);
+const useGet = (endpoint, params = {}, options = {}) =>
+  usePoll(endpoint, params, options);
 
 const usePost = (endpoint, options = {}) =>
   useMutate("POST", endpoint, options);
