@@ -21,7 +21,7 @@ class Action
     this.state = state;
     this.fetch = "";
     for (let f of fetchData)
-        this.fetch += `include[]=${f}&`;
+        this.fetch += `include[]=${encodeURIComponent(f)}&`;
   }
 
   /**
@@ -33,7 +33,7 @@ class Action
    let query = "";
     for (let filter in filters)
       if (filters[filter] != null)
-        query += `filter{${filter}}=${filters[filter]}&`;
+        query += `filter{${filter}}=${encodeURIComponent(filters[filter])}&`;
 
     return this.request(
       "GET", `${action}`, query, {},

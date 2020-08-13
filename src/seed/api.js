@@ -13,7 +13,7 @@ const query = (params) =>
   let query = "";
   for (let param in params)
     if (params[param] != null)
-      query += `${param}=${params[param]}&`;
+      query += `${param}=${encodeURIComponent(params[param])}&`;
   return query;
 }
 
