@@ -1,3 +1,8 @@
+/*
+__Seed builder__v0.2.0
+  (Read_only) Builder helper
+*/
+
 const find = (dataset, func) =>
 {
   const item = dataset.find(func);

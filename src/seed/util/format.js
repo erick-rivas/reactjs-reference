@@ -1,3 +1,8 @@
+/*
+__Seed builder__v0.2.0
+  (Read_only) Builder helper
+*/
+
 const getDateInput = (data) => {
   if (!data) return "";
   const f = (num) => ("0" + num).slice(-2);
