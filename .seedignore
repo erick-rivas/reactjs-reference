@@ -1,5 +1,6 @@
 .git*
 .seedignore
+.gitignore
 LICENSE
 SeedManifest.json
 SeedExport.json
@@ -13,7 +14,7 @@ src/seed/redux.js
 src/actions/*
 src/components/*
 src/resources/css/*
-src/examples
+src/seed/examples
 ?app.js
 ?package.json
 ?package-lock.json
@@ -24,6 +25,5 @@ src/examples
 ?src/resources/*
 ?src/settings/*
 !.keep
-!.gitignore
 !*helpers
 !*util
