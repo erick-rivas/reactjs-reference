@@ -1,0 +1,46 @@
+import React from "react";
+import cx from "classnames";
+import { useQuery } from "seed/gql";
+import { NavLink } from "react-router-dom";
+import Loading from "seed/components/helpers/Loading";
+import styles from "resources/css/seed/examples/scores/List.module.css";
+
+const SCORES  = `
+{
+  scores {
+    min
+    player { }
+    match { }
+  }
+}
+`;
+
+function ScoreList(props)
+{
+  const { url } = props.match;
+
+  const qScores = useQuery(SCORES);
+
+  if (qScores.loading) return <Loading />;
+  if (qScores.error) return "Error";
+
+  const { scores } = qScores.data;
+
+  const scoreList = scores.map(item =>
+    <NavLink
+      key={item.id}
+      to={`${url}/${item.id}`}
+      className={styles.item}
+      activeClassName={styles.active}>
+        <div className={styles.title}>{item.id}</div>
+        <div className={styles.subtitle}>{JSON.stringify(item)}</div>
+    </NavLink>);
+
+  return (
+    <div className={styles.module}>
+      { scoreList }
+    </div>
+  );
+}
+
+export default ScoreList;

@@ -200,6 +200,5 @@
       "description": "Represents a player  position (eg. forward)"
     }
   ],
-  "platform": "reactjs",
-  "export": {}
+  "platform": "reactjs"
 }
