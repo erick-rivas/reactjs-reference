@@ -6,15 +6,13 @@ __Seed builder__v0.2.0
 import Actions from "seed/actions/helpers/auth";
 import Reducer from "seed/helpers/reducer";
 
-class Auth extends Reducer
-{
-  constructor()
-  {
+class Auth extends Reducer {
+
+  constructor() {
     super(new Actions());
   }
 
-  reducer = (state, action) =>
-  {
+  reducer = (state, action) => {
     const type = action.type;
 
     if (type === `${this.ref.id}_LOGIN`)

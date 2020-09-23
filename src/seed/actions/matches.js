@@ -6,10 +6,8 @@ __Seed builder__v0.2.0
 
 import Action from "seed/helpers/action";
 
-class _Matches extends Action
-{
-  constructor(fetch)
-  {
+class _Matches extends Action {
+  constructor(fetch) {
     if (fetch == null)
       fetch = [
         "local.*",
@@ -25,28 +23,23 @@ class _Matches extends Action
     );
   }
 
-  getMatchList(params = {}, callback)
-  {
+  getMatchList(params = {}, callback) {
     return this.getList("", params, callback);
   }
 
-  getMatchDetails(matchId, callback)
-  {
+  getMatchDetails(matchId, callback) {
     return this.getDetails("", matchId, callback);
   }
 
-  saveMatch(match, callback)
-  {
+  saveMatch(match, callback) {
     return this.postData("", match, callback);
   }
 
-  setMatch(matchId, match, callback)
-  {
+  setMatch(matchId, match, callback) {
     return this.putData("", matchId, match, callback);
   }
 
-  deleteMatch(matchId, callback)
-  {
+  deleteMatch(matchId, callback) {
     return this.deleteData("", matchId, callback);
   }
 }

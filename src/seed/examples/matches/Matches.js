@@ -9,8 +9,8 @@ import MatchForm from "seed/examples/matches/Form";
 import Modal from "seed/components/helpers/Modal";
 import styles from "resources/css/seed/examples/matches/Matches.module.css";
 
-function Matches(props)
-{
+function Matches(props) {
+
   const { path, url } = props.match;
 
   const List = (props) =>

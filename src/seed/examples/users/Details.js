@@ -17,10 +17,9 @@ const USER  = `
 }
 `;
 
-function UserDetails(props)
-{
-  const { user_id }  = props.match.params;
+function UserDetails(props) {
 
+  const { user_id }  = props.match.params;
   const qUser = useDetail(USER, user_id);
 
   if (qUser.loading) return <Loading />;

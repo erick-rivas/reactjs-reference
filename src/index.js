@@ -36,16 +36,16 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-    <SeedProvider>
-      <Provider store={store}>
-          <ApolloProvider client={client}>
-            <MuiThemeProvider theme={muiTheme}>
-                <Popup />
-                <App />
-            </MuiThemeProvider>
-          </ApolloProvider>
-      </Provider>
-    </SeedProvider>,
-    document.getElementById("root")
+  <SeedProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <MuiThemeProvider theme={muiTheme}>
+          <Popup />
+          <App />
+        </MuiThemeProvider>
+      </ApolloProvider>
+    </Provider>
+  </SeedProvider>,
+  document.getElementById("root")
 );
 Worker();

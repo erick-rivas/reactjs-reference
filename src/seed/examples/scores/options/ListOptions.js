@@ -3,8 +3,7 @@ import cx from "classnames";
 import { Link } from "react-router-dom";
 import styles from "resources/css/seed/examples/scores/options/ListOptions.module.css";
 
-function ScoreListOptions(props)
-{
+function ScoreListOptions(props) {
   const { url } = props.match;
   return (
     <div className={styles.module}>

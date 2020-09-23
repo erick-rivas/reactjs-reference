@@ -14,17 +14,15 @@ const TEAMS  = `
 }
 `;
 
-function MatchForm(props)
-{
-  const [state, setState] = useState({});
+function MatchForm(props) {
 
+  const [state, setState] = useState({});
   const { url } = props.match;
   const { match_id }  = props.match.params;
   const editMode = match_id != null;
 
   const saveOptions = {
-    onCompleted: (data) =>
-    {
+    onCompleted: (data) => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
@@ -40,8 +38,7 @@ function MatchForm(props)
   if (editMode && qMatch.loading) return <Loading />;
   if (editMode && qMatch.error) return "Error";
 
-  const onSubmit = (values) =>
-  {
+  const onSubmit = (values) => {
     values.id = match_id;
     if (editMode) callSet(values);
     else callSave(values);

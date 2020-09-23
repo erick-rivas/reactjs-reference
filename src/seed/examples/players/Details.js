@@ -16,10 +16,9 @@ const PLAYER  = `
 }
 `;
 
-function PlayerDetails(props)
-{
-  const { player_id }  = props.match.params;
+function PlayerDetails(props) {
 
+  const { player_id }  = props.match.params;
   const qPlayer = useDetail(PLAYER, player_id);
 
   if (qPlayer.loading) return <Loading />;

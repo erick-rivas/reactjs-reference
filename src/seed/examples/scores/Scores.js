@@ -9,8 +9,8 @@ import ScoreForm from "seed/examples/scores/Form";
 import Modal from "seed/components/helpers/Modal";
 import styles from "resources/css/seed/examples/scores/Scores.module.css";
 
-function Scores(props)
-{
+function Scores(props) {
+
   const { path, url } = props.match;
 
   const List = (props) =>

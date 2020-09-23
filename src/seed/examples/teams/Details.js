@@ -18,10 +18,9 @@ const TEAM  = `
 }
 `;
 
-function TeamDetails(props)
-{
-  const { team_id }  = props.match.params;
+function TeamDetails(props) {
 
+  const { team_id }  = props.match.params;
   const qTeam = useDetail(TEAM, team_id);
 
   if (qTeam.loading) return <Loading />;

@@ -1,7 +1,6 @@
 /*
 __Seed builder__v0.2.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
+  (Read_only) Builder helper
 */
 
 import * as Apollo from "@apollo/react-hooks";
@@ -11,31 +10,28 @@ import { SINGULARS } from "seed/gql/const";
 import SeedContext from "seed/context";
 
 
-const cleanQuery = (query) =>
-{
+const cleanQuery = (query) => {
   const fBracePos = query.indexOf("{");
   let res = query.substring(fBracePos + 1);
   res = "{ " + res.replace(/{/g, "{ id ");
   return res;
 };
 
-const useQuery = (raw, queryStr, options = {}) =>
-{
+const useQuery = (raw, queryStr, options = {}) => {
   const model = raw.match(/[\w]+/g)[0];
   let params = ""
   if (queryStr) params += "query: \"" + queryStr + "\",";
   if (options.orderBy) params += "orderBy: \"" + options.orderBy + "\",";
   if (options.start) params += "start: " + options.start + ",";
   if (options.end) params += "end: " + options.end + ",";
-  if (params.endsWith(","))  params.slice(0, -1);
+  if (params.endsWith(",")) params.slice(0, -1);
   const wrapper = `${model}${params != "" ? "(" + params + ")" : ""}`;
   const query = cleanQuery(raw.replace(model, wrapper));
   const { addGqlQuery } = useContext(SeedContext);
 
   const res = Apollo.useQuery(gql(query), {
     ...options,
-    onCompleted: (data) =>
-    {
+    onCompleted: (data) => {
       if (options.addQuery == null || options.addQuery != false)
         addGqlQuery(query);
       if (options.onCompleted) options.onCompleted(data);
@@ -44,27 +40,24 @@ const useQuery = (raw, queryStr, options = {}) =>
   return { ...res, data: res.data ? res.data : {} };
 };
 
-const usePage = (raw, queryStr, pageNum, pageSize, options = {}) =>
-{
+const usePage = (raw, queryStr, pageNum, pageSize, options = {}) => {
   let start = pageSize * (pageNum - 1);
   let end = pageSize * pageNum;
-  return useQuery(raw, queryStr, {...options, start: start, end: end })
+  return useQuery(raw, queryStr, { ...options, start: start, end: end })
 };
 
-const useCount = (modelName, queryStr, options = {}) =>
-{
-    const raw = `
+const useCount = (modelName, queryStr, options = {}) => {
+  const raw = `
      {
         ${modelName}Count {
           count
         }
      }
     `
-    return useQuery(raw, queryStr, { ...options, addQuery: false })
+  return useQuery(raw, queryStr, { ...options, addQuery: false })
 };
 
-const useDetail = (raw, id, options = {}) =>
-{
+const useDetail = (raw, id, options = {}) => {
   const model = raw.match(/[\w]+/g)[0];
   const wrapper = `${model}(id: ${id})`;
   const query = cleanQuery(raw.replace(model, wrapper));
@@ -72,11 +65,9 @@ const useDetail = (raw, id, options = {}) =>
   return { ...res, data: res.data ? res.data : {} };
 };
 
-const useMutate = (mutation) =>
-{
+const useMutate = (mutation) => {
   const [call, res] = mutation;
-  const wrap = (body) =>
-  {
+  const wrap = (body) => {
     const vars = body ? body : {};
     for (let key in vars) {
       let ele = vars[key];
@@ -94,22 +85,19 @@ const useMutate = (mutation) =>
   return [wrap, { ...res, data: res.data ? res.data : {} }];
 };
 
-const useSet = (raw, options = {}) =>
-{
+const useSet = (raw, options = {}) => {
   const query = gql(raw);
   const mutation = Apollo.useMutation(query, options);
   return useMutate(mutation);
 };
 
-const useSave = (raw, options = {}) =>
-{
+const useSave = (raw, options = {}) => {
   const query = gql(raw);
   const mutation = Apollo.useMutation(query, {
     ...options,
     refetchQueries:
       useContext(SeedContext)
-        .gqlQueries.filter((cQueryRaw) =>
-        {
+        .gqlQueries.filter((cQueryRaw) => {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
           const cHeader = "save" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
@@ -120,17 +108,14 @@ const useSave = (raw, options = {}) =>
   return useMutate(mutation);
 };
 
-const useDelete = (raw, options = {}) =>
-{
+const useDelete = (raw, options = {}) => {
   const context = useContext(SeedContext);
   const query = gql(raw);
   const mutation = Apollo.useMutation(query, {
     ...options,
-    update(cache, { data })
-    {
+    update(cache, { data }) {
       context.gqlQueries
-        .map((cQueryRaw) =>
-        {
+        .map((cQueryRaw) => {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
           const cHeader = "delete" + cModel.charAt(0).toUpperCase() + cModel.slice(1);

@@ -12,10 +12,9 @@ const PLAYER_POSITION  = `
 }
 `;
 
-function PlayerPositionDetails(props)
-{
-  const { player_position_id }  = props.match.params;
+function PlayerPositionDetails(props) {
 
+  const { player_position_id }  = props.match.params;
   const qPlayerPosition = useDetail(PLAYER_POSITION, player_position_id);
 
   if (qPlayerPosition.loading) return <Loading />;

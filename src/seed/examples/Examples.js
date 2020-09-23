@@ -7,8 +7,7 @@ import Analytics from "seed/examples/nav/Analytics";
 import Home from "seed/examples/Home";
 import styles from "resources/css/seed/examples/Examples.module.css";
 
-function Examples(props)
-{
+function Examples(props) {
   const { path } = props.match;
   return (
     <div className={styles.module}>

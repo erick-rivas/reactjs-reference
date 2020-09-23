@@ -6,10 +6,8 @@ __Seed builder__v0.2.0
 
 import Action from "seed/helpers/action";
 
-class _Teams extends Action
-{
-  constructor(fetch)
-  {
+class _Teams extends Action {
+  constructor(fetch) {
     if (fetch == null)
       fetch = [
         "rival.*",
@@ -24,28 +22,23 @@ class _Teams extends Action
     );
   }
 
-  getTeamList(params = {}, callback)
-  {
+  getTeamList(params = {}, callback) {
     return this.getList("", params, callback);
   }
 
-  getTeamDetails(teamId, callback)
-  {
+  getTeamDetails(teamId, callback) {
     return this.getDetails("", teamId, callback);
   }
 
-  saveTeam(team, callback)
-  {
+  saveTeam(team, callback) {
     return this.postData("", team, callback);
   }
 
-  setTeam(teamId, team, callback)
-  {
+  setTeam(teamId, team, callback) {
     return this.putData("", teamId, team, callback);
   }
 
-  deleteTeam(teamId, callback)
-  {
+  deleteTeam(teamId, callback) {
     return this.deleteData("", teamId, callback);
   }
 }

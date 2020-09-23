@@ -6,10 +6,8 @@ __Seed builder__v0.2.0
 
 import Action from "seed/helpers/action";
 
-class _PlayerPositions extends Action
-{
-  constructor(fetch)
-  {
+class _PlayerPositions extends Action {
+  constructor(fetch) {
     if (fetch == null)
       fetch = [
       ];
@@ -22,28 +20,23 @@ class _PlayerPositions extends Action
     );
   }
 
-  getPlayerPositionList(params = {}, callback)
-  {
+  getPlayerPositionList(params = {}, callback) {
     return this.getList("", params, callback);
   }
 
-  getPlayerPositionDetails(playerPositionId, callback)
-  {
+  getPlayerPositionDetails(playerPositionId, callback) {
     return this.getDetails("", playerPositionId, callback);
   }
 
-  savePlayerPosition(playerPosition, callback)
-  {
+  savePlayerPosition(playerPosition, callback) {
     return this.postData("", playerPosition, callback);
   }
 
-  setPlayerPosition(playerPositionId, playerPosition, callback)
-  {
+  setPlayerPosition(playerPositionId, playerPosition, callback) {
     return this.putData("", playerPositionId, playerPosition, callback);
   }
 
-  deletePlayerPosition(playerPositionId, callback)
-  {
+  deletePlayerPosition(playerPositionId, callback) {
     return this.deleteData("", playerPositionId, callback);
   }
 }

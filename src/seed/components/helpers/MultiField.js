@@ -6,11 +6,9 @@ __Seed builder__v0.2.0
 import React from "react";
 import styles from "resources/css/seed/helpers/MultiField.module.css";
 
+class MultiField extends React.Component {
 
-class MultiField extends React.Component
-{
-  render()
-  {
+  render() {
     const { values = [] } = this.props;
     const { value = [] } = this.props;
     const gv = (val) => val.id ? parseInt(val.id) : val;
@@ -19,8 +17,7 @@ class MultiField extends React.Component
     for (let d of value)
       selected[gv(d)] = true;
 
-    let items = values.map((v) =>
-    {
+    let items = values.map((v) => {
       let isSelected = Boolean(selected[gv(v.value)]);
       return (
         <div className={styles.item}>
@@ -36,14 +33,12 @@ class MultiField extends React.Component
     );
   }
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.onItemSelected = this.onItemSelected.bind(this);
   }
 
-  onItemSelected(selected)
-  {
+  onItemSelected(selected) {
     const { setFieldValue, name } = this.props;
     const { value = [] } = this.props;
     const gv = (val) => val.id ? val.id : val;

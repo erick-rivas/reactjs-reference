@@ -9,8 +9,8 @@ import TeamForm from "seed/examples/teams/Form";
 import Modal from "seed/components/helpers/Modal";
 import styles from "resources/css/seed/examples/teams/Teams.module.css";
 
-function Teams(props)
-{
+function Teams(props) {
+
   const { path, url } = props.match;
 
   const List = (props) =>

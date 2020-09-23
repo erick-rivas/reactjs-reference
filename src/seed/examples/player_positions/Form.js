@@ -8,17 +8,15 @@ import FileField from "seed/components/helpers/FileField";
 import Loading from "seed/components/helpers/Loading";
 import styles from "resources/css/seed/examples/player_positions/Form.module.css";
 
-function PlayerPositionForm(props)
-{
-  const [state, setState] = useState({});
+function PlayerPositionForm(props) {
 
+  const [state, setState] = useState({});
   const { url } = props.match;
   const { player_position_id }  = props.match.params;
   const editMode = player_position_id != null;
 
   const saveOptions = {
-    onCompleted: (data) =>
-    {
+    onCompleted: (data) => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
@@ -33,8 +31,7 @@ function PlayerPositionForm(props)
   if (editMode && qPlayerPosition.loading) return <Loading />;
   if (editMode && qPlayerPosition.error) return "Error";
 
-  const onSubmit = (values) =>
-  {
+  const onSubmit = (values) => {
     values.id = player_position_id;
     if (editMode) callSet(values);
     else callSave(values);

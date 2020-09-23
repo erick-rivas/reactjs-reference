@@ -9,8 +9,8 @@ import UserForm from "seed/examples/users/Form";
 import Modal from "seed/components/helpers/Modal";
 import styles from "resources/css/seed/examples/users/Users.module.css";
 
-function Users(props)
-{
+function Users(props) {
+
   const { path, url } = props.match;
 
   const List = (props) =>

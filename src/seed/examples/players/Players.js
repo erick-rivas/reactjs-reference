@@ -9,8 +9,8 @@ import PlayerForm from "seed/examples/players/Form";
 import Modal from "seed/components/helpers/Modal";
 import styles from "resources/css/seed/examples/players/Players.module.css";
 
-function Players(props)
-{
+function Players(props) {
+
   const { path, url } = props.match;
 
   const List = (props) =>

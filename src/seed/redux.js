@@ -71,7 +71,7 @@ const stateToProps = (state, props) => ({
 
 const dispToProps = (disp) => {
   let res = {};
-  for (let action of actions){
+  for (let action of actions) {
     let methods = Object.getOwnPropertyNames(action.className.prototype);
     for (let method of methods)
       if (method != "constructor")

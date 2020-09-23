@@ -7,30 +7,27 @@ import fetch from "cross-fetch";
 import { API_URL } from "settings/Config";
 import * as Const from "seed/helpers/redux_const";
 
-class Action
-{
+class Action {
   id;
   path;
   state;
   fetch;
 
-  constructor(id, path, state, fetchData = [])
-  {
+  constructor(id, path, state, fetchData = []) {
     this.id = id;
     this.path = path;
     this.state = state;
     this.fetch = "";
     for (let f of fetchData)
-        this.fetch += `include[]=${encodeURIComponent(f)}&`;
+      this.fetch += `include[]=${encodeURIComponent(f)}&`;
   }
 
   /**
    === REQUESTS ===
    */
 
-  getList = (action, filters, callback) =>
-  {
-   let query = "";
+  getList = (action, filters, callback) => {
+    let query = "";
     for (let filter in filters)
       if (filters[filter] != null)
         query += `filter{${filter}}=${encodeURIComponent(filters[filter])}&`;
@@ -41,42 +38,36 @@ class Action
       this.onGetList);
   }
 
-  getDetails = (action, id, callback) =>
-  {
+  getDetails = (action, id, callback) => {
     return this.request(
       "GET", `/${id}${action}`, "", {},
       callback,
       this.onGetDetails);
   }
 
-  postData = (action, body, callback) =>
-  {
+  postData = (action, body, callback) => {
     return this.request(
       "POST", `${action}`, "", body,
       callback,
       this.onPostData);
   }
 
-  putData = (action, id, body, callback) =>
-  {
-   return this.request(
+  putData = (action, id, body, callback) => {
+    return this.request(
       "PUT", `/${id}${action}`, "", body,
       callback,
       this.onPutData);
   }
 
-  deleteData = (action, id, callback) =>
-  {
+  deleteData = (action, id, callback) => {
     return this.request(
       "DELETE", `/${id}${action}`, "", {},
       callback,
       this.onDeleteData);
   }
 
-  request = (method, path, query, body, callback, toDisp) =>
-  {
-    return (disp) =>
-    {
+  request = (method, path, query, body, callback, toDisp) => {
+    return (disp) => {
       let args = {
         method: method,
         headers: {
@@ -91,13 +82,11 @@ class Action
 
 
       return fetch(`${API_URL}/${this.path}${path}/?${this.fetch}${query}`, args)
-        .then((response) =>
-        {
+        .then((response) => {
           if (!response.ok) throw response;
           return response.text();
         })
-        .then((text) =>
-        {
+        .then((text) => {
           let json = {};
           try {
             json = JSON.parse(text);
@@ -109,9 +98,8 @@ class Action
               ok: true
             });
         })
-        .catch((error) =>
-        {
-         if (callback)
+        .catch((error) => {
+          if (callback)
             callback({
               body: {
                 status: error.status,

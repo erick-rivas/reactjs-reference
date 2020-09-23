@@ -3,8 +3,7 @@ import cx from "classnames";
 import { ReactSVG } from "react-svg";
 import styles from "resources/css/seed/examples/nav/Topnav.module.css";
 
-function Topnav(props)
-{
+function Topnav(props) {
   return (
     <div className={styles.module}>
       <ReactSVG className={styles.menu}

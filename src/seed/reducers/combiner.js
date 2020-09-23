@@ -22,6 +22,6 @@ const reducers = {
   scores: new Scores().reducer,
   teams: new Teams().reducer,
   users: new Users().reducer,
-} ;
+};
 
-export default combineReducers(reducers); 
+export default combineReducers(reducers);

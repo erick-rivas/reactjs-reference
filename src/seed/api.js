@@ -1,15 +1,13 @@
 /*
 __Seed builder__v0.2.0
-  AUTO_GENERATED (Read only)
-  Modify via builder
+  (Read_only) Builder helper
 */
 
 import React, { useState } from "react";
 import useFetch from "react-fetch-hook";
 import { API_URL } from "settings/Config";
 
-const query = (params) =>
-{
+const query = (params) => {
   let query = "";
   for (let param in params)
     if (params[param] != null)
@@ -17,8 +15,7 @@ const query = (params) =>
   return query;
 }
 
-const options = (method = "GET", body = {}) =>
-{
+const options = (method = "GET", body = {}) => {
   let res = {
     method: method,
     headers: {
@@ -32,8 +29,7 @@ const options = (method = "GET", body = {}) =>
   return res;
 }
 
-const usePoll = (endpoint, params, pollOptions = {}) =>
-{
+const usePoll = (endpoint, params, pollOptions = {}) => {
   const [status, setStatus] = useState({ data: null, isLoading: true });
   const fetch = useFetch(`${API_URL}${endpoint}/?${query(params)}`, {
     ...options("GET"),
@@ -45,12 +41,12 @@ const usePoll = (endpoint, params, pollOptions = {}) =>
 
   if ((fetch.data != null || fetch.error != null) && status.isLoading) {
     let data = null
-    if (fetch.error == null){
+    if (fetch.error == null) {
       data = {};
       try {
         data = JSON.parse(fetch.data);
       } catch (e) { }
-      if (pollOptions.onCompleted != null) 
+      if (pollOptions.onCompleted != null)
         pollOptions.onCompleted(data);
     } else {
       if (pollOptions.onError != null)
@@ -62,12 +58,11 @@ const usePoll = (endpoint, params, pollOptions = {}) =>
   return { ...fetch, loading: status.isLoading, data: status.data };
 }
 
-const useMutate = (method, endpoint, mutOptions = {}) =>
-{
+const useMutate = (method, endpoint, mutOptions = {}) => {
   const [call, setCall] = useState({ body: null, called: false });
   const calling = (body) =>
     body ? setCall({ body: body }) : setCall({ body: {} });
-    const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
+  const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
     ...options(method, call.body),
     formatter: (response) => {
       if (!response.ok) throw response;

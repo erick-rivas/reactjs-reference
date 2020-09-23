@@ -6,12 +6,10 @@ __Seed builder__v0.2.0
 import $ from "jquery";
 import { API_URL } from "settings/Config";
 
-class Files
-{
-  uploadFile(formWrapper, callback)
-  {
-    return (disp) =>
-    {
+class Files {
+
+  uploadFile(formWrapper, callback) {
+    return (disp) => {
       let url = `${API_URL}/files/`;
       $.ajax({
         url: url,
@@ -20,20 +18,17 @@ class Files
         cache: false,
         contentType: false,
         processData: false,
-        xhr: function ()
-        {
+        xhr: function () {
           var myXhr = $.ajaxSettings.xhr();
           return myXhr;
         },
-        success: (json) =>
-        {
+        success: (json) => {
           callback({
             body: json,
             ok: true
           });
         },
-        error: (error) =>
-        {
+        error: (error) => {
           callback({
             body: error,
             ok: false

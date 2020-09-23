@@ -11,10 +11,9 @@ import Sidenav from "seed/examples/nav/Sidenav";
 import Topnav from "seed/examples/nav/Topnav";
 import styles from "resources/css/seed/examples/Home.module.css";
 
-function Home(props)
-{
-  const { path } = props.match;
+function Home(props) {
 
+  const { path } = props.match;
    useEffect(() => {
      const userId = sessionStorage.getItem("id");
      if (userId == null)

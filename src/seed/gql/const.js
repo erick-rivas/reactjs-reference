@@ -6,10 +6,10 @@ __Seed builder__v0.2.0
 
 export const SINGULARS =
 {
-   "matches": "match",
-   "players": "player",
-   "playerPositions": "playerPosition",
-   "scores": "score",
-   "teams": "team",
-   "users": "user",
+  "matches": "match",
+  "players": "player",
+  "playerPositions": "playerPosition",
+  "scores": "score",
+  "teams": "team",
+  "users": "user",
 };

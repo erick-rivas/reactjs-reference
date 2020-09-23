@@ -5,15 +5,13 @@ import * as queries from "seed/gql/queries";
 import { Link } from "react-router-dom";
 import styles from "resources/css/seed/examples/scores/options/DetailsOptions.module.css";
 
-function ScoreDetailsOptions(props)
-{
+function ScoreDetailsOptions(props) {
+
     const { url } = props.match;
     const { score_id } = props.match.params;
 
-    const [callDelete, qDelete] = useDelete(queries.DELETE_SCORE,
-    {
-      onCompleted: (data) =>
-      {
+    const [callDelete, qDelete] = useDelete(queries.DELETE_SCORE, {
+      onCompleted: (data) => {
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
       }
@@ -22,8 +20,7 @@ function ScoreDetailsOptions(props)
     const onClickDelete = () =>
       callDelete({ id: score_id });
 
-    const onClickBack = () =>
-    {
+    const onClickBack = () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     };

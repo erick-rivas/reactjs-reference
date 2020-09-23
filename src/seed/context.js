@@ -16,11 +16,10 @@ export default SeedContext;
 
 export const SeedProvider = ({ children }) => {
 
-  const addGqlQuery = (data) =>
-  {
+  const addGqlQuery = (data) => {
     let queries = cache.gqlQueries;
     let query = data.replace(/[\s,]+/g, " ").trim();
-    if (!queries.includes(query)){
+    if (!queries.includes(query)) {
       queries.push(query);
       setCache((prevState) => ({ ...prevState, gqlQueries: queries }));
     }

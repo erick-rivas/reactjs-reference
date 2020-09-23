@@ -14,10 +14,9 @@ const SCORE  = `
 }
 `;
 
-function ScoreDetails(props)
-{
-  const { score_id }  = props.match.params;
+function ScoreDetails(props) {
 
+  const { score_id }  = props.match.params;
   const qScore = useDetail(SCORE, score_id);
 
   if (qScore.loading) return <Loading />;

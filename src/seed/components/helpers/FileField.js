@@ -8,11 +8,9 @@ import redux from "seed/redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import styles from "resources/css/seed/helpers/FileField.module.css";
 
+class FileField extends React.Component {
 
-class FileField extends React.Component
-{
-  render()
-  {
+  render() {
     const { className, accept, multiple = false } = this.props;
     return (
       <form encType="multipart/form-data">
@@ -21,18 +19,15 @@ class FileField extends React.Component
     );
   }
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.onFileChange = this.onFileChange.bind(this);
   }
 
-  onFileChange(e)
-  {
+  onFileChange(e) {
     const { setFieldValue, name, multiple } = this.props;
     const { uploadFile } = this.props;
-    const callback = (res) =>
-    {
+    const callback = (res) => {
       if (multiple) {
         if (Array.isArray(res.body)) {
           setFieldValue(name, res.body);

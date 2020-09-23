@@ -5,15 +5,13 @@ import * as queries from "seed/gql/queries";
 import { Link } from "react-router-dom";
 import styles from "resources/css/seed/examples/teams/options/DetailsOptions.module.css";
 
-function TeamDetailsOptions(props)
-{
+function TeamDetailsOptions(props) {
+
     const { url } = props.match;
     const { team_id } = props.match.params;
 
-    const [callDelete, qDelete] = useDelete(queries.DELETE_TEAM,
-    {
-      onCompleted: (data) =>
-      {
+    const [callDelete, qDelete] = useDelete(queries.DELETE_TEAM, {
+      onCompleted: (data) => {
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
       }
@@ -22,8 +20,7 @@ function TeamDetailsOptions(props)
     const onClickDelete = () =>
       callDelete({ id: team_id });
 
-    const onClickBack = () =>
-    {
+    const onClickBack = () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     };

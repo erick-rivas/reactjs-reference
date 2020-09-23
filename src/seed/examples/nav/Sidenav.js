@@ -3,8 +3,7 @@ import cx from "classnames";
 import { NavLink } from "react-router-dom";
 import styles from "resources/css/seed/examples/nav/Sidenav.module.css";
 
-function Sidenav(props)
-{
+function Sidenav(props) {
   const { url } = props.match;
   return (
     <div className={styles.module}>

@@ -5,15 +5,13 @@ import * as queries from "seed/gql/queries";
 import { Link } from "react-router-dom";
 import styles from "resources/css/seed/examples/matches/options/DetailsOptions.module.css";
 
-function MatchDetailsOptions(props)
-{
+function MatchDetailsOptions(props) {
+
     const { url } = props.match;
     const { match_id } = props.match.params;
 
-    const [callDelete, qDelete] = useDelete(queries.DELETE_MATCH,
-    {
-      onCompleted: (data) =>
-      {
+    const [callDelete, qDelete] = useDelete(queries.DELETE_MATCH, {
+      onCompleted: (data) => {
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         props.history.push(backUrl);
       }
@@ -22,8 +20,7 @@ function MatchDetailsOptions(props)
     const onClickDelete = () =>
       callDelete({ id: match_id });
 
-    const onClickBack = () =>
-    {
+    const onClickBack = () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     };

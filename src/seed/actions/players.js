@@ -6,10 +6,8 @@ __Seed builder__v0.2.0
 
 import Action from "seed/helpers/action";
 
-class _Players extends Action
-{
-  constructor(fetch)
-  {
+class _Players extends Action {
+  constructor(fetch) {
     if (fetch == null)
       fetch = [
         "team.*",
@@ -24,28 +22,23 @@ class _Players extends Action
     );
   }
 
-  getPlayerList(params = {}, callback)
-  {
+  getPlayerList(params = {}, callback) {
     return this.getList("", params, callback);
   }
 
-  getPlayerDetails(playerId, callback)
-  {
+  getPlayerDetails(playerId, callback) {
     return this.getDetails("", playerId, callback);
   }
 
-  savePlayer(player, callback)
-  {
+  savePlayer(player, callback) {
     return this.postData("", player, callback);
   }
 
-  setPlayer(playerId, player, callback)
-  {
+  setPlayer(playerId, player, callback) {
     return this.putData("", playerId, player, callback);
   }
 
-  deletePlayer(playerId, callback)
-  {
+  deletePlayer(playerId, callback) {
     return this.deleteData("", playerId, callback);
   }
 }

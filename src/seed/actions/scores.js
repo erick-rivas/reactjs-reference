@@ -6,10 +6,8 @@ __Seed builder__v0.2.0
 
 import Action from "seed/helpers/action";
 
-class _Scores extends Action
-{
-  constructor(fetch)
-  {
+class _Scores extends Action {
+  constructor(fetch) {
     if (fetch == null)
       fetch = [
         "player.*",
@@ -24,28 +22,23 @@ class _Scores extends Action
     );
   }
 
-  getScoreList(params = {}, callback)
-  {
+  getScoreList(params = {}, callback) {
     return this.getList("", params, callback);
   }
 
-  getScoreDetails(scoreId, callback)
-  {
+  getScoreDetails(scoreId, callback) {
     return this.getDetails("", scoreId, callback);
   }
 
-  saveScore(score, callback)
-  {
+  saveScore(score, callback) {
     return this.postData("", score, callback);
   }
 
-  setScore(scoreId, score, callback)
-  {
+  setScore(scoreId, score, callback) {
     return this.putData("", scoreId, score, callback);
   }
 
-  deleteScore(scoreId, callback)
-  {
+  deleteScore(scoreId, callback) {
     return this.deleteData("", scoreId, callback);
   }
 }

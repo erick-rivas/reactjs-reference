@@ -5,13 +5,11 @@ __Seed builder__v0.2.0
 
 import * as Const from "seed/helpers/redux_const";
 
-class Reducer
-{
+class Reducer {
   ref;
   initialState = { dataset: [] };
 
-  constructor(ref)
-  {
+  constructor(ref) {
     this.ref = ref;
   }
 
@@ -19,8 +17,7 @@ class Reducer
    === BASE REDUCER ===
    */
 
-  baseReducer = (state = this.initialState, action) =>
-  {
+  baseReducer = (state = this.initialState, action) => {
     const type = action.type;
 
     // GetList
@@ -66,8 +63,7 @@ class Reducer
 
   isEmpty = (obj) => Object.keys(obj).length === 0;
 
-  find = (dataset, id) =>
-  {
+  find = (dataset, id) => {
     for (let i = 0; i < dataset.length; i++) {
       if (dataset[i].id == id)
         return {
@@ -81,8 +77,7 @@ class Reducer
     };
   }
 
-  mergeDataset(original, dataset)
-  {
+  mergeDataset(original, dataset) {
     let result = original.slice(0);
     let changed = false;
     for (let data of dataset) {

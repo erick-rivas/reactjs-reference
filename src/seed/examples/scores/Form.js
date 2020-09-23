@@ -20,17 +20,15 @@ const MATCHES  = `
 }
 `;
 
-function ScoreForm(props)
-{
-  const [state, setState] = useState({});
+function ScoreForm(props) {
 
+  const [state, setState] = useState({});
   const { url } = props.match;
   const { score_id }  = props.match.params;
   const editMode = score_id != null;
 
   const saveOptions = {
-    onCompleted: (data) =>
-    {
+    onCompleted: (data) => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
@@ -47,8 +45,7 @@ function ScoreForm(props)
   if (editMode && qScore.loading) return <Loading />;
   if (editMode && qScore.error) return "Error";
 
-  const onSubmit = (values) =>
-  {
+  const onSubmit = (values) => {
     values.id = score_id;
     if (editMode) callSet(values);
     else callSave(values);

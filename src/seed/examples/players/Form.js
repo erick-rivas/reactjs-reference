@@ -20,17 +20,15 @@ const PLAYER_POSITIONS  = `
 }
 `;
 
-function PlayerForm(props)
-{
-  const [state, setState] = useState({});
+function PlayerForm(props) {
 
+  const [state, setState] = useState({});
   const { url } = props.match;
   const { player_id }  = props.match.params;
   const editMode = player_id != null;
 
   const saveOptions = {
-    onCompleted: (data) =>
-    {
+    onCompleted: (data) => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
@@ -47,8 +45,7 @@ function PlayerForm(props)
   if (editMode && qPlayer.loading) return <Loading />;
   if (editMode && qPlayer.error) return "Error";
 
-  const onSubmit = (values) =>
-  {
+  const onSubmit = (values) => {
     values.id = player_id;
     if (editMode) callSet(values);
     else callSave(values);

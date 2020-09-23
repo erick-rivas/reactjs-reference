@@ -11,15 +11,13 @@ const getDateInput = (data) => {
   return res;
 };
 
-const getDateFormat = (date) =>
-{
+const getDateFormat = (date) => {
   if (!date) return "";
   const monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
   return `${new Date(date).getDate()} ${monthNames[new Date(date).getMonth()]}`;
 };
 
-const getDeadlineFormat = (date) =>
-{
+const getDeadlineFormat = (date) => {
   if (!date) return "";
   const day = 86400000;
   const period = Math.abs(new Date().getTime() - new Date(date).getTime());
@@ -27,4 +25,4 @@ const getDeadlineFormat = (date) =>
   return Math.ceil(period / day) - 1 + " días";
 };
 
-export {  getDateInput, getDateFormat, getDeadlineFormat };
+export { getDateInput, getDateFormat, getDeadlineFormat };

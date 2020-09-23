@@ -16,10 +16,9 @@ const MATCH  = `
 }
 `;
 
-function MatchDetails(props)
-{
-  const { match_id }  = props.match.params;
+function MatchDetails(props) {
 
+  const { match_id }  = props.match.params;
   const qMatch = useDetail(MATCH, match_id);
 
   if (qMatch.loading) return <Loading />;

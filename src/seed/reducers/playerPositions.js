@@ -7,17 +7,14 @@ import Actions from "seed/actions/playerPositions";
 
 import Reducer from "seed/helpers/reducer";
 
-class _PlayerPositions extends Reducer
-{
-  constructor()
-  {
+class _PlayerPositions extends Reducer {
+
+  constructor() {
     super(new Actions());
   }
 
   reducer = (state, action) =>
-  {
-    return this.baseReducer(state, action);
-  };
+    this.baseReducer(state, action);
 }
 
 export default _PlayerPositions;

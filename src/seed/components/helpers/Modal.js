@@ -9,13 +9,11 @@ import ModalContainer from "@material-ui/core/Modal";
 import styles from "resources/css/seed/helpers/Modal.module.css";
 
 
-class Modal extends React.Component
-{
-  render()
-  {
+class Modal extends React.Component {
+  
+  render() {
     const children = React.Children.map(this.props.children,
-      (child) =>
-      {
+      (child) => {
         return React.cloneElement(child, {
           onClose: this.onClose,
           match: this.props.match
@@ -42,7 +40,7 @@ class Modal extends React.Component
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={cx(styles.container,"animated",animation)}
+        <div className={cx(styles.container, "animated", animation)}
           style={containerStyle}>
           <button
             className={styles.close}
@@ -57,15 +55,13 @@ class Modal extends React.Component
     );
   }
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = { open: false };
     this.onClose = this.onClose.bind(this);
   }
 
-  onClose()
-  {
+  onClose() {
     if (this.props.onClose == null)
       this.props.history.goBack();
     else this.props.onClose(this.props.match);

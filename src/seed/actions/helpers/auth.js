@@ -5,10 +5,9 @@ __Seed builder__v0.2.0
 
 import Action from "seed/helpers/action";
 
-class Auth extends Action
-{
-  constructor()
-  {
+class Auth extends Action {
+  
+  constructor() {
     super(
       "AUTH",
       "auth",
@@ -16,10 +15,8 @@ class Auth extends Action
     );
   }
 
-  login(email, password, callback)
-  {
-    const onLogin = (res) =>
-    {
+  login(email, password, callback) {
+    const onLogin = (res) => {
       sessionStorage.setItem("token", res.body.key);
       sessionStorage.setItem("id", res.body.user);
       callback(res);
@@ -35,10 +32,8 @@ class Auth extends Action
       body, onLogin, this.onLogin);
   }
 
-  logout(callback)
-  {
-    const onLogout = (res) =>
-    {
+  logout(callback) {
+    const onLogout = (res) => {
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("id");
       callback(res);
@@ -46,7 +41,7 @@ class Auth extends Action
 
     return this.request(
       "POST", "/logout", "",
-       {}, onLogout, this.onLogout);
+      {}, onLogout, this.onLogout);
   }
 
   onLogin = (data) => ({

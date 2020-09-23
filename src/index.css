@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  src: local("Roboto"), local("Roboto-Regular"), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format("woff2");
+  src: local("Roboto"), local("Roboto-Regdsaular"), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format("woff2");
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
@@ -57,7 +57,7 @@ input:-webkit-autofill:active {
   border-bottom: 1px solid rgba(0, 0, 0, 0.27);
 }
 
-.MuiMenu-list li{
+.MuiMenu-list li {
   color: #444;
   text-decoration: none;
 }
@@ -277,29 +277,29 @@ input:-webkit-autofill:active {
 
 @media (max-width: 420px) {
   .mm-popup__box {
-      width: auto;
-      left: 10px;
-      right: 10px;
-      top: 10px;
-      margin-left: 0;
+    width: auto;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    margin-left: 0;
   }
 
   .mm-popup__box__footer__left-space {
-      float: none;
+    float: none;
   }
 
   .mm-popup__box__footer__right-space {
-      float: none;
+    float: none;
   }
 
   .mm-popup__box__footer {
-      padding-top: 30px;
+    padding-top: 30px;
   }
 
   .mm-popup__box__footer .mm-popup__btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
   }
 }

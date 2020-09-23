@@ -3,12 +3,11 @@ import cx from "classnames";
 import { usePost } from "seed/api";
 import styles from "resources/css/seed/examples/auth/Login.module.css";
 
-function Login(props)
-{
+function Login(props) {
+
   const [state, setState] = useState(0);
   const [cLogin, qLogin] = usePost("/auth/login", {
-    onCompleted: (data) =>
-    {
+    onCompleted: (data) => {
       sessionStorage.setItem("token", data.key);
       sessionStorage.setItem("id", data.user);
       props.history.replace("/");
@@ -16,8 +15,7 @@ function Login(props)
     onError: (error) => setState({ error: "Invalid user or password" })
   });
 
-  const onSubmit = (e) =>
-  {
+  const onSubmit = (e) => {
     e.preventDefault();
     let email = e.target.email.value;
     let password = e.target.password.value;
@@ -52,7 +50,6 @@ function Login(props)
             </form>
 
         </div>
-
       </div>
     </div>
   );
