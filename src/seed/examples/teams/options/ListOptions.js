@@ -16,4 +16,3 @@ function TeamListOptions(props) {
 }
 
 export default TeamListOptions;
-

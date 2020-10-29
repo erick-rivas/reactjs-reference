@@ -16,4 +16,3 @@ function PlayerListOptions(props) {
 }
 
 export default PlayerListOptions;
-

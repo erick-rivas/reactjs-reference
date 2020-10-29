@@ -467,4 +467,3 @@ mutation Delete($id: Int!)
   }
 }
 `;
-

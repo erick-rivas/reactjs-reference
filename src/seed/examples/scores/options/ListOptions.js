@@ -16,4 +16,3 @@ function ScoreListOptions(props) {
 }
 
 export default ScoreListOptions;
-

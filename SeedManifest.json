@@ -1,203 +1,203 @@
 {
   "models": [
     {
-      "name": "user",
       "attrs": [
         {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "description": "User team preferences",
+          "is_fk": true,
           "name": "teams",
           "type": "team[]",
-          "is_fk": true,
-          "card": {
-            "ref": "0..*",
-            "has": "0..*"
-          },
-          "write": true,
-          "description": "User team preferences"
+          "write": true
         }
       ],
-      "description": "Represents a registered user"
+      "description": "Represents a registered user",
+      "name": "user"
     },
     {
-      "name": "team",
       "attrs": [
         {
+          "length": "256",
           "name": "name",
-          "type": "string",
-          "length": "256"
+          "type": "string"
         },
         {
+          "length": "512",
           "name": "logo",
-          "type": "image",
-          "length": "512"
+          "type": "image"
         },
         {
+          "default": "No description available",
           "name": "description",
-          "type": "text",
-          "default": "No description available"
+          "type": "text"
         },
         {
+          "description": "Market value of the team in USD",
           "name": "market_value",
-          "type": "float",
-          "description": "Market value of the team in USD"
+          "type": "float"
         },
         {
-          "name": "rival",
-          "type": "team",
-          "is_fk": true,
           "card": {
-            "ref": "1",
-            "has": "0..*"
+            "has": "0..*",
+            "ref": "1"
           },
+          "description": "Team's biggest rival",
           "empty": true,
-          "description": "Team's biggest rival"
+          "is_fk": true,
+          "name": "rival",
+          "type": "team"
         },
         {
+          "description": "Documents to indentify the team (constitutive act, registration, etc.)",
           "name": "identity_docs",
           "type": "file[]",
-          "write": false,
-          "description": "Documents to indentify the team (constitutive act, registration, etc.)"
+          "write": false
         },
         {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "description": "Players of the team (roaster)",
+          "is_fk": true,
           "name": "players",
           "type": "player[]",
-          "is_fk": true,
-          "card": {
-            "ref": "0..*",
-            "has": "1"
-          },
-          "write": false,
-          "description": "Players of the team (roaster)"
+          "write": false
         }
-      ]
+      ],
+      "name": "team"
     },
     {
-      "name": "player",
       "attrs": [
         {
+          "length": "256",
           "name": "name",
-          "type": "string",
-          "length": "256"
+          "type": "string"
         },
         {
+          "length": "512",
           "name": "photo",
-          "type": "image",
-          "length": "512"
+          "type": "image"
         },
         {
-          "name": "is_active",
-          "type": "boolean",
           "default": "true",
-          "description": "Indicates whether the player is active or retired"
+          "description": "Indicates whether the player is active or retired",
+          "name": "is_active",
+          "type": "boolean"
         },
         {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
           "name": "team",
-          "type": "team",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          }
+          "type": "team"
         },
         {
-          "name": "position",
-          "type": "player_position",
-          "is_fk": true,
           "card": {
-            "ref": "1",
-            "has": "0..*"
-          }
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "position",
+          "type": "player_position"
         }
-      ]
+      ],
+      "name": "player"
     },
     {
-      "name": "match",
       "attrs": [
         {
+          "default": "now",
           "name": "date",
-          "type": "date",
-          "default": "now"
+          "type": "date"
         },
         {
+          "description": "Match type (eg. cup)",
           "name": "type",
-          "type": "enum",
           "options": [
             "Friendship",
             "League",
             "Cup"
           ],
-          "description": "Match type (eg. cup)"
+          "type": "enum"
         },
         {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
           "name": "local",
-          "type": "team",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          }
+          "type": "team"
         },
         {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
           "name": "visitor",
-          "type": "team",
-          "is_fk": true,
-          "card": {
-            "ref": "1",
-            "has": "0..*"
-          }
+          "type": "team"
         },
         {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
           "name": "scores",
           "type": "score[]",
-          "is_fk": true,
-          "card": {
-            "ref": "0..*",
-            "has": "1"
-          },
           "write": false
         }
       ],
-      "description": "Represents a match between two teams  (A vs B)"
+      "description": "Represents a match between two teams  (A vs B)",
+      "name": "match"
     },
     {
-      "name": "score",
       "attrs": [
         {
+          "description": "Minute of the goal",
           "name": "min",
-          "type": "int",
-          "description": "Minute of the goal"
+          "type": "int"
         },
         {
-          "name": "player",
-          "type": "player",
-          "is_fk": true,
           "card": {
-            "ref": "1",
-            "has": "0..*"
+            "has": "0..*",
+            "ref": "1"
           },
-          "description": "Player that score"
+          "description": "Player that score",
+          "is_fk": true,
+          "name": "player",
+          "type": "player"
         },
         {
-          "name": "match",
-          "type": "match",
-          "is_fk": true,
           "card": {
-            "ref": "1",
-            "has": "0..*"
-          }
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "match",
+          "type": "match"
         }
       ],
-      "description": "Represents a match score (goal)"
+      "description": "Represents a match score (goal)",
+      "name": "score"
     },
     {
-      "name": "player_position",
       "attrs": [
         {
+          "length": "256",
           "name": "name",
-          "type": "string",
-          "length": "256"
+          "type": "string"
         }
       ],
-      "description": "Represents a player  position (eg. forward)"
+      "description": "Represents a player  position (eg. forward)",
+      "name": "player_position"
     }
   ],
   "platform": "reactjs"

@@ -41,4 +41,3 @@ export const SeedProvider = ({ children }) => {
     </SeedContext.Provider>
   );
 };
-
