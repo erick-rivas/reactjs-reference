@@ -5,11 +5,15 @@ This file contains guides to deploy project to aws elastic beanstalk
 ## Elastic beanstalk instance
 
 -   Open aws console in [aws.amazon.com](https://aws.amazon.com)
--   Go to elastic beanstalk pane
--   Create a new application
--   Create a new environment
+-   Go to Elastic Beanstalk pane.
+-   Create a new application.
+-   Create a new environment (Web server environment)
     -   Select nodejs platform
-    >   For development(sandbox)  use preferably a t3a.nano instance
+    -   Press *Configure more options* 
+        -   Go to Software and verify that Apache is set as server proxy
+            >   If there are not options it is set by default
+        -   Go to Capacity and select the server capacity
+            >   For development(sandbox) use preferably a t3a.nano instance
    
 ## EB CLI
 
@@ -17,10 +21,14 @@ This file contains guides to deploy project to aws elastic beanstalk
 -   Create credentials [Documentation](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html).
 
 
-## Deploy
+## Pre-configuration
 
--   Create a /.ebextension folder in root and move [config/nodecommand.config](./config/nodecommand.config)
--   Move [config/.ebignore](./config/.ebignore) to root folder
+-   Create and configure *.env.prod* file.
+-   Create a *.ebextension* folder in root and copy inside
+    -   [config/nodecommand.config](./config/nodecommand.config)
+-   Copy [config/.ebignore](./config/.ebignore) to root folder
+
+## Deploy
 
 -   Run script
 ```bash
@@ -29,6 +37,10 @@ eb deploy
 ```
    >   In case of chuck bug, set react-script to 2.1.2 then $npm install and return to latest version
 
-## Security settings
+## SSL settings
 
--   To enable security protocols, see [deployment-security.md](./deployment-security.md).
+-   To enable ssl protocols (https) see [deployment-ssl.md](deployment-ssl.md).
+
+## References
+
+-   AWS reference [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html)
