@@ -14,7 +14,7 @@ This repository holds the source code of the **seed-reference** for the developm
 
 ## Overview
 
-The reference uses a architecture based on [Flux architecture](https://facebook.github.io/flux/docs/in-depth-overview.html) and a Generic Model View Controller pattern.
+The reference uses an architecture based on [Flux architecture](https://facebook.github.io/flux/docs/in-depth-overview.html) and a Generic Model View Controller pattern.
 
 The architecture uses the following structure:
 

@@ -23,10 +23,10 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 ## Pre-configuration
 
--   Create and configure *.env.prod* file.
--   Create a *.ebextension* folder in root and copy inside
-    -   [config/nodecommand.config](./config/nodecommand.config)
--   Copy [config/.ebignore](./config/.ebignore) to root folder
+-   Create and configure *src/settings/Config.js* file.
+-   Create a *.ebextensions* folder in root and copy inside
+    -   [bin/aws-eb/config/nodecommand.config](./config/nodecommand.config)
+-   Copy [bin/aws-eb/config/.ebignore](./config/.ebignore) to root folder
 
 ## Deploy
 
