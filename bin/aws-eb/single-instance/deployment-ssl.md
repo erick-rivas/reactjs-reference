@@ -1,4 +1,4 @@
-# Reactjs Web - SSL
+# Deployment - SSL
 
 To enable a https connection
 
@@ -47,6 +47,6 @@ sudo ./certbot-auto certonly --debug
 ```
 -    **Important:** Copy the certificate and private key paths for later
 -    Remove /etc/httpd/conf.d/temp.conf and exit server
--    Copy [bin/aws-eb/config/https-instance.config](./config/https-instance.config) into .ebextensions folder
+-    Copy [bin/aws-eb/single-instance/config/https-instance.config](./config/https-instance.config) into .ebextensions folder
 -    Configure the *SSLCertificateFile* and *SSLCertificateKeyFile* keys with the files created by certbot
 -    Deploy again "eb deploy"

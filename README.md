@@ -75,7 +75,7 @@ seed-builder
 
 ### AWS - Elastic Beanstalk
 
-To deploy application to aws-eb see [Deployment guide](./bin/aws-eb/deployment.md).
+To deploy application to aws-eb see [Deployment guide (single-instance)](./bin/aws-eb/single-instance/deployment.md) or [Deployment guide (load-balancer)](./bin/aws-eb/load-balanced/deployment.md)
 
 ### Ubuntu Server (Debian)
 

@@ -8,7 +8,7 @@ This file contains guides to deploy project to aws elastic beanstalk
 -   Go to Elastic Beanstalk pane.
 -   Create a new application.
 -   Create a new environment (Web server environment)
-    -   Select nodejs platform
+    -   Select nodejs platform **Amazon Linux**
     -   Press *Configure more options* 
         -   Go to Software and verify that Apache is set as server proxy
             >   If there are not options it is set by default
@@ -25,8 +25,8 @@ This file contains guides to deploy project to aws elastic beanstalk
 
 -   Create and configure *src/settings/Config.js* file.
 -   Create a *.ebextensions* folder in root and copy inside
-    -   [bin/aws-eb/config/nodecommand.config](./config/nodecommand.config)
--   Copy [bin/aws-eb/config/.ebignore](./config/.ebignore) to root folder
+    -   [bin/aws-eb/single-instance/config/nodecommand.config](./config/nodecommand.config)
+-   Copy [bin/aws-eb/single-instance/config/.ebignore](./config/.ebignore) to root folder
 
 ## Deploy
 
