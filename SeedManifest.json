@@ -7,52 +7,75 @@
             "has": "0..*",
             "ref": "0..*"
           },
+          "delete": "CASCADE",
           "description": "User team preferences",
+          "empty": false,
           "is_fk": true,
           "name": "teams",
+          "read": true,
           "type": "team[]",
           "write": true
         }
       ],
       "description": "Represents a registered user",
-      "name": "user"
+      "empty": false,
+      "name": "user",
+      "read": true,
+      "write": true
     },
     {
       "attrs": [
         {
+          "empty": false,
           "length": "256",
           "name": "name",
-          "type": "string"
+          "read": true,
+          "type": "string",
+          "write": true
         },
         {
+          "empty": false,
           "length": "512",
           "name": "logo",
-          "type": "image"
+          "read": true,
+          "type": "image",
+          "write": true
         },
         {
           "default": "No description available",
+          "empty": false,
           "name": "description",
-          "type": "text"
+          "read": true,
+          "type": "text",
+          "write": true
         },
         {
           "description": "Market value of the team in USD",
+          "empty": false,
           "name": "market_value",
-          "type": "float"
+          "read": true,
+          "type": "float",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
           "description": "Team's biggest rival",
           "empty": true,
           "is_fk": true,
           "name": "rival",
-          "type": "team"
+          "read": true,
+          "type": "team",
+          "write": true
         },
         {
           "description": "Documents to indentify the team (constitutive act, registration, etc.)",
+          "empty": false,
           "name": "identity_docs",
+          "read": true,
           "type": "file[]",
           "write": false
         },
@@ -61,144 +84,209 @@
             "has": "1",
             "ref": "0..*"
           },
+          "delete": "CASCADE",
           "description": "Players of the team (roaster)",
+          "empty": false,
           "is_fk": true,
           "name": "players",
+          "read": true,
           "type": "player[]",
           "write": false
         }
       ],
-      "name": "team"
+      "empty": false,
+      "name": "team",
+      "read": true,
+      "write": true
     },
     {
       "attrs": [
         {
+          "empty": false,
           "length": "256",
           "name": "name",
-          "type": "string"
+          "read": true,
+          "type": "string",
+          "write": true
         },
         {
+          "empty": false,
           "length": "512",
           "name": "photo",
-          "type": "image"
+          "read": true,
+          "type": "image",
+          "write": true
         },
         {
           "default": "true",
           "description": "Indicates whether the player is active or retired",
+          "empty": false,
           "name": "is_active",
-          "type": "boolean"
+          "read": true,
+          "type": "boolean",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
+          "empty": false,
           "is_fk": true,
           "name": "team",
-          "type": "team"
+          "read": true,
+          "type": "team",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
+          "empty": false,
           "is_fk": true,
           "name": "position",
-          "type": "player_position"
+          "read": true,
+          "type": "player_position",
+          "write": true
         }
       ],
-      "name": "player"
+      "empty": false,
+      "name": "player",
+      "read": true,
+      "write": true
     },
     {
       "attrs": [
         {
           "default": "now",
+          "empty": false,
           "name": "date",
-          "type": "date"
+          "read": true,
+          "type": "date",
+          "write": true
         },
         {
           "description": "Match type (eg. cup)",
+          "empty": false,
           "name": "type",
           "options": [
             "Friendship",
             "League",
             "Cup"
           ],
-          "type": "enum"
+          "read": true,
+          "type": "enum",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
+          "empty": false,
           "is_fk": true,
           "name": "local",
-          "type": "team"
+          "read": true,
+          "type": "team",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
+          "empty": false,
           "is_fk": true,
           "name": "visitor",
-          "type": "team"
+          "read": true,
+          "type": "team",
+          "write": true
         },
         {
           "card": {
             "has": "1",
             "ref": "0..*"
           },
+          "delete": "CASCADE",
+          "empty": false,
           "is_fk": true,
           "name": "scores",
+          "read": true,
           "type": "score[]",
           "write": false
         }
       ],
       "description": "Represents a match between two teams  (A vs B)",
-      "name": "match"
+      "empty": false,
+      "name": "match",
+      "read": true,
+      "write": true
     },
     {
       "attrs": [
         {
           "description": "Minute of the goal",
+          "empty": false,
           "name": "min",
-          "type": "int"
+          "read": true,
+          "type": "int",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
           "description": "Player that score",
+          "empty": false,
           "is_fk": true,
           "name": "player",
-          "type": "player"
+          "read": true,
+          "type": "player",
+          "write": true
         },
         {
           "card": {
             "has": "0..*",
             "ref": "1"
           },
+          "delete": "CASCADE",
+          "empty": false,
           "is_fk": true,
           "name": "match",
-          "type": "match"
+          "read": true,
+          "type": "match",
+          "write": true
         }
       ],
       "description": "Represents a match score (goal)",
-      "name": "score"
+      "empty": false,
+      "name": "score",
+      "read": true,
+      "write": true
     },
     {
       "attrs": [
         {
+          "empty": false,
           "length": "256",
           "name": "name",
-          "type": "string"
+          "read": true,
+          "type": "string",
+          "write": true
         }
       ],
       "description": "Represents a player  position (eg. forward)",
-      "name": "player_position"
+      "empty": false,
+      "name": "player_position",
+      "read": true,
+      "write": true
     }
-  ],
-  "platform": "reactjs"
+  ]
 }

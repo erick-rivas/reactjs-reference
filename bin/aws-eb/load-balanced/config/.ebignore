@@ -9,6 +9,7 @@ node_modules/
 coverage/
 
 # Misc
+.git
 .vscode
 .DS_Store
 .env.local
