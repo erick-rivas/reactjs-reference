@@ -4,7 +4,7 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import styles from "resources/css/seed/helpers/MultiField.module.css";
+import css from "resources/css/seed/helpers/MultiField.module.css";
 
 class MultiField extends React.Component {
 
@@ -20,14 +20,14 @@ class MultiField extends React.Component {
     let items = values.map((v) => {
       let isSelected = Boolean(selected[gv(v.value)]);
       return (
-        <div className={styles.item}>
+        <div className={css.item}>
           <input type="checkbox" checked={isSelected} onChange={() => this.onItemSelected(v.value)}></input>
           {v.label}
         </div>);
     });
 
     return (
-      <div className={styles.module}>
+      <div className={css.module}>
         {items}
       </div>
     );

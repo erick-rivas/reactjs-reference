@@ -6,7 +6,7 @@ __Seed builder__v0.2.0
 import React from "react";
 import redux from "seed/redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import styles from "resources/css/seed/helpers/FileField.module.css";
+import css from "resources/css/seed/helpers/FileField.module.css";
 
 class FileField extends React.Component {
 

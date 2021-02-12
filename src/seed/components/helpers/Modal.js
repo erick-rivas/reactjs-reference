@@ -6,7 +6,7 @@ __Seed builder__v0.2.0
 import React from "react";
 import cx from "classnames";
 import ModalContainer from "@material-ui/core/Modal";
-import styles from "resources/css/seed/helpers/Modal.module.css";
+import css from "resources/css/seed/helpers/Modal.module.css";
 
 
 class Modal extends React.Component {
@@ -35,15 +35,15 @@ class Modal extends React.Component {
 
     return (
       <ModalContainer
-        className={styles.module}
+        className={css.module}
         open={true}
         transitionDuration={0}
         onClose={this.onClose}>
 
-        <div className={cx(styles.container, "animated", animation)}
+        <div className={cx(css.container, "animated", animation)}
           style={containerStyle}>
           <button
-            className={styles.close}
+            className={css.close}
             style={closeStyle}
             onClick={this.onClose}>
             <i className="fas fa-times"></i>
