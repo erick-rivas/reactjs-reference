@@ -3,13 +3,13 @@ import { usePost } from "seed/api";
 import View from "seed/examples/views/auth/Logout";
 
 function Logout(props) {
-  const [logout, onLogout] = usePost("/auth/logout", {
+  const [clogout, qLogout] = usePost("/auth/logout", {
     onCompleted: (data) => {
       sessionStorage.clear();
       props.history.replace("/");
     }
   });
-  useEffect(() => logout(), []);
+  useEffect(() => clogout(), []);
   return <View />;
 }
 

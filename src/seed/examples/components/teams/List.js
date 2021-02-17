@@ -4,33 +4,28 @@ import { NavLink } from "react-router-dom";
 import Loading from "seed/components/helpers/Loading";
 import View from "seed/examples/views/teams/List.js";
 
-const TEAMS  = `
-{
-  teams {
-    name
-    description
-    marketValue
-    logo { }
-    rival { }
-    identityDocs { }
-    players { }
-  }
-}
-`;
-
-function TeamList(props)
-{
+function TeamList(props){
   const { url } = props.match;
 
-  const qTeams = useQuery(TEAMS);
-
+  const qTeams = useQuery(`
+  {
+    teams {
+      name
+      description
+      marketValue
+      logo { }
+      rival { }
+      identityDocs { }
+      players { }
+    }
+  }
+  `);
   if (qTeams.loading) return <Loading />;
   if (qTeams.error) return "Error";
-
   const { teams } = qTeams.data;
 
   return <View
-    teams={teams }
+    teams={teams}
   />;
 }
 

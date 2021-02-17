@@ -1,6 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 import css from "resources/css/seed/examples/teams/List.module.css";
 

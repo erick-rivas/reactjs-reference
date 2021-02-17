@@ -1,6 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import Loading from "seed/components/helpers/Loading";
 import css from "resources/css/seed/examples/matches/Details.module.css";
 
 const MatchDetails = (props) =>
