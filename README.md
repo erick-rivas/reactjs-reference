@@ -1,25 +1,23 @@
 # ReactJS Reference
 
-This repository holds the source code of the **seed-reference** for the development of a **React.js web** written mainly in javascript.
+This repository holds the source code of a **reference** for the development of a **React.js webapp**.
 
 ## Table of content
 
--   [Overview](#overview)
--   [Pre-requisites](#pre-requisites)
+-   [Project structure](#project-structure)
 -   [Installation](#installation)
--   [Examples](#examples)
+    -   [Pre-requisites](#pre-requisites)
+    -   [Initial setup](#initial-setup)
+-   [Execution](#execution)
+    -   [Examples](#examples)
 -   [Seed-Builder](#seed-builder)
 -   [Deployment](#deployment)
 
 
-## Overview
+## Project structure
 
-The reference uses an architecture based on [Flux architecture](https://facebook.github.io/flux/docs/in-depth-overview.html) and a Generic Model View Controller pattern.
-
-The architecture uses the following structure:
-
--   **/components**: Handle component behavior (initialization, requests, render calls, etc) equivalent to *controller* in MVC pattern.
--   **/renders**: Handle DOM rendering.
+-   **/components**: Handle component behavior (initialization, requests, render calls, etc)
+-   **/renders**: Handle component rendering (DOM).
 -   /resources: Stores images, assets and global styles.
 -   /settings: Configuration files.
     -   Config.js: Applications attributes.
@@ -28,13 +26,14 @@ The architecture uses the following structure:
     >   These files are *read-only*, modifiable only through seed-builder [Details](#seed-builder)
 
 
+## Installation
 
-## Pre-requisites
+### Pre-requisites
 
--   Download & install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs).
+-   Download & install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
 >   To facilitate development it is recommended to run the project on debian distribution (Eg. ubuntu)
 
-## Installation
+### Initial setup
 
 -   Clone this repository.
 -   Configure src/settings/Config.js attributes.
@@ -43,17 +42,21 @@ The architecture uses the following structure:
 npm install
 ```
 
+
+## Execution
+
 -   Run server.
 ```bash
 npm start
 ```
 
-## Examples
+### Examples
 
 -   Request example. 
 ```bash
 GET http://localhost:3000
 ```
+
 
 ## Seed-Builder
 
@@ -71,6 +74,7 @@ npm install -g seed-builder
 seed-builder
 ``` 
 >   It automatically detect the project settings described in SeedManifest.json and update or create the required files
+
 
 ## Deployment
 
