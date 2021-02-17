@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetail } from "seed/gql";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/players/Details.js";
+import Render from "seed/examples/renders/players/Details.js";
 
 function PlayerDetails(props) {
   const { player_id } = props.match.params;
@@ -21,7 +21,7 @@ function PlayerDetails(props) {
   if (qPlayer.error) return "Error";
   const { player = {} } = qPlayer.data;
 
-  return <View
+  return <Render
     player={player}
   />;
 }

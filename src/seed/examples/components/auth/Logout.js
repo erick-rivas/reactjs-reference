@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { usePost } from "seed/api";
-import View from "seed/examples/views/auth/Logout";
+import Render from "seed/examples/renders/auth/Logout";
 
 function Logout(props) {
   const [clogout, qLogout] = usePost("/auth/logout", {
@@ -10,7 +10,7 @@ function Logout(props) {
     }
   });
   useEffect(() => clogout(), []);
-  return <View />;
+  return <Render />;
 }
 
 export default Logout;

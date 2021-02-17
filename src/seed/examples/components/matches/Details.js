@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetail } from "seed/gql";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/matches/Details.js";
+import Render from "seed/examples/renders/matches/Details.js";
 
 function MatchDetails(props) {
   const { match_id } = props.match.params;
@@ -21,7 +21,7 @@ function MatchDetails(props) {
   if (qMatch.error) return "Error";
   const { match = {} } = qMatch.data;
 
-  return <View
+  return <Render
     match={match}
   />;
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/teams/Form.js";
+import Render from "seed/examples/renders/teams/Form.js";
 
 function TeamForm(props) {
   const { url } = props.match;
@@ -38,7 +38,7 @@ function TeamForm(props) {
     else callSave(values);
   };
 
-  return <View
+  return <Render
     team={team}
     teams={teams}
     error={error}

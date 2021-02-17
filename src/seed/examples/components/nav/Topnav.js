@@ -1,9 +1,9 @@
 import React from "react";
 import { ReactSVG } from "react-svg";
-import View from "seed/examples/views/nav/Topnav";
+import Render from "seed/examples/renders/nav/Topnav";
 
 function Topnav(props) {
-  return <View />;
+  return <Render />;
 }
 
 export default Topnav;

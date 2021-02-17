@@ -1,9 +1,9 @@
 import React from "react";
-import View from "seed/examples/views/players/Players.js";
+import Render from "seed/examples/renders/players/Players.js";
 
 function Players(props) {
   const { path, url } = props.match;
-  return <View
+  return <Render
     path={path}
     url={url}
   />;

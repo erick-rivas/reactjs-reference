@@ -1,9 +1,9 @@
 import React from "react";
-import View from "seed/examples/views/teams/Teams.js";
+import Render from "seed/examples/renders/teams/Teams.js";
 
 function Teams(props) {
   const { path, url } = props.match;
-  return <View
+  return <Render
     path={path}
     url={url}
   />;

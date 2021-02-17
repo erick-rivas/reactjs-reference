@@ -1,9 +1,9 @@
 import React from "react";
-import View from "seed/examples/views/users/options/ListOptions.js";
+import Render from "seed/examples/renders/users/options/ListOptions.js";
 
 function UserListOptions(props) {
   const { url } = props.match;
-  return <View
+  return <Render
     url={url}
   />;
 }

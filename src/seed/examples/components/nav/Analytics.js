@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { GA_KEY } from "settings/Config";
 import ReactGA from "react-ga";
-import View from "seed/examples/views/nav/Analytics";
+import Render from "seed/examples/renders/nav/Analytics";
 
 function Analytics(props) {
   useEffect(() => {
@@ -9,7 +9,7 @@ function Analytics(props) {
     const pathname = props.history.location.pathname.replace(/\d+/g, ":id");
     ReactGA.pageview(pathname);
   });
-  return <View />;
+  return <Render />;
 }
 
 export default Analytics;

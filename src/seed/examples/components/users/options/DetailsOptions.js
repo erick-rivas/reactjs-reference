@@ -1,7 +1,7 @@
 import React from "react";
 import { useDelete } from "seed/gql";
 import * as queries from "seed/gql/queries";
-import View from "seed/examples/views/users/options/DetailsOptions.js";
+import Render from "seed/examples/renders/users/options/DetailsOptions.js";
 
 function UserDetailsOptions(props) {
     const { url } = props.match;
@@ -22,7 +22,7 @@ function UserDetailsOptions(props) {
       props.history.push(backUrl);
     };
 
-    return <View
+    return <Render
       url={url}
       onClickDelete={onClickDelete}
       onClickBack={onClickBack}    

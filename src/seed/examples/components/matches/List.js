@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/matches/List.js";
+import Render from "seed/examples/renders/matches/List.js";
 
 function MatchList(props){
   const { url } = props.match;
@@ -22,7 +22,7 @@ function MatchList(props){
   if (qMatches.error) return "Error";
   const { matches } = qMatches.data;
 
-  return <View
+  return <Render
     matches={matches}
   />;
 }

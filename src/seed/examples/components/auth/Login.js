@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { usePost } from "seed/api";
-import View from "seed/examples/views/auth/Login";
+import Render from "seed/examples/renders/auth/Login";
 
 function Login(props) {
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ function Login(props) {
     cLogin({ email: email, password: password });
   };
 
-  return <View 
+  return <Render
     error={error}
     onSubmit={onSubmit}
   />;

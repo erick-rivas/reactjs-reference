@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetail } from "seed/gql";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/teams/Details.js";
+import Render from "seed/examples/renders/teams/Details.js";
 
 function TeamDetails(props) {
   const { team_id } = props.match.params;
@@ -23,7 +23,7 @@ function TeamDetails(props) {
   if (qTeam.error) return "Error";
   const { team = {} } = qTeam.data;
 
-  return <View
+  return <Render
     team={team}
   />;
 }

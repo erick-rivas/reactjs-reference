@@ -1,9 +1,9 @@
 import React from "react";
-import View from "seed/examples/views/users/Users.js";
+import Render from "seed/examples/renders/users/Users.js";
 
 function Users(props) {
   const { path, url } = props.match;
-  return <View
+  return <Render
     path={path}
     url={url}
   />;

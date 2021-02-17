@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetail } from "seed/gql";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/users/Details.js";
+import Render from "seed/examples/renders/users/Details.js";
 
 function UserDetails(props) {
   const { user_id } = props.match.params;
@@ -22,7 +22,7 @@ function UserDetails(props) {
   if (qUser.error) return "Error";
   const { user = {} } = qUser.data;
 
-  return <View
+  return <Render
     user={user}
   />;
 }

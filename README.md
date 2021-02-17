@@ -19,7 +19,7 @@ The reference uses an architecture based on [Flux architecture](https://facebook
 The architecture uses the following structure:
 
 -   **/components**: Handle component behavior (initialization, requests, render calls, etc) equivalent to *controller* in MVC pattern.
--   **/views**: Handle DOM rendering.
+-   **/renders**: Handle DOM rendering.
 -   /resources: Stores images, assets and global styles.
 -   /settings: Configuration files.
     -   Config.js: Applications attributes.

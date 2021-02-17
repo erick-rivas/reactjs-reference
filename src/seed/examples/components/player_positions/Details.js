@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetail } from "seed/gql";
 import Loading from "seed/components/helpers/Loading";
-import View from "seed/examples/views/player_positions/Details.js";
+import Render from "seed/examples/renders/player_positions/Details.js";
 
 function PlayerPositionDetails(props) {
   const { player_position_id } = props.match.params;
@@ -17,7 +17,7 @@ function PlayerPositionDetails(props) {
   if (qPlayerPosition.error) return "Error";
   const { playerPosition = {} } = qPlayerPosition.data;
 
-  return <View
+  return <Render
     playerPosition={playerPosition}
   />;
 }
