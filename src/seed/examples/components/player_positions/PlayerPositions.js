@@ -1,9 +1,9 @@
 import React from "react";
-import Render from "seed/examples/renders/player_positions/PlayerPositions.js";
+import View from "seed/examples/views/player_positions/PlayerPositions.js";
 
 function PlayerPositions(props) {
   const { path, url } = props.match;
-  return <Render
+  return <View
     path={path}
     url={url}
   />;

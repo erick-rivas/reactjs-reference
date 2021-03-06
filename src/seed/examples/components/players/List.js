@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 import Loading from "seed/components/helpers/Loading";
-import Render from "seed/examples/renders/players/List.js";
+import View from "seed/examples/views/players/List.js";
 
 function PlayerList(props){
   const { url } = props.match;
@@ -22,7 +22,7 @@ function PlayerList(props){
   if (qPlayers.error) return "Error";
   const { players } = qPlayers.data;
 
-  return <Render
+  return <View
     players={players}
   />;
 }

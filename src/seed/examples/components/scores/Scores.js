@@ -1,9 +1,9 @@
 import React from "react";
-import Render from "seed/examples/renders/scores/Scores.js";
+import View from "seed/examples/views/scores/Scores.js";
 
 function Scores(props) {
   const { path, url } = props.match;
-  return <Render
+  return <View
     path={path}
     url={url}
   />;

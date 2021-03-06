@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Render from "seed/examples/renders/Home";
+import View from "seed/examples/views/Home";
 
 function Home(props) {
   const { path } = props.match;
@@ -9,7 +9,7 @@ function Home(props) {
        return props.history.replace("/examples/login");
    });
 
-  return <Render
+  return <View
     path={path}
   />;
 }

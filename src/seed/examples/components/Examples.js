@@ -1,9 +1,9 @@
 import React from "react";
-import Render from "seed/examples/renders/Examples"
+import View from "seed/examples/views/Examples"
 
 function Examples(props) {
   const { path } = props.match;
-  return <Render
+  return <View
     path={path}
   />;
 }

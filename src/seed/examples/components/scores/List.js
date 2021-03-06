@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 import Loading from "seed/components/helpers/Loading";
-import Render from "seed/examples/renders/scores/List.js";
+import View from "seed/examples/views/scores/List.js";
 
 function ScoreList(props){
   const { url } = props.match;
@@ -20,7 +20,7 @@ function ScoreList(props){
   if (qScores.error) return "Error";
   const { scores } = qScores.data;
 
-  return <Render
+  return <View
     scores={scores}
   />;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "seed/gql";
 import { NavLink } from "react-router-dom";
 import Loading from "seed/components/helpers/Loading";
-import Render from "seed/examples/renders/player_positions/List.js";
+import View from "seed/examples/views/player_positions/List.js";
 
 function PlayerPositionList(props){
   const { url } = props.match;
@@ -18,7 +18,7 @@ function PlayerPositionList(props){
   if (qPlayerPositions.error) return "Error";
   const { playerPositions } = qPlayerPositions.data;
 
-  return <Render
+  return <View
     playerPositions={playerPositions}
   />;
 }

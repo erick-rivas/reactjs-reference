@@ -17,7 +17,7 @@ This repository holds the source code of a **reference** for the development of 
 ## Project structure
 
 -   **/components**: Handle component behavior (initialization, requests, render calls, etc)
--   **/renders**: Handle component rendering (DOM).
+-   **/views**: Handle component rendering (DOM).
 -   /resources: Stores images, assets and global styles.
 -   /settings: Configuration files.
     -   Config.js: Applications attributes.

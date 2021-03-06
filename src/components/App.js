@@ -1,8 +1,8 @@
 import React from "react";
-import Render from "renders/App";
+import View from "views/App";
 
 function App(props) {
-  return <Render />;
+  return <View />;
 }
 
 export default App;

@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Render from "seed/examples/renders/nav/Sidenav";
+import View from "seed/examples/views/nav/Sidenav";
 
 function Sidenav(props) {
   const { url } = props.match;
-  return <Render
+  return <View
     url={url}
   />;
 }
