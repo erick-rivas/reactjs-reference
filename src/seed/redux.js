@@ -4,18 +4,18 @@ __Seed builder__v0.2.0
   Modify via builder
 */
 
-import * as Util from "seed/util";
+import * as Util from "seed/redux/util";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import _MatchActions from "seed/actions/matches";
-import _PlayerActions from "seed/actions/players";
-import _PlayerPositionActions from "seed/actions/playerPositions";
-import _ScoreActions from "seed/actions/scores";
-import _TeamActions from "seed/actions/teams";
-import _UserActions from "seed/actions/users";
-import AuthActions from "seed/actions/helpers/auth";
-import FileActions from "seed/helpers/files";
+import _MatchActions from "seed/redux/actions/matches";
+import _PlayerActions from "seed/redux/actions/players";
+import _PlayerPositionActions from "seed/redux/actions/playerPositions";
+import _ScoreActions from "seed/redux/actions/scores";
+import _TeamActions from "seed/redux/actions/teams";
+import _UserActions from "seed/redux/actions/users";
+import AuthActions from "seed/redux/actions/helpers/auth";
+import FileActions from "seed/redux/files";
 const matches = new _MatchActions();
 const players = new _PlayerActions();
 const playerPositions = new _PlayerPositionActions();

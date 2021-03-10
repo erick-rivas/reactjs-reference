@@ -6,13 +6,13 @@ __Seed builder__v0.2.0
 
 import { combineReducers } from "redux";
 
-import Matches from "seed/reducers/matches";
-import Players from "seed/reducers/players";
-import PlayerPositions from "seed/reducers/playerPositions";
-import Scores from "seed/reducers/scores";
-import Teams from "seed/reducers/teams";
-import Users from "seed/reducers/users";
-import Auth from "seed/reducers/helpers/auth";
+import Matches from "seed/redux/reducers/matches";
+import Players from "seed/redux/reducers/players";
+import PlayerPositions from "seed/redux/reducers/playerPositions";
+import Scores from "seed/redux/reducers/scores";
+import Teams from "seed/redux/reducers/teams";
+import Users from "seed/redux/reducers/users";
+import Auth from "seed/redux/reducers/helpers/auth";
 
 const reducers = {
   auth: new Auth().reducer,

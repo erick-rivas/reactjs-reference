@@ -1,30 +1,9 @@
-@font-face {
-  src: local("Didact Gothic Regular"), local("DidactGothic-Regular"), url(https://fonts.gstatic.com/s/didactgothic/v10/v8_72sD3DYMKyM0dn3LtWggYcthoNQJTwaSsmU2sQE0.woff2) format("woff2");
-  font-family: "Didact";
-  font-style: normal;
-  font-weight: 400;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
-
-@font-face {
-  src: local("Roboto"), local("Roboto-Regdsaular"), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format("woff2");
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
-
-body {
-  background-color: #fafafa;
-}
-
 body,
 div,
 label {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 a,
@@ -34,14 +13,6 @@ textarea,
 div {
   outline: none;
   text-decoration: none;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
 }
 
 input:-webkit-autofill,

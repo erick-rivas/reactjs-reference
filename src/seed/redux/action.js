@@ -5,7 +5,7 @@ __Seed builder__v0.2.0
 
 import fetch from "cross-fetch";
 import { API_URL } from "settings/Config";
-import * as Const from "seed/helpers/redux_const";
+import * as Const from "seed/redux/util";
 
 class Action {
   id;

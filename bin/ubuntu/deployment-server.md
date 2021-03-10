@@ -27,7 +27,7 @@ sudo npm install pm2@latest -g
 
 -   Start pm2
 ```bash
-pm2 start app
+pm2 start
 ```
 
 ## Nginx configuration

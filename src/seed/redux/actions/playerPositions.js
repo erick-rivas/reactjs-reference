@@ -4,7 +4,7 @@ __Seed builder__v0.2.0
   Modify via builder
 */
 
-import Action from "seed/helpers/action";
+import Action from "seed/redux/action";
 
 class _PlayerPositions extends Action {
   constructor(fetch) {

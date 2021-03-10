@@ -3,8 +3,8 @@ __Seed builder__v0.2.0
   (Read_only) Builder helper
 */
 
-import Actions from "seed/actions/helpers/auth";
-import Reducer from "seed/helpers/reducer";
+import Actions from "seed/redux/actions/helpers/auth";
+import Reducer from "seed/redux/reducer";
 
 class Auth extends Reducer {
 

@@ -3,9 +3,9 @@ __Seed builder__v0.2.0
   AUTO_GENERATED (Read only)
   Modify via builder
 */
-import Actions from "seed/actions/matches";
+import Actions from "seed/redux/actions/matches";
 
-import Reducer from "seed/helpers/reducer";
+import Reducer from "seed/redux/reducer";
 
 class _Matches extends Reducer {
 

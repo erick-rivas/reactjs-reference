@@ -7,8 +7,8 @@ SeedExport.json
 SeedModeling.mdj
 build
 node_modules
-src/seed/actions/*
-src/seed/reducers/*
+src/seed/redux/actions/*
+src/seed/redux/reducers/*
 src/seed/gql/*
 src/seed/redux.js
 src/actions/*
