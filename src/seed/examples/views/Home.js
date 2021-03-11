@@ -15,29 +15,21 @@ const Home = (props) =>
   <div class={css.module}>
     <div class={css.drawer}>
       <div class={css.sidenav}>
-        <Route path={`${props.path}`}
-          component={Sidenav} />
+        <Sidenav />
       </div>
     </div>
     <div class={css.container}>
       <div class={css.topnav}>
-        <Route path={`${props.path}`}
-          component={Topnav} />
+        <Topnav />
       </div>
       <div class={css.content}>
           <Switch>
-            <Route path={`${props.path}/matches`}
-              component={Matches } />
-            <Route path={`${props.path}/players`}
-              component={Players } />
-            <Route path={`${props.path}/player_positions`}
-              component={PlayerPositions } />
-            <Route path={`${props.path}/scores`}
-              component={Scores } />
-            <Route path={`${props.path}/teams`}
-              component={Teams } />
-            <Route path={`${props.path}/users`}
-              component={Users } />
+            <Route path="/examples/matches" component={Matches } />
+            <Route path="/examples/players" component={Players } />
+            <Route path="/examples/player_positions" component={PlayerPositions } />
+            <Route path="/examples/scores" component={Scores } />
+            <Route path="/examples/teams" component={Teams } />
+            <Route path="/examples/users" component={Users } />
           </Switch>
       </div>
     </div>

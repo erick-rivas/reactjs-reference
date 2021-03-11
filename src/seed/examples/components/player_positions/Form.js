@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
-import Loading from "seed/components/helpers/Loading";
+import Loading from "seed/components/Loading";
 import View from "seed/examples/views/player_positions/Form.js";
 
 function PlayerPositionForm(props) {
@@ -9,21 +9,21 @@ function PlayerPositionForm(props) {
   const { player_position_id } = props.match.params;
   const isEdit = player_position_id != null;
 
-  const qPlayerPosition = useDetail(queries.PLAYER_POSITION, player_position_id);
   const [error, setError] = useState(null);
+  const qPlayerPosition = useDetail(queries.PLAYER_POSITION, player_position_id);
   const [callSave, qSave] = useSave(queries.SAVE_PLAYER_POSITION, {
-    onCompleted: (data) => {
+    onCompleted: () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
     onError: (error) => setError("An error has occurred, try again")
   });
   const [callSet, qSet] = useSet(queries.SET_PLAYER_POSITION, {
-    onCompleted: (data) => {
+    onCompleted: () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: (error) => setError("An error has occurred, try again")
+    onError: () => setError("An error has occurred, try again")
   });
 
   if (isEdit && qPlayerPosition.loading) return <Loading />;

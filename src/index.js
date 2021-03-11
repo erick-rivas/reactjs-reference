@@ -10,7 +10,6 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { MuiTheme } from "settings/MuiTheme";
 
 import App from "components/App";
-import Popup from "react-popup";
 import Worker from "settings/bin/Worker";
 import Store from "settings/bin/Store";
 import ApolloClient from "apollo-boost";
@@ -40,7 +39,6 @@ ReactDOM.render(
     <Provider store={store}>
       <ApolloProvider client={client}>
         <MuiThemeProvider theme={muiTheme}>
-          <Popup />
           <App />
         </MuiThemeProvider>
       </ApolloProvider>

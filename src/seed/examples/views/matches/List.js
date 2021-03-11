@@ -1,22 +1,28 @@
 import React from "react";
 import cx from "classnames";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import css from "resources/css/seed/examples/matches/List.module.css";
 
-const MatchList = (props) =>
+const MatchList = ({ url, matches }) =>
   <div class={css.module}>
-    { 
-      props.matches.map(item =>
-        <NavLink
-          key={item.id}
-          to={`${props.url}/${item.id}`}
-          class={css.item}
-          activeClassName={css.active}>
-            <div class={css.title}>{item.id}</div>
-            <div class={css.subtitle}>{JSON.stringify(item)}</div>
-        </NavLink>
-      )
-    }
+    <div class={css.header}>
+      <Link to={`${url}/new`}
+        class={cx(css.btn, css.create)}>Create</Link>
+    </div>
+    <div class={css.content}>
+      {
+        matches.map(match =>
+          <NavLink
+            key={match.id}
+            to={`${url}/${match.id}`}
+            className={css.item}
+            activeClassName={css.active}>
+              <div class={css.title}>{match.id}</div>
+              <div class={css.subtitle}>{JSON.stringify(match)}</div>
+          </NavLink>
+        )
+      }
+    </div>
   </div>
 
 export default MatchList;

@@ -4,7 +4,7 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import css from "resources/css/seed/helpers/MultiField.module.css";
+import css from "resources/css/seed/MultiField.module.css";
 
 class MultiField extends React.Component {
 

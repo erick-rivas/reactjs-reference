@@ -20,15 +20,6 @@
   @include box-sizing(border-box);
 }
 
-.list .options {
-  padding: 10px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.list .content {
-  padding-top: 4px;
-}
-
 .table {
   flex: 0 0 40%;
   max-width: 40%;

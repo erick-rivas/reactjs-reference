@@ -1,12 +1,10 @@
 import React from "react";
 import { useQuery } from "seed/gql";
-import { NavLink } from "react-router-dom";
-import Loading from "seed/components/helpers/Loading";
+import Loading from "seed/components/Loading";
 import View from "seed/examples/views/matches/List.js";
 
 function MatchList(props){
-  const { url } = props.match;
-
+  const { url } = props;
   const qMatches = useQuery(`
   {
     matches {
@@ -16,13 +14,14 @@ function MatchList(props){
       visitor { }
       scores { }
     }
-  }
-  `);
+  }`);
+
   if (qMatches.loading) return <Loading />;
   if (qMatches.error) return "Error";
-  const { matches } = qMatches.data;
+  const { matches = [] } = qMatches.data;
 
   return <View
+    url={url}
     matches={matches}
   />;
 }

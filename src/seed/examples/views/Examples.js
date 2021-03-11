@@ -10,13 +10,10 @@ const Examples = (props) =>
   <div class={css.module}>
     <Router>
       <Switch>
-        <Route path={`${props.path}/login`}
-          component={Login} />
-        <Route path={`${props.path}/logout`}
-          component={Logout} />
-        <Route path={`${props.path}/app`}
-          component={Home} />
-        <Redirect to={`${props.path}/app`} />
+        <Route path="/examples/login" component={Login} />
+        <Route path="/examples/logout" component={Logout} />
+        <Route path="/examples" component={Home} />
+        <Redirect to="/examples" />
       </Switch>
     </Router>
   </div>;

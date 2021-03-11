@@ -8,8 +8,7 @@ const App = (props) =>
   <div class={css.module}>
     <Router>
       <Switch>
-        <Route path="/examples"
-          component={Examples} />
+        <Route path="/examples" component={Examples} />
         <Redirect to="/examples" />
       </Switch>
     </Router>

@@ -13,56 +13,56 @@ const Sidenav = (props) =>
       <ul>
         <li>
           <NavLink
-            to={`${props.url}/matches`}
-            class={cx(css.matchItem, css.item)}
-            activeClassName={css.active}>
+            to="/examples/matches"
+            className={css.item}
+            activeClassName={cx(css.item,css.active)}>
             Matches
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={`${props.url}/players`}
-            class={cx(css.playerItem, css.item)}
-            activeClassName={css.active}>
+            to="/examples/players"
+            className={css.item}
+            activeClassName={cx(css.item,css.active)}>
             Players
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={`${props.url}/player_positions`}
-            class={cx(css.playerPositionItem, css.item)}
-            activeClassName={css.active}>
+            to="/examples/player_positions"
+            className={css.item}
+            activeClassName={cx(css.item,css.active)}>
             Player positions
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={`${props.url}/scores`}
-            class={cx(css.scoreItem, css.item)}
-            activeClassName={css.active}>
+            to="/examples/scores"
+            className={css.item}
+            activeClassName={cx(css.item,css.active)}>
             Scores
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={`${props.url}/teams`}
-            class={cx(css.teamItem, css.item)}
-            activeClassName={css.active}>
+            to="/examples/teams"
+            className={css.item}
+            activeClassName={cx(css.item,css.active)}>
             Teams
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={`${props.url}/users`}
-            class={cx(css.userItem, css.item)}
-            activeClassName={css.active}>
+            to="/examples/users"
+            className={css.item}
+            activeClassName={cx(css.item,css.active)}>
             Users
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={"/seed/examples/logout"}
-            class={cx(css.item)}
+            to="/examples/logout"
+            className={cx(css.item)}
             activeClassName={css.active}>
             Logout
           </NavLink>

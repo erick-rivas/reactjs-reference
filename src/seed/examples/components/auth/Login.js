@@ -4,7 +4,7 @@ import View from "seed/examples/views/auth/Login";
 
 function Login(props) {
   const [error, setError] = useState(null);
-  const [cLogin, qLogin] = usePost("/auth/login", {
+  const [cLogin] = usePost("/auth/login", {
     onCompleted: (data) => {
       sessionStorage.setItem("token", data.key);
       sessionStorage.setItem("id", data.user);

@@ -6,7 +6,7 @@ __Seed builder__v0.2.0
 import React from "react";
 import cx from "classnames";
 import ModalContainer from "@material-ui/core/Modal";
-import css from "resources/css/seed/helpers/Modal.module.css";
+import css from "resources/css/seed/Modal.module.css";
 
 
 class Modal extends React.Component {

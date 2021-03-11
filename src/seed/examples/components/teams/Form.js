@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
-import Loading from "seed/components/helpers/Loading";
+import Loading from "seed/components/Loading";
 import View from "seed/examples/views/teams/Form.js";
 
 function TeamForm(props) {
@@ -9,22 +9,22 @@ function TeamForm(props) {
   const { team_id } = props.match.params;
   const isEdit = team_id != null;
 
+  const [error, setError] = useState(null);
   const qTeam = useDetail(queries.TEAM, team_id);
   const qTeams = useQuery(`{ teams { } }`);
-  const [error, setError] = useState(null);
   const [callSave, qSave] = useSave(queries.SAVE_TEAM, {
-    onCompleted: (data) => {
+    onCompleted: () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
     onError: (error) => setError("An error has occurred, try again")
   });
   const [callSet, qSet] = useSet(queries.SET_TEAM, {
-    onCompleted: (data) => {
+    onCompleted: () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
     },
-    onError: (error) => setError("An error has occurred, try again")
+    onError: () => setError("An error has occurred, try again")
   });
 
   if (isEdit && qTeam.loading) return <Loading />;

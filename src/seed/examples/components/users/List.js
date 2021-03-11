@@ -1,12 +1,10 @@
 import React from "react";
 import { useQuery } from "seed/gql";
-import { NavLink } from "react-router-dom";
-import Loading from "seed/components/helpers/Loading";
+import Loading from "seed/components/Loading";
 import View from "seed/examples/views/users/List.js";
 
 function UserList(props){
-  const { url } = props.match;
-
+  const { url } = props;
   const qUsers = useQuery(`
   {
     users {
@@ -17,13 +15,14 @@ function UserList(props){
       isActive
       teams { }
     }
-  }
-  `);
+  }`);
+
   if (qUsers.loading) return <Loading />;
   if (qUsers.error) return "Error";
-  const { users } = qUsers.data;
+  const { users = [] } = qUsers.data;
 
   return <View
+    url={url}
     users={users}
   />;
 }

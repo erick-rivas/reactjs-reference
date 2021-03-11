@@ -1,8 +1,7 @@
 import React from "react";
-import cx from "classnames";
 import { Formik, Field } from "formik";
-import MultiField from "seed/components/helpers/MultiField";
-import FileField from "seed/components/helpers/FileField";
+import MultiField from "seed/components/MultiField";
+import FileField from "seed/components/FileField";
 import css from "resources/css/seed/examples/users/Form.module.css";
 
 const UserForm = (props) =>

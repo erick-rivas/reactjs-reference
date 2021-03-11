@@ -1,22 +1,28 @@
 import React from "react";
 import cx from "classnames";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import css from "resources/css/seed/examples/teams/List.module.css";
 
-const TeamList = (props) =>
+const TeamList = ({ url, teams }) =>
   <div class={css.module}>
-    { 
-      props.teams.map(item =>
-        <NavLink
-          key={item.id}
-          to={`${props.url}/${item.id}`}
-          class={css.item}
-          activeClassName={css.active}>
-            <div class={css.title}>{item.id}</div>
-            <div class={css.subtitle}>{JSON.stringify(item)}</div>
-        </NavLink>
-      )
-    }
+    <div class={css.header}>
+      <Link to={`${url}/new`}
+        class={cx(css.btn, css.create)}>Create</Link>
+    </div>
+    <div class={css.content}>
+      {
+        teams.map(team =>
+          <NavLink
+            key={team.id}
+            to={`${url}/${team.id}`}
+            className={css.item}
+            activeClassName={css.active}>
+              <div class={css.title}>{team.id}</div>
+              <div class={css.subtitle}>{JSON.stringify(team)}</div>
+          </NavLink>
+        )
+      }
+    </div>
   </div>
 
 export default TeamList;
