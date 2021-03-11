@@ -8,7 +8,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/views -o src/resources/css --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "deploy": "node ./bin/www",
     "eject": "react-scripts eject"
   },
@@ -33,7 +33,7 @@
     "classnames": "2.2.6",
     "cross-fetch": "3.0.6",
     "datatables.net": "1.10.24",
-    "eslint": "5.0.0",
+    "eslint": "7.21.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "formik": "2.2.6",
     "graphql": "15.5.0",
@@ -42,7 +42,6 @@
     "npm-run-all": "4.1.5",
     "react": "17.0.1",
     "react-app-polyfill": "2.0.0",
-    "react-css-modules": "4.7.11",
     "react-dom": "17.0.1",
     "react-fetch-hook": "1.8.5",
     "react-ga": "3.3.0",
@@ -52,7 +51,6 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
-    "react-scripts-cssmodules": "1.1.50",
     "react-svg": "12.1.0",
     "redux": "4.0.5",
     "redux-logger": "3.0.6",
@@ -68,16 +66,11 @@
       "plugin:react-hooks/recommended"
     ],
     "rules": {
-      "react/jsx-filename-extension": [
-        "enable",
-        {
-          "extensions": [
-            ".js"
-          ]
-        }
-      ],
+      "eqeqeq": "off",
+      "react/jsx-key": "warn",
       "react/prop-types": "off",
       "react/no-unknown-property": "off",
+      "no-empty": "off",
       "no-unused-vars": "off",
       "jsx-a11y/anchor-is-valid": "off"
     }
