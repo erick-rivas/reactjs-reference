@@ -35,7 +35,7 @@ const MatchForm = (props) =>
         <Field component="select" name="local.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>
@@ -45,7 +45,7 @@ const MatchForm = (props) =>
         <Field component="select" name="visitor.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>

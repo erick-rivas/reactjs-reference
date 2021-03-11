@@ -25,7 +25,7 @@ const TeamForm = (props) =>
           accept="image/*" setFieldValue={f.setFieldValue}
           class={css.fil}  />
         { f.values.logo ?
-          <img src={f.values.logo.url} class={css.img} /> : null }
+          <img src={f.values.logo.url} class={css.img} alt="Preview" /> : null }
         
         <label class={css.lbl}>Description</label><br/>
         <Field type="text" name="description"
@@ -43,7 +43,7 @@ const TeamForm = (props) =>
         <Field component="select" name="rival.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>

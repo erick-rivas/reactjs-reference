@@ -25,7 +25,7 @@ const PlayerForm = (props) =>
           accept="image/*" setFieldValue={f.setFieldValue}
           class={css.fil}  />
         { f.values.photo ?
-          <img src={f.values.photo.url} class={css.img} /> : null }
+          <img src={f.values.photo.url} class={css.img} alt="Preview" /> : null }
         
         <label class={css.lbl}>Is active</label>
         <Field type="checkbox" name="isActive"
@@ -37,7 +37,7 @@ const PlayerForm = (props) =>
         <Field component="select" name="team.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.teams.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>
@@ -47,7 +47,7 @@ const PlayerForm = (props) =>
         <Field component="select" name="position.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.playerPositions.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.playerPositions.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>

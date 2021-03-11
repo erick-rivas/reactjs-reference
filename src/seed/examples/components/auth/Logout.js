@@ -9,7 +9,8 @@ function Logout(props) {
       props.history.replace("/");
     }
   });
-  useEffect(() => cLogout(), []);
+  useEffect(() => cLogout(),
+    []); // eslint-disable-line react-hooks/exhaustive-deps
   return <View />;
 }
 

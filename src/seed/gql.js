@@ -115,7 +115,7 @@ const useDelete = (raw, options = {}) => {
     ...options,
     update(cache, { data }) {
       context.gqlQueries
-        .map((cQueryRaw) => {
+        .forEach((cQueryRaw) => {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
           const cHeader = "delete" + cModel.charAt(0).toUpperCase() + cModel.slice(1);

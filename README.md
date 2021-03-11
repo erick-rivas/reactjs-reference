@@ -10,6 +10,7 @@ This repository holds the source code of a **reference** for the development of 
     -   [Initial setup](#initial-setup)
 -   [Execution](#execution)
     -   [Examples](#examples)
+-   [Testing](#testing)
 -   [Seed-Builder](#seed-builder)
 -   [Deployment](#deployment)
 
@@ -55,6 +56,18 @@ npm start
 -   Request example. 
 ```bash
 GET http://localhost:3000
+```
+
+## Testing
+
+-   Test use cases.
+```bash
+npm test
+```
+
+-   Analyze code coverage.
+```bash
+npm test -- --coverage
 ```
 
 

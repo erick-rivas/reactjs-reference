@@ -25,7 +25,7 @@ const ScoreForm = (props) =>
         <Field component="select" name="player.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.players.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.players.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>
@@ -35,7 +35,7 @@ const ScoreForm = (props) =>
         <Field component="select" name="match.id"
           class={css.ops} >
           <option value="">Select an option</option>
-          {props.matches.map((e, idx) => <option value={e.id}>{e.id}</option>) }
+          {props.matches.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
         </Field>
         <br/>
         </div>

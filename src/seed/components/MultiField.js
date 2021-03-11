@@ -17,10 +17,10 @@ class MultiField extends React.Component {
     for (let d of value)
       selected[gv(d)] = true;
 
-    let items = values.map((v) => {
+    let items = values.map((v, idx) => {
       let isSelected = Boolean(selected[gv(v.value)]);
       return (
-        <div className={css.item}>
+        <div key={idx} className={css.item}>
           <input type="checkbox" checked={isSelected} onChange={() => this.onItemSelected(v.value)}></input>
           {v.label}
         </div>);
