@@ -39,7 +39,6 @@ function PlayerDetails(props) {
   };
 
   return <View
-    url={url}
     player={player}
     onClickDelete={onClickDelete}
     onClickBack={onClickBack}

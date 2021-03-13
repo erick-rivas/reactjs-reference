@@ -21,7 +21,6 @@ function MatchList(props){
   const { matches = [] } = qMatches.data;
 
   return <View
-    url={url}
     matches={matches}
   />;
 }

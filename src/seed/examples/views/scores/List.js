@@ -3,10 +3,10 @@ import cx from "classnames";
 import { Link, NavLink } from "react-router-dom";
 import css from "resources/css/seed/examples/scores/List.module.css";
 
-const ScoreList = ({ url, scores }) =>
+const ScoreList = ({ scores }) =>
   <div class={css.module}>
     <div class={css.header}>
-      <Link to={`${url}/new`}
+      <Link to={`/new`}
         class={cx(css.btn, css.create)}>Create</Link>
     </div>
     <div class={css.content}>
@@ -14,7 +14,7 @@ const ScoreList = ({ url, scores }) =>
         scores.map(score =>
           <NavLink
             key={score.id}
-            to={`${url}/${score.id}`}
+            to={`/${score.id}`}
             className={css.item}
             activeClassName={css.active}>
               <div class={css.title}>{score.id}</div>

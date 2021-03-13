@@ -19,7 +19,6 @@ function ScoreList(props){
   const { scores = [] } = qScores.data;
 
   return <View
-    url={url}
     scores={scores}
   />;
 }

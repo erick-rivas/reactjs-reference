@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import ScoreDetails from "seed/examples/components/scores/Details";
 import ScoreList from "seed/examples/components/scores/List";
 import ScoreForm from "seed/examples/components/scores/Form";
@@ -19,20 +19,22 @@ const Form = (props) =>
     <ScoreForm {...props} />
   </Modal>;
 
-const Scores = ({ url }) =>
-  <div class={css.module}>
-    <div class={css.container}>
-      <div class={css.list}>
-        <ScoreList url={url} />
+const Scores = (props) =>
+  <Router basename="/scores">
+    <div class={css.module}>
+      <div class={css.container}>
+        <div class={css.list}>
+          <ScoreList />
+        </div>
+        <Route
+          path={`/:score_id(\\d+)`}
+          component={Details} />
       </div>
       <Route
-        path={`${url}/:score_id(\\d+)`}
-        component={Details} />
+        path={
+          [`/:any/new`,`$/new`, `/:score_id(\\d+)/edit`] }
+        component={Form} />
     </div>
-    <Route
-      path={
-        [`${url}/:any/new`,`${url}/new`, `${url}/:score_id(\\d+)/edit`] }
-      component={Form} />
-  </div>;
+  </Router>;
 
 export default Scores;

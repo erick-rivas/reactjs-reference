@@ -17,7 +17,6 @@ function PlayerPositionList(props){
   const { playerPositions = [] } = qPlayerPositions.data;
 
   return <View
-    url={url}
     playerPositions={playerPositions}
   />;
 }

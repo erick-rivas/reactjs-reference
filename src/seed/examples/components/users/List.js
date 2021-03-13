@@ -22,7 +22,6 @@ function UserList(props){
   const { users = [] } = qUsers.data;
 
   return <View
-    url={url}
     users={users}
   />;
 }

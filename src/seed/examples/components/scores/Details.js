@@ -37,7 +37,6 @@ function ScoreDetails(props) {
   };
 
   return <View
-    url={url}
     score={score}
     onClickDelete={onClickDelete}
     onClickBack={onClickBack}

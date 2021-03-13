@@ -35,7 +35,6 @@ function PlayerPositionDetails(props) {
   };
 
   return <View
-    url={url}
     playerPosition={playerPosition}
     onClickDelete={onClickDelete}
     onClickBack={onClickBack}

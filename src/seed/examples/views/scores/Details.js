@@ -3,13 +3,13 @@ import cx from "classnames";
 import { Link } from "react-router-dom";
 import css from "resources/css/seed/examples/scores/Details.module.css";
 
-const ScoreDetails = ({ url, score, onClickDelete, onClickBack }) =>
+const ScoreDetails = ({ score, onClickDelete, onClickBack }) =>
   <div class={css.module}>
     <div class={css.header}>
          <i class={cx(css.back, "fas fa-arrow-left")}
           onClick={onClickBack} />
         <div class={css.options}>
-          <Link to={`${url}/edit`}
+          <Link to={`/edit`}
             className={cx(css.btn, css.edit)}>Edit</Link>
           <button class={cx(css.btn, css.delete)}
             onClick={onClickDelete}>Delete</button>

@@ -21,7 +21,6 @@ function PlayerList(props){
   const { players = [] } = qPlayers.data;
 
   return <View
-    url={url}
     players={players}
   />;
 }

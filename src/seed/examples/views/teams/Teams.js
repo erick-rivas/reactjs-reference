@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import TeamDetails from "seed/examples/components/teams/Details";
 import TeamList from "seed/examples/components/teams/List";
 import TeamForm from "seed/examples/components/teams/Form";
@@ -19,20 +19,22 @@ const Form = (props) =>
     <TeamForm {...props} />
   </Modal>;
 
-const Teams = ({ url }) =>
-  <div class={css.module}>
-    <div class={css.container}>
-      <div class={css.list}>
-        <TeamList url={url} />
+const Teams = (props) =>
+  <Router basename="/teams">
+    <div class={css.module}>
+      <div class={css.container}>
+        <div class={css.list}>
+          <TeamList />
+        </div>
+        <Route
+          path={`/:team_id(\\d+)`}
+          component={Details} />
       </div>
       <Route
-        path={`${url}/:team_id(\\d+)`}
-        component={Details} />
+        path={
+          [`/:any/new`,`$/new`, `/:team_id(\\d+)/edit`] }
+        component={Form} />
     </div>
-    <Route
-      path={
-        [`${url}/:any/new`,`${url}/new`, `${url}/:team_id(\\d+)/edit`] }
-      component={Form} />
-  </div>;
+  </Router>;
 
 export default Teams;

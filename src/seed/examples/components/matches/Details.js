@@ -39,7 +39,6 @@ function MatchDetails(props) {
   };
 
   return <View
-    url={url}
     match={match}
     onClickDelete={onClickDelete}
     onClickBack={onClickBack}

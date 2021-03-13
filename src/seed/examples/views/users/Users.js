@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import UserDetails from "seed/examples/components/users/Details";
 import UserList from "seed/examples/components/users/List";
 import UserForm from "seed/examples/components/users/Form";
@@ -19,20 +19,22 @@ const Form = (props) =>
     <UserForm {...props} />
   </Modal>;
 
-const Users = ({ url }) =>
-  <div class={css.module}>
-    <div class={css.container}>
-      <div class={css.list}>
-        <UserList url={url} />
+const Users = (props) =>
+  <Router basename="/users">
+    <div class={css.module}>
+      <div class={css.container}>
+        <div class={css.list}>
+          <UserList />
+        </div>
+        <Route
+          path={`/:user_id(\\d+)`}
+          component={Details} />
       </div>
       <Route
-        path={`${url}/:user_id(\\d+)`}
-        component={Details} />
+        path={
+          [`/:any/new`,`$/new`, `/:user_id(\\d+)/edit`] }
+        component={Form} />
     </div>
-    <Route
-      path={
-        [`${url}/:any/new`,`${url}/new`, `${url}/:user_id(\\d+)/edit`] }
-      component={Form} />
-  </div>;
+  </Router>;
 
 export default Users;

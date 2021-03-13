@@ -41,7 +41,6 @@ function TeamDetails(props) {
   };
 
   return <View
-    url={url}
     team={team}
     onClickDelete={onClickDelete}
     onClickBack={onClickBack}

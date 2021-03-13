@@ -23,7 +23,6 @@ function TeamList(props){
   const { teams = [] } = qTeams.data;
 
   return <View
-    url={url}
     teams={teams}
   />;
 }

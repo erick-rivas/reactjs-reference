@@ -40,7 +40,6 @@ function UserDetails(props) {
   };
 
   return <View
-    url={url}
     user={user}
     onClickDelete={onClickDelete}
     onClickBack={onClickBack}
