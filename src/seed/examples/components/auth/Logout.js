@@ -3,14 +3,15 @@ import { usePost } from "seed/api";
 import View from "seed/examples/views/auth/Logout";
 
 function Logout(props) {
-  const [cLogout] = usePost("/auth/logout", {
+  const [callLogout] = usePost("/auth/logout", {
     onCompleted: () => {
       sessionStorage.clear();
       props.history.replace("/");
     }
   });
-  useEffect(() => cLogout(),
+  useEffect(() => callLogout(),
     []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return <View />;
 }
 

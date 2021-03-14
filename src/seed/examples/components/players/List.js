@@ -4,7 +4,6 @@ import Loading from "seed/components/Loading";
 import View from "seed/examples/views/players/List.js";
 
 function PlayerList(props){
-  const { url } = props;
   const qPlayers = useQuery(`
   {
     players {

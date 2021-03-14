@@ -1,41 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
 import Loading from "seed/components/Loading";
 import View from "seed/examples/views/users/Form.js";
 
-function UserForm(props) {
+function UserFormSet(props) {
   const { url } = props.match;
   const { user_id } = props.match.params;
-  const isEdit = user_id != null;
 
-  const [error, setError] = useState(null);
   const qUser = useDetail(queries.USER, user_id);
   const qTeams = useQuery(`{ teams { } }`);
-  const [callSave, qSave] = useSave(queries.SAVE_USER, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    },
-    onError: (error) => setError("An error has occurred, try again")
-  });
   const [callSet, qSet] = useSet(queries.SET_USER, {
     onCompleted: () => {
       const backUrl = url.substring(0, url.lastIndexOf("/"));
       props.history.push(backUrl);
-    },
-    onError: () => setError("An error has occurred, try again")
+    }
   });
 
-  if (isEdit && qUser.loading) return <Loading />;
-  if (isEdit && qUser.error) return "Error";
+  if (qUser.loading) return <Loading />;
+
   const { user = {} } = qUser.data;
   const { teams = [] } = qTeams.data;
+  const error = qSet.error ? "An error has occurred" : null
 
   const onSubmit = (values) => {
     values.id = user_id;
-    if (isEdit) callSet(values);
-    else callSave(values);
+    callSet(values);
   };
 
   return <View
@@ -46,4 +36,4 @@ function UserForm(props) {
   />;
 }
 
-export default UserForm;
+export default UserFormSet;

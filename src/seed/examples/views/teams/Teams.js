@@ -3,7 +3,8 @@ import cx from "classnames";
 import { Router, Route } from "react-router-dom";
 import TeamDetails from "seed/examples/components/teams/Details";
 import TeamList from "seed/examples/components/teams/List";
-import TeamForm from "seed/examples/components/teams/Form";
+import TeamFormSave from "seed/examples/components/teams/FormSave";
+import TeamFormSet from "seed/examples/components/teams/FormSet";
 import Modal from "seed/components/Modal";
 import css from "resources/css/seed/examples/teams/Teams.module.css";
 
@@ -14,9 +15,14 @@ const Details = (props) =>
     </div>
   </div>;
 
-const Form = (props) =>
+const FormSave = (props) =>
   <Modal {...props}>
-    <TeamForm {...props} />
+    <TeamFormSave {...props} />
+  </Modal>;
+
+const FormSet = (props) =>
+  <Modal {...props}>
+    <TeamFormSet {...props} />
   </Modal>;
 
 const Teams = (props) =>
@@ -31,9 +37,11 @@ const Teams = (props) =>
           component={Details} />
       </div>
       <Route
-        path={
-          [`/:any/new`,`$/new`, `/:team_id(\\d+)/edit`] }
-        component={Form} />
+        path={[`/:any/new`,`/new`,]}
+        component={FormSave} />
+      <Route
+        path={`/:team_id(\\d+)/edit`}
+        component={FormSet} />
     </div>
   </Router>;
 

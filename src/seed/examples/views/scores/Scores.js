@@ -3,7 +3,8 @@ import cx from "classnames";
 import { Router, Route } from "react-router-dom";
 import ScoreDetails from "seed/examples/components/scores/Details";
 import ScoreList from "seed/examples/components/scores/List";
-import ScoreForm from "seed/examples/components/scores/Form";
+import ScoreFormSave from "seed/examples/components/scores/FormSave";
+import ScoreFormSet from "seed/examples/components/scores/FormSet";
 import Modal from "seed/components/Modal";
 import css from "resources/css/seed/examples/scores/Scores.module.css";
 
@@ -14,9 +15,14 @@ const Details = (props) =>
     </div>
   </div>;
 
-const Form = (props) =>
+const FormSave = (props) =>
   <Modal {...props}>
-    <ScoreForm {...props} />
+    <ScoreFormSave {...props} />
+  </Modal>;
+
+const FormSet = (props) =>
+  <Modal {...props}>
+    <ScoreFormSet {...props} />
   </Modal>;
 
 const Scores = (props) =>
@@ -31,9 +37,11 @@ const Scores = (props) =>
           component={Details} />
       </div>
       <Route
-        path={
-          [`/:any/new`,`$/new`, `/:score_id(\\d+)/edit`] }
-        component={Form} />
+        path={[`/:any/new`,`/new`,]}
+        component={FormSave} />
+      <Route
+        path={`/:score_id(\\d+)/edit`}
+        component={FormSet} />
     </div>
   </Router>;
 

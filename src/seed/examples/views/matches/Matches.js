@@ -3,7 +3,8 @@ import cx from "classnames";
 import { Router, Route } from "react-router-dom";
 import MatchDetails from "seed/examples/components/matches/Details";
 import MatchList from "seed/examples/components/matches/List";
-import MatchForm from "seed/examples/components/matches/Form";
+import MatchFormSave from "seed/examples/components/matches/FormSave";
+import MatchFormSet from "seed/examples/components/matches/FormSet";
 import Modal from "seed/components/Modal";
 import css from "resources/css/seed/examples/matches/Matches.module.css";
 
@@ -14,9 +15,14 @@ const Details = (props) =>
     </div>
   </div>;
 
-const Form = (props) =>
+const FormSave = (props) =>
   <Modal {...props}>
-    <MatchForm {...props} />
+    <MatchFormSave {...props} />
+  </Modal>;
+
+const FormSet = (props) =>
+  <Modal {...props}>
+    <MatchFormSet {...props} />
   </Modal>;
 
 const Matches = (props) =>
@@ -31,9 +37,11 @@ const Matches = (props) =>
           component={Details} />
       </div>
       <Route
-        path={
-          [`/:any/new`,`$/new`, `/:match_id(\\d+)/edit`] }
-        component={Form} />
+        path={[`/:any/new`,`/new`,]}
+        component={FormSave} />
+      <Route
+        path={`/:match_id(\\d+)/edit`}
+        component={FormSet} />
     </div>
   </Router>;
 

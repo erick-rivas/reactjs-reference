@@ -3,7 +3,8 @@ import cx from "classnames";
 import { Router, Route } from "react-router-dom";
 import UserDetails from "seed/examples/components/users/Details";
 import UserList from "seed/examples/components/users/List";
-import UserForm from "seed/examples/components/users/Form";
+import UserFormSave from "seed/examples/components/users/FormSave";
+import UserFormSet from "seed/examples/components/users/FormSet";
 import Modal from "seed/components/Modal";
 import css from "resources/css/seed/examples/users/Users.module.css";
 
@@ -14,9 +15,14 @@ const Details = (props) =>
     </div>
   </div>;
 
-const Form = (props) =>
+const FormSave = (props) =>
   <Modal {...props}>
-    <UserForm {...props} />
+    <UserFormSave {...props} />
+  </Modal>;
+
+const FormSet = (props) =>
+  <Modal {...props}>
+    <UserFormSet {...props} />
   </Modal>;
 
 const Users = (props) =>
@@ -31,9 +37,11 @@ const Users = (props) =>
           component={Details} />
       </div>
       <Route
-        path={
-          [`/:any/new`,`$/new`, `/:user_id(\\d+)/edit`] }
-        component={Form} />
+        path={[`/:any/new`,`/new`,]}
+        component={FormSave} />
+      <Route
+        path={`/:user_id(\\d+)/edit`}
+        component={FormSet} />
     </div>
   </Router>;
 

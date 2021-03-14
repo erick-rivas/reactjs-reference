@@ -4,7 +4,6 @@ import Loading from "seed/components/Loading";
 import View from "seed/examples/views/scores/List.js";
 
 function ScoreList(props){
-  const { url } = props;
   const qScores = useQuery(`
   {
     scores {

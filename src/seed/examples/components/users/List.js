@@ -4,7 +4,6 @@ import Loading from "seed/components/Loading";
 import View from "seed/examples/views/users/List.js";
 
 function UserList(props){
-  const { url } = props;
   const qUsers = useQuery(`
   {
     users {

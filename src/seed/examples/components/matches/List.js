@@ -4,7 +4,6 @@ import Loading from "seed/components/Loading";
 import View from "seed/examples/views/matches/List.js";
 
 function MatchList(props){
-  const { url } = props;
   const qMatches = useQuery(`
   {
     matches {

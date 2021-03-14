@@ -4,7 +4,6 @@ import Loading from "seed/components/Loading";
 import View from "seed/examples/views/teams/List.js";
 
 function TeamList(props){
-  const { url } = props;
   const qTeams = useQuery(`
   {
     teams {
