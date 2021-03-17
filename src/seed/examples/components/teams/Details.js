@@ -2,7 +2,7 @@ import React from "react";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_TEAM } from "seed/gql/queries";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/teams/Details.js";
+import View from "seed/examples/views/teams/Details";
 
 function TeamDetails(props) {
   const { url } = props.match;

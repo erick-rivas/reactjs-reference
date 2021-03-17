@@ -4,7 +4,7 @@ import MultiField from "seed/components/MultiField";
 import FileField from "seed/components/FileField";
 import css from "resources/css/seed/examples/player_positions/Form.module.css";
 
-const PlayerPositionForm = ({ playerPosition, error, onSubmit }) =>
+const PlayerPositionForm = ({ playerPosition= {}, error, onSubmit }) =>
   <div class={css.module}>
     <div class={css.header}>Player position</div>
     <div class={css.form}>

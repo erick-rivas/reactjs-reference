@@ -5,7 +5,7 @@ function Home(props) {
    useEffect(() => {
      const userId = sessionStorage.getItem("id");
      if (userId == null)
-       return props.history.replace("/examples/login");
+       window.location.replace("/examples/login");
    });
   return <View />;
 }

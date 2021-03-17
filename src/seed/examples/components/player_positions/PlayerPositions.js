@@ -1,5 +1,5 @@
 import React from "react";
-import View from "seed/examples/views/player_positions/PlayerPositions.js";
+import View from "seed/examples/views/player_positions/PlayerPositions";
 
 function PlayerPositions(props) {
   return <View />;

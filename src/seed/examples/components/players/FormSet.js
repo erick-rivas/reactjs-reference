@@ -2,7 +2,7 @@ import React from "react";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/players/Form.js";
+import View from "seed/examples/views/players/Form";
 
 function PlayerFormSet(props) {
   const { url } = props.match;

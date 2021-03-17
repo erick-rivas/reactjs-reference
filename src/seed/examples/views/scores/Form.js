@@ -4,7 +4,7 @@ import MultiField from "seed/components/MultiField";
 import FileField from "seed/components/FileField";
 import css from "resources/css/seed/examples/scores/Form.module.css";
 
-const ScoreForm = ({ score, players, matches, error, onSubmit }) =>
+const ScoreForm = ({ score= {}, players, matches, error, onSubmit }) =>
   <div class={css.module}>
     <div class={css.header}>Score</div>
     <div class={css.form}>

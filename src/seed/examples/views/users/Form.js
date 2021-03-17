@@ -4,7 +4,7 @@ import MultiField from "seed/components/MultiField";
 import FileField from "seed/components/FileField";
 import css from "resources/css/seed/examples/users/Form.module.css";
 
-const UserForm = ({ user, teams, error, onSubmit }) =>
+const UserForm = ({ user= {}, teams, error, onSubmit }) =>
   <div class={css.module}>
     <div class={css.header}>User</div>
     <div class={css.form}>
@@ -18,7 +18,7 @@ const UserForm = ({ user, teams, error, onSubmit }) =>
         <div class={css.mul}>
         <MultiField name="teams"
           values={teams.map((e, idx) => { return {value: e, label: e.id}; }) }
-          setFieldValue={setFieldValue} value={values.teams} />
+          setFieldValue={setFieldValue} value={values.teams ? values.teams : []} />
         </div>
         <br/>
         </div>

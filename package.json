@@ -8,7 +8,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/views -o src/resources/css --watch --recursive && node-sass-chokidar src/resources/styles -o src/resources/css --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --silent",
     "deploy": "node ./bin/www",
     "eject": "react-scripts eject"
   },

@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "seed/gql";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/matches/List.js";
+import View from "seed/examples/views/matches/List";
 
 function MatchList(props){
   const qMatches = useQuery(`

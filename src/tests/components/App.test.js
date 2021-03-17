@@ -1,9 +1,10 @@
 import React from "react";
 import '@testing-library/jest-dom/extend-expect'
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { render } from 'seed/jest';
 import App from 'components/App';
 
-test('app-test', () => {
+test('App', () => {
   render(<App />);
-  expect(screen).toBeDefined()
+  expect(screen).toBeDefined();
 });

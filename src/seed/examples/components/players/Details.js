@@ -2,7 +2,7 @@ import React from "react";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_PLAYER } from "seed/gql/queries";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/players/Details.js";
+import View from "seed/examples/views/players/Details";
 
 function PlayerDetails(props) {
   const { url } = props.match;

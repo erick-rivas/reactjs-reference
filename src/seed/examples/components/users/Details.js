@@ -2,7 +2,7 @@ import React from "react";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_USER } from "seed/gql/queries";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/users/Details.js";
+import View from "seed/examples/views/users/Details";
 
 function UserDetails(props) {
   const { url } = props.match;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "seed/gql";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/scores/List.js";
+import View from "seed/examples/views/scores/List";
 
 function ScoreList(props){
   const qScores = useQuery(`

@@ -4,7 +4,7 @@ import MultiField from "seed/components/MultiField";
 import FileField from "seed/components/FileField";
 import css from "resources/css/seed/examples/matches/Form.module.css";
 
-const MatchForm = ({ match, teams, error, onSubmit }) =>
+const MatchForm = ({ match= {}, teams, error, onSubmit }) =>
   <div class={css.module}>
     <div class={css.header}>Match</div>
     <div class={css.form}>

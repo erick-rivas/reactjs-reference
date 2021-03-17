@@ -2,7 +2,7 @@ import React from "react";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_MATCH } from "seed/gql/queries";
 import Loading from "seed/components/Loading";
-import View from "seed/examples/views/matches/Details.js";
+import View from "seed/examples/views/matches/Details";
 
 function MatchDetails(props) {
   const { url } = props.match;
