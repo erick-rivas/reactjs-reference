@@ -3,8 +3,6 @@ import '@testing-library/jest-dom/extend-expect'
 import { createMemoryHistory } from 'history'
 import { MemoryRouter, Route } from 'react-router';
 import { render as testRender } from '@testing-library/react';
-import { Provider } from "react-redux";
-import Store from "settings/bin/Store";
 
 import * as gql from "seed/gql";
 import * as api from "seed/api";
@@ -17,7 +15,6 @@ const render = function(
     history=null
   } = {}){
   testRender(
-  <Provider store={Store()}>
   <MemoryRouter history={history}>
     <Route path={path}
       component={(props) =>
@@ -26,8 +23,7 @@ const render = function(
         </div>
       }
     />
-  </MemoryRouter>
-  </Provider>);
+  </MemoryRouter>);
 }
 
 const mockQuery = (name, results = {}) => {

@@ -4,9 +4,10 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import redux from "seed/redux";
+import $ from "jquery";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import css from "resources/css/seed/FileField.module.css";
+import { API_URL } from "settings";
 
 class FileField extends React.Component {
 
@@ -45,4 +46,34 @@ class FileField extends React.Component {
   }
 }
 
-export default redux(FileField);
+
+
+const uploadFile = (formWrapper, callback) => {
+  let url = `${API_URL}/files/`;
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: new FormData(formWrapper),
+    cache: false,
+    contentType: false,
+    processData: false,
+    xhr: function () {
+      var myXhr = $.ajaxSettings.xhr();
+      return myXhr;
+    },
+    success: (json) => {
+      callback({
+        body: json,
+        ok: true
+      });
+    },
+    error: (error) => {
+      callback({
+        body: error,
+        ok: false
+      });
+    }
+  });
+};
+
+export default FileField;
