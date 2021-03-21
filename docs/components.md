@@ -1,13 +1,7 @@
 # Components
 
 Handle component behavior (initialization, requests, render calls, etc)
->  An equivalent to controller in MVC architecture
-
-## Table of content
-
--   [Examples](#example)
-    -   [List example](#list-example)
-    -   [Form example](#form-example)
+>   *An equivalent to controller in MVC architecture*
 
 ## Examples
 

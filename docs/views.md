@@ -1,13 +1,7 @@
 # Views
 
 Handle component rendering (DOM)
->    An equivalent to view in MVC architecture
-
-## Table of content
-
--   [Examples](#example)
-    -   [List example](#list-example)
-    -   [Form example](#form-example)
+>    *An equivalent to view in MVC architecture*
 
 ## Examples
 
