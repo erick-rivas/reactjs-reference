@@ -1,6 +1,6 @@
-## AWS-EB single-instance
+# AWS-EB single-instance
 
-### Elastic beanstalk instance
+## Elastic beanstalk instance
 
 -   Open aws console in [aws.amazon.com](https://aws.amazon.com),
 -   Go to Elastic Beanstalk pane.
@@ -14,12 +14,12 @@
         -   Go to Capacity and select the server capacity
             >   *For development(sandbox) use preferably a t3a.nano instance*
    
-### EB command line interface
+## EB command line interface
 
 -   Install eb cli [See documentation](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html).
 -   Configure AMI credentials [See documentation](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html).
 
-### Pre-configuration
+## Pre-configuration
 
 -   Create and configure *src/settings.js* file.
 -   Create a `.ebextensions` folder in project root and copy inside
@@ -27,11 +27,11 @@
 -   Copy `bin/config/aws-eb/single-instance/.ebignore` in project root folder
 -   Copy `bin/config/aws-eb/single-instance/deploy.sh` in `/bin` folder
 
-### SSL
+## SSL
 
 To enable a https connection
 
-#### Open 443 port 
+### Open 443 port 
 
 -   Enable 443 port in ec2 settings
     -   Go to ec2 pane 
@@ -40,7 +40,7 @@ To enable a https connection
     -   Go to inbound
     -   Enable 443 port
 
-#### Configure server
+### Configure server
 
 -   Access the server by ssh
 ```bash
@@ -81,12 +81,12 @@ sudo ./certbot-auto certonly --debug
 -    Deploy again "eb deploy"
 
 
-### Deployment
+## Deployment
 
 -   Run script
 ```bash
 .bin/deploy.sh
 ```
 
-### References
+## References
 -   AWS reference [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html)

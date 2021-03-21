@@ -38,7 +38,7 @@ ReactDOM.render(
 );
 start();
 
-/** WORKER **/
+/*  WORKER  */
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||

@@ -1,6 +1,7 @@
 # General
 /build
 /src/resources/css/*
+/public/docs
 
 # Dependencies
 /node_modules

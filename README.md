@@ -17,10 +17,13 @@ This repository holds the source code of a **reference** for the development of 
 -   Install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
 -   Clone this repository.
 -   Configure src/settings.js attributes.
--   Install dependencies.
+
+-   Execute setup script
 ```bash
-npm install
+./bin/setup.sh
 ```
+>   *For windows, run the ./bin/setup.sh commands manually*
+
 -   Run server.
 ```bash
 npm start

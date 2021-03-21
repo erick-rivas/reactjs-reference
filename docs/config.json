@@ -1,0 +1,32 @@
+{
+  "opts": {
+    "tutorials": {
+      "10_general": {
+        "title": "General"
+      },
+      "20_components": {
+        "title": "Components"
+      },
+      "30_views": {
+        "title": "Views"
+      },
+      "40_seed-builder": {
+        "title": "Seed-Builder"
+      },
+      "50_deployment": {
+        "title": "Deployment",
+        "children": {
+          "51_aws-eb-load-balanced": {
+            "title": "AWS-EB load balanced"
+          },
+          "52_aws-eb-single-instance": {
+            "title": "AWS-EB single instance"
+          },
+          "53_ubuntu": {
+            "title": "Ubuntu 18.04"
+          }
+        }
+      }
+    }
+  }
+}

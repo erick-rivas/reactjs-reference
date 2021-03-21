@@ -1,10 +1,10 @@
-## Ubuntu Server - 18.04
+# Ubuntu Server - 18.04
 
 This file contains guides to deploy project to a (Ubuntu Server)
 
-### Server installation
+## Server installation
 
-#### Dependencies
+### Dependencies
 
 - Connect to server
 
@@ -18,12 +18,12 @@ sudo apt update
 sudo apt install curl git nodejs build-essential nginx
 ```
 
-#### Project installation
+### Project installation
 
--   Clone repository and follow installation steps in [general docs](../general.md)
+-   Clone repository and follow installation steps in [general docs](../10_general.md)
 
 
-## PM2 configuration
+### PM2 configuration
 
 -   Install pm2
 ```bash
@@ -37,7 +37,7 @@ sudo npm install pm2@latest -g
 pm2 start
 ```
 
-## Nginx configuration
+### Nginx configuration
 
 -   Modify /etc/nginx/sites-available/app with the following structure
 ```
@@ -75,11 +75,11 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-### SSL
+## SSL
 
 To enable a https connection
 
-#### Configure certbot
+### Configure certbot
 
 -   Install certbot
 ```bash
@@ -94,7 +94,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot --nginx
 ```
 
-#### Configure nginx
+### Configure nginx
 
 -  Modify /etc/nginx/sites-available/app with the following structure
 ```
@@ -127,7 +127,7 @@ server {
 sudo systemctl restart nginx
 ```
 
-### Deployment
+## Deployment
 
 - Connect to server
 ```bash
@@ -141,6 +141,6 @@ ssh #USER@SERVER_URL#
 ./bin/deploy.sh
 ```
 
-### References
+## References
 
 -   PM2-nginx tutorial [https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-%E2%80%94-installing-pm2](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-%E2%80%94-installing-pm2)

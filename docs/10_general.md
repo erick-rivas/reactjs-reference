@@ -48,10 +48,9 @@ npm start
 
 ### Examples
 
--   Request example. 
-```bash
-GET http://localhost:3000
-```
+-   Example app [http://localhost:3000/example](http://localhost:3000/example)
+-   Docs [http://localhost:3000/docs-route](http://localhost:3000/docs-route)
+
 
 ## Testing
 

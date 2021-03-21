@@ -8,7 +8,7 @@ function Home(props) {
      if (userId == null)
        window.location.replace("/examples/login");
      else setIsAuth(true);
-   });
+   }, []);
   if (!isAuth) return null;
   return <View />;
 }

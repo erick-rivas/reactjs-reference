@@ -1,6 +1,6 @@
-## AWS-EB load-balanced
+# AWS-EB load-balanced
 
-### Elastic beanstalk instance
+## Elastic beanstalk instance
 
 -   Open aws console in [aws.amazon.com](https://aws.amazon.com)
 -   Go to Elastic Beanstalk pane.
@@ -10,12 +10,12 @@
     -   Press *Configure more options* 
         -   Go to capacity, capacity type and select load balanced as Environment type
         
-### EB command line interface
+## EB command line interface
 
 -   Install eb cli [See documentation](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html).
 -   Configure AMI credentials [See documentation](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html).
 
-### Pre-configuration
+## Pre-configuration
 
 -   Create and configure *src/settings.js* file.
 -   Create a `.ebextensions` folder in project root and copy inside
@@ -23,17 +23,17 @@
 -   Copy `bin/config/aws-eb/load-balanced/.ebignore` in project root folder
 -   Copy `bin/config/aws-eb/load-balanced/deploy.sh` in `/bin` folder
 
-### SSL
+## SSL
 
 To enable a https connection
 
-#### Create an AWS certificate
+### Create an AWS certificate
 
 -   Go to AWS Certificate Manager
 -   Create a new public certificate
 -   Press option "Export DNS configuration to a file" and place those record in a new CNAME record in order to validate certificate
 
-#### Open 443 port 
+### Open 443 port 
 
 -   Enable 443 port in ec2 settings
     -   Go to ec2 pane 
@@ -42,23 +42,23 @@ To enable a https connection
     -   Go to inbound
     -   Enable 443 port
 
-#### Assign certificate
+### Assign certificate
 
 -    Go to aws eb config and press edit in the load balancer section
 -    Add a new listener to 443 port with a https protocol 
     -   Select the SSL certificate created in AWS Certificate Manager
     -   In SSL policies, use ELBSecurityPolicy-FS-1-2-2019-08
 
-#### Enable application settings
+### Enable application settings
 
 -    Copy `bin/config/aws-eb/https-reencrypt-alb.config into `.ebextensions` folder
 
-### Deployment
+## Deployment
 
 -   Run script
 ```bash
 ./bin/deploy.sh
 ```
 
-### References
+## References
 -   AWS reference [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html)
