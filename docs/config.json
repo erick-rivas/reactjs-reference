@@ -1,28 +1,31 @@
 {
   "opts": {
     "tutorials": {
-      "10_general": {
+      "010-general": {
         "title": "General"
       },
-      "20_components": {
+      "020-components": {
         "title": "Components"
       },
-      "30_views": {
+      "030-views": {
         "title": "Views"
       },
-      "40_seed-builder": {
-        "title": "Seed-Builder"
+      "040-seed-builder": {
+        "title": "Seed Builder"
       },
-      "50_deployment": {
+      "050-seed-commons": {
+        "title": "Seed Commons"
+      },
+      "060-deployment": {
         "title": "Deployment",
         "children": {
-          "51_aws-eb-load-balanced": {
+          "061-aws-eb-load-balanced": {
             "title": "AWS-EB load balanced"
           },
-          "52_aws-eb-single-instance": {
+          "062-aws-eb-single-instance": {
             "title": "AWS-EB single instance"
           },
-          "53_ubuntu": {
+          "063-ubuntu": {
             "title": "Ubuntu 18.04"
           }
         }

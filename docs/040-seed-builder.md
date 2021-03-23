@@ -1,6 +1,4 @@
-# Seed-Builder
-
-## Description
+# Seed Builder
 
 Seed-builder is a code generator library to reduce *boilerplate code* required by the application (Eg. server connections, model definitions, cache handling) 
 
