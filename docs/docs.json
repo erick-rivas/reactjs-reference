@@ -1,0 +1,31 @@
+{
+  "010-general": {
+    "title": "General"
+  },
+  "020-components": {
+    "title": "Components"
+  },
+  "030-views": {
+    "title": "Views"
+  },
+  "040-seed-builder": {
+    "title": "Seed Builder"
+  },
+  "050-seed-commons": {
+    "title": "Seed Commons"
+  },
+  "060-deployment": {
+    "title": "Deployment",
+    "children": {
+      "061-aws-eb-load-balanced": {
+        "title": "AWS-EB load balanced"
+      },
+      "062-aws-eb-single-instance": {
+        "title": "AWS-EB single instance"
+      },
+      "063-ubuntu": {
+        "title": "Ubuntu 18.04"
+      }
+    }
+  }
+}

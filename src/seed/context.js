@@ -1,7 +1,7 @@
-/*
-__Seed builder__v0.2.0
-  (Read_only) Builder helper
-*/
+/**
+ * asddas
+ * asdasd
+ */
 
 import React, { createContext, useState } from "react";
 

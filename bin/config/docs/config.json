@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "opts": {
+    "destination": "./public/docs",
+    "template": "./node_modules/docdash",
+    "tutorials": "./docs",
+    "recurse":true
+  },
+  "templates": {
+    "default": {
+      "staticFiles": {
+        "include": [
+            "./bin/config/docs/static"
+        ]
+      }
+    }
+  },
+  "docdash": {
+    "scripts": ["./style.css"]
+  }
+}
