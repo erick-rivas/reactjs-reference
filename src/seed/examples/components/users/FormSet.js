@@ -1,7 +1,7 @@
 import React from "react";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import * as queries from "seed/gql/queries";
-import Loading from "seed/components/Loading";
+import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/users/Form";
 
 function UserFormSet(props) {

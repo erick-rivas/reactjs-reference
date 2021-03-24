@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import MultiField from "seed/components/MultiField";
-import FileField from "seed/components/FileField";
+import MultiField from "seed/helpers/MultiField";
+import FileField from "seed/helpers/FileField";
 import css from "resources/css/seed/examples/matches/Form.module.css";
 
 const MatchForm = ({ match= {}, teams, error, onSubmit }) =>

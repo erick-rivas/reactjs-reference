@@ -48,8 +48,8 @@ npm start
 
 ### Examples
 
--   Example app [http://localhost:3000/example](http://localhost:3000/example)
--   Docs [http://localhost:3000/docs-route](http://localhost:3000/docs-route)
+-   Example app [http://localhost:3000/examples](http://localhost:3000/examples)
+-   Docs [http://localhost:3000/docs](http://localhost:3000/docs)
 
 
 ## Testing

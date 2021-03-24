@@ -5,7 +5,7 @@ import PlayerPositionDetails from "seed/examples/components/player_positions/Det
 import PlayerPositionList from "seed/examples/components/player_positions/List";
 import PlayerPositionFormSave from "seed/examples/components/player_positions/FormSave";
 import PlayerPositionFormSet from "seed/examples/components/player_positions/FormSet";
-import Modal from "seed/components/Modal";
+import Modal from "seed/helpers/Modal";
 import css from "resources/css/seed/examples/player_positions/PlayerPositions.module.css";
 
 const Details = (props) =>

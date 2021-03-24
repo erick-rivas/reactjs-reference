@@ -5,7 +5,7 @@ import ScoreDetails from "seed/examples/components/scores/Details";
 import ScoreList from "seed/examples/components/scores/List";
 import ScoreFormSave from "seed/examples/components/scores/FormSave";
 import ScoreFormSet from "seed/examples/components/scores/FormSet";
-import Modal from "seed/components/Modal";
+import Modal from "seed/helpers/Modal";
 import css from "resources/css/seed/examples/scores/Scores.module.css";
 
 const Details = (props) =>

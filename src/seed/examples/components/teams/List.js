@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "seed/gql";
-import Loading from "seed/components/Loading";
+import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/teams/List";
 
 function TeamList(props){

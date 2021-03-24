@@ -5,7 +5,7 @@ import PlayerDetails from "seed/examples/components/players/Details";
 import PlayerList from "seed/examples/components/players/List";
 import PlayerFormSave from "seed/examples/components/players/FormSave";
 import PlayerFormSet from "seed/examples/components/players/FormSet";
-import Modal from "seed/components/Modal";
+import Modal from "seed/helpers/Modal";
 import css from "resources/css/seed/examples/players/Players.module.css";
 
 const Details = (props) =>

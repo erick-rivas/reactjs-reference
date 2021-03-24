@@ -1,7 +1,7 @@
 import React from "react";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_SCORE } from "seed/gql/queries";
-import Loading from "seed/components/Loading";
+import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/scores/Details";
 
 function ScoreDetails(props) {

@@ -5,7 +5,7 @@ import UserDetails from "seed/examples/components/users/Details";
 import UserList from "seed/examples/components/users/List";
 import UserFormSave from "seed/examples/components/users/FormSave";
 import UserFormSet from "seed/examples/components/users/FormSet";
-import Modal from "seed/components/Modal";
+import Modal from "seed/helpers/Modal";
 import css from "resources/css/seed/examples/users/Users.module.css";
 
 const Details = (props) =>

@@ -5,7 +5,7 @@ import TeamDetails from "seed/examples/components/teams/Details";
 import TeamList from "seed/examples/components/teams/List";
 import TeamFormSave from "seed/examples/components/teams/FormSave";
 import TeamFormSet from "seed/examples/components/teams/FormSet";
-import Modal from "seed/components/Modal";
+import Modal from "seed/helpers/Modal";
 import css from "resources/css/seed/examples/teams/Teams.module.css";
 
 const Details = (props) =>

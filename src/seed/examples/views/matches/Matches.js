@@ -5,7 +5,7 @@ import MatchDetails from "seed/examples/components/matches/Details";
 import MatchList from "seed/examples/components/matches/List";
 import MatchFormSave from "seed/examples/components/matches/FormSave";
 import MatchFormSet from "seed/examples/components/matches/FormSet";
-import Modal from "seed/components/Modal";
+import Modal from "seed/helpers/Modal";
 import css from "resources/css/seed/examples/matches/Matches.module.css";
 
 const Details = (props) =>
