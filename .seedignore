@@ -27,6 +27,7 @@ src/seed/examples
 ?src/index.js
 ?src/resources/*
 ?src/settings/*
+!docs/*.md
 !.keep
 !*helpers
 !*util
