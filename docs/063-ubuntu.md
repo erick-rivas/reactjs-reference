@@ -20,7 +20,7 @@ sudo apt install curl git nodejs build-essential nginx
 
 ### Project installation
 
--   Clone repository and follow installation steps in [general docs](../10_general.md)
+-   Clone repository and follow installation steps in [general docs](./010-general.md)
 
 
 ### PM2 configuration

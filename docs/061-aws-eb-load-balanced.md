@@ -3,8 +3,8 @@
 ## Elastic beanstalk instance
 
 -   Open aws console in [aws.amazon.com](https://aws.amazon.com)
--   Go to Elastic Beanstalk pane.
--   Create a new application.
+-   Go to Elastic Beanstalk pane
+-   Create a new application
 -   Create a new environment (Web server environment)
     -   Select nodejs platform **Amazon Linux**
     -   Press *Configure more options* 
@@ -12,12 +12,12 @@
         
 ## EB command line interface
 
--   Install eb cli [See documentation](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html).
--   Configure AMI credentials [See documentation](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html).
+-   Install eb cli [See documentation](https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install.html)
+-   Configure AMI credentials [See documentation](https://docs.aws.amazon.com/es_es/general/latest/gr/managing-aws-access-keys.html)
 
 ## Pre-configuration
 
--   Create and configure *src/settings.js* file.
+-   Create and configure *src/settings.js* file
 -   Create a `.ebextensions` folder in project root and copy inside
     -   `bin/config/aws-eb/load-balanced/nodecommand.config`
 -   Copy `bin/config/aws-eb/load-balanced/.ebignore` in project root folder
