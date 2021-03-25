@@ -26,6 +26,7 @@
 ### Pre-requisites
 
 -   Download & install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
+-   Download & install [VS Code](https://code.visualstudio.com/)
 >   *To facilitate development it is recommended to run the project on debian distribution (Eg. ubuntu)*
 
 ### Initial setup

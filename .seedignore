@@ -1,4 +1,5 @@
 .git*
+.data*
 .seedignore
 .gitignore
 LICENSE

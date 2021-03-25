@@ -2,6 +2,7 @@
 /build
 /src/resources/css/*
 /public/docs
+.data
 
 # Dependencies
 /node_modules
