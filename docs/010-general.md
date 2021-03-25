@@ -31,21 +31,13 @@
 ### Initial setup
 
 -   Clone this repository
--   Configure src/settings.js attributes
--   Install dependencies
-    
--   Execute setup script
-```bash
-./bin/setup.sh
-```
->   *For windows, run the ./bin/setup.sh commands manually*
+-   Set execute permissions to scripts (linux) `chmod +x bin/*` 
+-   Execute setup script `bin/setup`
+-   Optionally configure src/settings.js fields with custom connection attributes
 
 ## Execution
 
--   Run server
-```bash
-npm start
-```
+-   Run server `npm start`
 
 ### Examples
 
@@ -55,12 +47,6 @@ npm start
 
 ## Testing
 
--   Test use cases
-```bash
-npm test
-```
+-   Test use cases `npm test`
 
--   Analyze code coverage
-```bash
-npm test -- --coverage
-```
+-   Analyze code coverage `npm test -- --coverage`

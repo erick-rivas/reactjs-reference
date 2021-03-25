@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+
+  reactjs:
+    build:
+      context: ../../../.
+      dockerfile: Dockerfile
+    volumes:
+      - ../../../.:/usr/src/web
+      - /usr/src/web/node_modules
+    ports:
+      - "3000:3000"

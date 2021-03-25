@@ -15,18 +15,10 @@ This repository holds the source code of a **reference** for the development of 
 
 -   Install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
 -   Clone this repository
--   Configure src/settings.js attributes
-
--   Execute setup script
-```bash
-./bin/setup.sh
-```
->   *For windows, run the ./bin/setup.sh commands manually*
-
--   Run server
-```bash
-npm start
-```
+-   Set execute permissions to scripts (linux) `chmod +x bin/*`
+-   Execute setup script `bin/setup`
+-   Run server `npm start`
+-   Open server [http://localhost:3000](http://localhost:3000)
 
 ## Documentation
 
