@@ -32,3 +32,4 @@ src/seed/examples
 !.keep
 !*helpers
 !*util
+!.github
