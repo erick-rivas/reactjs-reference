@@ -18,7 +18,7 @@ This repository holds the source code of a **reference** for the development of 
 -   Set execute permissions to scripts (linux) `chmod +x bin/*`
 -   Execute setup script `bin/setup`
 -   Run server `npm start`
--   Open server [http://localhost:3000](http://localhost:3000)
+-   Open server [http://localhost:3003](http://localhost:3003)
 
 ## Documentation
 

@@ -42,8 +42,8 @@
 
 ### Examples
 
--   Example app [http://localhost:3000/examples](http://localhost:3000/examples)
--   Docs [http://localhost:3000/docs](http://localhost:3000/docs)
+-   Example app [http://localhost:3003/examples](http://localhost:3003/examples)
+-   Docs [http://localhost:3003/docs](http://localhost:3003/docs)
 
 
 ## Testing
