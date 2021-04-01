@@ -20,5 +20,13 @@ a{
 }
 
 h4.name {
-    background: #0987EB;
+  background: #0987EB;
+}
+
+h4 .signature {
+  color: #ffffffa0 !important;
+}
+
+h4 .type-signature{
+  display: none;
 }

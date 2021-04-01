@@ -7,6 +7,71 @@ import React, { useState } from "react";
 import useFetch from "react-fetch-hook";
 import { API_URL } from "settings";
 
+
+/** @module api **/
+
+/**
+ * Returns a hook to execute a GET request
+ * @param {string} endpoint Relative path to SERVER_URL/api
+ * @param {Object} queryArgs Query args of the request
+ * @param {Object} options Hook options (e.g. onCompleted, onError)
+ * @returns GET hook
+ * @example
+ * const reqPlayers = useGet("/players", { name: "messi" })
+ * // It is equal to /players?name=messi
+ */
+ const useGet = (endpoint, queryArgs = {}, options = {}) =>
+ usePoll(endpoint, queryArgs, options);
+
+/**
+* Returns a hook to execute a POST request
+* @param {string} endpoint Relative path to SERVER_URL/api
+* @param {Object} options Hook options (e.g. onCompleted, onError)
+* @returns POST hook
+* @example
+* const [callSave, reqSave] = usePost("/players", { 
+*   onCompleted: (data) => alert("Player saved")
+* })
+* ...
+* // Execute request
+* callSave({ name: "messi" })
+*/
+const usePost = (endpoint, options = {}) =>
+ useMutate("POST", endpoint, options);
+
+/**
+* Returns a hook to execute a PUT request
+* @param {string} endpoint Relative path to SERVER_URL/api
+* @param {Object} options Hook options (e.g. onCompleted, onError)
+* @returns PUT hook
+* @example
+* const [callPut, reqPut] = usePut("/players", { 
+*   onCompleted: (data) => alert("Player modified")
+* })
+* ...
+* // Execute request
+* callPut({ id: 1, name: "messi" })
+*/
+const usePut = (endpoint, options = {}) =>
+ useMutate("PUT", endpoint, options);
+
+/**
+* Returns a hook to execute a DELETE request
+* @param {string} endpoint Relative path to SERVER_URL/api
+* @param {Object} options Hook options (e.g. onCompleted, onError)
+* @returns DELETE hook
+* @example
+* const [callDelete, reqDelete] = useDelete("/players", { 
+*   onCompleted: (data) => alert("Player deleted")
+* })
+* ...
+* // Execute request
+* callDelete({ id: 1 })
+*/
+const useDelete = (endpoint, options = {}) =>
+ useMutate("DELETE", endpoint, options);
+
+
 const query = (params) => {
   let query = "";
   for (let param in params)
@@ -88,17 +153,5 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
   }
   return [calling, { ...fetch, loading: fetch.isLoading, called: call.called }];
 };
-
-const useGet = (endpoint, params = {}, options = {}) =>
-  usePoll(endpoint, params, options);
-
-const usePost = (endpoint, options = {}) =>
-  useMutate("POST", endpoint, options);
-
-const usePut = (endpoint, options = {}) =>
-  useMutate("PUT", endpoint, options);
-
-const useDelete = (endpoint, options = {}) =>
-  useMutate("DELETE", endpoint, options);
 
 export { useGet, usePost, usePut, useDelete };

@@ -18,6 +18,17 @@
     }
   },
   "docdash": {
-    "scripts": ["./style.css"]
+    "scripts": ["./style.css"],
+    "sort": false,
+    "sectionOrder": [ 
+      "Tutorials",         
+      "Modules",
+       "Classes",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Interfaces"
+    ]
   }
 }

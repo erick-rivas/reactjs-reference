@@ -5,7 +5,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { GRAPH_URL } from "settings";
-import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import App from "components/App";
 import ApolloClient from "apollo-boost";

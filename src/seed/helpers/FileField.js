@@ -9,6 +9,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import css from "resources/css/seed/FileField.module.css";
 import { API_URL } from "settings";
 
+/**
+ * Helper component to ease the management of input files
+ * It receive the user file, automatically pre-upload to server and returns the url. 
+ * Useful for file/image preview connected to Formik values
+ */
+
 class FileField extends React.Component {
 
   render() {
@@ -27,7 +33,6 @@ class FileField extends React.Component {
 
   onFileChange(e) {
     const { setFieldValue, name, multiple } = this.props;
-    const { uploadFile } = this.props;
     const callback = (res) => {
       if (multiple) {
         if (Array.isArray(res.body)) {
@@ -45,8 +50,6 @@ class FileField extends React.Component {
     uploadFile(e.target.form, callback);
   }
 }
-
-
 
 const uploadFile = (formWrapper, callback) => {
   let url = `${API_URL}/files/`;

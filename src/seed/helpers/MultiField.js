@@ -6,6 +6,11 @@ __Seed builder__v0.2.0
 import React from "react";
 import css from "resources/css/seed/MultiField.module.css";
 
+/**
+ * Helper component ease the managment of multiple fields selection.
+ * It uses a multicheckbox approach connected with Formik values
+ */
+
 class MultiField extends React.Component {
 
   render() {

@@ -1,8 +1,3 @@
-/**
- * asddas
- * asdasd
- */
-
 import React, { createContext, useState } from "react";
 
 const SeedContext = createContext({

@@ -8,19 +8,29 @@ import cx from "classnames";
 import ModalContainer from "@material-ui/core/Modal";
 import css from "resources/css/seed/Modal.module.css";
 
+/**
+ * Helper component to wrap any component in a modal context
+ */
 
 class Modal extends React.Component {
-  
-  render() {
-    const children = React.Children.map(this.props.children,
-      (child) => {
-        return React.cloneElement(child, {
-          onClose: this.onClose,
-          match: this.props.match
-        });
-      });
 
-    const { width, height, animation = "zoomIn" } = this.props;
+  render() {
+    const { component, width, height, animation = "zoomIn" } = this.props;
+
+    let children = []
+    if (component != null)
+      children = [React.cloneElement(component, {
+        onClose: this.onClose,
+        match: this.props.match
+      })];
+    else
+      children = React.Children.map(this.props.children,
+        (child) => {
+          return React.cloneElement(child, {
+            onClose: this.onClose,
+            match: this.props.match
+          });
+        });
 
     const containerStyle = width && height ? {
       width: width + "px",

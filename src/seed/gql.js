@@ -9,24 +9,35 @@ import { gql } from "apollo-boost";
 import { SINGULARS } from "seed/gql/const";
 import SeedContext from "seed/context";
 
+/** @module gql **/
 
-const cleanQuery = (query) => {
-  const fBracePos = query.indexOf("{");
-  let res = query.substring(fBracePos + 1);
-  res = "{ " + res.replace(/{/g, "{ id ");
-  return res;
-};
 
-const useQuery = (raw, queryStr, options = {}) => {
-  const model = raw.match(/[\w]+/g)[0];
+/**
+ * Return a hook to execute a graphql query
+ * @param {string} gqlQuery Graphql query
+ * @param {string} paramQuery Query param (sql alike)
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Query hook
+ * @example
+ * const reqPlayers = useQuery(`
+ * {
+ *   players {
+ *     name,
+ *     age
+ *   }
+ * }`, "name=messi")
+ */
+
+const useQuery = (gqlQuery, paramQuery, options = {}) => {
+  const model = gqlQuery.match(/[\w]+/g)[0];
   let params = ""
-  if (queryStr) params += "query: \"" + queryStr + "\",";
+  if (paramQuery) params += "query: \"" + paramQuery + "\",";
   if (options.orderBy) params += "orderBy: \"" + options.orderBy + "\",";
   if (options.start) params += "start: " + options.start + ",";
   if (options.end) params += "end: " + options.end + ",";
   if (params.endsWith(",")) params.slice(0, -1);
   const wrapper = `${model}${params != "" ? "(" + params + ")" : ""}`;
-  const query = cleanQuery(raw.replace(model, wrapper));
+  const query = cleanQuery(gqlQuery.replace(model, wrapper));
   const { addGqlQuery } = useContext(SeedContext);
 
   const res = Apollo.useQuery(gql(query), {
@@ -40,30 +51,82 @@ const useQuery = (raw, queryStr, options = {}) => {
   return { ...res, data: res.data ? res.data : {} };
 };
 
-const usePage = (raw, queryStr, pageNum, pageSize, options = {}) => {
+/**
+ * Return a hook to execute a graphql query with pagination
+ * @param {string} gqlQuery Graphql query
+ * @param {string} paramQuery Query param (sql alike)
+ * @param {number} pageNum Page number
+ * @param {number} pageSize Number of objects per page
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Page hook
+ * @example
+ * const reqPlayers = useQuery(`
+ * {
+ *   players {
+ *     name,
+ *     age
+ *   }
+ * }`, "name=messi", 1, 10)
+ */
+
+const usePage = (gqlQuery, paramQuery, pageNum, pageSize, options = {}) => {
   let start = pageSize * (pageNum - 1);
   let end = pageSize * pageNum;
-  return useQuery(raw, queryStr, { ...options, start: start, end: end })
+  return useQuery(gqlQuery, paramQuery, { ...options, start: start, end: end })
 };
 
-const useCount = (modelName, queryStr, options = {}) => {
-  const raw = `
+/**
+ * Return a hook to execute a graphql count
+ * @param {string} modelName Graphql model name
+ * @param {string} paramQuery Query param (sql alike)
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Count hook
+ * @example
+ * const reqCount = useQuery("player")
+ */
+
+const useCount = (modelName, paramQuery, options = {}) => {
+  const gqlQuery = `
      {
         ${modelName}Count {
           count
         }
      }
     `
-  return useQuery(raw, queryStr, { ...options, addQuery: false })
+  return useQuery(gqlQuery, paramQuery, { ...options, addQuery: false })
 };
 
-const useDetail = (raw, id, options = {}) => {
-  const model = raw.match(/[\w]+/g)[0];
+/**
+ * Return a hook to execute a graphql detail query (single object)
+ * @param {string} gqlQuery Graphql query
+ * @param {number} id Identifier of the object
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Detail hook
+ * @example
+ * const reqPlayer = useQuery(`
+ * {
+ *   player {
+ *     name,
+ *     age
+ *   }
+ * }`, 1)
+ */
+
+const useDetail = (gqlQuery, id, options = {}) => {
+  const model = gqlQuery.match(/[\w]+/g)[0];
   const wrapper = `${model}(id: ${id})`;
-  const query = cleanQuery(raw.replace(model, wrapper));
+  const query = cleanQuery(gqlQuery.replace(model, wrapper));
   const res = Apollo.useQuery(gql(query), options);
   return { ...res, data: res.data ? res.data : {} };
 };
+
+const cleanQuery = (query) => {
+  const fBracePos = query.indexOf("{");
+  let res = query.substring(fBracePos + 1);
+  res = "{ " + res.replace(/{/g, "{ id ");
+  return res;
+};
+
 
 const useMutate = (mutation) => {
   const [call, res] = mutation;
@@ -85,14 +148,24 @@ const useMutate = (mutation) => {
   return [wrap, { ...res, data: res.data ? res.data : {} }];
 };
 
-const useSet = (raw, options = {}) => {
-  const query = gql(raw);
-  const mutation = Apollo.useMutation(query, options);
-  return useMutate(mutation);
-};
 
-const useSave = (raw, options = {}) => {
-  const query = gql(raw);
+
+/**
+ * Return a hook to execute a save graphql mutation
+ * @param {string} gqlQuery Graphql query
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Save hook
+ * @example
+ * const [callSave, reqSave] = useSave(SAVE_PLAYER, { 
+ *   onCompleted: (data) => alert("Player saved")
+ * })
+ * ...
+ * // Execute request
+ * callSave({ name: "messi" })
+*/
+
+const useSave = (gqlQuery, options = {}) => {
+  const query = gql(gqlQuery);
   const mutation = Apollo.useMutation(query, {
     ...options,
     refetchQueries:
@@ -101,16 +174,50 @@ const useSave = (raw, options = {}) => {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
           const cHeader = "save" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
-          return raw.indexOf(cHeader) != -1;
+          return gqlQuery.indexOf(cHeader) != -1;
         })
         .map((q) => ({ query: gql(q) }))
   });
   return useMutate(mutation);
 };
 
-const useDelete = (raw, options = {}) => {
+/**
+ * Return a hook to execute a set graphql mutation
+ * @param {string} gqlQuery Graphql query
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Set hook
+ * @example
+ * const [callSet, reqSet] = useSave(SET_PLAYER, { 
+ *   onCompleted: (data) => alert("Player modified")
+ * })
+ * ...
+ * // Execute request
+ * callSet({ id:1, name: "messi" })
+*/
+
+const useSet = (gqlQuery, options = {}) => {
+  const query = gql(gqlQuery);
+  const mutation = Apollo.useMutation(query, options);
+  return useMutate(mutation);
+};
+
+/**
+ * Return a hook to execute a delete graphql mutation
+ * @param {string} gqlQuery Graphql query
+ * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @returns Delete hook
+ * @example
+ * const [callDelete, reqDelete] = useDelete(DELETE_PLAYER, { 
+ *   onCompleted: (data) => alert("Player deleted")
+ * })
+ * ...
+ * // Execute request
+ * callDelete({ id: 1 })
+*/
+
+const useDelete = (gqlQuery, options = {}) => {
   const context = useContext(SeedContext);
-  const query = gql(raw);
+  const query = gql(gqlQuery);
   const mutation = Apollo.useMutation(query, {
     ...options,
     update(cache, { data }) {
@@ -119,7 +226,7 @@ const useDelete = (raw, options = {}) => {
           const cModels = cQueryRaw.match(/[\w]+/g)[0];
           const cModel = SINGULARS[cModels];
           const cHeader = "delete" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
-          if (raw.indexOf(cHeader) == -1) return;
+          if (gqlQuery.indexOf(cHeader) == -1) return;
           const cQuery = gql(cQueryRaw);
           const cResult = cache.readQuery({ query: cQuery });
           const itemId = data[cHeader].id;
