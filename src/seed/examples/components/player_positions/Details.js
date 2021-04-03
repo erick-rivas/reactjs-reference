@@ -1,44 +1,42 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_PLAYER_POSITION } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/player_positions/Details";
 
-function PlayerPositionDetails(props) {
-  const { url } = props.match;
-  const { player_position_id } = props.match.params;
+function PlayerPositionDetails({ playerPositionId, onCompleted = () => null, onError = () => null }) {
 
-  const qPlayerPosition = useDetail(`
+  const reqPlayerPosition = useDetail(`
   {
     playerPosition {
       name
+      createdAt
     }
-  }`, player_position_id);
+  }`, playerPositionId);
   
-  const [cDelete] = useDelete(DELETE_PLAYER_POSITION, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callDelete] = useDelete(DELETE_PLAYER_POSITION, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
-  if (qPlayerPosition.loading) return <Loading />;
-  if (qPlayerPosition.error) return "Error";
-  const { playerPosition = {} } = qPlayerPosition.data;
+  if (reqPlayerPosition.loading) return <Loading />;
+  if (reqPlayerPosition.error) return "Error";
+  const { playerPosition = {} } = reqPlayerPosition.data;
 
   const onClickDelete = () =>
-    cDelete({ id: player_position_id });
-
-  const onClickBack = () => {
-    const backUrl = url.substring(0, url.lastIndexOf("/"));
-    props.history.push(backUrl);
-  };
+    callDelete({ id: playerPositionId });
 
   return <View
     playerPosition={playerPosition}
     onClickDelete={onClickDelete}
-    onClickBack={onClickBack}
    />;
+}
+
+PlayerPositionDetails.propTypes = {
+  playerPositionId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default PlayerPositionDetails;

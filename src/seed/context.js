@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import PropTypes from 'prop-types';
 
 const SeedContext = createContext({
   gqlQueries: [],
@@ -36,3 +37,7 @@ export const SeedProvider = ({ children }) => {
     </SeedContext.Provider>
   );
 };
+
+SeedProvider.propTypes = {
+  children: PropTypes.any
+}

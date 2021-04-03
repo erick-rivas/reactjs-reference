@@ -4,9 +4,10 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classnames";
 import ModalContainer from "@material-ui/core/Modal";
-import css from "resources/css/seed/Modal.module.css";
+import css from "resources/css/seed/styles/Modal.module.css";
 
 /**
  * Helper component to wrap any component in a modal context
@@ -15,50 +16,60 @@ import css from "resources/css/seed/Modal.module.css";
 class Modal extends React.Component {
 
   render() {
-    const { component, width, height, animation = "zoomIn" } = this.props;
+    const { component, width=500, height=500, animation="zoomIn", overflow="auto"} = this.props;
 
     let children = []
     if (component != null)
-      children = [React.cloneElement(component, {
-        onClose: this.onClose,
-        match: this.props.match
-      })];
+      children = React.createElement(component, {
+        ...this.props,
+        closeModal: this.closeModal,
+        onCompleted: this.closeModal,
+        onError: this.closeModal,
+      })
     else
       children = React.Children.map(this.props.children,
         (child) => {
           return React.cloneElement(child, {
-            onClose: this.onClose,
-            match: this.props.match
+            ...this.props,
+            closeModal: this.closeModal,
+            onCompleted: this.closeModal,
+            onError: this.closeModal
           });
         });
 
-    const containerStyle = width && height ? {
+    const containerStyle = {
       width: width + "px",
       marginLeft: -(width / 2) + "px",
       height: height + "px",
       marginTop: -(height / 2) + "px"
-    } : {};
+    };
 
-    const closeStyle = width && height ? {
+    const contentStyle = {
+      overflow: overflow
+    };
+
+    const closeStyle = {
       marginLeft: (width - 24) + "px"
-    } : {};
+    };
 
     return (
       <ModalContainer
         className={css.module}
         open={true}
         transitionDuration={0}
-        onClose={this.onClose}>
+        closeModal={this.closeModal}>
 
-        <div className={cx(css.container, "animated", animation)}
+        <div className={cx(css.container, "animate__animated", "animate__" + animation)}
           style={containerStyle}>
           <button
             className={css.close}
             style={closeStyle}
-            onClick={this.onClose}>
+            onClick={this.closeModal}>
             <i className="fas fa-times"></i>
           </button>
-          {children}
+          <div className={css.content} style={contentStyle}>
+            {children}
+          </div>
         </div>
 
       </ModalContainer>
@@ -68,14 +79,31 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
-    this.onClose = this.onClose.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  onClose() {
-    if (this.props.onClose == null)
-      this.props.history.goBack();
-    else this.props.onClose(this.props.match);
+  closeModal() {
+    const { onClose, history, match } = this.props;
+    if (onClose == null){
+      if(history != null){
+        const { url } = match;
+        const backUrl = url.substring(0, url.lastIndexOf("/"));
+        history.push(backUrl);
+      }
+    } else onClose(match);
   }
+}
+
+Modal.propTypes = {
+  component: PropTypes.elementType,
+  width: PropTypes.number, 
+  height: PropTypes.number, 
+  animation: PropTypes.string, 
+  overflow: PropTypes.string,
+  onClose: PropTypes.func,
+  match: PropTypes.object,
+  history: PropTypes.object,
+  children: PropTypes.any
 }
 
 export default Modal;

@@ -1,8 +1,9 @@
 import React from "react";
 import View from "seed/examples/views/player_positions/PlayerPositions";
 
-function PlayerPositions(props) {
+function PlayerPositions() {
   return <View />;
 }
+PlayerPositions.propTypes = {}
 
 export default PlayerPositions;

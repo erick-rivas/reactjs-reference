@@ -3,23 +3,25 @@ import { useQuery } from "seed/gql";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/scores/List";
 
-function ScoreList(props){
-  const qScores = useQuery(`
+function ScoreList() {
+  const reqScores = useQuery(`
   {
     scores {
       min
+      createdAt
       player { }
       match { }
     }
   }`);
 
-  if (qScores.loading) return <Loading />;
-  if (qScores.error) return "Error";
-  const { scores = [] } = qScores.data;
-
+  if (reqScores.loading) return <Loading />;
+  if (reqScores.error) return "Error";
+  const { scores = [] } = reqScores.data;
   return <View
     scores={scores}
   />;
 }
+
+ScoreList.propTypes = {}
 
 export default ScoreList;

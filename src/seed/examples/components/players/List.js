@@ -3,25 +3,27 @@ import { useQuery } from "seed/gql";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/players/List";
 
-function PlayerList(props){
-  const qPlayers = useQuery(`
+function PlayerList() {
+  const reqPlayers = useQuery(`
   {
     players {
       name
       isActive
+      createdAt
       photo { }
       team { }
       position { }
     }
   }`);
 
-  if (qPlayers.loading) return <Loading />;
-  if (qPlayers.error) return "Error";
-  const { players = [] } = qPlayers.data;
-
+  if (reqPlayers.loading) return <Loading />;
+  if (reqPlayers.error) return "Error";
+  const { players = [] } = reqPlayers.data;
   return <View
     players={players}
   />;
 }
+
+PlayerList.propTypes = {}
 
 export default PlayerList;

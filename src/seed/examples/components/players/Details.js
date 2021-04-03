@@ -1,48 +1,46 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_PLAYER } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/players/Details";
 
-function PlayerDetails(props) {
-  const { url } = props.match;
-  const { player_id } = props.match.params;
+function PlayerDetails({ playerId, onCompleted = () => null, onError = () => null }) {
 
-  const qPlayer = useDetail(`
+  const reqPlayer = useDetail(`
   {
     player {
       name
       isActive
+      createdAt
       photo { }
       team { }
       position { }
     }
-  }`, player_id);
+  }`, playerId);
   
-  const [cDelete] = useDelete(DELETE_PLAYER, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callDelete] = useDelete(DELETE_PLAYER, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
-  if (qPlayer.loading) return <Loading />;
-  if (qPlayer.error) return "Error";
-  const { player = {} } = qPlayer.data;
+  if (reqPlayer.loading) return <Loading />;
+  if (reqPlayer.error) return "Error";
+  const { player = {} } = reqPlayer.data;
 
   const onClickDelete = () =>
-    cDelete({ id: player_id });
-
-  const onClickBack = () => {
-    const backUrl = url.substring(0, url.lastIndexOf("/"));
-    props.history.push(backUrl);
-  };
+    callDelete({ id: playerId });
 
   return <View
     player={player}
     onClickDelete={onClickDelete}
-    onClickBack={onClickBack}
    />;
+}
+
+PlayerDetails.propTypes = {
+  playerId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default PlayerDetails;

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import View from "views/Docs";
 
-function Docs(props) {
+function Docs() {
     useEffect(() => {
         window.location.replace("/docs/tutorial-010-general.html");
     }, []);
-  return <View />;
+  return <div />;
 }
+Docs.propTypes = {}
 
 export default Docs;

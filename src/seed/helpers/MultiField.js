@@ -4,18 +4,23 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import css from "resources/css/seed/MultiField.module.css";
+import PropTypes from 'prop-types';
+import css from "resources/css/seed/styles/MultiField.module.css";
 
 /**
  * Helper component ease the managment of multiple fields selection.
  * It uses a multicheckbox approach connected with Formik values
+ * @param {Array} values Multifield values
+ * @param {Array} value Selected value(s)
+ * @param {string} name Formik Field name param
+ * @param {Function} setFieldValue Formik setFieldValue func
+ * @param {boolean} singleChoice Wheater the multilsect is single (default false=multiple)
  */
 
 class MultiField extends React.Component {
 
   render() {
-    const { values = [] } = this.props;
-    const { value = [] } = this.props;
+    const { values = [], value = [] } = this.props;
     const gv = (val) => val.id ? parseInt(val.id) : val;
 
     let selected = {};
@@ -45,10 +50,8 @@ class MultiField extends React.Component {
 
   onItemSelected(selected) {
     const { setFieldValue, name } = this.props;
-    const { value = [] } = this.props;
+    const { value = [], singleChoice = false } = this.props;
     const gv = (val) => val.id ? val.id : val;
-
-    const singleChoice = this.props.singleChoice;
 
     let res = value;
     let pos = res.map((r) => gv(r)).indexOf(gv(selected));
@@ -60,6 +63,14 @@ class MultiField extends React.Component {
       setFieldValue(name, res);
     else setFieldValue(name, res[0]);
   }
+}
+
+MultiField.propTypes = {
+  value: PropTypes.array,
+  values: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  singleChoice: PropTypes.bool
 }
 
 export default MultiField;

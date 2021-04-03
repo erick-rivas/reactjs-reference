@@ -1,48 +1,53 @@
 import React from "react";
-import cx from "classnames";
-import { Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import UserDetails from "seed/examples/components/users/Details";
 import UserList from "seed/examples/components/users/List";
 import UserFormSave from "seed/examples/components/users/FormSave";
 import UserFormSet from "seed/examples/components/users/FormSet";
-import Modal from "seed/helpers/Modal";
-import css from "resources/css/seed/examples/users/Users.module.css";
+import ModalRoute from "seed/helpers/ModalRoute";
 
-const Details = (props) =>
-  <div class={css.details}>
-    <div class={css.card}>
-      <UserDetails {...props} />
-    </div>
-  </div>;
+const Users = () =>
+  <BrowserRouter basename="/examples/users">
+    <div class="content container-fluid">
 
-const FormSave = (props) =>
-  <Modal {...props}>
-    <UserFormSave {...props} />
-  </Modal>;
+    {/* Header */}
+    <div class="page-header">
+      <div class="row align-items-end">
 
-const FormSet = (props) =>
-  <Modal {...props}>
-    <UserFormSet {...props} />
-  </Modal>;
-
-const Users = (props) =>
-  <Router basename="/users">
-    <div class={css.module}>
-      <div class={css.container}>
-        <div class={css.list}>
-          <UserList />
+        <div class="col-sm">
+          <h1 class="page-header-title">Users</h1>
         </div>
-        <Route
-          path={`/:user_id(\\d+)`}
-          component={Details} />
+
+        <div class="col-sm-auto">
+          <div class="btn-group" role="group">
+            <Link to="/create" className="btn btn-primary">
+              <i class="tio-add mr-1"></i>Create
+            </Link>
+          </div>
+        </div>
+
       </div>
-      <Route
-        path={[`/:any/new`,`/new`,]}
-        component={FormSave} />
-      <Route
-        path={`/:user_id(\\d+)/edit`}
-        component={FormSet} />
     </div>
-  </Router>;
+
+    {/* List */}
+    <UserList />
+
+    {/* Modals */}
+    <ModalRoute
+        path="/:userId(\d+)"
+        component={UserDetails} />
+    <ModalRoute
+      path="/create"
+      component={UserFormSave} />
+    <ModalRoute
+      path="/:userId(\d+)/edit"
+      component={UserFormSet} />
+
+    </div>
+  </BrowserRouter>;
+
+Users.propTypes = {}
 
 export default Users;

@@ -1,18 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { SAVE_SCORE } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/scores/Form";
 
-function ScoreFormSave(props) {
-  const { url } = props.match;
+function ScoreFormSave({ onCompleted = () => null, onError = () => null }) {
   const qPlayers = useQuery(`{ players { } }`);
   const qMatches = useQuery(`{ matches { } }`);
-  const [callSave, qSave] = useSave(queries.SAVE_SCORE, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callSave, qSave] = useSave(SAVE_SCORE, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
   const { players = [] } = qPlayers.data;
   const { matches = [] } = qMatches.data;
@@ -27,6 +25,11 @@ function ScoreFormSave(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+ScoreFormSave.propTypes = {
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default ScoreFormSave;

@@ -1,46 +1,44 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_SCORE } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/scores/Details";
 
-function ScoreDetails(props) {
-  const { url } = props.match;
-  const { score_id } = props.match.params;
+function ScoreDetails({ scoreId, onCompleted = () => null, onError = () => null }) {
 
-  const qScore = useDetail(`
+  const reqScore = useDetail(`
   {
     score {
       min
+      createdAt
       player { }
       match { }
     }
-  }`, score_id);
+  }`, scoreId);
   
-  const [cDelete] = useDelete(DELETE_SCORE, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callDelete] = useDelete(DELETE_SCORE, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
-  if (qScore.loading) return <Loading />;
-  if (qScore.error) return "Error";
-  const { score = {} } = qScore.data;
+  if (reqScore.loading) return <Loading />;
+  if (reqScore.error) return "Error";
+  const { score = {} } = reqScore.data;
 
   const onClickDelete = () =>
-    cDelete({ id: score_id });
-
-  const onClickBack = () => {
-    const backUrl = url.substring(0, url.lastIndexOf("/"));
-    props.history.push(backUrl);
-  };
+    callDelete({ id: scoreId });
 
   return <View
     score={score}
     onClickDelete={onClickDelete}
-    onClickBack={onClickBack}
    />;
+}
+
+ScoreDetails.propTypes = {
+  scoreId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default ScoreDetails;

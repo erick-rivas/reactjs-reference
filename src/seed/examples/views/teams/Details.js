@@ -1,37 +1,47 @@
 import React from "react";
-import cx from "classnames";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import css from "resources/css/seed/examples/teams/Details.module.css";
 
-const TeamDetails = ({ team, onClickDelete, onClickBack }) =>
-  <div class={css.module}>
-    <div class={css.header}>
-         <i class={cx(css.back, "fas fa-arrow-left")}
-          onClick={onClickBack} />
-        <div class={css.options}>
-          <Link to={`/edit`}
-            className={cx(css.btn, css.edit)}>Edit</Link>
-          <button class={cx(css.btn, css.delete)}
-            onClick={onClickDelete}>Delete</button>
-        </div>
+const TeamDetails = ({ team, onClickDelete }) =>
+  <div class="card">
+
+    {/* Header */}
+    <div class="profile-cover">
+      <div class="profile-cover-img-wrapper">
+        <img id="profileCoverImg" class="profile-cover-img" src="/theme/svg/components/abstract-bg-4.svg" alt="Cover" />
+      </div>
     </div>
-    <div class={css.content}>
-          <label class={css.lbl}>Name</label><br/>
-          <label class={css.txt}>{ team.name.toString() }</label>
-          <br/>
-          <label class={css.lbl}>Logo</label><br/>
-          <label class={css.txt}>{ team.logo.toString() }</label>
-          <br/>
-          <label class={css.lbl}>Description</label><br/>
-          <label class={css.txt}>{ team.description.toString() }</label>
-          <br/>
-          <label class={css.lbl}>Market value</label><br/>
-          <label class={css.txt}>{ team.marketValue.toString() }</label>
-          <br/>
-          <label class={css.lbl}>Identity docs</label><br/>
-          <label class={css.txt}>{ team.identityDocs.toString() }</label>
-          <br/>
+    <label class="avatar avatar-xxl avatar-circle avatar-border-lg profile-cover-avatar">
+      <img id="avatarImg" class="avatar-img" src="/theme/svg/components/placeholder-img-format.svg" alt="Icon" style={ {width: "100%"} }/>
+    </label>
+
+    {/* Body */}
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h2>TEAM {team.id}</h2>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="12" style={ {fontFamily: "Courier New"} } disabled>
+            { JSON.stringify(team, null, "    ") }
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Footer */}
+    <div class="card-footer">
+      <div class="d-flex justify-content-end">
+        <Link to={`/${team.id}/edit`} class="btn btn-secondary mr-2">Edit team</Link>
+        <button class="btn btn-danger" onClick={onClickDelete}>Delete team</button>
+      </div>
     </div>
   </div>;
+
+TeamDetails.propTypes = {
+  team: PropTypes.object.isRequired,
+  onClickDelete: PropTypes.func
+}
 
 export default TeamDetails;

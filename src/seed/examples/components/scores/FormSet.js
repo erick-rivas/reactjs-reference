@@ -1,21 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { SCORE, SET_SCORE } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/scores/Form";
 
-function ScoreFormSet(props) {
-  const { url } = props.match;
-  const { score_id } = props.match.params;
+function ScoreFormSet({ scoreId, onCompleted = () => null, onError = () => null  }) {
 
-  const qScore = useDetail(queries.SCORE, score_id);
+  const qScore = useDetail(SCORE, scoreId);
   const qPlayers = useQuery(`{ players { } }`);
   const qMatches = useQuery(`{ matches { } }`);
-  const [callSet, qSet] = useSet(queries.SET_SCORE, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callSet, qSet] = useSet(SET_SCORE, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
   if (qScore.loading) return <Loading />;
@@ -26,7 +23,7 @@ function ScoreFormSet(props) {
   const error = qSet.error ? "An error has occurred" : null
 
   const onSubmit = (values) => {
-    values.id = score_id;
+    values.id = scoreId;
     callSet(values);
   };
 
@@ -37,6 +34,12 @@ function ScoreFormSet(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+ScoreFormSet.propTypes = {
+  scoreId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default ScoreFormSet;

@@ -1,19 +1,20 @@
 import React from "react";
-import cx from "classnames";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import Docs from "components/Docs";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Examples from "seed/examples/components/Examples";
-import css from "resources/css/App.module.css";
+import Docs from "components/Docs";
+import css from "resources/css/App.module.css"
 
-const App = (props) =>
+const App = () =>
   <div class={css.module}>
-    <Router>
+    <BrowserRouter>
       <Switch>
         <Route path="/examples" component={Examples} />
         <Route path="/docs" component={Docs} />
-        <Redirect to="/docs" />
+        <Redirect to="/examples" />
       </Switch>
-    </Router>
+    </BrowserRouter>
   </div>;
+
+App.propTypes = {}
 
 export default App;

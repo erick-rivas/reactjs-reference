@@ -1,19 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { PLAYER_POSITION, SET_PLAYER_POSITION } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/player_positions/Form";
 
-function PlayerPositionFormSet(props) {
-  const { url } = props.match;
-  const { player_position_id } = props.match.params;
+function PlayerPositionFormSet({ playerPositionId, onCompleted = () => null, onError = () => null  }) {
 
-  const qPlayerPosition = useDetail(queries.PLAYER_POSITION, player_position_id);
-  const [callSet, qSet] = useSet(queries.SET_PLAYER_POSITION, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const qPlayerPosition = useDetail(PLAYER_POSITION, playerPositionId);
+  const [callSet, qSet] = useSet(SET_PLAYER_POSITION, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
   if (qPlayerPosition.loading) return <Loading />;
@@ -22,7 +19,7 @@ function PlayerPositionFormSet(props) {
   const error = qSet.error ? "An error has occurred" : null
 
   const onSubmit = (values) => {
-    values.id = player_position_id;
+    values.id = playerPositionId;
     callSet(values);
   };
 
@@ -31,6 +28,12 @@ function PlayerPositionFormSet(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+PlayerPositionFormSet.propTypes = {
+  playerPositionId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default PlayerPositionFormSet;

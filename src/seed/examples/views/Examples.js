@@ -1,21 +1,19 @@
 import React from "react";
-import cx from "classnames";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Login from "seed/examples/components/auth/Login";
 import Logout from "seed/examples/components/auth/Logout";
 import Home from "seed/examples/components/Home";
-import css from "resources/css/seed/examples/Examples.module.css";
 
-const Examples = (props) =>
-  <div class={css.module}>
-    <Router>
-      <Switch>
-        <Route path="/examples/login" component={Login} />
-        <Route path="/examples/logout" component={Logout} />
-        <Route path="/examples" component={Home} />
-        <Redirect to="/examples" />
-      </Switch>
-    </Router>
-  </div>;
+const Examples = () =>
+  <BrowserRouter basename="/examples">
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/logout" component={Logout} />
+      <Route path="/" component={Home} />
+      <Redirect to="/" />
+    </Switch>
+  </BrowserRouter>;
+
+Examples.propTypes = {}
 
 export default Examples;

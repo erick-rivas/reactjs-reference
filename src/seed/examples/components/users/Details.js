@@ -1,14 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_USER } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/users/Details";
 
-function UserDetails(props) {
-  const { url } = props.match;
-  const { user_id } = props.match.params;
+function UserDetails({ userId, onCompleted = () => null, onError = () => null }) {
 
-  const qUser = useDetail(`
+  const reqUser = useDetail(`
   {
     user {
       username
@@ -16,34 +15,33 @@ function UserDetails(props) {
       lastName
       email
       isActive
+      createdAt
       teams { }
     }
-  }`, user_id);
+  }`, userId);
   
-  const [cDelete] = useDelete(DELETE_USER, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callDelete] = useDelete(DELETE_USER, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
-  if (qUser.loading) return <Loading />;
-  if (qUser.error) return "Error";
-  const { user = {} } = qUser.data;
+  if (reqUser.loading) return <Loading />;
+  if (reqUser.error) return "Error";
+  const { user = {} } = reqUser.data;
 
   const onClickDelete = () =>
-    cDelete({ id: user_id });
-
-  const onClickBack = () => {
-    const backUrl = url.substring(0, url.lastIndexOf("/"));
-    props.history.push(backUrl);
-  };
+    callDelete({ id: userId });
 
   return <View
     user={user}
     onClickDelete={onClickDelete}
-    onClickBack={onClickBack}
    />;
+}
+
+UserDetails.propTypes = {
+  userId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default UserDetails;

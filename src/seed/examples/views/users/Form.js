@@ -1,32 +1,57 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import MultiField from "seed/helpers/MultiField";
 import FileField from "seed/helpers/FileField";
-import css from "resources/css/seed/examples/users/Form.module.css";
 
-const UserForm = ({ user= {}, teams, error, onSubmit }) =>
-  <div class={css.module}>
-    <div class={css.header}>User</div>
-    <div class={css.form}>
-      <Formik
+const UserForm = ({ user= {}, teams= [], onSubmit, error }) =>
+
+  <div class="card">
+
+    {/* Header */}
+    <div class="card-header">
+      <h3 class="card-header-title">User</h3>
+    </div>
+
+    {/* Body */}
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <Formik
           initialValues={user}
           onSubmit={onSubmit}>
-     {({ values, setFieldValue}) =>
-      <Form>
-        <div>
-        <label class={css.lbl}>Teams</label>
-        <div class={css.mul}>
-        <MultiField name="teams"
-          values={teams.map((e, idx) => { return {value: e, label: e.id}; }) }
-          setFieldValue={setFieldValue} value={values.teams ? values.teams : []} />
+          {({ values, setFieldValue}) =>
+          <Form>
+            <div class="mb-3">
+            {/* Teams */}
+            <div class="form-group">
+            <div>
+            <label class="input-label">Teams</label>
+            <div class="form-control">
+            <MultiField name="teams"
+              values={teams.map((e, idx) => { return {value: e, label: e.id}; }) }
+              setFieldValue={setFieldValue} value={values.teams ? values.teams : []} />
+            </div>
+            </div>
+            </div>
+            </div>
+            {error ? <div class="alert alert-soft-danger">{error}</div> : null}
+            <button type="submit" class="btn btn-block btn-primary">Send</button>
+          </Form> }
+          </Formik>
         </div>
-        <br/>
-        </div>
-        {error ? <div class={css.error}>{error}</div> : null}
-        <button type="submit" class={css.submit}>Send</button>
-      </Form> }
-      </Formik>
+      </div>
     </div>
+
   </div>;
+
+UserForm.propTypes = {
+  user: PropTypes.object,
+  
+  teams: PropTypes.array,
+  
+  onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string
+}
 
 export default UserForm;

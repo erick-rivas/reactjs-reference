@@ -5,7 +5,7 @@ __Seed builder__v0.2.0
 
 import React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import css from "resources/css/seed/Loading.module.css";
+import css from "resources/css/seed/styles/Loading.module.css";
 
 /**
  * Helper component to draw a material design spinner
@@ -20,5 +20,7 @@ class Loading extends React.Component {
     );
   }
 }
+
+Loading.propTypes = {}
 
 export default Loading;

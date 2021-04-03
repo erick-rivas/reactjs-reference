@@ -1,18 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { SAVE_PLAYER } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/players/Form";
 
-function PlayerFormSave(props) {
-  const { url } = props.match;
+function PlayerFormSave({ onCompleted = () => null, onError = () => null }) {
   const qTeams = useQuery(`{ teams { } }`);
   const qPlayerPositions = useQuery(`{ playerPositions { } }`);
-  const [callSave, qSave] = useSave(queries.SAVE_PLAYER, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callSave, qSave] = useSave(SAVE_PLAYER, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
   const { teams = [] } = qTeams.data;
   const { playerPositions = [] } = qPlayerPositions.data;
@@ -27,6 +25,11 @@ function PlayerFormSave(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+PlayerFormSave.propTypes = {
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default PlayerFormSave;

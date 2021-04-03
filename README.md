@@ -1,6 +1,6 @@
 # ReactJS Reference
 
-This repository holds the source code of a **reference** for the development of a **React.js webapp**.
+This repository holds a **reference** for the development of a **React.js App**.
 
 ## Quickstart
 

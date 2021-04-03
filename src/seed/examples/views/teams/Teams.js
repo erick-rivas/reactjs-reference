@@ -1,48 +1,53 @@
 import React from "react";
-import cx from "classnames";
-import { Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import TeamDetails from "seed/examples/components/teams/Details";
 import TeamList from "seed/examples/components/teams/List";
 import TeamFormSave from "seed/examples/components/teams/FormSave";
 import TeamFormSet from "seed/examples/components/teams/FormSet";
-import Modal from "seed/helpers/Modal";
-import css from "resources/css/seed/examples/teams/Teams.module.css";
+import ModalRoute from "seed/helpers/ModalRoute";
 
-const Details = (props) =>
-  <div class={css.details}>
-    <div class={css.card}>
-      <TeamDetails {...props} />
-    </div>
-  </div>;
+const Teams = () =>
+  <BrowserRouter basename="/examples/teams">
+    <div class="content container-fluid">
 
-const FormSave = (props) =>
-  <Modal {...props}>
-    <TeamFormSave {...props} />
-  </Modal>;
+    {/* Header */}
+    <div class="page-header">
+      <div class="row align-items-end">
 
-const FormSet = (props) =>
-  <Modal {...props}>
-    <TeamFormSet {...props} />
-  </Modal>;
-
-const Teams = (props) =>
-  <Router basename="/teams">
-    <div class={css.module}>
-      <div class={css.container}>
-        <div class={css.list}>
-          <TeamList />
+        <div class="col-sm">
+          <h1 class="page-header-title">Teams</h1>
         </div>
-        <Route
-          path={`/:team_id(\\d+)`}
-          component={Details} />
+
+        <div class="col-sm-auto">
+          <div class="btn-group" role="group">
+            <Link to="/create" className="btn btn-primary">
+              <i class="tio-add mr-1"></i>Create
+            </Link>
+          </div>
+        </div>
+
       </div>
-      <Route
-        path={[`/:any/new`,`/new`,]}
-        component={FormSave} />
-      <Route
-        path={`/:team_id(\\d+)/edit`}
-        component={FormSet} />
     </div>
-  </Router>;
+
+    {/* List */}
+    <TeamList />
+
+    {/* Modals */}
+    <ModalRoute
+        path="/:teamId(\d+)"
+        component={TeamDetails} />
+    <ModalRoute
+      path="/create"
+      component={TeamFormSave} />
+    <ModalRoute
+      path="/:teamId(\d+)/edit"
+      component={TeamFormSet} />
+
+    </div>
+  </BrowserRouter>;
+
+Teams.propTypes = {}
 
 export default Teams;

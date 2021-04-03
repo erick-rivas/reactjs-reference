@@ -1,20 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { USER, SET_USER } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/users/Form";
 
-function UserFormSet(props) {
-  const { url } = props.match;
-  const { user_id } = props.match.params;
+function UserFormSet({ userId, onCompleted = () => null, onError = () => null  }) {
 
-  const qUser = useDetail(queries.USER, user_id);
+  const qUser = useDetail(USER, userId);
   const qTeams = useQuery(`{ teams { } }`);
-  const [callSet, qSet] = useSet(queries.SET_USER, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callSet, qSet] = useSet(SET_USER, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
   if (qUser.loading) return <Loading />;
@@ -24,7 +21,7 @@ function UserFormSet(props) {
   const error = qSet.error ? "An error has occurred" : null
 
   const onSubmit = (values) => {
-    values.id = user_id;
+    values.id = userId;
     callSet(values);
   };
 
@@ -34,6 +31,12 @@ function UserFormSet(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+UserFormSet.propTypes = {
+  userId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default UserFormSet;

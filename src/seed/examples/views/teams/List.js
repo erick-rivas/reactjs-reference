@@ -1,28 +1,42 @@
 import React from "react";
-import cx from "classnames";
+import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
-import css from "resources/css/seed/examples/teams/List.module.css";
 
 const TeamList = ({ teams }) =>
-  <div class={css.module}>
-    <div class={css.header}>
-      <Link to={`/new`}
-        class={cx(css.btn, css.create)}>Create</Link>
-    </div>
-    <div class={css.content}>
-      {
-        teams.map(team =>
-          <NavLink
-            key={team.id}
-            to={`/${team.id}`}
-            className={css.item}
-            activeClassName={css.active}>
-              <div class={css.title}>{team.id}</div>
-              <div class={css.subtitle}>{JSON.stringify(team)}</div>
-          </NavLink>
-        )
-      }
-    </div>
-  </div>
+  <ul class="list-group">
+  {
+    teams.map((team) =>
+      <li key={team.id} class="list-group-item">
+        <div class="row align-items-center gx-2">
+          <div class="col-auto">
+            <img class="avatar avatar-xs avatar-4by3" src="/theme/svg/components/placeholder-img-format.svg" alt="Icon" />
+          </div>
+
+          <div class="col">
+            <h5 class="mb-0">
+              <Link to={`/${team.id}`}>TEAM {team.id}</Link>
+            </h5>
+            <ul class="list-inline list-separator small">
+              <li class="list-inline-item">{ JSON.stringify(team).substring(0,70) + "…" }</li>
+              <li class="list-inline-item">{ new Date(team.createdAt).getDate() + "." + (new Date(team.createdAt).getMonth() + 1) + "." + new Date(team.createdAt).getFullYear() }</li>
+
+            </ul>
+          </div>
+
+          <div class="col-auto">
+            {/* Options */}
+            <Link to={`/${team.id}`} className="btn btn-sm btn-white">
+              <span class="d-none d-sm-inline-block mr-1">Details</span>
+            </Link>
+          </div>
+        </div>
+      </li>
+    )
+  }
+  </ul>
+
+TeamList.propTypes = {
+  teams: PropTypes.array.isRequired,
+}
 
 export default TeamList;

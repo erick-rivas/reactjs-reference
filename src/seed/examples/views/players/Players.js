@@ -1,48 +1,53 @@
 import React from "react";
-import cx from "classnames";
-import { Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import PlayerDetails from "seed/examples/components/players/Details";
 import PlayerList from "seed/examples/components/players/List";
 import PlayerFormSave from "seed/examples/components/players/FormSave";
 import PlayerFormSet from "seed/examples/components/players/FormSet";
-import Modal from "seed/helpers/Modal";
-import css from "resources/css/seed/examples/players/Players.module.css";
+import ModalRoute from "seed/helpers/ModalRoute";
 
-const Details = (props) =>
-  <div class={css.details}>
-    <div class={css.card}>
-      <PlayerDetails {...props} />
-    </div>
-  </div>;
+const Players = () =>
+  <BrowserRouter basename="/examples/players">
+    <div class="content container-fluid">
 
-const FormSave = (props) =>
-  <Modal {...props}>
-    <PlayerFormSave {...props} />
-  </Modal>;
+    {/* Header */}
+    <div class="page-header">
+      <div class="row align-items-end">
 
-const FormSet = (props) =>
-  <Modal {...props}>
-    <PlayerFormSet {...props} />
-  </Modal>;
-
-const Players = (props) =>
-  <Router basename="/players">
-    <div class={css.module}>
-      <div class={css.container}>
-        <div class={css.list}>
-          <PlayerList />
+        <div class="col-sm">
+          <h1 class="page-header-title">Players</h1>
         </div>
-        <Route
-          path={`/:player_id(\\d+)`}
-          component={Details} />
+
+        <div class="col-sm-auto">
+          <div class="btn-group" role="group">
+            <Link to="/create" className="btn btn-primary">
+              <i class="tio-add mr-1"></i>Create
+            </Link>
+          </div>
+        </div>
+
       </div>
-      <Route
-        path={[`/:any/new`,`/new`,]}
-        component={FormSave} />
-      <Route
-        path={`/:player_id(\\d+)/edit`}
-        component={FormSet} />
     </div>
-  </Router>;
+
+    {/* List */}
+    <PlayerList />
+
+    {/* Modals */}
+    <ModalRoute
+        path="/:playerId(\d+)"
+        component={PlayerDetails} />
+    <ModalRoute
+      path="/create"
+      component={PlayerFormSave} />
+    <ModalRoute
+      path="/:playerId(\d+)/edit"
+      component={PlayerFormSet} />
+
+    </div>
+  </BrowserRouter>;
+
+Players.propTypes = {}
 
 export default Players;

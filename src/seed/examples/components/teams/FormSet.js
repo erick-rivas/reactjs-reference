@@ -1,20 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { TEAM, SET_TEAM } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/teams/Form";
 
-function TeamFormSet(props) {
-  const { url } = props.match;
-  const { team_id } = props.match.params;
+function TeamFormSet({ teamId, onCompleted = () => null, onError = () => null  }) {
 
-  const qTeam = useDetail(queries.TEAM, team_id);
+  const qTeam = useDetail(TEAM, teamId);
   const qTeams = useQuery(`{ teams { } }`);
-  const [callSet, qSet] = useSet(queries.SET_TEAM, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callSet, qSet] = useSet(SET_TEAM, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
   if (qTeam.loading) return <Loading />;
@@ -24,7 +21,7 @@ function TeamFormSet(props) {
   const error = qSet.error ? "An error has occurred" : null
 
   const onSubmit = (values) => {
-    values.id = team_id;
+    values.id = teamId;
     callSet(values);
   };
 
@@ -34,6 +31,12 @@ function TeamFormSet(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+TeamFormSet.propTypes = {
+  teamId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default TeamFormSet;

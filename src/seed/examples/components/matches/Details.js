@@ -1,48 +1,46 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_MATCH } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/matches/Details";
 
-function MatchDetails(props) {
-  const { url } = props.match;
-  const { match_id } = props.match.params;
+function MatchDetails({ matchId, onCompleted = () => null, onError = () => null }) {
 
-  const qMatch = useDetail(`
+  const reqMatch = useDetail(`
   {
     match {
       date
       type
+      createdAt
       local { }
       visitor { }
       scores { }
     }
-  }`, match_id);
+  }`, matchId);
   
-  const [cDelete] = useDelete(DELETE_MATCH, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callDelete] = useDelete(DELETE_MATCH, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
-  if (qMatch.loading) return <Loading />;
-  if (qMatch.error) return "Error";
-  const { match = {} } = qMatch.data;
+  if (reqMatch.loading) return <Loading />;
+  if (reqMatch.error) return "Error";
+  const { match = {} } = reqMatch.data;
 
   const onClickDelete = () =>
-    cDelete({ id: match_id });
-
-  const onClickBack = () => {
-    const backUrl = url.substring(0, url.lastIndexOf("/"));
-    props.history.push(backUrl);
-  };
+    callDelete({ id: matchId });
 
   return <View
     match={match}
     onClickDelete={onClickDelete}
-    onClickBack={onClickBack}
    />;
+}
+
+MatchDetails.propTypes = {
+  matchId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default MatchDetails;

@@ -4,21 +4,25 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
+import PropTypes from 'prop-types';
 import $ from "jquery";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import css from "resources/css/seed/FileField.module.css";
 import { API_URL } from "settings";
 
 /**
  * Helper component to ease the management of input files
  * It receive the user file, automatically pre-upload to server and returns the url. 
  * Useful for file/image preview connected to Formik values
+ * @param {string} className Classname of the component
+ * @param {string} accept Type of files of file input (e.g. image/*)
+ * @param {string} name Formik Field name param
+ * @param {Function} setFieldValue Formik setFieldValue func
+ * @param {boolean} multiple Wheater the field is single (default false=single)
  */
 
 class FileField extends React.Component {
 
   render() {
-    const { className, accept, multiple = false } = this.props;
+    const { className = "", accept, multiple = false } = this.props;
     return (
       <form encType="multipart/form-data">
         <input name="file" type="file" className={className} accept={accept} onChange={this.onFileChange} multiple={multiple}></input>
@@ -78,5 +82,13 @@ const uploadFile = (formWrapper, callback) => {
     }
   });
 };
+
+FileField.propTypes = {
+  className: PropTypes.string, 
+  accept: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  multiple: PropTypes.bool
+}
 
 export default FileField;

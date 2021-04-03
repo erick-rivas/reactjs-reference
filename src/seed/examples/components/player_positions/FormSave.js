@@ -1,16 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import * as queries from "seed/gql/queries";
+import { SAVE_PLAYER_POSITION } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/player_positions/Form";
 
-function PlayerPositionFormSave(props) {
-  const { url } = props.match;
-  const [callSave, qSave] = useSave(queries.SAVE_PLAYER_POSITION, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+function PlayerPositionFormSave({ onCompleted = () => null, onError = () => null }) {
+  const [callSave, qSave] = useSave(SAVE_PLAYER_POSITION, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
   const error = qSave.error ? "An error has occurred" : null
 
@@ -21,6 +19,11 @@ function PlayerPositionFormSave(props) {
     error={error}
     onSubmit={onSubmit}
   />;
+}
+
+PlayerPositionFormSave.propTypes = {
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default PlayerPositionFormSave;

@@ -1,50 +1,48 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_TEAM } from "seed/gql/queries";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/teams/Details";
 
-function TeamDetails(props) {
-  const { url } = props.match;
-  const { team_id } = props.match.params;
+function TeamDetails({ teamId, onCompleted = () => null, onError = () => null }) {
 
-  const qTeam = useDetail(`
+  const reqTeam = useDetail(`
   {
     team {
       name
       description
       marketValue
+      createdAt
       logo { }
       rival { }
       identityDocs { }
       players { }
     }
-  }`, team_id);
+  }`, teamId);
   
-  const [cDelete] = useDelete(DELETE_TEAM, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callDelete] = useDelete(DELETE_TEAM, {
+    onCompleted: () =>
+      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
 
-  if (qTeam.loading) return <Loading />;
-  if (qTeam.error) return "Error";
-  const { team = {} } = qTeam.data;
+  if (reqTeam.loading) return <Loading />;
+  if (reqTeam.error) return "Error";
+  const { team = {} } = reqTeam.data;
 
   const onClickDelete = () =>
-    cDelete({ id: team_id });
-
-  const onClickBack = () => {
-    const backUrl = url.substring(0, url.lastIndexOf("/"));
-    props.history.push(backUrl);
-  };
+    callDelete({ id: teamId });
 
   return <View
     team={team}
     onClickDelete={onClickDelete}
-    onClickBack={onClickBack}
    />;
+}
+
+TeamDetails.propTypes = {
+  teamId: PropTypes.number.isRequired,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 }
 
 export default TeamDetails;

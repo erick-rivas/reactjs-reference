@@ -3,8 +3,8 @@ import { useQuery } from "seed/gql";
 import Loading from "seed/helpers/Loading";
 import View from "seed/examples/views/users/List";
 
-function UserList(props){
-  const qUsers = useQuery(`
+function UserList() {
+  const reqUsers = useQuery(`
   {
     users {
       username
@@ -12,17 +12,19 @@ function UserList(props){
       lastName
       email
       isActive
+      createdAt
       teams { }
     }
   }`);
 
-  if (qUsers.loading) return <Loading />;
-  if (qUsers.error) return "Error";
-  const { users = [] } = qUsers.data;
-
+  if (reqUsers.loading) return <Loading />;
+  if (reqUsers.error) return "Error";
+  const { users = [] } = reqUsers.data;
   return <View
     users={users}
   />;
 }
+
+UserList.propTypes = {}
 
 export default UserList;

@@ -1,48 +1,53 @@
 import React from "react";
-import cx from "classnames";
-import { Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import PlayerPositionDetails from "seed/examples/components/player_positions/Details";
 import PlayerPositionList from "seed/examples/components/player_positions/List";
 import PlayerPositionFormSave from "seed/examples/components/player_positions/FormSave";
 import PlayerPositionFormSet from "seed/examples/components/player_positions/FormSet";
-import Modal from "seed/helpers/Modal";
-import css from "resources/css/seed/examples/player_positions/PlayerPositions.module.css";
+import ModalRoute from "seed/helpers/ModalRoute";
 
-const Details = (props) =>
-  <div class={css.details}>
-    <div class={css.card}>
-      <PlayerPositionDetails {...props} />
-    </div>
-  </div>;
+const PlayerPositions = () =>
+  <BrowserRouter basename="/examples/player_positions">
+    <div class="content container-fluid">
 
-const FormSave = (props) =>
-  <Modal {...props}>
-    <PlayerPositionFormSave {...props} />
-  </Modal>;
+    {/* Header */}
+    <div class="page-header">
+      <div class="row align-items-end">
 
-const FormSet = (props) =>
-  <Modal {...props}>
-    <PlayerPositionFormSet {...props} />
-  </Modal>;
-
-const PlayerPositions = (props) =>
-  <Router basename="/player_positions">
-    <div class={css.module}>
-      <div class={css.container}>
-        <div class={css.list}>
-          <PlayerPositionList />
+        <div class="col-sm">
+          <h1 class="page-header-title">Player positions</h1>
         </div>
-        <Route
-          path={`/:player_position_id(\\d+)`}
-          component={Details} />
+
+        <div class="col-sm-auto">
+          <div class="btn-group" role="group">
+            <Link to="/create" className="btn btn-primary">
+              <i class="tio-add mr-1"></i>Create
+            </Link>
+          </div>
+        </div>
+
       </div>
-      <Route
-        path={[`/:any/new`,`/new`,]}
-        component={FormSave} />
-      <Route
-        path={`/:player_position_id(\\d+)/edit`}
-        component={FormSet} />
     </div>
-  </Router>;
+
+    {/* List */}
+    <PlayerPositionList />
+
+    {/* Modals */}
+    <ModalRoute
+        path="/:playerPositionId(\d+)"
+        component={PlayerPositionDetails} />
+    <ModalRoute
+      path="/create"
+      component={PlayerPositionFormSave} />
+    <ModalRoute
+      path="/:playerPositionId(\d+)/edit"
+      component={PlayerPositionFormSet} />
+
+    </div>
+  </BrowserRouter>;
+
+PlayerPositions.propTypes = {}
 
 export default PlayerPositions;
