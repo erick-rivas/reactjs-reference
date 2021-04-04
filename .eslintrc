@@ -14,6 +14,7 @@
     "react/prop-types": "warn",
     "no-empty": "off",
     "no-unused-vars": "off",
+    "no-lone-blocks": "off",
     "jsx-a11y/anchor-is-valid": "off"
   }
 }

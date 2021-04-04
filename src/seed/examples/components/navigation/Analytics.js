@@ -8,7 +8,7 @@ function Analytics({ history }) {
     ReactGA.initialize(GA_KEY);
     const pathname = history.location.pathname.replace(/\d+/g, ":id");
     ReactGA.pageview(pathname);
-  }, []);
+  }, [history.location.pathname]);
   return <div />;
 }
 

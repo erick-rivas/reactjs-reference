@@ -1,6 +1,8 @@
 ---
 exclude_paths:
   - "**.md"
+  - "**.css"
+  - "**.scss"
   - "public/**/*"
   - "build/**/*"
   - "src/resources/css/**/*"
