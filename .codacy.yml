@@ -5,6 +5,7 @@ exclude_paths:
   - "**.scss"
   - "public/**/*"
   - "build/**/*"
-  - "src/resources/css/**/*"
+  - "src/tests/**/*"
+  - "src/seed/tests/**/*"
   - "node_modules/**/*"
   - "coverage/**/*"
