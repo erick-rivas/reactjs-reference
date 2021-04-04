@@ -9,8 +9,6 @@ SeedModeling.mdj
 build
 node_modules
 public/docs/*
-src/seed/redux/actions/*
-src/seed/redux/reducers/*
 src/seed/gql/*
 src/seed/redux.js
 src/actions/*

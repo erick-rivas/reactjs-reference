@@ -12,7 +12,7 @@ function MatchFormSave({ onCompleted = () => null, onError = () => null }) {
       onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
   const { teams = [] } = qTeams.data;
-  const error = qSave.error ? "An error has occurred" : null
+  const error = qSave.error ? "An error has occurred" : null;
 
   const onSubmit = (values) =>
     callSave(values);
@@ -27,6 +27,6 @@ function MatchFormSave({ onCompleted = () => null, onError = () => null }) {
 MatchFormSave.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default MatchFormSave;

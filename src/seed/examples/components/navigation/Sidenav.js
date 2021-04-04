@@ -4,6 +4,6 @@ import View from "seed/examples/views/navigation/Sidenav";
 function Sidenav() {
   return <View />;
 }
-Sidenav.propTypes = {}
+Sidenav.propTypes = {};
 
 export default Sidenav;

@@ -42,6 +42,6 @@ const ScoreDetails = ({ score, onClickDelete }) =>
 ScoreDetails.propTypes = {
   score: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
-}
+};
 
 export default ScoreDetails;

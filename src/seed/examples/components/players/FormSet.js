@@ -20,7 +20,7 @@ function PlayerFormSet({ playerId, onCompleted = () => null, onError = () => nul
   const { player = {} } = qPlayer.data;
   const { teams = [] } = qTeams.data;
   const { playerPositions = [] } = qPlayerPositions.data;
-  const error = qSet.error ? "An error has occurred" : null
+  const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
     values.id = playerId;
@@ -40,6 +40,6 @@ PlayerFormSet.propTypes = {
   playerId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default PlayerFormSet;

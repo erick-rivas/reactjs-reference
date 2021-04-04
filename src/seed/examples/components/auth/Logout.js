@@ -24,6 +24,6 @@ function Logout({ history }) {
 
 Logout.propTypes = {
   history: PropTypes.object.isRequired
-}
+};
 
 export default Logout;

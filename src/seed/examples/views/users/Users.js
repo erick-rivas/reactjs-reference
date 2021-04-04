@@ -48,6 +48,6 @@ const Users = () =>
     </div>
   </BrowserRouter>;
 
-Users.propTypes = {}
+Users.propTypes = {};
 
 export default Users;

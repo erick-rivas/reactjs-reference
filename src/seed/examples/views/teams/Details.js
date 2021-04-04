@@ -42,6 +42,6 @@ const TeamDetails = ({ team, onClickDelete }) =>
 TeamDetails.propTypes = {
   team: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
-}
+};
 
 export default TeamDetails;

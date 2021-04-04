@@ -10,7 +10,7 @@ function PlayerPositionFormSave({ onCompleted = () => null, onError = () => null
     onCompleted: () =>
       onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
   });
-  const error = qSave.error ? "An error has occurred" : null
+  const error = qSave.error ? "An error has occurred" : null;
 
   const onSubmit = (values) =>
     callSave(values);
@@ -24,6 +24,6 @@ function PlayerPositionFormSave({ onCompleted = () => null, onError = () => null
 PlayerPositionFormSave.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default PlayerPositionFormSave;

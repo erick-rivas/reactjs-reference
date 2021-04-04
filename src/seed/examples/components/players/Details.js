@@ -41,6 +41,6 @@ PlayerDetails.propTypes = {
   playerId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default PlayerDetails;

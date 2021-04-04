@@ -37,6 +37,6 @@ PlayerPositionDetails.propTypes = {
   playerPositionId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default PlayerPositionDetails;

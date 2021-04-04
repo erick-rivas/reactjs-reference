@@ -11,6 +11,15 @@ export const GQL_MATCH = {
 export const GQL_MATCHES = {
     matches: [ GQL_MATCH_ ]
 }
+export const GQL_MATCH_PAGINATION = {
+    matchPagination: {
+        pageNum: 1,
+        pageSize: 1,
+        totalPages: 1,
+        totalCount: 1,
+        matches: [ GQL_MATCH_ ]
+    }
+}
 
 export const API_MATCH = {
     date: "2020-01-01T12:00:00+00:00",
@@ -34,6 +43,15 @@ export const GQL_PLAYER = {
 export const GQL_PLAYERS = {
     players: [ GQL_PLAYER_ ]
 }
+export const GQL_PLAYER_PAGINATION = {
+    playerPagination: {
+        pageNum: 1,
+        pageSize: 1,
+        totalPages: 1,
+        totalCount: 1,
+        players: [ GQL_PLAYER_ ]
+    }
+}
 
 export const API_PLAYER = {
     name: "",
@@ -53,6 +71,15 @@ export const GQL_PLAYER_POSITION = {
 export const GQL_PLAYER_POSITIONS = {
     playerPositions: [ GQL_PLAYER_POSITION_ ]
 }
+export const GQL_PLAYER_POSITION_PAGINATION = {
+    playerPositionPagination: {
+        pageNum: 1,
+        pageSize: 1,
+        totalPages: 1,
+        totalCount: 1,
+        playerPositions: [ GQL_PLAYER_POSITION_ ]
+    }
+}
 
 export const API_PLAYER_POSITION = {
     name: "",
@@ -69,6 +96,15 @@ export const GQL_SCORE = {
 }
 export const GQL_SCORES = {
     scores: [ GQL_SCORE_ ]
+}
+export const GQL_SCORE_PAGINATION = {
+    scorePagination: {
+        pageNum: 1,
+        pageSize: 1,
+        totalPages: 1,
+        totalCount: 1,
+        scores: [ GQL_SCORE_ ]
+    }
 }
 
 export const API_SCORE = {
@@ -92,6 +128,15 @@ export const GQL_TEAM = {
 }
 export const GQL_TEAMS = {
     teams: [ GQL_TEAM_ ]
+}
+export const GQL_TEAM_PAGINATION = {
+    teamPagination: {
+        pageNum: 1,
+        pageSize: 1,
+        totalPages: 1,
+        totalCount: 1,
+        teams: [ GQL_TEAM_ ]
+    }
 }
 
 export const API_TEAM = {
@@ -119,6 +164,15 @@ export const GQL_USER = {
 }
 export const GQL_USERS = {
     users: [ GQL_USER_ ]
+}
+export const GQL_USER_PAGINATION = {
+    userPagination: {
+        pageNum: 1,
+        pageSize: 1,
+        totalPages: 1,
+        totalCount: 1,
+        users: [ GQL_USER_ ]
+    }
 }
 
 export const API_USER = {

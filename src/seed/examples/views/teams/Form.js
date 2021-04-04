@@ -75,11 +75,10 @@ const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
 
 TeamForm.propTypes = {
   team: PropTypes.object,
-  
   teams: PropTypes.array,
   
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
-}
+};
 
 export default TeamForm;

@@ -64,13 +64,12 @@ const ScoreForm = ({ score= {}, players= [], matches= [], onSubmit, error }) =>
 
 ScoreForm.propTypes = {
   score: PropTypes.object,
-  
   players: PropTypes.array,
   
   matches: PropTypes.array,
   
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
-}
+};
 
 export default ScoreForm;

@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 
-const UserList = ({ users }) =>
+const UserList = ({ users, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
+  <div>
   <ul class="list-group">
   {
     users.map((user) =>
@@ -35,8 +36,30 @@ const UserList = ({ users }) =>
   }
   </ul>
 
+  <nav class="mt-3">
+    <ul class="pagination">
+      <li onClick={() => onClickPage(pageNum -1 )} class="page-item" style={ { visibility: pageNum > 1 ? "visible" : "hidden"} }>
+        <a class="page-link" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a>
+      </li>
+      {
+         Array(totalPages).fill(0).map((ignore, idx) =>
+           <li onClick={() => onClickPage(idx+1)} key={idx} class={"page-item " + (idx == pageNum - 1 ? "active" : "")}>
+             <a class="page-link">{idx + 1}</a>
+           </li>
+         )
+      }
+      <li onClick={() => onClickPage(pageNum + 1)} class="page-item" style={ { visibility: pageNum <= totalPages - 1 ? "visible" : "hidden"} }>
+        <a class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a>
+      </li>
+    </ul>
+  </nav>
+  </div>;
+
 UserList.propTypes = {
   users: PropTypes.array.isRequired,
-}
+  pageNum: PropTypes.number,
+  totalPages: PropTypes.number,
+  onClickPage: PropTypes.func
+};
 
 export default UserList;

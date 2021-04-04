@@ -6,6 +6,6 @@ function Docs() {
     }, []);
   return <div />;
 }
-Docs.propTypes = {}
+Docs.propTypes = {};
 
 export default Docs;

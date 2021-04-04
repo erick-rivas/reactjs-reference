@@ -42,9 +42,8 @@ const PlayerPositionForm = ({ playerPosition= {}, onSubmit, error }) =>
 
 PlayerPositionForm.propTypes = {
   playerPosition: PropTypes.object,
-  
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
-}
+};
 
 export default PlayerPositionForm;

@@ -39,6 +39,6 @@ ScoreDetails.propTypes = {
   scoreId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default ScoreDetails;

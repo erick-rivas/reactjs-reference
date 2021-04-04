@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "eqeqeq": "off",
+    "react/jsx-key": "warn",
+    "react/no-children-prop": "off",
+    "react/no-unknown-property": "off",
+    "react/prop-types": "warn",
+    "no-empty": "off",
+    "no-unused-vars": "off",
+    "jsx-a11y/anchor-is-valid": "off"
+  }
+}

@@ -4,7 +4,7 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 /**
  * Helper component to bing javascript tag code (e.g. <script> ... </script>)
@@ -18,7 +18,7 @@ class ScriptTag extends React.Component {
   }
 
   shouldComponentUpdate() {
-    return false
+    return false;
   }
 
   componentDidMount () {
@@ -31,6 +31,6 @@ class ScriptTag extends React.Component {
 
 ScriptTag.propTypes = {
   content: PropTypes.string.isRequired
-}
+};
 
 export default ScriptTag;

@@ -2,14 +2,15 @@
   "name": "reactjs-reference",
   "version": "0.1.0",
   "scripts": {
+    "build-docs": "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md",
     "build-css": "node-sass-chokidar src/views -o src/resources/css && node-sass-chokidar src/resources/styles -o src/resources/css && node-sass-chokidar src/components -o src/resources/css  && node-sass-chokidar src/seed/helpers -o src/resources/css/seed &&  node-sass-chokidar src/seed/examples/styles -o src/resources/css/seed/examples",
     "build-js": "react-scripts build",
-    "build-docs": "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md",
     "build": "npm-run-all build-css build-js",
     "watch-css": "npm run build-css && node-sass-chokidar src/views -o src/resources/css --watch --recursive && node-sass-chokidar src/resources/styles -o src/resources/css --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "test": "react-scripts test --watchAll=false --silent",
+    "coverage": "react-scripts test --watchAll=false --silent --coverage",
     "deploy": "node ./bin/www",
     "eject": "react-scripts eject"
   },
@@ -39,6 +40,7 @@
     "graphql": "15.5.0",
     "jquery": "3.6.0",
     "jsdoc": "3.6.6",
+    "jshint": "2.12.0",
     "node-sass-chokidar": "1.5.0",
     "npm-run-all": "4.1.5",
     "prop-types": "15.7.2",
@@ -51,25 +53,6 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended"
-    ],
-    "rules": {
-      "eqeqeq": "off",
-      "react/jsx-key": "warn",
-      "react/no-children-prop": "off",
-      "react/no-unknown-property": "off",
-      "react/prop-types": "warn",
-      "no-empty": "off",
-      "no-unused-vars": "off",
-      "jsx-a11y/anchor-is-valid": "off"
-    }
   },
   "browserslist": [
     ">0.2%",

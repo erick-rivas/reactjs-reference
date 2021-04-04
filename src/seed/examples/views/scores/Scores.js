@@ -48,6 +48,6 @@ const Scores = () =>
     </div>
   </BrowserRouter>;
 
-Scores.propTypes = {}
+Scores.propTypes = {};
 
 export default Scores;

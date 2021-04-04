@@ -1,0 +1,2 @@
+codacy-analysis-cli analyze --tool eslint
+codacy-analysis-cli analyze --tool jshint

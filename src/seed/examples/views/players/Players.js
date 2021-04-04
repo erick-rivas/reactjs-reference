@@ -48,6 +48,6 @@ const Players = () =>
     </div>
   </BrowserRouter>;
 
-Players.propTypes = {}
+Players.propTypes = {};
 
 export default Players;

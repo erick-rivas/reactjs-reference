@@ -99,6 +99,6 @@ const Login = ({ onSubmit, error }) =>
 Login.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
-}
+};
 
 export default Login;

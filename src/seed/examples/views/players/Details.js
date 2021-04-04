@@ -42,6 +42,6 @@ const PlayerDetails = ({ player, onClickDelete }) =>
 PlayerDetails.propTypes = {
   player: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
-}
+};
 
 export default PlayerDetails;

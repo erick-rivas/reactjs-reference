@@ -11,7 +11,6 @@ import SeedContext from "seed/context";
 
 /** @module gql **/
 
-
 /**
  * Return a hook to execute a graphql query
  * @param {string} gqlQuery Graphql query
@@ -27,26 +26,30 @@ import SeedContext from "seed/context";
  *   }
  * }`, "name=messi")
  */
-
 const useQuery = (gqlQuery, paramQuery, options = {}) => {
-  const model = gqlQuery.match(/[\w]+/g)[0];
-  let params = ""
+  const normalizedQuery = normalizeQuery(gqlQuery);
+  const queryName = getHeaderNames(normalizedQuery)[0];
+  // Build query
+  let params = "";
   if (paramQuery) params += "query: \"" + paramQuery + "\",";
   if (options.orderBy) params += "orderBy: \"" + options.orderBy + "\",";
-  if (options.start) params += "start: " + options.start + ",";
-  if (options.end) params += "end: " + options.end + ",";
+  if (options.limit) params += "limit: " + options.start + ",";
+  if (options.pageNum) params += "pageNum: " + options.pageNum + ",";
+  if (options.pageSize) params += "pageSize: " + options.pageSize + ",";
   if (params.endsWith(",")) params.slice(0, -1);
-  const wrapper = `${model}${params != "" ? "(" + params + ")" : ""}`;
-  const query = cleanQuery(gqlQuery.replace(model, wrapper));
-  const { addGqlQuery } = useContext(SeedContext);
+  const wrapper = `${queryName}${params != "" ? "(" + params + ")" : ""}`;
+  const query = normalizedQuery.replace(queryName, wrapper);
 
+  // Execute query
+  const { addGqlQuery } = useContext(SeedContext);
   const res = Apollo.useQuery(gql(query), {
     ...options,
     onCompleted: (data) => {
-      if (options.addQuery == null || options.addQuery != false)
-        addGqlQuery(query);
+      if (options.cacheQuery == null || options.cacheQuery != false)
+        addGqlQuery(query); // Include query to cache for re-fetch
       if (options.onCompleted) options.onCompleted(data);
-    }
+    },
+    partialRefetch: true
   });
   return { ...res, data: res.data ? res.data : {} };
 };
@@ -54,26 +57,24 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
 /**
  * Return a hook to execute a graphql query with pagination
  * @param {string} gqlQuery Graphql query
- * @param {string} paramQuery Query param (sql alike)
  * @param {number} pageNum Page number
  * @param {number} pageSize Number of objects per page
+ * @param {string} paramQuery Query param (sql alike)
  * @param {Object} options hook options (e.g. onCompleted, onError)
- * @returns Page hook
+ * @returns Pagination hook
  * @example
  * const reqPlayers = useQuery(`
  * {
- *   players {
- *     name,
- *     age
+ *   playerPagination {
+ *     totalPages
+ *     players {
+ *       id
+ *    }
  *   }
  * }`, "name=messi", 1, 10)
  */
-
-const usePage = (gqlQuery, paramQuery, pageNum, pageSize, options = {}) => {
-  let start = pageSize * (pageNum - 1);
-  let end = pageSize * pageNum;
-  return useQuery(gqlQuery, paramQuery, { ...options, start: start, end: end })
-};
+const usePagination = (gqlQuery, pageNum, pageSize, paramQuery, options = {}) =>
+  useQuery(gqlQuery, paramQuery, { ...options, pageNum, pageSize });
 
 /**
  * Return a hook to execute a graphql count
@@ -84,16 +85,14 @@ const usePage = (gqlQuery, paramQuery, pageNum, pageSize, options = {}) => {
  * @example
  * const reqCount = useQuery("player")
  */
-
 const useCount = (modelName, paramQuery, options = {}) => {
   const gqlQuery = `
-     {
-        ${modelName}Count {
-          count
-        }
-     }
-    `
-  return useQuery(gqlQuery, paramQuery, { ...options, addQuery: false })
+    {
+      ${modelName}Count {
+        count
+      }
+    }`;
+  return useQuery(gqlQuery, paramQuery, { ...options, cacheQuery: false });
 };
 
 /**
@@ -111,44 +110,18 @@ const useCount = (modelName, paramQuery, options = {}) => {
  *   }
  * }`, 1)
  */
-
 const useDetail = (gqlQuery, id, options = {}) => {
-  const model = gqlQuery.match(/[\w]+/g)[0];
-  const wrapper = `${model}(id: ${id})`;
-  const query = cleanQuery(gqlQuery.replace(model, wrapper));
+  const normalizedQuery = normalizeQuery(gqlQuery);
+  const queryName = getHeaderNames(normalizedQuery)[0];
+  // Build query
+  const wrapper = `${queryName}(id: ${id})`;
+  const query = normalizedQuery.replace(queryName, wrapper);
+  // Execute query
+  const { addGqlQuery } = useContext(SeedContext);
+  addGqlQuery(query); // Include query to cache to re-fetch
   const res = Apollo.useQuery(gql(query), options);
   return { ...res, data: res.data ? res.data : {} };
 };
-
-const cleanQuery = (query) => {
-  const fBracePos = query.indexOf("{");
-  let res = query.substring(fBracePos + 1);
-  res = "{ " + res.replace(/{/g, "{ id ");
-  return res;
-};
-
-
-const useMutate = (mutation) => {
-  const [call, res] = mutation;
-  const wrap = (body) => {
-    const vars = body ? body : {};
-    for (let key in vars) {
-      let ele = vars[key];
-      if (ele != null) {
-        if (ele.id != null)
-          vars[key] = vars[key].id;
-        if (Array.isArray(ele))
-          for (let i = 0; i < ele.length; i++)
-            if (ele[i].id != null)
-              vars[key][i] = ele[i].id;
-      }
-    }
-    call({ variables: vars });
-  };
-  return [wrap, { ...res, data: res.data ? res.data : {} }];
-};
-
-
 
 /**
  * Return a hook to execute a save graphql mutation
@@ -163,19 +136,13 @@ const useMutate = (mutation) => {
  * // Execute request
  * callSave({ name: "messi" })
 */
-
 const useSave = (gqlQuery, options = {}) => {
-  const query = gql(gqlQuery);
-  const mutation = Apollo.useMutation(query, {
+  const query = normalizeQuery(gqlQuery);
+  const mutation = Apollo.useMutation(gql(gqlQuery), {
     ...options,
-    refetchQueries:
-      useContext(SeedContext)
-        .gqlQueries.filter((cQueryRaw) => {
-          const cModels = cQueryRaw.match(/[\w]+/g)[0];
-          const cModel = SINGULARS[cModels];
-          const cHeader = "save" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
-          return gqlQuery.indexOf(cHeader) != -1;
-        })
+    refetchQueries: // Re-fetch cache queries related to model
+      useContext(SeedContext).gqlQueries
+        .filter((cacheQuery) => hasCommonModels(query, cacheQuery))
         .map((q) => ({ query: gql(q) }))
   });
   return useMutate(mutation);
@@ -194,10 +161,8 @@ const useSave = (gqlQuery, options = {}) => {
  * // Execute request
  * callSet({ id:1, name: "messi" })
 */
-
 const useSet = (gqlQuery, options = {}) => {
-  const query = gql(gqlQuery);
-  const mutation = Apollo.useMutation(query, options);
+  const mutation = Apollo.useMutation(gql(gqlQuery), options);
   return useMutate(mutation);
 };
 
@@ -214,38 +179,127 @@ const useSet = (gqlQuery, options = {}) => {
  * // Execute request
  * callDelete({ id: 1 })
 */
-
 const useDelete = (gqlQuery, options = {}) => {
-  const context = useContext(SeedContext);
-  const query = gql(gqlQuery);
-  const mutation = Apollo.useMutation(query, {
+  const query = normalizeQuery(gqlQuery);
+  const mutation = Apollo.useMutation(gql(gqlQuery), {
     ...options,
+    refetchQueries: // Re-fetch cache queries related to model
+      useContext(SeedContext).gqlQueries
+        .filter((cacheQuery) => {
+          const delModel = getModelNames(query)[0];
+          const cacheModel = getModelNames(cacheQuery)[0];
+          const cacheHeader = getHeaderNames(cacheQuery)[0];
+          if (delModel == cacheModel && //If same model
+            cacheModel == cacheHeader) //And query singular (header = model) omit query
+            return false;
+          return hasCommonModels(query, cacheQuery);
+          
+        })
+        .map((q) => ({ query: gql(q) }))
+    /*
     update(cache, { data }) {
       context.gqlQueries
-        .forEach((cQueryRaw) => {
-          const cModels = cQueryRaw.match(/[\w]+/g)[0];
-          const cModel = SINGULARS[cModels];
-          const cHeader = "delete" + cModel.charAt(0).toUpperCase() + cModel.slice(1);
-          if (gqlQuery.indexOf(cHeader) == -1) return;
-          const cQuery = gql(cQueryRaw);
-          const cResult = cache.readQuery({ query: cQuery });
-          const itemId = data[cHeader].id;
-          let cData = {}, idx = -1;
-          for (let i = 0; i < cResult[cModels].length; i++)
-            if (cResult[cModels][i].id == itemId)
+        .forEach((cacheQuery) => {
+          //Check if cache and deleteQuery has common models
+          if (!hasCommonModels(query, cacheQuery)) return;
+          alert(cacheQuery)
+          const cacheHeader = getHeaderNames(cacheQuery)[0]
+          const deleteHeader = getHeaderNames(query)[0]
+
+          // Check if delete id exists in cache
+          const cacheResult = cache.readQuery({ query: gql(cacheQuery) });
+          const deletedId = data[deleteHeader].id;
+          let idx = -1;
+          for (let i = 0; i < cacheResult[cacheHeader].length; i++)
+            if (cacheResult[cacheHeader][i].id == deletedId)
               idx = i;
           if (idx == -1) return;
-          let result = JSON.parse(JSON.stringify(cResult[cModels])).splice(0);
+
+          // Update cache
+          let cacheData = {}
+          let result = JSON.parse(JSON.stringify(cacheResult[cacheHeader])).splice(0);
           result.splice(idx, 1);
-          cData[cModels] = result;
+          cacheData[cacheHeader] = result;
           cache.writeQuery({
-            query: cQuery,
-            data: cData,
+            query: cacheQuery,
+            data: cacheData,
           });
         });
-    }
+    }*/
   });
   return useMutate(mutation);
 };
 
-export { useQuery, usePage, useCount, useDetail, useSet, useSave, useDelete };
+
+/* Normalize query to ease processing */
+const normalizeQuery = (gqlQuery) => {
+  let res = gqlQuery.trim();
+  res = res.replace(/mutation .*?\)/, "") //Remove mutation header
+  res = res.substring(1, res.length - 1);
+  res = res.replace(/\n/g, " ");
+  res = res.replace(/{/g, " { ");
+  res = res.replace(/}/g, " } ");
+  res = res.replace(/{/g, "{ id "); // Auto include id attr to every model
+  res = res.replace(/[\s,]+/g, " ").trim();
+  res = "{ " + res + " }";
+  return res;
+};
+
+/* Get gql header names (e.g. name { } ) */
+const getHeaderNames = (gqlQuery) => {
+  const query = gqlQuery
+    .replace(/\(.*?\)/g, ''); // Remove arguments
+  const match = query.match(/[\w]+ {/g);  // Word and a { after
+  if (match != null)
+    return match.map(model => model.replace(" {", ""));
+  return [];
+}
+
+/* Get model names for inner and outer queries */
+const getModelNames = (gqlQuery) => {
+  const models = getHeaderNames(gqlQuery).map(model => model
+    .replace(/Pagination$/, "")  // Remove pagination suffix
+    .replace(/^set/, "")     // Remove set prefix
+    .replace(/^save/, "")    // Remove save prefix
+    .replace(/^delete/, "")  // Remove delete prefix
+    .replace(/^\w/, (c) => c.toLowerCase()) //Start with lowercase
+  );
+  let res = [];
+  for(let model of models)
+    if(SINGULARS[model] != null)
+      res.push(SINGULARS[model]);
+  return res;
+}
+
+/* Identify if a queryA has related models with query B */
+const hasCommonModels = (gqlQueryA, gqlQueryB) => {
+    const aModels = getModelNames(gqlQueryA);
+    const bModels = getModelNames(gqlQueryB);
+    for (let aModel of aModels)
+        for (let bModel of bModels)
+            if (aModel == bModel)
+                return true;
+    return false;
+}
+
+const useMutate = (mutation) => {
+  const [call, res] = mutation;
+  const wrap = (body) => { // Parse id calls variables (Ex. model.id = 1 to model = 1)
+    const vars = body ? body : {};
+    for (let key in vars) {
+      let ele = vars[key];
+      if (ele != null) {
+        if (ele.id != null)
+          vars[key] = vars[key].id;
+        if (Array.isArray(ele))
+          for (let i = 0; i < ele.length; i++)
+            if (ele[i].id != null)
+              vars[key][i] = ele[i].id;
+      }
+    }
+    call({ variables: vars });
+  };
+  return [wrap, { ...res, data: res.data ? res.data : {} }];
+};
+
+export { normalizeQuery, getHeaderNames, getModelNames, useQuery, usePagination, useCount, useDetail, useSet, useSave, useDelete };

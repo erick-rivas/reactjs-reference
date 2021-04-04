@@ -42,6 +42,6 @@ UserDetails.propTypes = {
   userId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default UserDetails;

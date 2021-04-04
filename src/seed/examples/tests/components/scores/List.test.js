@@ -6,7 +6,7 @@ import * as data from 'seed/examples/tests/data'
 import List from 'seed/examples/components/scores/List';
 
 test('examples/components/scores/List', () => {
-  mockGql.useQuery({"scores": data.GQL_SCORES})
+  mockGql.usePagination({"scorePagination": data.GQL_SCORE_PAGINATION})
   render(<List />);
   expect(screen).toBeDefined()
 });

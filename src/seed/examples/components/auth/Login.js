@@ -5,7 +5,7 @@ import View from "seed/examples/views/auth/Login";
 
 function Login({ history }) {
 
-  const [rememberMe, setRememberMe] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false);
   const [callLogin, reqLogin] = usePost("/auth/login", {
     onCompleted: (data) => {
       if (rememberMe) { //Store data in localStorage
@@ -25,7 +25,7 @@ function Login({ history }) {
     callLogin({ email: email, password: password });
   };
 
-  const error = reqLogin.error ? "Invalid user or password" : null
+  const error = reqLogin.error ? "Invalid user or password" : null;
 
   return <View
     error={error}
@@ -35,6 +35,6 @@ function Login({ history }) {
 
 Login.propTypes = {
   history: PropTypes.object.isRequired
-}
+};
 
 export default Login;

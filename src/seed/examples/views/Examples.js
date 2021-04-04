@@ -14,6 +14,6 @@ const Examples = () =>
     </Switch>
   </BrowserRouter>;
 
-Examples.propTypes = {}
+Examples.propTypes = {};
 
 export default Examples;

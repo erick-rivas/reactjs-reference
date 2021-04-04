@@ -18,7 +18,7 @@ function UserFormSet({ userId, onCompleted = () => null, onError = () => null  }
 
   const { user = {} } = qUser.data;
   const { teams = [] } = qTeams.data;
-  const error = qSet.error ? "An error has occurred" : null
+  const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
     values.id = userId;
@@ -37,6 +37,6 @@ UserFormSet.propTypes = {
   userId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default UserFormSet;

@@ -21,6 +21,6 @@ class Loading extends React.Component {
   }
 }
 
-Loading.propTypes = {}
+Loading.propTypes = {};
 
 export default Loading;

@@ -42,6 +42,6 @@ const MatchDetails = ({ match, onClickDelete }) =>
 MatchDetails.propTypes = {
   match: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
-}
+};
 
 export default MatchDetails;

@@ -14,7 +14,7 @@ function PlayerFormSave({ onCompleted = () => null, onError = () => null }) {
   });
   const { teams = [] } = qTeams.data;
   const { playerPositions = [] } = qPlayerPositions.data;
-  const error = qSave.error ? "An error has occurred" : null
+  const error = qSave.error ? "An error has occurred" : null;
 
   const onSubmit = (values) =>
     callSave(values);
@@ -30,6 +30,6 @@ function PlayerFormSave({ onCompleted = () => null, onError = () => null }) {
 PlayerFormSave.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default PlayerFormSave;

@@ -89,6 +89,6 @@ FileField.propTypes = {
   name: PropTypes.string.isRequired,
   setFieldValue: PropTypes.func.isRequired,
   multiple: PropTypes.bool
-}
+};
 
 export default FileField;

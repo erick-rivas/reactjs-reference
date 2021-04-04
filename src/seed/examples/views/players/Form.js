@@ -79,13 +79,12 @@ const PlayerForm = ({ player= {}, teams= [], playerPositions= [], onSubmit, erro
 
 PlayerForm.propTypes = {
   player: PropTypes.object,
-  
   teams: PropTypes.array,
   
   playerPositions: PropTypes.array,
   
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
-}
+};
 
 export default PlayerForm;

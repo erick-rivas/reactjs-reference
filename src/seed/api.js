@@ -20,8 +20,8 @@ import { API_URL } from "settings";
  * const reqPlayers = useGet("/players", { name: "messi" })
  * // It is equal to /players?name=messi
  */
- const useGet = (endpoint, queryArgs = {}, options = {}) =>
- usePoll(endpoint, queryArgs, options);
+const useGet = (endpoint, queryArgs = {}, options = {}) =>
+  usePoll(endpoint, queryArgs, options);
 
 /**
 * Returns a hook to execute a POST request
@@ -37,7 +37,7 @@ import { API_URL } from "settings";
 * callSave({ name: "messi" })
 */
 const usePost = (endpoint, options = {}) =>
- useMutate("POST", endpoint, options);
+  useMutate("POST", endpoint, options);
 
 /**
 * Returns a hook to execute a PUT request
@@ -53,7 +53,7 @@ const usePost = (endpoint, options = {}) =>
 * callPut({ id: 1, name: "messi" })
 */
 const usePut = (endpoint, options = {}) =>
- useMutate("PUT", endpoint, options);
+  useMutate("PUT", endpoint, options);
 
 /**
 * Returns a hook to execute a DELETE request
@@ -69,7 +69,7 @@ const usePut = (endpoint, options = {}) =>
 * callDelete({ id: 1 })
 */
 const useDelete = (endpoint, options = {}) =>
- useMutate("DELETE", endpoint, options);
+  useMutate("DELETE", endpoint, options);
 
 
 const query = (params) => {
@@ -78,7 +78,7 @@ const query = (params) => {
     if (params[param] != null)
       query += `${param}=${encodeURIComponent(params[param])}&`;
   return query;
-}
+};
 
 const options = (method = "GET", body = {}) => {
   let res = {
@@ -92,7 +92,7 @@ const options = (method = "GET", body = {}) => {
   if (method !== "GET")
     res["body"] = JSON.stringify(body);
   return res;
-}
+};
 
 const usePoll = (endpoint, params, pollOptions = {}) => {
   const [status, setStatus] = useState({ data: null, isLoading: true });
@@ -105,7 +105,7 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
   });
 
   if ((fetch.data != null || fetch.error != null) && status.isLoading) {
-    let data = null
+    let data = null;
     if (fetch.error == null) {
       data = {};
       try {
@@ -121,7 +121,7 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
   }
 
   return { ...fetch, loading: status.isLoading, data: status.data };
-}
+};
 
 const useMutate = (method, endpoint, mutOptions = {}) => {
   const [call, setCall] = useState({ body: null, called: false });

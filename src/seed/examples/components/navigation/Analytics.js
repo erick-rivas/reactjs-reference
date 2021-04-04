@@ -14,6 +14,6 @@ function Analytics({ history }) {
 
 Analytics.propTypes = {
   history: PropTypes.object.isRequired
-}
+};
 
 export default Analytics;

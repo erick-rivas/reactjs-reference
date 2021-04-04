@@ -16,7 +16,7 @@ function PlayerPositionFormSet({ playerPositionId, onCompleted = () => null, onE
   if (qPlayerPosition.loading) return <Loading />;
 
   const { playerPosition = {} } = qPlayerPosition.data;
-  const error = qSet.error ? "An error has occurred" : null
+  const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
     values.id = playerPositionId;
@@ -34,6 +34,6 @@ PlayerPositionFormSet.propTypes = {
   playerPositionId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default PlayerPositionFormSet;

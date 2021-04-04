@@ -4,8 +4,8 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import PropTypes from 'prop-types';
-import Modal from "seed/helpers/Modal"
+import PropTypes from "prop-types";
+import Modal from "seed/helpers/Modal";
 import { Route } from "react-router-dom";
 
 /**
@@ -21,7 +21,7 @@ class ModalRoute extends React.Component {
           {...props} 
           {...this.props} 
           {...(props.match.params != null ? props.match.params : {})} 
-          url={props.match.url} />
+          url={props.match.url} />;
 
     return (
       <Route
@@ -33,6 +33,6 @@ class ModalRoute extends React.Component {
 
 ModalRoute.propTypes = {
   path: PropTypes.string.isRequired
-}
+};
 
 export default ModalRoute;

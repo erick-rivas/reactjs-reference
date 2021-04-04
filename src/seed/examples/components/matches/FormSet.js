@@ -18,7 +18,7 @@ function MatchFormSet({ matchId, onCompleted = () => null, onError = () => null 
 
   const { match = {} } = qMatch.data;
   const { teams = [] } = qTeams.data;
-  const error = qSet.error ? "An error has occurred" : null
+  const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
     values.id = matchId;
@@ -37,6 +37,6 @@ MatchFormSet.propTypes = {
   matchId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default MatchFormSet;

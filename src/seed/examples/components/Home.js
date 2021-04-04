@@ -16,6 +16,6 @@ function Home() {
   return <View />;
 }
 
-Home.propTypes = {}
+Home.propTypes = {};
 
 export default Home;

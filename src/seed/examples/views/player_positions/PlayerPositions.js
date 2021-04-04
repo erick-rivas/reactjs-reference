@@ -48,6 +48,6 @@ const PlayerPositions = () =>
     </div>
   </BrowserRouter>;
 
-PlayerPositions.propTypes = {}
+PlayerPositions.propTypes = {};
 
 export default PlayerPositions;

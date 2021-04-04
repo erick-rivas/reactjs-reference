@@ -42,6 +42,6 @@ const UserDetails = ({ user, onClickDelete }) =>
 UserDetails.propTypes = {
   user: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
-}
+};
 
 export default UserDetails;

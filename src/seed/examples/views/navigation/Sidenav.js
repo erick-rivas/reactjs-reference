@@ -8,7 +8,7 @@ const Sidenav = () =>
         <div class="navbar-brand-wrapper justify-content-between">
           {/* Logo */}
           <a class="navbar-brand" href="./index.html" aria-label="Front">
-            <img class="navbar-brand-logo" src="/theme/svg/logos/logo.svg" alt="Logo" />
+            <img class="navbar-brand-logo" src="/theme/svg/logos/logo-white.svg" alt="Logo" />
             <img class="navbar-brand-logo-mini" src="/theme/svg/logos/logo-short.svg" alt="Logo" />
           </a>
 
@@ -106,6 +106,6 @@ const Sidenav = () =>
 
   </aside>;
 
-Sidenav.propTypes = {}
+Sidenav.propTypes = {};
 
 export default Sidenav;

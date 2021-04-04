@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Examples from "seed/examples/components/Examples";
 import Docs from "components/Docs";
-import css from "resources/css/App.module.css"
+import css from "resources/css/App.module.css";
 
 const App = () =>
   <div class={css.module}>
@@ -15,6 +15,6 @@ const App = () =>
     </BrowserRouter>
   </div>;
 
-App.propTypes = {}
+App.propTypes = {};
 
 export default App;

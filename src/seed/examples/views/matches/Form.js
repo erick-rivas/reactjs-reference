@@ -75,11 +75,10 @@ const MatchForm = ({ match= {}, teams= [], onSubmit, error }) =>
 
 MatchForm.propTypes = {
   match: PropTypes.object,
-  
   teams: PropTypes.array,
   
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
-}
+};
 
 export default MatchForm;

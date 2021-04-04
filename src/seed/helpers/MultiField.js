@@ -4,7 +4,7 @@ __Seed builder__v0.2.0
 */
 
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import css from "resources/css/seed/styles/MultiField.module.css";
 
 /**
@@ -71,6 +71,6 @@ MultiField.propTypes = {
   name: PropTypes.string.isRequired,
   setFieldValue: PropTypes.func.isRequired,
   singleChoice: PropTypes.bool
-}
+};
 
 export default MultiField;

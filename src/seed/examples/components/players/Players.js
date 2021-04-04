@@ -4,6 +4,6 @@ import View from "seed/examples/views/players/Players";
 function Players() {
   return <View />;
 }
-Players.propTypes = {}
+Players.propTypes = {};
 
 export default Players;

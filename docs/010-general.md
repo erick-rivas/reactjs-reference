@@ -14,6 +14,7 @@
 
 -   Download & install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
 -   Download & install [VS Code](https://code.visualstudio.com/)
+-   Download & install [Codacity CLI](https://github.com/codacy/codacy-analysis-cli#install)
 >   *To facilitate development it is recommended to run the project on debian distribution (Eg. ubuntu)*
 
 ### Initial setup
@@ -48,5 +49,6 @@
 
 ### Testing
 
+-   Analyze code quality `bin/analyze`
 -   Test use cases `npm test`
--   Analyze code coverage `npm test -- --coverage`
+-   Generate code coverage report`npm run-script coverage`

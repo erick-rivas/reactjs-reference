@@ -1,9 +1,9 @@
 import React from "react";
-import View from "seed/examples/views/Examples"
+import View from "seed/examples/views/Examples";
 
 function Examples() {
   return <View />;
 }
-Examples.propTypes = {}
+Examples.propTypes = {};
 
 export default Examples;

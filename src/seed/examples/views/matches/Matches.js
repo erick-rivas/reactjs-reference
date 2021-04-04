@@ -48,6 +48,6 @@ const Matches = () =>
     </div>
   </BrowserRouter>;
 
-Matches.propTypes = {}
+Matches.propTypes = {};
 
 export default Matches;

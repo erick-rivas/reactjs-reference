@@ -25,7 +25,7 @@ class Modal extends React.Component {
         closeModal: this.closeModal,
         onCompleted: this.closeModal,
         onError: this.closeModal,
-      })
+      });
     else
       children = React.Children.map(this.props.children,
         (child) => {
@@ -104,6 +104,6 @@ Modal.propTypes = {
   match: PropTypes.object,
   history: PropTypes.object,
   children: PropTypes.any
-}
+};
 
 export default Modal;

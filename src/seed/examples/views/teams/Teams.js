@@ -48,6 +48,6 @@ const Teams = () =>
     </div>
   </BrowserRouter>;
 
-Teams.propTypes = {}
+Teams.propTypes = {};
 
 export default Teams;

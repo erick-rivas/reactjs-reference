@@ -4,6 +4,6 @@ import View from "seed/examples/views/users/Users";
 function Users() {
   return <View />;
 }
-Users.propTypes = {}
+Users.propTypes = {};
 
 export default Users;

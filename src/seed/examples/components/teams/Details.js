@@ -43,6 +43,6 @@ TeamDetails.propTypes = {
   teamId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default TeamDetails;

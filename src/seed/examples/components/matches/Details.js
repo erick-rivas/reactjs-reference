@@ -41,6 +41,6 @@ MatchDetails.propTypes = {
   matchId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
-}
+};
 
 export default MatchDetails;

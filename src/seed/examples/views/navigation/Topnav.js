@@ -66,6 +66,6 @@ const Topnav = () =>
 
   </header>;
 
-Topnav.propTypes = {}
+Topnav.propTypes = {};
 
 export default Topnav;

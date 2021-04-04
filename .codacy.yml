@@ -1,0 +1,8 @@
+---
+exclude_paths:
+  - "**.md"
+  - "public/**/*"
+  - "build/**/*"
+  - "src/resources/css/**/*"
+  - "node_modules/**/*"
+  - "coverage/**/*"
