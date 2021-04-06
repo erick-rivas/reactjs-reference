@@ -12,22 +12,24 @@
 
 ### Pre-requisites
 
--   Download & install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
+-   Download & Install [Docker Engine](https://docs.docker.com/engine/install/)
+-   Download & Install [Docker Compose](https://docs.docker.com/compose/install/)
+    >   For linux adjust docker for non-root user usage [guide](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
 -   Download & install [VS Code](https://code.visualstudio.com/)
--   Download & install [Codacity CLI](https://github.com/codacy/codacy-analysis-cli#install)
->   *To facilitate development it is recommended to run the project on debian distribution (Eg. ubuntu)*
 
 ### Initial setup
 
 -   Clone this repository
 -   Set execute permissions to scripts (linux) `chmod +x bin/*` 
--   Execute setup script `bin/setup`
+-   Execute setup script `bin/setup`, for windows `bin/setup.bat`
+    >  For linux you can specify container ports `bin/setup <REACTJS_PORT>`
+
 -   Optionally configure src/settings.js fields with custom connection attributes
 
 
 ## Execution
 
--   Run server `npm start`
+-   Run server `bin/start`
 
 ### Examples
 
@@ -47,8 +49,23 @@
 
 ## Development
 
+### Dev environment
+
+-   For enable a IDE settings for developing (e.g. lint, debug) install nodeJS and install local dependencies
+    -   Linux
+    ```shell
+    sudo apt update
+    sudo apt install node
+    npm install
+    ```
+    -   Windows
+    ```shell
+    # Install node from https://nodejs.dev/learn/how-to-install-nodejs
+    npm install
+    ```
+    
 ### Testing
 
 -   Analyze code quality `bin/analyze`
--   Test use cases `npm test`
--   Generate code coverage report`npm run-script coverage`
+-   Test use cases `bin/test`
+-   Generate code coverage report`bin/coverage`

@@ -2,6 +2,8 @@
 .data*
 .seedignore
 .gitignore
+.env
+bin/docker/.env
 LICENSE
 SeedManifest.json
 SeedExport.json

@@ -2,6 +2,8 @@
 src/
 public/
 .data
+.env
+bin/docker/.env
 
 # Dependencies
 node_modules/

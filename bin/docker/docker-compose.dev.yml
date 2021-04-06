@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+
+  reactjs:
+    build:
+      context: ../../.
+      dockerfile: Dockerfile
+    command: /bin/sh -c "npm start"
+    volumes:
+      - ../../.:/app
+      - /app/node_modules
+    ports:
+      - "${REACTJS_PORT}:${REACTJS_PORT}"
+
+  codacy-cli:
+    image: "codacy/codacy-analysis-cli"
