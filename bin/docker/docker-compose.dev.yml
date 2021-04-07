@@ -15,3 +15,5 @@ services:
 
   codacy-cli:
     image: "codacy/codacy-analysis-cli"
+    logging:
+      driver: none
