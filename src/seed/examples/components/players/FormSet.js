@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { PLAYER, SET_PLAYER } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/players/Form";
 
 function PlayerFormSet({ playerId, onCompleted = () => null, onError = () => null  }) {
@@ -12,7 +12,8 @@ function PlayerFormSet({ playerId, onCompleted = () => null, onError = () => nul
   const qPlayerPositions = useQuery(`{ playerPositions { } }`);
   const [callSet, qSet] = useSet(SET_PLAYER, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
   if (qPlayer.loading) return <Loading />;

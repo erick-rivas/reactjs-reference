@@ -23,9 +23,9 @@
 
 -   Create and configure *src/settings.js* file
 -   Create a `.ebextensions` folder in project root and copy inside
-    -   `bin/config/aws-eb/single-instance/nodecommand.config`
--   Copy `bin/config/aws-eb/single-instance/.ebignore` in project root folder
--   Copy `bin/config/aws-eb/single-instance/deploy.sh` in `/bin` folder
+    -   `bin/config/aws-eb/nodecommand.config`
+-   Copy `bin/config/aws-eb/.ebignore` in project root folder
+-   Copy `bin/config/aws-eb/deploy.sh` in `/bin` folder
 
 ## SSL
 
@@ -76,7 +76,7 @@ sudo ./certbot-auto certonly --debug
 ```
 -    **Important:** Copy the certificate and private key paths for later
 -    Remove /etc/httpd/conf.d/temp.conf and exit server
--    Copy `bin/aws-eb/config/single-instance/https-instance.config` into `.ebextensions folder
+-    Copy `bin/config/aws-eb/single-instance/https-instance.config` into `.ebextensions folder
 -    Configure the *SSLCertificateFile* and *SSLCertificateKeyFile* keys with the files created by certbot
 -    Deploy again "eb deploy"
 

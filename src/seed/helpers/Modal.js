@@ -9,10 +9,6 @@ import cx from "classnames";
 import ModalContainer from "@material-ui/core/Modal";
 import css from "resources/css/seed/styles/Modal.module.css";
 
-/**
- * Helper component to wrap any component in a modal context
- */
-
 class Modal extends React.Component {
 
   render() {

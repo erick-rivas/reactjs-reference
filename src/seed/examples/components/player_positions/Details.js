@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_PLAYER_POSITION } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/player_positions/Details";
 
 function PlayerPositionDetails({ playerPositionId, onCompleted = () => null, onError = () => null }) {
@@ -17,7 +17,8 @@ function PlayerPositionDetails({ playerPositionId, onCompleted = () => null, onE
   
   const [callDelete] = useDelete(DELETE_PLAYER_POSITION, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
   if (reqPlayerPosition.loading) return <Loading />;

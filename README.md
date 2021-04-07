@@ -11,7 +11,10 @@ This repository holds a **reference** for the development of a **React.js App**.
 -   Execute setup script `bin/setup`, for windows `bin/setup.bat`
 -   Run server `bin/start`
 
--   Open server [http://localhost:3003](http://localhost:3003)
+### Examples
+
+-   Example app [http://localhost:3003/examples](http://localhost:3003/examples)
+-   Docs [http://localhost:3003/docs](http://localhost:3003/docs)
 
 ## Documentation
 

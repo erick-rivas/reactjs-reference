@@ -7,7 +7,7 @@ import Details from 'seed/examples/components/teams/Details';
 
 test('examples/components/teams/Details', () => {
   mockGql.useDetail({"team": data.GQL_TEAM});
-  mockGql.useDelete({"team": data.GQL_TEAM});
+  mockGql.useDelete({"deleteTeam": data.GQL_TEAM});
   render(<Details />);
   expect(screen).toBeDefined()
 });

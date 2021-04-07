@@ -19,9 +19,9 @@
 
 -   Create and configure *src/settings.js* file
 -   Create a `.ebextensions` folder in project root and copy inside
-    -   `bin/config/aws-eb/load-balanced/nodecommand.config`
--   Copy `bin/config/aws-eb/load-balanced/.ebignore` in project root folder
--   Copy `bin/config/aws-eb/load-balanced/deploy.sh` in `/bin` folder
+    -   `bin/config/aws-eb/nodecommand.config`
+-   Copy `bin/config/aws-eb/.ebignore` in project root folder
+-   Copy `bin/config/aws-eb/deploy.sh` in `/bin` folder
 
 ## SSL
 
@@ -51,7 +51,7 @@ To enable a https connection
 
 ### Enable application settings
 
--    Copy `bin/config/aws-eb/https-reencrypt-alb.config into `.ebextensions` folder
+-    Copy `bin/config/aws-eb/load-balanced/https-reencrypt-alb.config into `.ebextensions` folder
 
 ## Deployment
 

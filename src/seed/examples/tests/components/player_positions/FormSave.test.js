@@ -5,8 +5,8 @@ import { render, mockGql } from 'seed/jest';
 import * as data from 'seed/examples/tests/data'
 import FormSave from 'seed/examples/components/player_positions/FormSave';
 
-test('examples/components-/player_positions/FormSave', () => {
-  mockGql.useSave({"playerPosition": data.GQL_PLAYER_POSITION});
+test('examples/components/player_positions/FormSave', () => {
+  mockGql.useSave({"savePlayerPosition": data.GQL_PLAYER_POSITION});
   render(<FormSave />);
   expect(screen).toBeDefined();
 });

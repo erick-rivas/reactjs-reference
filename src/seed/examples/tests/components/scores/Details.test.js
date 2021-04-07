@@ -7,7 +7,7 @@ import Details from 'seed/examples/components/scores/Details';
 
 test('examples/components/scores/Details', () => {
   mockGql.useDetail({"score": data.GQL_SCORE});
-  mockGql.useDelete({"score": data.GQL_SCORE});
+  mockGql.useDelete({"deleteScore": data.GQL_SCORE});
   render(<Details />);
   expect(screen).toBeDefined()
 });

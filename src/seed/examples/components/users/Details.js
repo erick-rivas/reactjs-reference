@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_USER } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/users/Details";
 
 function UserDetails({ userId, onCompleted = () => null, onError = () => null }) {
@@ -22,7 +22,8 @@ function UserDetails({ userId, onCompleted = () => null, onError = () => null })
   
   const [callDelete] = useDelete(DELETE_USER, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
   if (reqUser.loading) return <Loading />;

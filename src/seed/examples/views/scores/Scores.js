@@ -6,7 +6,7 @@ import ScoreDetails from "seed/examples/components/scores/Details";
 import ScoreList from "seed/examples/components/scores/List";
 import ScoreFormSave from "seed/examples/components/scores/FormSave";
 import ScoreFormSet from "seed/examples/components/scores/FormSet";
-import ModalRoute from "seed/helpers/ModalRoute";
+import { ModalRoute } from "seed/helpers";
 
 const Scores = () =>
   <BrowserRouter basename="/examples/scores">

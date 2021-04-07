@@ -7,7 +7,7 @@ import Details from 'seed/examples/components/users/Details';
 
 test('examples/components/users/Details', () => {
   mockGql.useDetail({"user": data.GQL_USER});
-  mockGql.useDelete({"user": data.GQL_USER});
+  mockGql.useDelete({"deleteUser": data.GQL_USER});
   render(<Details />);
   expect(screen).toBeDefined()
 });

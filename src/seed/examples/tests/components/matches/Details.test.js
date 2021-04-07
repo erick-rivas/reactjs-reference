@@ -7,7 +7,7 @@ import Details from 'seed/examples/components/matches/Details';
 
 test('examples/components/matches/Details', () => {
   mockGql.useDetail({"match": data.GQL_MATCH});
-  mockGql.useDelete({"match": data.GQL_MATCH});
+  mockGql.useDelete({"deleteMatch": data.GQL_MATCH});
   render(<Details />);
   expect(screen).toBeDefined()
 });

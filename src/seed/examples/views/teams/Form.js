@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
-import MultiField from "seed/helpers/MultiField";
-import FileField from "seed/helpers/FileField";
+import { MultiField, FileField } from "seed/helpers";
 
 const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
-
   <div class="card">
 
     {/* Header */}
@@ -76,7 +74,6 @@ const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
 TeamForm.propTypes = {
   team: PropTypes.object,
   teams: PropTypes.array,
-  
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 };

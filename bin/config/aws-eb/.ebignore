@@ -1,9 +1,7 @@
 # Exclude source-code & include build
+bin/docker/.env
 src/
 public/
-.data
-.env
-bin/docker/.env
 
 # Dependencies
 node_modules/

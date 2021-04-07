@@ -7,7 +7,7 @@ import Details from 'seed/examples/components/players/Details';
 
 test('examples/components/players/Details', () => {
   mockGql.useDetail({"player": data.GQL_PLAYER});
-  mockGql.useDelete({"player": data.GQL_PLAYER});
+  mockGql.useDelete({"deletePlayer": data.GQL_PLAYER});
   render(<Details />);
   expect(screen).toBeDefined()
 });

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { USER, SET_USER } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/users/Form";
 
 function UserFormSet({ userId, onCompleted = () => null, onError = () => null  }) {
@@ -11,7 +11,8 @@ function UserFormSet({ userId, onCompleted = () => null, onError = () => null  }
   const qTeams = useQuery(`{ teams { } }`);
   const [callSet, qSet] = useSet(SET_USER, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
   if (qUser.loading) return <Loading />;

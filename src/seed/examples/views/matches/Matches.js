@@ -6,7 +6,7 @@ import MatchDetails from "seed/examples/components/matches/Details";
 import MatchList from "seed/examples/components/matches/List";
 import MatchFormSave from "seed/examples/components/matches/FormSave";
 import MatchFormSet from "seed/examples/components/matches/FormSet";
-import ModalRoute from "seed/helpers/ModalRoute";
+import { ModalRoute } from "seed/helpers";
 
 const Matches = () =>
   <BrowserRouter basename="/examples/matches">

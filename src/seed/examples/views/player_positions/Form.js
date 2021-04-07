@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
-import MultiField from "seed/helpers/MultiField";
-import FileField from "seed/helpers/FileField";
+import { MultiField, FileField } from "seed/helpers";
 
 const PlayerPositionForm = ({ playerPosition= {}, onSubmit, error }) =>
-
   <div class="card">
 
     {/* Header */}

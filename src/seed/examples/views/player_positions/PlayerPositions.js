@@ -6,7 +6,7 @@ import PlayerPositionDetails from "seed/examples/components/player_positions/Det
 import PlayerPositionList from "seed/examples/components/player_positions/List";
 import PlayerPositionFormSave from "seed/examples/components/player_positions/FormSave";
 import PlayerPositionFormSet from "seed/examples/components/player_positions/FormSet";
-import ModalRoute from "seed/helpers/ModalRoute";
+import { ModalRoute } from "seed/helpers";
 
 const PlayerPositions = () =>
   <BrowserRouter basename="/examples/player_positions">

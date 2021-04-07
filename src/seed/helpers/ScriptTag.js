@@ -6,11 +6,6 @@ __Seed builder__v0.2.0
 import React from "react";
 import PropTypes from "prop-types";
 
-/**
- * Helper component to bing javascript tag code (e.g. <script> ... </script>)
- * @param {string} content Script content
- */
-
 class ScriptTag extends React.Component {
   
   render() {

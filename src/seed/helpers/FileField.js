@@ -8,17 +8,6 @@ import PropTypes from 'prop-types';
 import $ from "jquery";
 import { API_URL } from "settings";
 
-/**
- * Helper component to ease the management of input files
- * It receive the user file, automatically pre-upload to server and returns the url. 
- * Useful for file/image preview connected to Formik values
- * @param {string} className Classname of the component
- * @param {string} accept Type of files of file input (e.g. image/*)
- * @param {string} name Formik Field name param
- * @param {Function} setFieldValue Formik setFieldValue func
- * @param {boolean} multiple Wheater the field is single (default false=single)
- */
-
 class FileField extends React.Component {
 
   render() {

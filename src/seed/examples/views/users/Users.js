@@ -6,7 +6,7 @@ import UserDetails from "seed/examples/components/users/Details";
 import UserList from "seed/examples/components/users/List";
 import UserFormSave from "seed/examples/components/users/FormSave";
 import UserFormSet from "seed/examples/components/users/FormSet";
-import ModalRoute from "seed/helpers/ModalRoute";
+import { ModalRoute } from "seed/helpers";
 
 const Users = () =>
   <BrowserRouter basename="/examples/users">

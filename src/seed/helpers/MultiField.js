@@ -7,16 +7,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import css from "resources/css/seed/styles/MultiField.module.css";
 
-/**
- * Helper component ease the managment of multiple fields selection.
- * It uses a multicheckbox approach connected with Formik values
- * @param {Array} values Multifield values
- * @param {Array} value Selected value(s)
- * @param {string} name Formik Field name param
- * @param {Function} setFieldValue Formik setFieldValue func
- * @param {boolean} singleChoice Wheater the multilsect is single (default false=multiple)
- */
-
 class MultiField extends React.Component {
 
   render() {

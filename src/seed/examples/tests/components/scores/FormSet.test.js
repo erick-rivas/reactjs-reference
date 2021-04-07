@@ -7,9 +7,9 @@ import FormSet from 'seed/examples/components/scores/FormSet';
 
 test('examples/components/scores/FormSet', () => {
   mockGql.useDetail({"score": data.GQL_SCORE});
-    mockGql.useQuery({"players": data.GQL_PLAYERS});
-    mockGql.useQuery({"matches": data.GQL_MATCHES});
-  mockGql.useSet({"score": data.GQL_SCORE});
+  mockGql.useQuery({"players": data.GQL_PLAYERS});
+  mockGql.useQuery({"matches": data.GQL_MATCHES});
+  mockGql.useSet({"setScore": data.GQL_SCORE});
   render(<FormSet />);
   expect(screen).toBeDefined();
 });

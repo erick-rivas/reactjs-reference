@@ -7,7 +7,7 @@ import Details from 'seed/examples/components/player_positions/Details';
 
 test('examples/components/player_positions/Details', () => {
   mockGql.useDetail({"playerPosition": data.GQL_PLAYER_POSITION});
-  mockGql.useDelete({"playerPosition": data.GQL_PLAYER_POSITION});
+  mockGql.useDelete({"deletePlayerPosition": data.GQL_PLAYER_POSITION});
   render(<Details />);
   expect(screen).toBeDefined()
 });

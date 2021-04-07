@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import ScriptTag from "seed/helpers/ScriptTag";
+import { ScriptTag } from "seed/helpers";
 import Matches from "seed/examples/components/matches/Matches";
 import Players from "seed/examples/components/players/Players";
 import PlayerPositions from "seed/examples/components/player_positions/PlayerPositions";

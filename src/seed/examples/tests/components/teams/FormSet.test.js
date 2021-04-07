@@ -7,8 +7,8 @@ import FormSet from 'seed/examples/components/teams/FormSet';
 
 test('examples/components/teams/FormSet', () => {
   mockGql.useDetail({"team": data.GQL_TEAM});
-    mockGql.useQuery({"teams": data.GQL_TEAMS});
-  mockGql.useSet({"team": data.GQL_TEAM});
+  mockGql.useQuery({"teams": data.GQL_TEAMS});
+  mockGql.useSet({"setTeam": data.GQL_TEAM});
   render(<FormSet />);
   expect(screen).toBeDefined();
 });

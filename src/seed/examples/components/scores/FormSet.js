@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SCORE, SET_SCORE } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/scores/Form";
 
 function ScoreFormSet({ scoreId, onCompleted = () => null, onError = () => null  }) {
@@ -12,7 +12,8 @@ function ScoreFormSet({ scoreId, onCompleted = () => null, onError = () => null 
   const qMatches = useQuery(`{ matches { } }`);
   const [callSet, qSet] = useSet(SET_SCORE, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
   if (qScore.loading) return <Loading />;

@@ -5,9 +5,9 @@ import { render, mockGql } from 'seed/jest';
 import * as data from 'seed/examples/tests/data'
 import FormSave from 'seed/examples/components/users/FormSave';
 
-test('examples/components-/users/FormSave', () => {
-    mockGql.useQuery({"teams": data.GQL_TEAMS});
-  mockGql.useSave({"user": data.GQL_USER});
+test('examples/components/users/FormSave', () => {
+  mockGql.useQuery({"teams": data.GQL_TEAMS});
+  mockGql.useSave({"saveUser": data.GQL_USER});
   render(<FormSave />);
   expect(screen).toBeDefined();
 });

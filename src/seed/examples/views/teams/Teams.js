@@ -6,7 +6,7 @@ import TeamDetails from "seed/examples/components/teams/Details";
 import TeamList from "seed/examples/components/teams/List";
 import TeamFormSave from "seed/examples/components/teams/FormSave";
 import TeamFormSet from "seed/examples/components/teams/FormSet";
-import ModalRoute from "seed/helpers/ModalRoute";
+import { ModalRoute } from "seed/helpers";
 
 const Teams = () =>
   <BrowserRouter basename="/examples/teams">

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_SCORE } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/scores/Details";
 
 function ScoreDetails({ scoreId, onCompleted = () => null, onError = () => null }) {
@@ -19,7 +19,8 @@ function ScoreDetails({ scoreId, onCompleted = () => null, onError = () => null 
   
   const [callDelete] = useDelete(DELETE_SCORE, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
   if (reqScore.loading) return <Loading />;

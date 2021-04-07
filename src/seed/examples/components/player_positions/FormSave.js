@@ -2,13 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SAVE_PLAYER_POSITION } from "seed/gql/queries";
-import Loading from "seed/helpers/Loading";
+import { Loading } from "seed/helpers";
 import View from "seed/examples/views/player_positions/Form";
 
 function PlayerPositionFormSave({ onCompleted = () => null, onError = () => null }) {
+  
   const [callSave, qSave] = useSave(SAVE_PLAYER_POSITION, {
     onCompleted: () =>
-      onCompleted() //Note: ModalRoutes bind event calling 'closeModal' event
+      onCompleted()
+      //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
   const error = qSave.error ? "An error has occurred" : null;
 

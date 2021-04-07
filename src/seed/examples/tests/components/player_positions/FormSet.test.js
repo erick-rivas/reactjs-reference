@@ -7,7 +7,7 @@ import FormSet from 'seed/examples/components/player_positions/FormSet';
 
 test('examples/components/player_positions/FormSet', () => {
   mockGql.useDetail({"playerPosition": data.GQL_PLAYER_POSITION});
-  mockGql.useSet({"playerPosition": data.GQL_PLAYER_POSITION});
+  mockGql.useSet({"setPlayerPosition": data.GQL_PLAYER_POSITION});
   render(<FormSet />);
   expect(screen).toBeDefined();
 });

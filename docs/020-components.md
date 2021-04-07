@@ -8,24 +8,37 @@ Handle component behavior (initialization, requests, render calls, etc)
 ### List example
 
 ```javascript
-function PlayerList(props){
-  const qPlayers = useQuery(`
-  {
-    players {
-      name
-      isActive
-      photo { }
-      team { }
-      position { }
-    }
-  }`);
+function PlayerList() {
 
-  if (qPlayers.loading) return <Loading />;
-  if (qPlayers.error) return "Error";
-  const { players = [] } = qPlayers.data;
+  const pageSize = 15;
+  const [pageNum, setPageNum] = useState(1);
+  const reqPlayers = usePagination(`
+  {
+    playerPagination {
+      totalPages
+      players {
+        name
+        isActive
+        createdAt
+        photo { }
+        team { }
+        position { }
+      }
+    }
+  }`, pageNum, pageSize);
+
+  if (reqPlayers.loading) return <Loading />;
+  if (reqPlayers.error) return "Error";
+  const { players = [], totalPages = 0 } = reqPlayers.data.playerPagination;
+
+  const onClickPage = (pageNum) =>
+    setPageNum(pageNum);
 
   return <View
     players={players}
+    pageNum={pageNum}
+    totalPages={totalPages}
+    onClickPage={onClickPage}
   />;
 }
 ```
@@ -33,19 +46,17 @@ function PlayerList(props){
 ### Form example
 
 ```javascript
-function PlayerFormSave(props) {
-  const { url } = props.match;
+function PlayerFormSave({ onCompleted = () => null, onError = () => null }) {
+
   const qTeams = useQuery(`{ teams { } }`);
   const qPlayerPositions = useQuery(`{ playerPositions { } }`);
-  const [callSave, qSave] = useSave(queries.SAVE_PLAYER, {
-    onCompleted: () => {
-      const backUrl = url.substring(0, url.lastIndexOf("/"));
-      props.history.push(backUrl);
-    }
+  const [callSave, qSave] = useSave(SAVE_PLAYER, {
+    onCompleted: () =>
+      onCompleted()
   });
   const { teams = [] } = qTeams.data;
   const { playerPositions = [] } = qPlayerPositions.data;
-  const error = qSave.error ? "An error has occurred" : null
+  const error = qSave.error ? "An error has occurred" : null;
 
   const onSubmit = (values) =>
     callSave(values);

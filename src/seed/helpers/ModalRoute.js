@@ -8,10 +8,6 @@ import PropTypes from "prop-types";
 import Modal from "seed/helpers/Modal";
 import { Route } from "react-router-dom";
 
-/**
- * Helper component to wrap any component in a modal context according to a Route path
- */
-
 class ModalRoute extends React.Component {
 
   render() {

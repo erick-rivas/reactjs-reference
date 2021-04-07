@@ -6,7 +6,7 @@ import PlayerDetails from "seed/examples/components/players/Details";
 import PlayerList from "seed/examples/components/players/List";
 import PlayerFormSave from "seed/examples/components/players/FormSave";
 import PlayerFormSet from "seed/examples/components/players/FormSet";
-import ModalRoute from "seed/helpers/ModalRoute";
+import { ModalRoute } from "seed/helpers";
 
 const Players = () =>
   <BrowserRouter basename="/examples/players">
