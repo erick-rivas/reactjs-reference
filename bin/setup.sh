@@ -1,4 +1,6 @@
-# Configure docker .env
+#!/bin/bash
+
+echo "== Configuring docker .env"
 REACTJS_PORT=3003
 if [ $# -ge 1 ]; then
   REACTJS_PORT=$1
@@ -12,14 +14,14 @@ echo "REACTJS_PORT=${REACTJS_PORT}" >> "bin/docker/.env"
 echo "### MODIFY WITH WITH $ bin/setup <REACTJS_PORT> ###" >> ".env"
 echo "PORT=${REACTJS_PORT}" >> ".env"
 
-# Delete previous containers
+echo "== Deleting previous containers"
 docker-compose -f bin/docker/docker-compose.dev.yml down
 
-# Build project
+echo "== Building project"
 docker-compose -f bin/docker/docker-compose.dev.yml build
 
-# Set execute permissions to bin
-docker-compose -f bin/docker/docker-compose.dev.yml run reactjs chmod +x bin/*;chmod +x bin/docker/*
+echo "== Setting execute permissions to bin"
+docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c "chmod +x bin/*;chmod +x bin/docker/*"
 
-# Generate docs
-docker-compose -f bin/docker/docker-compose.dev.yml run reactjs npm run-script build-docs
+echo "== Generating docs"
+docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c "npm run-script build-docs"

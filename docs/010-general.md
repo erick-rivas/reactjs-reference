@@ -13,21 +13,18 @@
 
 ### Dev environment
 
--   For enable a IDE settings for developing (e.g. lint, debug) install nodeJS and install local dependencies
+-   For enable a IDE settings for developing (e.g. lint, debug) install nodeJS
     -   Linux
     ```shell
     sudo apt update
     sudo apt install node
-    npm install
     ```
     -   Windows
     ```shell
     # Install node from https://nodejs.dev/learn/how-to-install-nodejs
-    npm install
     ```
     
 ### Testing
 
--   Analyze code quality `bin/analyze`
--   Test use cases `bin/test`
--   Generate code coverage report`bin/coverage`
+-   Analyze code quality `bin/analyze.sh` (For windows `bin/analyze.bat`)
+-   Test use cases `bin/test.sh` (For windows `bin/test.bat`)
