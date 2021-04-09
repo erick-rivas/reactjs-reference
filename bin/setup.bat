@@ -20,5 +20,15 @@ docker-compose -f bin/docker/docker-compose.dev.yml build
 echo == Setting execute permissions to bin
 docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c "chmod +x bin/*;chmod +x bin/docker/*"
 
+echo == Starting services
+docker-compose -f bin/docker/docker-compose.dev.yml up -d
+
 echo == Generating docs
-docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c "npm run-script build-docs"
+docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "npm run-script build-docs"
+
+echo == Stopping services
+docker-compose -f bin/docker/docker-compose.dev.yml stop
+
+echo.
+echo == Setup completed (Start server with bin/start.bat)
+echo.

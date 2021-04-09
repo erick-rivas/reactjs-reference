@@ -1,8 +1,8 @@
 # General
 /build
+/bin/docker/.env
 /src/resources/css/*
 /public/docs
-.data
 
 # Dependencies
 /node_modules
