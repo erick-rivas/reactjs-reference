@@ -1,5 +1,6 @@
 # Exclude source-code & include build
 bin/docker/.env
+bin/docker/.env-port
 src/
 public/
 

@@ -3,6 +3,7 @@
 .seedignore
 .gitignore
 bin/docker/.env
+bin/docker/.env-port
 LICENSE
 SeedManifest.json
 SeedExport.json

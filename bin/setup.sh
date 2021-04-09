@@ -6,13 +6,17 @@ if [ $# -ge 1 ]; then
   REACTJS_PORT=$1
 fi
 sudo rm bin/docker/.env
+sudo rm bin/docker/.env-info
 sudo rm .env
-echo "# DOCKER PORTS" >> "bin/docker/.env"
+echo "# DOCKER PORTS" > "bin/docker/.env"
 echo "### MODIFY WITH WITH $ bin/setup <REACTJS_PORT> ###" >> "bin/docker/.env"
 echo "" >> "bin/docker/.env"
-echo "REACTJS_PORT=${REACTJS_PORT}" >> "bin/docker/.env"
-echo "### MODIFY WITH WITH $ bin/setup <REACTJS_PORT> ###" >> ".env"
-echo "PORT=${REACTJS_PORT}" >> ".env"
+echo "REACTJS_PORT=$REACTJS_PORT" >> "bin/docker/.env"
+
+echo "$REACTJS_PORT" > "bin/docker/.env-port"
+
+echo "### MODIFY WITH WITH $ bin/setup <REACTJS_PORT> ###" > ".env"
+echo "PORT=$REACTJS_PORT" >> ".env"
 
 echo "== Deleting previous containers"
 docker-compose -f bin/docker/docker-compose.dev.yml down

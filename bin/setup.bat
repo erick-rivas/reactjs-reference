@@ -11,6 +11,8 @@ echo ### MODIFY WITH WITH $ bin/setup.bat REACTJS_PORT ### >> .\bin\docker\.env
 echo _ >> .\bin\docker\.env
 echo REACTJS_PORT=%REACTJS_PORT% >> .\bin\docker\.env
 
+echo %REACTJS_PORT% > .\bin\docker\.env-port
+
 echo == Deleting previous containers
 docker-compose -f bin/docker/docker-compose.dev.yml down
 

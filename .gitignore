@@ -1,6 +1,7 @@
 # General
 /build
 /bin/docker/.env
+/bin/docker/.env-port
 /src/resources/css/*
 /public/docs
 
