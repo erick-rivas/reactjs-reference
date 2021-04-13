@@ -9,11 +9,6 @@ services:
     command: /bin/sh -c "npm start"
     volumes:
       - ../../.:/app
-      - /app/node_modules
+      - /node_modules
     ports:
       - "${REACTJS_PORT}:${REACTJS_PORT}"
-
-  codacy-cli:
-    image: "codacy/codacy-analysis-cli"
-    logging:
-      driver: none

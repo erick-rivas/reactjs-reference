@@ -13,18 +13,21 @@
 
 ### Dev environment
 
--   For enable a IDE settings for developing (e.g. lint, debug) install nodeJS
+-   For enable IDE settings for developing (e.g. lint, debug) install nodeJS and project dependencies
     -   Linux
     ```shell
     sudo apt update
     sudo apt install node
+    npm install
     ```
     -   Windows
     ```shell
     # Install node from https://nodejs.dev/learn/how-to-install-nodejs
+    npm install
     ```
     
 ### Testing
 
--   Analyze code quality `bin/analyze.sh` (For windows `bin/analyze.bat`)
 -   Test use cases `bin/test.sh` (For windows `bin/test.bat`)
+-   Analyze code quality `bin/analyze.sh` (For windows `bin/analyze.bat`)
+    >   To run analyze command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)

@@ -1,4 +1,5 @@
 # General
+.env
 /build
 /bin/docker/.env
 /bin/docker/.env-port
