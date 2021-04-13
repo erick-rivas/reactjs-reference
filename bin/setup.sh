@@ -9,13 +9,13 @@ sudo rm bin/docker/.env
 sudo rm bin/docker/.env-port
 sudo rm .env
 echo "# DOCKER PORTS" > "bin/docker/.env"
-echo "### MODIFY WITH WITH $ bin/setup.sh <REACTJS_PORT> ###" >> "bin/docker/.env"
+echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" >> "bin/docker/.env"
 echo "" >> "bin/docker/.env"
 echo "REACTJS_PORT=$REACTJS_PORT" >> "bin/docker/.env"
 
 echo "$REACTJS_PORT" > "bin/docker/.env-port"
 
-echo "### MODIFY WITH WITH $ bin/setup.sh <REACTJS_PORT> ###" > ".env"
+echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" > ".env"
 echo "PORT=$REACTJS_PORT" >> ".env"
 
 echo "== Deleting previous containers"
