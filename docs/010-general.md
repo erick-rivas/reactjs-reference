@@ -18,7 +18,7 @@
     ```shell
     sudo apt update
     sudo apt install node
-    npm install
+    sudo npm install
     ```
     -   Windows
     ```shell
