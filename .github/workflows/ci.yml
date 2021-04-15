@@ -41,10 +41,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     
-    - name: Installing dependencies
+    - name: "Installing dependencies"
       run: |
         npm install
 
-    - name: Run test
+    - name: "Running tests"
       run: |
         npm test
