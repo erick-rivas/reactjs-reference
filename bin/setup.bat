@@ -33,7 +33,10 @@ docker-compose -f bin/docker/docker-compose.dev.yml up -d
 echo == Generating docs
 docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "npm run-script build-docs"
 
-echo == Stopping services
+echo == Installing local dependencies
+npm install
+
+echo == Cleaning services
 docker-compose -f bin/docker/docker-compose.dev.yml stop
 
 echo.

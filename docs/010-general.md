@@ -10,21 +10,6 @@
     >   *These files are *read-only*, modifiable only through [seed-builder](./040-seed-builder.md) *
     
 ## Development
-
-### Dev environment
-
--   For enable IDE settings for developing (e.g. lint, debug) install nodeJS and project dependencies
-    -   Linux
-    ```shell
-    sudo apt update
-    sudo apt install node
-    sudo npm install
-    ```
-    -   Windows
-    ```shell
-    # Install node from https://nodejs.dev/learn/how-to-install-nodejs
-    npm install
-    ```
     
 ### Testing
 
