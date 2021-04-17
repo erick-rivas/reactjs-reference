@@ -36,6 +36,11 @@ const Loading = require('seed/helpers/Loading').default;
 
 /**
  * Helper component to wrap any component in a modal context
+ * @param {Object} component Modal component to render
+ * @param {float} width Modal width (default: 500)
+ * @param {float} height Modal height (default: 500)
+ * @param {string} width Animate.css start animation (default zoomIn)
+ * @param {string} overflow Modal css overflow property (default auto)
  * @function
  */
 
@@ -43,6 +48,12 @@ const Modal = require('seed/helpers/Modal').default;
 
 /**
  * Helper component to wrap any component in a modal context according to a Route path
+ * @param {string} path Route path
+ * @param {Object} component Modal component to render
+ * @param {float} width Modal width (default: 500)
+ * @param {float} height Modal height (default: 500)
+ * @param {string} width Animate.css start animation (default zoomIn)
+ * @param {string} overflow Modal css overflow property (default auto)
  * @function
  */
 
