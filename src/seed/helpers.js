@@ -1,15 +1,7 @@
 /*
-__Seed builder__v0.2.0
+__Seed builder__
   (Read_only) Builder helper
-  import * as HelperFileField from "seed/helpers/FileField";
-import * as HelperLoading from "seed/helpers/Loading";
-import * as HelperModal from "seed/helpers/Modal";
-import * as HelperModalRoute from "seed/helpers/ModalRoute";
-import * as HelperMultiField from "seed/helpers/MultiField";
-import * as HelperScriptTag from "seed/helpers/ScriptTag";
 */
-
-
 
 /** @module helpers **/
 

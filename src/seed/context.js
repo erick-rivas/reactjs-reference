@@ -1,3 +1,8 @@
+/*
+__Seed builder__
+  (Read_only) Builder helper
+*/
+
 import React, { createContext, useState } from "react";
 import PropTypes from 'prop-types';
 

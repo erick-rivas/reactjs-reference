@@ -33,6 +33,9 @@ docker-compose -f bin/docker/docker-compose.dev.yml up -d
 echo "== Generating docs"
 docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
 
+echo "== Removing root permissions"
+sudo chown -R $(whoami) .
+
 echo "== Installing local dependencies"
 npm install
 

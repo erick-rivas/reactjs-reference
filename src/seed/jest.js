@@ -1,3 +1,8 @@
+/*
+__Seed builder__
+  (Read_only) Builder helper
+*/
+
 import React from "react";
 import '@testing-library/jest-dom/extend-expect';
 import { MemoryRouter, Route } from 'react-router';

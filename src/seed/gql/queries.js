@@ -1,5 +1,5 @@
 /*
-__Seed builder__v0.2.0
+__Seed builder__
   AUTO_GENERATED (Read only)
   Modify via builder
 */
