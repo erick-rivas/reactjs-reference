@@ -14,6 +14,6 @@
 ### Testing
 
 -   Test use cases `bin/test.sh` (For windows `bin/test.bat`)
--   Analyze code quality `bin/analyze.sh` (For windows `bin/analyze.bat`)
-    >   To run analyze command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
+-   Review code quality `bin/review.sh` (For windows `bin/review.bat`)
+    >   To run review command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
 -   Generate code coverage report `bin/coverage.sh` (For windows `bin/coverage.bat`)

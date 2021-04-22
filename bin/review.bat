@@ -1,5 +1,5 @@
-#!/bin/bash
-echo "== Analyzing with eslint"
+@echo off
+echo == Reviewing with eslint
 codacy-analysis-cli analyze --tool eslint --force-file-permissions
-echo "== Analyzing with jshint"
+echo == Reviewing with jshint
 codacy-analysis-cli analyze --tool jshint --force-file-permissions

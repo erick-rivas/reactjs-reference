@@ -19,19 +19,19 @@ echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" > ".env"
 echo "PORT=$REACTJS_PORT" >> ".env"
 
 echo "== Deleting previous containers"
-docker-compose -f bin/docker/docker-compose.dev.yml down
+sudo docker-compose -f bin/docker/docker-compose.dev.yml down
 
 echo "== Building project"
-docker-compose -f bin/docker/docker-compose.dev.yml build
+sudo docker-compose -f bin/docker/docker-compose.dev.yml build
 
 echo "== Setting execute permissions to bin"
-docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c "chmod +x bin/*;chmod +x bin/docker/*"
+sudo docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c "chmod +x bin/*;chmod +x bin/docker/*"
 
 echo "== Starting services"
-docker-compose -f bin/docker/docker-compose.dev.yml up -d
+sudo docker-compose -f bin/docker/docker-compose.dev.yml up -d
 
 echo "== Generating docs"
-docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
+sudo docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
 
 echo "== Removing root permissions"
 sudo chown -R $(whoami) .
@@ -40,7 +40,7 @@ echo "== Installing local dependencies"
 npm install
 
 echo "== Cleaning services"
-docker-compose -f bin/docker/docker-compose.dev.yml stop
+sudo docker-compose -f bin/docker/docker-compose.dev.yml stop
 
 echo ""
 echo "== Setup completed (Start server with bin/start.sh)"
