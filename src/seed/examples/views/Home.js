@@ -1,3 +1,9 @@
+/*
+__Seed builder__
+  (Read_only) Example view
+  Be careful copying content
+*/
+
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { ScriptTag } from "seed/helpers";

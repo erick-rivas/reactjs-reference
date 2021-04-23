@@ -1,3 +1,9 @@
+/*
+__Seed builder__
+  (Read_only) Example view
+  Be careful copying content
+*/
+
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";

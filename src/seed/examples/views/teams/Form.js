@@ -1,3 +1,9 @@
+/*
+__Seed builder__
+  (Read_only) Example view
+  Be careful copying content
+*/
+
 import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";

@@ -1,3 +1,9 @@
+/*
+__Seed builder__
+  (Read_only) Example component
+  Be careful copying content
+*/
+
 import React from "react";
 import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";

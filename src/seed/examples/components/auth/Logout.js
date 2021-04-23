@@ -1,3 +1,9 @@
+/*
+__Seed builder__
+  (Read_only) Example component
+  Be careful copying content
+*/
+
 import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 import { usePost } from "seed/api";
