@@ -17,3 +17,13 @@
 -   Review code quality `bin/review.sh` (For windows `bin/review.bat`)
     >   To run review command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
 -   Generate code coverage report `bin/coverage.sh` (For windows `bin/coverage.bat`)
+
+### Docker
+
+-   Clean unused docker resources `bin/clean.sh` (For windows `bin/clean.bat`)
+
+## Other resources
+
+-   [Components docs](./020-components.md)
+-   [Views docs](./030-views.md)
+-   [Seed builder](./040-seed-builder.md)

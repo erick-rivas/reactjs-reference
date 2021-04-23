@@ -2,7 +2,7 @@ name: ReactJS App
 
 on:
   push:
-    branches: [master, dev]
+    branches: [main, master, dev]
 
   pull_request:
     branches:
