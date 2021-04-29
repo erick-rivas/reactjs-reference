@@ -19,11 +19,16 @@ src/tests/*
 src/views/*
 src/resources/css/*
 src/seed/examples
-?bin/docker/custom-setup.sh
+?.dockerignore
+?.eslintrc
+?.jshintrc
+?Dockerfile
+?jsconfig.json
 ?app.js
 ?package.json
 ?package-lock.json
 ?README.md
+?bin/docker/custom-setup.sh
 ?public/*
 ?src/index.css
 ?src/index.js

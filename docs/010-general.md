@@ -18,6 +18,13 @@
     >   To run review command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
 -   Generate code coverage report `bin/coverage.sh` (For windows `bin/coverage.bat`)
 
+### Deployment (dev stage)
+
+-  To upload to development server
+    -  Request a .pem.dev and a port-key to system admin
+    -  Paste .pem.dev in root directory of the project
+    -  Execute `bin/deploy.sh <PORT-KEY>` (For windows `bin/deploy.sh <PORT-KEY>`)
+    
 ### Docker
 
 -   Clean unused docker resources `bin/clean.sh` (For windows `bin/clean.bat`)
