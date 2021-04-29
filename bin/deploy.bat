@@ -2,42 +2,28 @@
 # Seed builder
 # AUTO_GENERATED (Read only)
 
+for /f "delims=" %%i in ('docker-compose -f bin/docker/docker-compose.dev.yml ps --services --filter "status=running"') do set RUNNING=%%i
+IF "%RUNNING%" == "" echo "ERROR: Before executing bin/deploy.bat, start server with bin/start.bat"
+IF "%RUNNING%" == "" exit 1
+
 set /A KEY=0
-set /A HOST="dev.seed-project.com.mx"
+set /A HOST=dev.seed-project.com.mx
 
 IF NOT "%~1" == "" set KEY=%1
 IF "%~1" == "" echo ERROR: Include deploy port-key e.g $ bin/deploy.sh 7120
 IF "%~1" == "" exit 1
 IF NOT "%~2" == "" set HOST=%2
-if %KEY lss 7000 OR $KEY gtr 7999 echo ERROR: Invalid port-key, valid range [7000-7999]
-if %KEY lss 7000 OR $KEY gtr 7999 exit 1
+if %KEY% lss 7000 echo ERROR: Invalid port-key, valid range [7000-7999]
+if %KEY% lss 7000 exit 1
+if %KEY% gtr 7999 exit ERROR: Invalid port-key, valid range [7000-7999]
+if %KEY% gtr 7999 exit 1
 
-echo "== Configuring variables"
-for /f "delims=" %%i in ('git config --get remote.origin.url') do set git_url=%%i
-for /f "delims=" %%i in ('git branch --show-current') do set git_branch=%%i
-for /f "delims=" %%i in ('python -c "print(%KEY% + 0)"') do set reactjs_port=%%i
-for /f "delims=" %%i in ('python -c "print(%KEY% + 1)"') do set django_port=%%i
-set /A client_url="http://%HOST%:%reactjs_port%"
-set /A server_url="http://%HOST%:%django_port%"
+echo == Configuring variables
+for /f "delims=" %%i in ('git config --get remote.origin.url') do set GIT_URL=%%i
+for /f "delims=" %%i in ('git branch --show-current') do set GIT_BRANCH=%%i
 
 echo == NOTE: BEFORE START paste .dev.pem in root dir
-
-echo == Updating project
-ssh -t -i .dev.pem ubuntu@%HOST% "git clone %git_url% %KEY%/app"
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;git reset --hard"
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;git clean -f -d"
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;git checkout %git_branch%"
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;git pull"
-
-echo == Configuring docker
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;sed -i \"s/run reactjs/run reactjs-%KEY%/\" \"bin/setup.sh\""
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;sed -i \"s/exec reactjs/exec reactjs-%KEY%/\" \"bin/setup.sh\""
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;sed -i \"s/ reactjs:/ reactjs-%KEY%:/\" \"bin/docker/docker-compose.dev.yml\""
-
-echo == Updating reactjs server
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;bin/setup.sh %reactjs_port%"
-ssh -t -i .dev.pem ubuntu@%HOST% "cd %KEY%/app;bin/start.sh"
-
-echo.
-echo == Deployment completed (http://%HOST%:%reactjs_port%)
-echo.
+docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "cp bin/docker/deploy-dev.sh bin/docker/win-deploy-dev.sh"
+docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "sed -i 's/\r$//g' bin/docker/win-deploy-dev.sh"
+docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "bin/docker/win-deploy-dev.sh %KEY% %HOST% %GIT_URL% %GIT_BRANCH%"
+docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "rm bin/docker/win-deploy-dev.sh"

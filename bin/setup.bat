@@ -33,7 +33,7 @@ echo == Starting services
 docker-compose -f bin/docker/docker-compose.dev.yml up -d
 
 echo == Executing custom setup scripts
-docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "cp bin/docker/env-dev.sh bin/docker/win-custom-setup.sh"
+docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "cp bin/docker/custom-setup.sh bin/docker/win-custom-setup.sh"
 docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "sed -i 's/\r$//g' bin/docker/win-custom-setup.sh"
 docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "bin/docker/win-custom-setup.sh"
 
