@@ -1,4 +1,6 @@
 #!/bin/bash
+# Seed builder
+# AUTO_GENERATED (Read only)
 
 echo "== Configuring docker .env"
 REACTJS_PORT=3003
@@ -29,6 +31,9 @@ sudo docker-compose -f bin/docker/docker-compose.dev.yml run reactjs /bin/sh -c 
 
 echo "== Starting services"
 sudo docker-compose -f bin/docker/docker-compose.dev.yml up -d
+
+echo "== Executing custom setup scripts"
+sudo docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c  "bin/docker/custom-setup.sh"
 
 echo "== Generating docs"
 sudo docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"

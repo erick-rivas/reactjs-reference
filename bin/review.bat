@@ -1,4 +1,7 @@
 @echo off
+:: Seed builder
+:: AUTO_GENERATED (Read only)
+
 echo == Reviewing with eslint
 codacy-analysis-cli analyze --tool eslint --force-file-permissions
 echo == Reviewing with jshint

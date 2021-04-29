@@ -19,6 +19,7 @@ src/tests/*
 src/views/*
 src/resources/css/*
 src/seed/examples
+?bin/docker/custom-setup.sh
 ?app.js
 ?package.json
 ?package-lock.json
