@@ -3,7 +3,7 @@
 # AUTO_GENERATED (Read only)
 
 KEY=0
-HOST=dev.seed-project.com.mx
+HOST="dev.seed-project.com.mx"
 
 if [ $# -ge 1 ]; then
   KEY=$1;
@@ -11,6 +11,11 @@ else
   echo "ERROR: Include deploy port-key e.g $ bin/deploy.sh 7120"
   exit 1
 fi
+if [ $KEY -lt 7000 ] || [ $KEY -gt 7999 ]; then
+    echo "ERROR: Invalid port-key, valid range [7000-7999]"
+    exit 1
+fi
+
 if [ $# -ge 2 ]; then HOST=$2; fi
 
 echo "== Configuring variables"
