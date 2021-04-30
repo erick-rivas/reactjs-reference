@@ -2,6 +2,7 @@
 .data*
 .seedignore
 .gitignore
+.dev.pem
 bin/docker/.env
 bin/docker/.env-port
 LICENSE
