@@ -8,7 +8,7 @@ DJANGO_PORT=$(node -e "console.log($KEY + 1)")
 CLIENT_URL="http:\/\/$HOST:$REACTJS_PORT"
 SERVER_URL="http:\/\/$HOST:$DJANGO_PORT"
 
-sudo chmod 400 .dev.pem
+chmod 400 .dev.pem
 echo "== Updating project"
 ssh -t -i .dev.pem ubuntu@$HOST "git clone $GIT_URL $KEY/app"
 ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;git reset --hard"
