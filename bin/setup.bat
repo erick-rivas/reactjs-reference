@@ -33,10 +33,10 @@ echo == Starting services
 docker-compose -f bin/docker/docker-compose-dev.yml up -d
 
 echo == Generating docs
-docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "npm run-script build-docs"
+docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
 
 echo == Installing local dependencies
-npm install
+call npm install
 
 echo == Cleaning services
 docker-compose -f bin/docker/docker-compose-dev.yml stop
