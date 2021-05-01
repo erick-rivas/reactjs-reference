@@ -2,7 +2,7 @@
 :: Seed builder
 :: AUTO_GENERATED (Read only)
 
-for /f "delims=" %%i in ('docker-compose -f bin/docker/docker-compose.dev.yml ps --services --filter "status=running"') do set RUNNING=%%i
+for /f "delims=" %%i in ('docker-compose -f bin/docker/docker-compose-dev.yml ps --services --filter "status=running"') do set RUNNING=%%i
 IF "%RUNNING%" == "" echo "ERROR: Before executing bin/deploy.bat, start server with bin/start.bat"
 IF "%RUNNING%" == "" exit 1
 
@@ -23,7 +23,7 @@ for /f "delims=" %%i in ('git config --get remote.origin.url') do set GIT_URL=%%
 for /f "delims=" %%i in ('git branch --show-current') do set GIT_BRANCH=%%i
 
 echo == NOTE: BEFORE START paste .dev.pem in root dir
-docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "cp bin/docker/deploy-dev.sh bin/docker/win-deploy-dev.sh"
-docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "sed -i 's/\r$//g' bin/docker/win-deploy-dev.sh"
-docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "bin/docker/win-deploy-dev.sh %KEY% %HOST% %GIT_URL% %GIT_BRANCH%"
-docker-compose -f bin/docker/docker-compose.dev.yml exec reactjs /bin/sh -c "rm bin/docker/win-deploy-dev.sh"
+docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "cp bin/docker/deploy-dev.sh bin/docker/win-deploy-dev.sh"
+docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "sed -i 's/\r$//g' bin/docker/win-deploy-dev.sh"
+docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "bin/docker/win-deploy-dev.sh %KEY% %HOST% %GIT_URL% %GIT_BRANCH%"
+docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "rm bin/docker/win-deploy-dev.sh"
