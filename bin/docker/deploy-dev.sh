@@ -26,8 +26,8 @@ ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;sed -i \"s/http:\/\/localhost:8008/
 ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;sed -i \"s/http:\/\/localhost:3003/$CLIENT_URL/\" \"src/settings.js\""
 
 echo "== Updating reactjs server"
-ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;bin/setup.sh $REACTJS_PORT"
-ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;bin/start.sh"
+ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;sudo bin/setup.sh $REACTJS_PORT"
+ssh -t -i .dev.pem ubuntu@$HOST "cd $KEY/app;sudo bin/start.sh"
 
 echo ""
 echo "== Deployment completed (http://$HOST:$REACTJS_PORT)"
