@@ -32,9 +32,6 @@ sudo docker-compose -f bin/docker/docker-compose-dev.yml run reactjs_reference_r
 echo "== Starting services"
 sudo docker-compose -f bin/docker/docker-compose-dev.yml up -d
 
-echo "== Executing custom setup scripts"
-sudo docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c  "bin/docker/custom-setup.sh"
-
 echo "== Generating docs"
 sudo docker-compose -f bin/docker/docker-compose-dev.yml exec reactjs_reference_reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
 

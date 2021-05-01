@@ -7,9 +7,9 @@ IF "%RUNNING%" == "" echo "ERROR: Before executing bin/deploy.bat, start server 
 IF "%RUNNING%" == "" exit 1
 
 set /A KEY=0
-set /A HOST=dev.seed-project.com.mx
+set HOST=dev.seed-project.com.mx
 
-IF NOT "%~1" == "" set KEY=%1
+IF NOT "%~1" == "" set /A KEY=%1
 IF "%~1" == "" echo ERROR: Include deploy port-key e.g $ bin/deploy.sh 7120
 IF "%~1" == "" exit 1
 IF NOT "%~2" == "" set HOST=%2

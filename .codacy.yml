@@ -14,3 +14,4 @@ exclude_paths:
   - "src/seed/tests/**"
   - "node_modules/**"
   - "coverage/**"
+  - ".git/**"
