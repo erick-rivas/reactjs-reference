@@ -32,10 +32,9 @@ public/index.html
 ?app.js
 ?bin/docker/custom-setup.sh
 ?public/*
-?src/index.css
 ?src/index.js
 ?src/resources/*
-?src/settings/*
+?src/settings.js
 !docs/*.md
 !.keep
 !*helpers

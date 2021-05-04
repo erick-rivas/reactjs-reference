@@ -27,7 +27,7 @@ echo == Building project
 docker-compose -f bin/docker/docker-compose-dev.yml build
 
 echo == Setting execute permissions to bin
-docker-compose -f bin/docker/docker-compose-dev.yml run reactjs_reference_reactjs /bin/sh -c "chmod +x bin/*;chmod +x bin/docker/*"
+docker-compose -f bin/docker/docker-compose-dev.yml run reactjs_reference_reactjs /bin/sh -c "chmod +x bin/docker/*.sh"
 
 echo == Starting services
 docker-compose -f bin/docker/docker-compose-dev.yml up -d
