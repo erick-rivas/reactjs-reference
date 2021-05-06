@@ -35,9 +35,7 @@ public/index.html
 ?src/index.js
 ?src/resources/*
 ?src/settings.js
-?.github/workflows/ci.yml
 !docs/*.md
 !.keep
 !*helpers
 !*util
-!.github

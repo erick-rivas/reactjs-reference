@@ -1,4 +1,4 @@
-name: ReactJS App
+name: reactjs_reference
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - '**'
-  
+
 jobs:
   review-code:
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
         with:
           tool: jshint
           force-file-permissions: true
-
+  
   build-test:
     runs-on: ubuntu-latest
 
@@ -40,7 +40,7 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    
+
     - name: "Installing dependencies"
       run: |
         npm install
