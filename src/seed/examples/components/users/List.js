@@ -25,6 +25,7 @@ function UserList() {
         isActive
         createdAt
         teams { }
+        profileImage { }
       }
     }
   }`, pageNum, pageSize);

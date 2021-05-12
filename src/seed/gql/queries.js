@@ -175,6 +175,7 @@ export const PLAYER_POSITION = `
   playerPosition {
     id
     name
+    details
   }
 }
 `;
@@ -183,15 +184,18 @@ export const SET_PLAYER_POSITION = `
 mutation Set(
   $id: Int!,
   $name: String,
+  $details: GenericScalar,
 )
 {
   setPlayerPosition(
     id: $id,
     name: $name,
+    details: $details,
   ) {
     playerPosition {
       id
       name
+      details
     }
   }
 }
@@ -200,10 +204,12 @@ mutation Set(
 export const SAVE_PLAYER_POSITION = `
 mutation Save(
   $name: String!,
+  $details: GenericScalar!,
 )
 {
   savePlayerPosition(
     name: $name,
+    details: $details,
   ) {
     playerPosition {
       id
@@ -390,6 +396,9 @@ export const USER = `
     teams {
       id
     }
+    profileImage {
+      id
+    }
   }
 }
 `;
@@ -403,6 +412,7 @@ mutation Set(
   $email: String,
   $isActive: Boolean,
   $password: String,
+  $profileImage: Int,
   $teams: [Int],
 )
 {
@@ -415,6 +425,7 @@ mutation Set(
     isActive: $isActive,
     password: $password,
     teams: $teams,
+    profileImage: $profileImage,
   ) {
     user {
       id
@@ -424,6 +435,9 @@ mutation Set(
       email
       isActive
       teams {
+        id
+      }
+      profileImage {
         id
       }
     }
@@ -439,6 +453,7 @@ mutation Save(
   $email: String!,
   $isActive: Boolean!,
   $password: String!,
+  $profileImage: Int!,
   $teams: [Int],
 )
 {
@@ -450,6 +465,7 @@ mutation Save(
     isActive: $isActive,
     password: $password,
     teams: $teams,
+    profileImage: $profileImage,
   ) {
     user {
       id

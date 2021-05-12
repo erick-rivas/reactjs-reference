@@ -23,6 +23,7 @@ function UserDetails({ userId, onCompleted = () => null, onError = () => null })
       isActive
       createdAt
       teams { }
+      profileImage { }
     }
   }`, userId);
   

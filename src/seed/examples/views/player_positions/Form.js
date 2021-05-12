@@ -33,6 +33,13 @@ const PlayerPositionForm = ({ playerPosition= {}, onSubmit, error }) =>
             <Field type="text" name="name"
               class="form-control" />
             </div>
+            {/* Details */}
+            <div class="form-group">
+            <label class="input-label">Details</label>
+            <Field type="text" name="details"
+              component="textarea" rows="3"
+              class="form-control" />
+            </div>
             </div>
             {error ? <div class="alert alert-soft-danger">{error}</div> : null}
             <button type="submit" class="btn btn-block btn-primary">Send</button>

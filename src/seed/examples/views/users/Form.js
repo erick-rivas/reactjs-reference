@@ -38,6 +38,15 @@ const UserForm = ({ user= {}, teams= [], onSubmit, error }) =>
             </div>
             </div>
             </div>
+            {/* Profile image */}
+            <div class="form-group">
+            <label class="input-label">Profile image</label>
+            <FileField name="profileImage"
+              accept="image/*" setFieldValue={setFieldValue}
+              class="form-control"  />
+            { values.profileImage ?
+              <img src={values.profileImage.url} class="card-img mt-2" alt="Preview" /> : null }
+            </div>
             </div>
             {error ? <div class="alert alert-soft-danger">{error}</div> : null}
             <button type="submit" class="btn btn-block btn-primary">Send</button>

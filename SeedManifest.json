@@ -12,6 +12,10 @@
           "name": "teams",
           "type": "team[]",
           "write": true
+        },
+        {
+          "name": "profile_image",
+          "type": "image"
         }
       ],
       "description": "Represents a registered user",
@@ -194,6 +198,10 @@
           "length": "256",
           "name": "name",
           "type": "string"
+        },
+        {
+          "name": "details",
+          "type": "json"
         }
       ],
       "description": "Represents a player  position (eg. forward)",

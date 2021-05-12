@@ -64,6 +64,7 @@ export const API_PLAYERS = [API_PLAYER]
 
 const GQL_PLAYER_POSITION_ = {
     name: "",
+    details: "{}",
 }
 export const GQL_PLAYER_POSITION = {
     playerPosition: GQL_PLAYER_POSITION_
@@ -83,6 +84,7 @@ export const GQL_PLAYER_POSITION_PAGINATION = {
 
 export const API_PLAYER_POSITION = {
     name: "",
+    details: "{}",
 }
 export const API_PLAYER_POSITIONS = [API_PLAYER_POSITION]
 
@@ -158,6 +160,7 @@ const GQL_USER_ = {
     password: "pbkdf2_sha256$150000$jMOqkdOUpor5$kU/QofjBsopM+CdCnU2+pROhtnxd5CZc7NhUiXNTMc0=",
     isActive: true,
     teams: [ { id: 1} ],
+    profileImage: { url: "" },
 }
 export const GQL_USER = {
     user: GQL_USER_
@@ -183,5 +186,6 @@ export const API_USER = {
     password: "pbkdf2_sha256$150000$jMOqkdOUpor5$kU/QofjBsopM+CdCnU2+pROhtnxd5CZc7NhUiXNTMc0=",
     is_active: false,
     team_ids: [1],
+    profile_image_id: 1,
 }
 export const API_USERS = [API_USER]
