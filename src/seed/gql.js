@@ -302,4 +302,6 @@ const useMutate = (mutation) => {
   return [wrap, { ...res, data: res.data ? res.data : {} }];
 };
 
-export { normalizeQuery, getHeaderNames, getModelNames, useQuery, usePagination, useCount, useDetail, useSet, useSave, useDelete };
+export { 
+  normalizeQuery, getHeaderNames, getModelNames, 
+  useQuery, usePagination, useCount, useDetail, useSet, useSave, useDelete };

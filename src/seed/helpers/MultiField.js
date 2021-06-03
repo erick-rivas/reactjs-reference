@@ -21,7 +21,8 @@ class MultiField extends React.Component {
       let isSelected = Boolean(selected[gv(v.value)]);
       return (
         <div key={idx} className={css.item}>
-          <input type="checkbox" checked={isSelected} onChange={() => this.onItemSelected(v.value)}></input>
+          <input type="checkbox" checked={isSelected} 
+            onChange={() => this.onItemSelected(v.value)}></input>
           {v.label}
         </div>);
     });

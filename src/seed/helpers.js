@@ -65,6 +65,16 @@ const ModalRoute = require('seed/helpers/ModalRoute').default;
 const MultiField = require('seed/helpers/MultiField').default;
 
 /**
+ * Helper component to draw pagination footer (pages)
+ * @function
+ * @param {int} pageNum Current page num
+ * @param {int} totalPages Total number of pages
+ * @param {Function} onClickPage Function when a page is clicked
+ */
+
+const PaginationFooter = require('seed/helpers/PaginationFooter').default;
+
+/**
  * Helper component to bing javascript tag code (e.g. <script> ... </script>)
  * @function
  * @param {string} content Script content
@@ -72,5 +82,13 @@ const MultiField = require('seed/helpers/MultiField').default;
 
 const ScriptTag = require('seed/helpers/ScriptTag').default;
 
+/**
+ * Helper component to bing style tag code (e.g. <style> ... </style>)
+ * @function
+ * @param {string} content Style content
+ */
 
-export { FileField, Loading, Modal, ModalRoute, MultiField, ScriptTag };
+const StyleTag = require('seed/helpers/StyleTag').default;
+
+
+export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag };

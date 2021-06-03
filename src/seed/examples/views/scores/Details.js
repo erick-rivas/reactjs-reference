@@ -14,11 +14,13 @@ const ScoreDetails = ({ score, onClickDelete }) =>
     {/* Header */}
     <div class="profile-cover">
       <div class="profile-cover-img-wrapper">
-        <img id="profileCoverImg" class="profile-cover-img" src="/theme/svg/components/abstract-bg-4.svg" alt="Cover" />
+        <img id="profileCoverImg" class="profile-cover-img"
+          src="/theme/svg/components/abstract-bg-4.svg" alt="Cover" />
       </div>
     </div>
     <label class="avatar avatar-xxl avatar-circle avatar-border-lg profile-cover-avatar">
-      <img id="avatarImg" class="avatar-img" src="/theme/svg/components/placeholder-img-format.svg" alt="Icon" style={ {width: "100%"} }/>
+      <img id="avatarImg" class="avatar-img"
+        src="/theme/svg/components/placeholder-img-format.svg" alt="Icon" style={ {width: "100%"} }/>
     </label>
 
     {/* Body */}

@@ -15,6 +15,7 @@
     "no-empty": "off",
     "no-unused-vars": "off",
     "no-lone-blocks": "off",
+    "max-len": ["warn", { "code": 120 }],
     "jsx-a11y/anchor-is-valid": "off"
   }
 }

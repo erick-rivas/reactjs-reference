@@ -7,6 +7,7 @@ __Seed builder__
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
+import { PaginationFooter } from "seed/helpers"
 
 const ScoreList = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
   <div>
@@ -16,7 +17,8 @@ const ScoreList = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {}
       <li key={score.id} class="list-group-item">
         <div class="row align-items-center gx-2">
           <div class="col-auto">
-            <img class="avatar avatar-xs avatar-4by3" src="/theme/svg/components/placeholder-img-format.svg" alt="Icon" />
+            <img class="avatar avatar-xs avatar-4by3"
+              src="/theme/svg/components/placeholder-img-format.svg" alt="Icon" />
           </div>
 
           <div class="col">
@@ -25,7 +27,11 @@ const ScoreList = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {}
             </h5>
             <ul class="list-inline list-separator small">
               <li class="list-inline-item">{ JSON.stringify(score).substring(0,70) + "…" }</li>
-              <li class="list-inline-item">{ new Date(score.createdAt).getDate() + "." + (new Date(score.createdAt).getMonth() + 1) + "." + new Date(score.createdAt).getFullYear() }</li>
+              <li class="list-inline-item">
+                { new Date(score.createdAt).getDate() + "." +
+                  (new Date(score.createdAt).getMonth() + 1) + "." +
+                  new Date(score.createdAt).getFullYear() }
+              </li>
 
             </ul>
           </div>
@@ -42,23 +48,8 @@ const ScoreList = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {}
   }
   </ul>
 
-  <nav class="mt-3">
-    <ul class="pagination">
-      <li onClick={() => onClickPage(pageNum -1 )} class="page-item" style={ { visibility: pageNum > 1 ? "visible" : "hidden"} }>
-        <a class="page-link" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a>
-      </li>
-      {
-         Array(totalPages).fill(0).map((ignore, idx) =>
-           <li onClick={() => onClickPage(idx+1)} key={idx} class={"page-item " + (idx == pageNum - 1 ? "active" : "")}>
-             <a class="page-link">{idx + 1}</a>
-           </li>
-         )
-      }
-      <li onClick={() => onClickPage(pageNum + 1)} class="page-item" style={ { visibility: pageNum <= totalPages - 1 ? "visible" : "hidden"} }>
-        <a class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a>
-      </li>
-    </ul>
-  </nav>
+  <PaginationFooter pageNum={pageNum} totalPages={totalPages} onClickPage={onClickPage} />
+
   </div>;
 
 ScoreList.propTypes = {

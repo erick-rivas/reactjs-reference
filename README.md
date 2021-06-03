@@ -4,8 +4,8 @@ This repository holds a **reference** for the development of a **React.js App**
 
 ## Quickstart
 
--   Install [NodeJS](https://nodejs.dev/learn/how-to-install-nodejs)
--   Install [Docker Engine](https://docs.docker.com/engine/install/) & [Compose](https://docs.docker.com/compose/install/)
+-   Install [NodeJS 12.0.0+](https://nodejs.dev/learn/how-to-install-nodejs)
+-   Install [Docker Engine 20.10+](https://docs.docker.com/engine/install/) & [Compose 1.28.5+](https://docs.docker.com/compose/install/)
 -   Clone this repository
 -   Execute setup script `bin/setup.sh` (For windows `bin/setup.bat`)
 -   Run server with `bin/start.sh` (For windows `bin/start.bat`)

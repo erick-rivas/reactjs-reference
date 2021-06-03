@@ -8,7 +8,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Topnav = () =>
-  <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
+  <header id="header" class={`navbar navbar-expand-lg navbar-fixed navbar-height
+    navbar-flush navbar-container navbar-bordered`}>
     <div class="navbar-nav-wrap">
       <div class="navbar-brand-wrapper">
         {/* Logo */}
@@ -21,8 +22,14 @@ const Topnav = () =>
       <div class="navbar-nav-wrap-content-left">
         {/* Navbar Vertical Toggle */}
         <button type="button" class="js-navbar-vertical-aside-toggle-invoker close mr-3">
-          <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="Collapse"></i>
-          <i class="tio-last-page navbar-vertical-aside-toggle-full-align" data-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-toggle="tooltip" data-placement="right" title="Expand"></i>
+          <i class="tio-first-page navbar-vertical-aside-toggle-short-align"
+            data-toggle="tooltip" data-placement="right" title="Collapse"></i>
+          <i class="tio-last-page navbar-vertical-aside-toggle-full-align"
+            data-template={`
+              <div class="tooltip d-none d-sm-block" role="tooltip">
+              <div class="arrow"></div><div class="tooltip-inner"></div></div>
+            `}
+            data-toggle="tooltip" data-placement="right" title="Expand"></i>
         </button>
       </div>
 
@@ -44,7 +51,9 @@ const Topnav = () =>
                 </div>
               </a>
 
-              <div id="accountNavbarDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right navbar-dropdown-menu navbar-dropdown-account" style={ {width: "16rem"} }>
+              <div id="accountNavbarDropdown" class={`hs-unfold-content dropdown-unfold
+                dropdown-menu dropdown-menu-right navbar-dropdown-menu navbar-dropdown-account`}
+                style={ {width: "16rem"} }>
                 <div class="dropdown-item-text">
                   <div class="media align-items-center">
                     <div class="avatar avatar-sm avatar-circle mr-2">
