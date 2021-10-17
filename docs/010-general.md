@@ -22,7 +22,7 @@
 
 -  To upload to development server
     -  Request a .pem.dev and a port-key to system admin
-    -  Paste .pem.dev in root directory of the project
+    -  Paste .pem.dev in the root directory of the project
     -  Execute `bin/deploy.sh <PORT-KEY>` (For windows `bin/deploy.sh <PORT-KEY>`)
     
 ### Docker

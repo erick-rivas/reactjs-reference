@@ -96,8 +96,11 @@ const options = (method = "GET", body = {}) => {
 
 const usePoll = (endpoint, params, pollOptions = {}) => {
   const [status, setStatus] = useState({ data: null, isLoading: true });
+  const optionsData = options("GET")
+  if (pollOptions.includeAuth === false)
+    delete optionsData.headers["Authorization"]
   const fetch = useFetch(`${API_URL}${endpoint}/?${query(params)}`, {
-    ...options("GET"),
+    ...optionsData,
     formatter: (response) => {
       if (!response.ok) throw response;
       return response.text();
@@ -127,8 +130,11 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
   const [call, setCall] = useState({ body: null, called: false });
   const calling = (body) =>
     body ? setCall({ body: body }) : setCall({ body: {} });
+  const optionsData = options(method, call.body)
+  if (mutOptions.includeAuth === false)
+    delete optionsData.headers["Authorization"]
   const fetch = useFetch(`${API_URL}${endpoint}${call.body && call.body.id ? "/" + call.body.id : ""}/`, {
-    ...options(method, call.body),
+    ...optionsData,
     formatter: (response) => {
       if (!response.ok) throw response;
       return response.text();

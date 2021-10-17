@@ -30,7 +30,7 @@ sudo apt install curl git nodejs build-essential nginx
 sudo npm install pm2@latest -g
 ```
 
--   Copy `bin/config/ubuntu/ecosystem.config` to root folder
+-   Copy `bin/config/ubuntu/ecosystem.config` in the root directory of the project
 
 -   Start pm2
 ```bash
@@ -112,7 +112,12 @@ server {
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/run/gunicorn.sock;
+        proxy_pass http://localhost:3003;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 server {

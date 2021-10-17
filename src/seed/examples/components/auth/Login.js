@@ -22,7 +22,8 @@ function Login({ history }) {
         sessionStorage.setItem("id", data.user);
       }
       history.replace("/");
-    }
+    },
+    includeAuth: false
   });
 
   const onSubmit = (values) => {

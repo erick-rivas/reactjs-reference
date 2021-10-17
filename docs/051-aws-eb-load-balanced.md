@@ -18,7 +18,7 @@
 ## Pre-configuration
 
 -   Create and configure *src/settings.js* file
--   Create a `.ebextensions` folder in project root and copy inside
+-   Create a `.ebextensions` folder in the root directory of the project and copy inside
     -   `bin/config/aws-eb/nodecommand.config`
 -   Copy `bin/config/aws-eb/.ebignore` in project root folder
 -   Copy `bin/config/aws-eb/deploy.sh` in `/bin` folder
