@@ -35,7 +35,7 @@
     "eslint": "8.5.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "formik": "2.2.9",
-    "graphql": "16.2.0",
+    "graphql": "15.8.0",
     "jquery": "3.6.0",
     "jsdoc": "3.6.7",
     "jshint": "2.13.2",
