@@ -12,6 +12,8 @@ function PlayerList() {
 
   const pageSize = 15;
   const [pageNum, setPageNum] = useState(1);
+  
+  // Graphql call via react hooks
   const reqPlayers = usePagination(`
   {
     playerPagination {
@@ -30,10 +32,14 @@ function PlayerList() {
   if (reqPlayers.loading) return <Loading />;
   if (reqPlayers.error) return "Error";
   const { players = [], totalPages = 0 } = reqPlayers.data.playerPagination;
-
+    
+    
+  // Event definition
   const onClickPage = (pageNum) =>
     setPageNum(pageNum);
-
+  
+  
+  // Return view component with props binded
   return <View
     players={players}
     pageNum={pageNum}
@@ -57,10 +63,13 @@ function PlayerFormSave({ onCompleted = () => null, onError = () => null }) {
   const { teams = [] } = qTeams.data;
   const { playerPositions = [] } = qPlayerPositions.data;
   const error = qSave.error ? "An error has occurred" : null;
-
+  
+  // Event definition
   const onSubmit = (values) =>
     callSave(values);
-
+  
+  
+  // Return view component with props binded
   return <View
     teams={teams}
     playerPositions={playerPositions}

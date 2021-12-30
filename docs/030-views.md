@@ -8,6 +8,7 @@ Handle component rendering (DOM)
 ### List example
 
 ```javascript
+// The view only receive and draw data/events from component (No logic)
 const PlayerList = ({ players, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
   <div>
   <ul class="list-group">
