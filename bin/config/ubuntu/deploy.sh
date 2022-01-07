@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Update project
-cd <PROJECT_WEB_PATH>
+cd <APP_DIR>
 sudo git pull origin dev
 sudo npm install
 sudo npm run-script build

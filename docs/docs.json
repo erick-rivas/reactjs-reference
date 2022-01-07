@@ -8,20 +8,20 @@
   "030-views": {
     "title": "Views"
   },
-  "040-seed-builder": {
+  "110-seed-builder": {
     "title": "Seed Builder"
   },
-  "050-deployment": {
+  "210-deployment": {
     "title": "Deployment",
     "children": {
-      "051-aws-eb-load-balanced": {
-        "title": "AWS-EB load balanced"
-      },
-      "052-aws-eb-single-instance": {
-        "title": "AWS-EB single instance"
-      },
-      "053-ubuntu": {
+      "220-ubuntu": {
         "title": "Ubuntu 18.04"
+      },
+       "230-eb-single-instance": {
+        "title": "AWS EB single instance"
+      },
+      "240-eb-load-balanced": {
+        "title": "AWS EB load balanced"
       }
     }
   }

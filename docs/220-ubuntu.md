@@ -6,36 +6,32 @@ This file contains guides to deploy project to a (Ubuntu Server)
 
 ### Dependencies
 
-- Connect to server
-
-```bash
-ssh <USER@SERVER_URL>
-```
-
 - Install general dependencies
 ```bash 
+sudo apt update
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt update
 sudo apt install curl git nodejs build-essential nginx
 ```
 
 ### Project installation
 
--   Clone repository and follow installation steps in [general docs](./010-general.md)
-
+-   Clone repository
+-   Install dependencies `npm install`
+-   Adjust server settings in src/settings.js
+-   For **single server** (app and api) omit next steps and execute
+	```
+	npm run-script build
+	mv build #API_DIR#/reactjs
+	```
 
 ### PM2 configuration
 
--   Install pm2
-```bash
-sudo npm install pm2@latest -g
-```
+-   Install pm2 `sudo npm install pm2@latest -g`
 
 -   Copy `bin/config/ubuntu/ecosystem.config` in the root directory of the project
 
--   Start pm2
-```bash
-pm2 start
-```
+-   Start pm2 `pm2 start`
 
 ### Nginx configuration
 
@@ -65,15 +61,9 @@ server {
 sudo ln -s /etc/nginx/sites-available/app /etc/nginx/sites-enabled
 ```
 
--  Check nginx status
-``` bash
-sudo nginx -t
-```
+-   Check nginx status `sudo nginx -t`
 
--  Restart nginx
-``` bash
-sudo systemctl restart nginx
-```
+-   Restart nginx `sudo systemctl restart nginx`
 
 ## SSL
 
@@ -127,24 +117,13 @@ server {
 }
 ```
 
--  Restart nginx
-``` bash
-sudo systemctl restart nginx
-```
+-   Restart nginx `sudo systemctl restart nginx`
 
 ## Deployment
 
-- Connect to server
-```bash
-ssh #USER@SERVER_URL#
-```
+-   Paste `bin/config/ubuntu/deploy.sh` in server root folder
 
--   Paste `bin/config/ubuntu/deploy.sh` in `bin` folder
-
--   Run deployment script
-```bash
-./bin/deploy.sh
-```
+-   Run deployment script `./deploy.sh`
 
 ## References
 
