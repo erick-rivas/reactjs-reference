@@ -2,7 +2,7 @@
 # Seed builder
 # AUTO_GENERATED (Read only)
 
-RUNNING=$(docker-compose -f bin/docker/docker-compose-dev.yml ps --services --filter "status=running")
+RUNNING=$(sudo docker-compose -f bin/docker/docker-compose-dev.yml ps --services --filter "status=running")
 if [ $RUNNING -z ]; then
   echo "ERROR: Before executing bin/deploy.sh, start server with bin/start.sh"
   exit 1

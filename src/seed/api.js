@@ -3,7 +3,7 @@ __Seed builder__
   (Read_only) Builder helper
 */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFetch from "react-fetch-hook";
 import { API_URL } from "settings";
 
@@ -96,6 +96,7 @@ const options = (method = "GET", body = {}) => {
 
 const usePoll = (endpoint, params, pollOptions = {}) => {
   const [status, setStatus] = useState({ data: null, isLoading: true });
+  useEffect(() => () => setStatus({ data: null, isLoading: true }), []);
   const optionsData = options("GET")
   if (pollOptions.includeAuth === false)
     delete optionsData.headers["Authorization"]
@@ -128,6 +129,7 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
 
 const useMutate = (method, endpoint, mutOptions = {}) => {
   const [call, setCall] = useState({ body: null, called: false });
+  useEffect(() => () => setCall({ body: null, called: false }), []);
   const calling = (body) =>
     body ? setCall({ body: body }) : setCall({ body: {} });
   const optionsData = options(method, call.body)

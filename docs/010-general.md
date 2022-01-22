@@ -10,7 +10,15 @@
     >   *These files are *read-only*, modifiable only through [seed-builder](./110-seed-builder.md) *
     
 ## Development
-    
+
+### Project variables
+
+- To change project variables (server_url, app_url) adjust `settings.js`
+
+- To modify system variables of docker (e.g. IS_PROD) adjust `./bin/docker/system.env` and then execute `./bin/setup`.
+    >   In case of require native modifications, check O.S. specification (e.g. For ubuntu 18.04 modify `~/.bash_profile`)
+
+
 ### Testing
 
 -   Test use cases `bin/test.sh` (For windows `bin/test.bat`)
