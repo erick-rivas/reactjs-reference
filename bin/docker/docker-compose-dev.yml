@@ -7,6 +7,8 @@ services:
       context: ../../.
       dockerfile: Dockerfile
     command: /bin/sh -c "npm start"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     volumes:
       - ../../.:/app
       - /app/node_modules

@@ -7,11 +7,12 @@ This repository holds a **reference** for the development of a **React.js App**
 -   Install [NodeJS 12.0.0+](https://nodejs.dev/learn/how-to-install-nodejs)
 -   Install [Docker Engine 20.10+](https://docs.docker.com/engine/install/) & [Compose 1.28.5+](https://docs.docker.com/compose/install/)
 -   Clone this repository
--   Execute setup script `bin/setup.sh` (For windows `bin/setup.bat`)
-    >   Warning: Don't run any script with sudo
--   Run server with `bin/start.sh` (For windows `bin/start.bat`)
-    -   To show server logs execute `bin/logs.sh` (For windows `bin/logs.bat`)
-    -   To stop server execute `bin/stop.sh` (For windows `bin/stop.bat`)
+-   Execute setup script `bin/setup`
+    -   For unix systems execute shell file `*.sh` and for windows batch `.bat` (e.g `bin/setup.sh` or `bin/setup.bat`)
+    >   Warning: Don't execute any script with sudo
+-   Run server with `bin/start`
+    -   To show server logs execute `bin/logs`
+    -   To stop server execute `bin/stop`
 
 ### Examples
 

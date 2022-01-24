@@ -1,7 +1,7 @@
 # Views
 
-Handle component rendering (DOM)
->    *An equivalent to view in MVC architecture*
+Handle component rendering (html)
+>    *An equivalent to view in a MVC architecture*
 
 ## Examples
 

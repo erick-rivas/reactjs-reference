@@ -15,7 +15,7 @@ import SeedContext from "seed/context";
  * Return a hook to execute a graphql query
  * @param {string} gqlQuery Graphql query
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Query hook
  * @example
  * const reqPlayers = useQuery(`
@@ -60,7 +60,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
  * @param {number} pageNum Page number
  * @param {number} pageSize Number of objects per page
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Pagination hook
  * @example
  * const reqPlayers = useQuery(`
@@ -80,7 +80,7 @@ const usePagination = (gqlQuery, pageNum, pageSize, paramQuery, options = {}) =>
  * Return a hook to execute a graphql count
  * @param {string} modelName Graphql model name
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Count hook
  * @example
  * const reqCount = useQuery("player")
@@ -99,7 +99,7 @@ const useCount = (modelName, paramQuery, options = {}) => {
  * Return a hook to execute a graphql detail query (single object)
  * @param {string} gqlQuery Graphql query
  * @param {number} id Identifier of the object
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Detail hook
  * @example
  * const reqPlayer = useQuery(`
@@ -126,7 +126,7 @@ const useDetail = (gqlQuery, id, options = {}) => {
 /**
  * Return a hook to execute a save graphql mutation
  * @param {string} gqlQuery Graphql query
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Save hook
  * @example
  * const [callSave, reqSave] = useSave(SAVE_PLAYER, { 
@@ -151,7 +151,7 @@ const useSave = (gqlQuery, options = {}) => {
 /**
  * Return a hook to execute a set graphql mutation
  * @param {string} gqlQuery Graphql query
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Set hook
  * @example
  * const [callSet, reqSet] = useSave(SET_PLAYER, { 
@@ -169,7 +169,7 @@ const useSet = (gqlQuery, options = {}) => {
 /**
  * Return a hook to execute a delete graphql mutation
  * @param {string} gqlQuery Graphql query
- * @param {Object} options hook options (e.g. onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError)
  * @returns Delete hook
  * @example
  * const [callDelete, reqDelete] = useDelete(DELETE_PLAYER, { 
@@ -196,36 +196,6 @@ const useDelete = (gqlQuery, options = {}) => {
           
         })
         .map((q) => ({ query: gql(q) }))
-    /*
-    update(cache, { data }) {
-      context.gqlQueries
-        .forEach((cacheQuery) => {
-          //Check if cache and deleteQuery has common models
-          if (!hasCommonModels(query, cacheQuery)) return;
-          alert(cacheQuery)
-          const cacheHeader = getHeaderNames(cacheQuery)[0]
-          const deleteHeader = getHeaderNames(query)[0]
-
-          // Check if delete id exists in cache
-          const cacheResult = cache.readQuery({ query: gql(cacheQuery) });
-          const deletedId = data[deleteHeader].id;
-          let idx = -1;
-          for (let i = 0; i < cacheResult[cacheHeader].length; i++)
-            if (cacheResult[cacheHeader][i].id == deletedId)
-              idx = i;
-          if (idx == -1) return;
-
-          // Update cache
-          let cacheData = {}
-          let result = JSON.parse(JSON.stringify(cacheResult[cacheHeader])).splice(0);
-          result.splice(idx, 1);
-          cacheData[cacheHeader] = result;
-          cache.writeQuery({
-            query: cacheQuery,
-            data: cacheData,
-          });
-        });
-    }*/
   });
   return useMutate(mutation);
 };

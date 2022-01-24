@@ -1,7 +1,7 @@
 # Components
 
-Handle component behavior (initialization, requests, render calls, etc)
->   *An equivalent to controller in MVC architecture*
+Handle component logic (API calls, event definition, state handling, etc.)
+>   *An equivalent to controller in a MVC architecture*
 
 ## Examples
 
