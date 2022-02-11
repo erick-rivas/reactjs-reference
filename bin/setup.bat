@@ -4,18 +4,22 @@
 
 echo == Configuring docker .env
 set /A REACTJS_PORT=3003
+set /A IS_PROD=false
 
 IF NOT "%~1" == "" set /A REACTJS_PORT=%1
+IF NOT "%~2" == "" set /A IS_PROD=%2
 
 del .\bin\docker\.env
-del .\bin\docker\.env-port
+del .\bin\docker\.port
 del .\.env
 echo # DOCKER PORTS > .\bin\docker\.env
-echo ### MODIFY WITH WITH $ bin/setup.bat REACTJS_PORT ### >> .\bin\docker\.env
+echo ### MODIFY WITH WITH $ bin/setup.bat REACTJS_PORT IS_PROD ### >> .\bin\docker\.env
 echo _ >> .\bin\docker\.env
 echo REACTJS_PORT=%REACTJS_PORT% >> .\bin\docker\.env
+echo REACT_APP_IS_PROD=%IS_PROD% >> .\bin\docker\.env
 
-echo %REACTJS_PORT% > .\bin\docker\.env-port
+echo ### MODIFY WITH WITH $ bin/setup.bat REACTJS_PORT ### >> .\bin\docker\.port
+echo %REACTJS_PORT% > .\bin\docker\.port
 
 echo ### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ### > .\.env
 echo PORT=%REACTJS_PORT% >> .\.env

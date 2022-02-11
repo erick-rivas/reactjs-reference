@@ -13,6 +13,6 @@ services:
       - ../../.:/app
       - /app/node_modules
     env_file:
-      - docker.env
+      - .env
     ports:
       - "${REACTJS_PORT}:${REACTJS_PORT}"

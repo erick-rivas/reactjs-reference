@@ -10,9 +10,8 @@ This repository holds a **reference** for the development of a **React.js App**
 -   Execute setup script `bin/setup`
     -   For unix systems execute shell file `*.sh` and for windows batch `.bat` (e.g `bin/setup.sh` or `bin/setup.bat`)
     >   Warning: Don't execute any script with sudo
--   Run server with `bin/start`
-    -   To show server logs execute `bin/logs`
-    -   To stop server execute `bin/stop`
+-   Run server with `bin/run`
+    -   To start server in background execute `bin/start`
 
 ### Examples
 

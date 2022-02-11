@@ -3,7 +3,7 @@
 .dev.pem
 /build
 /bin/docker/.env
-/bin/docker/.env-port
+/bin/docker/.port
 /src/resources/css/*
 /public/docs
 

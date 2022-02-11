@@ -1,4 +1,4 @@
-const IS_PROD = process.env.NODE_ENV === 'production';
+const IS_PROD = process.env.NODE_ENV === 'production' || process.env.REACT_APP_IS_PROD== "true"
 
 // Default (Development)
 

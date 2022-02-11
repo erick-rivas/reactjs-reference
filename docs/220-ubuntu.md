@@ -7,6 +7,7 @@ This file contains guides to deploy project to a (Ubuntu Server)
 ### Dependencies
 
 - Install general dependencies
+>   Recommended version node 14
 ```bash 
 sudo apt update
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
@@ -124,6 +125,10 @@ server {
 -   Paste `bin/config/ubuntu/deploy.sh` in server root folder
 
 -   Run deployment script `./deploy.sh`
+
+#### Server logs
+
+-   To watch server logs `tail -f /var/log/nginx/error.log`
 
 ## References
 

@@ -4,7 +4,7 @@
 .gitignore
 .dev.pem
 bin/docker/.env
-bin/docker/.env-port
+bin/docker/.port
 LICENSE
 SeedManifest.json
 SeedExport.json

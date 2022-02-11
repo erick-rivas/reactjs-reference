@@ -6,7 +6,7 @@ echo == Stopping server
 docker-compose -f bin/docker/docker-compose-dev.yml stop
 
 echo == Starting server
-set /p PORT= < bin/docker/.env-port
+set /p PORT= < bin/docker/.port
 docker-compose -f bin/docker/docker-compose-dev.yml start
 echo.
 echo == Server is running in background (http://localhost:%PORT%)

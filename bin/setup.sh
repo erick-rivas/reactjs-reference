@@ -4,18 +4,21 @@
 
 echo "== Configuring docker .env"
 REACTJS_PORT=3003
-if [ $# -ge 1 ]; then
-  REACTJS_PORT=$1
-fi
+IS_PROD=false
+if [ $# -ge 1 ]; then REACTJS_PORT=$1; fi
+if [ $# -ge 2 ]; then IS_PROD=$2; fi
+
 sudo rm bin/docker/.env
-sudo rm bin/docker/.env-port
+sudo rm bin/docker/.port
 sudo rm .env
 echo "# DOCKER PORTS" > "bin/docker/.env"
-echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" >> "bin/docker/.env"
+echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT IS_PROD ###" >> "bin/docker/.env"
 echo "" >> "bin/docker/.env"
 echo "REACTJS_PORT=$REACTJS_PORT" >> "bin/docker/.env"
+echo "REACT_APP_IS_PROD=$IS_PROD" >> "bin/docker/.env"
 
-echo "$REACTJS_PORT" > "bin/docker/.env-port"
+echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" >> "bin/docker/.port"
+echo "$REACTJS_PORT" > "bin/docker/.port"
 
 echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" > ".env"
 echo "PORT=$REACTJS_PORT" >> ".env"
