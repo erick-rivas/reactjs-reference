@@ -1,4 +1,4 @@
-FROM node:13.12.0-alpine
+FROM node:14.19.0-alpine
 WORKDIR /
 COPY package.json .
 RUN apk update && apk add openssh-client
