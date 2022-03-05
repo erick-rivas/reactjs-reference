@@ -1,4 +1,4 @@
-# ReactJS Reference
+# Reactjs reference
 
 ## Project structure
 
@@ -18,7 +18,6 @@
 - To modify environment variables of docker (e.g. IS_PROD) adjust `./bin/docker/docker.env` and then execute `./bin/setup`.
     >   In case of require native modifications, check O.S. specification (e.g. For ubuntu 18.04 modify `~/.bash_profile`)
 
-
 ### Testing
 
 -   Test use cases `bin/test`
@@ -28,10 +27,11 @@
     
 ### Docker
 
+-   Open docker terminal (ubuntu bash) `bin/terminal`
 -   Clean unused docker resources `bin/clean`
 
 ## Other resources
 
--   [Components docs](./020-components.md)
--   [Views docs](./030-views.md)
--   [Seed builder](./110-seed-builder.md)
+-   [Components docs](./020_components.md)
+-   [Views docs](./030_views.md)
+-   [Seed builder](./110_seed_builder.md)

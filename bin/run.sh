@@ -2,6 +2,6 @@
 # Seed builder
 # AUTO_GENERATED (Read only)
 
-echo "== Starting server"
 PORT=$(cat bin/docker/.port)
-sudo docker-compose -f bin/docker/docker-compose-dev.yml up
+echo "== Running server (http://localhost:$PORT)"
+sudo docker-compose -f bin/docker/docker-compose.yml up

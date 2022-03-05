@@ -1,26 +1,26 @@
 {
-  "010-general": {
+  "010_general": {
     "title": "General"
   },
-  "020-components": {
+  "020_components": {
     "title": "Components"
   },
-  "030-views": {
+  "030_views": {
     "title": "Views"
   },
-  "110-seed-builder": {
+  "110_seed_builder": {
     "title": "Seed Builder"
   },
-  "210-deployment": {
+  "210_deployment": {
     "title": "Deployment",
     "children": {
-      "220-ubuntu": {
+      "220_ubuntu": {
         "title": "Ubuntu 18.04"
       },
-       "230-eb-single-instance": {
+       "230_eb_single_instance": {
         "title": "AWS EB single instance"
       },
-      "240-eb-load-balanced": {
+      "240_eb_load_balanced": {
         "title": "AWS EB load balanced"
       }
     }

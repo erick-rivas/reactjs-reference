@@ -32,13 +32,11 @@ function PlayerList() {
   if (reqPlayers.loading) return <Loading />;
   if (reqPlayers.error) return "Error";
   const { players = [], totalPages = 0 } = reqPlayers.data.playerPagination;
-    
-    
+
   // Event definition
   const onClickPage = (pageNum) =>
     setPageNum(pageNum);
-  
-  
+
   // Return view component with props binded
   return <View
     players={players}
@@ -67,8 +65,7 @@ function PlayerFormSave({ onCompleted = () => null, onError = () => null }) {
   // Event definition
   const onSubmit = (values) =>
     callSave(values);
-  
-  
+
   // Return view component with props binded
   return <View
     teams={teams}

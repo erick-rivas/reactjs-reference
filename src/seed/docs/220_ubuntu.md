@@ -1,4 +1,4 @@
-# Ubuntu Server - 18.04
+# Ubuntu Server - 20.04
 
 This file contains guides to deploy project to a (Ubuntu Server)
 

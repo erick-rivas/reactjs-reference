@@ -32,7 +32,7 @@
     "classnames": "2.3.1",
     "cross-fetch": "3.1.5",
     "docdash": "1.2.0",
-    "eslint": "8.9.0",
+    "eslint": "8.10.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "formik": "2.2.9",
     "graphql": "15.8.0",

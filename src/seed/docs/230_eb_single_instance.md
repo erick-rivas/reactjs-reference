@@ -80,7 +80,6 @@ sudo ./certbot-auto certonly --debug
 -    Configure the *SSLCertificateFile* and *SSLCertificateKeyFile* keys with the files created by certbot
 -    Deploy again `eb deploy`
 
-
 ## Deployment
 
 -   Run script `./bin/config/aws-eb/deploy.sh`

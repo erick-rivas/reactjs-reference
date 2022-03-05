@@ -4,7 +4,7 @@
 
 echo "== Starting server"
 PORT=$(cat bin/docker/.port)
-sudo docker-compose -f bin/docker/docker-compose-dev.yml start
+sudo docker-compose -f bin/docker/docker-compose.yml start
 echo ""
 echo "== Server is running in background (http://localhost:$PORT)"
 echo "    - To show logs execute bin/logs.sh"

@@ -4,7 +4,7 @@
   ],
   "opts": {
     "destination": "./public/docs",
-    "tutorials": "./docs",
+    "tutorials": "./src/seed/docs",
     "recurse":true
   },
   "templates": {
@@ -22,7 +22,7 @@
     "sectionOrder": [ 
       "Tutorials",         
       "Modules",
-       "Classes",
+      "Classes",
       "Externals",
       "Events",
       "Namespaces",
