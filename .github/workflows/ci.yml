@@ -49,4 +49,4 @@ jobs:
         npm install
     - name: "Running tests"
       run: |
-        npm test
+        npm test -- --testPathIgnorePatterns=src/seed/examples

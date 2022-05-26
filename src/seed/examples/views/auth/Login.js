@@ -7,7 +7,7 @@ __Seed builder__
 import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
-import ScriptTag from "seed/helpers/ScriptTag";
+import { ScriptTag } from "seed/helpers";
 
 const Login = ({ onSubmit, error }) =>
   <main id="content" role="main" class="main pl-0">
