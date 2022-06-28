@@ -4,8 +4,10 @@
 
 echo "== Configuring docker .env"
 REACTJS_PORT=3003
+IS_PROD=false
 
 if [ $# -ge 1 ]; then REACTJS_PORT=$1; fi
+if [ $# -ge 2 ]; then IS_PROD=$2; fi
 
 echo "== Creating docker .envs"
 sudo rm bin/docker/.env
@@ -14,12 +16,14 @@ echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT IS_PROD ###" >> "bin/dock
 echo "" >> "bin/docker/.env"
 echo "REACTJS_PORT=$REACTJS_PORT" >> "bin/docker/.env"
 
-echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" >> "bin/docker/.port"
 sudo rm bin/docker/.port
 echo "$REACTJS_PORT" > "bin/docker/.port"
 
-echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" > ".env"
+sudo rm bin/docker/docker.env
+echo "REACT_APP_IS_PROD=$IS_PROD" > "bin/docker/docker.env"
+
 sudo rm .env
+echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ###" > ".env"
 echo "PORT=$REACTJS_PORT" >> ".env"
 
 echo "== Deleting previous containers"
