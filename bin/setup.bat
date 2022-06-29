@@ -20,7 +20,7 @@ del .\bin\docker\.port
 echo %REACTJS_PORT% > .\bin\docker\.port
 
 del .\bin\docker\docker.env
-echo IS_PROD=%IS_PROD%  > .\bin\docker\.port
+echo IS_PROD=%IS_PROD%  > .\bin\docker\docker.env
 
 del .\.env
 echo ### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ### > .\.env

@@ -12,7 +12,7 @@ This file contains guides to deploy project to a (Ubuntu Server)
 sudo apt update
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt update
-sudo apt install curl git nodejs build-essential nginx
+sudo apt install curl git nodejs build-essential nginx nginx-extras
 ```
 
 ### Project installation
@@ -43,7 +43,7 @@ server {
     server_name #SERVER_NAME#;
     client_max_body_size 75M;
     fastcgi_read_timeout 3000;
-    proxy_read_timeout 3000;   
+    proxy_read_timeout 3000;
 
     location / {
         include proxy_params;
@@ -94,8 +94,11 @@ server {
     server_name #SERVER_NAME#;
     client_max_body_size 75M;
     fastcgi_read_timeout 3000;
-    proxy_read_timeout 3000;   
+    proxy_read_timeout 3000;
+    more_clear_headers Server;
+    server_tokens off;
 
+    ssl_protocols TLSv1.2 TLSv1.3;
     ssl_certificate /etc/letsencrypt/live/#SERVER_NAME#/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/#SERVER_NAME#/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
