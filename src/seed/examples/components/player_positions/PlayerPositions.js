@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/views/player_positions/PlayerPositions";
+import View from "seed/examples/components/player_positions/PlayerPositions.view";
 
 function PlayerPositions() {
   return <View />;

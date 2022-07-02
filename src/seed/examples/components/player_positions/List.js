@@ -7,7 +7,7 @@ __Seed builder__
 import React, { useState } from "react";
 import { usePagination } from "seed/gql";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/views/player_positions/List";
+import View from "seed/examples/components/player_positions/List.view";
 
 function PlayerPositionList() {
 

@@ -7,7 +7,7 @@ __Seed builder__
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { usePost } from "seed/api";
-import View from "seed/examples/views/auth/Login";
+import View from "seed/examples/components/auth/Login.view";
 
 function Login({ history }) {
 
@@ -17,10 +17,9 @@ function Login({ history }) {
       if (rememberMe) { //Store data in localStorage
         localStorage.setItem("token", data.key);
         localStorage.setItem("id", data.user);
-      } else {
-        sessionStorage.setItem("token", data.key);
-        sessionStorage.setItem("id", data.user);
       }
+      sessionStorage.setItem("token", data.key);
+      sessionStorage.setItem("id", data.user);
       history.replace("/");
     },
     includeAuth: false

@@ -9,12 +9,12 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { MultiField, FileField } from "seed/helpers";
 
-const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
+const PlayerForm = ({ player= {}, teams= [], playerPositions= [], onSubmit, error }) =>
   <div class="card">
 
     {/* Header */}
     <div class="card-header">
-      <h3 class="card-header-title">Team</h3>
+      <h3 class="card-header-title">Player</h3>
     </div>
 
     {/* Body */}
@@ -22,7 +22,7 @@ const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
       <div class="row">
         <div class="col">
           <Formik
-          initialValues={team}
+          initialValues={player}
           onSubmit={onSubmit}>
           {({ values, setFieldValue}) =>
           <Form>
@@ -33,36 +33,40 @@ const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
             <Field type="text" name="name"
               class="form-control" />
             </div>
-            {/* Logo */}
+            {/* Photo */}
             <div class="form-group">
-            <label class="input-label">Logo</label>
-            <FileField name="logo"
+            <label class="input-label">Photo</label>
+            <FileField name="photo"
               accept="image/*" setFieldValue={setFieldValue}
               class="form-control"  />
-            { values.logo ?
-              <img src={values.logo.url} class="card-img mt-2" alt="Preview" /> : null }
+            { values.photo ?
+              <img src={values.photo.url} class="card-img mt-2" alt="Preview" /> : null }
             </div>
-            {/* Description */}
+            {/* Is active */}
             <div class="form-group">
-            <label class="input-label">Description</label>
-            <Field type="text" name="description"
-              component="textarea" rows="3"
-              class="form-control" />
+            <Field type="checkbox" name="isActive"
+              class="d-inline mr-2" />
+            <label class="input-label d-inline">Is active</label>
             </div>
-            {/* Market value */}
-            <div class="form-group">
-            <label class="input-label">Market value</label>
-            <Field type="number" name="marketValue"
-              class="form-control" />
-            </div>
-            {/* Rival */}
+            {/* Team */}
             <div class="form-group">
             <div>
-            <label class="input-label">Rival</label>
-            <Field component="select" name="rival.id"
+            <label class="input-label">Team</label>
+            <Field as="select" name="team.id"
               class="form-control"  >
               <option value="">Select an option</option>
               {teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
+            </Field>
+            </div>
+            </div>
+            {/* Position */}
+            <div class="form-group">
+            <div>
+            <label class="input-label">Position</label>
+            <Field as="select" name="position.id"
+              class="form-control"  >
+              <option value="">Select an option</option>
+              {playerPositions.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
             </Field>
             </div>
             </div>
@@ -77,11 +81,12 @@ const TeamForm = ({ team= {}, teams= [], onSubmit, error }) =>
 
   </div>;
 
-TeamForm.propTypes = {
-  team: PropTypes.object,
+PlayerForm.propTypes = {
+  player: PropTypes.object,
   teams: PropTypes.array,
+  playerPositions: PropTypes.array,
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 
-export default TeamForm;
+export default PlayerForm;

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_SCORE } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/views/scores/Details";
+import View from "seed/examples/components/scores/Details.view";
 
 function ScoreDetails({ scoreId, onCompleted = () => null, onError = () => null }) {
 

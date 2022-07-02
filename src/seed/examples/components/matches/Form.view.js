@@ -36,7 +36,7 @@ const MatchForm = ({ match= {}, teams= [], onSubmit, error }) =>
             {/* Type */}
             <div class="form-group">
             <label class="input-label">Type</label>
-            <Field component="select" name="type.id"
+            <Field as="select" name="type"
               class="form-control"  >
               <option value="">Select an option</option>
               <option value="FRIENDSHIP">Friendship</option>
@@ -48,7 +48,7 @@ const MatchForm = ({ match= {}, teams= [], onSubmit, error }) =>
             <div class="form-group">
             <div>
             <label class="input-label">Local</label>
-            <Field component="select" name="local.id"
+            <Field as="select" name="local.id"
               class="form-control"  >
               <option value="">Select an option</option>
               {teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
@@ -59,7 +59,7 @@ const MatchForm = ({ match= {}, teams= [], onSubmit, error }) =>
             <div class="form-group">
             <div>
             <label class="input-label">Visitor</label>
-            <Field component="select" name="visitor.id"
+            <Field as="select" name="visitor.id"
               class="form-control"  >
               <option value="">Select an option</option>
               {teams.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }

@@ -37,7 +37,7 @@ const PlayerPositionForm = ({ playerPosition= {}, onSubmit, error }) =>
             <div class="form-group">
             <label class="input-label">Details</label>
             <Field type="text" name="details"
-              component="textarea" rows="3"
+              as="textarea" rows="3"
               class="form-control" />
             </div>
             </div>

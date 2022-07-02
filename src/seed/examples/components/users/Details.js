@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_USER } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/views/users/Details";
+import View from "seed/examples/components/users/Details.view";
 
 function UserDetails({ userId, onCompleted = () => null, onError = () => null }) {
 

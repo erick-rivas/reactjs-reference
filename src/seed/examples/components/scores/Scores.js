@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/views/scores/Scores";
+import View from "seed/examples/components/scores/Scores.view";
 
 function Scores() {
   return <View />;

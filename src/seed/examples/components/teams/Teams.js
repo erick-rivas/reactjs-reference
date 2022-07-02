@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/views/teams/Teams";
+import View from "seed/examples/components/teams/Teams.view";
 
 function Teams() {
   return <View />;

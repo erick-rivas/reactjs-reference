@@ -1,5 +1,5 @@
 import React from "react";
-import View from "views/App";
+import View from "components/App.view";
 
 function App() {
   return <View />;

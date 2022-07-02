@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/views/users/Users";
+import View from "seed/examples/components/users/Users.view";
 
 function Users() {
   return <View />;

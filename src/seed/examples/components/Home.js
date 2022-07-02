@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React, { useEffect, useState } from "react";
-import View from "seed/examples/views/Home";
+import View from "seed/examples/components/Home.view";
 
 function Home() {
    const [isAuth, setIsAuth] = useState(false)

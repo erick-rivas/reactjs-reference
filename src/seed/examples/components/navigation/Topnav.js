@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/views/navigation/Topnav";
+import View from "seed/examples/components/navigation/Topnav.view";
 
 function Topnav() {
   return <View />;

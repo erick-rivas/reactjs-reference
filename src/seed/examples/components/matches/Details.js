@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_MATCH } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/views/matches/Details";
+import View from "seed/examples/components/matches/Details.view";
 
 function MatchDetails({ matchId, onCompleted = () => null, onError = () => null }) {
 

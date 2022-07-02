@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { PLAYER, SET_PLAYER } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/views/players/Form";
+import View from "seed/examples/components/players/Form.view";
 
 function PlayerFormSet({ playerId, onCompleted = () => null, onError = () => null  }) {
 

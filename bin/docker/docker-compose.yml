@@ -9,6 +9,7 @@ services:
     command: /bin/sh -c "npm start"
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
     volumes:
       - ../../.:/app
       - /app/node_modules

@@ -37,7 +37,7 @@ const ScoreForm = ({ score= {}, players= [], matches= [], onSubmit, error }) =>
             <div class="form-group">
             <div>
             <label class="input-label">Player</label>
-            <Field component="select" name="player.id"
+            <Field as="select" name="player.id"
               class="form-control"  >
               <option value="">Select an option</option>
               {players.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }
@@ -48,7 +48,7 @@ const ScoreForm = ({ score= {}, players= [], matches= [], onSubmit, error }) =>
             <div class="form-group">
             <div>
             <label class="input-label">Match</label>
-            <Field component="select" name="match.id"
+            <Field as="select" name="match.id"
               class="form-control"  >
               <option value="">Select an option</option>
               {matches.map((e, idx) => <option key={idx} value={e.id}>{e.id}</option>) }

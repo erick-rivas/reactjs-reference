@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/views/players/Players";
+import View from "seed/examples/components/players/Players.view";
 
 function Players() {
   return <View />;
