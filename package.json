@@ -1,10 +1,10 @@
 {
   "name": "reactjs_reference",
   "scripts": {
-    "build-css": "node-sass-chokidar src/views -o src/resources/css && node-sass-chokidar src/resources/styles -o src/resources/css && node-sass-chokidar src/components -o src/resources/css  && node-sass-chokidar src/seed/helpers -o src/resources/css/seed &&  node-sass-chokidar src/seed/examples/styles -o src/resources/css/seed/examples",
+    "build-css": "node-sass-chokidar src/resources/styles -o src/resources/css && node-sass-chokidar src/components -o src/resources/css  && node-sass-chokidar src/seed/helpers -o src/resources/css/seed &&  node-sass-chokidar src/seed/examples/styles -o src/resources/css/seed/examples",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "watch-css": "node-sass-chokidar src/views -o src/resources/css --watch --recursive && node-sass-chokidar src/resources/styles -o src/resources/css --watch --recursive",
+    "watch-css": "node-sass-chokidar src/resources/styles -o src/resources/css --watch --recursive",
     "watch-js": "react-scripts start",
     "watch": "npm-run-all -p watch-css watch-js",
     "start": "npm-run-all -s build-css watch",
