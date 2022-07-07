@@ -7,4 +7,4 @@ IF "%RUNNING%" == "" echo "ERROR: Before executing bin/coverage.bat, start serve
 IF "%RUNNING%" == "" exit 1
 
 echo == Analyzing code coverage
-docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "npm run-script coverage -- --testPathIgnorePatterns=src/seed/examples --coveragePathIgnorePatterns=src/seed"
+docker-compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "npm run-script coverage -- --testPathIgnorePatterns=src/seed/examples --coveragePathIgnorePatterns=src/seed"

@@ -7,4 +7,4 @@ IF "%RUNNING%" == "" echo ERROR: Before executing bin/update.bat, start server w
 IF "%RUNNING%" == "" exit 1
 
 echo == Opening terminal
-docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh
+docker-compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh

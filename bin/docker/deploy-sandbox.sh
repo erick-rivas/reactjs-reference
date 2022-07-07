@@ -17,9 +17,9 @@ ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;git checkout $GIT_BRANCH"
 ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;git pull"
 
 echo "== Configuring docker"
-ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/run reactjs_reference_reactjs/run reactjs_reference_reactjs_$KEY/\" \"bin/setup.sh\""
-ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/exec reactjs_reference_reactjs/exec reactjs_reference_reactjs_$KEY/\" \"bin/setup.sh\""
-ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/reactjs_reference_reactjs/reactjs_reference_reactjs_$KEY/\" \"bin/docker/docker-compose.yml\""
+ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/run reactjs/run reactjs_$KEY/\" \"bin/setup.sh\""
+ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/exec reactjs/exec reactjs_$KEY/\" \"bin/setup.sh\""
+ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/reactjs/reactjs_$KEY/\" \"bin/docker/docker-compose.yml\""
 
 echo "== Configuring settings"
 ssh -t -i .dev.pem "ubuntu@$HOST" "cd $KEY/app;sed -i \"s/http:\/\/localhost:8008/$SERVER_URL/\" \"src/settings.js\""

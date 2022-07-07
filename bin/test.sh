@@ -9,4 +9,4 @@ if [ $RUNNING -z ]; then
 fi
 
 echo "== Executing test cases"
-sudo docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "npm test -- --testPathIgnorePatterns=src/seed/examples"
+sudo docker-compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "npm test -- --testPathIgnorePatterns=src/seed/examples"

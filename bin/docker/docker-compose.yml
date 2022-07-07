@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
 
-  reactjs_reference_reactjs:
+  reactjs:
     build:
       context: ../../.
       dockerfile: Dockerfile
@@ -17,3 +17,7 @@ services:
       - docker.env
     ports:
       - "${REACTJS_PORT}:${REACTJS_PORT}"
+
+networks:
+  default:
+    name: reactjs_reference_frontend

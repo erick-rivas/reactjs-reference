@@ -9,4 +9,4 @@ if [ $RUNNING -z ]; then
 fi
 
 echo "== Analyzing code coverage"
-sudo docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "npm run-script coverage -- --testPathIgnorePatterns=src/seed/examples --coveragePathIgnorePatterns=src/seed"
+sudo docker-compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "npm run-script coverage -- --testPathIgnorePatterns=src/seed/examples --coveragePathIgnorePatterns=src/seed"

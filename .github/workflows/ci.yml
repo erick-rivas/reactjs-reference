@@ -47,6 +47,9 @@ jobs:
     - name: "Installing dependencies"
       run: |
         npm install
+    - name: "Building css"
+      run: |
+        npm run-script build-css
     - name: "Running tests"
       run: |
         npm test -- --testPathIgnorePatterns=src/seed/examples

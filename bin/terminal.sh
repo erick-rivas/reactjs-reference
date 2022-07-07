@@ -9,4 +9,4 @@ if [ $RUNNING -z ]; then
 fi
 
 echo "== Opening terminal"
-sudo docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh
+sudo docker-compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh

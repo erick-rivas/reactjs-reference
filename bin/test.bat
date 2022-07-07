@@ -7,4 +7,4 @@ IF "%RUNNING%" == "" echo "ERROR: Before executing bin/test.bat, start server wi
 IF "%RUNNING%" == "" exit 1
 
 echo == Executing test cases
-docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "npm test -- --testPathIgnorePatterns=src/seed/examples"
+docker-compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "npm test -- --testPathIgnorePatterns=src/seed/examples"
