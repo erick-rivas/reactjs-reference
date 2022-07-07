@@ -14,6 +14,7 @@ sudo rm bin/docker/.env
 echo "# DOCKER PORTS" > "bin/docker/.env"
 echo "### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT IS_PROD ###" >> "bin/docker/.env"
 echo "" >> "bin/docker/.env"
+echo "COMPOSE_PROJECT_NAME=reactjs_reference_frontend" >> "bin/docker/.env"
 echo "REACTJS_PORT=$REACTJS_PORT" >> "bin/docker/.env"
 
 sudo rm bin/docker/.port
