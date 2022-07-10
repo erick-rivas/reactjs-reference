@@ -28,25 +28,25 @@ echo ### MODIFY WITH WITH $ bin/setup.sh REACTJS_PORT ### > .\.env
 echo PORT=%REACTJS_PORT% >> .\.env
 
 echo == Deleting previous containers
-docker-compose -f bin/docker/docker-compose.yml down
+docker compose -f bin/docker/docker-compose.yml down
 
 echo == Building project
-docker-compose -f bin/docker/docker-compose.yml build
+docker compose -f bin/docker/docker-compose.yml build
 
 echo == Setting execute permissions to bin
-docker-compose -f bin/docker/docker-compose.yml run --rm reactjs /bin/sh -c "chmod +x bin/docker/*.sh"
+docker compose -f bin/docker/docker-compose.yml run --rm reactjs /bin/sh -c "chmod +x bin/docker/*.sh"
 
 echo == Starting services
-docker-compose -f bin/docker/docker-compose.yml up -d
+docker compose -f bin/docker/docker-compose.yml up -d
 
 echo == Generating docs
-docker-compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
+docker compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
 
 echo == Installing local dependencies
 call npm install
 
 echo == Cleaning services
-docker-compose -f bin/docker/docker-compose.yml stop
+docker compose -f bin/docker/docker-compose.yml stop
 
 echo.
 echo == Setup completed (Start server with bin/start.bat)
