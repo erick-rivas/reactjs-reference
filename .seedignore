@@ -1,7 +1,11 @@
 .git*
 .data*
+.eslintrc
+.jshintrc
 .seedignore
+.dockerignore
 .gitignore
+Dockerfile
 .dev.pem
 bin/docker/.env
 bin/docker/.port
