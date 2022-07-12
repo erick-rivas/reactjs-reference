@@ -8,7 +8,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const UserDetails = ({ user, onClickDelete }) =>
+const UserDetailsView = ({ user, onClickDelete }) =>
   <div class="card">
 
     {/* Header */}
@@ -47,9 +47,9 @@ const UserDetails = ({ user, onClickDelete }) =>
     </div>
   </div>;
 
-UserDetails.propTypes = {
+UserDetailsView.propTypes = {
   user: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
 };
 
-export default UserDetails;
+export default UserDetailsView;

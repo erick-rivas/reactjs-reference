@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { MultiField, FileField } from "seed/helpers";
 
-const ScoreForm = ({ score= {}, players= [], matches= [], onSubmit, error }) =>
+const ScoreFormView = ({ score= {}, players= [], matches= [], onSubmit, error }) =>
   <div class="card">
 
     {/* Header */}
@@ -66,7 +66,7 @@ const ScoreForm = ({ score= {}, players= [], matches= [], onSubmit, error }) =>
 
   </div>;
 
-ScoreForm.propTypes = {
+ScoreFormView.propTypes = {
   score: PropTypes.object,
   players: PropTypes.array,
   matches: PropTypes.array,
@@ -74,4 +74,4 @@ ScoreForm.propTypes = {
   error: PropTypes.string
 };
 
-export default ScoreForm;
+export default ScoreFormView;

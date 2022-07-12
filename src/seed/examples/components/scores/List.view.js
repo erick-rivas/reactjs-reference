@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 import { PaginationFooter } from "seed/helpers"
 
-const ScoreList = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
+const ScoreListView
+ = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
   <div>
   <ul class="list-group">
   {
@@ -52,11 +53,11 @@ const ScoreList = ({ scores, pageNum = 1, totalPages = 0, onClickPage = () => {}
 
   </div>;
 
-ScoreList.propTypes = {
+ScoreListView.propTypes = {
   scores: PropTypes.array.isRequired,
   pageNum: PropTypes.number,
   totalPages: PropTypes.number,
   onClickPage: PropTypes.func
 };
 
-export default ScoreList;
+export default ScoreListView;

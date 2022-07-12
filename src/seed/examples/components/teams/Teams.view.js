@@ -14,7 +14,7 @@ import TeamFormSave from "seed/examples/components/teams/FormSave";
 import TeamFormSet from "seed/examples/components/teams/FormSet";
 import { ModalRoute } from "seed/helpers";
 
-const Teams = () =>
+const TeamsView = () =>
   <BrowserRouter basename="/examples/teams">
     <div class="content container-fluid">
 
@@ -54,6 +54,6 @@ const Teams = () =>
     </div>
   </BrowserRouter>;
 
-Teams.propTypes = {};
+TeamsView.propTypes = {};
 
-export default Teams;
+export default TeamsView;

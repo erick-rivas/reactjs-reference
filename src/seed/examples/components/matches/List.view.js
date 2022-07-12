@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 import { PaginationFooter } from "seed/helpers"
 
-const MatchList = ({ matches, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
+const MatchListView
+ = ({ matches, pageNum = 1, totalPages = 0, onClickPage = () => {} }) =>
   <div>
   <ul class="list-group">
   {
@@ -52,11 +53,11 @@ const MatchList = ({ matches, pageNum = 1, totalPages = 0, onClickPage = () => {
 
   </div>;
 
-MatchList.propTypes = {
+MatchListView.propTypes = {
   matches: PropTypes.array.isRequired,
   pageNum: PropTypes.number,
   totalPages: PropTypes.number,
   onClickPage: PropTypes.func
 };
 
-export default MatchList;
+export default MatchListView;

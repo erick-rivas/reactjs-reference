@@ -14,7 +14,7 @@ import MatchFormSave from "seed/examples/components/matches/FormSave";
 import MatchFormSet from "seed/examples/components/matches/FormSet";
 import { ModalRoute } from "seed/helpers";
 
-const Matches = () =>
+const MatchesView = () =>
   <BrowserRouter basename="/examples/matches">
     <div class="content container-fluid">
 
@@ -54,6 +54,6 @@ const Matches = () =>
     </div>
   </BrowserRouter>;
 
-Matches.propTypes = {};
+MatchesView.propTypes = {};
 
-export default Matches;
+export default MatchesView;

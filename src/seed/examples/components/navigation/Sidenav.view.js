@@ -7,7 +7,7 @@ __Seed builder__
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const Sidenav = () =>
+const SidenavView = () =>
   <aside class={`js-navbar-vertical-aside navbar navbar-vertical-aside
     navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered navbar-dark`}>
     <div class="navbar-vertical-container">
@@ -128,6 +128,6 @@ const Sidenav = () =>
 
   </aside>;
 
-Sidenav.propTypes = {};
+SidenavView.propTypes = {};
 
-export default Sidenav;
+export default SidenavView;

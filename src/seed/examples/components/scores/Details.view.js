@@ -8,7 +8,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const ScoreDetails = ({ score, onClickDelete }) =>
+const ScoreDetailsView = ({ score, onClickDelete }) =>
   <div class="card">
 
     {/* Header */}
@@ -47,9 +47,9 @@ const ScoreDetails = ({ score, onClickDelete }) =>
     </div>
   </div>;
 
-ScoreDetails.propTypes = {
+ScoreDetailsView.propTypes = {
   score: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
 };
 
-export default ScoreDetails;
+export default ScoreDetailsView;

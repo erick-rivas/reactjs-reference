@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { MultiField, FileField } from "seed/helpers";
 
-const PlayerPositionForm = ({ playerPosition= {}, onSubmit, error }) =>
+const PlayerPositionFormView = ({ playerPosition= {}, onSubmit, error }) =>
   <div class="card">
 
     {/* Header */}
@@ -51,10 +51,10 @@ const PlayerPositionForm = ({ playerPosition= {}, onSubmit, error }) =>
 
   </div>;
 
-PlayerPositionForm.propTypes = {
+PlayerPositionFormView.propTypes = {
   playerPosition: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 
-export default PlayerPositionForm;
+export default PlayerPositionFormView;

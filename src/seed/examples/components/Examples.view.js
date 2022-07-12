@@ -10,7 +10,7 @@ import Login from "seed/examples/components/auth/Login";
 import Logout from "seed/examples/components/auth/Logout";
 import Home from "seed/examples/components/Home";
 
-const Examples = () =>
+const ExamplesView = () =>
   <BrowserRouter basename="/examples">
     <Switch>
       <Route path="/login" component={Login} />
@@ -20,6 +20,6 @@ const Examples = () =>
     </Switch>
   </BrowserRouter>;
 
-Examples.propTypes = {};
+ExamplesView.propTypes = {};
 
-export default Examples;
+export default ExamplesView;

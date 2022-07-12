@@ -7,7 +7,7 @@ __Seed builder__
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Topnav = () =>
+const TopnavView = () =>
   <header id="header" class={`navbar navbar-expand-lg navbar-fixed navbar-height
     navbar-flush navbar-container navbar-bordered`}>
     <div class="navbar-nav-wrap">
@@ -81,6 +81,6 @@ const Topnav = () =>
 
   </header>;
 
-Topnav.propTypes = {};
+TopnavView.propTypes = {};
 
-export default Topnav;
+export default TopnavView;

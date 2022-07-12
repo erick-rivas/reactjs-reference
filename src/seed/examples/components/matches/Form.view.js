@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { MultiField, FileField } from "seed/helpers";
 
-const MatchForm = ({ match= {}, teams= [], onSubmit, error }) =>
+const MatchFormView = ({ match= {}, teams= [], onSubmit, error }) =>
   <div class="card">
 
     {/* Header */}
@@ -77,11 +77,11 @@ const MatchForm = ({ match= {}, teams= [], onSubmit, error }) =>
 
   </div>;
 
-MatchForm.propTypes = {
+MatchFormView.propTypes = {
   match: PropTypes.object,
   teams: PropTypes.array,
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 
-export default MatchForm;
+export default MatchFormView;

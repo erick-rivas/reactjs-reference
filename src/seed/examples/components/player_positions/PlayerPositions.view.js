@@ -14,7 +14,7 @@ import PlayerPositionFormSave from "seed/examples/components/player_positions/Fo
 import PlayerPositionFormSet from "seed/examples/components/player_positions/FormSet";
 import { ModalRoute } from "seed/helpers";
 
-const PlayerPositions = () =>
+const PlayerPositionsView = () =>
   <BrowserRouter basename="/examples/player_positions">
     <div class="content container-fluid">
 
@@ -54,6 +54,6 @@ const PlayerPositions = () =>
     </div>
   </BrowserRouter>;
 
-PlayerPositions.propTypes = {};
+PlayerPositionsView.propTypes = {};
 
-export default PlayerPositions;
+export default PlayerPositionsView;

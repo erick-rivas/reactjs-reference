@@ -8,7 +8,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const PlayerPositionDetails = ({ playerPosition, onClickDelete }) =>
+const PlayerPositionDetailsView = ({ playerPosition, onClickDelete }) =>
   <div class="card">
 
     {/* Header */}
@@ -47,9 +47,9 @@ const PlayerPositionDetails = ({ playerPosition, onClickDelete }) =>
     </div>
   </div>;
 
-PlayerPositionDetails.propTypes = {
+PlayerPositionDetailsView.propTypes = {
   playerPosition: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
 };
 
-export default PlayerPositionDetails;
+export default PlayerPositionDetailsView;

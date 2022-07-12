@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { ScriptTag } from "seed/helpers";
 
-const Login = ({ onSubmit, error }) =>
+const LoginView = ({ onSubmit, error }) =>
   <main id="content" role="main" class="main pl-0">
     <div class="position-fixed top-0 right-0 left-0 bg-img-hero"
       style={ {height: "32rem", backgroundImage: "url(/theme/svg/components/abstract-bg-4.svg)"} }>
@@ -116,9 +116,9 @@ const Login = ({ onSubmit, error }) =>
 
   </main>;
 
-Login.propTypes = {
+LoginView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 
-export default Login;
+export default LoginView;

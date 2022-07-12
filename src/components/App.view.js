@@ -4,7 +4,7 @@ import Examples from "seed/examples/components/Examples";
 import Docs from "seed/examples/components/Docs";
 import css from "resources/css/App.module.css";
 
-const App = () =>
+const AppView = () =>
   <div class={css.module}>
     <BrowserRouter>
       <Switch>
@@ -15,6 +15,6 @@ const App = () =>
     </BrowserRouter>
   </div>;
 
-App.propTypes = {};
+AppView.propTypes = {};
 
-export default App;
+export default AppView;

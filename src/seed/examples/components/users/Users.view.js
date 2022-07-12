@@ -14,7 +14,7 @@ import UserFormSave from "seed/examples/components/users/FormSave";
 import UserFormSet from "seed/examples/components/users/FormSet";
 import { ModalRoute } from "seed/helpers";
 
-const Users = () =>
+const UsersView = () =>
   <BrowserRouter basename="/examples/users">
     <div class="content container-fluid">
 
@@ -54,6 +54,6 @@ const Users = () =>
     </div>
   </BrowserRouter>;
 
-Users.propTypes = {};
+UsersView.propTypes = {};
 
-export default Users;
+export default UsersView;

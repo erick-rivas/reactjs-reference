@@ -16,7 +16,7 @@ import Users from "seed/examples/components/users/Users";
 import Sidenav from "seed/examples/components/navigation/Sidenav";
 import Topnav from "seed/examples/components/navigation/Topnav";
 
-const Home = () =>
+const HomeView = () =>
   <div>
     <Topnav />
     <Sidenav />
@@ -72,6 +72,6 @@ const Home = () =>
     `} />
   </div>;
 
-Home.propTypes = {};
+HomeView.propTypes = {};
 
-export default Home;
+export default HomeView;

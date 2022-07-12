@@ -8,7 +8,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const MatchDetails = ({ match, onClickDelete }) =>
+const MatchDetailsView = ({ match, onClickDelete }) =>
   <div class="card">
 
     {/* Header */}
@@ -47,9 +47,9 @@ const MatchDetails = ({ match, onClickDelete }) =>
     </div>
   </div>;
 
-MatchDetails.propTypes = {
+MatchDetailsView.propTypes = {
   match: PropTypes.object.isRequired,
   onClickDelete: PropTypes.func
 };
 
-export default MatchDetails;
+export default MatchDetailsView;

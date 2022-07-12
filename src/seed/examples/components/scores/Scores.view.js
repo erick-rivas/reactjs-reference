@@ -14,7 +14,7 @@ import ScoreFormSave from "seed/examples/components/scores/FormSave";
 import ScoreFormSet from "seed/examples/components/scores/FormSet";
 import { ModalRoute } from "seed/helpers";
 
-const Scores = () =>
+const ScoresView = () =>
   <BrowserRouter basename="/examples/scores">
     <div class="content container-fluid">
 
@@ -54,6 +54,6 @@ const Scores = () =>
     </div>
   </BrowserRouter>;
 
-Scores.propTypes = {};
+ScoresView.propTypes = {};
 
-export default Scores;
+export default ScoresView;

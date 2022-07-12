@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import { MultiField, FileField } from "seed/helpers";
 
-const UserForm = ({ user= {}, teams= [], onSubmit, error }) =>
+const UserFormView = ({ user= {}, teams= [], onSubmit, error }) =>
   <div class="card">
 
     {/* Header */}
@@ -58,11 +58,11 @@ const UserForm = ({ user= {}, teams= [], onSubmit, error }) =>
 
   </div>;
 
-UserForm.propTypes = {
+UserFormView.propTypes = {
   user: PropTypes.object,
   teams: PropTypes.array,
   onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 };
 
-export default UserForm;
+export default UserFormView;

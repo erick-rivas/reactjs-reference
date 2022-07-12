@@ -14,7 +14,7 @@ import PlayerFormSave from "seed/examples/components/players/FormSave";
 import PlayerFormSet from "seed/examples/components/players/FormSet";
 import { ModalRoute } from "seed/helpers";
 
-const Players = () =>
+const PlayersView = () =>
   <BrowserRouter basename="/examples/players">
     <div class="content container-fluid">
 
@@ -54,6 +54,6 @@ const Players = () =>
     </div>
   </BrowserRouter>;
 
-Players.propTypes = {};
+PlayersView.propTypes = {};
 
-export default Players;
+export default PlayersView;
