@@ -19,9 +19,9 @@
 
 -   Create and configure *src/settings.js* file
 -   Create a `.ebextensions` folder in the root directory of the project and copy inside
-    -   `bin/config/aws-eb/nodecommand.config`
--   Copy `bin/config/aws-eb/.ebignore` in project root folder
--   Copy `bin/config/aws-eb/deploy.sh` in `/bin` folder
+    -   `src/seed/docs/210_assets/aws-eb/nodecommand.config`
+-   Copy `src/seed/docs/210_assets/aws-eb/.ebignore` in project root folder
+-   Copy `src/seed/docs/210_assets/aws-eb/deploy.sh` in `/bin` folder
 
 ## SSL
 
@@ -51,11 +51,11 @@ To enable a https connection
 
 ### Enable application settings
 
--    Copy `bin/config/aws-eb/load-balanced/https-reencrypt-alb.config` into `.ebextensions` folder
+-    Copy `src/seed/docs/210_assets/aws-eb/load-balanced/https-reencrypt-alb.config` into `.ebextensions` folder
 
 ## Deployment
 
--   Run script `./bin/config/aws-eb/deploy.sh`
+-   Run script `./src/seed/docs/210_assets/aws-eb/deploy.sh`
 
 ## References
 -   AWS reference [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html)

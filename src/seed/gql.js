@@ -63,7 +63,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
  * @param {Object} options Request options (onCompleted, onError)
  * @returns Pagination hook
  * @example
- * const reqPlayers = useQuery(`
+ * const reqPlayers = usePagination(`
  * {
  *   playerPagination {
  *     totalPages
@@ -71,7 +71,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
  *       id
  *    }
  *   }
- * }`, "name=messi", 1, 10)
+ * }`, 1, 10, "name=messi")
  */
 const usePagination = (gqlQuery, pageNum, pageSize, paramQuery, options = {}) =>
   useQuery(gqlQuery, paramQuery, { ...options, pageNum, pageSize });

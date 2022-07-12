@@ -41,7 +41,7 @@ public/index.html
 ?src/index.js
 ?src/resources/*
 ?src/settings.js
-!docs/*.md
+!src/seed/docs/210_assets/*
 !.keep
 !*helpers
 !*util

@@ -35,3 +35,6 @@
 -   [Components docs](./020_components.md)
 -   [Views docs](./030_views.md)
 -   [Seed builder](./110_seed_builder.md)
+-   [Seed commons - API](./120_seed_commons_api.md)
+-   [Seed commons - GQL](./130_seed_commons_gql.md)
+-   [Seed commons - Helpers](./140_seed_commons_helpers.md)

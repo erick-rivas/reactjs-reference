@@ -11,7 +11,7 @@
     "default": {
       "staticFiles": {
         "include": [
-            "./bin/config/docs/static"
+            "./bin/jsdoc/static"
         ]
       }
     }

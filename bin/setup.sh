@@ -40,7 +40,7 @@ echo "== Starting services"
 sudo docker compose -f bin/docker/docker-compose.yml up -d
 
 echo "== Generating docs"
-sudo docker compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/config/docs/config.json --readme README.md -t /node_modules/docdash"
+sudo docker compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/jsdoc/config.json --readme README.md -t /node_modules/docdash"
 
 echo "== Removing root permissions"
 sudo chown -R $(whoami) .
