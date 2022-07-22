@@ -11,7 +11,7 @@ function Home() {
    const [isAuth, setIsAuth] = useState(false)
    useEffect(() => {
      if (localStorage.getItem("id") != null) { //Preload data from localStorage
-       sessionStorage.setItem("token", localStorage.getItem("key"));
+       sessionStorage.setItem("token", localStorage.getItem("token"));
        sessionStorage.setItem("id", localStorage.getItem("id"));
      }
      if (sessionStorage.getItem("id") != null)
