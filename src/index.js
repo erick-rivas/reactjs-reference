@@ -9,21 +9,28 @@ import { GRAPH_URL } from "settings";
 import App from "components/App";
 import { ApolloClient } from "@apollo/client";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { InMemoryCache } from "@apollo/client";
+import { InMemoryCache, createHttpLink } from "@apollo/client";
 import { SeedProvider } from "seed/context";
+import { setContext } from '@apollo/client/link/context';
 
 import "resources/index.css";
 
+/* Graphql setup */
+
 const cache = new InMemoryCache();
+const httpLink = createHttpLink({ uri: GRAPH_URL });
+const authLink = setContext((_, { headers }) => {
+  const token = sessionStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Token ${token}` : "",
+    }
+  }
+});
+
 const client = new ApolloClient({
-  uri: GRAPH_URL,
-  request: (operation) => {
-    operation.setContext({
-      headers: {
-        authorization: `Token ${sessionStorage.getItem("token")}`
-      }
-    })
-  },
+  link: authLink.concat(httpLink),
   cache
 });
 
@@ -37,7 +44,7 @@ ReactDOM.render(
 );
 start();
 
-/*  WORKER  */
+/*  Worker setup  */
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
