@@ -4,19 +4,23 @@ import { WS_URL } from 'settings';
 
 /**
  * 
- * @param {String} room name
+ * @param {String} url
  * @param {Boolean} save message history
+ * @param {Object} options (room, queryParams)
  * @returns WebSocket hook
  * @example
- * const [ lastMessage, status, sendObjectMessage, messageHistory ] = useWS("/ws_global", true);
+ * const [ lastMessage, status, sendJsonMessage, messageHistory ] = useWS("/ws_global", true);
  * // sendObjectMessage({ msg: "Hello" });
  * // messageHistory.map((message, index) => <span>message.data.msg</span>)
  */
 
-export const useWS = (room = "/ws_global", save = false) => {
+export const useWS = (url = "/ws", save = false, options = { room: "global", queryParams: {}}) => {
 
     const [messageHistory, setMessageHistory] = useState([]);
-    const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + room + "/");
+    const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + url + "/" + options.room + "/", {
+        shouldReconnect: (e) => true,
+        queryParams: options.queryParams,
+    });
 
     useEffect(() => {
         if(lastMessage !== null && save) {
@@ -31,11 +35,11 @@ export const useWS = (room = "/ws_global", save = false) => {
     }, [lastMessage, setMessageHistory, save]);
 
     const status = {
-        "CONNECTING": readyState === ReadyState.CONNECTING,
-        "CONNECTED": readyState === ReadyState.OPEN,
-        "CLOSING": readyState === ReadyState.CLOSING,
-        "CLOSED": readyState === ReadyState.CLOSED,
-        "UNINSTANTIATED": readyState === ReadyState.UNINSTANTIATED,
+        "connecting": readyState === ReadyState.CONNECTING,
+        "connected": readyState === ReadyState.OPEN,
+        "closing": readyState === ReadyState.CLOSING,
+        "closed": readyState === ReadyState.CLOSED,
+        "uninstantiated": readyState === ReadyState.UNINSTANTIATED,
     };
     
     return [ lastMessage, status, sendJsonMessage, messageHistory ];
