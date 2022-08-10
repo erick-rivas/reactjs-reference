@@ -9,7 +9,7 @@ import { WS_URL } from 'settings';
  * @param {Object} options (room, queryParams)
  * @returns WebSocket hook
  * @example
- * const [ lastMessage, status, sendJsonMessage, messageHistory ] = useWS("/ws_global", true);
+ * const [ lastMessage, status, sendJsonMessage, messageHistory ] = useWS("/ws", true, {room: "global"});
  * // sendObjectMessage({ msg: "Hello" });
  * // messageHistory.map((message, index) => <span>message.data.msg</span>)
  */
