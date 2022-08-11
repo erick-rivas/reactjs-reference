@@ -1,3 +1,8 @@
+/*
+__Seed builder__
+  (Read_only) Builder helper
+*/
+
 import { useState, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { WS_URL } from 'settings';
