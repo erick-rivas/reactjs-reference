@@ -3,23 +3,135 @@
     {
       "attrs": [
         {
-          "card": {
-            "has": "0..*",
-            "ref": "0..*"
-          },
-          "description": "User team preferences",
-          "is_fk": true,
-          "name": "teams",
-          "type": "team[]",
-          "write": true
+          "default": "now",
+          "name": "date",
+          "type": "date"
         },
         {
-          "name": "profile_image",
-          "type": "image"
+          "description": "Match type (eg. cup)",
+          "name": "type",
+          "options": [
+            "Friendship",
+            "League",
+            "Cup"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "local",
+          "type": "team"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "visitor",
+          "type": "team"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "scores",
+          "type": "score[]",
+          "write": false
         }
       ],
-      "description": "Represents a registered user",
-      "name": "user"
+      "description": "Represents a match between two teams  (A vs B)",
+      "name": "match"
+    },
+    {
+      "attrs": [
+        {
+          "length": "256",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "photo",
+          "type": "image"
+        },
+        {
+          "default": "true",
+          "description": "Indicates whether the player is active or retired",
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "team",
+          "type": "team"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "position",
+          "type": "player_position"
+        }
+      ],
+      "name": "player"
+    },
+    {
+      "attrs": [
+        {
+          "length": "256",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "type": "json"
+        }
+      ],
+      "description": "Represents a player  position (eg. forward)",
+      "name": "player_position"
+    },
+    {
+      "attrs": [
+        {
+          "description": "Minute of the goal",
+          "name": "min",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "description": "Player that score",
+          "is_fk": true,
+          "name": "player",
+          "type": "player"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "match",
+          "type": "match"
+        }
+      ],
+      "description": "Represents a match score (goal)",
+      "name": "score"
     },
     {
       "attrs": [
@@ -77,135 +189,23 @@
     {
       "attrs": [
         {
-          "length": "256",
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "length": "512",
-          "name": "photo",
-          "type": "image"
-        },
-        {
-          "default": "true",
-          "description": "Indicates whether the player is active or retired",
-          "name": "is_active",
-          "type": "boolean"
-        },
-        {
           "card": {
             "has": "0..*",
-            "ref": "1"
-          },
-          "is_fk": true,
-          "name": "team",
-          "type": "team"
-        },
-        {
-          "card": {
-            "has": "0..*",
-            "ref": "1"
-          },
-          "is_fk": true,
-          "name": "position",
-          "type": "player_position"
-        }
-      ],
-      "name": "player"
-    },
-    {
-      "attrs": [
-        {
-          "default": "now",
-          "name": "date",
-          "type": "date"
-        },
-        {
-          "description": "Match type (eg. cup)",
-          "name": "type",
-          "options": [
-            "Friendship",
-            "League",
-            "Cup"
-          ],
-          "type": "enum"
-        },
-        {
-          "card": {
-            "has": "0..*",
-            "ref": "1"
-          },
-          "is_fk": true,
-          "name": "local",
-          "type": "team"
-        },
-        {
-          "card": {
-            "has": "0..*",
-            "ref": "1"
-          },
-          "is_fk": true,
-          "name": "visitor",
-          "type": "team"
-        },
-        {
-          "card": {
-            "has": "1",
             "ref": "0..*"
           },
+          "description": "User team preferences",
           "is_fk": true,
-          "name": "scores",
-          "type": "score[]",
-          "write": false
-        }
-      ],
-      "description": "Represents a match between two teams  (A vs B)",
-      "name": "match"
-    },
-    {
-      "attrs": [
-        {
-          "description": "Minute of the goal",
-          "name": "min",
-          "type": "int"
+          "name": "teams",
+          "type": "team[]",
+          "write": true
         },
         {
-          "card": {
-            "has": "0..*",
-            "ref": "1"
-          },
-          "description": "Player that score",
-          "is_fk": true,
-          "name": "player",
-          "type": "player"
-        },
-        {
-          "card": {
-            "has": "0..*",
-            "ref": "1"
-          },
-          "is_fk": true,
-          "name": "match",
-          "type": "match"
+          "name": "profile_image",
+          "type": "image"
         }
       ],
-      "description": "Represents a match score (goal)",
-      "name": "score"
-    },
-    {
-      "attrs": [
-        {
-          "length": "256",
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "details",
-          "type": "json"
-        }
-      ],
-      "description": "Represents a player  position (eg. forward)",
-      "name": "player_position"
+      "description": "Represents a registered user",
+      "name": "user"
     }
   ]
 }
