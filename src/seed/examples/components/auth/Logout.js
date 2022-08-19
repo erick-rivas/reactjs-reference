@@ -18,6 +18,7 @@ function Logout({ history }) {
     },
     onError: () => {
       sessionStorage.clear();
+      localStorage.clear();
       history.replace("/");
     }
   });
