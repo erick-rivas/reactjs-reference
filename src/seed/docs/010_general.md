@@ -38,3 +38,4 @@
 -   [Seed commons - API](./120_seed_commons_api.md)
 -   [Seed commons - GQL](./130_seed_commons_gql.md)
 -   [Seed commons - Helpers](./140_seed_commons_helpers.md)
+-   [Deployment - Ubuntu](./220_ubuntu.md)

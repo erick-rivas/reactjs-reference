@@ -10,6 +10,7 @@ This file contains guides to deploy project to a (Ubuntu Server)
 >   Recommended version node 14
 ```bash 
 sudo apt update
+sudo dpkg --remove --force-remove-reinstreq nodejs libnode72:amd64
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt update
 sudo apt install curl git nodejs build-essential nginx nginx-extras
@@ -125,7 +126,7 @@ server {
 
 ## Deployment
 
--   Paste `bin/config/ubuntu/deploy.sh` in server root folder
+-   Copy `src/seed/docs/210_assets/ubuntu/deploy.sh` in server root folder
 
 -   Run deployment script `./deploy.sh`
 
@@ -136,3 +137,8 @@ server {
 ## References
 
 -   PM2-nginx tutorial [https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-%E2%80%94-installing-pm2](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-%E2%80%94-installing-pm2)
+
+## See also
+
+-   [Deployment - AWS ElasticBeanstalk single instance](./230_eb_single_instance.md)
+-   [Deployment - AWS ElasticBeanstalk load balanced](./240_eb_load_balanced.md)

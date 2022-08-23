@@ -19,7 +19,17 @@ import { WS_URL } from 'settings';
  * // messageHistory.map((message, index) => <span>message.data.msg</span>)
  */
 
-export const useWS = (url = "/ws", save = false, options = { room: "global", queryParams: {}}) => {
+function convert(data) {
+    let parsed = null;
+    try {
+        parsed = JSON.parse(data["data"]);
+    } catch (error) {
+        parsed = data;
+    }
+    return parsed;
+}
+
+export const useWS = (url = "/ws", save = false, options = { room: "global", queryParams: {}}, limit = null) => {
 
     const [messageHistory, setMessageHistory] = useState([]);
     const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + url + "/" + options.room + "/", {
@@ -29,15 +39,14 @@ export const useWS = (url = "/ws", save = false, options = { room: "global", que
 
     useEffect(() => {
         if(lastMessage !== null && save) {
-            let data = null;
-            try {
-                data = JSON.parse(lastMessage["data"]);
-            } catch (error) {
-                data = lastMessage;
-            }
-            setMessageHistory((prev) => [...prev, data]);
+            setMessageHistory((prev) => {
+                if(limit != null && prev.length < limit)
+                    return [...prev, convert(lastMessage)];
+                else
+                    return [...prev.slice(1), convert(lastMessage)];
+            });
         }
-    }, [lastMessage, setMessageHistory, save]);
+    }, [lastMessage, setMessageHistory, save, limit]);
 
     const status = {
         "connecting": readyState === ReadyState.CONNECTING,
@@ -46,7 +55,7 @@ export const useWS = (url = "/ws", save = false, options = { room: "global", que
         "closed": readyState === ReadyState.CLOSED,
         "uninstantiated": readyState === ReadyState.UNINSTANTIATED,
     };
-    
-    return [ lastMessage, status, sendJsonMessage, messageHistory ];
+
+    return [ convert(lastMessage), status, sendJsonMessage, messageHistory ];
 
 }
