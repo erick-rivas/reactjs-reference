@@ -10,7 +10,7 @@ This file contains guides to deploy project to a (Ubuntu Server)
 >   Recommended version node 14
 ```bash 
 sudo apt update
-sudo dpkg --remove --force-remove-reinstreq nodejs libnode72:amd64
+sudo apt purge nodejs libnode72:amd64
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt update
 sudo apt install curl git nodejs build-essential nginx nginx-extras
@@ -83,7 +83,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 -   Request a certificate
 ```bash
-sudo certbot --nginx
+sudo certbot certonly --nginx
 ```
 
 ### Configure nginx

@@ -24,6 +24,20 @@ const useGet = (endpoint, queryArgs = {}, options = {}) =>
   usePoll(endpoint, queryArgs, options);
 
 /**
+ * Returns a hook to execute a GET request callable (like put, post, etc)
+ * @param {string} endpoint Relative path to SERVER_URL/api
+ * @param {Object} queryArgs Query args of the request
+ * @param {Object} options Request options (onCompleted, onError, includeAuth)
+ * @returns GET hook
+ * @example
+ * const [callGet, reqPlayers] = useGet("/players", { name: "messi" })
+ * // It is equal to /players?name=messi
+ */
+const useGetCall = (endpoint, queryArgs = {}, options = {}) =>
+  useMutate("GET", `${endpoint}/?${query(queryArgs)}`, options);
+
+
+/**
 * Returns a hook to execute a POST request
 * @param {string} endpoint Relative path to SERVER_URL/api
 * @param {Object} options Request options (onCompleted, onError, includeAuth)
@@ -162,4 +176,4 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
   return [calling, { ...fetch, loading: fetch.isLoading, called: call.called }];
 };
 
-export { useGet, usePost, usePut, useDelete };
+export { useGet, useGetCall, usePost, usePut, useDelete };

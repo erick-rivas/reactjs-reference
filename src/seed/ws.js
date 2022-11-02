@@ -35,6 +35,7 @@ export const useWS = (url = "/ws", save = false, options = { room: "global", que
     const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + url + "/" + options.room + "/", {
         shouldReconnect: (e) => true,
         queryParams: options.queryParams,
+        ...options
     });
 
     useEffect(() => {

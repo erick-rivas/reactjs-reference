@@ -5,19 +5,22 @@ __Seed builder__
 */
 
 import React, { useEffect, useState } from "react";
+import { useGetCall } from "seed/api";
 import View from "seed/examples/components/Home.view";
 
 function Home() {
    const [isAuth, setIsAuth] = useState(false)
+   const [callAuth, reqCall] = useGetCall("/auth/user", "", {
+    onCompleted: (data) => setIsAuth(true),
+    onError: () => window.location.replace("/login")
+  })
    useEffect(() => {
      if (localStorage.getItem("id") != null) { //Preload data from localStorage
        sessionStorage.setItem("token", localStorage.getItem("token"));
        sessionStorage.setItem("id", localStorage.getItem("id"));
      }
-     if (sessionStorage.getItem("id") != null)
-       setIsAuth(true);
-     else window.location.replace("/examples/login");
-   }, []);
+     callAuth();
+   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   if (!isAuth) return null;
   return <View />;
 }
