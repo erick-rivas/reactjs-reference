@@ -90,5 +90,10 @@ const ScriptTag = require('seed/helpers/ScriptTag').default;
 
 const StyleTag = require('seed/helpers/StyleTag').default;
 
+/**
+ * Helper component to bind GA route
+ * @function
+ */
+const Route = require('seed/helpers/Route').default;
 
-export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag };
+export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route };

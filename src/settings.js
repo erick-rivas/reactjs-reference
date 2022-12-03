@@ -7,7 +7,7 @@ let SERVER_URL = "http://localhost:8008"
 let WS_URL = "ws://localhost:8008";
 let GRAPH_URL = SERVER_URL + "/graphql";
 let API_URL = SERVER_URL + "/api";
-let GA_KEY = "UA-000000000-0";
+let GA_KEY = "G-MPC52X42CG";
 
 // Production
 
@@ -17,7 +17,7 @@ if (IS_PROD) {
   WS_URL = "ws://localhost:8008";
   GRAPH_URL = SERVER_URL + "/graphql";
   API_URL = SERVER_URL + "/api";
-  GA_KEY = "UA-000000000-0";
+  GA_KEY = "G-MPC52X42CG";
 }
 
 export { GRAPH_URL, API_URL, APP_URL, WS_URL, GA_KEY, IS_PROD };

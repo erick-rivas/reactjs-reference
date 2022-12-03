@@ -13,6 +13,9 @@ import { InMemoryCache, createHttpLink } from "@apollo/client";
 import { SeedProvider } from "seed/context";
 import { setContext } from '@apollo/client/link/context';
 
+import { Route } from 'react-router';
+import { BrowserRouter } from "react-router-dom";
+
 import "resources/index.css";
 
 /* Graphql setup */
@@ -37,7 +40,9 @@ const client = new ApolloClient({
 ReactDOM.render(
   <SeedProvider>
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter >
+        <Route render={({ history }) => <App history={history} />} />
+      </BrowserRouter>
     </ApolloProvider>
   </SeedProvider>,
   document.getElementById("root")
