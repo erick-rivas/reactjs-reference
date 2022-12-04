@@ -5,7 +5,8 @@ __Seed builder__
 */
 
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
+import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
 import PlayerPositionDetails from "seed/examples/components/player_positions/Details";

@@ -5,7 +5,8 @@ __Seed builder__
 */
 
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
+import { Route } from "seed/helpers"
 import { ScriptTag } from "seed/helpers";
 import Matches from "seed/examples/components/matches/Matches";
 import Players from "seed/examples/components/players/Players";

@@ -5,7 +5,8 @@ __Seed builder__
 */
 
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route } from "seed/helpers"
 import Login from "seed/examples/components/auth/Login";
 import Logout from "seed/examples/components/auth/Logout";
 import Home from "seed/examples/components/Home";

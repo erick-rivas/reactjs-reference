@@ -5,8 +5,8 @@ __Seed builder__
 
 import React from "react";
 import PropTypes from "prop-types";
-import Modal from "seed/helpers/Modal";
-import Route from "seed/helpers/Route";
+import { Modal } from "seed/helpers";
+import { Route } from "seed/helpers";
 
 class ModalRoute extends React.Component {
 
