@@ -38,7 +38,7 @@ function TeamDetails({ teamId, onCompleted = () => null, onError = () => null })
   const { team = {} } = reqTeam.data;
 
   const onClickDelete = () =>
-    callDelete({ id: teamId });
+    callDelete({ id: parseInt(teamId) });
 
   return <View
     team={team}

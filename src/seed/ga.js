@@ -29,6 +29,7 @@ const initGA = (options = {}) => {
  */
 const usePageTracking = () => {
   let pathname = window.location.pathname
+  console.log("usePageTracking", pathname)
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: pathname });
   }, [pathname]);
