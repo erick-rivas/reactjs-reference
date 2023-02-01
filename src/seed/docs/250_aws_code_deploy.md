@@ -64,7 +64,19 @@ sudo ./install auto > /tmp/logfile
 
 ### Configure files
 
--   Go to root project and modify appspec.yml as you need (is required to have deploy.sh file in root)
+-   Copy seed/docs/210_assets/aws-code-deploy/appspec.yml to root project and modify it as you need.
+	-	version: current version of the spec file
+	-	os: environment operating system
+	-	files: location of the project (this will be join with hooks location param)
+	-	permissions: specification of file access
+	-	hooks: execution of scripts before each lifecycle stage of codedeploy, these are
+		-	BeforeInstall
+		-	AfterInstall
+		-	ApplicationStart
+		-	ApplicationStop
+		Note: inside these stages you can specify the location of script, timeout and user who run it.
+		
+	For more specification, you can visit the reference below.
 
 ### References
 
