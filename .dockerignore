@@ -6,7 +6,7 @@
 /build
 /bin/docker/.env
 /bin/docker/.env-port
-/src/resources/css/*
+/src/styles/css/*
 /public/docs
 
 # Dependencies

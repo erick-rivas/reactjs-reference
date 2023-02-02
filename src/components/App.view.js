@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { Route } from "seed/helpers"
 import Examples from "seed/examples/components/Examples";
 import Docs from "seed/examples/components/Docs";
-import css from "resources/css/App.module.css";
+import css from "styles/css/App.module.css";
 
 const AppView = () =>
   <div class={css.module}>

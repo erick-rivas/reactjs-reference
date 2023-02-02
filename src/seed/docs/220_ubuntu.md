@@ -31,7 +31,7 @@ sudo apt install curl git nodejs build-essential nginx nginx-extras
 
 -   Install pm2 `sudo npm install pm2@latest -g`
 
--   Copy `src/seed/docs/210_assets/ubuntu/ecosystem.config` in the root directory of the project
+-   Copy `src/seed/docs/assets/ubuntu/ecosystem.config` in the root directory of the project
 
 -   Start pm2 `pm2 start`
 
@@ -126,7 +126,7 @@ server {
 
 ## Deployment
 
--   Copy `src/seed/docs/210_assets/ubuntu/deploy.sh` in server root folder
+-   Copy `src/seed/docs/assets/ubuntu/deploy.sh` in server root folder
 
 -   Run deployment script `./deploy.sh`
 

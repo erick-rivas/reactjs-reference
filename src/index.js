@@ -1,3 +1,9 @@
+/*
+__Seed builder__
+  AUTO_GENERATED (Read only)
+  Modify via builder
+*/
+
 import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
@@ -16,7 +22,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Route } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 
-import "resources/index.css";
+import "styles/index.css";
 
 /* Graphql setup */
 

@@ -23,9 +23,9 @@
 
 -   Create and configure *src/settings.js* file
 -   Create a `.ebextensions` folder in the root directory of the project and copy inside
-    -   `src/seed/docs/210_assets/aws-eb/nodecommand.config`
--   Copy `src/seed/docs/210_assets/aws-eb/.ebignore` in the root directory of the project
--   Copy `src/seed/docs/210_assets/aws-eb/deploy.sh` in `/bin` folder
+    -   `src/seed/docs/assets/aws-eb/nodecommand.config`
+-   Copy `src/seed/docs/assets/aws-eb/.ebignore` in the root directory of the project
+-   Copy `src/seed/docs/assets/aws-eb/deploy.sh` in `/bin` folder
 
 ## SSL
 
@@ -76,13 +76,13 @@ sudo ./certbot-auto certonly --debug
 ```
 -    **Important:** Copy the certificate and private key paths for later
 -    Remove /etc/httpd/conf.d/temp.conf and exit server
--    Copy `src/seed/docs/210_assets/aws-eb/single-instance/https-instance.config` into `.ebextensions folder
+-    Copy `src/seed/docs/assets/aws-eb/single-instance/https-instance.config` into `.ebextensions folder
 -    Configure the *SSLCertificateFile* and *SSLCertificateKeyFile* keys with the files created by certbot
 -    Deploy again `eb deploy`
 
 ## Deployment
 
--   Run script `./src/seed/docs/210_assets/aws-eb/deploy.sh`
+-   Run script `./src/seed/docs/assets/aws-eb/deploy.sh`
 
 ## References
 -   AWS reference [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html)

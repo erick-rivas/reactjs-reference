@@ -23,7 +23,7 @@ src/actions/*
 src/components/*
 src/tests/*
 src/views/*
-src/resources/css/*
+src/styles/css/*
 src/seed/examples
 README.md
 package.json
@@ -38,8 +38,7 @@ public/index.html
 ?bin/docker/custom-setup.sh
 ?bin/docker/docker.env
 ?public/*
-?src/index.js
-?src/resources/*
+?src/styles/*
 ?src/settings.js
 !src/seed/docs/210_assets/*
 !.keep

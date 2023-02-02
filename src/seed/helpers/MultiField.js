@@ -5,7 +5,7 @@ __Seed builder__
 
 import React from "react";
 import PropTypes from "prop-types";
-import css from "resources/css/seed/styles/MultiField.module.css";
+import css from "styles/css/seed/styles/MultiField.module.css";
 
 class MultiField extends React.Component {
 

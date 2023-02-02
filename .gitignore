@@ -9,7 +9,7 @@
 /bin/docker/.env
 /bin/docker/.port
 /bin/docker/docker.env
-/src/resources/css/*
+/src/styles/css/*
 /public/docs
 
 # Dependencies

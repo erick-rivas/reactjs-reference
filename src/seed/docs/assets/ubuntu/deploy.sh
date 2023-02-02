@@ -1,7 +1,8 @@
 #!/bin/sh
 
+WEB_DIR="###"
 # Update project
-cd <WEB_DIR>
+cd $WEB_DIR
 sudo npm install
 sudo npm run-script build
 

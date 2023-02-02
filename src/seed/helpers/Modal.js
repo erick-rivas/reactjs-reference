@@ -7,7 +7,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import cx from "classnames";
 import ModalContainer from "@material-ui/core/Modal";
-import css from "resources/css/seed/styles/Modal.module.css";
+import css from "styles/css/seed/styles/Modal.module.css";
 
 class Modal extends React.Component {
 
