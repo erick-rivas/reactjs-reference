@@ -22,8 +22,15 @@ function TeamFormSave({ onCompleted = () => null, onError = () => null }) {
   const { teams = [] } = qTeams.data;
   const error = qSave.error ? "An error has occurred" : null;
 
-  const onSubmit = (values) =>
-    callSave(values);
+  const onSubmit = (values) => {
+    callSave({
+      ...values,
+      rival: {
+        id: parseInt(values.rival.id)
+      }
+    });
+  }
+    
 
   return <View
     teams={teams}

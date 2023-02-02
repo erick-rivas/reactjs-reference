@@ -30,8 +30,12 @@ function PlayerFormSet({ playerId, onCompleted = () => null, onError = () => nul
   const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
-    values.id = playerId;
-    callSet(values);
+    values.id = parseInt(playerId);
+    callSet({
+      ...values,
+      team: parseInt(values.team.id),
+      position: parseInt(values.position.id)
+    });
   };
 
   return <View

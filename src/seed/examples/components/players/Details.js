@@ -36,7 +36,7 @@ function PlayerDetails({ playerId, onCompleted = () => null, onError = () => nul
   const { player = {} } = reqPlayer.data;
 
   const onClickDelete = () =>
-    callDelete({ id: playerId });
+    callDelete({ id: parseInt(playerId) });
 
   return <View
     player={player}

@@ -28,8 +28,13 @@ function TeamFormSet({ teamId, onCompleted = () => null, onError = () => null  }
   const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
-    values.id = teamId;
-    callSet(values);
+    values.id = parseInt(teamId);
+    callSet({
+      ...values,
+      rival: {
+        id: parseInt(values.rival.id)
+      }
+    });
   };
 
   return <View
