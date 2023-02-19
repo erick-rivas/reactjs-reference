@@ -1,3 +1,8 @@
+/*
+__Seed builder__
+  (Read_only) Builder helper
+*/
+
 import React, { useEffect } from 'react';
 import { GA_KEY } from 'settings';
 import ReactGA from 'react-ga4';

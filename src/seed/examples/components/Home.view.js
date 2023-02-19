@@ -14,8 +14,8 @@ import PlayerPositions from "seed/examples/components/player_positions/PlayerPos
 import Scores from "seed/examples/components/scores/Scores";
 import Teams from "seed/examples/components/teams/Teams";
 import Users from "seed/examples/components/users/Users";
-import Sidenav from "seed/examples/components/navigation/Sidenav";
-import Topnav from "seed/examples/components/navigation/Topnav";
+import Sidenav from "seed/examples/components/nav/Sidenav";
+import Topnav from "seed/examples/components/nav/Topnav";
 
 const HomeView = () =>
   <div>

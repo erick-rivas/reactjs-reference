@@ -5,7 +5,7 @@ __Seed builder__
 */
 
 import React from "react";
-import View from "seed/examples/components/navigation/Sidenav.view";
+import View from "seed/examples/components/nav/Sidenav.view";
 
 function Sidenav() {
   return <View />;

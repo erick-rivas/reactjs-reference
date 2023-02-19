@@ -200,7 +200,6 @@ const useDelete = (gqlQuery, options = {}) => {
   return useMutate(mutation);
 };
 
-
 /* Normalize query to ease processing */
 const normalizeQuery = (gqlQuery) => {
   let res = gqlQuery.trim();

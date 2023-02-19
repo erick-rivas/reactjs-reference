@@ -7,7 +7,6 @@ import React, { useState, useEffect } from "react";
 import useFetch from "react-fetch-hook";
 import { API_URL } from "settings";
 
-
 /** @module api **/
 
 /**
@@ -35,7 +34,6 @@ const useGet = (endpoint, queryArgs = {}, options = {}) =>
  */
 const useGetCall = (endpoint, queryArgs = {}, options = {}) =>
   useMutate("GET", `${endpoint}/?${query(queryArgs)}`, options);
-
 
 /**
 * Returns a hook to execute a POST request
@@ -84,7 +82,6 @@ const usePut = (endpoint, options = {}) =>
 */
 const useDelete = (endpoint, options = {}) =>
   useMutate("DELETE", endpoint, options);
-
 
 const query = (params) => {
   let query = "";

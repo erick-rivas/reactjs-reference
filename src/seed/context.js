@@ -14,7 +14,6 @@ const SeedContext = createContext({
 
 export default SeedContext;
 
-
 export const SeedProvider = ({ children }) => {
 
   // Include gql queries to cache

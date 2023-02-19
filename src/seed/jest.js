@@ -72,7 +72,6 @@ const mockReq = (name, results = {}) =>
     }
   );
 
-
 const mockGql = {
     useDetail: (results = {}) => mockQuery("useDetail", results),
     useQuery: (results = {}) => mockQuery("useQuery", results),

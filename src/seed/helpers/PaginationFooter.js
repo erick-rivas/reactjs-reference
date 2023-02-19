@@ -14,7 +14,7 @@ class PaginationFooter extends React.Component {
       <nav class="mt-3">
         <ul class="pagination">
           <li onClick={() => onClickPage(pageNum - 1)} class="page-item" 
-            style={{ visibility: pageNum > 1 ? "visible" : "hidden" }}>
+            style={ { visibility: pageNum > 1 ? "visible" : "hidden" } }>
             <a class="page-link" aria-label="Previous">
               <span aria-hidden="true">«</span><span class="sr-only">Previous</span>
             </a>
@@ -28,7 +28,7 @@ class PaginationFooter extends React.Component {
             )
           }
           <li onClick={() => onClickPage(pageNum + 1)} class="page-item" 
-            style={{ visibility: pageNum <= totalPages - 1 ? "visible" : "hidden" }}>
+            style={ { visibility: pageNum <= totalPages - 1 ? "visible" : "hidden" } }>
             <a class="page-link" aria-label="Next">
               <span aria-hidden="true">»</span><span class="sr-only">Next</span>
             </a>
