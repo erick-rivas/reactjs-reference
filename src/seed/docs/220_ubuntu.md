@@ -21,11 +21,9 @@ sudo apt install curl git nodejs build-essential nginx nginx-extras
 -   Clone repository
 -   Install dependencies `npm install`
 -   Adjust server settings in src/settings.js
--   For **single server** (app and api) omit next steps and execute
-	```
-	npm run-script build
-	mv build #API_DIR#/reactjs
-	```
+
+*** FOR SINGLE SERVER IMPLEMENTATION (app and api) omit next steps and check API Documentation**
+[API docs](https://github.com/erick-rivas/django-reference/blob/master/seed/docs/220_ubuntu.md)
 
 ### PM2 configuration
 
@@ -126,9 +124,8 @@ server {
 
 ## Deployment
 
--   Copy `src/seed/docs/assets/ubuntu/deploy.sh` in server root folder
-
--   Run deployment script `./deploy.sh`
+-   Run deployment script `deploy.sh`
+    > For automatic deployment check [AW Code Deploy documentation](230_eb_single_instance.md)
 
 #### Server logs
 
@@ -140,5 +137,4 @@ server {
 
 ## See also
 
--   [Deployment - AWS ElasticBeanstalk single instance](./230_eb_single_instance.md)
--   [Deployment - AWS ElasticBeanstalk load balanced](./240_eb_load_balanced.md)
+-   [AWS Code Deploy](221_code_deploy.md)

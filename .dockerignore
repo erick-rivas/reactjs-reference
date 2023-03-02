@@ -3,11 +3,17 @@
 #   Add custom patterns at the end
 
 # General
+deploy.sh
 /build
 /bin/docker/.env
 /bin/docker/.env-port
 /src/styles/css/*
 /public/docs
+
+# AWS
+.aws.env
+.aws.pipeline.json
+.aws.agent_installer.sh
 
 # Dependencies
 /node_modules

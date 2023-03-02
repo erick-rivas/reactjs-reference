@@ -82,7 +82,7 @@ sudo ./certbot-auto certonly --debug
 
 ## Deployment
 
--   Run script `./src/seed/docs/assets/aws-eb/deploy.sh`
+-   Run script `src/seed/docs/assets/aws-eb/deploy.sh`
 
 ## References
 -   AWS reference [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.html)

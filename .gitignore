@@ -4,13 +4,18 @@
 
 # General
 .env
-.dev.pem
+deploy.sh
 /build
 /bin/docker/.env
 /bin/docker/.port
 /bin/docker/docker.env
 /src/styles/css/*
 /public/docs
+
+# AWS
+.aws.env
+.aws.pipeline.json
+.aws.agent_installer.sh
 
 # Dependencies
 /node_modules

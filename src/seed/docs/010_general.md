@@ -16,7 +16,7 @@
 
 - To change project variables (server_url, app_url) adjust `settings.js`
 
-- To modify environment variables of docker (e.g. IS_PROD) adjust `./bin/docker/docker.env` and then execute `./bin/setup`.
+- To modify environment variables of docker (e.g. IS_PROD) adjust `bin/docker/docker.env` and then execute `bin/setup`.
     >   In case of require native modifications, check O.S. specification (e.g. For ubuntu 18.04 modify `~/.bash_profile`)
 
 ### Testing
@@ -33,10 +33,10 @@
 
 ## Other resources
 
--   [Components docs](./020_components.md)
--   [Views docs](./030_views.md)
--   [Seed builder](./110_seed_builder.md)
--   [Seed commons - API](./120_seed_commons_api.md)
--   [Seed commons - GQL](./130_seed_commons_gql.md)
--   [Seed commons - Helpers](./140_seed_commons_helpers.md)
--   [Deployment - Ubuntu](./220_ubuntu.md)
+-   [Components docs](020_components.md)
+-   [Views docs](030_views.md)
+-   [Seed builder](110_seed_builder.md)
+-   [Seed commons - API](120_seed_commons_api.md)
+-   [Seed commons - GQL](130_seed_commons_gql.md)
+-   [Seed commons - Helpers](140_seed_commons_helpers.md)
+-   [Deployment - Ubuntu](220_ubuntu.md)
