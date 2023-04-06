@@ -39,8 +39,8 @@ docker compose -f bin/docker/docker-compose.yml run --rm reactjs /bin/sh -c "chm
 echo == Starting services
 docker compose -f bin/docker/docker-compose.yml up -d
 
-echo == Generating docs
-docker compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "jsdoc ./src -c ./bin/jsdoc/config.json --readme README.md -t /node_modules/docdash"
+:: echo == Generating docs
+:: docker compose -f bin/docker/docker-compose.yml exec reactjs_reference_reactjs /bin/sh -c "jsdoc ./src -c ./bin/jsdoc/config.json --readme README.md -t /node_modules/docdash"
 
 echo == Installing local dependencies
 call npm install
