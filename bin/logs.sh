@@ -2,4 +2,7 @@
 # Seed builder
 # AUTO_GENERATED (Read only)
 
-sudo docker compose -f bin/docker/docker-compose.yml logs --follow --tail 250 reactjs
+MAX_LINES=250
+if [ $# -ge 1 ]; then MAX_LINES=$1; fi
+
+sudo docker compose -f bin/docker/docker-compose.yml logs --follow --tail $MAX_LINES reactjs

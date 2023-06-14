@@ -21,6 +21,7 @@
 
 ### Testing
 
+-   Show server logs `bin/logs <?Max_Lines>`
 -   Test use cases `bin/test`
 -   Review code quality `bin/review`
     >   To run review command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
