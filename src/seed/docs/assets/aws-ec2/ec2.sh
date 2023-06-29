@@ -1,0 +1,1 @@
+python3 ./src/seed/docs/assets/aws-ec2/ec2.py $@
