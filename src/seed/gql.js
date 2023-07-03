@@ -257,13 +257,15 @@ const useMutate = (mutation) => {
     const vars = body ? body : {};
     for (let key in vars) {
       let ele = vars[key];
+      if (key == 'id')
+        vars[key] = parseInt(vars[key])
       if (ele != null) {
         if (ele.id != null)
-          vars[key] = vars[key].id;
+          vars[key] = parseInt(vars[key].id);
         if (Array.isArray(ele))
           for (let i = 0; i < ele.length; i++)
             if (ele[i].id != null)
-              vars[key][i] = ele[i].id;
+              vars[key][i] = parseInt(ele[i].id);
       }
     }
     call({ variables: vars });

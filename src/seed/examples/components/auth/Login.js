@@ -4,14 +4,19 @@ __Seed builder__
   Be careful copying content
 */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { usePost, useGetCall } from "seed/api";
 import PropTypes from "prop-types";
-import { usePost } from "seed/api";
 import View from "seed/examples/components/auth/Login.view";
 
 function Login({ history }) {
 
   const [rememberMe, setRememberMe] = useState(false);
+  const [callAuth, reqCall] = useGetCall("/auth/user", "", {
+    onCompleted: data => window.location.replace("/example") // If user iss already logged
+    // IMPORTANT: Switch to normal home(e.g /) when copying
+  })
+
   const [callLogin, reqLogin] = usePost("/auth/login", {
     onCompleted: (data) => {
       if (rememberMe) { //Store data in localStorage
@@ -24,6 +29,14 @@ function Login({ history }) {
     },
     includeAuth: false
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("id") != null) { //Preload data from localStorage
+      sessionStorage.setItem("token", localStorage.getItem("token"));
+      sessionStorage.setItem("id", localStorage.getItem("id"));
+    }
+    callAuth();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onSubmit = (values) => {
     const {email, password, rememberMe} = values;
