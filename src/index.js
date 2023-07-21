@@ -8,7 +8,7 @@ import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 
 import { GRAPH_URL } from "settings";
 
@@ -43,7 +43,9 @@ const client = new ApolloClient({
   cache
 });
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+root.render(
   <SeedProvider>
     <ApolloProvider client={client}>
       <BrowserRouter >
@@ -51,7 +53,6 @@ ReactDOM.render(
       </BrowserRouter>
     </ApolloProvider>
   </SeedProvider>,
-  document.getElementById("root")
 );
 start();
 

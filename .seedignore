@@ -30,7 +30,7 @@ build
 node_modules
 src/components/*
 src/seed/*
-src/styles/css/*
+src/styles/*
 src/tests/*
 src/views/*
 

@@ -7,7 +7,7 @@ deploy.sh
 /build
 /bin/docker/.env
 /bin/docker/.env-port
-/src/styles/css/*
+/src/styles/css/*.css
 /public/docs
 
 # AWS
