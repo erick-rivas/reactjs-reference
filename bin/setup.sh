@@ -39,14 +39,11 @@ sudo docker compose -f bin/docker/docker-compose.yml run --rm reactjs /bin/sh -c
 echo "== Starting services"
 sudo docker compose -f bin/docker/docker-compose.yml up -d
 
-# echo "== Generating docs"
-# sudo docker compose -f bin/docker/docker-compose.yml exec reactjs /bin/sh -c "jsdoc ./src -c ./bin/jsdoc/config.json --readme README.md -t /node_modules/docdash"
-
 echo "== Removing root permissions"
 sudo chown -R $(whoami) .
 
 echo "== Installing local dependencies"
-npm install
+npm install --legacy-peer-deps
 
 echo "== Cleaning services"
 sudo docker compose -f bin/docker/docker-compose.yml stop

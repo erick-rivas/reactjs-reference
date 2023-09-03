@@ -3,7 +3,7 @@
 WEB_DIR="###"
 # Update project
 cd $WEB_DIR
-sudo npm install
+sudo npm install --legacy-peer-deps
 sudo npm run-script build
 
 # Restart server

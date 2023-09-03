@@ -68,6 +68,11 @@
           "type": "boolean"
         },
         {
+          "name": "salary",
+          "read": false,
+          "type": "float"
+        },
+        {
           "card": {
             "has": "0..*",
             "ref": "1"

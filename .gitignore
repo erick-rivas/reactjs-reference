@@ -6,10 +6,11 @@
 .env
 deploy.sh
 /build
+/build_temp
 /bin/docker/.env
 /bin/docker/.port
 /bin/docker/docker.env
-/src/styles/css/*.css
+/src/styles/css/**/*.css
 /public/docs
 
 # AWS

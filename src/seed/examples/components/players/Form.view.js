@@ -48,6 +48,12 @@ const PlayerFormView = ({ player= {}, teams= [], playerPositions= [], onSubmit, 
               class="d-inline mr-2" />
             <label class="input-label d-inline">Is active</label>
             </div>
+            {/* Salary */}
+            <div class="form-group">
+            <label class="input-label">Salary</label>
+            <Field type="number" name="salary"
+              class="form-control" />
+            </div>
             {/* Team */}
             <div class="form-group">
             <div>

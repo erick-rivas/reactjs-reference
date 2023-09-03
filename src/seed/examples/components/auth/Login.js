@@ -13,7 +13,7 @@ function Login({ history }) {
 
   const [rememberMe, setRememberMe] = useState(false);
   const [callAuth, reqCall] = useGetCall("/auth/user", "", {
-    onCompleted: data => window.location.replace("/example") // If user iss already logged
+    onCompleted: data => window.location.replace("/example") // If user is already logged
     // IMPORTANT: Switch to normal home(e.g /) when copying
   })
 
@@ -39,7 +39,7 @@ function Login({ history }) {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onSubmit = (values) => {
-    const {email, password, rememberMe} = values;
+    const { email, password, rememberMe } = values;
     setRememberMe(rememberMe)
     callLogin({ email: email, password: password });
   };

@@ -1,4 +1,4 @@
-# Ubuntu Server - 20.04
+# Ubuntu Server - 22.04
 
 This file contains guides to deploy project to a (Ubuntu Server)
 
@@ -11,7 +11,7 @@ This file contains guides to deploy project to a (Ubuntu Server)
 ```bash 
 sudo apt update
 sudo apt purge nodejs libnode72:amd64
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt update
 sudo apt install curl git nodejs build-essential nginx nginx-extras
 ```
@@ -19,11 +19,11 @@ sudo apt install curl git nodejs build-essential nginx nginx-extras
 ### Project installation
 
 -   Clone repository
--   Install dependencies `npm install`
+-   Install dependencies `npm install --legacy-peer-deps`
 -   Adjust server settings in src/settings.js
 
 *** FOR SINGLE SERVER IMPLEMENTATION (app and api) omit next steps and check API Documentation**
-[API docs](https://github.com/erick-rivas/django-reference/blob/master/seed/docs/220_ubuntu.md)
+[API docs](https://github.com/erick-rivas/django-reference/blob/master/seed/docs/210_deploy_ubuntu.md)
 
 ### PM2 configuration
 
@@ -125,7 +125,7 @@ server {
 ## Deployment
 
 -   Run deployment script `deploy.sh`
-    > For automatic deployment check [AW Code Deploy documentation](230_eb_single_instance.md)
+    > For automatic deployment check [AWS Code Deploy documentation](./extras/220_deploy_ec2_code_deploy.md)
 
 #### Server logs
 
@@ -134,7 +134,3 @@ server {
 ## References
 
 -   PM2-nginx tutorial [https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-%E2%80%94-installing-pm2](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04#step-3-%E2%80%94-installing-pm2)
-
-## See also
-
--   [AWS Code Deploy](221_code_deploy.md)

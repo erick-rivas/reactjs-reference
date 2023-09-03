@@ -4,7 +4,7 @@ __Seed builder__
 */
 
 import React from "react";
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { MemoryRouter, Route } from 'react-router';
 import { render as testRender } from '@testing-library/react';
 

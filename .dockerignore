@@ -5,9 +5,9 @@
 # General
 deploy.sh
 /build
+/build_temp
 /bin/docker/.env
 /bin/docker/.env-port
-/src/styles/css/*.css
 /public/docs
 
 # AWS

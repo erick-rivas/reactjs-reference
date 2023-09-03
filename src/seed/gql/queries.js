@@ -88,6 +88,7 @@ export const PLAYER = `
     id
     name
     isActive
+    salary
     photo {
       id
     }
@@ -107,6 +108,7 @@ mutation Set(
   $name: String,
   $photo: Int,
   $isActive: Boolean,
+  $salary: Float,
   $team: Int,
   $position: Int,
 )
@@ -116,6 +118,7 @@ mutation Set(
     name: $name,
     photo: $photo,
     isActive: $isActive,
+    salary: $salary,
     team: $team,
     position: $position,
   ) {
@@ -123,6 +126,7 @@ mutation Set(
       id
       name
       isActive
+      salary
       photo {
         id
       }
@@ -142,6 +146,7 @@ mutation Save(
   $name: String!,
   $photo: Int!,
   $isActive: Boolean!,
+  $salary: Float!,
   $team: Int!,
   $position: Int!,
 )
@@ -150,6 +155,7 @@ mutation Save(
     name: $name,
     photo: $photo,
     isActive: $isActive,
+    salary: $salary,
     team: $team,
     position: $position,
   ) {

@@ -8,7 +8,7 @@ if [ "$1" == "--config" ]; then
         if [ "$STATUS" == "running" ] || [ "$STATUS" == "stoppped" ]; then
 
             echo Creating role
-            ROLE_INFO=$(aws iam create-role --role-name role_$PROJECT_NAME --assume-role-policy-document file://seed/docs/assets/aws-code-deploy/trust_policy.json)
+            ROLE_INFO=$(aws iam create-role --role-name role_$PROJECT_NAME --assume-role-policy-document file://seed/docs/extras/assets/aws-code-deploy/trust_policy.json)
             ATTACH_INFO=$(aws iam attach-role-policy --role-name role_$PROJECT_NAME --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess)
 
             echo Attaching to IAM
@@ -74,7 +74,7 @@ if [ "$1" == "--install" ]; then
         sudo service codedeploy-agent status
 
         rm ./install
-        cp seed/docs/assets/aws-code-deploy/appspec.yml ./appspec.yml
+        cp seed/docs/extras/assets/aws-code-deploy/appspec.yml ./appspec.yml
         exit
         
     fi

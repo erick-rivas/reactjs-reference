@@ -21,15 +21,18 @@
 
 ### Testing
 
--   Show server logs `bin/logs <?Max_Lines>`
+-   Show server logs `bin/logs <Only_Latest> <Max_Lines>`
 -   Test use cases `bin/test`
 -   Review code quality `bin/review`
     >   To run review command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
 -   Generate code coverage report `bin/coverage`
-    
+
+### Deployment
+-   Create production build `bin/build`
+
 ### Docker
 
--   Open docker terminal (ubuntu bash) `bin/terminal`
+-   Open docker terminal `bin/terminal`
 -   Clean unused docker resources `bin/clean`
 
 ## Other resources
@@ -40,4 +43,4 @@
 -   [Seed commons - API](120_seed_commons_api.md)
 -   [Seed commons - GQL](130_seed_commons_gql.md)
 -   [Seed commons - Helpers](140_seed_commons_helpers.md)
--   [Deployment - Ubuntu](220_ubuntu.md)
+-   [Deploy - Ubuntu](210_deploy_ubuntu.md)

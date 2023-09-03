@@ -4,8 +4,8 @@ This repository holds a **reference** for the development of a **React.js App**
 
 ## Quickstart
 
--   Install [NodeJS 14.x](https://nodejs.dev/learn/how-to-install-nodejs)
--   Install [Docker Desktop 4.10.x](https://docs.docker.com/desktop/)
+-   Install [NodeJS 18.x](https://nodejs.dev/learn/how-to-install-nodejs)
+-   Install [Docker Desktop 4.22.x](https://docs.docker.com/desktop/)
 -   Clone this repository
 -   Execute setup script `bin/setup`
     >   For unix systems execute shell file `*.sh` (without sudo) and for windows batch `.bat` (e.g `bin/setup.sh` or `bin/setup.bat`)
