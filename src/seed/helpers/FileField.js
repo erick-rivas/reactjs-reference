@@ -14,7 +14,7 @@ class FileField extends React.Component {
     const { className = "", accept, multiple = false } = this.props;
     return (
       <form encType="multipart/form-data">
-        <input name="file" type="file" className={className} 
+        <input name="file" type="file" className={className}
           accept={accept} onChange={this.onFileChange} multiple={multiple}></input>
       </form>
     );
@@ -26,30 +26,46 @@ class FileField extends React.Component {
   }
 
   onFileChange(e) {
-    const { setFieldValue, name, multiple } = this.props;
-    const callback = (res) => {
+    const { name, setFieldValue, setLoading = () => null,
+      onCompleted = () => null, onError = () => null, multiple } = this.props;
+
+    const onCompletedWrapper = (res) => {
       if (multiple) {
-        if (Array.isArray(res.body)) {
-          setFieldValue(name, res.body);
-          setFieldValue(name + "_ids", res.body.map((r) => r.id));
+        if (Array.isArray(res)) {
+          setFieldValue(name, res);
+          setFieldValue(name + "_ids", res.map((r) => r.id));
+          onCompleted(res);
         } else {
-          setFieldValue(name, [res.body]);
-          setFieldValue(name + "_ids", [res.body.id]);
+          setFieldValue(name, [res]);
+          setFieldValue(name + "_ids", [res.id]);
+          onCompleted([res]);
         }
       } else {
-        setFieldValue(name, res.body);
-        setFieldValue(name + "_id", res.body.id);
+        setFieldValue(name, res);
+        setFieldValue(name + "_id", res.id);
+        onCompleted(res);
       }
-    };
-    uploadFile(e.target.form, callback);
+      setLoading(false);
+    }
+
+    const onErrorWrapper = (error) => {
+      onError(error)
+      setLoading(false);
+    }
+
+    setLoading(true)
+    uploadFile(e.target.form, onCompletedWrapper, onErrorWrapper);
   }
 }
 
-const uploadFile = (formWrapper, callback) => {
+const uploadFile = (formWrapper, onCompleted, onError) => {
   let url = `${API_URL}/files/`;
   $.ajax({
     url: url,
     type: "POST",
+    headers: {
+      "Authorization": `Token ${sessionStorage.getItem("token")}`
+    },
     data: new FormData(formWrapper),
     cache: false,
     contentType: false,
@@ -58,27 +74,20 @@ const uploadFile = (formWrapper, callback) => {
       var myXhr = $.ajaxSettings.xhr();
       return myXhr;
     },
-    success: (json) => {
-      callback({
-        body: json,
-        ok: true
-      });
-    },
-    error: (error) => {
-      callback({
-        body: error,
-        ok: false
-      });
-    }
+    success: onCompleted,
+    error: onError
   });
 };
 
 FileField.propTypes = {
-  className: PropTypes.string, 
+  className: PropTypes.string,
   accept: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   setFieldValue: PropTypes.func.isRequired,
-  multiple: PropTypes.bool
+  multiple: PropTypes.bool,
+  setLoading: PropTypes.func,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func
 };
 
 export default FileField;

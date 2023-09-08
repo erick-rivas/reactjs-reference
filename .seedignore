@@ -1,6 +1,7 @@
 .git*
 .data*
 
+.env
 .codacy.yml
 .dockerignore
 .eslintrc
@@ -23,9 +24,6 @@ src/index.js
 src/settings.js
 
 public/docs/*
-bin/docker/.env
-bin/docker/.port
-bin/docker/docker.env
 build
 node_modules
 src/components/*

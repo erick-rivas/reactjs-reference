@@ -91,6 +91,7 @@ export const PLAYER = `
     salary
     photo {
       id
+      url
     }
     team {
       id
@@ -315,6 +316,7 @@ export const TEAM = `
     marketValue
     logo {
       id
+      url
     }
     rival {
       id
@@ -404,6 +406,7 @@ export const USER = `
     }
     profileImage {
       id
+      url
     }
   }
 }

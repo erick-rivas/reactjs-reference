@@ -3,10 +3,10 @@
 :: AUTO_GENERATED (Read only)
 
 echo == Starting server
-set /p PORT= < bin/docker/.port
-docker compose -f bin/docker/docker-compose.yml start
+FOR /F "eol=# tokens=*" %%i IN (.env) DO SET %%i
+docker compose start
 echo.
-echo == Server is running in background (http://localhost:%PORT%)
+echo == Server is running in background (http://localhost:%REACTJS_PORT%)
 echo     - To show logs execute bin/logs.bat
 echo     - To stop server execute bin/stop.bat
 echo.
