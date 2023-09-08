@@ -27,7 +27,7 @@ echo "== Building project"
 sudo docker compose build
 
 echo "== Setting execute permissions to bin"
-sudo docker compose run --rm reactjs /bin/sh -c "chmod +x bin/*.sh;chmod +x bin/docker/*.sh"
+sudo docker compose run --rm reactjs /bin/sh -c "chmod +x bin/*.sh"
 
 echo "== Starting services"
 sudo docker compose up -d
