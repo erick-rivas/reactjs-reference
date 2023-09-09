@@ -124,8 +124,15 @@ server {
 
 ## Deployment
 
--   Run deployment script `deploy.sh`
-    > For automatic deployment check [AWS Code Deploy documentation](./extras/220_deploy_ec2_code_deploy.md)
+-   Copy `src/seed/docs/assets/ubuntu/deploy-web.sh` in project root folder
+-   Modify deploy-web.sh settings
+```
+API_DIR="###"
+WEB_DIR="###"
+```
+
+-   Run deployment script `deploy-web.sh`
+    > For automatic deployment, check [Github actions docs](220_deploy_github.md)
 
 #### Server logs
 
