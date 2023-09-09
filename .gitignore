@@ -11,6 +11,7 @@ deploy.sh
 /bin/docker/.port
 /bin/docker/docker.env
 /src/styles/css/**/*.css
+/src/styles/css/**/*.css.map
 /public/docs
 
 # AWS

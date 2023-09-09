@@ -14,11 +14,11 @@ echo "== Creating docker .envs"
 del .\.env
 echo # DOCKER SETTINGS > .\.env
 echo ### MODIFY WITH WITH $ bin/setup.bat REACTJS_PORT IS_PROD ### >> .\.env
-echo _ >> .\.env
-echo COMPOSE_PROJECT_NAME=reactjs_reference_frontend >> .\.env
-echo /A REACTJS_PORT=%REACTJS_PORT% >> .\.env
-echo REACT_APP_IS_PROD=%IS_PROD% >> .\.env
-echo PORT=%REACTJS_PORT% >> .\.env
+echo.>> .\.env
+echo COMPOSE_PROJECT_NAME=reactjs_reference_frontend>> .\.env
+echo COMPOSE_REACTJS_PORT=%REACTJS_PORT%>> .\.env
+echo REACT_APP_IS_PROD=%IS_PROD%>> .\.env
+echo PORT=%REACTJS_PORT%>> .\.env
 
 echo == Deleting previous containers
 docker compose down

@@ -7,6 +7,7 @@ engines:
 exclude_paths:
   - "**.md"
   - "**.css"
+  - "**.css.map"
   - "**.scss"
   - "public/**"
   - "build/**"
