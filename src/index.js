@@ -11,7 +11,8 @@ import * as React from "react";
 import * as Sentry from "@sentry/react";
 import { createRoot } from 'react-dom/client';
 
-import { GRAPH_URL } from "settings";
+import { GRAPH_URL, APP_URL } from "settings";
+import { SENTRY_DSN } from "settings";
 
 import App from "components/App";
 import { ApolloClient } from "@apollo/client";
@@ -45,18 +46,17 @@ const client = new ApolloClient({
 });
 
 Sentry.init({
-  dsn: "",
+  dsn: SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
-      tracePropagationTargets: ["http://localhost:3003/api"],
+      tracePropagationTargets: [`${APP_URL}/api`],
     }),
     new Sentry.Replay(),
   ],
-  tracesSampleRate: 1.0, 
-  replaysSessionSampleRate: 0.1, 
+  tracesSampleRate: 1.0,
+  replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
-
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);

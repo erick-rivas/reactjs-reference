@@ -8,6 +8,7 @@ let WS_URL = "ws://localhost:8008";
 let GRAPH_URL = SERVER_URL + "/graphql";
 let API_URL = SERVER_URL + "/api";
 let GA_KEY = "G-0000000000";
+let SENTRY_DSN = "";
 
 // Production
 
@@ -18,6 +19,7 @@ if (IS_PROD) {
   GRAPH_URL = SERVER_URL + "/graphql";
   API_URL = SERVER_URL + "/api";
   GA_KEY = "G-0000000000";
+  SENTRY_DSN = "";
 }
 
-export { GRAPH_URL, API_URL, APP_URL, WS_URL, GA_KEY, IS_PROD };
+export { GRAPH_URL, API_URL, APP_URL, WS_URL, GA_KEY, SENTRY_DSN, IS_PROD };
