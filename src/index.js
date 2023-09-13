@@ -8,6 +8,7 @@ import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
 import * as React from "react";
+import * as Sentry from "@sentry/react";
 import { createRoot } from 'react-dom/client';
 
 import { GRAPH_URL } from "settings";
@@ -42,6 +43,21 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache
 });
+
+console.log("Hola")
+Sentry.init({
+  dsn: "",
+  integrations: [
+    new Sentry.BrowserTracing({
+      tracePropagationTargets: ["http://localhost:3003/api"],
+    }),
+    new Sentry.Replay(),
+  ],
+  tracesSampleRate: 1.0, 
+  replaysSessionSampleRate: 0.1, 
+  replaysOnErrorSampleRate: 1.0,
+});
+
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
