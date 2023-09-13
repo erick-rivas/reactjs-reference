@@ -44,7 +44,6 @@ const client = new ApolloClient({
   cache
 });
 
-console.log("Hola")
 Sentry.init({
   dsn: "",
   integrations: [
