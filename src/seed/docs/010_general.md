@@ -16,8 +16,8 @@
 
 - To change project variables (server_url, app_url) adjust `settings.js`
 
-- To modify environment variables of docker (e.g. IS_PROD) adjust `bin/docker/docker.env` and then execute `bin/setup`.
-    >   In case of require native modifications, check O.S. specification (e.g. For ubuntu 18.04 modify `~/.bash_profile`)
+- To modify environment variables of docker (e.g. IS_PROD) execute `bin/setup` with their respective parameters.
+    >   In case of require native modifications, check O.S. specification (e.g. For ubuntu 20.04 modify `~/.bash_profile`)
 
 ### Testing
 

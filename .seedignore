@@ -10,6 +10,7 @@
 .npmrc
 .seedignore
 app.js
+compose.yml
 Dockerfile
 jsconfig.json
 LICENSE
@@ -23,7 +24,7 @@ public/index.html
 src/index.js
 src/settings.js
 
-public/docs/*
+bin/*
 build
 node_modules
 src/components/*

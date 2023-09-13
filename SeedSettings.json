@@ -2,7 +2,7 @@
   "extend": {
     "actions": []
   },
-  "last_build_version": "0.7.6",
+  "last_build_version": "0.7.7",
   "platform": "reactjs",
   "project_description": "This repository holds a **reference** for the development of a **React.js App**",
   "project_name": "ReactJS Reference"

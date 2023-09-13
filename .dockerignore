@@ -6,8 +6,6 @@
 deploy.sh
 /build
 /build_temp
-/bin/docker/.env
-/bin/docker/.env-port
 /public/docs
 
 # AWS
