@@ -2,7 +2,7 @@
 
 This file contains instructions to integrate Sentry with the project you are working on.
 
-### Create project and get DNS
+### Create project and DSN
 
 -   Go to the following URL: [https://sentry.io/auth/login]
 -   Enter the correct credentials.
