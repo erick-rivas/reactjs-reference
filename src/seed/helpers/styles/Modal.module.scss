@@ -5,6 +5,13 @@ __Seed builder__
 
 @import "_mixins";
 
+.module {
+  position: fixed;
+  z-index: 1300;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .container {
   position: relative;
   top: 50%;

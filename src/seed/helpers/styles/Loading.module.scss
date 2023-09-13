@@ -12,10 +12,23 @@ __Seed builder__
 
 .loading {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   left: 50%;
   top: 50%;
-  margin-top: -40px;
-  margin-left: -40px;
+  margin-top: -25px;
+  margin-left: -25px;
 }
+
+.spinner {
+    transform-origin:center;
+    animation:loading_spinner_anim 1s linear infinite;
+}
+
+.spinner circle {
+    stroke-linecap:round;
+    animation:loading_spinner_anim_inner 1.5s ease-in-out infinite;
+}
+
+@keyframes loading_spinner_anim{100%{transform:rotate(360deg)}}
+@keyframes loading_spinner_anim_inner{0%{stroke-dasharray:0 150;stroke-dashoffset:0}47.5%{stroke-dasharray:42 150;stroke-dashoffset:-16}95%,100%{stroke-dasharray:42 150;stroke-dashoffset:-59}}
