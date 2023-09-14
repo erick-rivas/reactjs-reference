@@ -11,8 +11,8 @@ import * as React from "react";
 import * as Sentry from "@sentry/react";
 import { createRoot } from 'react-dom/client';
 
-import { GRAPH_URL, APP_URL } from "settings";
-import { SENTRY_DSN } from "settings";
+import { GRAPH_URL, APP_URL, IS_PROD } from "settings";
+import { SENTRY_DSN, SENTRY_SAMPLE_RATE } from "settings";
 
 import App from "components/App";
 import { ApolloClient } from "@apollo/client";
@@ -53,7 +53,8 @@ Sentry.init({
     }),
     new Sentry.Replay(),
   ],
-  tracesSampleRate: 1.0,
+  environment: IS_PROD ? "production" : "development",
+  tracesSampleRate: SENTRY_SAMPLE_RATE,
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
