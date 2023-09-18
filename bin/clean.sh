@@ -3,4 +3,5 @@
 # AUTO_GENERATED (Read only)
 
 echo "== Cleaning unused docker resources"
-sudo docker system prune --volumes
+sudo docker image prune --force
+sudo docker volume prune --force

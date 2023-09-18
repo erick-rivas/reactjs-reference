@@ -32,8 +32,10 @@ docker compose up -d
 echo == Installing local dependencies
 call npm install --legacy-peer-deps
 
-echo == Cleaning services
+echo == Cleaning setup
 docker compose stop
+docker image prune --force
+docker volume prune --force
 
 echo.
 echo == Setup completed (Start server with bin/start.bat)

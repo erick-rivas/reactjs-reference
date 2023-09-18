@@ -38,8 +38,10 @@ sudo chown -R $(whoami) .
 echo "== Installing local dependencies"
 npm install --legacy-peer-deps
 
-echo "== Cleaning services"
+echo "== Cleaning setup"
 sudo docker compose stop
+sudo docker image prune --force
+sudo docker volume prune --force
 
 echo ""
 echo "== Setup completed (Start server with bin/start.sh)"

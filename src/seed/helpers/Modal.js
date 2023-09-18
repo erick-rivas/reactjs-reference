@@ -78,8 +78,8 @@ class Modal extends React.Component {
         const { url } = match;
         const backUrl = url.substring(0, url.lastIndexOf("/"));
         history.push(backUrl);
-      } else onClose(match);
-    }
+      }
+    } else onClose(match);
   }
 }
 
