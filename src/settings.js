@@ -7,7 +7,7 @@ let SERVER_URL = "http://localhost:8008";
 let WS_URL = "ws://localhost:8008";
 let GA_KEY = "G-0000000000";
 let SENTRY_DSN = "";
-let SENTRY_SAMPLE_RATE = 0.1;
+let SENTRY_SAMPLE_RATE = 0.25;
 
 // Production
 
@@ -17,7 +17,7 @@ if (IS_PROD) {
   WS_URL = "ws://localhost:8008";
   GA_KEY = "G-0000000000";
   SENTRY_DSN = "";
-  SENTRY_SAMPLE_RATE = 0.1;
+  SENTRY_SAMPLE_RATE = 0.25;
 }
 
 let GRAPH_URL = SERVER_URL + "/graphql";

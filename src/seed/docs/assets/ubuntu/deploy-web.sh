@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 GIT_PATH="origin"
 if [ $# -ge 1 ]; then GIT_PATH=$1; fi
@@ -7,7 +7,7 @@ WEB_DIR="###"
 API_DIR="###"
 # Update project
 cd $WEB_DIR
-sudo git pull $GIT_PATH dev
+sudo git pull "$GIT_PATH" dev
 sudo npm install --legacy-peer-deps
 sudo npm run-script build
 
