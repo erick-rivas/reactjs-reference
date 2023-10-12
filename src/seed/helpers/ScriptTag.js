@@ -7,20 +7,25 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class ScriptTag extends React.Component {
-  
+
+  constructor(props) {
+    super(props);
+    this.state = { id: Math.floor(Math.random() * 10000000) };
+  }
+
   render() {
-    return (<div/>);
+    return (<div id={"script-" + this.state.id} />);
   }
 
   shouldComponentUpdate() {
     return false;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { content = "" } = this.props;
     const script = document.createElement("script");
     script.innerHTML = content;
-    document.body.appendChild(script);
+    document.getElementById("script-" + this.state.id).appendChild(script);
   }
 }
 

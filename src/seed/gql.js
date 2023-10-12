@@ -51,7 +51,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
     },
     partialRefetch: true
   });
-  return { ...res, data: res.data ? res.data : {} };
+  return { ...res, data: res.data ? res.data : {}, query: query };
 };
 
 /**

@@ -7,20 +7,25 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class StyleTag extends React.Component {
-  
+
+  constructor(props) {
+    super(props);
+    this.state = { id: Math.floor(Math.random() * 10000000) };
+  }
+
   render() {
-    return (<div/>);
+    return (<div id={"style-" + this.state.id} />);
   }
 
   shouldComponentUpdate() {
     return false;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { content = "" } = this.props;
-    const script = document.createElement("style");
-    script.innerHTML = content;
-    document.body.appendChild(script);
+    const style = document.createElement("style");
+    style.innerHTML = content;
+    document.getElementById("style-" + this.state.id).appendChild(style);
   }
 }
 
