@@ -4,6 +4,7 @@ source .aws.env
 if [ "$1" == "--start" ]; then
 
     INFO=$(aws ec2 start-instances --instance-ids "$INSTANCE_ID")
+    echo "$INFO"
     echo Instance started successfully
 
     echo Waiting for running
@@ -16,6 +17,7 @@ fi
 if [ "$1" == "--stop" ]; then
 
     INFO=$(aws ec2 stop-instances --instance-ids "$INSTANCE_ID")
+    echo "$INFO"
     echo Instance stopped successfully
     exit
 
@@ -24,6 +26,7 @@ fi
 if [ "$1" == "--restart" ]; then
 
     INFO=$(aws ec2 reboot-instances --instance-ids "$INSTANCE_ID")
+    echo "$INFO"
     echo Instance restarted successfully
 
     echo Waiting for running

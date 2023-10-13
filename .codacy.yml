@@ -12,6 +12,7 @@ exclude_paths:
   - "public/**"
   - "build/**"
   - "src/tests/**"
+  - "src/seed/docs/**"
   - "src/seed/tests/**"
   - "node_modules/**"
   - "coverage/**"
