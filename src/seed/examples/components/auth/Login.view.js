@@ -13,7 +13,7 @@ const LoginView = ({ onSubmit, error }) =>
   <main id="content" role="main" class="main pl-0">
     <div class="position-fixed top-0 right-0 left-0 bg-img-hero"
       style={ {height: "32rem", backgroundImage: "url(/theme/svg/components/abstract-bg-4.svg)"} }>
-      <figure class="position-absolute right-0 bottom-0 left-0">
+      <figure class="position-absolute right-0 bottom-0 left-0" style={ {marginBottom: "-1px"} }>
         <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
           x="0px" y="0px" viewBox="0 0 1921 273">
           <polygon fill="#fff" points="0,273 1921,273 1921,0 "/>
