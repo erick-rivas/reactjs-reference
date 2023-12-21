@@ -11,7 +11,10 @@ import View from "seed/examples/components/Home.view";
 function Home() {
   const [isAuth, setIsAuth] = useState(false);
   const [callAuth, reqCall] = useGetCall("/auth/user", "", {
-    onCompleted: (data) => setIsAuth(true),
+    onCompleted: (data) => {
+      // Optional: Include extra validation for user role
+      setIsAuth(true);
+    },
     onError: () => {
       sessionStorage.clear();
       localStorage.clear();
