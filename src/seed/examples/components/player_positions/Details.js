@@ -17,6 +17,8 @@ function PlayerPositionDetails({ playerPositionId, onCompleted = () => null, onE
   {
     playerPosition {
       name
+      code
+      stats
       details
       createdAt
     }

@@ -19,6 +19,8 @@ function PlayerPositionList() {
       totalPages
       playerPositions {
         name
+        code
+        stats
         details
         createdAt
       }

@@ -33,6 +33,20 @@ const PlayerPositionFormView = ({ playerPosition= {}, onSubmit, error }) =>
             <Field type="text" name="name"
               class="form-control" />
             </div>
+            {/* Code */}
+            <div class="form-group">
+            <label class="input-label">Code</label>
+            <Field type="text" name="code"
+              as="textarea" rows="3"
+              class="form-control" />
+            </div>
+            {/* Stats */}
+            <div class="form-group">
+            <label class="input-label">Stats</label>
+            <Field type="text" name="stats"
+              as="textarea" rows="3"
+              class="form-control" />
+            </div>
             {/* Details */}
             <div class="form-group">
             <label class="input-label">Details</label>

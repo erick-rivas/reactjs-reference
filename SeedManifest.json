@@ -101,6 +101,16 @@
           "type": "string"
         },
         {
+          "format": "code",
+          "name": "code",
+          "type": "text"
+        },
+        {
+          "name": "stats",
+          "schema": "{\"type\":\"object\",\"properties\":{\"expected_goals\":{\"type\":\"number\"},\"dominant_leg\":{\"type\":\"string\"},\"dominant_leg_accuracy\":{\"type\":\"number\"}},\"required\":[\"expected_goals\"],\"dependentRequired\":{\"dominant_leg_accuracy\":[\"dominant_leg_accuracy\"]}}",
+          "type": "json"
+        },
+        {
           "name": "details",
           "type": "json"
         }

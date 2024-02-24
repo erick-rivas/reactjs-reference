@@ -18,7 +18,8 @@ function Home() {
     onError: () => {
       sessionStorage.clear();
       localStorage.clear();
-      window.location.replace("/examples/login"); // IMPORTANT: Switch to normal login (e.g /login) when copying
+      window.location.replace(`/examples/login?next=${encodeURIComponent(new URL(window.location.href).pathname)}`);
+      // IMPORTANT: Switch to normal login (e.g /login) when copying
     }
   })
   useEffect(() => {

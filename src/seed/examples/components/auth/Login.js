@@ -9,11 +9,11 @@ import { usePost, useGetCall } from "seed/api";
 import PropTypes from "prop-types";
 import View from "seed/examples/components/auth/Login.view";
 
-function Login({ history }) {
-
+function Login(props) {
+  const params = new URLSearchParams(props.location.search);
   const [rememberMe, setRememberMe] = useState(false);
   const [callAuth, reqCall] = useGetCall("/auth/user", "", {
-    onCompleted: data => window.location.replace("/example") // If user is already logged
+    onCompleted: data => window.location.replace(params.get("next") ?? "/example") // If user is already logged
     // IMPORTANT: Switch to normal home(e.g /) when copying
   })
 
@@ -25,7 +25,7 @@ function Login({ history }) {
       }
       sessionStorage.setItem("token", data.key);
       sessionStorage.setItem("id", data.user);
-      history.replace("/");
+      props.history.replace("/");
     },
     includeAuth: false
   });
@@ -53,7 +53,8 @@ function Login({ history }) {
 }
 
 Login.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default Login;

@@ -182,6 +182,8 @@ export const PLAYER_POSITION = `
   playerPosition {
     id
     name
+    code
+    stats
     details
   }
 }
@@ -191,17 +193,23 @@ export const SET_PLAYER_POSITION = `
 mutation Set(
   $id: Int!,
   $name: String,
+  $code: String,
+  $stats: GenericScalar,
   $details: GenericScalar,
 )
 {
   setPlayerPosition(
     id: $id,
     name: $name,
+    code: $code,
+    stats: $stats,
     details: $details,
   ) {
     playerPosition {
       id
       name
+      code
+      stats
       details
     }
   }
@@ -211,11 +219,15 @@ mutation Set(
 export const SAVE_PLAYER_POSITION = `
 mutation Save(
   $name: String!,
+  $code: String!,
+  $stats: GenericScalar!,
   $details: GenericScalar!,
 )
 {
   savePlayerPosition(
     name: $name,
+    code: $code,
+    stats: $stats,
     details: $details,
   ) {
     playerPosition {
