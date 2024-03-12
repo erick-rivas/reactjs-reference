@@ -1,3 +1,4 @@
+// eslint-disable-line max-len
 const GQL_MATCH_ = {
     date: "2020-01-01T12:00:00+00:00",
     type: "FRIENDSHIP",
@@ -21,6 +22,7 @@ export const GQL_MATCH_PAGINATION = {
     }
 }
 
+// eslint-disable-line max-len
 export const API_MATCH = {
     date: "2020-01-01T12:00:00+00:00",
     type: "FRIENDSHIP",
@@ -30,6 +32,7 @@ export const API_MATCH = {
 }
 export const API_MATCHES = [API_MATCH]
 
+// eslint-disable-line max-len
 const GQL_PLAYER_ = {
     name: "",
     photo: { url: "" },
@@ -53,6 +56,7 @@ export const GQL_PLAYER_PAGINATION = {
     }
 }
 
+// eslint-disable-line max-len
 export const API_PLAYER = {
     name: "",
     photo_id: 1,
@@ -62,10 +66,11 @@ export const API_PLAYER = {
 }
 export const API_PLAYERS = [API_PLAYER]
 
+// eslint-disable-line max-len
 const GQL_PLAYER_POSITION_ = {
     name: "",
     code: "",
-    stats: `{"expected_goals": 1674.0, "dominant_leg": "architecto possimus exercitationem adipisicing nec", "dominant_leg_accuracy": 3757.0}`,
+    stats: `{"expected_goals": 9957.0, "dominant_leg": "ipsum, reiciendis ipsum, a esse reprehenderit esse"}`,
     details: "{}",
 }
 export const GQL_PLAYER_POSITION = {
@@ -84,14 +89,16 @@ export const GQL_PLAYER_POSITION_PAGINATION = {
     }
 }
 
+// eslint-disable-line max-len
 export const API_PLAYER_POSITION = {
     name: "",
     code: "",
-    stats: `{"expected_goals": 4070.0, "dominant_leg": "magnam, quas enim veniam consectetur vitae mattis"}`,
+    stats: `{"expected_goals": 662.0}`,
     details: "{}",
 }
 export const API_PLAYER_POSITIONS = [API_PLAYER_POSITION]
 
+// eslint-disable-line max-len
 const GQL_SCORE_ = {
     min: 128,
     player:  { id: 1},
@@ -113,6 +120,7 @@ export const GQL_SCORE_PAGINATION = {
     }
 }
 
+// eslint-disable-line max-len
 export const API_SCORE = {
     min: 128,
     player_id:  1,
@@ -120,6 +128,7 @@ export const API_SCORE = {
 }
 export const API_SCORES = [API_SCORE]
 
+// eslint-disable-line max-len
 const GQL_TEAM_ = {
     name: "",
     logo: { url: "" },
@@ -145,6 +154,7 @@ export const GQL_TEAM_PAGINATION = {
     }
 }
 
+// eslint-disable-line max-len
 export const API_TEAM = {
     name: "",
     logo_id: 1,
@@ -156,6 +166,7 @@ export const API_TEAM = {
 }
 export const API_TEAMS = [API_TEAM]
 
+// eslint-disable-line max-len
 const GQL_USER_ = {
     username: "email@test.com",
     firstName: "FirstName",
@@ -182,6 +193,7 @@ export const GQL_USER_PAGINATION = {
     }
 }
 
+// eslint-disable-line max-len
 export const API_USER = {
     username: "email_1@test.com",
     first_name: "FirstName",

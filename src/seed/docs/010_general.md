@@ -1,5 +1,11 @@
 # Reactjs reference
 
+## Architecture
+
+The project uses a generic ReactJS architecture with native libs to ease the integration of REST API and GraphQL API.
+<br>
+The main differentiator / advantage of the architecture is its **code auto-generation** support, which allows the automatic component creation, graphql setup, test data generation and automatic update of libraries.
+
 ## Project structure
 
 -   **/components/.js**: Handle component logic (API calls, event definition, state handling, etc.)
@@ -37,8 +43,8 @@
 
 ## Other resources
 
--   [Components docs](020_components.md)
--   [Views docs](030_views.md)
+-   [Components](020_components.md)
+-   [Views](030_views.md)
 -   [Seed builder](110_seed_builder.md)
 -   [Seed commons - API](120_seed_commons_api.md)
 -   [Seed commons - GQL](130_seed_commons_gql.md)

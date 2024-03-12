@@ -19,4 +19,15 @@ This repository holds a **reference** for the development of a **React.js App**
 
 ## Documentation
 
--   All documentation is in the [docs](./src/seed/docs/010_general.md) directory
+-   All documentation is in the [docs](src/seed/docs) directory
+
+### Index
+
+-   [Development](src/seed/docs/010_general.md)
+-   [Components](src/seed/docs/020_components.md)
+-   [Views](src/seed/docs/030_views.md)
+-   [Seed builder](src/seed/docs/110_seed_builder.md)
+-   [Seed commons - API](src/seed/docs/120_seed_commons_api.md)
+-   [Seed commons - GQL](src/seed/docs/130_seed_commons_gql.md)
+-   [Seed commons - Helpers](src/seed/docs/140_seed_commons_helpers.md)
+-   [Deploy - Ubuntu](src/seed/docs/210_deploy_ubuntu.md)
