@@ -10,6 +10,12 @@ IS_PROD=false
 if [ $# -ge 1 ]; then REACTJS_PORT=$1; fi
 if [ $# -ge 2 ]; then IS_PROD=$2; fi
 
+RUNNING=$(sudo docker ps)
+if [ $RUNNING -z ]; then
+  echo "ERROR: Before executing bin/setup.sh, start docker service"
+  exit 1
+fi
+
 echo "== Creating docker .envs"
 sudo rm .env
 echo "# DOCKER SETTINGS" > ".env"

@@ -10,6 +10,10 @@ set IS_PROD=false
 IF NOT "%~1" == "" set /A REACTJS_PORT=%1
 IF NOT "%~2" == "" set IS_PROD=%2
 
+for /f "delims=" %%i in ('docker ps') do set RUNNING=%%i
+IF "%RUNNING%" == "" echo ERROR: Before executing bin/setup.bat, start docker service
+IF "%RUNNING%" == "" exit 1
+
 echo "== Creating docker .envs"
 del .\.env
 echo # DOCKER SETTINGS > .\.env

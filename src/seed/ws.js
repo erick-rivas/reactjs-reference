@@ -8,55 +8,57 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { WS_URL } from 'settings';
 
 /**
- * 
- * @param {String} url
- * @param {Boolean} save message history
- * @param {Object} options (room, queryParams)
+ * Returns a hook to execute a WEBSOCKET handler
+ * @param {String} room Websocket room
+ * @param {Object} options Websocket options (onMessageReceived, queryParams={}, saveHistory=true, historyLimit=20)
  * @returns WebSocket hook
  * @example
- * const [ lastMessage, status, sendJsonMessage, messageHistory ] = useWS("/ws", true, {room: "global"});
- * // sendObjectMessage({ msg: "Hello" });
- * // messageHistory.map((message, index) => <span>message.data.msg</span>)
+ * const [reqWS, messageHistory, sendJsonMessage] = useWS("global", {
+ *   onMessageReceived: (message) => setMessage(message)
+ * });
+ * if (reqWS.connecting) return <div>Connected</div>
+ * return <div>Last message: {reqWS.data} </div>
  */
 
-function convert(data) {
-    let parsed = null;
-    try {
-        parsed = JSON.parse(data["data"]);
-    } catch (error) {
-        parsed = data;
-    }
-    return parsed;
-}
+export const useWS = (room, options) => {
 
-export const useWS = (url = "/ws", save = false, options = { room: "global", queryParams: {}}, limit = null) => {
-
+    options = { queryParams: {}, saveHistory: true, historyLimit: 20, ...options }
     const [messageHistory, setMessageHistory] = useState([]);
-    const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + url + "/" + options.room + "/", {
-        shouldReconnect: (e) => true,
-        queryParams: options.queryParams,
-        ...options
+    const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + "/" + room + "/", {
+        shouldReconnect: () => true,
+        onMessage: (message) => {
+
+            if (options.onMessageReceived != null)
+                options.onMessageReceived({ data: message.data });
+
+                if (options.saveHistory) {
+                setMessageHistory((prev) => {
+                    if (prev.length < options.historyLimit)
+                        return [...prev, getMessage(message.data)];
+                    else
+                        return [...prev.slice(1), getMessage(message.data)];
+                });
+            }
+        },
+        queryParams: options.queryParams
     });
 
-    useEffect(() => {
-        if(lastMessage !== null && save) {
-            setMessageHistory((prev) => {
-                if(limit != null && prev.length < limit)
-                    return [...prev, convert(lastMessage)];
-                else
-                    return [...prev.slice(1), convert(lastMessage)];
-            });
-        }
-    }, [lastMessage, setMessageHistory, save, limit]);
+    return [getMessageData(lastMessage, readyState), messageHistory, sendJsonMessage]
+}
 
-    const status = {
-        "connecting": readyState === ReadyState.CONNECTING,
-        "connected": readyState === ReadyState.OPEN,
-        "closing": readyState === ReadyState.CLOSING,
-        "closed": readyState === ReadyState.CLOSED,
-        "uninstantiated": readyState === ReadyState.UNINSTANTIATED,
+const getMessage = (data) => {
+    try {
+        return JSON.parse(data["data"]);
+    } catch (error) {
+        return data;
+    }
+}
+
+const getMessageData = (data, readyState) => {
+    return {
+        data: getMessage(data),
+        connected: readyState === ReadyState.OPEN,
+        connecting: readyState === ReadyState.CONNECTING,
+        disconnected: readyState !== ReadyState.OPEN && readyState !== ReadyState.CONNECTING,
     };
-
-    return [ convert(lastMessage), status, sendJsonMessage, messageHistory ];
-
 }
