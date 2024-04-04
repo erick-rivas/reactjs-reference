@@ -22,21 +22,21 @@ import { WS_URL } from 'settings';
 
 export const useWS = (room, options) => {
 
-    options = { queryParams: {}, saveHistory: true, historyLimit: 20, ...options }
+    options = { queryParams: {}, saveHistory: true, historyLimit: 20, ...options };
     const [messageHistory, setMessageHistory] = useState([]);
     const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + "/" + room + "/", {
         shouldReconnect: () => true,
         onMessage: (message) => {
 
             if (options.onMessageReceived != null)
-                options.onMessageReceived({ data: message.data });
+                options.onMessageReceived({ data: getMessage(message) });
 
                 if (options.saveHistory) {
                 setMessageHistory((prev) => {
                     if (prev.length < options.historyLimit)
-                        return [...prev, getMessage(message.data)];
+                        return [...prev, getMessage(message)];
                     else
-                        return [...prev.slice(1), getMessage(message.data)];
+                        return [...prev.slice(1), getMessage(message)];
                 });
             }
         },

@@ -14,7 +14,7 @@ class Loading extends React.Component {
       <div className={css.module}>
         <svg stroke={color} viewBox="0 0 24 24" className={css.loading}>
             <g className={css.spinner}>
-                <circle cx="12" cy="12" r="9.5" fill="none" stroke-width="2"></circle>
+                <circle cx="12" cy="12" r="9.5" fill="none" strokeWidth="2"></circle>
             </g>
         </svg>
       </div>
