@@ -49,7 +49,8 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
         addGqlQuery(query); // Include query to cache for re-fetch
       if (options.onCompleted) options.onCompleted(data);
     },
-    partialRefetch: true
+    partialRefetch: true,
+    notifyOnNetworkStatusChange: true
   });
   return { ...res, data: res.data ? res.data : {}, query: query };
 };
@@ -118,8 +119,16 @@ const useDetail = (gqlQuery, id, options = {}) => {
   const query = normalizedQuery.replace(queryName, wrapper);
   // Execute query
   const { addGqlQuery } = useContext(SeedContext);
-  addGqlQuery(query); // Include query to cache to re-fetch
-  const res = Apollo.useQuery(gql(query), options);
+  const res = Apollo.useQuery(gql(query), {
+    ...options,
+    onCompleted: (data) => {
+      if (options.cacheQuery == null || options.cacheQuery != false)
+        addGqlQuery(query); // Include query to cache for re-fetch
+      if (options.onCompleted) options.onCompleted(data);
+    },
+    partialRefetch: true,
+    notifyOnNetworkStatusChange: true
+  });
   return { ...res, data: res.data ? res.data : {} };
 };
 

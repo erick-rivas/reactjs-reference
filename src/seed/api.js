@@ -106,8 +106,8 @@ const options = (method = "GET", body = {}) => {
 };
 
 const usePoll = (endpoint, params, pollOptions = {}) => {
-  const [status, setStatus] = useState({ data: null, isLoading: true });
-  useEffect(() => () => setStatus({ data: null, isLoading: true }), []);
+  const [status, setStatus] = useState({ data: null, isLoading: true, fetchStatus: true });
+  useEffect(() => () => { setStatus({ data: null, isLoading: true, fetchStatus: true }) }, []);
   const optionsData = options("GET")
   if (pollOptions.includeAuth === false)
     delete optionsData.headers["Authorization"]
@@ -115,14 +115,29 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
     ...optionsData,
     formatter: (response) => {
       if (!response.ok) throw response;
-      return response.text();
-    }
+
+      return new Promise((resolve, reject) => {
+        (async () => {
+          try {
+            let text = await response.text()
+            setStatus({ ...status, isLoading: true, fetchStatus: false })
+            try {
+              return resolve(JSON.parse(text));
+            } catch (e) { }
+            return resolve(text)
+          } catch (err) {
+            return reject(err);
+          }
+        })()
+      })
+    },
+    depends: [status.fetchStatus == true]
   });
 
   if ((fetch.data != null || fetch.error != null) && status.isLoading) {
     let data = null;
     if (fetch.error == null) {
-      data = {};
+      data = fetch.data;
       try {
         data = JSON.parse(fetch.data);
       } catch (e) { }
@@ -134,8 +149,9 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
     }
     setStatus({ data: data, isLoading: false });
   }
+  const refetch = () => setStatus({ ...status, fetchStatus: true })
 
-  return { ...fetch, loading: status.isLoading, data: status.data };
+  return { ...fetch, loading: status.isLoading, data: status.data, refetch: refetch };
 };
 
 const useMutate = (method, endpoint, mutOptions = {}) => {
@@ -150,7 +166,19 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
     ...optionsData,
     formatter: (response) => {
       if (!response.ok) throw response;
-      return response.text();
+      return new Promise((resolve, reject) => {
+        (async () => {
+          try {
+            let text = await response.text()
+            try {
+              return resolve(JSON.parse(text));
+            } catch (e) { }
+            return resolve(text)
+          } catch (err) {
+            return reject(err);
+          }
+        })()
+      })
     },
     depends: [call.body != null]
   });
@@ -159,7 +187,7 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
     setCall({ ...call, called: true });
   if (call.body != null && call.called && !fetch.isLoading) {
     if (mutOptions.onCompleted != null && fetch.error == null) {
-      let json = {};
+      let json = fetch.data;
       try {
         json = JSON.parse(fetch.data);
       } catch (e) { }
