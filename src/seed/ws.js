@@ -23,6 +23,7 @@ import { WS_URL } from 'settings';
 export const useWS = (room, options) => {
 
     options = { queryParams: {}, saveHistory: true, historyLimit: 20, ...options };
+    options.queryParams.token = sessionStorage.getItem("token");
     const [messageHistory, setMessageHistory] = useState([]);
     const { sendJsonMessage, lastMessage, readyState } = useWebSocket(WS_URL + "/" + room + "/", {
         shouldReconnect: () => true,
