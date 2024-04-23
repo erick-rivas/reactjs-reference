@@ -9,7 +9,7 @@ import css from "styles/css/seed/styles/Loading.module.css";
 
 class Loading extends React.Component {
   render() {
-    const { color="#3f51b5"} = this.props;
+    const { color="#3f51b5" } = this.props;
     return (
       <div className={css.module}>
         <svg stroke={color} viewBox="0 0 24 24" className={css.loading}>
