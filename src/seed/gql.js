@@ -15,7 +15,7 @@ import SeedContext from "seed/context";
  * Return a hook to execute a graphql query
  * @param {string} gqlQuery Graphql query
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options Request options (onCompleted, onError, orderBy, limit)
+ * @param {Object} options Request options (onCompleted, onError, orderBy, limit, cacheQuery=true)
  * @returns Query hook
  * @example
  * const reqPlayers = useQuery(`
@@ -61,7 +61,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
  * @param {number} pageNum Page number
  * @param {number} pageSize Number of objects per page
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options Request options (onCompleted, onError, orderBy)
+ * @param {Object} options Request options (onCompleted, onError, orderBy, cacheQuery=true)
  * @returns Pagination hook
  * @example
  * const reqPlayers = usePagination(`
@@ -100,7 +100,7 @@ const useCount = (modelName, paramQuery, options = {}) => {
  * Return a hook to execute a graphql detail query (single object)
  * @param {string} gqlQuery Graphql query
  * @param {number} id Identifier of the object
- * @param {Object} options Request options (onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError, cacheQuery=true)
  * @returns Detail hook
  * @example
  * const reqPlayer = useQuery(`

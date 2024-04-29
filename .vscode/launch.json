@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [{
+    "type": "chrome",
+    "request": "launch",
+    "name": "ReactJS debugger",
+    "url": "http://localhost:3003",
+    "webRoot": "${workspaceFolder}",
+    "sourceMapPathOverrides": {
+      "/app/*": "${workspaceFolder}/*",
+    }
+  }]
+}

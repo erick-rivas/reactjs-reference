@@ -24,7 +24,8 @@ appspec.yml
 /coverage
 
 # Misc
-.vscode
+.vscode/*
+!.vscode/launch.json
 .DS_Store
 .env.local
 .env.development.local
