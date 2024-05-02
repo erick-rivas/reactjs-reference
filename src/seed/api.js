@@ -13,7 +13,7 @@ import { API_URL } from "settings";
  * Returns a hook to execute a GET request
  * @param {string} endpoint Relative path to SERVER_URL/api
  * @param {Object} queryArgs Query args of the request
- * @param {Object} options Request options (onCompleted, onError, includeAuth)
+ * @param {Object} options Request options (onCompleted, onError, includeAuth=true)
  * @returns GET hook
  * @example
  * const reqPlayers = useGet("/players", { name: "messi" })
@@ -26,7 +26,7 @@ const useGet = (endpoint, queryArgs = {}, options = {}) =>
  * Returns a hook to execute a GET request callable (like put, post, etc)
  * @param {string} endpoint Relative path to SERVER_URL/api
  * @param {Object} queryArgs Query args of the request
- * @param {Object} options Request options (onCompleted, onError, includeAuth)
+ * @param {Object} options Request options (onCompleted, onError, includeAuth=true)
  * @returns GET hook
  * @example
  * const [callGet, reqPlayers] = useGet("/players", { name: "messi" })
@@ -38,7 +38,7 @@ const useGetCall = (endpoint, queryArgs = {}, options = {}) =>
 /**
 * Returns a hook to execute a POST request
 * @param {string} endpoint Relative path to SERVER_URL/api
-* @param {Object} options Request options (onCompleted, onError, includeAuth)
+* @param {Object} options Request options (onCompleted, onError, includeAuth=true)
 * @returns POST hook
 * @example
 * const [callSave, reqSave] = usePost("/players", { 
@@ -54,7 +54,7 @@ const usePost = (endpoint, options = {}) =>
 /**
 * Returns a hook to execute a PUT request
 * @param {string} endpoint Relative path to SERVER_URL/api
-* @param {Object} options Request options (onCompleted, onError, includeAuth)
+* @param {Object} options Request options (onCompleted, onError, includeAuth=true)
 * @returns PUT hook
 * @example
 * const [callPut, reqPut] = usePut("/players", { 
@@ -70,7 +70,7 @@ const usePut = (endpoint, options = {}) =>
 /**
 * Returns a hook to execute a DELETE request
 * @param {string} endpoint Relative path to SERVER_URL/api
-* @param {Object} options Request options (onCompleted, onError, includeAuth)
+* @param {Object} options Request options (onCompleted, onError, includeAuth=true)
 * @returns DELETE hook
 * @example
 * const [callDelete, reqDelete] = useDelete("/players", { 

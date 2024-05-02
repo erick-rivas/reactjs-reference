@@ -15,7 +15,7 @@ This repository holds a **reference** for the development of a **React.js App**
 
 -   Example app [http://localhost:3003/examples](http://localhost:3003/examples)
     >   Before using the app execute a ([django-reference](https://github.com/erick-rivas/django-reference)) based project
-    >>  user:admin@email.com, pass: 123
+    >>  user:admin@email.com
 
 ## Documentation
 
