@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    ".github/": true,
+    ".vscode/": true,
+    "bin/docker/": true,
+    "node_modules/": true,
+    ".env": true,
+    ".codacy.yml": true,
+    ".dockerignore": true,
+    ".eslintrc": true,
+    ".jshintrc": true,
+    ".npmrc": true,
+    "jsconfig.json": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.js": "${basename}.lib*.js"
+  }
+}

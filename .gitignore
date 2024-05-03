@@ -26,6 +26,7 @@ appspec.yml
 # Misc
 .vscode/*
 !.vscode/launch.json
+!.vscode/settings.json
 .DS_Store
 .env.local
 .env.development.local
