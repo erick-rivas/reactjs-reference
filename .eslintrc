@@ -12,7 +12,7 @@
     "react/jsx-key": "warn",
     "react/no-children-prop": "off",
     "react/no-unknown-property": "off",
-    "react/prop-types": "warn",
+    "react/prop-types": "off",
     "no-empty": "off",
     "no-unused-vars": "off",
     "no-lone-blocks": "off",
