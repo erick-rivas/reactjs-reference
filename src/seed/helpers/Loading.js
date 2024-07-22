@@ -9,13 +9,14 @@ import css from "styles/css/seed/styles/Loading.module.css";
 
 class Loading extends React.Component {
   render() {
-    const { color="#3f51b5" } = this.props;
+    const { color = "#3f51b5", size = 50 } = this.props;
     return (
       <div className={css.module}>
-        <svg stroke={color} viewBox="0 0 24 24" className={css.loading}>
-            <g className={css.spinner}>
-                <circle cx="12" cy="12" r="9.5" fill="none" strokeWidth="2"></circle>
-            </g>
+        <svg stroke={color} viewBox="0 0 24 24" className={css.loading}
+          style={ { width: size + "px", height: size + "px", marginLeft: (-size / 2) + "px", marginTop: (-size / 2) + "px" } }>
+          <g className={css.spinner}>
+            <circle cx="12" cy="12" r="9.5" fill="none" strokeWidth="2"></circle>
+          </g>
         </svg>
       </div>
     );
@@ -23,7 +24,7 @@ class Loading extends React.Component {
 }
 
 Loading.propTypes = {
-    color: PropTypes.string
+  color: PropTypes.string
 };
 
 export default Loading;
