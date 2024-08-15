@@ -10,7 +10,7 @@ if [ $RUNNING -z ]; then
 fi
 
 echo "== Installing dependencies"
-sudo docker compose exec django /bin/sh -c "npm install --legacy-peer-deps"
+sudo docker compose exec reactjs /bin/sh -c "npm install --legacy-peer-deps"
 
 echo "== Installing local dependencies"
 npm install --legacy-peer-deps

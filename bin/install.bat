@@ -8,7 +8,7 @@ IF "%RUNNING%" == "" echo ERROR: Before executing bin/install.bat, start server 
 IF "%RUNNING%" == "" exit 1
 
 echo == Installing dependencies
-docker compose exec django /bin/sh -c "npm install --legacy-peer-deps"
+docker compose exec reactjs /bin/sh -c "npm install --legacy-peer-deps"
 
 echo == Installing local dependencies
 call npm install --legacy-peer-deps
