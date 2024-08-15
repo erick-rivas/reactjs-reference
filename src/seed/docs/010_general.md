@@ -34,10 +34,12 @@ The main differentiator / advantage of the architecture is its **code auto-gener
 -   Generate code coverage report `bin/coverage`
 
 ### Deployment
+
 -   Create production build `bin/build`
 
 ### Docker
 
+-   Reinstall npm libs `bin/install`
 -   Open docker terminal `bin/terminal`
 -   Clean unused docker resources `bin/clean`
 
