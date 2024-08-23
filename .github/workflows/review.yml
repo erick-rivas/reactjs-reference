@@ -16,6 +16,7 @@ jobs:
 
   review-code-eslint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout code
@@ -29,6 +30,7 @@ jobs:
 
   review-code-jshint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout code

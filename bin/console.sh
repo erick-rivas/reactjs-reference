@@ -4,9 +4,9 @@
 
 RUNNING=$(sudo docker compose ps --services --filter "status=running")
 if [ $RUNNING -z ]; then
-  echo "ERROR: Before executing bin/update.sh, start server with bin/start.sh"
+  echo "ERROR: Before executing bin/console.sh, start server with bin/start.sh"
   exit 1
 fi
 
-echo "== Opening terminal"
-sudo docker compose exec reactjs /bin/sh
+echo "== Opening console"
+sudo docker compose exec reactjs /bin/bash
