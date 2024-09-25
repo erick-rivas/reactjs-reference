@@ -6,6 +6,7 @@ __Seed builder__
 import React from "react";
 import PropTypes from 'prop-types';
 import cx from "classnames";
+import ModalContainer from "@material-ui/core/Modal";
 import css from "styles/css/seed/styles/Modal.module.css";
 
 class Modal extends React.Component {
@@ -48,8 +49,11 @@ class Modal extends React.Component {
     };
 
     return (
-      <div
-        className={css.module}>
+      <ModalContainer
+        className={css.module}
+        open={true}
+        transitionDuration={0}
+        closeModal={this.closeModal}>
         <div className={cx(css.container, "animate__animated", "animate__" + animation)}
           style={containerStyle}>
           <button
@@ -62,12 +66,13 @@ class Modal extends React.Component {
             {children}
           </div>
         </div>
-      </div>
+      </ModalContainer>
     );
   }
 
   constructor(props) {
     super(props);
+    this.state = { open: false };
     this.closeModal = this.closeModal.bind(this);
   }
 
