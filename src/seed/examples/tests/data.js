@@ -70,7 +70,7 @@ export const API_PLAYERS = [API_PLAYER]
 const GQL_PLAYER_POSITION_ = {
     name: "",
     code: "",
-    stats: `{"expected_goals": 3232.0, "dominant_leg": "Lorem cursus reprehenderit mattis reprehenderit ut"}`,
+    stats: `{"expected_goals": 2839.0, "dominant_leg": "enim possimus illum repellendus dolor Nullam Lorem"}`,
     details: "{}",
 }
 export const GQL_PLAYER_POSITION = {
@@ -93,7 +93,7 @@ export const GQL_PLAYER_POSITION_PAGINATION = {
 export const API_PLAYER_POSITION = {
     name: "",
     code: "",
-    stats: `{"expected_goals": 1935.0}`,
+    stats: `{"expected_goals": 4155.0}`,
     details: "{}",
 }
 export const API_PLAYER_POSITIONS = [API_PLAYER_POSITION]
