@@ -45,7 +45,7 @@ class Modal extends React.Component {
     };
 
     const closeStyle = {
-      marginLeft: (width - 24) + "px"
+      marginLeft: (width - 12) + "px"
     };
 
     return (

@@ -20,12 +20,13 @@ __Seed builder__
 
 .close {
   position: absolute;
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
   width: 35px;
   height: 35px;
-  margin-top: -24px;
+  margin-top: -25px;
   border: none;
-  background: rgba(255, 255, 255, 0.3);
+  background: none;
+  font-size: 1.2rem;
   @include border-radius(50%);
 }
 
