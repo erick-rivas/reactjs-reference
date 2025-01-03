@@ -4,6 +4,7 @@
     ".github/": true,
     ".vscode/": true,
     "bin/docker/": true,
+    "build/": true,
     "node_modules/": true,
     ".env": true,
     ".codacy.yml": true,

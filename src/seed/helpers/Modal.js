@@ -14,6 +14,9 @@ class Modal extends React.Component {
   render() {
     const { component, width = 500, height = 500, animation = "none", overflow = "auto" } = this.props;
 
+    const adjustedWidth = window.innerWidth && window.innerWidth < width ? window.innerWidth - 75 : width
+    const adjustedHeight = window.innerHeight && window.innerHeight < height ? window.innerHeight - 75 : height
+
     let children = []
     if (component != null)
       children = React.createElement(component, {
@@ -34,10 +37,10 @@ class Modal extends React.Component {
         });
 
     const containerStyle = {
-      width: width + "px",
-      marginLeft: -(width / 2) + "px",
-      height: height + "px",
-      marginTop: -(height / 2) + "px"
+      width: adjustedWidth + "px",
+      marginLeft: -(adjustedWidth / 2) + "px",
+      height: adjustedHeight + "px",
+      marginTop: -(adjustedHeight / 2) + "px"
     };
 
     const contentStyle = {
@@ -45,7 +48,7 @@ class Modal extends React.Component {
     };
 
     const closeStyle = {
-      marginLeft: (width - 12) + "px"
+      marginLeft: (adjustedWidth - 10) + "px"
     };
 
     return (
