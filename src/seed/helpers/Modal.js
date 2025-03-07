@@ -53,7 +53,7 @@ class Modal extends React.Component {
 
     return (
       <ModalContainer
-        className={css.module}
+        className={cx(css.module, "seed__modal")}
         open={true}
         transitionDuration={0}
         closeModal={this.closeModal}>

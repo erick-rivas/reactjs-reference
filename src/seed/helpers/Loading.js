@@ -5,13 +5,14 @@ __Seed builder__
 
 import React from "react";
 import PropTypes from 'prop-types';
+import cx from "classnames";
 import css from "styles/css/seed/styles/Loading.module.css";
 
 class Loading extends React.Component {
   render() {
     const { color = "#3f51b5", size = 50 } = this.props;
     return (
-      <div className={css.module}>
+      <div className={cx(css.module, "seed__loading")}>
         <svg stroke={color} viewBox="0 0 24 24" className={css.loading}
           style={ { width: size + "px", height: size + "px", marginLeft: (-size / 2) + "px", marginTop: (-size / 2) + "px" } }>
           <g className={css.spinner}>
