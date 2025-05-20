@@ -9,9 +9,9 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SAVE_PLAYER_POSITION } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/player_positions/Form.view";
+import View from "seed/examples/components/player_positions/PlayerPositionForm.view";
 
-function PlayerPositionFormSave({ onCompleted = () => null, onError = () => null }) {
+function PlayerPositionFormCreate({ onCompleted = () => null, onError = () => null }) {
   
   const [callSave, qSave] = useSave(SAVE_PLAYER_POSITION, {
     onCompleted: () =>
@@ -29,9 +29,9 @@ function PlayerPositionFormSave({ onCompleted = () => null, onError = () => null
   />;
 }
 
-PlayerPositionFormSave.propTypes = {
+PlayerPositionFormCreate.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func
 };
 
-export default PlayerPositionFormSave;
+export default PlayerPositionFormCreate;

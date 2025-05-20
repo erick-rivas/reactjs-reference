@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useDetail, useDelete } from "seed/gql";
 import { DELETE_PLAYER_POSITION } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/player_positions/Details.view";
+import View from "seed/examples/components/player_positions/PlayerPositionDetails.view";
 
 function PlayerPositionDetails({ playerPositionId, onCompleted = () => null, onError = () => null }) {
 

@@ -7,44 +7,42 @@ __Seed builder__
 import React, { useState } from "react";
 import { usePagination } from "seed/gql";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/teams/List.view";
+import View from "seed/examples/components/matches/MatchList.view";
 
-function TeamList() {
+function MatchList() {
 
   const pageSize = 15;
   const [pageNum, setPageNum] = useState(1);
-  const reqTeams = usePagination(`
+  const reqMatches = usePagination(`
   {
-    teamPagination {
+    matchPagination {
       totalPages
-      teams {
-        name
-        description
-        marketValue
+      matches {
+        date
+        type
         createdAt
-        logo { }
-        rival { }
-        identityDocs { }
-        players { }
+        local { }
+        visitor { }
+        scores { }
       }
     }
   }`, pageNum, pageSize);
 
-  if (reqTeams.loading) return <Loading />;
-  if (reqTeams.error) return "Error";
-  const { teams = [], totalPages = 0 } = reqTeams.data.teamPagination;
+  if (reqMatches.loading) return <Loading />;
+  if (reqMatches.error) return "Error";
+  const { matches = [], totalPages = 0 } = reqMatches.data.matchPagination;
 
   const onClickPage = (pageNum) =>
     setPageNum(pageNum);
 
   return <View
-    teams={teams}
+    matches={matches}
     pageNum={pageNum}
     totalPages={totalPages}
     onClickPage={onClickPage}
   />;
 }
 
-TeamList.propTypes = {};
+MatchList.propTypes = {};
 
-export default TeamList;
+export default MatchList;

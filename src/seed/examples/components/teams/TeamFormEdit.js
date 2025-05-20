@@ -7,43 +7,43 @@ __Seed builder__
 import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import { MATCH, SET_MATCH } from "seed/gql/queries";
+import { TEAM, SET_TEAM } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/matches/Form.view";
+import View from "seed/examples/components/teams/TeamForm.view";
 
-function MatchFormSet({ matchId, onCompleted = () => null, onError = () => null  }) {
+function TeamFormEdit({ teamId, onCompleted = () => null, onError = () => null  }) {
 
-  const qMatch = useDetail(MATCH, matchId);
+  const qTeam = useDetail(TEAM, teamId);
   const qTeams = useQuery(`{ teams { } }`);
-  const [callSet, qSet] = useSet(SET_MATCH, {
+  const [callSet, qSet] = useSet(SET_TEAM, {
     onCompleted: () =>
       onCompleted()
       //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
 
-  if (qMatch.loading) return <Loading />;
+  if (qTeam.loading) return <Loading />;
 
-  const { match = {} } = qMatch.data;
+  const { team = {} } = qTeam.data;
   const { teams = [] } = qTeams.data;
   const error = qSet.error ? "An error has occurred" : null;
 
   const onSubmit = (values) => {
-    values.id = matchId;
+    values.id = teamId;
     callSet(values);
   };
 
   return <View
-    match={match}
+    team={team}
     teams={teams}
     error={error}
     onSubmit={onSubmit}
   />;
 }
 
-MatchFormSet.propTypes = {
-  matchId: PropTypes.number.isRequired,
+TeamFormEdit.propTypes = {
+  teamId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
 };
 
-export default MatchFormSet;
+export default TeamFormEdit;

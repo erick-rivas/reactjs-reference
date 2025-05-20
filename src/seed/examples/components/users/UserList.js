@@ -7,42 +7,44 @@ __Seed builder__
 import React, { useState } from "react";
 import { usePagination } from "seed/gql";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/players/List.view";
+import View from "seed/examples/components/users/UserList.view";
 
-function PlayerList() {
+function UserList() {
 
   const pageSize = 15;
   const [pageNum, setPageNum] = useState(1);
-  const reqPlayers = usePagination(`
+  const reqUsers = usePagination(`
   {
-    playerPagination {
+    userPagination {
       totalPages
-      players {
-        name
+      users {
+        username
+        firstName
+        lastName
+        email
         isActive
         createdAt
-        photo { }
-        team { }
-        position { }
+        teams { }
+        profileImage { }
       }
     }
   }`, pageNum, pageSize);
 
-  if (reqPlayers.loading) return <Loading />;
-  if (reqPlayers.error) return "Error";
-  const { players = [], totalPages = 0 } = reqPlayers.data.playerPagination;
+  if (reqUsers.loading) return <Loading />;
+  if (reqUsers.error) return "Error";
+  const { users = [], totalPages = 0 } = reqUsers.data.userPagination;
 
   const onClickPage = (pageNum) =>
     setPageNum(pageNum);
 
   return <View
-    players={players}
+    users={users}
     pageNum={pageNum}
     totalPages={totalPages}
     onClickPage={onClickPage}
   />;
 }
 
-PlayerList.propTypes = {};
+UserList.propTypes = {};
 
-export default PlayerList;
+export default UserList;

@@ -9,10 +9,10 @@ import { BrowserRouter} from "react-router-dom";
 import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
-import ScoreDetails from "seed/examples/components/scores/Details";
-import ScoreList from "seed/examples/components/scores/List";
-import ScoreFormSave from "seed/examples/components/scores/FormSave";
-import ScoreFormSet from "seed/examples/components/scores/FormSet";
+import ScoreDetails from "seed/examples/components/scores/ScoreDetails";
+import ScoreList from "seed/examples/components/scores/ScoreList";
+import ScoreFormCreate from "seed/examples/components/scores/ScoreFormCreate";
+import ScoreFormEdit from "seed/examples/components/scores/ScoreFormEdit";
 import { ModalRoute } from "seed/helpers";
 
 const ScoresView = () =>
@@ -47,10 +47,10 @@ const ScoresView = () =>
         component={ScoreDetails} />
     <ModalRoute
       path="/create"
-      component={ScoreFormSave} />
+      component={ScoreFormCreate} />
     <ModalRoute
       path="/:scoreId(\d+)/edit"
-      component={ScoreFormSet} />
+      component={ScoreFormEdit} />
 
     </div>
   </BrowserRouter>;

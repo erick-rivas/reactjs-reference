@@ -7,34 +7,37 @@ __Seed builder__
 import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import { SAVE_MATCH } from "seed/gql/queries";
+import { SAVE_SCORE } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/matches/Form.view";
+import View from "seed/examples/components/scores/ScoreForm.view";
 
-function MatchFormSave({ onCompleted = () => null, onError = () => null }) {
+function ScoreFormCreate({ onCompleted = () => null, onError = () => null }) {
   
-  const qTeams = useQuery(`{ teams { } }`);
-  const [callSave, qSave] = useSave(SAVE_MATCH, {
+  const qPlayers = useQuery(`{ players { } }`);
+  const qMatches = useQuery(`{ matches { } }`);
+  const [callSave, qSave] = useSave(SAVE_SCORE, {
     onCompleted: () =>
       onCompleted()
       //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
-  const { teams = [] } = qTeams.data;
+  const { players = [] } = qPlayers.data;
+  const { matches = [] } = qMatches.data;
   const error = qSave.error ? "An error has occurred" : null;
 
   const onSubmit = (values) =>
     callSave(values);
 
   return <View
-    teams={teams}
+    players={players}
+    matches={matches}
     error={error}
     onSubmit={onSubmit}
   />;
 }
 
-MatchFormSave.propTypes = {
+ScoreFormCreate.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func
 };
 
-export default MatchFormSave;
+export default ScoreFormCreate;

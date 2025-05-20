@@ -9,10 +9,10 @@ import { BrowserRouter} from "react-router-dom";
 import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
-import PlayerPositionDetails from "seed/examples/components/player_positions/Details";
-import PlayerPositionList from "seed/examples/components/player_positions/List";
-import PlayerPositionFormSave from "seed/examples/components/player_positions/FormSave";
-import PlayerPositionFormSet from "seed/examples/components/player_positions/FormSet";
+import PlayerPositionDetails from "seed/examples/components/player_positions/PlayerPositionDetails";
+import PlayerPositionList from "seed/examples/components/player_positions/PlayerPositionList";
+import PlayerPositionFormCreate from "seed/examples/components/player_positions/PlayerPositionFormCreate";
+import PlayerPositionFormEdit from "seed/examples/components/player_positions/PlayerPositionFormEdit";
 import { ModalRoute } from "seed/helpers";
 
 const PlayerPositionsView = () =>
@@ -47,10 +47,10 @@ const PlayerPositionsView = () =>
         component={PlayerPositionDetails} />
     <ModalRoute
       path="/create"
-      component={PlayerPositionFormSave} />
+      component={PlayerPositionFormCreate} />
     <ModalRoute
       path="/:playerPositionId(\d+)/edit"
-      component={PlayerPositionFormSet} />
+      component={PlayerPositionFormEdit} />
 
     </div>
   </BrowserRouter>;

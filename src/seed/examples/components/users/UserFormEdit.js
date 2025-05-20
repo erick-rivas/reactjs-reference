@@ -7,34 +7,43 @@ __Seed builder__
 import React from "react";
 import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
-import { SAVE_USER } from "seed/gql/queries";
+import { USER, SET_USER } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/users/Form.view";
+import View from "seed/examples/components/users/UserForm.view";
 
-function UserFormSave({ onCompleted = () => null, onError = () => null }) {
-  
+function UserFormEdit({ userId, onCompleted = () => null, onError = () => null  }) {
+
+  const qUser = useDetail(USER, userId);
   const qTeams = useQuery(`{ teams { } }`);
-  const [callSave, qSave] = useSave(SAVE_USER, {
+  const [callSet, qSet] = useSet(SET_USER, {
     onCompleted: () =>
       onCompleted()
       //Note: When the component is wrap in a ModalRoute it bind the event 'closeModal()'
   });
-  const { teams = [] } = qTeams.data;
-  const error = qSave.error ? "An error has occurred" : null;
 
-  const onSubmit = (values) =>
-    callSave(values);
+  if (qUser.loading) return <Loading />;
+
+  const { user = {} } = qUser.data;
+  const { teams = [] } = qTeams.data;
+  const error = qSet.error ? "An error has occurred" : null;
+
+  const onSubmit = (values) => {
+    values.id = userId;
+    callSet(values);
+  };
 
   return <View
+    user={user}
     teams={teams}
     error={error}
     onSubmit={onSubmit}
   />;
 }
 
-UserFormSave.propTypes = {
+UserFormEdit.propTypes = {
+  userId: PropTypes.number.isRequired,
   onCompleted: PropTypes.func,
   onError: PropTypes.func
 };
 
-export default UserFormSave;
+export default UserFormEdit;

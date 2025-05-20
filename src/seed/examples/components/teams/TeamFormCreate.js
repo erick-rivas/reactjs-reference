@@ -9,9 +9,9 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SAVE_TEAM } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/teams/Form.view";
+import View from "seed/examples/components/teams/TeamForm.view";
 
-function TeamFormSave({ onCompleted = () => null, onError = () => null }) {
+function TeamFormCreate({ onCompleted = () => null, onError = () => null }) {
   
   const qTeams = useQuery(`{ teams { } }`);
   const [callSave, qSave] = useSave(SAVE_TEAM, {
@@ -32,9 +32,9 @@ function TeamFormSave({ onCompleted = () => null, onError = () => null }) {
   />;
 }
 
-TeamFormSave.propTypes = {
+TeamFormCreate.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func
 };
 
-export default TeamFormSave;
+export default TeamFormCreate;
