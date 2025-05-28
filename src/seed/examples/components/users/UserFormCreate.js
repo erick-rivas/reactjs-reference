@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SAVE_USER } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/users/UserForm.view";
+import View from "seed/examples/components/users/UserFormView.view";
 
 function UserFormCreate({ onCompleted = () => null, onError = () => null }) {
   

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { PLAYER_POSITION, SET_PLAYER_POSITION } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/player_positions/PlayerPositionForm.view";
+import View from "seed/examples/components/player_positions/PlayerPositionFormView.view";
 
 function PlayerPositionFormEdit({ playerPositionId, onCompleted = () => null, onError = () => null  }) {
 

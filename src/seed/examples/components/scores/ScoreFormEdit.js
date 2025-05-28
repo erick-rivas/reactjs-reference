@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SCORE, SET_SCORE } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/scores/ScoreForm.view";
+import View from "seed/examples/components/scores/ScoreFormView.view";
 
 function ScoreFormEdit({ scoreId, onCompleted = () => null, onError = () => null  }) {
 

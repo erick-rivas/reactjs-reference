@@ -4,7 +4,7 @@ This repository holds a **reference** for the development of a **React.js App**
 
 ## Quickstart
 
--   Install [NodeJS 18.x](https://nodejs.dev/learn/how-to-install-nodejs)
+-   Install [NodeJS 22.x](https://nodejs.dev/learn/how-to-install-nodejs)
 -   Install [Docker Desktop 4.22.x](https://docs.docker.com/desktop/)
 -   Clone this repository
 -   Execute setup script `bin/setup`

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { MATCH, SET_MATCH } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/matches/MatchForm.view";
+import View from "seed/examples/components/matches/MatchFormView.view";
 
 function MatchFormEdit({ matchId, onCompleted = () => null, onError = () => null  }) {
 

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useSave, useSet, useQuery, useDetail } from "seed/gql";
 import { SAVE_TEAM } from "seed/gql/queries";
 import { Loading } from "seed/helpers";
-import View from "seed/examples/components/teams/TeamForm.view";
+import View from "seed/examples/components/teams/TeamFormView.view";
 
 function TeamFormCreate({ onCompleted = () => null, onError = () => null }) {
   
