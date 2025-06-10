@@ -14,8 +14,8 @@ class Modal extends React.Component {
   render() {
     const { component, width = 500, height = 500, animation = "none", overflow = "auto" } = this.props;
 
-    const adjustedWidth = window.innerWidth && window.innerWidth < width ? window.innerWidth - 75 : width
-    const adjustedHeight = window.innerHeight && window.innerHeight < height ? window.innerHeight - 75 : height
+    const adjustedWidth = window.innerWidth && window.innerWidth < width ? window.innerWidth - 47 : width
+    const adjustedHeight = window.innerHeight && window.innerHeight < height ? window.innerHeight - 47 : height
 
     let children = []
     if (component != null)
@@ -38,9 +38,9 @@ class Modal extends React.Component {
 
     const containerStyle = {
       width: adjustedWidth + "px",
-      marginLeft: -(adjustedWidth / 2) + "px",
+      marginLeft: -(adjustedWidth / 2 + 3) + "px",
       height: adjustedHeight + "px",
-      marginTop: -(adjustedHeight / 2) + "px"
+      marginTop: -(adjustedHeight / 2 - 3) + "px"
     };
 
     const contentStyle = {
@@ -84,7 +84,7 @@ class Modal extends React.Component {
     if (onClose == null) {
       if (history != null) {
         const { url } = match;
-        const backUrl = url.substring(0, url.lastIndexOf("/"));
+        const backUrl = url.substring(0, url.replace(/\/\s*$/, "").lastIndexOf("/"));
         history.push(backUrl);
       }
     } else onClose(match);

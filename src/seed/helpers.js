@@ -75,7 +75,7 @@ const MultiField = require('seed/helpers/MultiField').default;
 const PaginationFooter = require('seed/helpers/PaginationFooter').default;
 
 /**
- * Helper component to bing javascript tag code (e.g. <script> ... </script>)
+ * Helper component to inject javascript tag code (e.g. <script> ... </script>)
  * @function
  * @param {string} content Script content
  */
@@ -83,7 +83,7 @@ const PaginationFooter = require('seed/helpers/PaginationFooter').default;
 const ScriptTag = require('seed/helpers/ScriptTag').default;
 
 /**
- * Helper component to bing style tag code (e.g. <style> ... </style>)
+ * Helper component to inject style tag code (e.g. <style> ... </style>)
  * @function
  * @param {string} content Style content
  */
@@ -94,6 +94,14 @@ const StyleTag = require('seed/helpers/StyleTag').default;
  * Helper component to bind GA route
  * @function
  */
+
 const Route = require('seed/helpers/Route').default;
 
-export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route };
+/**
+ * Helper component to wrap lazy components routes
+ * @function
+ */
+
+const LazyRoute = require('seed/helpers/LazyRoute').default;
+
+export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route, LazyRoute };
