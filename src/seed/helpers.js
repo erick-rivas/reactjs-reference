@@ -52,6 +52,19 @@ const Modal = require('seed/helpers/Modal').default;
 const ModalRoute = require('seed/helpers/ModalRoute').default;
 
 /**
+ * Helper component to wrap any lazy component in a modal context according to a Route path
+ * @param {string} path Route path
+ * @param {Object} component Modal component to render
+ * @param {float} width Modal width (default: 500)
+ * @param {float} height Modal height (default: 500)
+ * @param {string} width Animate.css start animation (default zoomIn)
+ * @param {string} overflow Modal css overflow property (default auto)
+ * @function
+ */
+
+const LazyModalRoute = require('seed/helpers/LazyModalRoute').default;
+
+/**
  * Helper component ease the management of multiple fields selection.
  * It uses a multicheckbox approach connected with Formik values
  * @function
@@ -104,4 +117,4 @@ const Route = require('seed/helpers/Route').default;
 
 const LazyRoute = require('seed/helpers/LazyRoute').default;
 
-export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route, LazyRoute };
+export { FileField, Loading, Modal, ModalRoute, LazyModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route, LazyRoute };

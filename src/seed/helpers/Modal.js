@@ -14,8 +14,8 @@ class Modal extends React.Component {
   render() {
     const { component, width = 500, height = 500, animation = "none", overflow = "auto" } = this.props;
 
-    const adjustedWidth = window.innerWidth && window.innerWidth < width ? window.innerWidth - 47 : width
-    const adjustedHeight = window.innerHeight && window.innerHeight < height ? window.innerHeight - 47 : height
+    const adjustedWidth = window.innerWidth && window.innerWidth - 47 < width ? window.innerWidth - 47 : width
+    const adjustedHeight = window.innerHeight && window.innerHeight - 47 < height ? window.innerHeight - 47 : height
 
     let children = []
     if (component != null)
