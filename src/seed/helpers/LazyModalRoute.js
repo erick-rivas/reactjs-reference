@@ -31,4 +31,4 @@ LazyModalRoute.propTypes = {
   path: PropTypes.string.isRequired
 };
 
-export { LazyModalRoute };
+export default LazyModalRoute;

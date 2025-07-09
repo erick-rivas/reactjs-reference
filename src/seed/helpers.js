@@ -27,12 +27,21 @@ const FileField = require('seed/helpers/FileField').default;
 const Loading = require('seed/helpers/Loading').default;
 
 /**
+ * Helper component to wrap a lazy component
+ * @param {Object} component Lazy component to render
+ * @function
+ */
+
+const LazyComponent = require('seed/helpers/LazyComponent').default;
+
+/**
  * Helper component to wrap any component in a modal context
  * @param {Object} component Modal component to render
  * @param {float} width Modal width (default: 500)
  * @param {float} height Modal height (default: 500)
  * @param {string} width Animate.css start animation (default zoomIn)
  * @param {string} overflow Modal css overflow property (default auto)
+ * @param {boolean} closeOnEsc Define whether close when pressing escape key (default true)
  * @function
  */
 
@@ -46,6 +55,7 @@ const Modal = require('seed/helpers/Modal').default;
  * @param {float} height Modal height (default: 500)
  * @param {string} width Animate.css start animation (default zoomIn)
  * @param {string} overflow Modal css overflow property (default auto)
+ * @param {boolean} closeOnEsc Define whether close when pressing escape key (default true)
  * @function
  */
 
@@ -59,6 +69,7 @@ const ModalRoute = require('seed/helpers/ModalRoute').default;
  * @param {float} height Modal height (default: 500)
  * @param {string} width Animate.css start animation (default zoomIn)
  * @param {string} overflow Modal css overflow property (default auto)
+ * @param {boolean} closeOnEsc Define whether close when pressing escape key (default true)
  * @function
  */
 
@@ -117,4 +128,4 @@ const Route = require('seed/helpers/Route').default;
 
 const LazyRoute = require('seed/helpers/LazyRoute').default;
 
-export { FileField, Loading, Modal, ModalRoute, LazyModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route, LazyRoute };
+export { FileField, Loading, LazyComponent, Modal, ModalRoute, LazyModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route, LazyRoute };

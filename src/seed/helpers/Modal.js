@@ -76,7 +76,21 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
+    this.escFunction = this.escFunction.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentDidMount(){
+    window.addEventListener("keyup", this.escFunction, false);
+  }
+  componentWillUnmount(){
+    window.removeEventListener("keyup", this.escFunction, false);
+  }
+
+  escFunction(event){
+    const { closeOnEsc = true } = this.props;
+    if (closeOnEsc && event.key === "Escape")
+      this.closeModal()
   }
 
   closeModal() {

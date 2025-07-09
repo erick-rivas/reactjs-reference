@@ -4,13 +4,13 @@ __Seed builder__
 */
 
 import React, { Suspense } from "react";
-import { Loading, Route } from "seed/helpers"
+import { Loading, Route, LazyComponent } from "seed/helpers"
 
 class LazyRoute extends React.Component {
   render() {
     return <Route
       {...this.props}
-      component={(props) => <Suspense fallback={<Loading />}><this.props.component {...props} /></Suspense>}
+      component={(props) => <LazyComponent {...props} />}
     />
   }
 }
