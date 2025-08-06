@@ -1,4 +1,4 @@
-# Reactjs reference
+# General documentation
 
 ## Architecture
 

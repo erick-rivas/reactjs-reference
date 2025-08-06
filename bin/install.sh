@@ -2,6 +2,7 @@
 ### __Seed builder__
 # AUTO_GENERATED
 # Add custom commands at the end
+# Use $ bin/install.sh
 
 RUNNING=$(sudo docker compose ps --services --filter "status=running")
 if [ $RUNNING -z ]; then

@@ -1,6 +1,7 @@
 @echo off
 :: Seed builder
 :: AUTO_GENERATED (Read only)
+:: Use $ bin/clean.bat
 
 echo == Cleaning unused docker resources
 docker image prune --force

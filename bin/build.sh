@@ -1,6 +1,7 @@
 #!/bin/bash
 # Seed builder
 # AUTO_GENERATED (Read only)
+# Use $ bin/build.sh
 
 echo "== Creating production build"
 echo "WARNING: In case of error remove any call to seed/example components (e.g. Examples.js)"

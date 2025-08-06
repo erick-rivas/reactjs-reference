@@ -27,6 +27,7 @@ src/settings.js
 .github
 .vscode
 bin/*
+docs/seed/*
 build
 node_modules
 src/components/*
