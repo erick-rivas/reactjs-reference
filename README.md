@@ -4,11 +4,11 @@ This repository holds a **reference** for the development of a **React.js App**
 
 ## Quickstart
 
--   Install [Docker Engine 28.3.x or Desktop 4.43.x](https://docs.docker.com/engine/install/)
+-   Install [Docker Desktop 4.43.x](https://docs.docker.com/desktop/) or [Docker Engine 28.3.x](https://docs.docker.com/engine/install/)
 -   Install [NodeJS 22.x](https://nodejs.dev/learn/how-to-install-nodejs)
 -   Clone this repository
 -   Execute setup script `bin/setup`
-    >   For unix systems execute shell files `*.sh` (without sudo) and for windows batch `.bat` (e.g `bin/setup.sh` or `bin/setup.bat`)
+    >   For unix systems execute shell files `*.sh` (*without sudo*) and for windows batch files `.bat` (e.g. `bin/setup.sh` or `bin/setup.bat`)
 -   Start server with `bin/start`
 
 ### Examples

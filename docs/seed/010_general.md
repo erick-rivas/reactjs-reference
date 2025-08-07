@@ -27,7 +27,7 @@ The main differentiator / advantage of the architecture is its **code auto-gener
 
 ### Testing
 
--   Show server logs `bin/logs <Max_Lines> <Only_Latest>`
+-   Show server logs `bin/logs <max_lines> <only_latest>`
 -   Test use cases `bin/test`
 -   Review code quality `bin/review`
     >   To run review command, install [Codacy CLI](https://github.com/codacy/codacy-analysis-cli)
