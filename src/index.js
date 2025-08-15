@@ -4,9 +4,6 @@ __Seed builder__
   Modify via builder
 */
 
-import 'react-app-polyfill/ie9';
-import 'react-app-polyfill/stable';
-
 import * as React from "react";
 import * as Sentry from "@sentry/react";
 import { createRoot } from 'react-dom/client';
