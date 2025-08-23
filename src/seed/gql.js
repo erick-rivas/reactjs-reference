@@ -3,9 +3,9 @@ __Seed builder__
   (Read_only) Builder helper
 */
 
-import * as Apollo from "@apollo/react-hooks";
 import { useContext } from "react";
-import { gql } from "apollo-boost";
+import * as Apollo from "@apollo/client/react";
+import { gql } from "@apollo/client";
 import { SINGULARS } from "seed/gql/const";
 import SeedContext from "seed/context";
 

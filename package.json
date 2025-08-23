@@ -2,12 +2,12 @@
   "name": "reactjs_reference",
   "/////": "__Seed builder libs__ Add custom dependencies at the end",
   "devDependencies": {
-    "@apollo/react-hooks": "4.0.0",
+    "@apollo/client": "4.0.0",
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@material-ui/core": "^4.12.4",
     "@sentry/react": "10.5.0",
     "@testing-library/dom": "10.4.1",
-    "@testing-library/jest-dom": "6.7.0",
+    "@testing-library/jest-dom": "6.8.0",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
     "ajv": "8.17.1",
@@ -38,6 +38,7 @@
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "react-use-websocket": "4.13.0",
+    "rxjs": "7.8.2",
     "sass": "1.90.0",
     "serve-favicon": "2.5.1"
   },

@@ -13,7 +13,7 @@ import { SENTRY_DSN, SENTRY_SAMPLE_RATE } from "settings";
 
 import App from "components/App";
 import { ApolloClient } from "@apollo/client";
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloProvider } from "@apollo/client/react";
 import { InMemoryCache, createHttpLink } from "@apollo/client";
 import { SeedProvider } from "seed/context";
 import { setContext } from '@apollo/client/link/context';
