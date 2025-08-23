@@ -11,6 +11,6 @@ COPY package.json .
 ###
 
 RUN npm install --legacy-peer-deps
-ENV PATH /node_modules/.bin:$PATH
+ENV PATH=/node_modules/.bin:$PATH
 WORKDIR /app
 COPY . .

@@ -3,8 +3,8 @@ __Seed builder__
   (Read_only) Builder helper
 */
 
-import { useContext } from "react";
 import * as Apollo from "@apollo/client/react";
+import { useContext } from "react";
 import { gql } from "@apollo/client";
 import { SINGULARS } from "seed/gql/const";
 import SeedContext from "seed/context";
@@ -163,7 +163,7 @@ const useSave = (gqlQuery, options = {}) => {
  * @param {Object} options Request options (onCompleted, onError)
  * @returns Set hook
  * @example
- * const [callSet, reqSet] = useSave(SET_PLAYER, { 
+ * const [callSet, reqSet] = useSave(SET_PLAYER, {
  *   onCompleted: (data) => alert("Player modified")
  * })
  * ...
@@ -181,7 +181,7 @@ const useSet = (gqlQuery, options = {}) => {
  * @param {Object} options Request options (onCompleted, onError)
  * @returns Delete hook
  * @example
- * const [callDelete, reqDelete] = useDelete(DELETE_PLAYER, { 
+ * const [callDelete, reqDelete] = useDelete(DELETE_PLAYER, {
  *   onCompleted: (data) => alert("Player deleted")
  * })
  * ...
