@@ -14,9 +14,8 @@ import { SENTRY_DSN, SENTRY_SAMPLE_RATE } from "settings";
 import App from "components/App";
 import { ApolloClient } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
-import { InMemoryCache, createHttpLink } from "@apollo/client";
-import { SeedProvider } from "seed/context";
-import { setContext } from '@apollo/client/link/context';
+import { InMemoryCache, HttpLink } from "@apollo/client";
+import { SetContextLink } from '@apollo/client/link/context';
 
 import { Route } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
@@ -26,12 +25,12 @@ import "styles/index.css";
 /* Graphql setup */
 
 const cache = new InMemoryCache();
-const httpLink = createHttpLink({ uri: GRAPH_URL });
-const authLink = setContext((_, { headers }) => {
+const httpLink = new HttpLink({ uri: GRAPH_URL });
+const authLink = new SetContextLink((prevContext, operation) => {
   const token = sessionStorage.getItem('token');
   return {
     headers: {
-      ...headers,
+      ...prevContext.headers,
       authorization: token ? `Token ${token}` : "",
     }
   }
@@ -59,13 +58,11 @@ Sentry.init({
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 root.render(
-  <SeedProvider>
-    <ApolloProvider client={client}>
-      <BrowserRouter >
-        <Route render={({ history }) => <App history={history} />} />
-      </BrowserRouter>
-    </ApolloProvider>
-  </SeedProvider>,
+  <ApolloProvider client={client}>
+    <BrowserRouter >
+      <Route render={({ history }) => <App history={history} />} />
+    </BrowserRouter>
+  </ApolloProvider>,
 );
 start();
 
@@ -156,7 +153,7 @@ function unregister() {
   }
 }
 
-function start(){
-    register();
-    unregister();
+function start() {
+  register();
+  unregister();
 }

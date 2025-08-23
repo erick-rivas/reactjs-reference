@@ -4,10 +4,8 @@ __Seed builder__
 */
 
 import * as Apollo from "@apollo/client/react";
-import { useContext } from "react";
+import { useEffect } from "react";
 import { gql } from "@apollo/client";
-import { SINGULARS } from "seed/gql/const";
-import SeedContext from "seed/context";
 
 /** @module gql **/
 
@@ -41,17 +39,18 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
   const query = normalizedQuery.replace(queryName, wrapper);
 
   // Execute query
-  const { addGqlQuery } = useContext(SeedContext);
   const res = Apollo.useQuery(gql(query), {
     partialRefetch: true,
     notifyOnNetworkStatusChange: true,
-    ...options,
-    onCompleted: (data) => {
-      if (options.cacheQuery === true)
-        addGqlQuery(query); // Include query to cache for re-fetch
-      if (options.onCompleted) options.onCompleted(data);
-    }
+    ...options
   });
+
+  // Execute callbacks
+  useEffect(() => {
+    if (options.onCompleted && !res.loading && !res.error) options.onCompleted(res.data ? res.data : {});
+    if (options.onCompleted && !res.loading && res.error) options.onError(res.error);
+  }, [res.data, res.error, res.loading])
+
   return { ...res, data: res.data ? res.data : {}, query: query };
 };
 
@@ -117,18 +116,20 @@ const useDetail = (gqlQuery, id, options = {}) => {
   // Build query
   const wrapper = `${queryName}(id: ${id})`;
   const query = normalizedQuery.replace(queryName, wrapper);
+
   // Execute query
-  const { addGqlQuery } = useContext(SeedContext);
   const res = Apollo.useQuery(gql(query), {
     partialRefetch: true,
     notifyOnNetworkStatusChange: true,
-    ...options,
-    onCompleted: (data) => {
-      if (options.cacheQuery === true)
-        addGqlQuery(query); // Include query to cache for re-fetch
-      if (options.onCompleted) options.onCompleted(data);
-    }
+    ...options
   });
+
+  // Execute callbacks
+  useEffect(() => {
+    if (options.onCompleted && !res.loading && !res.error) options.onCompleted(res.data ? res.data : {});
+    if (options.onCompleted && !res.loading && res.error) options.onError(res.error);
+  }, [res.data, res.error, res.loading])
+
   return { ...res, data: res.data ? res.data : {} };
 };
 
@@ -138,7 +139,7 @@ const useDetail = (gqlQuery, id, options = {}) => {
  * @param {Object} options Request options (onCompleted, onError)
  * @returns Save hook
  * @example
- * const [callSave, reqSave] = useSave(SAVE_PLAYER, { 
+ * const [callSave, reqSave] = useSave(SAVE_PLAYER, {
  *   onCompleted: (data) => alert("Player saved")
  * })
  * ...
@@ -146,13 +147,8 @@ const useDetail = (gqlQuery, id, options = {}) => {
  * callSave({ name: "messi" })
 */
 const useSave = (gqlQuery, options = {}) => {
-  const query = normalizeQuery(gqlQuery);
   const mutation = Apollo.useMutation(gql(gqlQuery), {
-    ...options,
-    refetchQueries: // Re-fetch cache queries related to model
-      useContext(SeedContext).gqlQueries
-        .filter((cacheQuery) => hasCommonModels(query, cacheQuery))
-        .map((q) => ({ query: gql(q) }))
+    ...options
   });
   return useMutate(mutation);
 };
@@ -189,22 +185,8 @@ const useSet = (gqlQuery, options = {}) => {
  * callDelete({ id: 1 })
 */
 const useDelete = (gqlQuery, options = {}) => {
-  const query = normalizeQuery(gqlQuery);
   const mutation = Apollo.useMutation(gql(gqlQuery), {
-    ...options,
-    refetchQueries: // Re-fetch cache queries related to model
-      useContext(SeedContext).gqlQueries
-        .filter((cacheQuery) => {
-          const delModel = getModelNames(query)[0];
-          const cacheModel = getModelNames(cacheQuery)[0];
-          const cacheHeader = getHeaderNames(cacheQuery)[0];
-          if (delModel == cacheModel && //If same model
-            cacheModel == cacheHeader) //And query singular (header = model) omit query
-            return false;
-          return hasCommonModels(query, cacheQuery);
-          
-        })
-        .map((q) => ({ query: gql(q) }))
+    ...options
   });
   return useMutate(mutation);
 };
@@ -233,33 +215,6 @@ const getHeaderNames = (gqlQuery) => {
   return [];
 }
 
-/* Get model names for inner and outer queries */
-const getModelNames = (gqlQuery) => {
-  const models = getHeaderNames(gqlQuery).map(model => model
-    .replace(/Pagination$/, "")  // Remove pagination suffix
-    .replace(/^set/, "")     // Remove set prefix
-    .replace(/^save/, "")    // Remove save prefix
-    .replace(/^delete/, "")  // Remove delete prefix
-    .replace(/^\w/, (c) => c.toLowerCase()) //Start with lowercase
-  );
-  let res = [];
-  for(let model of models)
-    if(SINGULARS[model] != null)
-      res.push(SINGULARS[model]);
-  return res;
-}
-
-/* Identify if a queryA has related models with query B */
-const hasCommonModels = (gqlQueryA, gqlQueryB) => {
-    const aModels = getModelNames(gqlQueryA);
-    const bModels = getModelNames(gqlQueryB);
-    for (let aModel of aModels)
-        for (let bModel of bModels)
-            if (aModel == bModel)
-                return true;
-    return false;
-}
-
 const useMutate = (mutation) => {
   const [call, res] = mutation;
   const wrap = (body) => { // Parse id calls variables (Ex. model.id = 1 to model = 1)
@@ -282,6 +237,6 @@ const useMutate = (mutation) => {
   return [wrap, { ...res, data: res.data ? res.data : {} }];
 };
 
-export { 
-  normalizeQuery, getHeaderNames, getModelNames, 
+export {
+  normalizeQuery, getHeaderNames,
   useQuery, usePagination, useCount, useDetail, useSet, useSave, useDelete };
