@@ -36,5 +36,10 @@ src/styles/*
 src/tests/*
 src/views/*
 
-?public/*
+?public/resources/*
+?public/theme/img/*
+?public/theme/svg/*
+?public/theme/vendor/*
+?public/favicon.ico
+?public/manifest.json
 !.keep
