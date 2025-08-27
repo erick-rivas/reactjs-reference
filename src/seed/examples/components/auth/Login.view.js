@@ -64,19 +64,8 @@ const LoginView = ({ onSubmit, error }) =>
 
                       <div class="input-group input-group-merge">
                         <Field type="password" name="password" id="formPassword"
-                          class="js-toggle-password form-control form-control-lg" tabindex="2"
-                          placeholder="password" required
-                              data-hs-toggle-password-options={`{
-                                "target": "#changePassTarget",
-                                "defaultClass": "tio-hidden-outlined",
-                                "showClass": "tio-visible-outlined",
-                                "classChangeTarget": "#changePassIcon"
-                              }`} />
-                        <div id="changePassTarget" class="input-group-append">
-                          <a class="input-group-text">
-                            <i id="changePassIcon" class="tio-visible-outlined"></i>
-                          </a>
-                        </div>
+                          class="js- form-control form-control-lg" tabindex="2"
+                          placeholder="password" required />
                       </div>
                     </div>
 
