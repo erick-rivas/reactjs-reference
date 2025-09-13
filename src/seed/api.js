@@ -183,6 +183,9 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
     depends: [call.body != null]
   });
 
+  if (fetch.error && fetch.error.status == null)
+    fetch.error = new Response(null, { status: 503 })
+
   if (call.body != null && !call.called && fetch.isLoading)
     setCall({ ...call, called: true });
   if (call.body != null && call.called && !fetch.isLoading) {

@@ -48,8 +48,8 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
   // Execute callbacks
   useEffect(() => {
     if (options.onCompleted && !res.loading && !res.error) options.onCompleted(res.data ? res.data : {});
-    if (options.onCompleted && !res.loading && res.error) options.onError(res.error);
-  }, [res.data, res.error, res.loading])
+    if (options.onError && !res.loading && res.error) options.onError(res.error);
+  }, [res.data, res.error, res.loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { ...res, data: res.data ? res.data : {}, query: query };
 };
@@ -127,8 +127,8 @@ const useDetail = (gqlQuery, id, options = {}) => {
   // Execute callbacks
   useEffect(() => {
     if (options.onCompleted && !res.loading && !res.error) options.onCompleted(res.data ? res.data : {});
-    if (options.onCompleted && !res.loading && res.error) options.onError(res.error);
-  }, [res.data, res.error, res.loading])
+    if (options.onError && !res.loading && res.error) options.onError(res.error);
+  }, [res.data, res.error, res.loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { ...res, data: res.data ? res.data : {} };
 };

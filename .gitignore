@@ -5,6 +5,7 @@
 # General
 .env
 deploy.sh
+flowerdb
 /build
 /build_temp
 /src/styles/css/**/*.css
