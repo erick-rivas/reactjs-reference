@@ -5,6 +5,7 @@ __Seed builder__
 
 import React from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
 import css from "styles/css/seed/styles/MultiField.module.css";
 
 class MultiField extends React.Component {
@@ -28,7 +29,7 @@ class MultiField extends React.Component {
     });
 
     return (
-      <div className={css.module}>
+      <div className={cx(css.module, "seed__multi")}>
         {items}
       </div>
     );

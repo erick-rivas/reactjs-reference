@@ -13,7 +13,7 @@ class FileField extends React.Component {
   render() {
     const { className = "", accept, multiple = false } = this.props;
     return (
-      <form encType="multipart/form-data">
+      <form className="seed__file" encType="multipart/form-data">
         <input name="file" type="file" className={className}
           accept={accept} onChange={this.onFileChange} multiple={multiple}></input>
       </form>

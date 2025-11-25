@@ -1,12 +1,13 @@
 @echo off
 :: Seed builder
 :: AUTO_GENERATED (Read only)
+:: Use $ bin/logs.bat <max_lines> <only_latest>
 
-set ONLY_LATEST=false
 set /A MAX_LINES=250
+set ONLY_LATEST=false
 
-IF NOT "%~1" == "" set ONLY_LATEST=%1
-IF NOT "%~2" == "" set /A MAX_LINES=%2
+IF NOT "%~1" == "" set /A MAX_LINES=%1
+IF NOT "%~2" == "" set ONLY_LATEST=%2
 
 IF "%ONLY_LATEST%" == "true" (
     docker compose logs --follow --since 0m --tail %MAX_LINES% reactjs

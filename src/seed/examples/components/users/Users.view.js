@@ -9,10 +9,10 @@ import { BrowserRouter} from "react-router-dom";
 import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
-import UserDetails from "seed/examples/components/users/Details";
-import UserList from "seed/examples/components/users/List";
-import UserFormSave from "seed/examples/components/users/FormSave";
-import UserFormSet from "seed/examples/components/users/FormSet";
+import UserDetails from "seed/examples/components/users/UserDetails";
+import UserList from "seed/examples/components/users/UserList";
+import UserFormCreate from "seed/examples/components/users/UserFormCreate";
+import UserFormEdit from "seed/examples/components/users/UserFormEdit";
 import { ModalRoute } from "seed/helpers";
 
 const UsersView = () =>
@@ -47,10 +47,10 @@ const UsersView = () =>
         component={UserDetails} />
     <ModalRoute
       path="/create"
-      component={UserFormSave} />
+      component={UserFormCreate} />
     <ModalRoute
       path="/:userId(\d+)/edit"
-      component={UserFormSet} />
+      component={UserFormEdit} />
 
     </div>
   </BrowserRouter>;

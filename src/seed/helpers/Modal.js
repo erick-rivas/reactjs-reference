@@ -6,12 +6,16 @@ __Seed builder__
 import React from "react";
 import PropTypes from 'prop-types';
 import cx from "classnames";
+import ModalContainer from "@material-ui/core/Modal";
 import css from "styles/css/seed/styles/Modal.module.css";
 
 class Modal extends React.Component {
 
   render() {
     const { component, width = 500, height = 500, animation = "none", overflow = "auto" } = this.props;
+
+    const adjustedWidth = window.innerWidth && window.innerWidth - 47 < width ? window.innerWidth - 47 : width
+    const adjustedHeight = window.innerHeight && window.innerHeight - 47 < height ? window.innerHeight - 47 : height
 
     let children = []
     if (component != null)
@@ -33,10 +37,10 @@ class Modal extends React.Component {
         });
 
     const containerStyle = {
-      width: width + "px",
-      marginLeft: -(width / 2) + "px",
-      height: height + "px",
-      marginTop: -(height / 2) + "px"
+      width: adjustedWidth + "px",
+      marginLeft: -(adjustedWidth / 2 + 3) + "px",
+      height: adjustedHeight + "px",
+      marginTop: -(adjustedHeight / 2 - 3) + "px"
     };
 
     const contentStyle = {
@@ -44,12 +48,15 @@ class Modal extends React.Component {
     };
 
     const closeStyle = {
-      marginLeft: (width - 24) + "px"
+      marginLeft: (adjustedWidth - 10) + "px"
     };
 
     return (
-      <div
-        className={css.module}>
+      <ModalContainer
+        className={cx(css.module, "seed__modal")}
+        open={true}
+        transitionDuration={0}
+        closeModal={this.closeModal}>
         <div className={cx(css.container, "animate__animated", "animate__" + animation)}
           style={containerStyle}>
           <button
@@ -62,13 +69,28 @@ class Modal extends React.Component {
             {children}
           </div>
         </div>
-      </div>
+      </ModalContainer>
     );
   }
 
   constructor(props) {
     super(props);
+    this.state = { open: false };
+    this.escFunction = this.escFunction.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentDidMount(){
+    window.addEventListener("keyup", this.escFunction, false);
+  }
+  componentWillUnmount(){
+    window.removeEventListener("keyup", this.escFunction, false);
+  }
+
+  escFunction(event){
+    const { closeOnEsc = true } = this.props;
+    if (closeOnEsc && event.key === "Escape")
+      this.closeModal()
   }
 
   closeModal() {
@@ -76,7 +98,7 @@ class Modal extends React.Component {
     if (onClose == null) {
       if (history != null) {
         const { url } = match;
-        const backUrl = url.substring(0, url.lastIndexOf("/"));
+        const backUrl = url.substring(0, url.replace(/\/\s*$/, "").lastIndexOf("/"));
         history.push(backUrl);
       }
     } else onClose(match);

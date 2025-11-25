@@ -11,19 +11,19 @@ class PaginationFooter extends React.Component {
   render() {
     const { pageNum, totalPages, onClickPage } = this.props;
     return (
-      <nav class="mt-3">
-        <ul class="pagination">
-          <li onClick={() => onClickPage(pageNum - 1)} class="page-item" 
+      <nav className="seed__pagination-footer mt-3">
+        <ul className="pagination">
+          <li onClick={() => onClickPage(pageNum - 1)} className="page-item"
             style={ { visibility: pageNum > 1 ? "visible" : "hidden" } }>
-            <a class="page-link" aria-label="Previous">
-              <span aria-hidden="true">«</span><span class="sr-only">Previous</span>
+            <a className="page-link" aria-label="Previous">
+              <span aria-hidden="true">«</span><span className="sr-only">Previous</span>
             </a>
           </li>
           {
             Array(totalPages).fill(0).map((ignore, idx) =>
               <li onClick={() => onClickPage(idx + 1)} key={idx} 
-                class={"page-item " + (idx == pageNum - 1 ? "active" : "")}>
-                <a class="page-link">{idx + 1}</a>
+                className={"page-item " + (idx == pageNum - 1 ? "active" : "")}>
+                <a className="page-link">{idx + 1}</a>
               </li>
             )
           }

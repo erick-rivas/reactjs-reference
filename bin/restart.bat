@@ -1,6 +1,7 @@
 @echo off
 :: Seed builder
 :: AUTO_GENERATED (Read only)
+:: Use $ bin/restart.bat
 
 echo == Stopping server
 docker compose stop

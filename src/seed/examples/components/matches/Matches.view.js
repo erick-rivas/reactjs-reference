@@ -9,10 +9,10 @@ import { BrowserRouter} from "react-router-dom";
 import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
-import MatchDetails from "seed/examples/components/matches/Details";
-import MatchList from "seed/examples/components/matches/List";
-import MatchFormSave from "seed/examples/components/matches/FormSave";
-import MatchFormSet from "seed/examples/components/matches/FormSet";
+import MatchDetails from "seed/examples/components/matches/MatchDetails";
+import MatchList from "seed/examples/components/matches/MatchList";
+import MatchFormCreate from "seed/examples/components/matches/MatchFormCreate";
+import MatchFormEdit from "seed/examples/components/matches/MatchFormEdit";
 import { ModalRoute } from "seed/helpers";
 
 const MatchesView = () =>
@@ -47,10 +47,10 @@ const MatchesView = () =>
         component={MatchDetails} />
     <ModalRoute
       path="/create"
-      component={MatchFormSave} />
+      component={MatchFormCreate} />
     <ModalRoute
       path="/:matchId(\d+)/edit"
-      component={MatchFormSet} />
+      component={MatchFormEdit} />
 
     </div>
   </BrowserRouter>;

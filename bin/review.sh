@@ -1,6 +1,7 @@
 #!/bin/bash
 # Seed builder
 # AUTO_GENERATED (Read only)
+# Use $ bin/review.sh
 
 echo "== Reviewing with eslint"
 sudo codacy-analysis-cli analyze --tool eslint --force-file-permissions

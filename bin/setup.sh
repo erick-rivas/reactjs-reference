@@ -2,6 +2,7 @@
 ### __Seed builder__
 # AUTO_GENERATED
 # Add custom commands at the end
+# Use $ bin/setup.sh <reactjs_port> <is_prod>
 
 echo "== Configuring docker .env"
 REACTJS_PORT=3003

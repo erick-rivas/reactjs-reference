@@ -27,12 +27,21 @@ const FileField = require('seed/helpers/FileField').default;
 const Loading = require('seed/helpers/Loading').default;
 
 /**
+ * Helper component to wrap a lazy component
+ * @param {Object} component Lazy component to render
+ * @function
+ */
+
+const LazyComponent = require('seed/helpers/LazyComponent').default;
+
+/**
  * Helper component to wrap any component in a modal context
  * @param {Object} component Modal component to render
  * @param {float} width Modal width (default: 500)
  * @param {float} height Modal height (default: 500)
  * @param {string} width Animate.css start animation (default zoomIn)
  * @param {string} overflow Modal css overflow property (default auto)
+ * @param {boolean} closeOnEsc Define whether close when pressing escape key (default true)
  * @function
  */
 
@@ -46,10 +55,25 @@ const Modal = require('seed/helpers/Modal').default;
  * @param {float} height Modal height (default: 500)
  * @param {string} width Animate.css start animation (default zoomIn)
  * @param {string} overflow Modal css overflow property (default auto)
+ * @param {boolean} closeOnEsc Define whether close when pressing escape key (default true)
  * @function
  */
 
 const ModalRoute = require('seed/helpers/ModalRoute').default;
+
+/**
+ * Helper component to wrap any lazy component in a modal context according to a Route path
+ * @param {string} path Route path
+ * @param {Object} component Modal component to render
+ * @param {float} width Modal width (default: 500)
+ * @param {float} height Modal height (default: 500)
+ * @param {string} width Animate.css start animation (default zoomIn)
+ * @param {string} overflow Modal css overflow property (default auto)
+ * @param {boolean} closeOnEsc Define whether close when pressing escape key (default true)
+ * @function
+ */
+
+const LazyModalRoute = require('seed/helpers/LazyModalRoute').default;
 
 /**
  * Helper component ease the management of multiple fields selection.
@@ -75,7 +99,7 @@ const MultiField = require('seed/helpers/MultiField').default;
 const PaginationFooter = require('seed/helpers/PaginationFooter').default;
 
 /**
- * Helper component to bing javascript tag code (e.g. <script> ... </script>)
+ * Helper component to inject javascript tag code (e.g. <script> ... </script>)
  * @function
  * @param {string} content Script content
  */
@@ -83,7 +107,7 @@ const PaginationFooter = require('seed/helpers/PaginationFooter').default;
 const ScriptTag = require('seed/helpers/ScriptTag').default;
 
 /**
- * Helper component to bing style tag code (e.g. <style> ... </style>)
+ * Helper component to inject style tag code (e.g. <style> ... </style>)
  * @function
  * @param {string} content Style content
  */
@@ -94,6 +118,14 @@ const StyleTag = require('seed/helpers/StyleTag').default;
  * Helper component to bind GA route
  * @function
  */
+
 const Route = require('seed/helpers/Route').default;
 
-export { FileField, Loading, Modal, ModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route };
+/**
+ * Helper component to wrap lazy components routes
+ * @function
+ */
+
+const LazyRoute = require('seed/helpers/LazyRoute').default;
+
+export { FileField, Loading, LazyComponent, Modal, ModalRoute, LazyModalRoute, MultiField, PaginationFooter, ScriptTag, StyleTag, Route, LazyRoute };

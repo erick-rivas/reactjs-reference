@@ -9,10 +9,10 @@ import { BrowserRouter} from "react-router-dom";
 import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
-import PlayerDetails from "seed/examples/components/players/Details";
-import PlayerList from "seed/examples/components/players/List";
-import PlayerFormSave from "seed/examples/components/players/FormSave";
-import PlayerFormSet from "seed/examples/components/players/FormSet";
+import PlayerDetails from "seed/examples/components/players/PlayerDetails";
+import PlayerList from "seed/examples/components/players/PlayerList";
+import PlayerFormCreate from "seed/examples/components/players/PlayerFormCreate";
+import PlayerFormEdit from "seed/examples/components/players/PlayerFormEdit";
 import { ModalRoute } from "seed/helpers";
 
 const PlayersView = () =>
@@ -47,10 +47,10 @@ const PlayersView = () =>
         component={PlayerDetails} />
     <ModalRoute
       path="/create"
-      component={PlayerFormSave} />
+      component={PlayerFormCreate} />
     <ModalRoute
       path="/:playerId(\d+)/edit"
-      component={PlayerFormSet} />
+      component={PlayerFormEdit} />
 
     </div>
   </BrowserRouter>;

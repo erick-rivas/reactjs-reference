@@ -9,10 +9,10 @@ import { BrowserRouter} from "react-router-dom";
 import { Route } from "seed/helpers"
 import { Link, NavLink } from "react-router-dom";
 
-import TeamDetails from "seed/examples/components/teams/Details";
-import TeamList from "seed/examples/components/teams/List";
-import TeamFormSave from "seed/examples/components/teams/FormSave";
-import TeamFormSet from "seed/examples/components/teams/FormSet";
+import TeamDetails from "seed/examples/components/teams/TeamDetails";
+import TeamList from "seed/examples/components/teams/TeamList";
+import TeamFormCreate from "seed/examples/components/teams/TeamFormCreate";
+import TeamFormEdit from "seed/examples/components/teams/TeamFormEdit";
 import { ModalRoute } from "seed/helpers";
 
 const TeamsView = () =>
@@ -47,10 +47,10 @@ const TeamsView = () =>
         component={TeamDetails} />
     <ModalRoute
       path="/create"
-      component={TeamFormSave} />
+      component={TeamFormCreate} />
     <ModalRoute
       path="/:teamId(\d+)/edit"
-      component={TeamFormSet} />
+      component={TeamFormEdit} />
 
     </div>
   </BrowserRouter>;

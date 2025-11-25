@@ -1,6 +1,7 @@
 #!/bin/bash
 # Seed builder
 # AUTO_GENERATED (Read only)
+# Use $ bin/start.sh
 
 echo "== Starting server"
 source .env

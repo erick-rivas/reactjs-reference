@@ -65,11 +65,6 @@ const HomeView = () =>
         $('.js-hs-unfold-invoker').each(function () {
           var unfold = new HSUnfold($(this)).init();
         });
-
-        // Initialization of form search
-        $('.js-form-search').each(function () {
-          new HSFormSearch($(this)).init()
-        });
     `} />
   </div>;
 

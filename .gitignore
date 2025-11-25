@@ -5,6 +5,7 @@
 # General
 .env
 deploy.sh
+flowerdb
 /build
 /build_temp
 /src/styles/css/**/*.css
@@ -24,7 +25,9 @@ appspec.yml
 /coverage
 
 # Misc
-.vscode
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
 .DS_Store
 .env.local
 .env.development.local

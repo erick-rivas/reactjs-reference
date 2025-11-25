@@ -1,6 +1,7 @@
 #!/bin/bash
 # Seed builder
 # AUTO_GENERATED (Read only)
+# Use $ bin/clean.sh
 
 echo "== Cleaning unused docker resources"
 sudo docker image prune --force

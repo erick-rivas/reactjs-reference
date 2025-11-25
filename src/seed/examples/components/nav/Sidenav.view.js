@@ -36,7 +36,7 @@ const SidenavView = () =>
             <li class="navbar-item">
               <NavLink
                 to="/matches"
-                className="js-nav-tooltip-link nav-link"
+                className="nav-link"
                 activeClassName="active">
                 <i class="tio-hashtag nav-icon"></i>
                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -49,7 +49,7 @@ const SidenavView = () =>
             <li class="navbar-item">
               <NavLink
                 to="/players"
-                className="js-nav-tooltip-link nav-link"
+                className="nav-link"
                 activeClassName="active">
                 <i class="tio-hashtag nav-icon"></i>
                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -62,7 +62,7 @@ const SidenavView = () =>
             <li class="navbar-item">
               <NavLink
                 to="/player_positions"
-                className="js-nav-tooltip-link nav-link"
+                className="nav-link"
                 activeClassName="active">
                 <i class="tio-hashtag nav-icon"></i>
                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -75,7 +75,7 @@ const SidenavView = () =>
             <li class="navbar-item">
               <NavLink
                 to="/scores"
-                className="js-nav-tooltip-link nav-link"
+                className="nav-link"
                 activeClassName="active">
                 <i class="tio-hashtag nav-icon"></i>
                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -88,7 +88,7 @@ const SidenavView = () =>
             <li class="navbar-item">
               <NavLink
                 to="/teams"
-                className="js-nav-tooltip-link nav-link"
+                className="nav-link"
                 activeClassName="active">
                 <i class="tio-hashtag nav-icon"></i>
                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -101,7 +101,7 @@ const SidenavView = () =>
             <li class="navbar-item">
               <NavLink
                 to="/users"
-                className="js-nav-tooltip-link nav-link"
+                className="nav-link"
                 activeClassName="active">
                 <i class="tio-hashtag nav-icon"></i>
                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -115,7 +115,7 @@ const SidenavView = () =>
             {/* Options */}
             <Link
               to="/logout"
-              className="js-nav-tooltip-link nav-link">
+              className="nav-link">
               <i class="tio-sign-out nav-icon"></i>
               <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                 Logout
