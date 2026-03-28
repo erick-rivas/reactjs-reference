@@ -43,12 +43,64 @@ The main differentiator / advantage of the architecture is its **code auto-gener
 -   Open container console `bin/console`
 -   Clean unused docker resources `bin/clean`
 
+## Seed Copilot Agents
+
+This project includes specialized AI agents to streamline development workflows.
+Just select the desired agent in the chat and provide your instructions.
+
+### Available Agents
+
+#### SeedCodeGenerator
+
+Specialized in generating React components following Seed patterns:
+
+- CRUD modules (List, Create, Edit, Details)
+- Dashboards with charts and filters
+- Custom views and forms
+- REST API and GraphQL integration
+
+**Usage:** In the Copilot chat, select the agent from the selector and provide instructions like: `Generate a CRUD for products with name, price, and stock`
+
+#### SeedTesterAgent
+
+Specialized in generating comprehensive tests:
+
+- Component tests (logic and rendering)
+- REST API hook tests
+- GraphQL hook tests
+- Integration tests
+
+**Usage:** In the Copilot chat, select the agent and provide instructions like: `Generate tests for the UserList component`
+
+#### SeedDocumenterAgent
+
+Specialized in creating technical documentation:
+
+- Component documentation
+- API integration documentation
+- Hook usage documentation
+- READMEs and user guides
+
+**Usage:** In the Copilot chat, select the agent and provide instructions like: `Document the Dashboard component`
+
+### Custom Models and Integrations
+
+You can configure custom models using Ollama or other providers through VS Code settings (settings.json) to customize agent behavior. The agents are designed to integrate with GitHub Copilot, Continue and other providers.
+
+### Modify Agents
+
+Agents are located in the `.github/copilot/agents/` directory. You can modify their behavior by editing the respective markdown files:
+
+- `seed-code-generator.md`: For code generation tasks
+- `seed-tester.md`: For testing-related tasks
+- `seed-documenter.md`: For documentation-related tasks
+
 ## Other resources
 
--   [Components](020_components.md)
--   [Views](030_views.md)
--   [Seed builder](110_seed_builder.md)
--   [Seed commons - API](120_seed_commons_api.md)
--   [Seed commons - GQL](130_seed_commons_gql.md)
--   [Seed commons - Helpers](140_seed_commons_helpers.md)
--   [Deploy - Ubuntu](210_deploy_ubuntu.md)
+- [Components](020_components.md)
+- [Views](030_views.md)
+- [Seed builder](110_seed_builder.md)
+- [Seed commons - API](120_seed_commons_api.md)
+- [Seed commons - GQL](130_seed_commons_gql.md)
+- [Seed commons - Helpers](140_seed_commons_helpers.md)
+- [Deploy - Ubuntu](210_deploy_ubuntu.md)
