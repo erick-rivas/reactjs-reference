@@ -1,6 +1,7 @@
 /*
 __Seed builder__
-  (Read_only) Builder helper
+  AUTO_GENERATED (Read only)
+  Graphql lib
 */
 
 import * as Apollo from "@apollo/client/react";

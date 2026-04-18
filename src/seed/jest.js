@@ -1,6 +1,7 @@
 /*
 __Seed builder__
-  (Read_only) Builder helper
+  AUTO_GENERATED (Read only)
+  Jest util
 */
 
 import React from "react";

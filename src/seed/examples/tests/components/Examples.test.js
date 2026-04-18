@@ -1,6 +1,6 @@
 /*
 __Seed builder__
-  (Read_only) Example test
+  AUTO_GENERATED (Read only)
   Be careful copying content
 */
 

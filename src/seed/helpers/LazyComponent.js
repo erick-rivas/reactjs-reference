@@ -1,6 +1,7 @@
 /*
 __Seed builder__
-  (Read_only) Component helper
+  AUTO_GENERATED (Read only)
+  Helper component
 */
 
 import React, { Suspense } from "react";
