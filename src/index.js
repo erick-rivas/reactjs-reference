@@ -25,7 +25,12 @@ import "styles/index.css";
 /* Graphql setup */
 
 const cache = new InMemoryCache();
-const httpLink = new HttpLink({ uri: GRAPH_URL });
+const httpLink = new HttpLink({
+  uri: (operation) => {
+    const { operationName } = operation;
+    return `${GRAPH_URL}/${operationName ?? "?"}/`;
+  }
+});
 const authLink = new SetContextLink((prevContext, operation) => {
   const token = sessionStorage.getItem('token');
   return {

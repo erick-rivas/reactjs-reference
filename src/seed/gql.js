@@ -36,7 +36,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
   if (options.pageSize) params += "pageSize: " + options.pageSize + ",";
   if (params.endsWith(",")) params.slice(0, -1);
   const wrapper = `${queryName}${params != "" ? "(" + params + ")" : ""}`;
-  const query = normalizedQuery.replace(queryName, wrapper);
+  const query = `query get_${queryName} ${normalizedQuery.replace(queryName, wrapper)}`;
 
   // Execute query
   const res = Apollo.useQuery(gql(query), {
@@ -115,7 +115,7 @@ const useDetail = (gqlQuery, id, options = {}) => {
   const queryName = getHeaderNames(normalizedQuery)[0];
   // Build query
   const wrapper = `${queryName}(id: ${id})`;
-  const query = normalizedQuery.replace(queryName, wrapper);
+  const query = `query get_${queryName} ${normalizedQuery.replace(queryName, wrapper)}`;
 
   // Execute query
   const res = Apollo.useQuery(gql(query), {
@@ -239,4 +239,5 @@ const useMutate = (mutation) => {
 
 export {
   normalizeQuery, getHeaderNames,
-  useQuery, usePagination, useCount, useDetail, useSet, useSave, useDelete };
+  useQuery, usePagination, useCount, useDetail, useSet, useSave, useDelete
+};
