@@ -1,5 +1,5 @@
 #!/bin/bash
-# Seed builder
+### __Seed builder__
 # AUTO_GENERATED (Read only)
 # Use $ bin/logs.sh <max_lines> <only_latest>
 
