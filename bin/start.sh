@@ -1,7 +1,7 @@
 #!/bin/bash
 ### __Seed builder__
-# AUTO_GENERATED (Read only)
-# Use $ bin/start.sh
+##  AUTO_GENERATED (Read only)
+##  Use $ bin/start.sh
 
 echo "== Starting server"
 source .env

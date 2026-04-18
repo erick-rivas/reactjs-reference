@@ -1,7 +1,7 @@
 @echo off
 ::: __Seed builder__
-:: AUTO_GENERATED (Read only)
-:: Use $ bin/review.bat
+::  AUTO_GENERATED (Read only)
+::  Use $ bin/review.bat
 
 echo == Reviewing with eslint
 codacy-analysis-cli analyze --tool eslint --force-file-permissions --parallel 4

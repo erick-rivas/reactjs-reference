@@ -1,7 +1,7 @@
 @echo off
 ::: __Seed builder__
-:: AUTO_GENERATED (Read only)
-:: Use $ bin/start.bat
+::  AUTO_GENERATED (Read only)
+::  Use $ bin/start.bat
 
 echo == Starting server
 FOR /F "eol=# tokens=*" %%i IN (.env) DO SET %%i

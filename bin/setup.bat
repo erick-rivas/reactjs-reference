@@ -1,8 +1,8 @@
 @echo off
 ::: __Seed builder__
-:: AUTO_GENERATED
-:: Add custom commands at the end
-:: Use $ bin/setup.bat <reactjs_port> <is_prod>
+::  AUTO_GENERATED
+::  Add custom commands at the end
+::  Use $ bin/setup.bat <reactjs_port> <is_prod>
 
 echo == Configuring docker .env
 set /A REACTJS_PORT=3003

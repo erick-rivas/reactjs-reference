@@ -1,7 +1,7 @@
 #!/bin/bash
 ### __Seed builder__
-# AUTO_GENERATED (Read only)
-# Use $ bin/restart.sh
+##  AUTO_GENERATED (Read only)
+##  Use $ bin/restart.sh
 
 echo "== Stopping server"
 sudo docker compose stop
