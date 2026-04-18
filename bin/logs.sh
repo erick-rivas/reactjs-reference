@@ -1,7 +1,9 @@
 #!/bin/bash
-### __Seed builder__
+### 
+##  __Seed builder__
 ##  AUTO_GENERATED (Read only)
 ##  Use $ bin/logs.sh <max_lines> <only_latest>
+###
 
 MAX_LINES=250
 ONLY_LATEST=false

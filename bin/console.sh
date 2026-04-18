@@ -1,7 +1,9 @@
 #!/bin/bash
-### __Seed builder__
+### 
+##  __Seed builder__
 ##  AUTO_GENERATED (Read only)
 ##  Use $ bin/console.sh
+###
 
 RUNNING=$(sudo docker compose ps --services --filter "status=running")
 if [ $RUNNING -z ]; then

@@ -1,7 +1,9 @@
 @echo off
-::: __Seed builder__
+::: 
+::  __Seed builder__
 ::  AUTO_GENERATED (Read only)
 ::  Use $ bin/coverage.bat
+:::
 
 for /f "delims=" %%i in ('docker compose ps --services --filter "status=running"') do set RUNNING=%%i
 IF "%RUNNING%" == "" echo "ERROR: Before executing bin/coverage.bat, start server with bin/start.bat"

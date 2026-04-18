@@ -1,6 +1,7 @@
 #!/bin/bash
-### __Seed builder__
-##  AUTO_GENERATED
+### 
+##  __Seed builder__
+##  AUTO_GENERATED (Read only)
 ##  Add custom commands at the end
 ##  Use $ bin/setup.sh <reactjs_port> <is_prod>
 

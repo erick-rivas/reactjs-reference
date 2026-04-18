@@ -1,7 +1,9 @@
 #!/bin/bash
-### __Seed builder__
+### 
+##  __Seed builder__
 ##  AUTO_GENERATED (Read only)
 ##  Use $ bin/build.sh
+###
 
 echo "== Creating production build"
 sudo docker compose run --rm reactjs /bin/sh -c "npm run-script build"
