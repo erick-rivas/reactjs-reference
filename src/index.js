@@ -49,10 +49,10 @@ const client = new ApolloClient({
 Sentry.init({
   dsn: SENTRY_DSN,
   integrations: [
-    new Sentry.browserTracingIntegration({
+    Sentry.browserTracingIntegration({
       tracePropagationTargets: [`${APP_URL}/api`],
     }),
-    new Sentry.replayIntegration(),
+    Sentry.replayIntegration(),
   ],
   environment: IS_PROD ? "production" : "development",
   tracesSampleRate: SENTRY_SAMPLE_RATE,
