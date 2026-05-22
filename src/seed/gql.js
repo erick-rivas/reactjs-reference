@@ -4,6 +4,7 @@ __Seed builder__
   Graphql lib
 */
 
+import * as Sentry from "@sentry/react";
 import * as Apollo from "@apollo/client/react";
 import { useEffect } from "react";
 import { gql } from "@apollo/client";
@@ -14,7 +15,7 @@ import { gql } from "@apollo/client";
  * Return a hook to execute a graphql query
  * @param {string} gqlQuery Graphql query
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options Request options (onCompleted, onError, orderBy, limit, cacheQuery=false)
+ * @param {Object} options Request options (onCompleted, onError, orderBy, limit, cacheQuery=false, captureErrors=true)
  * @returns Query hook
  * @example
  * const reqPlayers = useQuery(`
@@ -48,8 +49,14 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
 
   // Execute callbacks
   useEffect(() => {
-    if (options.onCompleted && !res.loading && !res.error) options.onCompleted(res.data ? res.data : {});
-    if (options.onError && !res.loading && res.error) options.onError(res.error);
+    if (options.onCompleted && !res.loading && !res.error)
+      options.onCompleted(res.data ? res.data : {});
+    if (!res.loading && res.error) {
+      if (options.captureErrors !== false)
+        Sentry.captureException(res.error);
+      if (options.onError != null)
+        options.onError(res.error);
+    }
   }, [res.data, res.error, res.loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { ...res, data: res.data ? res.data : {}, query: query };
@@ -61,7 +68,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
  * @param {number} pageNum Page number
  * @param {number} pageSize Number of objects per page
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options Request options (onCompleted, onError, orderBy, cacheQuery=false)
+ * @param {Object} options Request options (onCompleted, onError, orderBy, cacheQuery=false, captureErrors=true)
  * @returns Pagination hook
  * @example
  * const reqPlayers = usePagination(`
@@ -81,7 +88,7 @@ const usePagination = (gqlQuery, pageNum, pageSize, paramQuery, options = {}) =>
  * Return a hook to execute a graphql count
  * @param {string} modelName Graphql model name
  * @param {string} paramQuery Query param (sql alike)
- * @param {Object} options Request options (onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError, captureErrors=true)
  * @returns Count hook
  * @example
  * const reqCount = useQuery("player")
@@ -100,7 +107,7 @@ const useCount = (modelName, paramQuery, options = {}) => {
  * Return a hook to execute a graphql detail query (single object)
  * @param {string} gqlQuery Graphql query
  * @param {number} id Identifier of the object
- * @param {Object} options Request options (onCompleted, onError, cacheQuery=false)
+ * @param {Object} options Request options (onCompleted, onError, cacheQuery=false, captureErrors=true)
  * @returns Detail hook
  * @example
  * const reqPlayer = useQuery(`
@@ -127,8 +134,14 @@ const useDetail = (gqlQuery, id, options = {}) => {
 
   // Execute callbacks
   useEffect(() => {
-    if (options.onCompleted && !res.loading && !res.error) options.onCompleted(res.data ? res.data : {});
-    if (options.onError && !res.loading && res.error) options.onError(res.error);
+    if (options.onCompleted && !res.loading && !res.error)
+      options.onCompleted(res.data ? res.data : {});
+    if (!res.loading && res.error) {
+      if (options.captureErrors !== false)
+        Sentry.captureException(res.error);
+      if (options.onError != null)
+        options.onError(res.error);
+    }
   }, [res.data, res.error, res.loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { ...res, data: res.data ? res.data : {} };
@@ -137,7 +150,7 @@ const useDetail = (gqlQuery, id, options = {}) => {
 /**
  * Return a hook to execute a save graphql mutation
  * @param {string} gqlQuery Graphql query
- * @param {Object} options Request options (onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError, captureErrors=true)
  * @returns Save hook
  * @example
  * const [callSave, reqSave] = useSave(SAVE_PLAYER, {
@@ -157,7 +170,7 @@ const useSave = (gqlQuery, options = {}) => {
 /**
  * Return a hook to execute a set graphql mutation
  * @param {string} gqlQuery Graphql query
- * @param {Object} options Request options (onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError, captureErrors=true)
  * @returns Set hook
  * @example
  * const [callSet, reqSet] = useSave(SET_PLAYER, {
@@ -175,7 +188,7 @@ const useSet = (gqlQuery, options = {}) => {
 /**
  * Return a hook to execute a delete graphql mutation
  * @param {string} gqlQuery Graphql query
- * @param {Object} options Request options (onCompleted, onError)
+ * @param {Object} options Request options (onCompleted, onError, captureErrors=true)
  * @returns Delete hook
  * @example
  * const [callDelete, reqDelete] = useDelete(DELETE_PLAYER, {

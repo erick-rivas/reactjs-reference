@@ -20,8 +20,10 @@ function Home() {
       localStorage.clear();
       window.location.replace(`/examples/login?next=${encodeURIComponent(new URL(window.location.href).pathname)}`);
       // IMPORTANT: Switch to normal login (e.g /login) when copying
-    }
+    },
+    captureErrors: false
   })
+
   useEffect(() => {
     if (localStorage.getItem("id") != null) { //Preload data from localStorage
       sessionStorage.setItem("token", localStorage.getItem("token"));
@@ -29,7 +31,9 @@ function Home() {
     }
     callAuth();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (!isAuth) return null;
+
   return <View />;
 }
 

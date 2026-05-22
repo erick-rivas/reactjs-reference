@@ -4,6 +4,7 @@ __Seed builder__
   API lib
 */
 
+import * as Sentry from "@sentry/react";
 import React, { useState, useEffect } from "react";
 import useFetch from "react-fetch-hook";
 import { API_URL } from "settings";
@@ -14,7 +15,7 @@ import { API_URL } from "settings";
  * Returns a hook to execute a GET request
  * @param {string} endpoint Relative path to SERVER_URL/api
  * @param {Object} queryArgs Query args of the request
- * @param {Object} options Request options (onCompleted, onError, includeAuth=true)
+ * @param {Object} options Request options (onCompleted, onError, includeAuth=true, captureErrors=true)
  * @returns GET hook
  * @example
  * const reqPlayers = useGet("/players", { name: "messi" })
@@ -27,7 +28,7 @@ const useGet = (endpoint, queryArgs = {}, options = {}) =>
  * Returns a hook to execute a GET request callable (like put, post, etc)
  * @param {string} endpoint Relative path to SERVER_URL/api
  * @param {Object} queryArgs Query args of the request
- * @param {Object} options Request options (onCompleted, onError, includeAuth=true)
+ * @param {Object} options Request options (onCompleted, onError, includeAuth=true, captureErrors=true)
  * @returns GET hook
  * @example
  * const [callGet, reqPlayers] = useGet("/players", { name: "messi" })
@@ -39,10 +40,10 @@ const useGetCall = (endpoint, queryArgs = {}, options = {}) =>
 /**
 * Returns a hook to execute a POST request
 * @param {string} endpoint Relative path to SERVER_URL/api
-* @param {Object} options Request options (onCompleted, onError, includeAuth=true)
+* @param {Object} options Request options (onCompleted, onError, includeAuth=true, captureErrors=true)
 * @returns POST hook
 * @example
-* const [callSave, reqSave] = usePost("/players", { 
+* const [callSave, reqSave] = usePost("/players", {
 *   onCompleted: (data) => alert("Player saved")
 * })
 * ...
@@ -55,10 +56,10 @@ const usePost = (endpoint, options = {}) =>
 /**
 * Returns a hook to execute a PUT request
 * @param {string} endpoint Relative path to SERVER_URL/api
-* @param {Object} options Request options (onCompleted, onError, includeAuth=true)
+* @param {Object} options Request options (onCompleted, onError, includeAuth=true, captureErrors=true)
 * @returns PUT hook
 * @example
-* const [callPut, reqPut] = usePut("/players", { 
+* const [callPut, reqPut] = usePut("/players", {
 *   onCompleted: (data) => alert("Player modified")
 * })
 * ...
@@ -71,10 +72,10 @@ const usePut = (endpoint, options = {}) =>
 /**
 * Returns a hook to execute a DELETE request
 * @param {string} endpoint Relative path to SERVER_URL/api
-* @param {Object} options Request options (onCompleted, onError, includeAuth=true)
+* @param {Object} options Request options (onCompleted, onError, includeAuth=true, captureErrors=true)
 * @returns DELETE hook
 * @example
-* const [callDelete, reqDelete] = useDelete("/players", { 
+* const [callDelete, reqDelete] = useDelete("/players", {
 *   onCompleted: (data) => alert("Player deleted")
 * })
 * ...
@@ -145,6 +146,8 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
       if (pollOptions.onCompleted != null)
         pollOptions.onCompleted(data);
     } else {
+      if (pollOptions.captureErrors !== false)
+        Sentry.captureException(fetch.error);
       if (pollOptions.onError != null)
         pollOptions.onError(fetch.error);
     }
@@ -197,8 +200,12 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
       } catch (e) { }
       mutOptions.onCompleted(json);
     }
-    if (mutOptions.onError != null && fetch.error != null)
-      mutOptions.onError(fetch.error);
+    if (fetch.error != null) {
+      if (mutOptions.captureErrors !== false)
+        Sentry.captureException(fetch.error);
+      if (mutOptions.onError != null)
+        mutOptions.onError(fetch.error);
+    }
 
     setCall({ body: null, called: false });
   }

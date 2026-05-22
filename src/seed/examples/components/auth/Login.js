@@ -13,7 +13,8 @@ function Login(props) {
   const params = new URLSearchParams(props.location.search);
   const [rememberMe, setRememberMe] = useState(false);
   const [callAuth, reqCall] = useGetCall("/auth/user", "", {
-    onCompleted: data => window.location.replace(params.get("next") ?? "/example") // If user is already logged
+    onCompleted: data => window.location.replace(params.get("next") ?? "/example"), // If user is already logged
+    captureErrors: false
     // IMPORTANT: Switch to normal home(e.g /) when copying
   })
 
@@ -27,7 +28,8 @@ function Login(props) {
       sessionStorage.setItem("id", data.user);
       props.history.replace("/");
     },
-    includeAuth: false
+    includeAuth: false,
+    captureErrors: false
   });
 
   useEffect(() => {
