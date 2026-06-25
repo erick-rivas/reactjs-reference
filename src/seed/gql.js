@@ -59,7 +59,7 @@ const useQuery = (gqlQuery, paramQuery, options = {}) => {
     }
   }, [res.data, res.error, res.loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  return { ...res, data: res.data ? res.data : {}, query: query };
+  return { ...res, loaded: res.data != null, data: res.data ? res.data : {}, query: query };
 };
 
 /**
@@ -144,7 +144,7 @@ const useDetail = (gqlQuery, id, options = {}) => {
     }
   }, [res.data, res.error, res.loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  return { ...res, data: res.data ? res.data : {} };
+  return { ...res, loaded: res.data != null, data: res.data ? res.data : {} };
 };
 
 /**
@@ -248,7 +248,7 @@ const useMutate = (mutation) => {
     }
     call({ variables: vars });
   };
-  return [wrap, { ...res, data: res.data ? res.data : {} }];
+  return [wrap, { ...res, loaded: res.data != null, data: res.data ? res.data : {} }];
 };
 
 export {

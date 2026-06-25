@@ -147,7 +147,7 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
         pollOptions.onCompleted(data);
     } else {
       if (pollOptions.captureErrors !== false)
-        Sentry.captureException(fetch.error);
+        Sentry.captureException(new Error(`${fetch.error.status} - ${fetch.error.statusText}: ${fetch.error.url}`));
       if (pollOptions.onError != null)
         pollOptions.onError(fetch.error);
     }
@@ -155,7 +155,7 @@ const usePoll = (endpoint, params, pollOptions = {}) => {
   }
   const refetch = () => setStatus({ ...status, fetchStatus: true })
 
-  return { ...fetch, loading: status.isLoading, data: status.data, refetch: refetch };
+  return { ...fetch, loading: status.isLoading, loaded: status.data != null, data: status.data, refetch: refetch };
 };
 
 const useMutate = (method, endpoint, mutOptions = {}) => {
@@ -202,14 +202,14 @@ const useMutate = (method, endpoint, mutOptions = {}) => {
     }
     if (fetch.error != null) {
       if (mutOptions.captureErrors !== false)
-        Sentry.captureException(fetch.error);
+        Sentry.captureException(new Error(`${fetch.error.status} - ${fetch.error.statusText}: ${fetch.error.url}`));
       if (mutOptions.onError != null)
         mutOptions.onError(fetch.error);
     }
 
     setCall({ body: null, called: false });
   }
-  return [calling, { ...fetch, loading: fetch.isLoading, called: call.called }];
+  return [calling, { ...fetch, loading: fetch.isLoading, loaded: call.called, called: call.called }];
 };
 
 export { useGet, useGetCall, usePost, usePut, useDelete };
